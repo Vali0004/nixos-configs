@@ -45,6 +45,10 @@
       localip = "10.0.127.1";
       auto_add_peers = [ "e0f6bcec21be59c77cf338e3946a766cd17a8e9c40a2b7fe036e7996f3a59554b4ecafdc2df6" ];
     };
+    openssh = {
+      enable = true;
+      passwordAuthentication = false;
+    };
   };
 
   systemd.services.toxvpn.serviceConfig.TimeoutStartSec = "infinity";
@@ -121,7 +125,6 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
