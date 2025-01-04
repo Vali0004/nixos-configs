@@ -4,7 +4,7 @@ let
   mkForward = port: target: {
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${port},reuseaddr,fork TCP4:${target}:${port}";
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},reuseaddr,fork TCP4:${target}:${toString port}";
       KillMode = "process";
       Restart = "always";
     };
