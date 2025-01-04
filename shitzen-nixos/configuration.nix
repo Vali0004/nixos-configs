@@ -75,7 +75,7 @@
       servers = {
         test = {
           enable = true;
-          autoStart = true;
+          autoStart = false;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
               pname = "fabric-api";
