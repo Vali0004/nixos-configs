@@ -190,6 +190,10 @@
   };
   systemd.services.minecraft-server-prod.serviceConfig.StartLimitIntervalSec = 0;
   systemd.services.minecraft-server-prod.serviceConfig.StartLimitBurst = 0;
+  systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
+  systemd.services.minecraft-server-test.serviceConfig.StartLimitIntervalSec = 0;
+  systemd.services.minecraft-server-test.serviceConfig.StartLimitBurst = 0;
+  systemd.services.minecraft-server-test.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
