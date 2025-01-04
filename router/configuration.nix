@@ -40,14 +40,14 @@
   # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   services = {
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+    };
     toxvpn = {
       enable = true;
       localip = "10.0.127.1";
-      auto_add_peers = [ "e0f6bcec21be59c77cf338e3946a766cd17a8e9c40a2b7fe036e7996f3a59554b4ecafdc2df6" ];
-    };
-    openssh = {
-      enable = true;
-      passwordAuthentication = false;
+      auto_add_peers = [ "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" "e0f6bcec21be59c77cf338e3946a766cd17a8e9c40a2b7fe036e7996f3a59554b4ecafdc2df6" ];
     };
   };
 
