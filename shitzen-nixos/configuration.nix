@@ -45,13 +45,17 @@
         "10.0.127.3" = {
           enableSSL = false;
           locations = {
-              "/private/" = {
+            "/private/" = {
               alias = "/data/private/";
               index = "index.htm";
               extraConfig = ''
                 autoindex on;
                 autoindex_exact_size off;
               '';
+            };
+            "/" = {
+              alias = "/data/web";
+              index = "index.html";
             };
           };
         };
