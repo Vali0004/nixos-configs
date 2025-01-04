@@ -54,7 +54,7 @@
               '';
             };
             "/" = {
-              alias = "/data/web";
+              alias = "/data/web/";
               index = "index.html";
             };
           };
