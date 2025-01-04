@@ -114,6 +114,12 @@
             url = "https://cdn.modrinth.com/data/flkUwsSr/versions/fQtTBG9I/${pname}.jar";
             hash = "sha256-qep6u6HiNhrOigKt86i5sqG6tRnXgcfelJGWZhiyCp0=";
           };
+          "plugins/Gunshell.jar" = pkgs.fetchurl rec {
+            pname = "Gunshell";
+            version = "v1.7.1";
+            url = "https://cdn.modrinth.com/data/yEbJoBrR/versions/y42uj0cu/${pname}-${version}.jar";
+            hash = "sha256-qep6u6HiNhrOigKt86i5sqG6tRnXgcfelJGWZhiyCp0=";
+          };
         };
         whitelist = {
           FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
@@ -122,14 +128,26 @@
         jvmOpts = "-Xms14G -Xmx14G";
         package = pkgs.paperServers.paper-1_21_4;
         serverProperties = {
-          difficulty = "easy";
+          admin-slot = true;
+          allow-cheats = true;
+          compression-algorithm = "zlib";
+          compression-threshold = 2;
+          difficulty = "hard";
+          enable-command-block = true;
           enable-rcon = false;
           enforce-whitelist = true;
+          force-gamemode = true;
           gamemode = "survival";
+          hardcore = false;
           max-players = 30;
+          max-threads = 12;
           max-tick-time = 60000;
           motd = "Vali's Minecraft Server";
+          server-name = "InertiaCraft";
           server-port = 4300;
+          simulation-distance = 8;
+          texturepack-required = true;
+          tick-distance = 8;
           view-distance = 26;
           white-list = true;
         };
