@@ -152,11 +152,59 @@
           enable = true;
           autoStart = true;
           files = {
-            "mods/fabric-api" = pkgs.fetchurl rec {
+            "mods/fabric-api.jar" = pkgs.fetchurl rec {
               pname = "fabric-api";
               version = "0.114.0%2B1.21.4";
               url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/5tj7y3PJ/${pname}-${version}.jar";
-              hash = "sha256-uwJgLzUrfflEChTrPibVidYtwyvNJfP8ZmZRLe3SR2A=";
+              hash = "sha256-TATNEpMOzG19eCI5NDhdYonSpkRLzH3q9T49o3kgHC0=";
+            };
+            "mods/cloth-config.jar" = pkgs.fetchurl rec {
+              pname = "cloth-config";
+              version = "17.0.144-fabric";
+              url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
+              hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
+            };
+            "mods/ferritecore.jar" = pkgs.fetchurl rec {
+              pname = "ferritecore";
+              version = "7.1.1-fabric";
+              url = "https://cdn.modrinth.com/data/uXXizFIs/versions/IPM0JlHd/${pname}-${version}.jar";
+              hash = "sha256-DdXpIDVSAk445zoPW0aoLrZvAxiyMonGhCsmhmMnSnk=";
+            };
+            "mods/lithium.jar" = pkgs.fetchurl rec {
+              pname = "lithium";
+              version = "fabric-0.14.3%2Bmc1.21.4";
+              url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/t1FlWYl9/${pname}-${version}.jar";
+              hash = "sha256-LJFVhw/3MnsPnYTHVZbM3xJtne1lV5twuYeqZSMZEn4=";
+            };
+            "mods/modernfix.jar" = pkgs.fetchurl rec {
+              pname = "modernfix";
+              version = "fabric-5.20.1%2Bmc1.21.4";
+              url = "https://cdn.modrinth.com/data/nmDcB62a/versions/gx7PIV8n/${pname}-${version}.jar";
+              hash = "sha256-yDjUaCH3wW/e5ccG4tpeO4JkMJScj8EbDSvQTlLVu+s=";
+            };
+            "mods/memoryleakfix.jar" = pkgs.fetchurl rec {
+              pname = "memoryleakfix";
+              version = "fabric-1.17%2B-1.1.5";
+              url = "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/${pname}-${version}.jar";
+              hash = "sha256-uKwz1yYuAZcQ3SXkVBFmFrye0fcU7ZEFlLKKTB2lrd4=";
+            };
+            "mods/krypton.jar" = pkgs.fetchurl rec {
+              pname = "krypton";
+              version = "0.2.8";
+              url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
+              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
+            };
+            "mods/lazydfu.jar" = pkgs.fetchurl rec {
+              pname = "lazydfu";
+              version = "0.1.3";
+              url = "https://cdn.modrinth.com/data/hvFnDODi/versions/${version}/${pname}-${version}.jar";
+              hash = "sha256-Tzt3JztX0Bmo21g3HmPkQmVXwbt8nMEFNqA5chIneMg=";
+            };
+            "mods/vmp.jar" = pkgs.fetchurl rec {
+              pname = "vmp";
+              version = "fabric-mc1.21.4-0.2.0%2Bbeta.7.187-all";
+              url = "https://cdn.modrinth.com/data/wnEe9KBa/versions/k1tcjmTr/${pname}-${version}.jar";
+              hash = "sha256-cYYe7qBhX3gPdcFzyt4m1WB5v0eT20f24SuhmWOnZbI=";
             };
           };
           whitelist = {
