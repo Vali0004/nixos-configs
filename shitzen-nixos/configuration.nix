@@ -22,7 +22,7 @@
   networking = {
     firewall = {
       allowedUDPPorts = [  ];
-      allowedTCPPorts = [ 80 443 4300 ];
+      allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "shitzen-nixos";
   };
@@ -72,82 +72,124 @@
       enable = true;
       # As much as I want to have this go on the HDD, it's simply too slow.
       dataDir = "/var/lib/minecraft";
-      servers.test = {
-        enable = true;
-        autoStart = true;
-        files = {
-          "plugins/Chunky-Bukkit.jar" = pkgs.fetchurl rec {
-            pname = "Chunky-Bukkit";
-            version = "1.4.28";
-            url = "https://cdn.modrinth.com/data/fALzjamp/versions/ytBhnGfO/${pname}-${version}.jar";
-            hash = "sha256-G6MwUA+JUDJRkbpwvOC4PnR0k+XuCvcIJnDDXFF3oy4=";
+      servers = {
+        prod = {
+          enable = true;
+          autoStart = true;
+          files = {
+            "plugins/Chunky-Bukkit.jar" = pkgs.fetchurl rec {
+              pname = "Chunky-Bukkit";
+              version = "1.4.28";
+              url = "https://cdn.modrinth.com/data/fALzjamp/versions/ytBhnGfO/${pname}-${version}.jar";
+              hash = "sha256-G6MwUA+JUDJRkbpwvOC4PnR0k+XuCvcIJnDDXFF3oy4=";
+            };
+            "plugins/worldedit-bukkit.jar" = pkgs.fetchurl rec {
+              pname = "worldedit-bukkit";
+              version = "7.3.10-beta-01";
+              url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/HIoAq6RI/${pname}-${version}.jar";
+              hash = "sha256-uwJgLzUrfflEChTrPibVidYtwyvNJfP8ZmZRLe3SR2A=";
+            };
+            "plugins/FreedomChat-Paper.jar" = pkgs.fetchurl rec {
+              pname = "FreedomChat-Paper";
+              version = "1.7.2";
+              url = "https://cdn.modrinth.com/data/MubyTbnA/versions/RUlT5EFK/${pname}-${version}.jar";
+              hash = "sha256-zD/aUCm5ien8qJv+OCSR7SFpN9TI3GXHXqXFmhqtI3o=";
+            };
+            "plugins/GeyserExtras.jar" = pkgs.fetchurl rec {
+              pname = "GeyserExtras";
+              url = "https://cdn.modrinth.com/data/kOfJBurB/versions/jvUySJSF/${pname}.jar";
+              hash = "sha256-CQ1v040X8cbGXWyqPg84r56ssXhZRx1WW271gYJ1XZY=";
+            };
+            "plugins/Geyser-Spigot.jar" = pkgs.fetchurl rec {
+              pname = "Geyser-Spigot";
+              url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/DhMhnkdq/${pname}.jar";
+              hash = "sha256-Wlds0C6wvyW7Y389Dfv+jeLp3PzbfELKpPT+uWYTWKM=";
+            };
+            "plugins/Vanish.jar" = pkgs.fetchurl rec {
+              pname = "Vanish";
+              url = "https://cdn.modrinth.com/data/Mv4AIFSE/versions/upXEIsWr/${pname}.jar";
+              hash = "sha256-lKjq5VdvRLz0oA3qms+T72Hu0fj288L0QiOUWPD8H0c=";
+            };
+            "plugins/QualityArmory.jar" = pkgs.fetchurl rec {
+              pname = "QualityArmory";
+              url = "https://cdn.modrinth.com/data/flkUwsSr/versions/fQtTBG9I/${pname}.jar";
+              hash = "sha256-qep6u6HiNhrOigKt86i5sqG6tRnXgcfelJGWZhiyCp0=";
+            };
           };
-          "plugins/worldedit-bukkit.jar" = pkgs.fetchurl rec {
-            pname = "worldedit-bukkit";
-            version = "7.3.10-beta-01";
-            url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/HIoAq6RI/${pname}-${version}.jar";
-            hash = "sha256-uwJgLzUrfflEChTrPibVidYtwyvNJfP8ZmZRLe3SR2A=";
+          whitelist = {
+            FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+            SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
           };
-          "plugins/FreedomChat-Paper.jar" = pkgs.fetchurl rec {
-            pname = "FreedomChat-Paper";
-            version = "1.7.2";
-            url = "https://cdn.modrinth.com/data/MubyTbnA/versions/RUlT5EFK/${pname}-${version}.jar";
-            hash = "sha256-zD/aUCm5ien8qJv+OCSR7SFpN9TI3GXHXqXFmhqtI3o=";
-          };
-          "plugins/GeyserExtras.jar" = pkgs.fetchurl rec {
-            pname = "GeyserExtras";
-            url = "https://cdn.modrinth.com/data/kOfJBurB/versions/jvUySJSF/${pname}.jar";
-            hash = "sha256-CQ1v040X8cbGXWyqPg84r56ssXhZRx1WW271gYJ1XZY=";
-          };
-          "plugins/Geyser-Spigot.jar" = pkgs.fetchurl rec {
-            pname = "Geyser-Spigot";
-            url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/DhMhnkdq/${pname}.jar";
-            hash = "sha256-Wlds0C6wvyW7Y389Dfv+jeLp3PzbfELKpPT+uWYTWKM=";
-          };
-          "plugins/Vanish.jar" = pkgs.fetchurl rec {
-            pname = "Vanish";
-            url = "https://cdn.modrinth.com/data/Mv4AIFSE/versions/upXEIsWr/${pname}.jar";
-            hash = "sha256-lKjq5VdvRLz0oA3qms+T72Hu0fj288L0QiOUWPD8H0c=";
-          };
-          "plugins/QualityArmory.jar" = pkgs.fetchurl rec {
-            pname = "QualityArmory";
-            url = "https://cdn.modrinth.com/data/flkUwsSr/versions/fQtTBG9I/${pname}.jar";
-            hash = "sha256-qep6u6HiNhrOigKt86i5sqG6tRnXgcfelJGWZhiyCp0=";
+          jvmOpts = "-Xms10G -Xmx10G";
+          package = pkgs.paperServers.paper-1_21_4;
+          serverProperties = {
+            admin-slot = true;
+            allow-cheats = true;
+            compression-algorithm = "zlib";
+            compression-threshold = 2;
+            difficulty = "hard";
+            enable-command-block = true;
+            enable-rcon = false;
+            enforce-whitelist = true;
+            force-gamemode = true;
+            gamemode = "survival";
+            hardcore = false;
+            max-players = 30;
+            max-threads = 12;
+            max-tick-time = 60000;
+            motd = "Vali's Minecraft Server";
+            query.port = 4300;
+            server-name = "InertiaCraft";
+            server-ip = "10.0.0.244";
+            server-port = 4300;
+            simulation-distance = 8;
+            texturepack-required = true;
+            tick-distance = 8;
+            view-distance = 26;
+            white-list = true;
           };
         };
-        whitelist = {
-          FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
-          SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
-        };
-        jvmOpts = "-Xms14G -Xmx14G";
-        package = pkgs.paperServers.paper-1_21_4;
-        serverProperties = {
-          admin-slot = true;
-          allow-cheats = true;
-          compression-algorithm = "zlib";
-          compression-threshold = 2;
-          difficulty = "hard";
-          enable-command-block = true;
-          enable-rcon = false;
-          enforce-whitelist = true;
-          force-gamemode = true;
-          gamemode = "survival";
-          hardcore = false;
-          max-players = 30;
-          max-threads = 12;
-          max-tick-time = 60000;
-          motd = "Vali's Minecraft Server";
-          server-name = "InertiaCraft";
-          server-port = 4300;
-          simulation-distance = 8;
-          texturepack-required = true;
-          tick-distance = 8;
-          view-distance = 26;
-          white-list = true;
+        test = {
+          enable = true;
+          autoStart = true;
+          whitelist = {
+            FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+            SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
+          };
+          jvmOpts = "-Xms4G -Xmx4G";
+          package = pkgs.paperServers.paper-1_21_4;
+          serverProperties = {
+            admin-slot = true;
+            allow-cheats = true;
+            compression-algorithm = "zlib";
+            compression-threshold = 2;
+            difficulty = "hard";
+            enable-command-block = true;
+            enable-rcon = false;
+            enforce-whitelist = true;
+            force-gamemode = true;
+            gamemode = "survival";
+            hardcore = false;
+            max-players = 3;
+            max-threads = 12;
+            max-tick-time = 60000;
+            motd = "Vali's Test Minecraft Server";
+            query.port = 4301;
+            server-name = "InertiaCraftTest";
+            server-ip = "10.0.127.3";
+            server-port = 4301;
+            simulation-distance = 8;
+            texturepack-required = true;
+            tick-distance = 8;
+            view-distance = 26;
+            white-list = true;
+          };
         };
       };
     };
   };
+  systemd.services.minecraft-server-prod.serviceConfig.StartLimitIntervalSec = 0;
+  systemd.services.minecraft-server-prod.serviceConfig.StartLimitBurst = 0;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

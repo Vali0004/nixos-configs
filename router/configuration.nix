@@ -24,7 +24,7 @@ in {
   networking = {
     firewall = {
       allowedUDPPorts = [  ];
-      allowedTCPPorts = [ 80 443 4300 ];
+      allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "router";
     defaultGateway = "31.59.128.1";
@@ -52,6 +52,7 @@ in {
   systemd.services.forward80 = mkForward 80 "10.0.127.3";
   systemd.services.forward443 = mkForward 443 "10.0.127.3";
   systemd.services.forward4300 = mkForward 4300 "10.0.127.3";
+  systemd.services.forward4301 = mkForward 4301 "10.0.127.3";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
