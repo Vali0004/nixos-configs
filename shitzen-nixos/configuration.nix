@@ -158,12 +158,12 @@
               url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/5tj7y3PJ/${pname}-${version}.jar";
               hash = "sha256-TATNEpMOzG19eCI5NDhdYonSpkRLzH3q9T49o3kgHC0=";
             };
-            "mods/cloth-config.jar" = pkgs.fetchurl rec {
-              pname = "cloth-config";
-              version = "17.0.144-fabric";
-              url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
-              hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
-            };
+            #"mods/cloth-config.jar" = pkgs.fetchurl rec {
+            #  pname = "cloth-config";
+            #  version = "17.0.144-fabric";
+            #  url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
+            #  hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
+            #};
             "mods/ferritecore.jar" = pkgs.fetchurl rec {
               pname = "ferritecore";
               version = "7.1.1-fabric";
@@ -194,17 +194,17 @@
               url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
               hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
             };
-            "mods/lazydfu.jar" = pkgs.fetchurl rec {
-              pname = "lazydfu";
-              version = "0.1.3";
-              url = "https://cdn.modrinth.com/data/hvFnDODi/versions/${version}/${pname}-${version}.jar";
-              hash = "sha256-Tzt3JztX0Bmo21g3HmPkQmVXwbt8nMEFNqA5chIneMg=";
+            "mods/Debugify.jar" = pkgs.fetchurl rec {
+              pname = "Debugify";
+              version = "1.21.4%2B1.0";
+              url = "https://cdn.modrinth.com/data/QwxR6Gcd/versions/TxwUizo2/${pname}-${version}.jar";
+              hash = "sha256-9f1/iLjcor5vkWoHjiRggP8zhTc3fY80d6hJZeb9OeU=";
             };
-            "mods/vmp.jar" = pkgs.fetchurl rec {
-              pname = "vmp";
-              version = "fabric-mc1.21.4-0.2.0%2Bbeta.7.187-all";
-              url = "https://cdn.modrinth.com/data/wnEe9KBa/versions/k1tcjmTr/${pname}-${version}.jar";
-              hash = "sha256-cYYe7qBhX3gPdcFzyt4m1WB5v0eT20f24SuhmWOnZbI=";
+            "mods/NoChatReports.jar" = pkgs.fetchurl rec {
+              pname = "NoChatReports";
+              version = "FABRIC-1.21.4-v2.11.0";
+              url = "https://cdn.modrinth.com/data/qQyHxfxd/versions/9xt05630/${pname}-${version}.jar";
+              hash = "sha256-1jMJbw5wL/PwsNSEHs4MHJpjyvPVhbhiP59dnXRQJwI=";
             };
           };
           whitelist = {
@@ -243,11 +243,9 @@
       };
     };
   };
-  systemd.services.minecraft-server-prod.serviceConfig.StartLimitIntervalSec = 0;
   systemd.services.minecraft-server-prod.serviceConfig.StartLimitBurst = 0;
   systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
-  systemd.services.minecraft-server-test.serviceConfig.StartLimitIntervalSec = 0;
-  systemd.services.minecraft-server-test.serviceConfig.StartLimitBurst = 0;
+  #systemd.services.minecraft-server-test.serviceConfig.StartLimitBurst = 500;
   systemd.services.minecraft-server-test.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
