@@ -1,13 +1,15 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
-  outputs = { nixpkgs, self }:
+  outputs = { nixpkgs, nix-minecraft, self }:
   {
     colmena = {
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
+          overlays = [ nix-minecraft.overlay ];
         };
       };
       router = {
@@ -23,6 +25,7 @@
         deployment.targetUser = "root";
         imports = [
           ./core.nix
+          nix-minecraft.nixosModules.minecraft-servers
           ./shitzen-nixos/configuration.nix
         ];
       };

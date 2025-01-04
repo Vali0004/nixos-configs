@@ -1,10 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
-{
+{ 
   imports = [
     ./hardware-configuration.nix
   ];
-
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "minecraft-server"
+  ];
+  
   # Use the GRUB 2 boot loader.
   boot.loader = {
     grub = {
@@ -19,7 +22,7 @@
   networking = {
     firewall = {
       allowedUDPPorts = [  ];
-      allowedTCPPorts = [ 80 443 ];
+      allowedTCPPorts = [ 80 443 4300 ];
     };
     hostName = "shitzen-nixos";
   };
@@ -58,6 +61,27 @@
               index = "index.html";
             };
           };
+        };
+      };
+    };
+    minecraft-servers = {
+      enable = true;
+      eula = true;
+      dataDir = "/data/minecraft";
+      servers.testserver = {
+        enable = true;
+        autoStart = true;
+        package = pkgs.fabricServers.fabric-1_21_4;
+        jvmOpts = "-Xms8G -Xmx8G";
+        serverProperties = {
+          server-port = 4300;
+          difficulty = 3;
+          gamemode = 1;
+          max-players = 5;
+          motd = "NixOS Minecraft server!";
+          white-list = false;
+          enable-rcon = true;
+          "rcon.password" = "hunter2";
         };
       };
     };
