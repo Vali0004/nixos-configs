@@ -167,6 +167,7 @@
             enable-command-block = true;
             enable-rcon = false;
             enforce-whitelist = true;
+            entity-broadcast-range-percentage = 50;
             force-gamemode = true;
             gamemode = "survival";
             hardcore = false;
@@ -177,10 +178,10 @@
             query-port = 4301;
             server-name = "InertiaCraftTest";
             server-port = 4301;
-            simulation-distance = 8;
+            simulation-distance = 12;
             texturepack-required = true;
-            tick-distance = 8;
-            view-distance = 26;
+            tick-distance = 12;
+            view-distance = 28;
             white-list = true;
           };
         };
