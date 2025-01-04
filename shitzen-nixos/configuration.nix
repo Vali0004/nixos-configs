@@ -73,55 +73,59 @@
       # As much as I want to have this go on the HDD, it's simply too slow.
       dataDir = "/var/lib/minecraft";
       servers = {
-        prod = {
+        test = {
           enable = true;
           autoStart = true;
           files = {
-            "plugins/Chunky-Bukkit.jar" = pkgs.fetchurl rec {
-              pname = "Chunky-Bukkit";
-              version = "1.4.28";
-              url = "https://cdn.modrinth.com/data/fALzjamp/versions/ytBhnGfO/${pname}-${version}.jar";
-              hash = "sha256-G6MwUA+JUDJRkbpwvOC4PnR0k+XuCvcIJnDDXFF3oy4=";
+            "mods/fabric-api.jar" = pkgs.fetchurl rec {
+              pname = "fabric-api";
+              version = "0.114.0%2B1.21.4";
+              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/5tj7y3PJ/${pname}-${version}.jar";
+              hash = "sha256-TATNEpMOzG19eCI5NDhdYonSpkRLzH3q9T49o3kgHC0=";
             };
-            "plugins/worldedit-bukkit.jar" = pkgs.fetchurl rec {
-              pname = "worldedit-bukkit";
-              version = "7.3.10-beta-01";
-              url = "https://cdn.modrinth.com/data/1u6JkXh5/versions/HIoAq6RI/${pname}-${version}.jar";
-              hash = "sha256-uwJgLzUrfflEChTrPibVidYtwyvNJfP8ZmZRLe3SR2A=";
+            "mods/ferritecore.jar" = pkgs.fetchurl rec {
+              pname = "ferritecore";
+              version = "7.1.1-fabric";
+              url = "https://cdn.modrinth.com/data/uXXizFIs/versions/IPM0JlHd/${pname}-${version}.jar";
+              hash = "sha256-DdXpIDVSAk445zoPW0aoLrZvAxiyMonGhCsmhmMnSnk=";
             };
-            "plugins/FreedomChat-Paper.jar" = pkgs.fetchurl rec {
-              pname = "FreedomChat-Paper";
-              version = "1.7.2";
-              url = "https://cdn.modrinth.com/data/MubyTbnA/versions/RUlT5EFK/${pname}-${version}.jar";
-              hash = "sha256-zD/aUCm5ien8qJv+OCSR7SFpN9TI3GXHXqXFmhqtI3o=";
+            "mods/lithium.jar" = pkgs.fetchurl rec {
+              pname = "lithium";
+              version = "fabric-0.14.3%2Bmc1.21.4";
+              url = "https://cdn.modrinth.com/data/gvQqBUqZ/versions/t1FlWYl9/${pname}-${version}.jar";
+              hash = "sha256-LJFVhw/3MnsPnYTHVZbM3xJtne1lV5twuYeqZSMZEn4=";
             };
-            "plugins/GeyserExtras.jar" = pkgs.fetchurl rec {
-              pname = "GeyserExtras";
-              url = "https://cdn.modrinth.com/data/kOfJBurB/versions/jvUySJSF/${pname}.jar";
-              hash = "sha256-CQ1v040X8cbGXWyqPg84r56ssXhZRx1WW271gYJ1XZY=";
+            "mods/modernfix.jar" = pkgs.fetchurl rec {
+              pname = "modernfix";
+              version = "fabric-5.20.1%2Bmc1.21.4";
+              url = "https://cdn.modrinth.com/data/nmDcB62a/versions/gx7PIV8n/${pname}-${version}.jar";
+              hash = "sha256-yDjUaCH3wW/e5ccG4tpeO4JkMJScj8EbDSvQTlLVu+s=";
             };
-            "plugins/Geyser-Spigot.jar" = pkgs.fetchurl rec {
-              pname = "Geyser-Spigot";
-              url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/DhMhnkdq/${pname}.jar";
-              hash = "sha256-Wlds0C6wvyW7Y389Dfv+jeLp3PzbfELKpPT+uWYTWKM=";
+            "mods/memoryleakfix.jar" = pkgs.fetchurl rec {
+              pname = "memoryleakfix";
+              version = "fabric-1.17%2B-1.1.5";
+              url = "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/${pname}-${version}.jar";
+              hash = "sha256-uKwz1yYuAZcQ3SXkVBFmFrye0fcU7ZEFlLKKTB2lrd4=";
             };
-            "plugins/Vanish.jar" = pkgs.fetchurl rec {
-              pname = "Vanish";
-              url = "https://cdn.modrinth.com/data/Mv4AIFSE/versions/upXEIsWr/${pname}.jar";
-              hash = "sha256-lKjq5VdvRLz0oA3qms+T72Hu0fj288L0QiOUWPD8H0c=";
+            "mods/krypton.jar" = pkgs.fetchurl rec {
+              pname = "krypton";
+              version = "0.2.8";
+              url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
+              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
             };
-            "plugins/QualityArmory.jar" = pkgs.fetchurl rec {
-              pname = "QualityArmory";
-              url = "https://cdn.modrinth.com/data/flkUwsSr/versions/fQtTBG9I/${pname}.jar";
-              hash = "sha256-qep6u6HiNhrOigKt86i5sqG6tRnXgcfelJGWZhiyCp0=";
+            "mods/Debugify.jar" = pkgs.fetchurl rec {
+              pname = "Debugify";
+              version = "1.21.4%2B1.0";
+              url = "https://cdn.modrinth.com/data/QwxR6Gcd/versions/TxwUizo2/${pname}-${version}.jar";
+              hash = "sha256-9f1/iLjcor5vkWoHjiRggP8zhTc3fY80d6hJZeb9OeU=";
             };
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
           };
-          jvmOpts = "-Xms10G -Xmx10G";
-          package = pkgs.paperServers.paper-1_21_4;
+          jvmOpts = "-Xms4G -Xmx4G";
+          package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
             allow-cheats = true;
@@ -131,24 +135,25 @@
             enable-command-block = true;
             enable-rcon = false;
             enforce-whitelist = true;
-            force-gamemode = true;
+            entity-broadcast-range-percentage = 50;
+            force-gamemode = false;
             gamemode = "survival";
             hardcore = false;
-            max-players = 30;
-            max-threads = 12;
+            max-players = 3;
+            max-threads = 4;
             max-tick-time = 60000;
-            motd = "Vali's Minecraft Server";
+            motd = "Vali's Test Minecraft Server";
             query-port = 4300;
-            server-name = "InertiaCraft";
+            server-name = "InertiaCraftTest";
             server-port = 4300;
-            simulation-distance = 8;
+            simulation-distance = 12;
             texturepack-required = true;
-            tick-distance = 8;
-            view-distance = 26;
+            tick-distance = 6;
+            view-distance = 12;
             white-list = true;
           };
         };
-        test = {
+        prod = {
           enable = true;
           autoStart = true;
           files = {
@@ -211,7 +216,7 @@
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
           };
-          jvmOpts = "-Xms4G -Xmx4G";
+          jvmOpts = "-Xms10G -Xmx10G";
           package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
@@ -222,20 +227,20 @@
             enable-command-block = true;
             enable-rcon = false;
             enforce-whitelist = true;
-            entity-broadcast-range-percentage = 50;
-            force-gamemode = true;
+            entity-broadcast-range-percentage = 110;
+            force-gamemode = false;
             gamemode = "survival";
             hardcore = false;
-            max-players = 3;
-            max-threads = 12;
+            max-players = 30;
+            max-threads = 10;
             max-tick-time = 60000;
-            motd = "Vali's Test Minecraft Server";
+            motd = "Vali's Minecraft Server";
             query-port = 4301;
-            server-name = "InertiaCraftTest";
+            server-name = "InertiaCraft";
             server-port = 4301;
-            simulation-distance = 12;
+            simulation-distance = 26;
             texturepack-required = true;
-            tick-distance = 12;
+            tick-distance = 16;
             view-distance = 28;
             white-list = true;
           };
@@ -243,7 +248,7 @@
       };
     };
   };
-  systemd.services.minecraft-server-prod.serviceConfig.StartLimitBurst = 0;
+  #systemd.services.minecraft-server-prod.serviceConfig.StartLimitBurst = 500;
   systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
   #systemd.services.minecraft-server-test.serviceConfig.StartLimitBurst = 500;
   systemd.services.minecraft-server-test.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
