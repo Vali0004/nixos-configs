@@ -22,6 +22,10 @@ in {
   };
 
   networking = {
+    firewall = {
+      allowedUDPPorts = [  ];
+      allowedTCPPorts = [ 80 443 ];
+    };
     hostName = "router";
     defaultGateway = "31.59.128.1";
     nameservers = [

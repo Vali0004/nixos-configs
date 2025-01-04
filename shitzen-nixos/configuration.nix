@@ -16,7 +16,7 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking.hostName = "shitzen-nixos"; # Define your hostname.
+  networking.hostName = "shitzen-nixos";
 
   environment.systemPackages = with pkgs; [
     git
