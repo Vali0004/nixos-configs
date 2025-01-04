@@ -32,6 +32,7 @@
     htop
     neofetch
     openssl
+    tmux
     unzip
     wget
     zip
@@ -65,7 +66,7 @@
       };
     };
     minecraft-servers = {
-        eula = true;
+      eula = true;
       enable = true;
       dataDir = "/data/minecraft";
       servers.testserver = {
