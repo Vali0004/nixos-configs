@@ -77,7 +77,7 @@
           FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
         };
         jvmOpts = "-Xms8G -Xmx8G";
-        package = pkgs.fabricServers.fabric-1_21_4;
+        package = pkgs.paperServers.paper-1_21_4;
         serverProperties = {
           difficulty = "easy";
           enable-rcon = false;
@@ -87,7 +87,7 @@
           max-tick-time = 60000;
           motd = "Vali's Minecraft Server";
           server-port = 4300;
-          view-distance = 32;
+          view-distance = 6;
           white-list = true;
         };
       };
