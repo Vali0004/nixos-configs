@@ -30,6 +30,7 @@
   environment.systemPackages = with pkgs; [
     git
     htop
+    infocmp
     neofetch
     openssl
     tmux
@@ -96,6 +97,11 @@
             pname = "GeyserExtras";
             url = "https://cdn.modrinth.com/data/kOfJBurB/versions/jvUySJSF/${pname}.jar";
             hash = "sha256-CQ1v040X8cbGXWyqPg84r56ssXhZRx1WW271gYJ1XZY=";
+          };
+          "plugins/Geyser-Spigot.jar" = pkgs.fetchurl rec {
+            pname = "Geyser-Spigot";
+            url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/DhMhnkdq/${pname}.jar";
+            hash = "sha256-Wlds0C6wvyW7Y389Dfv+jeLp3PzbfELKpPT+uWYTWKM=";
           };
           "plugins/Vanish.jar" = pkgs.fetchurl rec {
             pname = "Vanish";
