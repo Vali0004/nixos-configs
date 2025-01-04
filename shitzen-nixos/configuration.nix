@@ -65,12 +65,12 @@
       };
     };
     minecraft-servers = {
+        eula = true;
       enable = true;
+      dataDir = "/data/minecraft";
       servers.testserver = {
         enable = true;
         autoStart = true;
-        dataDir = "/data/minecraft";
-        eula = true;
         jvmOpts = "-Xms8G -Xmx8G";
         package = pkgs.fabricServers.fabric-1_21_4;
         serverProperties = {
