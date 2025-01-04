@@ -69,7 +69,7 @@
       eula = true;
       enable = true;
       dataDir = "/data/minecraft";
-      servers.testserver = {
+      servers.craft = {
         enable = true;
         autoStart = true;
         whitelist = {
