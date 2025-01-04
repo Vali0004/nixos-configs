@@ -151,12 +151,20 @@
         test = {
           enable = true;
           autoStart = true;
+          files = {
+            "mods/fabric-api" = pkgs.fetchurl rec {
+              pname = "fabric-api";
+              version = "0.114.0%2B1.21.4";
+              url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/5tj7y3PJ/${pname}-${version}.jar";
+              hash = "sha256-uwJgLzUrfflEChTrPibVidYtwyvNJfP8ZmZRLe3SR2A=";
+            };
+          };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
           };
           jvmOpts = "-Xms4G -Xmx4G";
-          package = pkgs.paperServers.paper-1_21_4;
+          package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
             allow-cheats = true;
