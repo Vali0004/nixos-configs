@@ -75,7 +75,7 @@
       servers = {
         test = {
           enable = true;
-          autoStart = false;
+          autoStart = true;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
               pname = "fabric-api";
@@ -106,12 +106,6 @@
               version = "fabric-1.17%2B-1.1.5";
               url = "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/${pname}-${version}.jar";
               hash = "sha256-uKwz1yYuAZcQ3SXkVBFmFrye0fcU7ZEFlLKKTB2lrd4=";
-            };
-            "mods/krypton.jar" = pkgs.fetchurl rec {
-              pname = "krypton";
-              version = "0.2.8";
-              url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
-              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
             };
             "mods/Debugify.jar" = pkgs.fetchurl rec {
               pname = "Debugify";
@@ -194,12 +188,6 @@
               url = "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/${pname}-${version}.jar";
               hash = "sha256-uKwz1yYuAZcQ3SXkVBFmFrye0fcU7ZEFlLKKTB2lrd4=";
             };
-            #"mods/krypton.jar" = pkgs.fetchurl rec {
-            #  pname = "krypton";
-            #  version = "0.2.8";
-            #  url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
-            #  hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
-            #};
             "mods/Debugify.jar" = pkgs.fetchurl rec {
               pname = "Debugify";
               version = "1.21.4%2B1.0";
@@ -211,6 +199,18 @@
               version = "FABRIC-1.21.4-v2.11.0";
               url = "https://cdn.modrinth.com/data/qQyHxfxd/versions/9xt05630/${pname}-${version}.jar";
               hash = "sha256-1jMJbw5wL/PwsNSEHs4MHJpjyvPVhbhiP59dnXRQJwI=";
+            };
+            "mods/noisium.jar" = pkgs.fetchurl rec {
+              pname = "noisium";
+              version = "fabric-2.5.0%2Bmc1.21.4";
+              url = "https://cdn.modrinth.com/data/KuNKN7d2/versions/9NHdQfkN/${pname}-${version}.jar";
+              hash = "sha256-JmSbfF3IDaC1BifR8WaKFCpam6nHlBWQzVryDR6Wvto=";
+            };
+            "mods/c2me.jar" = pkgs.fetchurl rec {
+              pname = "c2me";
+              version = "fabric-mc1.21.4-0.3.1.0";
+              url = "https://cdn.modrinth.com/data/VSNURh3q/versions/fBvLHC54/${pname}-${version}.jar";
+              hash = "sha256-7gnbVMLOvbWQS+FNrHBSYn4wsI/mwjhkB8nn2qmKeJQ=";
             };
           };
           whitelist = {
