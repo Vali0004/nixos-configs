@@ -13,7 +13,7 @@
       efiSupport = true;
       efiInstallAsRemovable = true;
     };
-    efi.canTouchEfiVariables = false;
+    efi.canTouchEfiVariables = true;
   };
 
   networking.hostName = "shitzen-nixos"; # Define your hostname.
