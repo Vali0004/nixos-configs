@@ -11,6 +11,7 @@
   # Use the GRUB 2 boot loader.
   boot.loader = {
     grub = {
+      memtest86plus.enable = true;
       copyKernels = true;
       device = "nodev";
       efiSupport = true;
