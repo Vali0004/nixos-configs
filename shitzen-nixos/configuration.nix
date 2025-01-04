@@ -30,7 +30,8 @@
   environment.systemPackages = with pkgs; [
     git
     htop
-    infocmp
+    ncurses
+    ncurses5
     neofetch
     openssl
     tmux
