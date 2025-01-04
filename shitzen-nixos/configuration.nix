@@ -33,6 +33,24 @@
       localip = "10.0.127.3";
       auto_add_peers = [ "ae395131cb50234bed128ff0ff5ffd495517565b1de6522f41f18a925e575c23978546982368" ];
     };
+    nginx = {
+      enable = true;
+      virtualHosts = {
+        "10.0.127.3" = {
+          enableSSL = false;
+          locations = {
+              "/private/" = {
+              alias = "/data/private/";
+              index = "index.htm";
+              extraConfig = ''
+                autoindex on;
+                autoindex_exact_size off;
+              '';
+            };
+          };
+        };
+      };
+    };
   };
 
   # This option defines the first version of NixOS you have installed on this particular machine,
