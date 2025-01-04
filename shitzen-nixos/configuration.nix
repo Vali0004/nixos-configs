@@ -248,6 +248,31 @@
               url = "https://cdn.modrinth.com/data/XVnUIUAQ/versions/cuMgw6kW/${pname}-${version}.jar";
               hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
             };
+            # Multi-version interop
+            "mods/ViaFabric.jar" = pkgs.fetchurl rec {
+              pname = "ViaFabric";
+              version = "0.4.17%2B91-main";
+              url = "https://cdn.modrinth.com/data/YlKdE5VK/versions/Niu0KrUK/${pname}-${version}.jar";
+              hash = "sha256-gJQYHj9O2IZ7iKkZcLbuDiEmGIogHipFmJR/8b9lpPM=";
+            };
+            "mods/ViaBackwards.jar" = pkgs.fetchurl rec {
+              pname = "ViaBackwards";
+              version = "5.2.1";
+              url = "https://cdn.modrinth.com/data/NpvuJQoq/versions/bprnc7WS/${pname}-${version}.jar";
+              hash = "sha256-RMDwGh1aZzOM+O9Zz3+7zkyCdv/yLx/bNM7tb0ZjMN8=";
+            };
+            "mods/ViaRewind.jar" = pkgs.fetchurl rec {
+              pname = "ViaRewind";
+              version = "4.0.5";
+              url = "https://cdn.modrinth.com/data/TbHIxhx5/versions/qf3oSwsb/${pname}-${version}.jar";
+              hash = "sha256-ZMdA0yEqZm/9Vs3nq4fCai7GbLgKahBGsY3kP+M9s3U=";
+            };
+            "mods/ViaVersion.jar" = pkgs.fetchurl rec {
+              pname = "ViaVersion";
+              version = "5.2.1";
+              url = "https://cdn.modrinth.com/data/P1OZGk5p/versions/p5sXOzZW/${pname}-${version}.jar";
+              hash = "sha256-yaWqtqxikpaiwdeyfANzu6fp3suSF8ePmJXs9dN4H8g=";
+            };
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
