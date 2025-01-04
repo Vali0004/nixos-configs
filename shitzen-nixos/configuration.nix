@@ -68,7 +68,8 @@
     minecraft-servers = {
       eula = true;
       enable = true;
-      dataDir = "/data/minecraft";
+      # As much as I want to have this go on the HDD, it's simply too slow.
+      dataDir = "/var/lib/minecraft";
       servers.craft = {
         enable = true;
         autoStart = true;
