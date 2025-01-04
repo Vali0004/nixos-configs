@@ -17,6 +17,11 @@
     { device = "/dev/disk/by-uuid/9ffafbc0-8e3a-4f71-80e8-c9f225398340";
       fsType = "ext4";
     };
+    
+  fileSystems."/data" =
+    { fsType = "ext4";
+      label = "MAIN";
+    };
 
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/9E79-76DF";
