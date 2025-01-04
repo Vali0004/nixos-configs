@@ -110,6 +110,7 @@
         };
         whitelist = {
           FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+          SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
         };
         jvmOpts = "-Xms14G -Xmx14G";
         package = pkgs.paperServers.paper-1_21_4;
