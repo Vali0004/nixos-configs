@@ -72,16 +72,22 @@
       servers.testserver = {
         enable = true;
         autoStart = true;
+        whitelist = {
+          FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+        };
         jvmOpts = "-Xms8G -Xmx8G";
         package = pkgs.fabricServers.fabric-1_21_4;
         serverProperties = {
-          difficulty = 3;
-          enable-rcon = true;
-          gamemode = 1;
-          max-players = 5;
-          motd = "NixOS Minecraft server!";
+          difficulty = "easy";
+          enable-rcon = false;
+          enforce-whitelist = true;
+          gamemode = "survival";
+          max-players = 30;
+          max-tick-time = 60000;
+          motd = "Vali's Minecraft Server";
           server-port = 4300;
-          white-list = false;
+          view-distance = 32;
+          white-list = true;
         };
       };
     };
