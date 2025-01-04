@@ -21,7 +21,7 @@
       allowedUDPPorts = [  ];
       allowedTCPPorts = [ 80 443 ];
     };
-    hostname = "shitzen-nixos";
+    hostName = "shitzen-nixos";
   };
 
   environment.systemPackages = with pkgs; [
