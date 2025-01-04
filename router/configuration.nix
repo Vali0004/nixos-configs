@@ -1,10 +1,15 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, ... }:
 
-{
+let
+  mkForward = port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${port},reuseaddr,fork TCP4:${target}:${port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -39,6 +44,9 @@
       auto_add_peers = [ "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" ];
     };
   };
+
+  systemd.services.forward80 = mkForward 80 "10.0.127.3";
+  systemd.services.forward443 = mkForward 443 "10.0.127.3";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
