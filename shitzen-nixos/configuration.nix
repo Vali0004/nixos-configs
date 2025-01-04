@@ -66,22 +66,22 @@
     };
     minecraft-servers = {
       enable = true;
-      eula = true;
-      dataDir = "/data/minecraft";
       servers.testserver = {
         enable = true;
         autoStart = true;
-        package = pkgs.fabricServers.fabric-1_21_4;
+        dataDir = "/data/minecraft";
+        eula = true;
         jvmOpts = "-Xms8G -Xmx8G";
+        package = pkgs.fabricServers.fabric-1_21_4;
         serverProperties = {
-          server-port = 4300;
           difficulty = 3;
+          enable-rcon = true;
           gamemode = 1;
           max-players = 5;
           motd = "NixOS Minecraft server!";
+          server-port = 4300;
           white-list = false;
-          enable-rcon = true;
-          "rcon.password" = "hunter2";
+          "rcon.password" = "773415";
         };
       };
     };
