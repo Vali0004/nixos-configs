@@ -163,12 +163,12 @@
               url = "https://cdn.modrinth.com/data/P7dR8mSH/versions/5tj7y3PJ/${pname}-${version}.jar";
               hash = "sha256-TATNEpMOzG19eCI5NDhdYonSpkRLzH3q9T49o3kgHC0=";
             };
-            #"mods/cloth-config.jar" = pkgs.fetchurl rec {
-            #  pname = "cloth-config";
-            #  version = "17.0.144-fabric";
-            #  url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
-            #  hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
-            #};
+            "mods/cloth-config.jar" = pkgs.fetchurl rec {
+              pname = "cloth-config";
+              version = "17.0.144-fabric";
+              url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
+              hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
+            };
             "mods/ferritecore.jar" = pkgs.fetchurl rec {
               pname = "ferritecore";
               version = "7.1.1-fabric";
@@ -193,12 +193,12 @@
               url = "https://cdn.modrinth.com/data/NRjRiSSD/versions/5xvCCRjJ/${pname}-${version}.jar";
               hash = "sha256-uKwz1yYuAZcQ3SXkVBFmFrye0fcU7ZEFlLKKTB2lrd4=";
             };
-            "mods/krypton.jar" = pkgs.fetchurl rec {
-              pname = "krypton";
-              version = "0.2.8";
-              url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
-              hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
-            };
+            #"mods/krypton.jar" = pkgs.fetchurl rec {
+            #  pname = "krypton";
+            #  version = "0.2.8";
+            #  url = "https://cdn.modrinth.com/data/fQEb0iXm/versions/Acz3ttTp/${pname}-${version}.jar";
+            #  hash = "sha256-lPGVgZsk5dpk7/3J2hXN2Eg2zHXo/w/QmLq2vC9J4/4=";
+            #};
             "mods/Debugify.jar" = pkgs.fetchurl rec {
               pname = "Debugify";
               version = "1.21.4%2B1.0";
