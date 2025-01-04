@@ -82,7 +82,6 @@
           motd = "NixOS Minecraft server!";
           server-port = 4300;
           white-list = false;
-          "rcon.password" = "773415";
         };
       };
     };
