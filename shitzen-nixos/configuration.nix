@@ -123,6 +123,7 @@
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
+            Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
           jvmOpts = "-Xms4G -Xmx4G";
           package = pkgs.fabricServers.fabric-1_21_4;
@@ -215,6 +216,7 @@
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
+            Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
           jvmOpts = "-Xms10G -Xmx10G";
           package = pkgs.fabricServers.fabric-1_21_4;
