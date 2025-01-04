@@ -273,6 +273,35 @@
               url = "https://cdn.modrinth.com/data/P1OZGk5p/versions/p5sXOzZW/${pname}-${version}.jar";
               hash = "sha256-yaWqtqxikpaiwdeyfANzu6fp3suSF8ePmJXs9dN4H8g=";
             };
+            # Admin mods
+            "mods/collective.jar" = pkgs.fetchurl rec {
+              pname = "collective";
+              version = "1.21.4-7.89";
+              url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/${pname}-${version}.jar";
+              hash = "sha256-iPn6vhB0rDa5EoJhNYIbpDNj5ii6XdCdSsxifSaVk2U=";
+            };
+            "mods/beautifiedchatserver.jar" = pkgs.fetchurl rec {
+              pname = "beautifiedchatserver";
+              version = "1.21.4-2.6";
+              url = "https://cdn.modrinth.com/data/C00Y5Ci9/versions/904kQvXX/${pname}-${version}.jar";
+              hash = "sha256-OCZEbQFbeFnFji7D1GovFYJ57S1SlpRjt6UjBPLE+Ak=";
+            };
+            "mods/player-roles.jar" = pkgs.fetchurl rec {
+              pname = "player-roles";
+              version = "1.6.13";
+              url = "https://cdn.modrinth.com/data/Rt1mrUHm/versions/Y5EAJzwR/${pname}-${version}.jar";
+              hash = "sha256-rqFqiCgfRn2LOKqVpo9KQVnn/VnD//sBbXoa7sctiZw=";
+            };
+            "config/roles.json" = builtins.toFile "json" (builtins.toJSON { 
+              everyone = {
+                overrides = {
+                  commands = {
+                    help = "allow";
+                    ".*" = "deny";
+                  };
+                };
+              };
+            });
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
