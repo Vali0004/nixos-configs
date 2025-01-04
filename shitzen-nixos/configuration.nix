@@ -11,7 +11,7 @@
       copyKernels = true;
       device = "nodev";
       efiSupport = true;
-      efiInstallAsRemovable = true;
+      efiInstallAsRemovable = false;
     };
     efi.canTouchEfiVariables = true;
   };
