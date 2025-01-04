@@ -114,12 +114,6 @@
             url = "https://cdn.modrinth.com/data/flkUwsSr/versions/fQtTBG9I/${pname}.jar";
             hash = "sha256-qep6u6HiNhrOigKt86i5sqG6tRnXgcfelJGWZhiyCp0=";
           };
-          "plugins/Gunshell.jar" = pkgs.fetchurl rec {
-            pname = "Gunshell";
-            version = "v1.7.1";
-            url = "https://cdn.modrinth.com/data/yEbJoBrR/versions/y42uj0cu/${pname}-${version}.jar";
-            hash = "sha256-jaf1zYiRGCmcMDQVzXl1F1Vu5jvlxKbqb8+ztZ6/8LQ=";
-          };
         };
         whitelist = {
           FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
