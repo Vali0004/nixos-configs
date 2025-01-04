@@ -176,7 +176,6 @@
             motd = "Vali's Test Minecraft Server";
             query-port = 4301;
             server-name = "InertiaCraftTest";
-            server-ip = "10.0.127.3";
             server-port = 4301;
             simulation-distance = 8;
             texturepack-required = true;
