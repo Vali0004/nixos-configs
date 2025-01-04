@@ -138,7 +138,7 @@
             max-threads = 12;
             max-tick-time = 60000;
             motd = "Vali's Minecraft Server";
-            query.port = 4300;
+            query-port = 4300;
             server-name = "InertiaCraft";
             server-ip = "10.0.0.244";
             server-port = 4300;
@@ -174,7 +174,7 @@
             max-threads = 12;
             max-tick-time = 60000;
             motd = "Vali's Test Minecraft Server";
-            query.port = 4301;
+            query-port = 4301;
             server-name = "InertiaCraftTest";
             server-ip = "10.0.127.3";
             server-port = 4301;
