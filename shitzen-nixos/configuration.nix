@@ -16,7 +16,13 @@
     efi.canTouchEfiVariables = true;
   };
 
-  networking.hostName = "shitzen-nixos";
+  networking = {
+    firewall = {
+      allowedUDPPorts = [  ];
+      allowedTCPPorts = [ 80 443 ];
+    };
+    hostname = "shitzen-nixos";
+  };
 
   environment.systemPackages = with pkgs; [
     git
