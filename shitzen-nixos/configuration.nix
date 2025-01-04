@@ -292,7 +292,37 @@
               url = "https://cdn.modrinth.com/data/Rt1mrUHm/versions/Y5EAJzwR/${pname}-${version}.jar";
               hash = "sha256-rqFqiCgfRn2LOKqVpo9KQVnn/VnD//sBbXoa7sctiZw=";
             };
-            "config/roles.json" = builtins.toFile "json" (builtins.toJSON { 
+            "config/roles.json" = builtins.toFile "json" (builtins.toJSON {
+              admin = {
+                level = 100;
+                overrides = {
+                  name_decoration = {
+                    style = ["red" "bold"];
+                    suffix = {
+                      text = "*";
+                    };
+                  };
+                  permission_level = 4;
+                  command_feedback = true;
+                  commands = {
+                    ".*" = "allow";
+                  };
+                };
+              };
+              spectator = {
+                level = 10;
+                overrides = {
+                  commands = {
+                    "gamemode (spectator|adventure)" = "allow";
+                  };
+                };
+              };
+              mute = {
+                level = 1;
+                overrides = {
+                  mute = true;
+                };
+              };
               everyone = {
                 overrides = {
                   commands = {
