@@ -140,7 +140,6 @@
             motd = "Vali's Minecraft Server";
             query-port = 4300;
             server-name = "InertiaCraft";
-            server-ip = "10.0.0.244";
             server-port = 4300;
             simulation-distance = 8;
             texturepack-required = true;
