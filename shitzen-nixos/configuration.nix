@@ -212,6 +212,42 @@
               url = "https://cdn.modrinth.com/data/VSNURh3q/versions/fBvLHC54/${pname}-${version}.jar";
               hash = "sha256-7gnbVMLOvbWQS+FNrHBSYn4wsI/mwjhkB8nn2qmKeJQ=";
             };
+            "mods/balm.jar" = pkgs.fetchurl rec {
+              pname = "balm";
+              version = "fabric-1.21.4-21.4.5";
+              url = "https://cdn.modrinth.com/data/MBAkmtvl/versions/9pTQ0wCu/${pname}-${version}.jar";
+              hash = "sha256-dj/zhNd1WIMs5pj3LL6myKx9TlhHkOS7W5IDvk02KXg=";
+            };
+            "mods/netherportalfix.jar" = pkgs.fetchurl rec {
+              pname = "netherportalfix";
+              version = "fabric-1.21.4-21.4.1";
+              url = "https://cdn.modrinth.com/data/nPZr02ET/versions/QFwLWcVf/${pname}-${version}.jar";
+              hash = "sha256-Mzs9yz38b3+wrOFzQYUm8ufGF26Pm3VFULPrnKU/Nk8=";
+            };
+            "mods/Almanac.jar" = pkgs.fetchurl rec {
+              pname = "Almanac";
+              version = "1.21.3-fabric-1.4.4";
+              url = "https://cdn.modrinth.com/data/Gi02250Z/versions/inGMPti6/${pname}-${version}.jar";
+              hash = "sha256-uUzohqWvbxvlb9Y0vUMY03BQg/W0k0gi/BxYa7zkw48=";
+            };
+            "mods/letmedespawn.jar" = pkgs.fetchurl rec {
+              pname = "letmedespawn";
+              version = "1.21.x-fabric-1.4.4";
+              url = "https://cdn.modrinth.com/data/vE2FN5qn/versions/e0AXgTFp/${pname}-${version}.jar";
+              hash = "sha256-TTXnoq5R6EX7zBUscbMtonOBYO3zSvDtDg/XqWGkZMg=";
+            };
+            "mods/MRU.jar" = pkgs.fetchurl rec {
+              pname = "MRU";
+              version = "1.0.7%2B1.21.4%2Bfabric";
+              url = "https://cdn.modrinth.com/data/SNVQ2c0g/versions/YMG8XHkz/${pname}-${version}.jar";
+              hash = "sha256-sXe42FK7g5AKzBVYarDy/0T9zC0czVzFRoF2Ww7t+DU=";
+            };
+            "mods/SnowUnderTrees.jar" = pkgs.fetchurl rec {
+              pname = "SnowUnderTrees";
+              version = "2.6.0%2B1.21.4";
+              url = "https://cdn.modrinth.com/data/XVnUIUAQ/versions/cuMgw6kW/${pname}-${version}.jar";
+              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
+            };
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
