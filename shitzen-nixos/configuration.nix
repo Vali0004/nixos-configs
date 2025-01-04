@@ -74,8 +74,8 @@
       dataDir = "/var/lib/minecraft";
       servers = {
         test = {
-          enable = false;
-          autoStart = false;
+          enable = true;
+          autoStart = true;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
               pname = "fabric-api";
