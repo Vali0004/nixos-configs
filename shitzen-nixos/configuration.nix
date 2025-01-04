@@ -280,12 +280,12 @@
               url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/${pname}-${version}.jar";
               hash = "sha256-iPn6vhB0rDa5EoJhNYIbpDNj5ii6XdCdSsxifSaVk2U=";
             };
-            "mods/beautifiedchatserver.jar" = pkgs.fetchurl rec {
-              pname = "beautifiedchatserver";
-              version = "1.21.4-2.6";
-              url = "https://cdn.modrinth.com/data/C00Y5Ci9/versions/904kQvXX/${pname}-${version}.jar";
-              hash = "sha256-OCZEbQFbeFnFji7D1GovFYJ57S1SlpRjt6UjBPLE+Ak=";
-            };
+            #"mods/beautifiedchatserver.jar" = pkgs.fetchurl rec {
+            #  pname = "beautifiedchatserver";
+            #  version = "1.21.4-2.6";
+            #  url = "https://cdn.modrinth.com/data/C00Y5Ci9/versions/904kQvXX/${pname}-${version}.jar";
+            #  hash = "sha256-OCZEbQFbeFnFji7D1GovFYJ57S1SlpRjt6UjBPLE+Ak=";
+            #};
             "mods/player-roles.jar" = pkgs.fetchurl rec {
               pname = "player-roles";
               version = "1.6.13";
