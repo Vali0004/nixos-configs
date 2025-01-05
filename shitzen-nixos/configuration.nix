@@ -375,6 +375,13 @@
   };
   #systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
 
+  security = {
+    acme = {
+      acceptTerms = true;
+      email = "diorcheats.vali@gmail.com";
+    };
+  };
+
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
   #
