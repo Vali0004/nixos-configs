@@ -52,7 +52,7 @@
       virtualHosts = {
         "fuckk.lol" = {
           enableACME = true;
-          enableSSL = true;
+          forceSSL = true;
           locations = {
             "/private/" = {
               alias = "/data/private/";
@@ -71,13 +71,13 @@
       };
     };
     minecraft-servers = {
-      enable = false;
+      enable = true;
       eula = true;
       # As much as I want to have this go on the HDD, it's simply too slow.
       dataDir = "/var/lib/minecraft";
       servers = {
         test = {
-          enable = false;
+          enable = true;
           autoStart = true;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
@@ -152,7 +152,7 @@
           };
         };
         prod = {
-          enable = false;
+          enable = true;
           autoStart = true;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
@@ -361,6 +361,7 @@
             max-tick-time = 60000;
             motd = "Vali's Minecraft Server";
             query-port = 4301;
+            server-ip = "oh.fuckk.lol";
             server-name = "InertiaCraft";
             server-port = 4301;
             simulation-distance = 26;
