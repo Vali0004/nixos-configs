@@ -29,6 +29,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    ffmpeg_6-headless
     git
     htop
     ncurses
@@ -69,13 +70,13 @@
       };
     };
     minecraft-servers = {
+      enable = false;
       eula = true;
-      enable = true;
       # As much as I want to have this go on the HDD, it's simply too slow.
       dataDir = "/var/lib/minecraft";
       servers = {
         test = {
-          enable = true;
+          enable = false;
           autoStart = true;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
@@ -150,7 +151,7 @@
           };
         };
         prod = {
-          enable = true;
+          enable = false;
           autoStart = true;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
@@ -371,10 +372,7 @@
       };
     };
   };
-  #systemd.services.minecraft-server-prod.serviceConfig.StartLimitBurst = 500;
-  systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
-  #systemd.services.minecraft-server-test.serviceConfig.StartLimitBurst = 500;
-  #systemd.services.minecraft-server-test.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
+  #systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
