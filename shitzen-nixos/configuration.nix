@@ -50,8 +50,9 @@
     nginx = {
       enable = true;
       virtualHosts = {
-        "10.0.127.3" = {
-          enableSSL = false;
+        "fuckk.lol" = {
+          enableACME = true;
+          enableSSL = true;
           locations = {
             "/private/" = {
               alias = "/data/private/";
