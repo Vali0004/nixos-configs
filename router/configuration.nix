@@ -22,16 +22,15 @@ in {
   };
 
   networking = {
+    defaultGateway = "31.59.128.1";
+    extraHosts = ''
+    127.0.0.1 ext.earthtools.ca
+    '';
     firewall = {
       allowedUDPPorts = [  ];
       allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "router";
-    defaultGateway = "31.59.128.1";
-    nameservers = [
-      "9.9.9.9"
-      "8.8.4.4"
-    ];
     interfaces.ens3 = {
       ipv4.addresses = [
         {
@@ -40,6 +39,10 @@ in {
         }
       ];
     };
+    nameservers = [
+      "9.9.9.9"
+      "8.8.4.4"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
