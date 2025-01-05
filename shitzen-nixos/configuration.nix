@@ -361,7 +361,7 @@
             max-tick-time = 60000;
             motd = "Vali's Minecraft Server";
             query-port = 4301;
-            server-ip = "oh.fuckk.lol";
+            server-ip = "31.59.128.34";
             server-name = "InertiaCraft";
             server-port = 4301;
             simulation-distance = 26;
