@@ -9,6 +9,14 @@ let
       Restart = "always";
     };
   };
+  mkForwardUDP = port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString port},reuseaddr,fork UDP:${target}:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
 in {
   imports = [
     ./hardware-configuration.nix
@@ -23,11 +31,8 @@ in {
 
   networking = {
     defaultGateway = "31.59.128.1";
-    extraHosts = ''
-    127.0.0.1 ext.earthtools.ca
-    '';
     firewall = {
-      allowedUDPPorts = [  ];
+      allowedUDPPorts = [ 4302 ];
       allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "router";
@@ -64,6 +69,7 @@ in {
   systemd.services.forward443 = mkForward 443 "10.0.127.3";
   systemd.services.forward4300 = mkForward 4300 "10.0.127.3";
   systemd.services.forward4301 = mkForward 4301 "10.0.127.3";
+  systemd.services.forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

@@ -10,6 +10,7 @@
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = [ nix-minecraft.overlay ];
+          patches = [ ./toxvpn-changes.patch ];
         };
       };
       router = {

@@ -22,7 +22,7 @@
 
   networking = {
     firewall = {
-      allowedUDPPorts = [  ];
+      allowedUDPPorts = [ 4302 ];
       allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "shitzen-nixos";
@@ -119,8 +119,8 @@
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+            kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
-            Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
           jvmOpts = "-Xms4G -Xmx4G";
           package = pkgs.fabricServers.fabric-1_21_4;
@@ -239,6 +239,7 @@
               url = "https://cdn.modrinth.com/data/vE2FN5qn/versions/e0AXgTFp/${pname}-${version}.jar";
               hash = "sha256-TTXnoq5R6EX7zBUscbMtonOBYO3zSvDtDg/XqWGkZMg=";
             };
+            # Quality-of-life
             "mods/MRU.jar" = pkgs.fetchurl rec {
               pname = "MRU";
               version = "1.0.7%2B1.21.4%2Bfabric";
@@ -251,7 +252,38 @@
               url = "https://cdn.modrinth.com/data/XVnUIUAQ/versions/cuMgw6kW/${pname}-${version}.jar";
               hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
             };
+            "mods/minimotd.jar" = pkgs.fetchurl rec {
+              pname = "minimotd";
+              version = "fabric-mc1.21.4-2.1.5";
+              url = "https://cdn.modrinth.com/data/16vhQOQN/versions/FheuITlu/${pname}-${version}.jar";
+              hash = "sha256-0ooWUoHUriao6RF18iCn23lrCxxP9X0VnzW4yjCAdDQ=";
+            };
             # Multi-version interop
+            "mods/geyser-fabric.jar" = pkgs.fetchurl rec {
+              pname = "geyser-fabric";
+              version = "Geyser-Fabric-2.6.0-b742";
+              url = "https://cdn.modrinth.com/data/wKkoqHrH/versions/wzwTpHlw/${pname}-${version}.jar";
+              hash = "sha256-jfkgzNCMVnm26JTBPeO9mEqCXraqBSv7I82CY5p/XHQ=";
+            };
+            "config/Geyser-Fabric/config.yml" = builtins.toFile "yml" (builtins.toJSON {
+              bedrock = {
+                address = "0.0.0.0";
+                auth-type = "floodgate";
+                allow-third-party-capes = true;
+                allow-third-party-ears = true;
+                clone-remote-port = false;
+                enable-proxy-protocol = false;
+                passthrough-player-count = true;
+                port = 4302;
+                passthrough-motd = true;
+              };
+            });
+            "mods/Floodgate.jar" = pkgs.fetchurl rec {
+              pname = "Floodgate";
+              version = "Fabric-2.2.4-b42";
+              url = "https://cdn.modrinth.com/data/bWrNNfkb/versions/jb3lzved/${pname}-${version}.jar";
+              hash = "sha256-xdkGvr8DVF8jx6VEV1ckHU8P2FW2KODqFygS9vc/2Lw=";
+            };
             "mods/ViaFabric.jar" = pkgs.fetchurl rec {
               pname = "ViaFabric";
               version = "0.4.17%2B91-main";
@@ -338,10 +370,12 @@
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+            hophophop123 = "00000000-0000-0000-0009-01f4f5b93df8";
+            kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
             Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
-          jvmOpts = "-Xms10G -Xmx10G";
+          jvmOpts = "-Xms10G -Xmx10G -XX:+AlwaysPreTouch -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:MaxInlineLevel=15";
           package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
@@ -359,9 +393,10 @@
             max-players = 30;
             max-threads = 16;
             max-tick-time = 60000;
-            motd = "Vali's Minecraft Server";
+            motd = ''        &7-&8*&7-&8*&7-&8*&7-&8*&7- &#6600CB&l&oI&#662AD7&l&on&#6754E4&l&oe&#677DF0&l&or&#67A7FC&l&ot&#67A7FC&l&oi&#67A7FC&l&oa&#67A7FC&l&oC&#67A7FC&l&or&#67A7FC&l&oa&#67A7FC&l&of&#67A7FC&l&ot &7-&8*&7-&8*&7-&8*&7-&8*&7-
+        Test string'';
             query-port = 4301;
-            server-ip = "31.59.128.34";
+            server-ip = "0.0.0.0";
             server-name = "InertiaCraft";
             server-port = 4301;
             simulation-distance = 26;
