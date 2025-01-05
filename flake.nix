@@ -9,8 +9,14 @@
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
-          overlays = [ nix-minecraft.overlay ];
-          patches = [ ./toxvpn-changes.patch ];
+          overlays = [
+            nix-minecraft.overlay 
+            (self: super: {
+              toxvpn = super.toxvpn.overrideAttrs (old: {
+                patches = [ ./toxvpn-changes.patch ];
+              });
+            })
+          ];
         };
       };
       router = {
