@@ -42,6 +42,14 @@ in {
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    ffmpeg_6-headless
+    git
+    htop
+    openssl
+    wget
+  ];
+
   services = {
     toxvpn = {
       localip = "10.0.127.1";
