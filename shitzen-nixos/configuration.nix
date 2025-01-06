@@ -36,7 +36,9 @@
     ncurses5
     neofetch
     openssl
+    screen
     tmux
+    tshark
     unzip
     wget
     zip
