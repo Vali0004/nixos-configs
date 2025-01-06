@@ -284,15 +284,19 @@
             "config/Geyser-Fabric/config.yml" = builtins.toFile "yml" (builtins.toJSON {
               bedrock = {
                 address = "0.0.0.0";
-                allow-third-party-capes = true;
-                allow-third-party-ears = true;
-                auth-type = "floodgate";
                 clone-remote-port = false;
                 enable-proxy-protocol = false;
-                passthrough-motd = true;
-                passthrough-player-count = true;
                 port = 4302;
+                motd1 = "fuckk.lol       .gg/d9ccwK2TNk"
               };
+              remote = {
+                auth-type = "floodgate";
+              };
+              allow-third-party-capes = true;
+              allow-third-party-ears = true;
+              force-resource-packs = true;
+              forward-player-ping = true;
+              passthrough-player-count = true;
             });
             "mods/Floodgate.jar" = pkgs.fetchurl rec {
               hash = "sha256-xdkGvr8DVF8jx6VEV1ckHU8P2FW2KODqFygS9vc/2Lw=";
