@@ -1,8 +1,8 @@
 diff --git a/src/main.cpp b/src/main.cpp
-index d051197..5fb4049 100644
+index d051197..93c2373 100644
 --- a/src/main.cpp
 +++ b/src/main.cpp
-@@ -618,10 +618,10 @@ int main(int argc, char** argv) {
+@@ -618,7 +618,7 @@ int main(int argc, char** argv) {
              maxfd = std::max(maxfd, toxvpn.listener->populate_fdset(&readset));
  #endif
  #endif
@@ -10,8 +10,4 @@ index d051197..5fb4049 100644
 +        int interval = 1;
  #ifdef USE_SELECT
          timeout.tv_sec = 0;
--        timeout.tv_usec = interval * 1000;
-+        timeout.tv_usec = interval * 100;
-         int r;
- #ifdef WIN32
-         if(maxfd == 0) {
+         timeout.tv_usec = interval * 1000;
