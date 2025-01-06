@@ -251,6 +251,31 @@
               url = "https://cdn.modrinth.com/data/vE2FN5qn/versions/e0AXgTFp/${pname}-${version}.jar";
               hash = "sha256-TTXnoq5R6EX7zBUscbMtonOBYO3zSvDtDg/XqWGkZMg=";
             };
+            # Audio
+            "mods/voicechat.jar" = pkgs.fetchurl rec {
+              pname = "voicechat";
+              version = "fabric-1.21.4-2.5.26";
+              url = "https://cdn.modrinth.com/data/9eGKb6K1/versions/pl9FpaYJ/${pname}-${version}.jar";
+              hash = "sha256-2ni2tQjMCO3jaEA1OHXoonZpGqHGVlY/9rzVsijrxVA=";
+            };
+            "mods/audioplayer.jar" = pkgs.fetchurl rec {
+              pname = "audioplayer";
+              version = "fabric-1.21.4-1.13.2";
+              url = "https://cdn.modrinth.com/data/SRlzjEBS/versions/377C94c4/${pname}-${version}.jar";
+              hash = "sha256-Eu6zoQZa9aeBID7EXk/6QkQHzuhKIN8WYVxaTYynhqw=";
+            };
+            "mods/vcinteraction.jar" = pkgs.fetchurl rec {
+              pname = "vcinteraction";
+              version = "fabric-1.21.4-1.0.8";
+              url = "https://cdn.modrinth.com/data/qsSP2ZZ0/versions/MCSYkp3r/${pname}-${version}.jar";
+              hash = "sha256-lFXEJIyN4aaSE/6LlBuzWGdzqDe3h2wKgL6BqsbdtrU=";
+            };
+            "mods/sound-physics-remastered.jar" = pkgs.fetchurl rec {
+              pname = "sound-physics-remastered";
+              version = "fabric-1.21.4-1.4.8";
+              url = "https://cdn.modrinth.com/data/qyVF9oeo/versions/jtRGevsD/${pname}-${version}.jar";
+              hash = "sha256-l1FcQjYIkKk3lGubdZtUkSeIBS7sMu3woY452k3G+cc=";
+            };
             # Multi-version interop
             "mods/geyser-fabric.jar" = pkgs.fetchurl rec {
               pname = "geyser-fabric";
@@ -339,7 +364,7 @@
               pname = "styled-chat";
               version = "2.7.1%2B1.21.3";
               url = "https://cdn.modrinth.com/data/doqSKB0e/versions/b7ivf9W5/${pname}-${version}.jar";
-              hash = "sha256-OCZEbQFbeFnFji7D1GovFYJ57S1SlpRjt6UjBPLE+Ak=";
+              hash = "sha256-XgYWDovpVLGu7Exj60jF3O0JrEVSGLFCGmh/yu1XFPg=";
             };
             "mods/player-roles.jar" = pkgs.fetchurl rec {
               pname = "player-roles";
@@ -411,13 +436,13 @@
               pname = "polymer-bundled";
               version = "0.11.3%2B1.21.4";
               url = "https://cdn.modrinth.com/data/xGdtZczs/versions/aek1vsQ6/${pname}-${version}.jar";
-              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
+              hash = "sha256-L9E+oWY2wOJ9MixhywdJB+wdlBxbo0/c8nrJLMA8r7o=";
             };
             "mods/plasticgun.jar" = pkgs.fetchurl rec {
               pname = "plasticgun";
               version = "2.0.0";
               url = "https://cdn.modrinth.com/data/TnVGOosc/versions/FMZDYMSJ/${pname}-${version}.jar";
-              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
+              hash = "sha256-TwdrDAs1CEkBIpqFUrzle8NVXp8S1ihoV3GH+IU+JYM=";
             };
           };
           whitelist = {
