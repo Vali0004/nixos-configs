@@ -366,6 +366,130 @@
               url = "https://cdn.modrinth.com/data/doqSKB0e/versions/b7ivf9W5/${pname}-${version}.jar";
               hash = "sha256-XgYWDovpVLGu7Exj60jF3O0JrEVSGLFCGmh/yu1XFPg=";
             };
+            "config/styled-chat.json" = builtins.toFile "json" (builtins.toJSON {
+                CONFIG_VERSION_DONT_TOUCH_THIS = 3;
+                _comment = "Before changing anything; see https://github.com/Patbox/StyledChat#configuration";
+                text_formatting = {
+                  legacy_formatting = true;
+                  parse_links = true;
+                  parse_mentions = false;
+                  markdown = true;
+                  respect_colors_client_setting = true;
+                };
+                chat_preview = {
+                  send_full_message = false;
+                  require_for_formatting = false;
+                };
+                auto_completion = {
+                  tags = false;
+                  tag_aliases = false;
+                  emoticons = true;
+                };
+                default = {
+                  display_name = "\${default}";
+                  message_formats = {
+                    chat =  "\${player} <dark_gray>»</dark_gray> \${message}";
+                    joined_the_game =  "<gray>✚</gray> <color:#85ff8f><lang:multiplayer.player.joined:'\${player}'>";
+                    joined_after_name_change =  "<gray>✚</gray> <color:#85ff8f><lang:multiplayer.player.joined.renamed:'\${player}':'\${old_name}'>";
+                    joined_for_first_time =  "<yellow><lang:multiplayer.player.joined:'\${player}'></yellow>";
+                    left_game =  "<gray>☁</gray> <color:#ff8585><lang:multiplayer.player.left:'\${player}'>";
+                    base_death =  "<gray>☠</gray> <color:#d1d1d1>\${default_message}";
+                    advancement_task =  "<lang:chat.type.advancement.task:'\${player}':'\${advancement}'>";
+                    advancement_challenge =  "<lang:chat.type.advancement.challenge:'\${player}':'\${advancement}'>";
+                    advancement_goal =  "<lang:chat.type.advancement.goal:'\${player}':'\${advancement}'>";
+                    sent_team_chat =  "<lang:'chat.type.team.sent':'<hover\\:\\'<lang\\:chat.type.team.hover>\\'><suggest_command\\:\\'/teammsg \\'>\${team}':'\${displayName}':'\${message}'>";
+                    received_team_chat =  "<lang:'chat.type.team.text':'<hover\\:\\'<lang\\:chat.type.team.hover>\\'><suggest_command\\:\\'/teammsg \\'>\${team}':'\${displayName}':'\${message}'>";
+                    sent_private_message =  "<gray>[<green>PM</green> → \${receiver}] <dark_gray>»<reset> \${message}";
+                    received_private_message =  "<gray>[<green>PM</green> ← \${sender}] <dark_gray>»<reset> \${message}";
+                    say_command =  "<red>[\${player}] \${message}";
+                    me_command =  "<green>* \${player} \${message}";
+                    pet_death =  "Oh no! \${default_message}";
+                  };
+                  link_style = "<underline><c:#7878ff>\${link}";
+                  mention_style = "<c:#7878ff>%player:displayname%";
+                  spoiler_style = "<gray>\${spoiler}";
+                  spoiler_symbol = "▌";
+                  formatting = {
+                    dark_red = true;
+                    green = true;
+                    underline = true;
+                    dark_green = true;
+                    black = true;
+                    yellow = true;
+                    bold = true;
+                    italic = true;
+                    dark_blue = true;
+                    dark_purple = true;
+                    gold = true;
+                    red = true;
+                    aqua = true;
+                    gray = true;
+                    light_purple = true;
+                    blue = true;
+                    white = true;
+                    dark_aqua = true;
+                    dark_gray = true;
+                    spoiler = true;
+                    strikethrough = true;
+                  };
+                  emoticons = {
+                    "$emojibase:builtin:joypixels" = "\${emoji}";
+                    shrug = "¯\\_(ツ)_/¯";
+                    table = "(╯°□°）╯︵ ┻━┻";
+                    sword = "🗡";
+                    bow = "🏹";
+                    trident = "🔱";
+                    rod = "🎣";
+                    potion = "🧪";
+                    shears = "✂";
+                    bucket = "🪣";
+                    heart =  "<red>❤";
+                    bell =  "<yellow>🔔";
+                    fire =  "🔥";
+                    item = "[%player:equipment_slot mainhand%]";
+                    pos = "%player:pos_x% %player:pos_y% %player:pos_z%";
+                  };
+                  custom_message_types = {};
+                };
+                styles = [
+                  {
+                    require = {
+                      type = "permission";
+                      permission = "group.admin";
+                      operator = 4;
+                    };
+                    display_name = "<dark_gray>[<red>Admin</red>]</dark_gray> <c:#ffe8a3>\${vanillaDisplayName}</c>";
+                    message_formats = {
+                      chat = "\${player} <dark_gray>»</dark_gray> <orange>\${message}";
+                      base_death = "";
+                    };
+                    formatting = {};
+                    emoticons = {};
+                  }
+                  {
+                    require = {
+                      type = "permission";
+                      permission = "group.default";
+                    };
+                    display_name = "<dark_gray>[<aqua>Player</aqua>]</dark_gray> <dark_aqua>\${vanillaDisplayName}</dark_aqua>";
+                    message_formats = {};
+                    formatting = {};
+                    emoticons = {};
+                  }
+                  {
+                    require = {
+                      type = "permission";
+                      permission = "group.vip";
+                      operator = 3;
+                    };
+                    message_formats = {};
+                    formatting = {};
+                    emoticons = {
+                      potato = "<rb>Potato";
+                    };
+                  }
+                ];
+            });
             "mods/player-roles.jar" = pkgs.fetchurl rec {
               pname = "player-roles";
               version = "1.6.13";
