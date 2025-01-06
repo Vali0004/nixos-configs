@@ -287,7 +287,8 @@
                 clone-remote-port = false;
                 enable-proxy-protocol = false;
                 port = 4302;
-                motd1 = "fuckk.lol       .gg/d9ccwK2TNk"
+                server-name = "InertiaCraft Bedrock";
+                motd1 = ".gg/d9ccwK2TNk";
               };
               remote = {
                 auth-type = "floodgate";
