@@ -586,7 +586,7 @@
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
             Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
-          jvmOpts = "-Xms13G -Xmx13G XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
+          jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
           package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
@@ -602,8 +602,8 @@
             gamemode = "survival";
             hardcore = false;
             network-compression-threshold = 512;
-            max-threads = 0; # Try to use as many as possible
-            max-tick-time = 6000;
+            max-threads = 0;
+            max-tick-time = 60000;
             query-port = 4301;
             server-ip = "0.0.0.0";
             server-name = "InertiaCraft";
