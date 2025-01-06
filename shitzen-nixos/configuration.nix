@@ -277,7 +277,7 @@
             '';
             "config/MiniMOTD/icons/image.png" = pkgs.fetchurl rec {
               url = "https://fuckk.lol/minecraft/image.png";
-              hash = "sha256-sOh8FjEJyP/oykNHP897MWe80SRsVSjzW4WNwI2vzZc=";
+              hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
             };
             # Multi-version interop
             "mods/geyser-fabric.jar" = pkgs.fetchurl rec {
