@@ -576,19 +576,29 @@
               url = "https://cdn.modrinth.com/data/xGdtZczs/versions/aek1vsQ6/${pname}-${version}.jar";
               version = "0.11.3%2B1.21.4";
             };
-            #https://cdn.modrinth.com/data/gLko9Axn/versions/UyISZqKM/gamingbarns-guns-V1.24.2-data.jar
             "mods/gamingbarns-guns.jar" = pkgs.fetchurl rec {
               hash = "sha256-S3qGTofspseGaNPHHGetS0Ncli0spcOFMQCsOEXs45g=";
               pname = "gamingbarns-guns";
               url = "https://cdn.modrinth.com/data/gLko9Axn/versions/UyISZqKM/${pname}-${version}.jar";
               version = "V1.24.2-data";
             };
-            #https://cdn.modrinth.com/data/ufgOyMFr/versions/4VvTGEWq/modern-guns-V1.3-data.jar
             "mods/modern-guns.jar" = pkgs.fetchurl rec {
               hash = "sha256-fBNwifikKkpPvmzIHajPUTlkw6yY9trllQVNHgi3CVs=";
               pname = "modern-guns";
               url = "https://cdn.modrinth.com/data/ufgOyMFr/versions/4VvTGEWq/${pname}-${version}.jar";
               version = "V1.3-data";
+            };
+            "mods/katters-structures.jar" = pkgs.fetchurl rec {
+              hash = "sha256-YU7DEnP2s/Zko3fmAKAdJJW3CAtp7G6Ng+P+5+3ZnZQ=";
+              pname = "katters-structures";
+              url = "https://cdn.modrinth.com/data/V6LLU8Gf/versions/EdSR8mgY/${pname}-${version}.jar";
+              version = "2.1c";
+            };
+            "mods/qraftys-end-villages.jar" = pkgs.fetchurl rec {
+              hash = "sha256-lONrYdMBeMR3BITgCqr4cEl6Hy1Sei2w9hCAnH79rtE=";
+              pname = "qraftys-end-villages";
+              url = "https://cdn.modrinth.com/data/NFlNaUBA/versions/mF2RnE4V/${pname}-${version}.jar";
+              version = "3.1";
             };
           };
           whitelist = {
