@@ -327,6 +327,12 @@
               hash = "sha256-yaWqtqxikpaiwdeyfANzu6fp3suSF8ePmJXs9dN4H8g=";
             };
             # Admin mods
+            "mods/better-fabric-console.jar" = pkgs.fetchurl rec {
+              pname = "better-fabric-console";
+              version = "mc1.21.4-1.2.2";
+              url = "https://cdn.modrinth.com/data/Y8o1j1Sf/versions/3d1g5aTY/${pname}-${version}.jar";
+              hash = "sha256-nZsga6kXBpb9ci2pfEh1rOzajs1E6w6BrX04FaiM2BA=";
+            };
             "mods/minimotd.jar" = pkgs.fetchurl rec {
               pname = "minimotd";
               version = "fabric-mc1.21.4-2.1.5";
@@ -354,12 +360,16 @@
               url = "https://fuckk.lol/minecraft/image.png";
               hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
             };
-            "mods/collective.jar" = pkgs.fetchurl rec {
-              pname = "collective";
-              version = "1.21.4-7.89";
-              url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/${pname}-${version}.jar";
-              hash = "sha256-iPn6vhB0rDa5EoJhNYIbpDNj5ii6XdCdSsxifSaVk2U=";
+            "mods/TAB.jar" = pkgs.fetchurl rec {
+              pname = "TAB";
+              version = "v5.0.3";
+              url = "https://cdn.modrinth.com/data/gG7VFbG0/versions/1T0QxY8p/${pname}%20${version}.jar";
+              hash = "sha256-ajHlun8YUilqH/Zj2Na+YP8ibLRPhR0/RmWVw+b7B5g=";
             };
+            # We can mostly leave it to our jar to do it for us, as Nix will just overlay it when using yml anyways :)
+            "config/tab/config.yml" = builtins.toFile "yml" (builtins.toJSON {
+
+            });
             "mods/styled-chat.jar" = pkgs.fetchurl rec {
               pname = "styled-chat";
               version = "2.7.1%2B1.21.3";
@@ -576,7 +586,7 @@
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
             Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
-          jvmOpts = "-Xms13G -Xmx13G -XX:+AlwaysPreTouch -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:MaxInlineLevel=15";
+          jvmOpts = "-Xms13G -Xmx13G XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
           package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
@@ -587,20 +597,23 @@
             enable-command-block = true;
             enable-rcon = false;
             enforce-whitelist = true;
-            entity-broadcast-range-percentage = 110;
+            entity-broadcast-range-percentage = 40;
             force-gamemode = false;
             gamemode = "survival";
             hardcore = false;
+            network-compression-threshold = 512;
             max-threads = 0; # Try to use as many as possible
-            max-tick-time = 60000;
+            max-tick-time = 6000;
             query-port = 4301;
             server-ip = "0.0.0.0";
             server-name = "InertiaCraft";
             server-port = 4301;
-            simulation-distance = 26;
+            sync-chunk-writes = false; 
+            simulation-distance = 4;
             texturepack-required = true;
-            tick-distance = 12;
-            view-distance = 28;
+            tick-distance = 16;
+            use-alternate-keepalive = true;
+            view-distance = 7;
             white-list = true;
           };
         };
