@@ -258,6 +258,27 @@
               url = "https://cdn.modrinth.com/data/16vhQOQN/versions/FheuITlu/${pname}-${version}.jar";
               hash = "sha256-0ooWUoHUriao6RF18iCn23lrCxxP9X0VnzW4yjCAdDQ=";
             };
+            "config/MiniMOTD/main.conf" = pkgs.writeText "to_include.hocon" ''
+              icon-enabled=true
+              motd-enabled=true
+              motds=[
+                  {
+                      icon="image"
+                      line1="<dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray> <i><b><gradient:#6600CB:#67A7FC>Iner</gradient><gradient:#67A7FC:#AB31BA>tiaC</gradient><gradient:#AB31BA:#9143D9>raft</gradient></b></i> <dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray>"
+                      line2="<gray>fuckk</gray><dark_gray>.</dark_gray><gray>lol</gray>               Welcome!          <dark_gray>.gg/</dark_gray><gray>d9ccwK2TNk</gray>"
+                  }
+              ]
+              player-count-settings {
+                  disable-player-list-hover=false
+                  hide-player-count=false
+                  max-players=20
+                  max-players-enabled=true
+              }
+            '';
+            "config/MiniMOTD/icons/image.png" = pkgs.fetchurl rec {
+              url = "https://fuckk.lol/minecraft/image.png";
+              hash = "sha256-sOh8FjEJyP/oykNHP897MWe80SRsVSjzW4WNwI2vzZc=";
+            };
             # Multi-version interop
             "mods/geyser-fabric.jar" = pkgs.fetchurl rec {
               pname = "geyser-fabric";
@@ -390,11 +411,8 @@
             force-gamemode = false;
             gamemode = "survival";
             hardcore = false;
-            max-players = 30;
             max-threads = 16;
             max-tick-time = 60000;
-            motd = ''        &7-&8*&7-&8*&7-&8*&7-&8*&7- &#6600CB&l&oI&#662AD7&l&on&#6754E4&l&oe&#677DF0&l&or&#67A7FC&l&ot&#67A7FC&l&oi&#67A7FC&l&oa&#67A7FC&l&oC&#67A7FC&l&or&#67A7FC&l&oa&#67A7FC&l&of&#67A7FC&l&ot &7-&8*&7-&8*&7-&8*&7-&8*&7-
-        Test string'';
             query-port = 4301;
             server-ip = "0.0.0.0";
             server-name = "InertiaCraft";
