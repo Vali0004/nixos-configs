@@ -32,7 +32,7 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedUDPPorts = [ 4302 ];
+      allowedUDPPorts = [ 4301 4302 ];
       allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "router";
@@ -69,6 +69,7 @@ in {
   systemd.services.forward443 = mkForward 443 "10.0.127.3";
   systemd.services.forward4300 = mkForward 4300 "10.0.127.3";
   systemd.services.forward4301 = mkForward 4301 "10.0.127.3";
+  systemd.services.forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
   systemd.services.forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
 
   # This option defines the first version of NixOS you have installed on this particular machine,

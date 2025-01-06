@@ -22,7 +22,7 @@
 
   networking = {
     firewall = {
-      allowedUDPPorts = [ 4302 ];
+      allowedUDPPorts = [ 4301 4302 ];
       allowedTCPPorts = [ 80 443 4300 4301 ];
     };
     hostName = "shitzen-nixos";
@@ -251,52 +251,6 @@
               url = "https://cdn.modrinth.com/data/vE2FN5qn/versions/e0AXgTFp/${pname}-${version}.jar";
               hash = "sha256-TTXnoq5R6EX7zBUscbMtonOBYO3zSvDtDg/XqWGkZMg=";
             };
-            # Quality-of-life
-            "mods/spark.jar" = pkgs.fetchurl rec {
-              pname = "spark";
-              version = "1.10.121-fabric";
-              url = "https://cdn.modrinth.com/data/l6YH9Als/versions/X2sypdTL/${pname}-${version}.jar";
-              hash = "sha256-E1BDAk8b1YBuhdqLK98Vh4xVmL99qs5dEwI2/wCbt28= ";
-            };
-            "mods/MRU.jar" = pkgs.fetchurl rec {
-              pname = "MRU";
-              version = "1.0.7%2B1.21.4%2Bfabric";
-              url = "https://cdn.modrinth.com/data/SNVQ2c0g/versions/YMG8XHkz/${pname}-${version}.jar";
-              hash = "sha256-sXe42FK7g5AKzBVYarDy/0T9zC0czVzFRoF2Ww7t+DU=";
-            };
-            "mods/SnowUnderTrees.jar" = pkgs.fetchurl rec {
-              pname = "SnowUnderTrees";
-              version = "2.6.0%2B1.21.4";
-              url = "https://cdn.modrinth.com/data/XVnUIUAQ/versions/cuMgw6kW/${pname}-${version}.jar";
-              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
-            };
-            "mods/minimotd.jar" = pkgs.fetchurl rec {
-              pname = "minimotd";
-              version = "fabric-mc1.21.4-2.1.5";
-              url = "https://cdn.modrinth.com/data/16vhQOQN/versions/FheuITlu/${pname}-${version}.jar";
-              hash = "sha256-0ooWUoHUriao6RF18iCn23lrCxxP9X0VnzW4yjCAdDQ=";
-            };
-            "config/MiniMOTD/main.conf" = pkgs.writeText "to_include.hocon" ''
-              icon-enabled=true
-              motd-enabled=true
-              motds=[
-                  {
-                      icon="image"
-                      line1="<dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray> <i><b><gradient:#6600CB:#67A7FC>Iner</gradient><gradient:#67A7FC:#AB31BA>tiaC</gradient><gradient:#AB31BA:#9143D9>raft</gradient></b></i> <dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray>"
-                      line2="<gray>fuckk</gray><dark_gray>.</dark_gray><gray>lol</gray>               Welcome!          <dark_gray>.gg/</dark_gray><gray>d9ccwK2TNk</gray>"
-                  }
-              ]
-              player-count-settings {
-                  disable-player-list-hover=false
-                  hide-player-count=false
-                  max-players=20
-                  max-players-enabled=true
-              }
-            '';
-            "config/MiniMOTD/icons/image.png" = pkgs.fetchurl rec {
-              url = "https://fuckk.lol/minecraft/image.png";
-              hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
-            };
             # Multi-version interop
             "mods/geyser-fabric.jar" = pkgs.fetchurl rec {
               pname = "geyser-fabric";
@@ -348,18 +302,45 @@
               hash = "sha256-yaWqtqxikpaiwdeyfANzu6fp3suSF8ePmJXs9dN4H8g=";
             };
             # Admin mods
+            "mods/minimotd.jar" = pkgs.fetchurl rec {
+              pname = "minimotd";
+              version = "fabric-mc1.21.4-2.1.5";
+              url = "https://cdn.modrinth.com/data/16vhQOQN/versions/FheuITlu/${pname}-${version}.jar";
+              hash = "sha256-0ooWUoHUriao6RF18iCn23lrCxxP9X0VnzW4yjCAdDQ=";
+            };
+            "config/MiniMOTD/main.conf" = pkgs.writeText "to_include.hocon" ''
+              icon-enabled=true
+              motd-enabled=true
+              motds=[
+                  {
+                      icon="image"
+                      line1="<dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray> <i><b><gradient:#6600CB:#67A7FC>Iner</gradient><gradient:#67A7FC:#AB31BA>tiaC</gradient><gradient:#AB31BA:#9143D9>raft</gradient></b></i> <dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray>"
+                      line2="<gray>fuckk</gray><dark_gray>.</dark_gray><gray>lol</gray>               Welcome!          <dark_gray>.gg/</dark_gray><gray>d9ccwK2TNk</gray>"
+                  }
+              ]
+              player-count-settings {
+                  disable-player-list-hover=false
+                  hide-player-count=false
+                  max-players=20
+                  max-players-enabled=true
+              }
+            '';
+            "config/MiniMOTD/icons/image.png" = pkgs.fetchurl rec {
+              url = "https://fuckk.lol/minecraft/image.png";
+              hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
+            };
             "mods/collective.jar" = pkgs.fetchurl rec {
               pname = "collective";
               version = "1.21.4-7.89";
               url = "https://cdn.modrinth.com/data/e0M1UDsY/versions/F3ciVO4i/${pname}-${version}.jar";
               hash = "sha256-iPn6vhB0rDa5EoJhNYIbpDNj5ii6XdCdSsxifSaVk2U=";
             };
-            #"mods/beautifiedchatserver.jar" = pkgs.fetchurl rec {
-            #  pname = "beautifiedchatserver";
-            #  version = "1.21.4-2.6";
-            #  url = "https://cdn.modrinth.com/data/C00Y5Ci9/versions/904kQvXX/${pname}-${version}.jar";
-            #  hash = "sha256-OCZEbQFbeFnFji7D1GovFYJ57S1SlpRjt6UjBPLE+Ak=";
-            #};
+            "mods/styled-chat.jar" = pkgs.fetchurl rec {
+              pname = "styled-chat";
+              version = "2.7.1%2B1.21.3";
+              url = "https://cdn.modrinth.com/data/doqSKB0e/versions/b7ivf9W5/${pname}-${version}.jar";
+              hash = "sha256-OCZEbQFbeFnFji7D1GovFYJ57S1SlpRjt6UjBPLE+Ak=";
+            };
             "mods/player-roles.jar" = pkgs.fetchurl rec {
               pname = "player-roles";
               version = "1.6.13";
@@ -406,6 +387,38 @@
                 };
               };
             });
+            # Quality-of-life
+            "mods/spark.jar" = pkgs.fetchurl rec {
+              pname = "spark";
+              version = "1.10.121-fabric";
+              url = "https://cdn.modrinth.com/data/l6YH9Als/versions/X2sypdTL/${pname}-${version}.jar";
+              hash = "sha256-E1BDAk8b1YBuhdqLK98Vh4xVmL99qs5dEwI2/wCbt28= ";
+            };
+            "mods/MRU.jar" = pkgs.fetchurl rec {
+              pname = "MRU";
+              version = "1.0.7%2B1.21.4%2Bfabric";
+              url = "https://cdn.modrinth.com/data/SNVQ2c0g/versions/YMG8XHkz/${pname}-${version}.jar";
+              hash = "sha256-sXe42FK7g5AKzBVYarDy/0T9zC0czVzFRoF2Ww7t+DU=";
+            };
+            "mods/SnowUnderTrees.jar" = pkgs.fetchurl rec {
+              pname = "SnowUnderTrees";
+              version = "2.6.0%2B1.21.4";
+              url = "https://cdn.modrinth.com/data/XVnUIUAQ/versions/cuMgw6kW/${pname}-${version}.jar";
+              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
+            };
+            # Fun
+            "mods/polymer-bundled.jar" = pkgs.fetchurl rec {
+              pname = "polymer-bundled";
+              version = "0.11.3%2B1.21.4";
+              url = "https://cdn.modrinth.com/data/xGdtZczs/versions/aek1vsQ6/${pname}-${version}.jar";
+              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
+            };
+            "mods/plasticgun.jar" = pkgs.fetchurl rec {
+              pname = "plasticgun";
+              version = "2.0.0";
+              url = "https://cdn.modrinth.com/data/TnVGOosc/versions/FMZDYMSJ/${pname}-${version}.jar";
+              hash = "sha256-FbBpPHrewYDzkc6SY0pJt57PWy8INgc/9YmjVnNv94Q=";
+            };
           };
           whitelist = {
             FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
