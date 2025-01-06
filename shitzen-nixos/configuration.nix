@@ -77,8 +77,8 @@
       dataDir = "/var/lib/minecraft";
       servers = {
         test = {
-          enable = true;
-          autoStart = true;
+          enable = false;
+          autoStart = false;
           files = {
             "mods/fabric-api.jar" = pkgs.fetchurl rec {
               pname = "fabric-api";
@@ -215,6 +215,18 @@
               url = "https://cdn.modrinth.com/data/VSNURh3q/versions/fBvLHC54/${pname}-${version}.jar";
               hash = "sha256-7gnbVMLOvbWQS+FNrHBSYn4wsI/mwjhkB8nn2qmKeJQ=";
             };
+            "mods/vmp.jar" = pkgs.fetchurl rec {
+              pname = "vmp";
+              version = "fabric-mc1.21.4-0.2.0%2Bbeta.7.187-all";
+              url = "https://cdn.modrinth.com/data/wnEe9KBa/versions/k1tcjmTr/${pname}-${version}.jar";
+              hash = "sha256-cYYe7qBhX3gPdcFzyt4m1WB5v0eT20f24SuhmWOnZbI=";
+            };
+            "mods/Chunky.jar" = pkgs.fetchurl rec {
+              pname = "Chunky";
+              version = "Fabric-1.4.27";
+              url = "https://cdn.modrinth.com/data/fALzjamp/versions/VkAgASL1/${pname}-${version}.jar";
+              hash = "sha256-A8kKcLIzQWvZZziUm+kJ0eytrHQ/fBVZQ18uQXN9Qf0=";
+            };
             "mods/balm.jar" = pkgs.fetchurl rec {
               pname = "balm";
               version = "fabric-1.21.4-21.4.5";
@@ -240,6 +252,12 @@
               hash = "sha256-TTXnoq5R6EX7zBUscbMtonOBYO3zSvDtDg/XqWGkZMg=";
             };
             # Quality-of-life
+            "mods/spark.jar" = pkgs.fetchurl rec {
+              pname = "spark";
+              version = "1.10.121-fabric";
+              url = "https://cdn.modrinth.com/data/l6YH9Als/versions/X2sypdTL/${pname}-${version}.jar";
+              hash = "sha256-E1BDAk8b1YBuhdqLK98Vh4xVmL99qs5dEwI2/wCbt28= ";
+            };
             "mods/MRU.jar" = pkgs.fetchurl rec {
               pname = "MRU";
               version = "1.0.7%2B1.21.4%2Bfabric";
@@ -396,7 +414,7 @@
             SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
             Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
           };
-          jvmOpts = "-Xms10G -Xmx10G -XX:+AlwaysPreTouch -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:MaxInlineLevel=15";
+          jvmOpts = "-Xms13G -Xmx13G -XX:+AlwaysPreTouch -XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:MaxInlineLevel=15";
           package = pkgs.fabricServers.fabric-1_21_4;
           serverProperties = {
             admin-slot = true;
@@ -411,7 +429,7 @@
             force-gamemode = false;
             gamemode = "survival";
             hardcore = false;
-            max-threads = 16;
+            max-threads = 0; # Try to use as many as possible
             max-tick-time = 60000;
             query-port = 4301;
             server-ip = "0.0.0.0";
@@ -419,7 +437,7 @@
             server-port = 4301;
             simulation-distance = 26;
             texturepack-required = true;
-            tick-distance = 16;
+            tick-distance = 12;
             view-distance = 28;
             white-list = true;
           };
