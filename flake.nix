@@ -12,9 +12,7 @@
           overlays = [
             nix-minecraft.overlay 
             (self: super: {
-              toxvpn = super.toxvpn.overrideAttrs (old: {
-                patches = [ ./toxvpn-changes.patch ];
-              });
+              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
             })
           ];
         };

@@ -22,8 +22,8 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 80 443 4300 4301 ];
-      allowedUDPPorts = [ 4301 4302 ];
+      allowedTCPPorts = [ 80 443 4300 4301 5201 ];
+      allowedUDPPorts = [ 4301 4302 5201 ];
     };
     hostName = "shitzen-nixos";
   };
