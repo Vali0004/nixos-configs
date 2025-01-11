@@ -32,8 +32,8 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedUDPPorts = [ 4301 4302 5201 ];
-      allowedTCPPorts = [ 80 443 4300 4301 5201   ];
+      allowedTCPPorts = [ 80 443 4300 4301 ];
+      allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "router";
     interfaces.ens3 = {
@@ -63,6 +63,7 @@ in {
       localip = "10.0.127.1";
       auto_add_peers = [ "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" ];
     };
+    #openssh.openFirewall = false;
   };
 
   systemd.services.forward80 = mkForward 80 "10.0.127.3";
