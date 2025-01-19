@@ -37,6 +37,7 @@
     htop
     neofetch
     openssl
+    pciutils
     screen
     tmux
     tshark
@@ -79,11 +80,11 @@
   security = {
     acme = {
       acceptTerms = true;
-      email = "diorcheats.vali@gmail.com";
+      defaults.email = "diorcheats.vali@gmail.com";
     };
   };
 
-  vali.mc_prod = false;
+  vali.mc_prod = true;
   vali.mc_test = false;
 
   # This option defines the first version of NixOS you have installed on this particular machine,

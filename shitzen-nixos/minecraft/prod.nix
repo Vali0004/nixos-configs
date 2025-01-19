@@ -10,7 +10,7 @@
   "mods/cloth-config.jar" = pkgs.fetchurl rec {
     hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
     pname = "cloth-config";
-    url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
+    url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar"; 
     version = "17.0.144-fabric";
   };
   "mods/ferritecore.jar" = pkgs.fetchurl rec {
@@ -218,7 +218,8 @@
     version = "v5.0.3";
   };
   # We can mostly leave it to our jar to do it for us, as Nix will just overlay it when using yml anyways :)
-  "config/tab/config.yml" = builtins.toFile "yml" (builtins.toJS
+  "config/tab/config.yml" = builtins.toFile "yml" (builtins.toJSON {
+    
   });
   "mods/styled-chat.jar" = pkgs.fetchurl rec {
     hash = "sha256-XgYWDovpVLGu7Exj60jF3O0JrEVSGLFCGmh/yu1XFPg=";
@@ -452,4 +453,4 @@
     url = "https://cdn.modrinth.com/data/NFlNaUBA/versions/mF2RnE4V/${pname}-${version}.jar";
     version = "3.1";
   };
-};
+}
