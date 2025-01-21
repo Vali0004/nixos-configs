@@ -41,10 +41,7 @@ in {
           test = lib.mkIf config.vali.mc_test {
             autoStart = true;
             enable = true;
-            files = modpacks."Enigmatica6Expert-1.9.0";
-            #files = modpacks."Enigmatica6Expert-1.9.0";
-              #modpacks."test-core"
-            #};
+            files = modpacks."test-core";
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
               Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";

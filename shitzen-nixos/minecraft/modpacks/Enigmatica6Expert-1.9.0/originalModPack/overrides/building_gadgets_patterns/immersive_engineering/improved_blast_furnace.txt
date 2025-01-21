@@ -1,8 +1,0 @@
-{
-  "header": {
-    "version": "2-beta",
-    "mc_version": "1.16.4",
-    "name": "[Disabled] Improved Blast Furnace",
-    "author": "Enigmatica"
-  }
-}
