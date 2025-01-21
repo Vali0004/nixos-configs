@@ -6,7 +6,7 @@ let
     modData = import modfile;
     f = { name, value }:
     {
-      name = "mods/${name}";
+      name = "${name}";
       value = value.src or (pkgs.fetchurl {
         inherit name;
         inherit (value) url;
@@ -37,7 +37,7 @@ in {
           test = lib.mkIf config.vali.mc_test {
             autoStart = true;
             enable = true;
-            files = import ./minecraft/test.nix { inherit pkgs; };
+            files = fetchMods ./minecraft/test.nix;
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
               Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
