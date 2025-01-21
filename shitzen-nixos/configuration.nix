@@ -84,8 +84,8 @@
     };
   };
 
-  vali.mc_prod = true;
-  vali.mc_test = false;
+  vali.mc_prod = false;
+  vali.mc_test = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

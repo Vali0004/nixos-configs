@@ -1,6 +1,24 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  fetchMods = modfile:
+  let
+    modData = import modfile;
+    f = { name, value }:
+    {
+      name = "mods/${name}";
+      value = value.src or (pkgs.fetchurl {
+        inherit name;
+        inherit (value) url;
+        hash = value.hash or lib.fakeHash;
+      });
+    };
+  in lib.listToAttrs (map f (lib.attrsToList modData));
+  modpacks = {
+    "Enigmatica6Expert-1.9.0" = fetchMods ./minecraft/modpacks/Enigmatica6Expert-1.9.0.nix;
+    "test-core" = fetchMods ./minecraft/test.nix;
+  };
+in {
   options = {
     vali.mc_prod = lib.mkOption {
       type = lib.types.bool;
@@ -15,11 +33,18 @@
         dataDir = "/var/lib/minecraft";
         enable = true;
         eula = true;
+        managementSystem = {
+          systemd-socket.enable = true;
+          tmux.enable = false;
+        };
         servers = {
           test = lib.mkIf config.vali.mc_test {
             autoStart = true;
             enable = true;
-            files = import ./minecraft/test.nix { inherit pkgs; };
+            files = modpacks."Enigmatica6Expert-1.9.0";
+            #files = modpacks."Enigmatica6Expert-1.9.0";
+              #modpacks."test-core"
+            #};
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
               Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
@@ -29,7 +54,7 @@
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
             };
             jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
-            package = pkgs.fabricServers.fabric-1_21_4;
+            package = pkgs.forgeServers.forge-1_16_5;
             serverProperties = {
               admin-slot = true;
               allow-cheats = true;
@@ -45,6 +70,7 @@
               hardcore = false;
               max-threads = 0;
               max-tick-time = 60000;
+              motd = "\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78- \u00A7l\u00A7oI\u00A7l\u00A7on\u00A7l\u00A7oe\u00A7l\u00A7or\u00A7l\u00A7ot\u00A7l\u00A7oi\u00A7l\u00A7oa\u00A7l\u00A7oC\u00A7l\u00A7or\u00A7l\u00A7oa\u00A7l\u00A7of\u00A7l\u00A7ot \u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A7r\n\u00A77fuckk\u00A78.\u00A77lol               Welcome!          \u00A78.gg/\u00A77d9ccwK2TNk";
               network-compression-threshold = 512;
               query-port = 4301;
               server-ip = "0.0.0.0";

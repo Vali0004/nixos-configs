@@ -14,6 +14,12 @@
             (self: super: {
               toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
             })
+            (self: super: {
+              forgeServers = {
+                forge-1_7_10 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.7.10-10.13.4.1614-1.7.10"; };
+                forge-1_16_5 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.16.5-36.2.42"; };
+              };
+            })
           ];
         };
       };
