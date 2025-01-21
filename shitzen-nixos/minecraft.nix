@@ -14,10 +14,6 @@ let
       });
     };
   in lib.listToAttrs (map f (lib.attrsToList modData));
-  modpacks = {
-    "Enigmatica6Expert-1.9.0" = fetchMods ./minecraft/modpacks/Enigmatica6Expert-1.9.0.nix;
-    "test-core" = fetchMods ./minecraft/test.nix;
-  };
 in {
   options = {
     vali.mc_prod = lib.mkOption {
@@ -41,7 +37,7 @@ in {
           test = lib.mkIf config.vali.mc_test {
             autoStart = true;
             enable = true;
-            files = modpacks."test-core";
+            files = import ./minecraft/test.nix { inherit pkgs; };
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
               Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
