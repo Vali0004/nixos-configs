@@ -268,7 +268,7 @@
     src = ./modpacks/Enigmatica6Expert-1.9.0/mods/curios-forge-1.16.5-4.1.0.0.jar;
   };
   "mods/Curious Armor Stands-1.16.5-2.2.0.jar" = {
-    src = ./modpacks/Enigmatica6Expert-1.9.0/mods/Curious+Armor+Stands-1.16.5-2.2.0.jar;
+    src = ./modpacks/Enigmatica6Expert-1.9.0/mods/Curious_Armor_Stands-1.16.5-2.2.0.jar;
   };
   "mods/curiouselytra-forge-1.16.5-4.0.2.4.jar" = {
     src = ./modpacks/Enigmatica6Expert-1.9.0/mods/curiouselytra-forge-1.16.5-4.0.2.4.jar;
