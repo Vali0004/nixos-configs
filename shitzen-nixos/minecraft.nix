@@ -14,6 +14,9 @@ let
       });
     };
   in lib.listToAttrs (map f (lib.attrsToList modData));
+  vanilla-1_0_0 = pkgs.vanillaServers.vanilla.overrideAttrs (oldAttrs: {
+    src = ./server.jar;
+  });
 in {
   options = {
     vali.mc_prod = lib.mkOption {
@@ -47,12 +50,10 @@ in {
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
             };
             jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
-            package = pkgs.forgeServers.forge-1_16_5;
+            package = vanilla-1_0_0;
             serverProperties = {
               admin-slot = true;
               allow-cheats = true;
-              compression-algorithm = "snappy";
-              compression-threshold = 0;
               difficulty = "hard";
               enable-command-block = true;
               enable-rcon = false;
@@ -63,18 +64,14 @@ in {
               hardcore = false;
               max-threads = 0;
               max-tick-time = 60000;
-              motd = "\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78- \u00A7l\u00A7oI\u00A7l\u00A7on\u00A7l\u00A7oe\u00A7l\u00A7or\u00A7l\u00A7ot\u00A7l\u00A7oi\u00A7l\u00A7oa\u00A7l\u00A7oC\u00A7l\u00A7or\u00A7l\u00A7oa\u00A7l\u00A7of\u00A7l\u00A7ot \u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A77*\u00A78-\u00A7r\n\u00A77fuckk\u00A78.\u00A77lol               Welcome!          \u00A78.gg/\u00A77d9ccwK2TNk";
+              motd = "Hello!";
               network-compression-threshold = 512;
               query-port = 4301;
               server-ip = "0.0.0.0";
               server-name = "InertiaCraft";
               server-port = 4301;
               simulation-distance = 4;
-              sync-chunk-writes = false; 
-              texturepack-required = true;
-              require-resource-pack = true;
               tick-distance = 12;
-              use-alternate-keepalive = true;
               view-distance = 32;
               white-list = true;
             };
