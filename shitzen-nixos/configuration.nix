@@ -25,7 +25,7 @@
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 80 443 4300 4301 ];
+      allowedTCPPorts = [ 80 443 4300 4301 25565 ];
       allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "shitzen-nixos";
@@ -85,7 +85,7 @@
   };
 
   vali.mc_prod = false;
-  vali.mc_test = false;
+  vali.mc_test = true;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

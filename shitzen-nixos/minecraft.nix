@@ -14,9 +14,13 @@ let
       });
     };
   in lib.listToAttrs (map f (lib.attrsToList modData));
-  vanilla-1_0_0 = pkgs.vanillaServers.vanilla.overrideAttrs (oldAttrs: {
-    src = ./server.jar;
-  });
+  #modpack = pkgs.fetchPackwizModpack {
+  #  url = "https://raw.githubusercontent.com/Vali0004/Enigmatica6Expert-1.9.0/refs/heads/master/pack.toml";
+  #  packHash = lib.fakeHash;
+  #};
+  mcVersion = "1.16.5";#modpack.manifest.versions.minecraft;
+  forgeVersion = "36.2.39";
+  serverPackage = pkgs.callPackage ./../pkgs/nix-minecraft/forge/forge.nix { version = "${mcVersion}-${forgeVersion}"; };
 in {
   options = {
     vali.mc_prod = lib.mkOption {
@@ -40,6 +44,9 @@ in {
           test = lib.mkIf config.vali.mc_test {
             autoStart = true;
             enable = true;
+            #symlinks = {
+              #"mods" = "${modpack}/mods";
+            #};
             files = fetchMods ./minecraft/test.nix;
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
@@ -50,10 +57,12 @@ in {
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
             };
             jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
-            package = vanilla-1_0_0;
+            package = serverPackage;
             serverProperties = {
               admin-slot = true;
               allow-cheats = true;
+              compression-algorithm = "snappy";
+              compression-threshold = 0;
               difficulty = "hard";
               enable-command-block = true;
               enable-rcon = false;
@@ -71,7 +80,9 @@ in {
               server-name = "InertiaCraft";
               server-port = 4301;
               simulation-distance = 4;
+              sync-chunk-writes = false; 
               tick-distance = 12;
+              use-alternate-keepalive = true;
               view-distance = 32;
               white-list = true;
             };

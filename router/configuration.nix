@@ -32,7 +32,7 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 4300 4301 ];
+      allowedTCPPorts = [ 80 443 4300 4301 25565 ];
       allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "router";

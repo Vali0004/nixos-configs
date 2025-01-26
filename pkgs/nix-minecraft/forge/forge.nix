@@ -12,6 +12,15 @@ let
       jarAppend = "-universial.jar";
       jdk = jdk8;
     };
+    "1.16.5-36.2.39" = {
+      src = fetchurl {
+        url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.39/forge-1.16.5-36.2.39-installer.jar";
+        hash = "sha256-36kMaB8wviQGVItkKbzLaNla9PZKsZuMWPYSj9UP+Fc=";
+      };
+      offlineHash = "sha256-dmHB8KsVLXjIjgd97R9R0x6ZBxt3pADV2ERbWio8Gww=";
+      jarAppend = ".jar";
+      jdk = jdk11;
+    };
     "1.16.5-36.2.42" = {
       src = fetchurl {
         url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.42/forge-1.16.5-36.2.42-installer.jar";
