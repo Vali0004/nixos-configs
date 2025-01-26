@@ -6,4 +6,7 @@
   "mods" = {
     src = ./modpack/mods;
   };
+  "config" = {
+    src = ./modpack/config;
+  };
 }

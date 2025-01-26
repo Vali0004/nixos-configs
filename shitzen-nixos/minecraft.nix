@@ -18,7 +18,7 @@ let
   #  url = "https://raw.githubusercontent.com/Vali0004/Enigmatica6Expert-1.9.0/refs/heads/master/pack.toml";
   #  packHash = lib.fakeHash;
   #};
-  mcVersion = "1.16.5";#modpack.manifest.versions.minecraft;
+  mcVersion = "1.20.1";#modpack.manifest.versions.minecraft;
   forgeVersion = "36.2.39";
   serverPackage = pkgs.callPackage ./../pkgs/nix-minecraft/forge/forge.nix { version = "${mcVersion}-${forgeVersion}"; };
 in {

@@ -35,6 +35,7 @@
     ffmpeg_6-headless
     git
     htop
+    jdk8
     neofetch
     openssl
     pciutils

@@ -15,9 +15,9 @@ let
     "1.16.5-36.2.39" = {
       src = fetchurl {
         url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.39/forge-1.16.5-36.2.39-installer.jar";
-        hash = "sha256-36kMaB8wviQGVItkKbzLaNla9PZKsZuMWPYSj9UP+Fc=";
+        hash = "sha256-vCO9DgxvF6ff3dvqZfAIyBJq2Pm7hLmkcGmiuo0C/M0=";
       };
-      offlineHash = "sha256-dmHB8KsVLXjIjgd97R9R0x6ZBxt3pADV2ERbWio8Gww=";
+      offlineHash = "sha256-bGYgqwM8VS1RORPbRFDZDlt7N2MOHssXtDz9qefeE4s=";
       jarAppend = ".jar";
       jdk = jdk11;
     };
