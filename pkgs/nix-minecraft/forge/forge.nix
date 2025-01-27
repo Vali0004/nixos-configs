@@ -39,7 +39,7 @@ let
       javaArgs = "@libraries/net/minecraftforge/forge/${version}/unix_args.txt";
       # Should be fine to use modern jdk versions on anything past 1.16 :pray:
       jdk = jdk21_headless;
-      offlineHash = "sha256-2pjk8N6Pfxn4FdWzEvKsnywLBVsf1JLooJWHtireVic=";
+      #offlineHash = "sha256-2pjk8N6Pfxn4FdWzEvKsnywLBVsf1JLooJWHtireVic=";
     };
     "1.20.1-47.3.0" = {
       src = fetchurl {
@@ -76,6 +76,7 @@ in
 
   export PATH=${lib.makeBinPath [ forge.jdk ]}:\$PATH
 
+  rm libraries
   ln -svf ${offline}/libraries libraries
 
   exec java "\$@" ${forge.javaArgs} nogui
