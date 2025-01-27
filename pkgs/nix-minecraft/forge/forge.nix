@@ -31,7 +31,16 @@ let
       jdk = jdk11_headless;
       offlineHash = "sha256-dmHB8KsVLXjIjgd97R9R0x6ZBxt3pADV2ERbWio8Gww=";
     };
-    #https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.0/forge-1.20.1-47.3.0-installer.jar   
+    "1.18.2-40.3.0" = {
+      src = fetchurl {
+        url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.18.2-40.3.0/forge-1.18.2-40.3.0-installer.jar";
+        hash = lib.fakeHash; #"sha256";
+      };
+      javaArgs = "@libraries/net/minecraftforge/forge/${version}/unix_args.txt";
+      # Should be fine to use modern jdk versions on anything past 1.16 :pray:
+      jdk = jdk21_headless;
+      offlineHash = "sha256-2pjk8N6Pfxn4FdWzEvKsnywLBVsf1JLooJWHtireVic=";
+    };
     "1.20.1-47.3.0" = {
       src = fetchurl {
         url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.3.0/forge-1.20.1-47.3.0-installer.jar";
