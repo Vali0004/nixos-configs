@@ -2,19 +2,19 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_river"
+        "value": "river"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": true,
-        "value": "forge:is_cold/overworld"
+        "value": "cold"
       }
     ],
     [

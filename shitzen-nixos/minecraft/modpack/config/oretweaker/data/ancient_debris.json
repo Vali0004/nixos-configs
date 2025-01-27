@@ -1,0 +1,21 @@
+{
+  "oreConfig": [
+    {
+      "ore": "minecraft:ancient_debris",
+      "fillers": [
+        "STONE_ORE_REPLACEABLES"
+      ],
+      "distribution": "TRIANGLE",
+      "minY": -64,
+      "maxY": 20,
+      "maxVeinSize": 5,
+      "spawnRate": 6.0,
+      "discardChanceOnAirExposure": 0.5,
+      "biomeFilters": {
+        "biomeBlacklist": [],
+        "biomeWhitelist": [ "biomesoplenty:wasteland", "biomesoplenty:wooded_wasteland" ]
+      },
+      "replace": true
+    }
+  ]
+}

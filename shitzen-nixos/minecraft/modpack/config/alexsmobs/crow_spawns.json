@@ -2,43 +2,36 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": true,
-        "value": "minecraft:is_savanna"
+        "value": "savanna"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "forge:is_plains"
+        "value": "forest"
       }
     ],
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
-        "negate": false,
-        "value": "minecraft:is_forest"
-      }
-    ],
-    [
-      {
-        "type": "BIOME_TAG",
-        "negate": false,
-        "value": "minecraft:is_overworld"
+        "type": "BIOME_DICT",
+        "negate": true,
+        "value": "savanna"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_taiga"
+        "value": "plains"
       }
     ],
     [
@@ -178,6 +171,13 @@
       {
         "type": "REGISTRY_NAME",
         "negate": false,
+        "value": "terralith:cloud_forest"
+      }
+    ],
+    [
+      {
+        "type": "REGISTRY_NAME",
+        "negate": false,
         "value": "terralith:forested_highlands"
       }
     ],
@@ -249,27 +249,6 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:mirage_isles"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "terralith:cloud_forest"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "minecraft:cherry_grove"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:snowblossom_grove"
       }
     ]
   ]

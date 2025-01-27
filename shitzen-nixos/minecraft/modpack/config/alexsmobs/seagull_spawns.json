@@ -2,14 +2,14 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_beach"
+        "value": "beach"
       }
     ],
     [
@@ -52,20 +52,6 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:skylands_spring"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:dune_beach"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "minecraft:stony_shore"
       }
     ]
   ]

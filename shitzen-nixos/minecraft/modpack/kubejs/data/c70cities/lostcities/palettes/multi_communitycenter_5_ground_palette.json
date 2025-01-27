@@ -1,0 +1,212 @@
+{
+  "name": "multi_communitycenter_5_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:quartz_block"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:white_concrete"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stripped_birch_log[axis=z]"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:light_gray_wool"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:polished_andesite"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:white_wool"
+    },
+    {
+      "char": "h",
+      "block": "embellishcraft:polished_paving"
+    },
+    {
+      "char": "i",
+      "block": "car:sign_post[waterlogged=false]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:stone_pressure_plate"
+    },
+    {
+      "char": "k",
+      "block": "cfm:stripped_oak_coffee_table[waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "create:vertical_framed_glass"
+    },
+    {
+      "char": "m",
+      "block": "create:framed_glass"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:dead_bush"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:lilac[half=lower]"
+    },
+    {
+      "char": "q",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=bottom,open=true,facing=south]"
+    },
+    {
+      "char": "r",
+      "block": "another_furniture:birch_drawer[open=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "s",
+      "block": "create:vertical_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "t",
+      "block": "create:framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "u",
+      "block": "cfm:spruce_desk[type=single,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "w",
+      "block": "cfm:spruce_desk[type=left,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "y",
+      "block": "cfm:stripped_spruce_chair[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "A",
+      "block": "cfm:spruce_desk[type=right,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "B",
+      "block": "quark:spruce_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "C",
+      "block": "create:cut_calcite"
+    },
+    {
+      "char": "D",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "E",
+      "block": "embellishcraft:spruce_plain_door[half=lower,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "F",
+      "block": "quark:spruce_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:lilac[half=upper]"
+    },
+    {
+      "char": "J",
+      "block": "create:birch_window"
+    },
+    {
+      "char": "K",
+      "block": "quark:birch_bookshelf"
+    },
+    {
+      "char": "L",
+      "block": "minecraft:white_carpet"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:brown_carpet"
+    },
+    {
+      "char": "N",
+      "block": "minecraft:green_carpet"
+    },
+    {
+      "char": "O",
+      "block": "minecraft:red_carpet"
+    },
+    {
+      "char": "P",
+      "block": "minecraft:yellow_carpet"
+    },
+    {
+      "char": "Q",
+      "block": "minecraft:light_gray_carpet"
+    },
+    {
+      "char": "R",
+      "block": "embellishcraft:spruce_plain_door[half=upper,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "S",
+      "block": "minecraft:light_blue_carpet"
+    },
+    {
+      "char": "T",
+      "block": "minecraft:gray_carpet"
+    },
+    {
+      "char": "U",
+      "block": "minecraft:cave_vines"
+    },
+    {
+      "char": "V",
+      "block": "minecraft:iron_trapdoor[waterlogged=false,half=bottom,open=false,facing=west]"
+    },
+    {
+      "char": "W",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "X",
+      "block": "minecraft:iron_trapdoor[waterlogged=false,half=bottom,open=false,facing=north]"
+    },
+    {
+      "char": "Y",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "Z",
+      "block": "minecraft:cave_vines_plant"
+    },
+    {
+      "char": "0",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "1",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "2",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

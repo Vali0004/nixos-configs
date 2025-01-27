@@ -2,19 +2,19 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_hill"
+        "value": "mountain"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "forge:is_coniferous"
+        "value": "forest"
       }
     ],
     [
@@ -28,7 +28,7 @@
       {
         "type": "REGISTRY_NAME",
         "negate": false,
-        "value": "minecraft:windswept_forest"
+        "value": "terralith:alpine_grove"
       }
     ],
     [
@@ -127,20 +127,6 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:temperate_highlands"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "terralith:alpine_grove"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:jade_cliffs"
       }
     ]
   ]

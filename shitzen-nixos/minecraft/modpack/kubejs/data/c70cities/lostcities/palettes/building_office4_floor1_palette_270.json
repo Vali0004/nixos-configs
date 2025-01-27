@@ -1,0 +1,103 @@
+{
+  "name": "building_office4_floor1_palette_270",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:gray_concrete_powder"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:smooth_marble_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:light_gray_wool"
+    },
+    {
+      "char": "f",
+      "block": "quark:spruce_ladder[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:light_gray_stained_glass"
+    },
+    {
+      "char": "h",
+      "block": "cfm:green_kitchen_counter[type=default,facing=east]"
+    },
+    {
+      "char": "i",
+      "block": "cfm:green_kitchen_drawer[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=east,shape=inner_left]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=east,shape=inner_right]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:green_terracotta"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=west,shape=inner_right]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=west,shape=inner_left]"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "w",
+      "block": "cfm:green_kitchen_counter[type=default,facing=west]"
+    },
+    {
+      "char": "x",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:quartz_block"
+    }
+  ]
+}

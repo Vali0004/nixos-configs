@@ -1,0 +1,49 @@
+{
+  "name": "front_4_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:void_air"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:oak_leaves[persistent=true]"
+    },
+    {
+      "char": "c",
+      "block": "create:brown_seat[waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "quark:oak_leaf_carpet"
+    },
+    {
+      "char": "e",
+      "block": "trashcans:item_trash_can[waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "rocks:oak_stick[variation=large]"
+    },
+    {
+      "char": "g",
+      "block": "immersiveengineering:steel_fence[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "rocks:oak_stick[variation=medium]"
+    },
+    {
+      "char": "i",
+      "block": "cfm:post_box[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "j",
+      "block": "rocks:rock[variation=medium]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:lantern[waterlogged=false,hanging=true]"
+    }
+  ]
+}

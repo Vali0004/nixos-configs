@@ -1,0 +1,76 @@
+{
+  "armorSetName": "armors.national_army.title",
+  "head": {
+    "itemKey": "apocalypsenow:u_sarmy_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:canadian_army_helmet",
+      "apocalypsenow:chinese_army_helmet",
+      "apocalypsenow:japanese_army_helmet",
+      "apocalypsenow:mexican_army_helmet",
+      "apocalypsenow:russian_army_helmet",
+      "apocalypsenow:british_army_helmet",
+      "apocalypsenow:usa_armor_helmet",
+      "apocalypsenow:pbf_hamstergasmask_helmet",
+      "apocalypsenow:pkm_4gasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:u_sarmy_chestplate",
+    "mixAndMatch": [
+      "apocalypsenow:canadian_army_chestplate",
+      "apocalypsenow:chinese_army_chestplate",
+      "apocalypsenow:japanese_army_chestplate",
+      "apocalypsenow:mexican_army_chestplate",
+      "apocalypsenow:russian_army_chestplate",
+      "apocalypsenow:british_army_chestplate",
+      "apocalypsenow:usa_armor_chestplate"
+    ]
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:u_sarmy_leggings",
+    "mixAndMatch": [
+      "apocalypsenow:canadian_army_leggings",
+      "apocalypsenow:chinese_army_leggings",
+      "apocalypsenow:japanese_army_leggings",
+      "apocalypsenow:mexican_army_leggings",
+      "apocalypsenow:russian_army_leggings",
+      "apocalypsenow:british_army_leggings",
+      "apocalypsenow:usa_armor_leggings"
+    ]
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:u_sarmy_boots",
+    "mixAndMatch": [
+      "apocalypsenow:canadian_army_boots",
+      "apocalypsenow:chinese_army_boots",
+      "apocalypsenow:japanese_army_boots",
+      "apocalypsenow:mexican_army_boots",
+      "apocalypsenow:russian_army_boots",
+      "apocalypsenow:british_army_boots",
+      "apocalypsenow:usa_armor_boots"
+    ]
+  },
+  "fullSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 0.3,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "8e5fb744-b490-403c-bf3a-c0b0e76342f7",
+      "description": "armors.national_army.description_damage",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "puffish_skills:player.ranged_damage",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "af8319e0-92be-11ee-b9d1-0242ac120002",
+      "description": "armors.national_army.description_ranged_damage",
+      "hideBonusDescription": false
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

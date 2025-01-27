@@ -1,0 +1,179 @@
+{
+  "name": "multi_laboratory1_2_base6_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "buildersdelight:laboratory_2"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:polished_basalt"
+    },
+    {
+      "char": "d",
+      "block": "buildersdelight:industrial_1[facing=north]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:pointed_dripstone[vertical_direction=up,waterlogged=false,thickness=tip]"
+    },
+    {
+      "char": "f",
+      "block": "create:polished_cut_scoria_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "g",
+      "block": "create:layered_calcite"
+    },
+    {
+      "char": "h",
+      "block": "refinedstorage:disk_drive"
+    },
+    {
+      "char": "i",
+      "block": "pfm:white_arm_chair[facing=west,shape=straight]"
+    },
+    {
+      "char": "j",
+      "block": "pfm:concrete_kitchen_counter[facing=east]"
+    },
+    {
+      "char": "k",
+      "block": "create:framed_glass"
+    },
+    {
+      "char": "l",
+      "block": "apocalypsenow:traffic_barricade[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:stone_button[facing=south,face=floor]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "o",
+      "block": "apocalypsenow:traffic_barricade[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "p",
+      "block": "quark:blaze_lantern"
+    },
+    {
+      "char": "q",
+      "block": "createaddition:seed_oil[level=0]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:stone_button[facing=north,face=floor]"
+    },
+    {
+      "char": "s",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=bottom,open=false,facing=east]"
+    },
+    {
+      "char": "t",
+      "block": "refinedstorage:relay"
+    },
+    {
+      "char": "u",
+      "block": "apocalypsenow:traffic_barricade[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:stone_button[facing=east,face=floor]"
+    },
+    {
+      "char": "x",
+      "block": "zombie_extreme:shelf[facing=east]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:yellow_stained_glass"
+    },
+    {
+      "char": "A",
+      "block": "createaddition:seed_oil[level=8]"
+    },
+    {
+      "char": "B",
+      "block": "pfm:dark_concrete_kitchen_counter[facing=north]"
+    },
+    {
+      "char": "C",
+      "block": "pfm:light_gray_arm_chair[facing=west,shape=straight]"
+    },
+    {
+      "char": "D",
+      "block": "create:blaze_burner[facing=east,blaze=smouldering]",
+      "tag": {
+        "id": "create:blaze_heater"
+      }
+    },
+    {
+      "char": "E",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=east,face=wall]"
+    },
+    {
+      "char": "F",
+      "block": "zombie_extreme:computer_monitor[facing=west]"
+    },
+    {
+      "char": "I",
+      "block": "quark:iron_button[facing=south,face=floor]"
+    },
+    {
+      "char": "J",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=south,face=wall]"
+    },
+    {
+      "char": "K",
+      "block": "zombie_extreme:radio_installation[facing=west]"
+    },
+    {
+      "char": "L",
+      "block": "create:polished_cut_deepslate_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "M",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=north,face=wall]"
+    },
+    {
+      "char": "N",
+      "block": "create:blaze_burner[facing=east,blaze=none]",
+      "tag": {
+        "id": "create:blaze_heater"
+      }
+    },
+    {
+      "char": "O",
+      "block": "zombie_extreme:radio_installation[facing=south]"
+    },
+    {
+      "char": "P",
+      "block": "create:analog_lever[facing=north,face=floor]"
+    },
+    {
+      "char": "Q",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=top,open=true,facing=south]"
+    },
+    {
+      "char": "R",
+      "block": "embellishcraft:grid_air_duct[facing=down]"
+    },
+    {
+      "char": "S",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=top,open=true,facing=east]"
+    },
+    {
+      "char": "T",
+      "block": "embellishcraft:air_duct"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+	"type": "tac:workbench",
+	"materials": [
+		{
+		  "item": {
+				"item": "contenttweaker:rubber"
+			},
+		  "count": 3
+		},
+		{
+			"item": {
+				"tag": "forge:leather"
+			},
+			"count": 3
+		}
+	],
+	"result": {
+		"item": "tac:pistol_silencer"
+	}
+}

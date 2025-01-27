@@ -1,0 +1,70 @@
+{
+  "name": "multi_megatower1_3_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stone_slab[type=double,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:stone_brick_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "car:line_side_long_left[facing=west]"
+    },
+    {
+      "char": "g",
+      "block": "car:line_side_long_left[facing=north]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:command_block[facing=south,conditional=false]",
+      "tag": {
+        "conditionMet": 1,
+        "auto": 1,
+        "Command": "spawnRandomCar"
+      }
+    },
+    {
+      "char": "i",
+      "block": "car:line_side_long_left[facing=south]"
+    },
+    {
+      "char": "j",
+      "block": "car:line_side_long_left[facing=east]"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:basalt_button[facing=south,face=wall]"
+    },
+    {
+      "char": "l",
+      "block": "embellishcraft:basalt_button[facing=north,face=wall]"
+    },
+    {
+      "char": "m",
+      "block": "quark:stone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "n",
+      "block": "quark:stone_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:stone_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

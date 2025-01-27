@@ -1,0 +1,58 @@
+{
+  "armorSetName": "armors.construction.title",
+  "head": {
+    "itemKey": "apocalypsenow:construction_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:gasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:construction_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:construction_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:construction_boots"
+  },
+  "mainHand": {
+    "itemKey": "apocalypsenow:construction_axe",
+    "mixAndMatch": [
+      "apocalypsenow:construction_shovel"
+    ]
+  },
+  "partialBonusRequiredAmount": 4,
+  "partialSetBonuses": [
+    {
+      "type": "effect",
+      "name": "minecraft:haste",
+      "value": 1.0,
+      "interactionType": "self",
+      "interactionDuration": 300,
+      "description": "armors.construction.description_haste",
+      "hideBonusDescription": false
+    }
+  ],
+  "fullSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 1.5,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "f0d5b4a7-0f6c-4c33-8204-b0e262b037e8",
+      "description": "armors.construction.description_damage",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:haste",
+      "value": 1.0,
+      "interactionType": "self",
+      "interactionDuration": 300,
+      "description": "armors.construction.description_haste",
+      "hideBonusDescription": false
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

@@ -1,0 +1,45 @@
+{
+  "name": "fountain_6_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "rocks:oak_stick[variation=medium]"
+    },
+    {
+      "char": "b",
+      "block": "rocks:rock[variation=medium]"
+    },
+    {
+      "char": "c",
+      "block": "rocks:oak_stick[variation=small]"
+    },
+    {
+      "char": "d",
+      "block": "rocks:rock[variation=small]"
+    },
+    {
+      "char": "e",
+      "block": "apocalypsenow:construction_barricade[facing=east]"
+    },
+    {
+      "char": "f",
+      "block": "cfm:rock_path[waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "apocalypsenow:bear_trap"
+    },
+    {
+      "char": "h",
+      "block": "apocalypsenow:construction_barricade[facing=north]"
+    },
+    {
+      "char": "i",
+      "block": "rocks:rock[variation=tiny]"
+    },
+    {
+      "char": "j",
+      "block": "rocks:oak_stick[variation=large]"
+    }
+  ]
+}

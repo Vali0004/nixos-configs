@@ -1,0 +1,47 @@
+{
+  "armorSetName": "armors.bombsquad.title",
+  "head": {
+    "itemKey": "apocalypsenow:bombsquad_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:pbf_hamstergasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:bombsquad_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:bombsquad_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:bombsquad_boots"
+  },
+  "fullSetBonuses": [
+    {
+      "type": "effect",
+      "name": "minecraft:resistance",
+      "value": 5.0,
+      "interactionType": "self",
+      "interactionDuration": 300,
+      "description": "armors.bombsquad.description_reduction",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.movement_speed",
+      "value": -0.5,
+      "interactionType": "self",
+      "attributeOperation": 2,
+      "modifierUUID": "e5eed144-92ba-11ee-b9d1-0242ac120002",
+      "description": "armors.bombsquad.description_movement",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:weakness",
+      "interactionType": "immunity",
+      "description": "armors.bombsquad.description_weakness",
+      "onlyImmuneToNewEffects": true
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

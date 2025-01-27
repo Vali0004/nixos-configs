@@ -1,0 +1,26 @@
+{
+	"type": "tac:workbench",
+	"materials": [
+		{
+			"item": {
+				"tag": "forge:plates/aluminum"
+			},
+		  "count": 6
+		},
+		{
+		  "item": {
+				"item": "contenttweaker:rubber"
+			},
+		  "count": 2
+		},
+		{
+			"item": {
+				"tag": "forge:leather"
+			},
+			"count": 2
+		}
+	],
+	"result": {
+		"item": "tac:specialised_grip"
+	}
+}

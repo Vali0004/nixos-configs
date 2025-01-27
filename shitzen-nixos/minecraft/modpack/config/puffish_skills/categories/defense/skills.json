@@ -1,0 +1,254 @@
+{
+	"2g84pcgqh9nfwyhb": {
+		"definition": "root_resistance+5%",
+		"x": 0,
+		"y": -256,
+		"root": true
+	},
+	"ae2ul7aehtljlibd": {
+		"definition": "armor+2.5%",
+		"x": 192,
+		"y": -160,
+		"root": false
+	},
+	"k3ltleo2mniz6477": {
+		"definition": "armor+2.5%",
+		"x": 128,
+		"y": -32,
+		"root": false
+	},
+	"huj6id1xu31r6bs3": {
+		"definition": "armor+2.5%",
+		"x": 256,
+		"y": -32,
+		"root": false
+	},
+	"kynyr344e3kbxjy6": {
+		"definition": "armor+2.5%",
+		"x": 256,
+		"y": 32,
+		"root": false
+	},
+	"79ur9t2mo8nuwclb": {
+		"definition": "armor+2.5%",
+		"x": 256,
+		"y": -96,
+		"root": false
+	},
+	"oyoltkr908f45805": {
+		"definition": "armor+2.5%",
+		"x": 128,
+		"y": 96,
+		"root": false
+	},
+	"hhc8ac9osiip8e4p": {
+		"definition": "armor+2.5%",
+		"x": 128,
+		"y": -96,
+		"root": false
+	},
+	"wx9h9b3lhac0mdo1": {
+		"definition": "armor+2.5%",
+		"x": 256,
+		"y": 96,
+		"root": false
+	},
+	"u2yqsh8x49hamyhh": {
+		"definition": "armor+2.5%",
+		"x": 192,
+		"y": -32,
+		"root": false
+	},
+	"r4ozb6or6jj4nqoy": {
+		"definition": "armor+2.5%",
+		"x": 128,
+		"y": 32,
+		"root": false
+	},
+	"o9k3b162v4bb09a7": {
+		"definition": "health+1",
+		"x": -128,
+		"y": 32,
+		"root": false
+	},
+	"anz7jxb58vtqy0gd": {
+		"definition": "health+1",
+		"x": -256,
+		"y": -32,
+		"root": false
+	},
+	"czf6imkd4ydg8jc5": {
+		"definition": "health+1",
+		"x": -256,
+		"y": -96,
+		"root": false
+	},
+	"9zibbmvd1z6lxmpb": {
+		"definition": "health+1",
+		"x": -128,
+		"y": -32,
+		"root": false
+	},
+	"onag9vfnrrd4ibqr": {
+		"definition": "health+2",
+		"x": -256,
+		"y": 160,
+		"root": false
+	},
+	"gccjc9evzvw2z9q0": {
+		"definition": "health+2",
+		"x": -128,
+		"y": 224,
+		"root": false
+	},
+	"d6zwc8pazq533o9o": {
+		"definition": "health+1",
+		"x": -256,
+		"y": 32,
+		"root": false
+	},
+	"zbrcrftj873n35hw": {
+		"definition": "armor+5%",
+		"x": 128,
+		"y": 160,
+		"root": false
+	},
+	"7wv4s90m5rtmpx12": {
+		"definition": "armor+5%",
+		"x": 256,
+		"y": 224,
+		"root": false
+	},
+	"ye1q97b1tmu7iydo": {
+		"definition": "armor+5%",
+		"x": 128,
+		"y": 224,
+		"root": false
+	},
+	"7sjnx3p10fdmh5p4": {
+		"definition": "armor+5%",
+		"x": 256,
+		"y": 160,
+		"root": false
+	},
+	"xngu39ri6xdjhusp": {
+		"definition": "health+1",
+		"x": -192,
+		"y": -160,
+		"root": false
+	},
+	"3sctik9qd9a94oeq": {
+		"definition": "health+1",
+		"x": -128,
+		"y": -96,
+		"root": false
+	},
+	"9r5bzbwqyzyijvl0": {
+		"definition": "health+1",
+		"x": -256,
+		"y": 96,
+		"root": false
+	},
+	"wjfunot41c6iu4r3": {
+		"definition": "health+2",
+		"x": -256,
+		"y": 224,
+		"root": false
+	},
+	"yrg600c1y4sqjkr2": {
+		"definition": "health+2",
+		"x": -128,
+		"y": 160,
+		"root": false
+	},
+	"t7jdgwd3pdr089ea": {
+		"definition": "health+1",
+		"x": -128,
+		"y": 96,
+		"root": false
+	},
+	"c6pttlud2o3cgfjq": {
+		"definition": "health+1",
+		"x": -192,
+		"y": -32,
+		"root": false
+	},
+	"z9qmn092zp4qjbim": {
+		"definition": "dual_dampening+10%",
+		"x": 0,
+		"y": -160,
+		"root": false
+	},
+	"7ua8j5va7dwcbhny": {
+		"definition": "cold_dampening+10%",
+		"x": -64,
+		"y": -96,
+		"root": false
+	},
+	"21t3wp8u4datn524": {
+		"definition": "cold_dampening+10%",
+		"x": -64,
+		"y": -32,
+		"root": false
+	},
+	"6twarn089w697qbc": {
+		"definition": "cold_dampening+10%",
+		"x": -64,
+		"y": 32,
+		"root": false
+	},
+	"thnptu0lt9ybhuwq": {
+		"definition": "cold_dampening+10%",
+		"x": -64,
+		"y": 96,
+		"root": false
+	},
+	"gttyojcs6o5m0t5r": {
+		"definition": "cold_dampening+10%",
+		"x": -64,
+		"y": 160,
+		"root": false
+	},
+	"ls4unmgmntl657gf": {
+		"definition": "cold_dampening+10%",
+		"x": -64,
+		"y": 224,
+		"root": false
+	},
+	"2lnne66xm0yuirtz": {
+		"definition": "heat_dampening+10%",
+		"x": 64,
+		"y": -96,
+		"root": false
+	},
+	"kh5khtx1klkiz99x": {
+		"definition": "heat_dampening+10%",
+		"x": 64,
+		"y": -32,
+		"root": false
+	},
+	"nbn36qho866qdp3g": {
+		"definition": "heat_dampening+10%",
+		"x": 64,
+		"y": 32,
+		"root": false
+	},
+	"fsfn9mx5amy5qi9d": {
+		"definition": "heat_dampening+10%",
+		"x": 64,
+		"y": 96,
+		"root": false
+	},
+	"605xud4tsc44mxul": {
+		"definition": "heat_dampening+10%",
+		"x": 64,
+		"y": 160,
+		"root": false
+	},
+	"rd5c485opti0xbun": {
+		"definition": "heat_dampening+10%",
+		"x": 64,
+		"y": 224,
+		"root": false
+	}
+}

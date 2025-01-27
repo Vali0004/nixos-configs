@@ -1,0 +1,37 @@
+{
+  "name": "fountain_deadzone_6_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "rocks:netherrack_rock[variation=tiny]"
+    },
+    {
+      "char": "b",
+      "block": "rocks:netherrack_rock[variation=small]"
+    },
+    {
+      "char": "c",
+      "block": "apocalypsenow:construction_barricade[facing=south]"
+    },
+    {
+      "char": "d",
+      "block": "apocalypsenow:construction_barricade[facing=east]"
+    },
+    {
+      "char": "e",
+      "block": "buildersdelight:industrial_flat_3[waterlogged=false,facing=south,face=floor]"
+    },
+    {
+      "char": "f",
+      "block": "apocalypsenow:construction_barricade[facing=west]"
+    },
+    {
+      "char": "g",
+      "block": "apocalypsenow:construction_barricade[facing=north]"
+    },
+    {
+      "char": "h",
+      "block": "rocks:netherrack_rock[variation=medium]"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "multi_megatower1_0_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stone_brick_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:stone_button[facing=west,face=floor]"
+    },
+    {
+      "char": "e",
+      "block": "car:line_side_long_left[facing=west]"
+    },
+    {
+      "char": "f",
+      "block": "car:line_side_long_left[facing=north]"
+    },
+    {
+      "char": "g",
+      "block": "car:line_side_long_left[facing=south]"
+    },
+    {
+      "char": "h",
+      "block": "car:line_side_long_left[facing=east]"
+    },
+    {
+      "char": "i",
+      "block": "embellishcraft:basalt_button[facing=south,face=wall]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:stone_button[facing=south,face=floor]"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:basalt_button[facing=north,face=wall]"
+    },
+    {
+      "char": "l",
+      "block": "embellishcraft:basalt_button[facing=east,face=wall]"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:basalt_button[facing=west,face=wall]"
+    },
+    {
+      "char": "n",
+      "block": "quark:stone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "quark:stone_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "biomesoplenty:smooth_white_sandstone"
+    },
+    {
+      "char": "q",
+      "block": "biomesoplenty:smooth_white_sandstone_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "r",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:stone_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

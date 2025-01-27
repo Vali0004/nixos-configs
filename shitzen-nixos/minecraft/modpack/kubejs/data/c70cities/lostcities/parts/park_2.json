@@ -1,0 +1,62 @@
+{
+  "name": "park_2",
+  "refpalette": "c70cities:park_2_palette",
+  "xsize": 16,
+  "zsize": 16,
+  "slices": [
+    [
+      "                ",
+      "                ",
+      "  aaaab  baaaa  ",
+      "  acccccccccca  ",
+      "  acccccccccca  ",
+      "  accaaaaaacca  ",
+      "  bccabddbaccb  ",
+      "   ccadGGdacc   ",
+      "   ccadGGdacc   ",
+      "  bccabddbaccb  ",
+      "  accaaaaaacca  ",
+      "  acccccccccca  ",
+      "  acccccccccca  ",
+      "  aaaab  baaaa  ",
+      "                ",
+      "                "
+    ],
+    [
+      "                ",
+      "                ",
+      "    ee   ee ee  ",
+      "  e             ",
+      "  e             ",
+      "  e  aaaaaa  e  ",
+      "  e  a    a     ",
+      "     a  f a     ",
+      "     a gh a     ",
+      "     a    a     ",
+      "     aaaaaa     ",
+      "  e          e  ",
+      "                ",
+      "  eeee   eeeee  ",
+      "                ",
+      "                "
+    ],
+    [
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "        i       ",
+      "       j        ",
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "                "
+    ]
+  ]
+}

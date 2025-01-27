@@ -1,0 +1,165 @@
+{
+  "name": "multi_laboratory1_0_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:cracked_stone_bricks"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:polished_paving"
+    },
+    {
+      "char": "d",
+      "block": "create:polished_cut_scoria"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "f",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "g",
+      "block": "biomesoplenty:dead_button[facing=east,face=floor]"
+    },
+    {
+      "char": "h",
+      "block": "create:cut_limestone_bricks"
+    },
+    {
+      "char": "i",
+      "block": "biomesoplenty:dead_sapling"
+    },
+    {
+      "char": "j",
+      "block": "rocks:acacia_stick[variation=large]"
+    },
+    {
+      "char": "k",
+      "block": "create:polished_cut_scoria_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "l",
+      "block": "embellishcraft:rusty_door[half=lower,open=false,hinge=right,facing=east]"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:rusty_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "n",
+      "block": "create:polished_cut_scoria_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "o",
+      "block": "biomesoplenty:dead_button[facing=west,face=floor]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:water[level=3]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:water[level=2]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:water[level=1]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:water[level=0]"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:water[level=4]"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:water[level=5]"
+    },
+    {
+      "char": "w",
+      "block": "create:fluid_pipe[waterlogged=false,up=true,down=true]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:cauldron"
+    },
+    {
+      "char": "y",
+      "block": "biomesoplenty:dead_button[facing=south,face=floor]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:water[level=6]"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:water[level=7]"
+    },
+    {
+      "char": "C",
+      "block": "quark:polished_calcite"
+    },
+    {
+      "char": "D",
+      "block": "embellishcraft:dark_oak_fancy_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "E",
+      "block": "create:polished_cut_limestone"
+    },
+    {
+      "char": "F",
+      "block": "embellishcraft:rusty_door[half=upper,open=false,hinge=right,facing=east]"
+    },
+    {
+      "char": "I",
+      "block": "embellishcraft:rusty_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "J",
+      "block": "quark:dirty_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "K",
+      "block": "create:fluid_tank[shape=window,top=false]"
+    },
+    {
+      "char": "L",
+      "block": "create:fluid_pipe[waterlogged=false,up=false,down=false]"
+    },
+    {
+      "char": "M",
+      "block": "embellishcraft:dark_oak_fancy_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "N",
+      "block": "create:cut_limestone"
+    },
+    {
+      "char": "O",
+      "block": "create:fluid_pipe[waterlogged=false,up=false,down=true]"
+    },
+    {
+      "char": "P",
+      "block": "create:fluid_tank[shape=window,top=true]"
+    },
+    {
+      "char": "Q",
+      "block": "quark:polished_calcite_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "R",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "name": "multi_clubhouse1_7_base2_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:stripped_spruce_log[axis=y]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:dirt_path"
+    },
+    {
+      "char": "e",
+      "block": "embellishcraft:basalt_large_bricks"
+    },
+    {
+      "char": "f",
+      "block": "embellishcraft:smooth_andesite"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:magma_block"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:spruce_leaves[persistent=true]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:moss_carpet"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:dead_bush"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:large_fern[half=lower]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:azalea"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:flowering_azalea"
+    },
+    {
+      "char": "n",
+      "block": "quark:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:peony[half=lower]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:fern"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:large_fern[half=upper]"
+    },
+    {
+      "char": "r",
+      "block": "cfm:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:peony[half=upper]"
+    }
+  ]
+}

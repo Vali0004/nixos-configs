@@ -1,0 +1,8 @@
+[
+	{
+		"playerhelditem": "minecraft:flint_and_steel",
+		"block": "minecraft:obsidian",
+		"message": "There is no nether.",
+		"result": "deny"
+	}
+]

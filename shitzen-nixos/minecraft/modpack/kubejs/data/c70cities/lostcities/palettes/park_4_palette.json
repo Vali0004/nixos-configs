@@ -1,0 +1,45 @@
+{
+  "name": "park_4_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "quark:mossy_stone_brick_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "quark:stone_brick_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "quark:stone_brick_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:chiseled_stone_bricks"
+    },
+    {
+      "char": "e",
+      "block": "quark:mossy_stone_brick_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "quark:mossy_stone_brick_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "quark:stone_brick_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "quark:stone_brick_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "quark:mossy_stone_brick_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:acacia_sapling"
+    }
+  ]
+}

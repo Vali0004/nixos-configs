@@ -1,0 +1,135 @@
+{
+  "name": "multi_megatower1_7_floor8_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "quark:spruce_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "quark:spruce_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "quark:polished_calcite_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "biomesoplenty:stripped_dead_log[axis=x]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:spruce_button[facing=east,face=floor]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:crafting_table"
+    },
+    {
+      "char": "m",
+      "block": "another_furniture:spruce_chair[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "n",
+      "block": "another_furniture:spruce_table[waterlogged=false,facing=west,update=false]"
+    },
+    {
+      "char": "o",
+      "block": "another_furniture:spruce_drawer[open=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "q",
+      "block": "quark:spruce_bookshelf"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:crying_obsidian"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:obsidian"
+    },
+    {
+      "char": "t",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "u",
+      "block": "quark:dirty_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "cfm:stripped_spruce_blinds[waterlogged=false,open=true,facing=north]"
+    },
+    {
+      "char": "x",
+      "block": "another_furniture:spruce_shelf[type=left,waterlogged=false,facing=west]"
+    },
+    {
+      "char": "y",
+      "block": "another_furniture:spruce_shelf[type=right,waterlogged=false,facing=west]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:lantern[waterlogged=false,hanging=false]"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:spruce_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "C",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:brewing_stand"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:cave_vines"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    }
+  ]
+}

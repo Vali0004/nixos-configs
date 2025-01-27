@@ -1,0 +1,71 @@
+{
+  "armorSetName": "armors.royal_police.title",
+  "head": {
+    "itemKey": "apocalypsenow:royal_canada_police_officer_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:gasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:royal_canada_police_officer_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:royal_canada_police_officer_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:royal_canada_police_officer_boots"
+  },
+  "mainHand": {
+    "itemKey": "tac:m1911",
+    "mixAndMatch": [
+      "tac:glock_17",
+      "tac:sti2011",
+      "tac:m92fs",
+      "tac:deagle_357",
+      "tac:glock_18",
+      "tac:cz75",
+      "tac:cz75_auto",
+      "tac:mk23",
+      "tac:tti_g34",
+      "tac:timeless_50",
+      "tac:colt_python",
+      "tac:tec_9"
+    ]
+  },
+  "partialBonusRequiredAmount": 4,
+  "partialSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.movement_speed",
+      "value": 0.1,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "084ff975-31d8-40e6-bac3-8a10a1cdcea0",
+      "description": "armors.royal_police.description_movement",
+      "hideBonusDescription": false
+    }
+  ],
+  "fullSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "puffish_skills:player.ranged_damage",
+      "value": 0.3,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "3f57296c-92ba-11ee-b9d1-0242ac120002",
+      "description": "armors.royal_police.description_pistol",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.movement_speed",
+      "value": 0.1,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "37a3c45a-92ba-11ee-b9d1-0242ac120002",
+      "description": "armors.royal_police.description_movement",
+      "hideBonusDescription": false
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

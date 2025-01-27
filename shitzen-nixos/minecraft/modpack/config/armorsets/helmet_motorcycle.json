@@ -1,0 +1,26 @@
+{
+  "armorSetName": "armors.motorcyclist.title",
+  "head": {
+    "itemKey": "apocalypsenow:black_motorcycle_helmet_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:red_motorcycle_helmet_helmet"
+    ]
+  },
+  "fullSetBonuses": [
+    {
+      "type": "effect",
+      "name": "minecraft:nausea",
+      "interactionType": "immunity",
+      "description": "armors.nausea",
+      "onlyImmuneToNewEffects": true
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:blindness",
+      "interactionType": "immunity",
+      "description": "armors.blindness",
+      "onlyImmuneToNewEffects": true
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

@@ -1,0 +1,65 @@
+{
+  "name": "multi_megatower1_2_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stone_brick_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "car:line_side_long_left[facing=west]"
+    },
+    {
+      "char": "e",
+      "block": "car:line_side_long_left[facing=north]"
+    },
+    {
+      "char": "f",
+      "block": "car:line_side_long_left[facing=south]"
+    },
+    {
+      "char": "g",
+      "block": "car:line_side_long_left[facing=east]"
+    },
+    {
+      "char": "h",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "embellishcraft:basalt_button[facing=east,face=wall]"
+    },
+    {
+      "char": "j",
+      "block": "embellishcraft:basalt_button[facing=west,face=wall]"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:basalt_button[facing=south,face=wall]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:stone_button[facing=south,face=floor]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:stone_button[facing=east,face=floor]"
+    },
+    {
+      "char": "n",
+      "block": "embellishcraft:basalt_button[facing=north,face=wall]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:stone_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

@@ -2,24 +2,24 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "forge:is_plains"
+        "value": "plains"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": true,
-        "value": "minecraft:is_savanna"
+        "value": "savanna"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": true,
-        "value": "forge:is_hot/overworld"
+        "value": "hot"
       }
     ],
     [

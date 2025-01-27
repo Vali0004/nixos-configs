@@ -1,0 +1,201 @@
+{
+  "name": "multi_factory_1_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "immersiveengineering:sheetmetal_steel"
+    },
+    {
+      "char": "d",
+      "block": "immersiveengineering:heavy_engineering"
+    },
+    {
+      "char": "e",
+      "block": "quark:mossy_stone_brick_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate"
+    },
+    {
+      "char": "g",
+      "block": "immersiveengineering:slab_sheetmetal_steel[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "quark:mossy_stone_brick_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:water[level=0]"
+    },
+    {
+      "char": "j",
+      "block": "immersiveengineering:storage_steel"
+    },
+    {
+      "char": "k",
+      "block": "immersiveengineering:thermoelectric_generator"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:lava[level=0]"
+    },
+    {
+      "char": "m",
+      "block": "immersiveengineering:steel_scaffolding_standard[waterlogged=false]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:cauldron"
+    },
+    {
+      "char": "o",
+      "block": "clickmachine:auto_clicker[facing=north]",
+      "tag": {
+        "speed_index": 8,
+        "right_click": 1,
+        "inv": {
+          "Size": 1,
+          "Items": [
+            {
+              "Slot": 0,
+              "id": "immersiveengineering:hammer",
+              "Count": 1
+            }
+          ]
+        },
+        "id": "clickmachine:tile"
+      }
+    },
+    {
+      "char": "p",
+      "block": "quark:smooth_stone_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "q",
+      "block": "immersiveengineering:slab_cokebrick[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "s",
+      "block": "immersiveengineering:cokebrick"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:clay"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:blast_furnace[facing=north,lit=false]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:furnace[facing=north,lit=false]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:coal_block"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:tnt"
+    },
+    {
+      "char": "A",
+      "block": "immersiveengineering:light_engineering"
+    },
+    {
+      "char": "B",
+      "block": "immersiveengineering:blastbrick_reinforced"
+    },
+    {
+      "char": "C",
+      "block": "immersiveengineering:connector_mv[waterlogged=false,facing=down]"
+    },
+    {
+      "char": "D",
+      "block": "immersiveengineering:rs_engineering"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:repeating_command_block[facing=south,conditional=false]",
+      "tag": {
+        "conditionMet": 1,
+        "auto": 1,
+        "Command": "execute if block ~ ~1 ~-1 immersiveengineering:arc_furnace run fill ~ ~-1 ~ ~ ~ ~ air"
+      }
+    },
+    {
+      "char": "F",
+      "block": "createdeco:magenta_decal[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "I",
+      "block": "immersiveengineering:connector_mv[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "J",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "K",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "L",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate_stairs[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "M",
+      "block": "embellishcraft:gray_corrugated_metal_plate_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "N",
+      "block": "biomesoplenty:stripped_dead_log[axis=z]"
+    },
+    {
+      "char": "O",
+      "block": "immersiveengineering:connector_mv[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "P",
+      "block": "immersiveengineering:connector_mv[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "Q",
+      "block": "immersiveengineering:capacitor_mv"
+    },
+    {
+      "char": "R",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "S",
+      "block": "immersiveengineering:slab_steel_scaffolding_standard[type=top,waterlogged=false]"
+    },
+    {
+      "char": "T",
+      "block": "immersiveengineering:stairs_steel_scaffolding_standard[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "U",
+      "block": "embellishcraft:gray_corrugated_metal_plate"
+    },
+    {
+      "char": "V",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

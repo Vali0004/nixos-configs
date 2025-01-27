@@ -1,0 +1,90 @@
+{
+  "name": "multi_gallery_0_floor1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:oak_planks"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:smooth_basalt_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "d",
+      "block": "create:dark_oak_window_pane[waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:oak_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:soul_sand"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:redstone_lamp[lit=false]"
+    },
+    {
+      "char": "h",
+      "block": "quark:nether_wart_sack"
+    },
+    {
+      "char": "i",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:crimson_stem[axis=y]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:redstone_torch[lit=true]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:warped_stem[axis=y]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:creeper_head[rotation=12]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:polished_blackstone"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:wither_skeleton_skull[rotation=12]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:ancient_debris"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:soul_torch"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:oak_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "embellishcraft:smooth_marble_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "t",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

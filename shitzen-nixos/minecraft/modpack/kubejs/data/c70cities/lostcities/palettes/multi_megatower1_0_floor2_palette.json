@@ -1,0 +1,57 @@
+{
+  "name": "multi_megatower1_0_floor2_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "c",
+      "block": "quark:spruce_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "f",
+      "block": "quark:spruce_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "quark:calcite_bricks_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "quark:calcite_bricks_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "biomesoplenty:smooth_white_sandstone"
+    },
+    {
+      "char": "j",
+      "block": "biomesoplenty:smooth_white_sandstone_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "k",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    }
+  ]
+}

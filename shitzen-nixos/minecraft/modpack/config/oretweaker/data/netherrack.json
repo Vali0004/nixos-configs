@@ -1,0 +1,21 @@
+{
+  "oreConfig": [
+    {
+      "ore": "minecraft:netherrack",
+      "fillers": [
+        "STONE_ORE_REPLACEABLES"
+      ],
+      "distribution": "UNIFORM",
+      "minY": -40,
+      "maxY": 100,
+      "maxVeinSize": 18,
+      "spawnRate": 16.0,
+      "discardChanceOnAirExposure": 0.0,
+      "biomeFilters": {
+        "biomeBlacklist": [],
+        "biomeWhitelist": [ "biomesoplenty:volcanic_plains", "biomesoplenty:volcano" ]
+      },
+      "replace": true
+    }
+  ]
+}

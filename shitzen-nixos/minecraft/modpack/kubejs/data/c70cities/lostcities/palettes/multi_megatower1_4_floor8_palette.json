@@ -1,0 +1,215 @@
+{
+  "name": "multi_megatower1_4_floor8_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "quark:calcite_bricks"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "c",
+      "block": "create:display_link[facing=west]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "d",
+      "block": "create:redstone_contact[facing=north]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=west,shape=outer_right]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "k",
+      "block": "immersiveengineering:concrete_tile"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "m",
+      "block": "biomesoplenty:dead_leaves[persistent=true]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:cobblestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "biomesoplenty:stripped_dead_log[axis=x]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "q",
+      "block": "embellishcraft:gray_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "r",
+      "block": "quark:calcite_bricks_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "quark:iron_button[facing=south,face=wall]"
+    },
+    {
+      "char": "t",
+      "block": "create:framed_glass_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "u",
+      "block": "create:framed_glass_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "w",
+      "block": "quark:polished_calcite_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "cfm:stripped_spruce_blinds[waterlogged=false,open=true,facing=north]"
+    },
+    {
+      "char": "y",
+      "block": "quark:stripped_spruce_post[waterlogged=false,chain_down=false,chain_up=false,axis=y]"
+    },
+    {
+      "char": "A",
+      "block": "embellishcraft:spruce_wooden_crate"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:spruce_button[facing=west,face=floor]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:moss_carpet"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:crying_obsidian"
+    },
+    {
+      "char": "E",
+      "block": "quark:spruce_bookshelf"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:spruce_button[facing=east,face=floor]"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:oak_sapling"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:obsidian"
+    },
+    {
+      "char": "K",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "L",
+      "block": "minecraft:spruce_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "M",
+      "block": "quark:spruce_leaf_carpet"
+    },
+    {
+      "char": "N",
+      "block": "minecraft:enchanting_table"
+    },
+    {
+      "char": "O",
+      "block": "biomesoplenty:dead_button[facing=north,face=floor]"
+    },
+    {
+      "char": "P",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "Q",
+      "block": "quark:dirty_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "R",
+      "block": "create:framed_glass_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "S",
+      "block": "create:framed_glass_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "T",
+      "block": "minecraft:cave_vines"
+    },
+    {
+      "char": "U",
+      "block": "minecraft:spruce_leaves[persistent=true]"
+    },
+    {
+      "char": "V",
+      "block": "create:nixie_tube[waterlogged=false,double_face=ceiling,facing=east]",
+      "tag": {
+        "id": "create:nixie_tube"
+      }
+    },
+    {
+      "char": "W",
+      "block": "minecraft:cave_vines_plant"
+    },
+    {
+      "char": "X",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "Y",
+      "block": "cfm:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "Z",
+      "block": "minecraft:soul_lantern[waterlogged=false,hanging=true]"
+    },
+    {
+      "char": "0",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    },
+    {
+      "char": "1",
+      "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "2",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    }
+  ]
+}

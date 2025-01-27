@@ -1,0 +1,58 @@
+{
+  "name": "fountain_4_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "cfm:rock_path[waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:mossy_cobblestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:cobblestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "createbigcannons:traffic_cone[facing=up]"
+    },
+    {
+      "char": "g",
+      "block": "rocks:rock[variation=tiny]"
+    },
+    {
+      "char": "h",
+      "block": "rocks:rock[variation=small]"
+    },
+    {
+      "char": "i",
+      "block": "apocalypsenow:construction_barricade[facing=north]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:command_block[facing=west,conditional=false]",
+      "tag": {
+        "conditionMet": 1,
+        "auto": 1,
+        "Command": "spawnRandomCar"
+      }
+    },
+    {
+      "char": "k",
+      "block": "apocalypsenow:construction_barricade[facing=west]"
+    },
+    {
+      "char": "l",
+      "block": "rocks:rock[variation=medium]"
+    }
+  ]
+}

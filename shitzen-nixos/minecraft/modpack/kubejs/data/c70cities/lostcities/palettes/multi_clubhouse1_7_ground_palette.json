@@ -1,0 +1,81 @@
+{
+  "name": "multi_clubhouse1_7_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:smooth_andesite"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:dirt_path"
+    },
+    {
+      "char": "d",
+      "block": "quark:framed_glass"
+    },
+    {
+      "char": "e",
+      "block": "embellishcraft:basalt_large_bricks_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "embellishcraft:smooth_andesite_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:spruce_leaves[persistent=true]"
+    },
+    {
+      "char": "i",
+      "block": "cfm:spruce_park_bench[type=left,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "j",
+      "block": "cfm:spruce_park_bench[type=right,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:stripped_spruce_log[axis=y]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:spruce_sapling"
+    },
+    {
+      "char": "m",
+      "block": "cfm:spruce_park_bench[type=right,waterlogged=false,facing=west]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "q",
+      "block": "cfm:spruce_park_bench[type=left,waterlogged=false,facing=west]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:lantern[waterlogged=false,hanging=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:spruce_leaves[persistent=false]"
+    }
+  ]
+}

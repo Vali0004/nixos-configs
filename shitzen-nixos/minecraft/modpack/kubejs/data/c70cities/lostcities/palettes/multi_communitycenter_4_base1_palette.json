@@ -1,0 +1,42 @@
+{
+  "name": "multi_communitycenter_4_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "car:line_side_long_left[facing=south]"
+    },
+    {
+      "char": "b",
+      "block": "car:line_side_long_left[facing=east]"
+    },
+    {
+      "char": "c",
+      "block": "car:line_side_long_left[facing=west]"
+    },
+    {
+      "char": "d",
+      "block": "car:line_side_long_left[facing=north]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:command_block[facing=up,conditional=false]",
+      "tag": {
+        "conditionMet": 1,
+        "auto": 1,
+        "Command": "spawnRandomCar"
+      }
+    },
+    {
+      "char": "f",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:stone"
+    }
+  ]
+}

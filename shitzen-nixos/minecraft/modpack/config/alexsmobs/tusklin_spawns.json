@@ -9,19 +9,24 @@
     ],
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "forge:is_snowy"
+        "value": "snowy"
       },
       {
-        "type": "BIOME_TAG",
-        "negate": false,
-        "value": "forge:is_plains"
+        "type": "BIOME_DICT",
+        "negate": true,
+        "value": "forest"
+      },
+      {
+        "type": "BIOME_DICT",
+        "negate": true,
+        "value": "mountain"
       }
     ],
     [
@@ -36,13 +41,6 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:gravel_desert"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:snowblossom_grove"
       }
     ]
   ]

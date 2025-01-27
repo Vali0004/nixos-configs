@@ -1,0 +1,119 @@
+{
+  "name": "building_hotel2_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:gray_terracotta"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "d",
+      "block": "quark:spruce_ladder[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "e",
+      "block": "quark:iron_rod[facing=up]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:bricks"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "h",
+      "block": "immersiveengineering:slab_concrete[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "j",
+      "block": "immersiveengineering:concrete_quarter"
+    },
+    {
+      "char": "k",
+      "block": "pfm:white_fridge[open=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:furnace[facing=west,lit=false]"
+    },
+    {
+      "char": "m",
+      "block": "farmersdelight:spruce_cabinet[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "n",
+      "block": "pfm:gray_stove[open=false,facing=east,lit=false]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:cauldron"
+    },
+    {
+      "char": "p",
+      "block": "cfm:gray_kitchen_counter[type=default,facing=east]"
+    },
+    {
+      "char": "q",
+      "block": "quark:white_stool[waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "cfm:oak_hedge[waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:black_stained_glass"
+    },
+    {
+      "char": "t",
+      "block": "pfm:white_freezer[open=false,facing=west]"
+    },
+    {
+      "char": "u",
+      "block": "farmersdelight:cooking_pot[waterlogged=false,support=none,facing=east]"
+    },
+    {
+      "char": "w",
+      "block": "farmersdelight:stuffed_pumpkin_block[servings=4,facing=east]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:brewing_stand"
+    },
+    {
+      "char": "y",
+      "block": "embellishcraft:smooth_basalt_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "A",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "C",
+      "block": "simplylight:illuminant_block"
+    },
+    {
+      "char": "D",
+      "block": "simplylight:illuminant_block_on"
+    }
+  ]
+}

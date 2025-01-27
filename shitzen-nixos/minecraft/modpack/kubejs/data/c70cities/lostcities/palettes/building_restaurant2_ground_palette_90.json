@@ -1,0 +1,346 @@
+{
+  "name": "building_restaurant2_ground_palette_90",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:mossy_cobblestone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:polished_andesite"
+    },
+    {
+      "char": "d",
+      "block": "quark:bamboo_mat[facing=west]"
+    },
+    {
+      "char": "e",
+      "block": "quark:bamboo_mat[facing=south]"
+    },
+    {
+      "char": "f",
+      "block": "quark:bamboo_mat[facing=north]"
+    },
+    {
+      "char": "g",
+      "block": "quark:bamboo_mat[facing=east]"
+    },
+    {
+      "char": "h",
+      "block": "quark:birch_post[waterlogged=false,chain_down=false,chain_up=false,axis=y]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:smooth_quartz"
+    },
+    {
+      "char": "j",
+      "block": "another_furniture:oak_planter_box[type=right,attached=true,facing=west]"
+    },
+    {
+      "char": "k",
+      "block": "another_furniture:oak_planter_box[type=middle,attached=true,facing=west]"
+    },
+    {
+      "char": "l",
+      "block": "another_furniture:oak_planter_box[type=left,attached=true,facing=west]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:stripped_birch_log[axis=y]"
+    },
+    {
+      "char": "n",
+      "block": "farmersdelight:rice_bag"
+    },
+    {
+      "char": "o",
+      "block": "another_furniture:birch_shelf[type=left,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "p",
+      "block": "cfm:stripped_birch_chair[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "q",
+      "block": "another_furniture:birch_shelf[type=middle,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:birch_door[half=lower,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "s",
+      "block": "another_furniture:birch_shelf[type=right,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "cfm:stripped_birch_chair[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "u",
+      "block": "cfm:stripped_birch_kitchen_counter[type=right_corner_inverted,facing=east]"
+    },
+    {
+      "char": "w",
+      "block": "cfm:stripped_birch_kitchen_counter[type=default,facing=east]"
+    },
+    {
+      "char": "x",
+      "block": "another_furniture:birch_shutter[type=none,waterlogged=false,open=false,facing=east]"
+    },
+    {
+      "char": "y",
+      "block": "another_furniture:birch_shelf[type=right,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "A",
+      "block": "cfm:stripped_birch_kitchen_counter[type=default,facing=north]"
+    },
+    {
+      "char": "B",
+      "block": "cfm:cyan_kitchen_counter[type=default,facing=south]"
+    },
+    {
+      "char": "C",
+      "block": "cfm:cyan_kitchen_counter[type=default,facing=north]"
+    },
+    {
+      "char": "D",
+      "block": "another_furniture:birch_shelf[type=middle,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:birch_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "F",
+      "block": "farmersdelight:stove[facing=south,lit=false]"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:birch_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "J",
+      "block": "cfm:stripped_birch_kitchen_counter[type=left_corner_inverted,facing=west]"
+    },
+    {
+      "char": "K",
+      "block": "cfm:stripped_birch_kitchen_counter[type=default,facing=west]"
+    },
+    {
+      "char": "L",
+      "block": "another_furniture:birch_shutter[type=none,waterlogged=false,open=false,facing=west]"
+    },
+    {
+      "char": "M",
+      "block": "pfm:white_fridge[open=false,facing=north]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "N",
+      "block": "another_furniture:birch_shelf[type=left,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "O",
+      "block": "pfm:wall_toilet_paper[facing=north]"
+    },
+    {
+      "char": "P",
+      "block": "pfm:basic_sink[facing=east,level=0]"
+    },
+    {
+      "char": "Q",
+      "block": "pfm:basic_toilet[facing=east,toilet=empty]"
+    },
+    {
+      "char": "R",
+      "block": "another_furniture:oak_planter_box[type=left,attached=true,facing=east]"
+    },
+    {
+      "char": "S",
+      "block": "another_furniture:oak_planter_box[type=middle,attached=true,facing=east]"
+    },
+    {
+      "char": "T",
+      "block": "another_furniture:oak_planter_box[type=right,attached=true,facing=east]"
+    },
+    {
+      "char": "U",
+      "block": "cfm:birch_hedge[waterlogged=false]"
+    },
+    {
+      "char": "V",
+      "block": "create:birch_window_pane[waterlogged=false]"
+    },
+    {
+      "char": "W",
+      "block": "another_furniture:birch_shelf[type=left,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "X",
+      "block": "another_furniture:birch_shelf[type=right,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "Y",
+      "block": "quark:stripped_birch_post[waterlogged=false,chain_down=false,chain_up=false,axis=y]"
+    },
+    {
+      "char": "Z",
+      "block": "minecraft:birch_door[half=upper,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "0",
+      "block": "immersiveengineering:conveyor_basic[waterlogged=false,facing=north]",
+      "tag": {
+        "conveyorBeltSubtypeNBT": {
+          "cover": "create:vertical_framed_glass",
+          "direction": 0
+        }
+      }
+    },
+    {
+      "char": "1",
+      "block": "immersiveengineering:conveyor_basic[waterlogged=false,facing=east]",
+      "tag": {
+        "conveyorBeltSubtypeNBT": {
+          "cover": "create:vertical_framed_glass",
+          "direction": 0
+        }
+      }
+    },
+    {
+      "char": "2",
+      "block": "immersiveengineering:conveyor_basic[waterlogged=false,facing=west]",
+      "tag": {
+        "conveyorBeltSubtypeNBT": {
+          "cover": "create:vertical_framed_glass",
+          "direction": 0
+        }
+      }
+    },
+    {
+      "char": "3",
+      "block": "farmersdelight:rice_roll_medley_block[servings=8,facing=north]"
+    },
+    {
+      "char": "4",
+      "block": "minecraft:birch_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "5",
+      "block": "farmersdelight:cutting_board[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "6",
+      "block": "farmersdelight:cooking_pot[waterlogged=false,support=none,facing=south]"
+    },
+    {
+      "char": "7",
+      "block": "minecraft:birch_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "8",
+      "block": "farmersdelight:skillet[support=false,facing=north]"
+    },
+    {
+      "char": "9",
+      "block": "immersiveengineering:conveyor_basic[waterlogged=false,facing=south]",
+      "tag": {
+        "conveyorBeltSubtypeNBT": {
+          "cover": "create:vertical_framed_glass",
+          "direction": 0
+        }
+      }
+    },
+    {
+      "char": "@",
+      "block": "pfm:white_freezer[open=false,facing=north]"
+    },
+    {
+      "char": "#",
+      "block": "minecraft:stonecutter[facing=east]"
+    },
+    {
+      "char": "$",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "%",
+      "block": "another_furniture:birch_shelf[type=middle,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "^",
+      "block": "minecraft:birch_trapdoor[waterlogged=false,half=bottom,open=false,facing=south]"
+    },
+    {
+      "char": "&",
+      "block": "minecraft:birch_trapdoor[waterlogged=false,half=bottom,open=false,facing=north]"
+    },
+    {
+      "char": "*",
+      "block": "embellishcraft:dark_concrete_paving_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "(",
+      "block": "another_furniture:birch_shelf[type=right,waterlogged=false,facing=west]"
+    },
+    {
+      "char": ")",
+      "block": "another_furniture:birch_shelf[type=middle,waterlogged=false,facing=west]"
+    },
+    {
+      "char": "+",
+      "block": "another_furniture:birch_shelf[type=left,waterlogged=false,facing=west]"
+    },
+    {
+      "char": "-",
+      "block": "cfm:stripped_birch_upgraded_fence[waterlogged=false]"
+    },
+    {
+      "char": "[",
+      "block": "quark:paper_lantern_sakura"
+    },
+    {
+      "char": "]",
+      "block": "farmersdelight:birch_cabinet[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "{",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "}",
+      "block": "farmersdelight:birch_cabinet[open=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "\\",
+      "block": "embellishcraft:dark_concrete_paving_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "|",
+      "block": "minecraft:stripped_birch_log[axis=z]"
+    },
+    {
+      "char": "`",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": ":",
+      "block": "minecraft:quartz_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": ";",
+      "block": "minecraft:stripped_birch_log[axis=x]"
+    }
+  ]
+}

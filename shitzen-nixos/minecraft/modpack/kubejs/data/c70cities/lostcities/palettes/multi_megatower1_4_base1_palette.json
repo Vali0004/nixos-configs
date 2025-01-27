@@ -1,0 +1,124 @@
+{
+  "name": "multi_megatower1_4_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:stone_slab[type=double,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "create:display_link[facing=west]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "c",
+      "block": "create:redstone_contact[facing=north]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:observer[facing=south]"
+    },
+    {
+      "char": "g",
+      "block": "immersivepetroleum:asphalt_stair[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "h",
+      "block": "immersivepetroleum:asphalt_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "embellishcraft:yellow_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:observer[facing=north]"
+    },
+    {
+      "char": "k",
+      "block": "quark:stone_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "embellishcraft:gray_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "m",
+      "block": "car:line_side_long_left[facing=west]"
+    },
+    {
+      "char": "n",
+      "block": "car:line_side_long_left[facing=north]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:command_block[facing=north,conditional=false]",
+      "tag": {
+        "conditionMet": 1,
+        "auto": 1,
+        "Command": "spawnRandomCar"
+      }
+    },
+    {
+      "char": "p",
+      "block": "quark:stone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "q",
+      "block": "quark:iron_button[facing=south,face=wall]"
+    },
+    {
+      "char": "r",
+      "block": "embellishcraft:white_steel_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "s",
+      "block": "embellishcraft:white_steel_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "car:line_side_long_left[facing=south]"
+    },
+    {
+      "char": "u",
+      "block": "car:line_side_long_left[facing=east]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "embellishcraft:white_steel_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "y",
+      "block": "embellishcraft:white_steel_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "A",
+      "block": "create:nixie_tube[waterlogged=false,double_face=ceiling,facing=east]",
+      "tag": {
+        "id": "create:nixie_tube"
+      }
+    },
+    {
+      "char": "B",
+      "block": "simplylight:illuminant_block_on"
+    },
+    {
+      "char": "C",
+      "block": "embellishcraft:polished_basalt"
+    }
+  ]
+}

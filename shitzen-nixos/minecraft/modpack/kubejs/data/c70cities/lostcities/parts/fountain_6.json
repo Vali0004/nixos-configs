@@ -1,0 +1,26 @@
+{
+  "name": "fountain_6",
+  "refpalette": "c70cities:fountain_6_palette",
+  "xsize": 16,
+  "zsize": 16,
+  "slices": [
+    [
+      "                ",
+      "                ",
+      "     a          ",
+      "     b          ",
+      "    c           ",
+      "    de          ",
+      "    e           ",
+      "    f           ",
+      "   dge          ",
+      "    hi          ",
+      "   c ei         ",
+      "                ",
+      "     j          ",
+      "                ",
+      "                ",
+      "                "
+    ]
+  ]
+}

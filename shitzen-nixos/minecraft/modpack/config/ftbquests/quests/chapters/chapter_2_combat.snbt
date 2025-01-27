@@ -1,0 +1,1335 @@
+{
+	id: "2D96787FBE47226A"
+	group: "0CEF75605D0E77B3"
+	order_index: 3
+	filename: "chapter_2_combat"
+	title: "{quest.melee}"
+	icon: {
+		id: "apocalypsenow:fire_axe"
+		Count: 1b
+		tag: {
+			Damage: 0
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.melee.combat.title}"
+			icon: {
+				id: "minecraft:wooden_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: -11.0d
+			y: 6.0d
+			shape: "gear"
+			description: [
+				"{quest.melee.combat.description_1}"
+				""
+				"{quest.melee.combat.description_2}"
+				""
+				"{quest.melee.combat.description_3}"
+			]
+			dependencies: ["2B210294E5EEA1D9"]
+			dependency_requirement: "one_started"
+			size: 3.0d
+			progression_mode: "flexible"
+			id: "70C3799E5D5D54F3"
+			tasks: [{
+				id: "3FDD2BEC5C412BBF"
+				type: "checkmark"
+			}]
+			rewards: [
+				{
+					id: "40DE784894B4D44E"
+					type: "xp"
+					xp: 10
+				}
+				{
+					id: "029436080880C6AA"
+					type: "item"
+					item: {
+						id: "minecraft:wooden_sword"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+		}
+		{
+			title: "{quest.melee.vanilla.title}"
+			icon: {
+				id: "minecraft:stone_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: -3.0d
+			y: 5.25d
+			shape: "hexagon"
+			description: ["{quest.melee.vanilla.description_1}"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "60C5BD48DDED283C"
+			tasks: [{
+				id: "6E4EB99368E0BB3C"
+				type: "item"
+				item: {
+					id: "minecraft:stone_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "6E29540BCB14B35A"
+				type: "xp"
+				xp: 20
+			}]
+		}
+		{
+			title: "{quest.melee.damage_i.title}"
+			icon: {
+				id: "minecraft:iron_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: 0.0d
+			y: 3.5d
+			description: ["{quest.melee.damage_i.description_1}"]
+			dependencies: ["60C5BD48DDED283C"]
+			hide: false
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "4645CBD33799EB57"
+			tasks: [{
+				id: "467D2B33568CC88C"
+				type: "item"
+				item: {
+					id: "minecraft:iron_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "641D99EC06D424EB"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.fast_i.title}"
+			icon: {
+				id: "create_sa:zinc_sword"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: -6.0d
+			y: 7.5d
+			description: ["{quest.melee.fast_i.description_1}"]
+			dependencies: ["60C5BD48DDED283C"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "0274F6F88DBF231E"
+			tasks: [{
+				id: "0DDF354DB987CDF3"
+				type: "item"
+				item: {
+					id: "create_sa:zinc_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "7F3638C92ED983CB"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.fast_ii.title}"
+			x: 0.0d
+			y: 7.5d
+			description: ["{quest.melee.fast_ii.description_1}"]
+			dependencies: ["60C5BD48DDED283C"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "7DA391B0F34FDD4E"
+			tasks: [{
+				id: "36A8667CF0A521F5"
+				type: "item"
+				item: {
+					id: "create_sa:brass_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "1718C934A22443EE"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.fast_iii.title}"
+			x: -3.0d
+			y: 9.0d
+			description: ["{quest.melee.fast_iii.description_1}"]
+			dependencies: ["60C5BD48DDED283C"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "412B87EF9464A054"
+			tasks: [{
+				id: "72E25D85A53EBC18"
+				type: "item"
+				item: {
+					id: "create_sa:rose_quartz_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "7370BB1EA41F89DD"
+				type: "xp"
+				xp: 600
+			}]
+		}
+		{
+			title: "{quest.melee.damage_ii.title}"
+			icon: {
+				id: "immersiveengineering:sword_steel"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: -6.0d
+			y: 3.5d
+			description: ["{quest.melee.damage_ii.description_1}"]
+			dependencies: ["60C5BD48DDED283C"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "4BCF04D9AD600BCD"
+			tasks: [{
+				id: "4903EA5489586B5A"
+				type: "item"
+				item: {
+					id: "immersiveengineering:sword_steel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "63C24A41345200AF"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.damage_iii.title}"
+			x: -3.0d
+			y: 2.0d
+			description: ["{quest.melee.damage_iii.description_1}"]
+			dependencies: ["60C5BD48DDED283C"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "770487878F659649"
+			tasks: [{
+				id: "2D5F69E201954D8F"
+				type: "item"
+				item: {
+					id: "minecraft:netherite_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "6A617ED3FA54DA00"
+				type: "xp"
+				xp: 600
+			}]
+		}
+		{
+			title: "{quest.melee.swing_i.title}"
+			x: -20.0d
+			y: 5.0d
+			shape: "hexagon"
+			description: ["{quest.melee.swing_i.description_1}"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "000A365F13CD2A32"
+			tasks: [{
+				id: "4AFE41DE10BA53E0"
+				type: "item"
+				item: {
+					id: "apocalypsenow:baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "50EF92D14652404F"
+				type: "xp"
+				xp: 50
+			}]
+		}
+		{
+			title: "{quest.melee.swing_ii.title}"
+			x: -16.0d
+			y: 5.0d
+			description: ["{quest.melee.swing_ii.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "491B68D87E68D1E5"
+			tasks: [{
+				id: "68009AB2CB96221C"
+				type: "item"
+				item: {
+					id: "apocalypsenow:wrapped_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "168C12BB964BE66F"
+				type: "xp"
+				xp: 50
+			}]
+		}
+		{
+			title: "{quest.melee.swing_iii.title}"
+			x: -17.0d
+			y: 1.5d
+			description: ["{quest.melee.swing_iii.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "51B51525140B486E"
+			tasks: [{
+				id: "257A6534F2E83905"
+				type: "item"
+				item: {
+					id: "apocalypsenow:spiked_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "01DEF7AE693C8830"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.swing_iv.title}"
+			x: -23.0d
+			y: 1.5d
+			description: ["{quest.melee.swing_iv.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "2D7CD2189981BF49"
+			tasks: [{
+				id: "30ACB1FEAFA3C7E9"
+				type: "item"
+				item: {
+					id: "apocalypsenow:wired_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "695AD6CAF2163BDA"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.swing_v.title}"
+			x: -24.5d
+			y: 5.0d
+			description: ["{quest.melee.swing_v.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "55684319ED130E3F"
+			tasks: [{
+				id: "073F60CBBF12CC59"
+				type: "item"
+				item: {
+					id: "apocalypsenow:electrical_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "1591D6C9EACB5CBA"
+				type: "xp"
+				xp: 250
+			}]
+		}
+		{
+			title: "{quest.melee.swing_vi.title}"
+			x: -23.0d
+			y: 8.5d
+			description: ["{quest.melee.swing_vi.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "72CD21DED648E7DE"
+			tasks: [{
+				id: "229C6DC56629814E"
+				type: "item"
+				item: {
+					id: "apocalypsenow:saw_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "477A1D7D21E5D56B"
+				type: "xp"
+				xp: 300
+			}]
+		}
+		{
+			title: "{quest.melee.swing_vii.title}"
+			x: -20.0d
+			y: 9.5d
+			description: ["{quest.melee.swing_vii.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "697FFDAA9E4CC4F5"
+			tasks: [{
+				id: "01BCAA94F2A64717"
+				type: "item"
+				item: {
+					id: "apocalypsenow:iron_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "227AFDF6BAD4C73D"
+				type: "xp"
+				xp: 400
+			}]
+		}
+		{
+			title: "{quest.melee.swing_viii.title}"
+			x: -17.0d
+			y: 8.5d
+			description: ["{quest.melee.swing_viii.description_1}"]
+			dependencies: ["000A365F13CD2A32"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "7B6EC23BF9FEF28E"
+			tasks: [{
+				id: "3B1415B5F0892EEE"
+				type: "item"
+				item: {
+					id: "apocalypsenow:spiked_iron_baseball_bat"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "722556818E441138"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.carbon.title}"
+			x: -11.0d
+			y: -1.5d
+			shape: "gear"
+			description: ["{quest.melee.carbon.description_1}"]
+			dependencies: ["0C3BABE6431EA92C"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "1E2A7DC56202A285"
+			tasks: [{
+				id: "6C8F7A557B11E726"
+				type: "item"
+				item: "contenttweaker:high_carbon_steel_alloy"
+			}]
+			rewards: [{
+				id: "567B4ABB353984ED"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_iv.title}"
+			x: -8.0d
+			y: -1.5d
+			description: ["{quest.melee.tactical_iv.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "5B0FBDDEC6CEBA33"
+			tasks: [{
+				id: "0D930235988C820F"
+				type: "item"
+				item: {
+					id: "apocalypsenow:tactical_sword"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "11CBB6B7850626F4"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_i.title}"
+			x: -13.0d
+			y: -4.0d
+			description: ["{quest.melee.tactical_i.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "65BF2071855FE4D8"
+			tasks: [{
+				id: "30E247ACD0E1B40E"
+				type: "item"
+				item: {
+					id: "apocalypsenow:tactical_knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "7B6001D7764021D0"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_ii.title}"
+			x: -11.0d
+			y: -4.5d
+			description: ["{quest.melee.tactical_ii.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "3AB1DDCC77E89B8B"
+			tasks: [{
+				id: "12F6517EBAAD344C"
+				type: "item"
+				item: {
+					id: "apocalypsenow:electrical_tactical_mace"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "0C22306068CE0268"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_iii.title}"
+			x: -9.0d
+			y: -4.0d
+			description: ["{quest.melee.tactical_iii.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "7787E34C13E06E04"
+			tasks: [{
+				id: "54A5CDF8CCE9458E"
+				type: "item"
+				item: {
+					id: "apocalypsenow:tactical_machete"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "3ED6234F8E20B688"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_v.title}"
+			x: -9.0d
+			y: 1.0d
+			description: ["{quest.melee.tactical_v.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "70FCD71A34BB0C33"
+			tasks: [{
+				id: "37BB40250E26E44C"
+				type: "item"
+				item: {
+					id: "apocalypsenow:electrical_combat_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "3B84091B1476FF92"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_z.title}"
+			x: -14.0d
+			y: -1.5d
+			description: ["{quest.melee.tactical_z.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "4F45678D5A5BA81F"
+			tasks: [{
+				id: "79975981C0E29C67"
+				type: "item"
+				item: {
+					id: "apocalypsenow:katana"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "52877D6908E60994"
+				type: "xp"
+				xp: 1500
+			}]
+		}
+		{
+			title: "{quest.melee.tactical_vi.title}"
+			x: -13.0d
+			y: 1.0d
+			description: ["{quest.melee.tactical_vi.description_1}"]
+			dependencies: ["1E2A7DC56202A285"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "65D7C99260C01E31"
+			tasks: [{
+				id: "55749ED3C5DB5B0B"
+				type: "item"
+				item: {
+					id: "apocalypsenow:military_shovel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "7450DCED2C521369"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.melee.slasher_i.title}"
+			x: -11.0d
+			y: 19.5d
+			shape: "hexagon"
+			description: ["{quest.melee.slasher_i.description_1"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "469669EBA16B362B"
+			tasks: [{
+				id: "5BE9E8896D878067"
+				type: "item"
+				item: {
+					id: "apocalypsenow:knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "47A14AD5EC45518B"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_i.title}"
+			x: -20.0d
+			y: 14.0d
+			shape: "hexagon"
+			description: ["{quest.melee.chopper_i.description_1}"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "4F224A21616D1DA3"
+			tasks: [{
+				id: "3A3E20663634CE03"
+				type: "item"
+				item: {
+					id: "immersiveengineering:axe_steel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "6C98208D73AFEB84"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.slasher_ii.title}"
+			x: -7.5d
+			y: 19.5d
+			description: ["{quest.melee.slasher_ii.description_1}"]
+			dependencies: ["469669EBA16B362B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "226696B7A20FFE79"
+			tasks: [{
+				id: "408FD8823B68ACF1"
+				type: "item"
+				item: {
+					id: "apocalypsenow:combat_knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "6D7616980D8A79BA"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.slasher_iii.title}"
+			x: -8.0d
+			y: 21.5d
+			description: ["{quest.melee.slasher_iii.description_1}"]
+			dependencies: ["469669EBA16B362B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "0EC756A476AC26EE"
+			tasks: [{
+				id: "3414FC7F44339109"
+				type: "item"
+				item: {
+					id: "apocalypsenow:expedition_knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "3FDC2DE2DBA327DA"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.slasher_iv.title}"
+			x: -10.0d
+			y: 23.0d
+			description: ["{quest.melee.slasher_iv.description_1}"]
+			dependencies: ["469669EBA16B362B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "49164DD087289EAC"
+			tasks: [{
+				id: "7C79D21C01A7863D"
+				type: "item"
+				item: {
+					id: "apocalypsenow:switch_knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "51B74B1B6B175A02"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.poker_i.title}"
+			x: -14.5d
+			y: 19.5d
+			description: ["{quest.melee.poker_i.description_1}"]
+			dependencies: ["469669EBA16B362B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "6161124B4EAC740A"
+			tasks: [{
+				id: "4261A5EB4E8F9BD4"
+				type: "item"
+				item: {
+					id: "apocalypsenow:butterfly_knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "3CD8E0C2952B9A81"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.poker_ii.title}"
+			x: -14.0d
+			y: 21.5d
+			description: ["{quest.melee.poker_ii.description_1}"]
+			dependencies: ["469669EBA16B362B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "717B941C38B79563"
+			tasks: [{
+				id: "36BA6C1C65A82074"
+				type: "item"
+				item: {
+					id: "apocalypsenow:long_knife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "0BD0AB2BDDC27D14"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.poker_iii.title}"
+			x: -12.0d
+			y: 23.0d
+			description: ["{quest.melee.poker_iii.description_1}"]
+			dependencies: ["469669EBA16B362B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "6E5EBE1FAFECC77A"
+			tasks: [{
+				id: "5A978E54AF7C5931"
+				type: "item"
+				item: {
+					id: "apocalypsenow:stilettoknife"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "6752C749B1A08571"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.melee.psycho_i.title}"
+			x: -11.0d
+			y: 14.0d
+			shape: "hexagon"
+			description: ["{quest.melee.psycho_i.description_1}"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "4A16A8178FD93EEF"
+			tasks: [{
+				id: "1FB75BD679B74B92"
+				type: "item"
+				item: {
+					id: "apocalypsenow:machete"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "51ABCE66FFF1DF40"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_ii.title}"
+			x: -18.0d
+			y: 11.5d
+			description: ["{quest.melee.chopper_ii.description_1}"]
+			dependencies: ["4F224A21616D1DA3"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "0ECB77F4EDA40339"
+			tasks: [{
+				id: "79576EE454FED679"
+				type: "item"
+				item: {
+					id: "apocalypsenow:fire_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "4D82A41557ECA5E8"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_iii.title}"
+			x: -22.0d
+			y: 11.5d
+			description: ["{quest.melee.chopper_iii.description_1}"]
+			dependencies: ["4F224A21616D1DA3"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "05ACFDBBBEFD5425"
+			tasks: [{
+				id: "584A0B9F3F930336"
+				type: "item"
+				item: {
+					id: "apocalypsenow:construction_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "70DF4381CEE80A12"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_iv.title}"
+			x: -23.0d
+			y: 14.0d
+			description: ["{quest.melee.chopper_iv.description_1}"]
+			dependencies: ["4F224A21616D1DA3"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "2CFA63E0FE76815B"
+			tasks: [{
+				id: "5FDB3BC259B6BD2C"
+				type: "item"
+				item: {
+					id: "apocalypsenow:hand_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "5E554FA349B242DC"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_v.title}"
+			x: -22.0d
+			y: 16.5d
+			description: ["{quest.melee.chopper_v.description_1}"]
+			dependencies: ["4F224A21616D1DA3"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "73B3C151533A8C47"
+			tasks: [{
+				id: "5983F0901BAAF104"
+				type: "item"
+				item: {
+					id: "apocalypsenow:lumber_jack_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "5CFE320F9919F922"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_vi.title}"
+			x: -18.0d
+			y: 16.5d
+			description: ["{quest.melee.chopper_vi.description_1}"]
+			dependencies: ["4F224A21616D1DA3"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "706BD548404C0F81"
+			tasks: [{
+				id: "00F5A2001CFB61F9"
+				type: "item"
+				item: {
+					id: "apocalypsenow:gardening_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "5401A25A89699D3D"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.chopper_vii.title}"
+			x: -17.0d
+			y: 14.0d
+			description: ["{quest.melee.chopper_vii.description_1}"]
+			dependencies: ["4F224A21616D1DA3"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "1332A5E74AB888EE"
+			tasks: [{
+				id: "20B8E46C7A5563D0"
+				type: "item"
+				item: {
+					id: "apocalypsenow:ice_axe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "75E51A5DC0D7EA80"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.safe_i.title}"
+			x: -3.0d
+			y: 14.0d
+			shape: "hexagon"
+			description: ["{quest.melee.safe_i.description_1}"]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "551AF18E7B486D39"
+			tasks: [{
+				id: "604C96AB9188100D"
+				type: "item"
+				item: {
+					id: "apocalypsenow:knife_spear"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "4A0095568D03B69D"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.psycho_ii.title}"
+			x: -8.0d
+			y: 14.0d
+			description: ["{quest.melee.psycho_ii.description_1}"]
+			dependencies: ["4A16A8178FD93EEF"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "12BE3B4348269E37"
+			tasks: [{
+				id: "51B1B72BC8E49D5C"
+				type: "item"
+				item: {
+					id: "apocalypsenow:hawkbill_machete"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "76990AAA18D7604D"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.psycho_v.title}"
+			x: -11.0d
+			y: 17.0d
+			description: ["{quest.melee.psycho_v.description_1}"]
+			dependencies: ["4A16A8178FD93EEF"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "655EAC2897460FB3"
+			tasks: [{
+				id: "0FDA504CC9872D88"
+				type: "item"
+				item: {
+					id: "apocalypsenow:bowie_machete"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "35BF4010BE99FB37"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.psycho_iii.title}"
+			x: -11.0d
+			y: 11.0d
+			description: ["{quest.melee.psycho_iii.description_1}"]
+			dependencies: ["4A16A8178FD93EEF"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "15304D7A65F9C6B5"
+			tasks: [{
+				id: "5D962DAF9E39E5FD"
+				type: "item"
+				item: {
+					id: "apocalypsenow:heavy_machete"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "7E317927F52A40B3"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.melee.psycho_iv.title}"
+			x: -14.0d
+			y: 14.0d
+			description: ["{quest.melee.psycho_iv.description_1}"]
+			dependencies: ["4A16A8178FD93EEF"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "0F6CB1A164546BE4"
+			tasks: [{
+				id: "59AD7F3432FF6DEA"
+				type: "item"
+				item: {
+					id: "apocalypsenow:kukri_machete"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "4C23B7DC4671285F"
+				type: "xp"
+				xp: 400
+			}]
+		}
+		{
+			title: "{quest.melee.safe_ii.title}"
+			x: -0.5d
+			y: 11.5d
+			subtitle: "{quest.melee.safe_ii.subtitle}"
+			description: ["{quest.melee.safe_ii.description_1}"]
+			dependencies: ["551AF18E7B486D39"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "21A94DF2AE4651E0"
+			tasks: [{
+				id: "0AD2E141EF1A03B4"
+				type: "item"
+				item: {
+					id: "apocalypsenow:snow_shovel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "2421A54888E937CD"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.safe_v.title}"
+			x: -0.5d
+			y: 16.5d
+			subtitle: "{quest.melee.safe_v.subtitle}"
+			description: ["{quest.melee.safe_v.description_1}"]
+			dependencies: ["551AF18E7B486D39"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "6C62096F4A9690B6"
+			tasks: [{
+				id: "30CEC8FC6CA08EF8"
+				type: "item"
+				item: {
+					id: "apocalypsenow:construction_shovel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "2A549BB183920DE9"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.safe_iv.title}"
+			x: -5.5d
+			y: 16.5d
+			subtitle: "{quest.melee.safe_iv.subtitle}"
+			description: ["{quest.melee.safe_iv.description_1}"]
+			dependencies: ["551AF18E7B486D39"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "01B71D2E5BE45C3B"
+			tasks: [{
+				id: "0873D9D0D0B8BC86"
+				type: "item"
+				item: {
+					id: "apocalypsenow:garden_fork"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "5803F59CB7470475"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.melee.safe_iii.title}"
+			x: -5.5d
+			y: 11.5d
+			subtitle: "{quest.melee.safe_iii.subtitle}"
+			description: ["{quest.melee.safe_iii.description_1}"]
+			dependencies: ["551AF18E7B486D39"]
+			dependency_requirement: "one_started"
+			id: "18CFAA4B4B0E0D13"
+			tasks: [{
+				id: "215FBDB71A52653C"
+				type: "item"
+				item: {
+					id: "minecraft:netherite_shovel"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+			rewards: [{
+				id: "2268B8FAE131651A"
+				type: "xp"
+				xp: 100
+			}]
+		}
+	]
+	quest_links: [
+		{
+			linked_quest: "0C3BABE6431EA92C"
+			x: -11.0d
+			y: 0.5d
+			id: "6A70868DE4EC2A4D"
+		}
+		{
+			linked_quest: "2B210294E5EEA1D9"
+			x: -11.0d
+			y: 3.5d
+			id: "1A55BE88F0AB5AEA"
+		}
+	]
+}

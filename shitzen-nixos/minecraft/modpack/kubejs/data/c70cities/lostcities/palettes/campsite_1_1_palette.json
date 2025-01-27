@@ -1,0 +1,106 @@
+{
+  "name": "campsite_1_1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:dirt"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:sandstone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:campfire[waterlogged=false,facing=east,lit=true]"
+    },
+    {
+      "char": "d",
+      "block": "biomesoplenty:redwood_planks"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:dandelion"
+    },
+    {
+      "char": "f",
+      "block": "biomesoplenty:redwood_door[half=lower,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:white_carpet"
+    },
+    {
+      "char": "h",
+      "block": "biomesoplenty:redwood_trapdoor[waterlogged=false,half=bottom,open=true,facing=west]"
+    },
+    {
+      "char": "i",
+      "block": "biomesoplenty:redwood_door[half=lower,open=false,hinge=left,facing=west]"
+    },
+    {
+      "char": "j",
+      "block": "biomesoplenty:willow_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "k",
+      "block": "biomesoplenty:willow_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:birch_sapling"
+    },
+    {
+      "char": "m",
+      "block": "biomesoplenty:willow_planks"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:light_gray_carpet"
+    },
+    {
+      "char": "o",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "p",
+      "block": "biomesoplenty:willow_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:poppy"
+    },
+    {
+      "char": "r",
+      "block": "biomesoplenty:redwood_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "s",
+      "block": "biomesoplenty:redwood_door[half=upper,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "t",
+      "block": "biomesoplenty:redwood_door[half=upper,open=false,hinge=left,facing=west]"
+    },
+    {
+      "char": "u",
+      "block": "biomesoplenty:redwood_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "w",
+      "block": "biomesoplenty:willow_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "x",
+      "block": "biomesoplenty:willow_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "y",
+      "block": "biomesoplenty:willow_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "A",
+      "block": "biomesoplenty:willow_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    }
+  ]
+}

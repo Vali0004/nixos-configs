@@ -2,14 +2,19 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_jungle"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
+        "negate": false,
+        "value": "jungle"
+      },
+      {
+        "type": "BIOME_DICT",
         "negate": true,
-        "value": "forge:is_dense/overworld"
+        "value": "dense"
       }
     ],
     [
@@ -31,13 +36,6 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:skylands_summer"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:tropics"
       }
     ]
   ]

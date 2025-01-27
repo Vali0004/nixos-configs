@@ -1,0 +1,101 @@
+{
+  "name": "multi_megatower1_5_floor8_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "b",
+      "block": "immersiveengineering:concrete_tile"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "g",
+      "block": "quark:spruce_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "quark:spruce_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:spruce_leaves[persistent=true]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:obsidian"
+    },
+    {
+      "char": "l",
+      "block": "quark:spruce_bookshelf"
+    },
+    {
+      "char": "m",
+      "block": "quark:spruce_leaf_carpet"
+    },
+    {
+      "char": "n",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "quark:polished_calcite_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:crying_obsidian"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:spruce_button[facing=west,face=floor]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:spruce_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:spruce_button[facing=east,face=floor]"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:cave_vines"
+    },
+    {
+      "char": "u",
+      "block": "cfm:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:cave_vines_plant"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    }
+  ]
+}

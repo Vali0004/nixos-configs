@@ -1,0 +1,86 @@
+{
+  "name": "multi_residential2_0_floor1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "c",
+      "block": "create:cut_calcite"
+    },
+    {
+      "char": "d",
+      "block": "quark:paper_wall[waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "cfm:dark_oak_hedge[waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:heavy_weighted_pressure_plate"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:stone_button[facing=west,face=floor]"
+    },
+    {
+      "char": "h",
+      "block": "create:dark_oak_window_pane[waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:dark_oak_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:bricks"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:dark_oak_planks"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:white_steel_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=bottom,facing=east,shape=inner_left]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=bottom,facing=west,shape=inner_right]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:dark_oak_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "s",
+      "block": "farmersdelight:dark_oak_cabinet[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "t",
+      "block": "create:cuckoo_clock[facing=west]"
+    }
+  ]
+}

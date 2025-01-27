@@ -1,0 +1,309 @@
+{
+  "name": "multi_militarybase_4_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "create:layered_tuff"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "c",
+      "block": "buildersdelight:cobblestone_6"
+    },
+    {
+      "char": "d",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "e",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "f",
+      "block": "createdeco:andesite_support[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "g",
+      "block": "embellishcraft:andesite_button[facing=north,face=wall]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:polished_andesite_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:coal_block"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:polished_deepslate_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:andesite_button[facing=south,face=wall]"
+    },
+    {
+      "char": "l",
+      "block": "createdeco:zinc_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:steel_wall_ladder[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "n",
+      "block": "quark:lime_shingles"
+    },
+    {
+      "char": "o",
+      "block": "quark:green_shingles_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "p",
+      "block": "quark:green_shingles"
+    },
+    {
+      "char": "q",
+      "block": "create:andesite_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "r",
+      "block": "quark:green_shingles_stairs[waterlogged=false,half=top,facing=west,shape=outer_left]"
+    },
+    {
+      "char": "s",
+      "block": "simplylight:wall_lamp[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "t",
+      "block": "createdeco:locked_zinc_door[half=lower,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "u",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=south]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "w",
+      "block": "createdeco:zinc_trapdoor[waterlogged=false,half=bottom,open=true,facing=west]"
+    },
+    {
+      "char": "x",
+      "block": "create:brown_seat[waterlogged=false]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:blast_furnace[facing=west,lit=false]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:deepslate_redstone_ore[lit=false]"
+    },
+    {
+      "char": "B",
+      "block": "embellishcraft:grid_air_duct[facing=east]"
+    },
+    {
+      "char": "C",
+      "block": "embellishcraft:steel_rungs[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "D",
+      "block": "createdeco:locked_zinc_door[half=lower,open=false,hinge=left,facing=west]"
+    },
+    {
+      "char": "E",
+      "block": "create:gray_seat[waterlogged=false]"
+    },
+    {
+      "char": "F",
+      "block": "quark:green_shingles_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "I",
+      "block": "create:andesite_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "J",
+      "block": "quark:green_shingles_stairs[waterlogged=false,half=top,facing=west,shape=outer_right]"
+    },
+    {
+      "char": "K",
+      "block": "createdeco:zinc_trapdoor[waterlogged=false,half=bottom,open=true,facing=south]"
+    },
+    {
+      "char": "L",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "M",
+      "block": "quark:gray_shingles"
+    },
+    {
+      "char": "N",
+      "block": "quark:brown_shingles_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "O",
+      "block": "quark:brown_shingles"
+    },
+    {
+      "char": "P",
+      "block": "quark:gray_shingles_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "Q",
+      "block": "quark:gray_shingles_stairs[waterlogged=false,half=top,facing=west,shape=outer_left]"
+    },
+    {
+      "char": "R",
+      "block": "createdeco:locked_cast_iron_door[half=lower,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "S",
+      "block": "createdeco:locked_cast_iron_door[half=lower,open=false,hinge=left,facing=west]"
+    },
+    {
+      "char": "T",
+      "block": "quark:gray_shingles_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "U",
+      "block": "quark:brown_shingles_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "V",
+      "block": "quark:gray_shingles_stairs[waterlogged=false,half=top,facing=west,shape=outer_right]"
+    },
+    {
+      "char": "W",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=south]"
+    },
+    {
+      "char": "X",
+      "block": "createdeco:black_decal[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "Y",
+      "block": "createdeco:cast_iron_support[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "Z",
+      "block": "create:andesite_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "0",
+      "block": "quark:dirty_glass"
+    },
+    {
+      "char": "1",
+      "block": "createdeco:zinc_trapdoor[waterlogged=false,half=bottom,open=false,facing=north]"
+    },
+    {
+      "char": "2",
+      "block": "createdeco:locked_zinc_door[half=upper,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "3",
+      "block": "createdeco:zinc_sheet_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "4",
+      "block": "quark:lime_shingles_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "5",
+      "block": "createdeco:locked_zinc_door[half=upper,open=false,hinge=left,facing=west]"
+    },
+    {
+      "char": "6",
+      "block": "quark:green_shingles_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "7",
+      "block": "create:andesite_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "8",
+      "block": "createdeco:zinc_trapdoor[waterlogged=false,half=bottom,open=false,facing=south]"
+    },
+    {
+      "char": "9",
+      "block": "createdeco:black_decal[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "@",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=false,facing=north]"
+    },
+    {
+      "char": "#",
+      "block": "createdeco:locked_cast_iron_door[half=upper,open=false,hinge=right,facing=west]"
+    },
+    {
+      "char": "$",
+      "block": "createdeco:cast_iron_sheet_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "%",
+      "block": "quark:brown_shingles_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "^",
+      "block": "createdeco:locked_cast_iron_door[half=upper,open=false,hinge=left,facing=west]"
+    },
+    {
+      "char": "&",
+      "block": "quark:gray_shingles_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "*",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=false,facing=south]"
+    },
+    {
+      "char": "(",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=west]"
+    },
+    {
+      "char": ")",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "+",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "-",
+      "block": "create:gearbox[axis=y]",
+      "tag": {
+        "id": "create:gearbox"
+      }
+    },
+    {
+      "char": "[",
+      "block": "immersiveengineering:steel_fence[waterlogged=false]"
+    },
+    {
+      "char": "]",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=true,north=false]"
+    },
+    {
+      "char": "{",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=false,north=false]"
+    },
+    {
+      "char": "}",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=true,east=false,south=false,north=false]"
+    },
+    {
+      "char": "\\",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "|",
+      "block": "embellishcraft:basalt_button[facing=east,face=floor]"
+    }
+  ]
+}

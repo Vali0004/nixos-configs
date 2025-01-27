@@ -1,0 +1,58 @@
+{
+  "armorSetName": "armors.police.title",
+  "head": {
+    "itemKey": "apocalypsenow:police_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:gasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:police_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:police_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:police_boots"
+  },
+  "mainHand": {
+    "itemKey": "apocalypsenow:night_stick",
+    "mixAndMatch": [
+      "apocalypsenow:electric_baton"
+    ]
+  },
+  "partialBonusRequiredAmount": 4,
+  "partialSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 0.1,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "2706b496-bd4d-4deb-be91-25e576d5f20f",
+      "description": "armors.police.description_damage",
+      "hideBonusDescription": false
+    }
+  ],
+  "fullSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 1.5,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "4fca7493-3eb1-4549-b5c9-6bfbd3ab914a",
+      "description": "armors.police.description_damage_2",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:slowness",
+      "value": 0.0,
+      "interactionType": "attack",
+      "interactionDuration": 200.0,
+      "description": "armors.police.description_slowness"
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

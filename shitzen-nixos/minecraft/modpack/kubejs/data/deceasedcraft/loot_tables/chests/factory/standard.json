@@ -1,0 +1,353 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 1,
+        "max": 4
+      },
+      "bonus_rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "create:brass_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 6
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:ingot_aluminum",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:component_electronic",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:ingot_steel",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "immersiveengineering:electron_tube"
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 4
+      },
+      "bonus_rolls": {
+        "min": 1,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:plate_aluminum",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:plate_steel",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:component_iron",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:component_steel",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 2
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "contenttweaker:resistant_fabric",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.025
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 1,
+        "max": 3
+      },
+      "bonus_rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:stick_steel",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:stick_aluminum",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:stick_iron",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              },
+              "add": true
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "contenttweaker:resistant_fabric",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.025
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 2
+      },
+      "bonus_rolls": {
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "contenttweaker:mold_bullet_casing_nato556"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "contenttweaker:mold_bullet_casing_57x28"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "contenttweaker:mold_bullet_casing_58x42"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "contenttweaker:mold_bullet_casing_762x39"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "contenttweaker:mold_bullet_casing_762x54"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "contenttweaker:mold_bullet_casing_bullet68"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "contenttweaker:mold_bullet_casing_bullet308"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "contenttweaker:mold_bullet_casing_lapua338"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "contenttweaker:mold_bullet_casing_win3030"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "contenttweaker:mold_bullet_casing_50bmg"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": {
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "contenttweaker:high_carbon_steel_alloy",
+          "conditions": [
+            {
+              "condition": "minecraft:random_chance",
+              "chance": 0.03
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 1
+      },
+      "bonus_rolls": {
+        "min": 0,
+        "max": 1
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 10,
+          "name": "immersiveengineering:blueprint",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{blueprint:molds}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "immersiveengineering:blueprint",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{blueprint:bullet}"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 3,
+          "name": "immersiveengineering:blueprint",
+          "functions": [
+            {
+              "function": "minecraft:set_nbt",
+              "tag": "{blueprint:specialBullet}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

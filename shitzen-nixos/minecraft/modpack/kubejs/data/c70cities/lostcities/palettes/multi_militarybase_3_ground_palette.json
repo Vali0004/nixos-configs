@@ -1,0 +1,239 @@
+{
+  "name": "multi_militarybase_3_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "create:cut_tuff_bricks"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "d",
+      "block": "create:fluid_pipe[waterlogged=false,up=true,down=true]"
+    },
+    {
+      "char": "e",
+      "block": "embellishcraft:moist_paving"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "g",
+      "block": "create:layered_tuff"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:stone_pressure_plate"
+    },
+    {
+      "char": "i",
+      "block": "create:layered_limestone"
+    },
+    {
+      "char": "j",
+      "block": "createdeco:cast_iron_mesh_fence[waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "create:fluid_pipe[waterlogged=false,up=false,down=true]"
+    },
+    {
+      "char": "l",
+      "block": "create:fluid_tank[shape=window,top=false]"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:basalt_button[facing=south,face=floor]"
+    },
+    {
+      "char": "n",
+      "block": "embellishcraft:basalt_button[facing=west,face=floor]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:cauldron"
+    },
+    {
+      "char": "q",
+      "block": "embellishcraft:sturdy_steel_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "r",
+      "block": "quark:stone_brick_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:iron_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:iron_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "u",
+      "block": "embellishcraft:warning_rusty_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "w",
+      "block": "embellishcraft:warning_rusty_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:iron_bars[waterlogged=false]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:damaged_anvil[facing=south]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:furnace[facing=west,lit=false]"
+    },
+    {
+      "char": "B",
+      "block": "embellishcraft:basalt_button[facing=north,face=floor]"
+    },
+    {
+      "char": "C",
+      "block": "apocalypsenow:iron_locker[facing=north]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "D",
+      "block": "immersiveengineering:sheetmetal_steel"
+    },
+    {
+      "char": "E",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "F",
+      "block": "createdeco:andesite_support[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "I",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "J",
+      "block": "create:polished_cut_limestone"
+    },
+    {
+      "char": "K",
+      "block": "create:fluid_tank[shape=window,top=true]"
+    },
+    {
+      "char": "L",
+      "block": "quark:gray_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "M",
+      "block": "embellishcraft:sturdy_steel_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "N",
+      "block": "minecraft:iron_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "O",
+      "block": "minecraft:iron_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "P",
+      "block": "embellishcraft:warning_rusty_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "Q",
+      "block": "embellishcraft:warning_rusty_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "R",
+      "block": "minecraft:redstone_torch[lit=true]"
+    },
+    {
+      "char": "S",
+      "block": "minecraft:polished_deepslate_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "T",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=north]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "U",
+      "block": "minecraft:chain[waterlogged=false,axis=y]"
+    },
+    {
+      "char": "V",
+      "block": "immersiveengineering:slab_hempcrete[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "W",
+      "block": "apocalypsenow:wire_fence[waterlogged=false]"
+    },
+    {
+      "char": "X",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "Y",
+      "block": "create:polished_cut_limestone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "Z",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=south,face=floor]"
+    },
+    {
+      "char": "0",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "1",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "2",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "3",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "4",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=false,north=true]"
+    },
+    {
+      "char": "5",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=false,north=false]"
+    },
+    {
+      "char": "6",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "7",
+      "block": "createbigcannons:cannon_mount[facing=south]"
+    },
+    {
+      "char": "8",
+      "block": "minecraft:hopper[facing=down]"
+    },
+    {
+      "char": "9",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=south]"
+    }
+  ]
+}

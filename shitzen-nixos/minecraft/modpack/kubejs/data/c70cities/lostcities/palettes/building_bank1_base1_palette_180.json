@@ -1,0 +1,95 @@
+{
+  "name": "building_bank1_base1_palette_180",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:bookshelf"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:gray_stained_glass"
+    },
+    {
+      "char": "f",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:iron_block"
+    },
+    {
+      "char": "h",
+      "block": "another_furniture:oak_table[waterlogged=false,facing=north,update=true]"
+    },
+    {
+      "char": "i",
+      "block": "another_furniture:oak_table[waterlogged=false,facing=north,update=false]"
+    },
+    {
+      "char": "j",
+      "block": "embellishcraft:steel_wall_ladder[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "k",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=south]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "l",
+      "block": "cfm:andesite_cabinet[waterlogged=false,open=false,facing=south]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "m",
+      "block": "simplylight:illuminant_block"
+    },
+    {
+      "char": "n",
+      "block": "cfm:andesite_cabinet[waterlogged=false,open=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "o",
+      "block": "cfm:andesite_cabinet[waterlogged=false,open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:gold_block"
+    },
+    {
+      "char": "q",
+      "block": "apocalypsenow:money_block"
+    },
+    {
+      "char": "r",
+      "block": "cfm:andesite_cabinet[waterlogged=false,open=false,facing=north]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:quartz_block"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:chain[waterlogged=false,axis=y]"
+    },
+    {
+      "char": "u",
+      "block": "simplylight:illuminant_block_on"
+    }
+  ]
+}

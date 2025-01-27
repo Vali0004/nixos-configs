@@ -1,0 +1,137 @@
+{
+  "name": "multi_cafe_2_floor1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:basalt_large_bricks_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "b",
+      "block": "quark:spruce_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "create:dark_oak_window_pane[waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:smooth_quartz"
+    },
+    {
+      "char": "f",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "g",
+      "block": "cfm:gray_picket_fence[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:bricks"
+    },
+    {
+      "char": "j",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:vent_air_duct[facing=west]"
+    },
+    {
+      "char": "l",
+      "block": "simplylight:illuminant_panel[waterlogged=false,facing=down]"
+    },
+    {
+      "char": "m",
+      "block": "immersiveengineering:steel_scaffolding_standard[waterlogged=false]"
+    },
+    {
+      "char": "n",
+      "block": "quark:limestone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "quark:limestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "quark:limestone_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "t",
+      "block": "quark:limestone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:cauldron"
+    },
+    {
+      "char": "w",
+      "block": "quark:limestone_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:water_cauldron[level=3]"
+    },
+    {
+      "char": "y",
+      "block": "quark:limestone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "A",
+      "block": "quark:limestone_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "B",
+      "block": "embellishcraft:basalt_large_bricks_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "D",
+      "block": "embellishcraft:basalt_large_bricks"
+    },
+    {
+      "char": "E",
+      "block": "embellishcraft:basalt_large_bricks_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:quartz_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "I",
+      "block": "embellishcraft:basalt_large_bricks_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "J",
+      "block": "embellishcraft:smooth_basalt_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "K",
+      "block": "quark:black_framed_glass"
+    }
+  ]
+}

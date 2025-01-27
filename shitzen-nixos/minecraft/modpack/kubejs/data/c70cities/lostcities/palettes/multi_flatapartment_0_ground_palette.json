@@ -1,0 +1,82 @@
+{
+  "name": "multi_flatapartment_0_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "b",
+      "block": "cfm:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "car:line_side_long_left[facing=west]"
+    },
+    {
+      "char": "d",
+      "block": "car:line_side_long_left[facing=north]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:quartz_pillar[axis=y]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:stone_button[facing=north,face=floor]"
+    },
+    {
+      "char": "g",
+      "block": "car:line_side_long_left[facing=south]"
+    },
+    {
+      "char": "h",
+      "block": "car:line_side_long_left[facing=east]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:command_block[facing=up,conditional=false]",
+      "tag": {
+        "conditionMet": 1,
+        "auto": 1,
+        "Command": "spawnRandomCar"
+      }
+    },
+    {
+      "char": "j",
+      "block": "minecraft:stone_button[facing=east,face=floor]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:stone_button[facing=south,face=floor]"
+    },
+    {
+      "char": "l",
+      "block": "simplylight:lamp_post[waterlogged=false,position=bottom]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:smooth_quartz"
+    },
+    {
+      "char": "n",
+      "block": "simplylight:lamp_post[waterlogged=false,position=middle]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:smooth_quartz_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "simplylight:lamp_post[waterlogged=false,position=top]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:stone_brick_wall[waterlogged=false,up=true]"
+    }
+  ]
+}

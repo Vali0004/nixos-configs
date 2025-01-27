@@ -1,0 +1,63 @@
+{
+  "name": "multi_laboratory1_5_base1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:deepslate_bricks"
+    },
+    {
+      "char": "c",
+      "block": "create:layered_calcite"
+    },
+    {
+      "char": "d",
+      "block": "buildersdelight:chain_4[waterlogged=false,axis=y]"
+    },
+    {
+      "char": "e",
+      "block": "create:redstone_contact[facing=north]"
+    },
+    {
+      "char": "f",
+      "block": "create:display_link[facing=east]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "g",
+      "block": "minecraft:cracked_stone_bricks"
+    },
+    {
+      "char": "h",
+      "block": "create:display_link[facing=north]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "i",
+      "block": "create:polished_cut_calcite"
+    },
+    {
+      "char": "j",
+      "block": "embellishcraft:gray_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:polished_andesite"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "m",
+      "block": "immersiveposts:postbase[waterlogged=false]"
+    }
+  ]
+}

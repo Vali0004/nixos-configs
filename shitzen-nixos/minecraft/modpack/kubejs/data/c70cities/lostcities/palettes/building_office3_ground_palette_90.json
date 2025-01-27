@@ -1,0 +1,82 @@
+{
+  "name": "building_office3_ground_palette_90",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:gray_stained_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:quartz_block"
+    },
+    {
+      "char": "e",
+      "block": "embellishcraft:smooth_basalt_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "another_furniture:black_stool[waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:stone_brick_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "i",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=south]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "j",
+      "block": "quark:spruce_ladder[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:dark_oak_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:dark_oak_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "m",
+      "block": "cfm:oak_hedge[waterlogged=false]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:dark_oak_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:dark_oak_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:gray_stained_glass"
+    },
+    {
+      "char": "q",
+      "block": "immersiveengineering:concrete_three_quarter"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:quartz_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:stone_brick_wall[waterlogged=false,up=false]"
+    }
+  ]
+}

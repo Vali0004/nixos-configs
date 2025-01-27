@@ -1,0 +1,44 @@
+{
+  "name": "park_3",
+  "refpalette": "c70cities:park_3_palette",
+  "xsize": 16,
+  "zsize": 16,
+  "slices": [
+    [
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "    aaabbaaa    ",
+      "    aaaaaaaa    ",
+      "    accaacca    ",
+      "    acdaadca    ",
+      "    aabccbaa    ",
+      "    bacddcab    ",
+      "    baddddab    ",
+      "    aacaacaa    ",
+      "                ",
+      "                ",
+      "                ",
+      "                "
+    ],
+    [
+      "                ",
+      "                ",
+      "                ",
+      "                ",
+      "      ee        ",
+      "         e      ",
+      "                ",
+      "           e    ",
+      "    e           ",
+      "    e      e    ",
+      "                ",
+      "           e    ",
+      "                ",
+      "                ",
+      "                ",
+      "                "
+    ]
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "building_restaurant2_floor1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "e",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=west,face=wall]"
+    },
+    {
+      "char": "f",
+      "block": "embellishcraft:vent_air_duct[facing=west]"
+    }
+  ]
+}

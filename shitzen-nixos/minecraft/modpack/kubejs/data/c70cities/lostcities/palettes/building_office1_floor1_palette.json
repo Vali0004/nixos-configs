@@ -1,0 +1,165 @@
+{
+  "name": "building_office1_floor1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:smooth_slate"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:black_stained_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "embellishcraft:smooth_marble_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "g",
+      "block": "quark:spruce_ladder[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:gray_stained_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "pfm:andesite_chair[facing=north]"
+    },
+    {
+      "char": "j",
+      "block": "pfm:andesite_chair[facing=west]"
+    },
+    {
+      "char": "k",
+      "block": "quark:iron_rod[facing=up]"
+    },
+    {
+      "char": "l",
+      "block": "pfm:stripped_spruce_chair[facing=east]"
+    },
+    {
+      "char": "m",
+      "block": "pfm:andesite_chair[facing=south]"
+    },
+    {
+      "char": "n",
+      "block": "cfm:cyan_kitchen_drawer[open=false,facing=south]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:dark_oak_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:dark_oak_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "q",
+      "block": "quark:dark_oak_hedge[waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:dark_oak_door[half=lower,open=false,hinge=left,facing=east]"
+    },
+    {
+      "char": "s",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "t",
+      "block": "embellishcraft:smooth_slate_stairs[waterlogged=false,half=bottom,facing=north,shape=inner_right]"
+    },
+    {
+      "char": "u",
+      "block": "embellishcraft:smooth_slate_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:bookshelf"
+    },
+    {
+      "char": "x",
+      "block": "embellishcraft:smooth_slate_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "A",
+      "block": "cfm:cyan_kitchen_drawer[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "B",
+      "block": "embellishcraft:smooth_slate_stairs[waterlogged=false,half=bottom,facing=south,shape=inner_left]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "D",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "E",
+      "block": "immersiveengineering:concrete_quarter"
+    },
+    {
+      "char": "F",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=north]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:dark_oak_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:dark_oak_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "K",
+      "block": "minecraft:dark_oak_door[half=upper,open=false,hinge=left,facing=east]"
+    },
+    {
+      "char": "L",
+      "block": "minecraft:potted_bamboo"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:heavy_weighted_pressure_plate"
+    },
+    {
+      "char": "N",
+      "block": "quark:iron_button[facing=west,face=floor]"
+    },
+    {
+      "char": "O",
+      "block": "minecraft:flower_pot"
+    },
+    {
+      "char": "P",
+      "block": "minecraft:quartz_block"
+    },
+    {
+      "char": "Q",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

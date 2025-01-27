@@ -1,0 +1,363 @@
+{
+	id: "7CA77626171BE5D2"
+	group: "0D77BDD69DA6720E"
+	order_index: 1
+	filename: "cars"
+	title: "{quest.cars}"
+	icon: "car:white_suv_body"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.cars.assembly.title}"
+			x: -5.0d
+			y: -1.0d
+			shape: "hexagon"
+			subtitle: "{quest.cars.assembly.subtitle}"
+			description: [
+				"{quest.cars.assembly.description_1}"
+				""
+				"{quest.cars.assembly.description_2}"
+				""
+				"{quest.cars.assembly.description_3}"
+			]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "34579F76CCA57E28"
+			tasks: [
+				{
+					id: "4936596565A3830F"
+					type: "item"
+					item: "car:car_workshop"
+				}
+				{
+					id: "05A2AA553552F380"
+					type: "item"
+					item: "car:car_workshop_outter"
+				}
+			]
+			rewards: [{
+				id: "3AEB82C851D82898"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.cars.wheels.title}"
+			x: -3.5d
+			y: -3.5d
+			shape: "square"
+			subtitle: "{quest.cars.wheels.subtitle}"
+			description: ["{quest.cars.wheels.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "512599E86E1C0E09"
+			tasks: [{
+				id: "47CAC1C0AA5F97E9"
+				type: "item"
+				title: "Any #car:wheels"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "car:wheels"
+					}
+				}
+			}]
+			rewards: [{
+				id: "59604E52ACC966B5"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.cars.body.title}"
+			x: -4.5d
+			y: -3.5d
+			shape: "square"
+			subtitle: "{quest.cars.body.subtitle}"
+			description: ["{quest.cars.body.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "52E2309F288FA996"
+			tasks: [{
+				id: "457E5A52BC00409C"
+				type: "item"
+				title: "Any #car:body"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "car:body"
+					}
+				}
+			}]
+			rewards: [{
+				id: "18424DB96FDDE299"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.cars.engine.title}"
+			x: -5.5d
+			y: -3.5d
+			shape: "square"
+			subtitle: "{quest.cars.engine.subtitle}"
+			description: ["{quest.cars.engine.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "3C0E6165BB6398C4"
+			tasks: [{
+				id: "7DC5869011FAB211"
+				type: "item"
+				title: "Any #car:engine"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "car:engine"
+					}
+				}
+			}]
+			rewards: [{
+				id: "6408D897A2F0CCE6"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.cars.tank.title}"
+			x: -6.5d
+			y: -3.5d
+			shape: "square"
+			description: ["{quest.cars.tank.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "5FC4DA1C403740C3"
+			tasks: [{
+				id: "472677C136D9B9FB"
+				type: "item"
+				title: "Any #car:tank"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "car:tank"
+					}
+				}
+			}]
+			rewards: [{
+				id: "12875D9AC6528F7F"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.cars.container.title}"
+			x: -6.0d
+			y: 1.5d
+			shape: "circle"
+			subtitle: "{quest.cars.container.subtitle}"
+			description: ["{quest.cars.container.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "380CFD7E81994878"
+			tasks: [{
+				id: "1EF9241E71BF19A7"
+				type: "item"
+				title: "Any #car:container"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "car:container"
+					}
+				}
+			}]
+			rewards: [{
+				id: "7BEFD3BC8E9C799E"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+		{
+			title: "{quest.cars.licenseholder.title}"
+			x: -5.0d
+			y: 1.5d
+			shape: "circle"
+			subtitle: "{quest.cars.licenseholder.subtitle}"
+			description: ["{quest.cars.licenseholder.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "733EF96DD7F8F482"
+			tasks: [{
+				id: "27B41FA9D7314C0F"
+				type: "item"
+				title: "Any #car:license_plate_holder"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "car:license_plate_holder"
+					}
+				}
+			}]
+			rewards: [{
+				id: "60FAD73550B49759"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+		{
+			title: "{quest.cars.repairtools.title}"
+			x: -2.5d
+			y: -1.0d
+			shape: "hexagon"
+			subtitle: "{quest.cars.repairtools.subtitle}"
+			description: [
+				"{quest.cars.repairtools.description_1}"
+				""
+				"{quest.cars.repairtools.description_2}"
+			]
+			dependencies: ["34579F76CCA57E28"]
+			size: 1.5d
+			id: "3B15B083E9970644"
+			tasks: [
+				{
+					id: "0BEEB25915ECD931"
+					type: "item"
+					item: {
+						id: "car:wrench"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "38D695768E1EEA67"
+					type: "item"
+					item: {
+						id: "car:screw_driver"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+				{
+					id: "623EA28274F3C86B"
+					type: "item"
+					item: {
+						id: "car:hammer"
+						Count: 1b
+						tag: {
+							Damage: 0
+						}
+					}
+				}
+			]
+			rewards: [{
+				id: "26839302500EF852"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+		{
+			title: "{quest.cars.repairkit.title}"
+			x: -1.0d
+			y: -1.0d
+			subtitle: "{quest.cars.repairkit.subtitle}"
+			description: ["{quest.cars.repairkit.description_1}"]
+			dependencies: ["3B15B083E9970644"]
+			id: "484CEB6D616A13AD"
+			tasks: [{
+				id: "2DB03A036FF20B67"
+				type: "item"
+				item: "car:repair_kit"
+			}]
+			rewards: [{
+				id: "3E1FDA282F35F590"
+				type: "item"
+				item: "car:repair_kit"
+			}]
+		}
+		{
+			title: "{quest.cars.keys.title}"
+			x: -4.0d
+			y: 1.5d
+			subtitle: "{quest.cars.keys.subtitle}"
+			description: ["{quest.cars.keys.description_1}"]
+			dependencies: ["34579F76CCA57E28"]
+			id: "73F4E964C96DE9C1"
+			tasks: [{
+				id: "46F18849D0774885"
+				type: "item"
+				item: "car:key"
+			}]
+			rewards: [{
+				id: "3CA3718C482BFD88"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+		{
+			title: "{quest.cars.gasstation.title}"
+			x: -7.5d
+			y: -1.0d
+			shape: "hexagon"
+			subtitle: "{quest.cars.gasstation.subtitle}"
+			description: [
+				"{quest.cars.gasstation.description_1}"
+				""
+				"{quest.cars.gasstation.description_2}"
+			]
+			dependencies: ["34579F76CCA57E28"]
+			size: 1.5d
+			id: "3AFFE12959976885"
+			tasks: [{
+				id: "654EDFE91D1E4065"
+				type: "item"
+				item: "car:gas_station"
+			}]
+			rewards: [{
+				id: "3A8FC02B6C8095AE"
+				type: "item"
+				item: "immersiveengineering:biodiesel_bucket"
+			}]
+		}
+		{
+			title: "{quest.cars.license.title}"
+			x: -5.0d
+			y: 2.5d
+			subtitle: "{quest.cars.license.subtitle}"
+			description: ["{quest.cars.license.description_1}"]
+			dependencies: ["733EF96DD7F8F482"]
+			id: "78AC78D5F665A79B"
+			tasks: [{
+				id: "2F345E02AF8D9AD8"
+				type: "item"
+				item: "car:license_plate"
+			}]
+			rewards: [{
+				id: "4192F826FD7EF260"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+	]
+	quest_links: [ ]
+}

@@ -1,0 +1,57 @@
+{
+  "name": "building_office3_top_palette_180",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:smooth_marble_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:iron_trapdoor[waterlogged=false,half=top,open=false,facing=west]"
+    },
+    {
+      "char": "e",
+      "block": "immersiveengineering:concrete_three_quarter"
+    },
+    {
+      "char": "f",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "g",
+      "block": "embellishcraft:smooth_slate"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:quartz_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:smooth_slate_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "l",
+      "block": "quark:iron_rod[facing=up]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:redstone_torch[lit=true]"
+    }
+  ]
+}

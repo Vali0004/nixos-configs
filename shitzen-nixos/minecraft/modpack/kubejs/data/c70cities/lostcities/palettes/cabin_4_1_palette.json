@@ -1,0 +1,147 @@
+{
+  "name": "cabin_4_1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:dirt"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:dirt_path"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:stripped_spruce_log[axis=y]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "cfm:oak_hedge[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "embellishcraft:smooth_marble_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "i",
+      "block": "cfm:freezer_light[open=false,facing=east]"
+    },
+    {
+      "char": "j",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "k",
+      "block": "create:dark_oak_window_pane[waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "cfm:brown_kitchen_counter[type=default,facing=east]"
+    },
+    {
+      "char": "m",
+      "block": "cfm:oak_park_bench[type=left,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "n",
+      "block": "cfm:brown_kitchen_sink[facing=east]"
+    },
+    {
+      "char": "o",
+      "block": "cfm:oak_park_bench[type=right,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "p",
+      "block": "cfm:brown_kitchen_drawer[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:spruce_sapling"
+    },
+    {
+      "char": "r",
+      "block": "cfm:brown_kitchen_counter[type=default,facing=south]"
+    },
+    {
+      "char": "s",
+      "block": "cfm:brown_kitchen_counter[type=left_corner,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "embellishcraft:white_couch[waterlogged=false,facing=north,shape=straight]"
+    },
+    {
+      "char": "u",
+      "block": "cfm:stripped_oak_table[waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "embellishcraft:white_couch[waterlogged=false,facing=east,shape=straight]"
+    },
+    {
+      "char": "x",
+      "block": "embellishcraft:smooth_marble_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "y",
+      "block": "cfm:fridge_light[open=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "A",
+      "block": "ag_day_counter:calendar[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:lantern[waterlogged=false,hanging=false]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:quartz_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=east,shape=outer_left]"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:spruce_stairs[waterlogged=false,half=bottom,facing=west,shape=outer_right]"
+    },
+    {
+      "char": "K",
+      "block": "minecraft:spruce_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "L",
+      "block": "minecraft:farmland"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:stone_brick_stairs[waterlogged=true,half=bottom,facing=south,shape=straight]"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "armorSetName": "armors.fire_fighter.title",
+  "head": {
+    "itemKey": "apocalypsenow:fire_figther_helmet"
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:fire_figther_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:fire_figther_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:fire_figther_boots"
+  },
+  "mainHand": {
+    "itemKey": "apocalypsenow:fire_axe",
+    "mixAndMatch": [
+      "apocalypsenow:wooden_fire_axe",
+      "apocalypsenow:emergency_axe"
+    ]
+  },
+  "partialBonusRequiredAmount": 4,
+  "partialSetBonuses": [
+    {
+      "type": "effect",
+      "name": "minecraft:fire_resistance",
+      "value": 0.0,
+      "interactionType": "self",
+      "interactionDuration": 100.0,
+      "description": "armors.fire_fighter.description_fire",
+      "hideBonusDescription": false
+    }
+  ],
+  "fullSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 1.5,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "203074d0-c4ed-41ea-9954-1b588a17aadf",
+      "description": "armors.fire_fighter.description_damage",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:fire_resistance",
+      "value": 0.0,
+      "interactionType": "self",
+      "interactionDuration": 100.0,
+      "description": "armors.fire_fighter.description_fire",
+      "hideBonusDescription": false
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

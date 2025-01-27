@@ -1,0 +1,26 @@
+{
+	"type": "tac:workbench",
+	"materials": [
+		{
+			"item": {
+				"tag": "forge:plates/aluminum"
+			},
+		  "count": 6
+		},
+		{
+			"item": {
+				"tag": "forge:plates/plastic"
+			},
+		  "count": 5
+		},
+		{
+		  "item": {
+				"tag": "forge:glass_panes/colorless"
+			},
+		  "count": 3
+		}
+	],
+	"result": {
+		"item": "tac:vortex_uh_1"
+	}
+}

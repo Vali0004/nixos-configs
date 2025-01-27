@@ -1,0 +1,217 @@
+{
+  "name": "building_apartment1_ground_palette_180",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_quartz"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:smooth_quartz_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "d",
+      "block": "create:vertical_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "another_furniture:light_gray_sofa[type=left,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "f",
+      "block": "another_furniture:light_gray_sofa[type=right,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:bookshelf"
+    },
+    {
+      "char": "h",
+      "block": "pfm:basic_toilet[facing=south,toilet=empty]"
+    },
+    {
+      "char": "i",
+      "block": "pfm:basic_sink[facing=south,level=0]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:dark_oak_trapdoor[waterlogged=false,half=bottom,open=true,facing=south]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:dark_oak_trapdoor[waterlogged=false,half=bottom,open=true,facing=east]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:green_wool"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:dark_oak_trapdoor[waterlogged=false,half=bottom,open=true,facing=west]"
+    },
+    {
+      "char": "n",
+      "block": "another_furniture:light_gray_sofa[type=single,waterlogged=false,facing=east]"
+    },
+    {
+      "char": "o",
+      "block": "embellishcraft:oak_plain_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "p",
+      "block": "quark:oak_hedge[waterlogged=false]"
+    },
+    {
+      "char": "q",
+      "block": "embellishcraft:smooth_marble_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "r",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:dark_oak_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "t",
+      "block": "create:framed_glass_door[half=lower,open=false,hinge=right,facing=east]"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:stone_pressure_plate"
+    },
+    {
+      "char": "w",
+      "block": "simplylight:illuminant_block"
+    },
+    {
+      "char": "x",
+      "block": "create:framed_glass_door[half=lower,open=false,hinge=left,facing=east]"
+    },
+    {
+      "char": "y",
+      "block": "another_furniture:light_gray_sofa[type=right,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "A",
+      "block": "another_furniture:light_gray_sofa[type=left,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:iron_door[half=lower,open=false,hinge=right,facing=east]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:iron_door[half=lower,open=false,hinge=left,facing=east]"
+    },
+    {
+      "char": "F",
+      "block": "embellishcraft:smooth_marble_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:smooth_quartz_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:birch_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "K",
+      "block": "embellishcraft:smooth_marble_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "L",
+      "block": "embellishcraft:oak_plain_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "M",
+      "block": "create:framed_glass_door[half=upper,open=false,hinge=right,facing=east]"
+    },
+    {
+      "char": "N",
+      "block": "create:framed_glass_door[half=upper,open=false,hinge=left,facing=east]"
+    },
+    {
+      "char": "O",
+      "block": "minecraft:iron_door[half=upper,open=false,hinge=right,facing=east]"
+    },
+    {
+      "char": "P",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "Q",
+      "block": "another_furniture:service_bell[waterlogged=false]"
+    },
+    {
+      "char": "R",
+      "block": "minecraft:iron_door[half=upper,open=false,hinge=left,facing=east]"
+    },
+    {
+      "char": "S",
+      "block": "embellishcraft:smooth_marble_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "T",
+      "block": "minecraft:smooth_quartz_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "U",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=bottom,open=true,facing=east]"
+    },
+    {
+      "char": "V",
+      "block": "minecraft:smooth_quartz_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "W",
+      "block": "embellishcraft:smooth_marble_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "X",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "Y",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "Z",
+      "block": "embellishcraft:smooth_marble_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "0",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "1",
+      "block": "minecraft:quartz_block"
+    },
+    {
+      "char": "2",
+      "block": "minecraft:chain[waterlogged=false,axis=y]"
+    },
+    {
+      "char": "3",
+      "block": "simplylight:illuminant_block_on"
+    },
+    {
+      "char": "4",
+      "block": "embellishcraft:smooth_marble_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    }
+  ]
+}

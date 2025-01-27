@@ -1,0 +1,121 @@
+{
+  "name": "villager_1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:dirt"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:dirt_path"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:grass"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:white_tulip"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:pink_tulip"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:stone_brick_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "simplylight:illuminant_slab[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:mossy_cobblestone"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:cobblestone_stairs[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:cobblestone_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:cobblestone_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "n",
+      "block": "simplylight:wall_lamp[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:mossy_cobblestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:mossy_cobblestone_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:cobblestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "quark:mossy_cobblestone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "quark:cobblestone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "t",
+      "block": "quark:stone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "u",
+      "block": "quark:mossy_cobblestone_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "quark:mossy_cobblestone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:stone_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "y",
+      "block": "quark:stone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "A",
+      "block": "quark:cobblestone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "B",
+      "block": "quark:stone_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "C",
+      "block": "quark:cobblestone_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:polished_andesite_stairs[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:stone_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

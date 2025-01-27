@@ -1,0 +1,309 @@
+{
+  "style": "c70cities:deadzone_style",
+  "inherit": "citystyle_config",
+  "streetblocks": {
+    "border": "v",
+    "wall": "_",
+    "street": "H",
+    "streetbase": "z",
+    "streetvariant": "="
+  },
+  "parkblocks": {
+    "elevation": "z",
+    "grass": "z"
+  },
+  "corridorblocks": {
+    "roof": " ",
+    "glass": " "
+  },
+  "railblocks": {
+    "railmain": " "
+  },
+  "sphereblocks": {
+    "glass": " ",
+    "border": " ",
+    "inner": " "
+  },
+  "selectors": {
+    "buildings": [
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse1"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse1_90"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse1_180"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse1_270"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse2"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse2_90"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse2_180"
+      },
+      {
+        "factor": 0.0375,
+        "value": "c70cities:building_warehouse2_270"
+      },
+      {
+        "factor": 0.05,
+        "value": "c70cities:building_factory1"
+      },
+      {
+        "factor": 0.05,
+        "value": "c70cities:building_factory1_90"
+      },
+      {
+        "factor": 0.05,
+        "value": "c70cities:building_factory1_180"
+      },
+      {
+        "factor": 0.05,
+        "value": "c70cities:building_factory1_270"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_factory2"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_factory2_90"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_factory2_180"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_factory2_270"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_carfactory1"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_carfactory1_90"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_carfactory1_180"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_carfactory1_270"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_lab1"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_lab1_90"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_lab1_180"
+      },
+      {
+        "factor": 0.0125,
+        "value": "c70cities:building_lab1_270"
+      },
+      {
+        "factor": 0.00625,
+        "value": "c70cities:building_bunker1"
+      },
+      {
+        "factor": 0.00625,
+        "value": "c70cities:building_bunker1_90"
+      },
+      {
+        "factor": 0.00625,
+        "value": "c70cities:building_bunker1_180"
+      },
+      {
+        "factor": 0.00625,
+        "value": "c70cities:building_bunker1_270"
+      }
+    ],
+    "multibuildings": [
+      {
+        "factor": 0.2,
+        "value": "c70cities:multi_warehouse"
+      },
+      {
+        "factor": 0.4,
+        "value": "c70cities:multi_factory"
+      },
+      {
+        "factor": 0.3,
+        "value": "c70cities:multi_pumpjack"
+      },
+      {
+        "factor": 0.3,
+        "value": "c70cities:multi_derrick"
+      },
+      {
+        "factor": 0.4,
+        "value": "c70cities:multi_militarybase"
+      },
+      {
+        "factor": 0.3,
+        "value": "c70cities:multi_militarycamp1"
+      },
+      {
+        "factor": 1.1,
+        "value": "c70cities:multi_laboratory1"
+      }
+    ],
+    "bridges": [
+      {
+        "factor": 1.0,
+        "value": "c70cities:bridge_deadzone_1"
+      }
+    ],
+    "fronts": [
+      {
+        "factor": 1.0,
+        "value": "c70cities:front_deadzone_1"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:front_deadzone_2"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:front_deadzone_3"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:front_deadzone_4"
+      }
+    ],
+    "stairs": [
+      {
+        "factor": 1.0,
+        "value": "c70cities:stair_deadzone_1"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:stair_deadzone_2"
+      }
+    ],
+    "fountains": [
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_1"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_2"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_3"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_4"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_5"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_6"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_7"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:fountain_deadzone_8"
+      },
+      {
+        "factor": 0.2,
+        "value": "c70cities:fountain_deadzone_9"
+      }
+    ],
+    "parks": [
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_1"
+      },
+      {
+        "factor": 0.3,
+        "value": "c70cities:park_deadzone_2"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_3"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_4"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_5"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_6"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_7"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_8"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_9"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_10"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_11"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_12"
+      },
+      {
+        "factor": 1.0,
+        "value": "c70cities:park_deadzone_13"
+      },
+      {
+        "factor": 0.5,
+        "value": "c70cities:park_deadzone_14"
+      }
+    ],
+    "raildungeons": [
+      {
+        "factor": 1.0,
+        "value": "rail_dungeon1"
+      }
+    ]
+  }
+}

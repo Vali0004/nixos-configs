@@ -1,0 +1,105 @@
+{
+  "name": "multi_megatower1_3_floor8_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "quark:spruce_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "quark:spruce_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "h",
+      "block": "quark:calcite_bricks"
+    },
+    {
+      "char": "i",
+      "block": "create:framed_glass"
+    },
+    {
+      "char": "j",
+      "block": "quark:calcite_bricks_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "another_furniture:birch_planter_box[type=right,attached=false,facing=north]"
+    },
+    {
+      "char": "l",
+      "block": "another_furniture:birch_planter_box[type=middle,attached=false,facing=north]"
+    },
+    {
+      "char": "m",
+      "block": "another_furniture:birch_planter_box[type=left,attached=false,facing=north]"
+    },
+    {
+      "char": "n",
+      "block": "quark:polished_calcite_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:cobblestone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "q",
+      "block": "biomesoplenty:dead_leaves[persistent=true]"
+    },
+    {
+      "char": "r",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "s",
+      "block": "biomesoplenty:dead_sapling"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "u",
+      "block": "biomesoplenty:dead_button[facing=north,face=floor]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:spruce_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

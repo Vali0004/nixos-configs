@@ -1,0 +1,121 @@
+{
+  "armorSetName": "armors.swat_riot.title",
+  "head": {
+    "itemKey": "apocalypsenow:swatriotcontrol_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:pbf_hamstergasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:swatriotcontrol_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:swatriotcontrol_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:swatriotcontrol_boots"
+  },
+  "mainHand": {
+    "itemKey": "apocalypsenow:tactical_knife",
+    "mixAndMatch": [
+      "apocalypsenow:tactical_machete",
+      "apocalypsenow:tatical_mace",
+      "apocalypsenow:tactical_sword",
+      "apocalypsenow:electrical_tactical_mace",
+      "apocalypsenow:katana",
+      "apocalypsenow:military_shovel",
+      "apocalypsenow:combat_axe",
+      "apocalypsenow:electrical_combat_axe",
+      "apocalypsenow:kukri_machete",
+      "apocalypsenow:electric_baton"
+    ]
+  },
+  "partialBonusRequiredAmount": 4,
+  "partialSetBonuses": [
+    {
+      "type": "effect",
+      "name": "minecraft:resistance",
+      "value": 2.0,
+      "interactionType": "self",
+      "interactionDuration": 300,
+      "description": "armors.swat_riot.description_reduction",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_speed",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 2,
+      "modifierUUID": "a014ca12-937c-11ee-b9d1-0242ac120002",
+      "description": "armors.swat_riot.description_as",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.movement_speed",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "a57f888e-937c-11ee-b9d1-0242ac120002",
+      "description": "armors.swat_riot.description_movement",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:weakness",
+      "interactionType": "immunity",
+      "description": "armors.swat_riot.description_weakness",
+      "onlyImmuneToNewEffects": true
+    }
+  ],
+  "fullSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 0.5,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "a95283a8-937c-11ee-b9d1-0242ac120002",
+      "description": "armors.swat_riot.description_damage",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:resistance",
+      "value": 2.0,
+      "interactionType": "self",
+      "interactionDuration": 300,
+      "description": "armors.swat_riot.description_reduction",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_speed",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 2,
+      "modifierUUID": "bcc8e1e8-937c-11ee-b9d1-0242ac120002",
+      "description": "armors.swat_riot.description_as",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.movement_speed",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "ad807dc2-937c-11ee-b9d1-0242ac120002",
+      "description": "armors.swat_riot.description_movement",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:weakness",
+      "interactionType": "immunity",
+      "description": "armors.swat_riot.description_weakness",
+      "onlyImmuneToNewEffects": true
+    }
+  ],
+  "hideGeneratedTooltip": false
+}

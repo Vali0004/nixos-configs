@@ -1,0 +1,149 @@
+{
+  "name": "multi_warehouse_1_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:polished_andesite"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:bricks"
+    },
+    {
+      "char": "f",
+      "block": "immersiveengineering:blastbrick_reinforced"
+    },
+    {
+      "char": "g",
+      "block": "biomesoplenty:dead_planks"
+    },
+    {
+      "char": "h",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "j",
+      "block": "quark:smooth_stone_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:brick_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "m",
+      "block": "immersiveengineering:alloybrick"
+    },
+    {
+      "char": "n",
+      "block": "biomesoplenty:fir_planks"
+    },
+    {
+      "char": "o",
+      "block": "create:mechanical_arm",
+      "tag": {
+        "id": "create:mechanical_arm"
+      }
+    },
+    {
+      "char": "p",
+      "block": "minecraft:nether_bricks"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:nether_brick_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "embellishcraft:rusty_wall_ladder[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "s",
+      "block": "create:vertical_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:quartz_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "u",
+      "block": "quark:iron_rod[facing=up]"
+    },
+    {
+      "char": "w",
+      "block": "create:framed_glass_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "x",
+      "block": "create:framed_glass_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:dead_bush"
+    },
+    {
+      "char": "A",
+      "block": "quark:smooth_stone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:dark_oak_trapdoor[waterlogged=false,half=bottom,open=false,facing=north]"
+    },
+    {
+      "char": "C",
+      "block": "create:framed_glass_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "D",
+      "block": "create:framed_glass_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "E",
+      "block": "biomesoplenty:stripped_dead_log[axis=x]"
+    },
+    {
+      "char": "F",
+      "block": "embellishcraft:smooth_larvikite_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "I",
+      "block": "biomesoplenty:stripped_dead_log[axis=z]"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:chain[waterlogged=false,axis=y]"
+    },
+    {
+      "char": "K",
+      "block": "simplylight:illuminant_panel[waterlogged=false,facing=down]"
+    },
+    {
+      "char": "L",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

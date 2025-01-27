@@ -1,0 +1,192 @@
+{
+  "name": "multi_militarybase_1_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "buildersdelight:industrial_1[facing=north]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:piston[facing=up]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "d",
+      "block": "buildersdelight:industrial_1[facing=south]"
+    },
+    {
+      "char": "e",
+      "block": "create:layered_tuff"
+    },
+    {
+      "char": "f",
+      "block": "create:cut_tuff_bricks"
+    },
+    {
+      "char": "g",
+      "block": "embellishcraft:moist_paving"
+    },
+    {
+      "char": "h",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "i",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:stone_pressure_plate"
+    },
+    {
+      "char": "k",
+      "block": "create:layered_limestone"
+    },
+    {
+      "char": "l",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "m",
+      "block": "pfm:smooth_stone_kitchen_counter[facing=north]"
+    },
+    {
+      "char": "n",
+      "block": "pfm:mesh_trashcan[facing=north]"
+    },
+    {
+      "char": "o",
+      "block": "pfm:andesite_chair[facing=east]"
+    },
+    {
+      "char": "p",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "q",
+      "block": "createdeco:andesite_support[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "r",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=east]"
+    },
+    {
+      "char": "s",
+      "block": "embellishcraft:sturdy_steel_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "t",
+      "block": "embellishcraft:rusty_wall_ladder[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:iron_bars[waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=true,west=false,east=false,south=false,north=false]"
+    },
+    {
+      "char": "x",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "y",
+      "block": "immersiveengineering:sheetmetal_steel"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:crafting_table"
+    },
+    {
+      "char": "B",
+      "block": "create:polished_cut_limestone"
+    },
+    {
+      "char": "C",
+      "block": "quark:gray_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "D",
+      "block": "zombie_extreme:radio_installation[facing=east]"
+    },
+    {
+      "char": "E",
+      "block": "create:analog_lever[facing=north,face=floor]"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:redstone_torch[lit=true]"
+    },
+    {
+      "char": "I",
+      "block": "embellishcraft:sturdy_steel_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "J",
+      "block": "immersiveengineering:slab_hempcrete[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "K",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "L",
+      "block": "create:polished_cut_limestone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "N",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "O",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=true,south=false,north=false]"
+    },
+    {
+      "char": "P",
+      "block": "minecraft:lever[facing=west,face=wall]"
+    },
+    {
+      "char": "Q",
+      "block": "createbigcannons:cannon_mount[facing=east]"
+    },
+    {
+      "char": "R",
+      "block": "minecraft:hopper[facing=north]"
+    },
+    {
+      "char": "S",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "T",
+      "block": "immersiveengineering:steel_fence[waterlogged=false]"
+    },
+    {
+      "char": "U",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=false,north=false]"
+    },
+    {
+      "char": "V",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=false,north=true]"
+    },
+    {
+      "char": "W",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "X",
+      "block": "create:gearbox[axis=y]",
+      "tag": {
+        "id": "create:gearbox"
+      }
+    }
+  ]
+}

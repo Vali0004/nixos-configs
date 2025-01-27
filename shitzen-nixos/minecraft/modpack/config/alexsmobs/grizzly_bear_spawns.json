@@ -2,31 +2,31 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_overworld"
+        "value": "overworld"
       },
       {
-        "type": "BIOME_TAG",
+        "type": "BIOME_CATEGORY",
         "negate": false,
-        "value": "minecraft:is_forest"
+        "value": "forest"
+      }
+    ],
+    [
+      {
+        "type": "BIOME_DICT",
+        "negate": false,
+        "value": "overworld"
+      },
+      {
+        "type": "BIOME_DICT",
+        "negate": false,
+        "value": "forest"
       },
       {
         "type": "REGISTRY_NAME",
         "negate": true,
         "value": "minecraft:sparse_jungle"
-      }
-    ],
-    [
-      {
-        "type": "BIOME_TAG",
-        "negate": false,
-        "value": "minecraft:is_overworld"
-      },
-      {
-        "type": "BIOME_TAG",
-        "negate": false,
-        "value": "minecraft:is_taiga"
       }
     ],
     [
@@ -188,27 +188,6 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:skylands_autumn"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:redwood_forest"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "minecraft:cherry_grove"
-      }
-    ],
-    [
-      {
-        "type": "REGISTRY_NAME",
-        "negate": false,
-        "value": "biomesoplenty:snowblossom_grove"
       }
     ]
   ]

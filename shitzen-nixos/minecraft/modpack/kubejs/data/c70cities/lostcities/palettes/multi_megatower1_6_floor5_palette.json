@@ -1,0 +1,93 @@
+{
+  "name": "multi_megatower1_6_floor5_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "quark:spruce_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "f",
+      "block": "quark:spruce_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "quark:polished_calcite_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "i",
+      "block": "create:polished_cut_dripstone_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "j",
+      "block": "quark:polished_calcite_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "embellishcraft:light_gray_couch[waterlogged=false,facing=east,shape=straight]"
+    },
+    {
+      "char": "l",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=bottom,open=true,facing=north]"
+    },
+    {
+      "char": "m",
+      "block": "quark:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "n",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=bottom,open=true,facing=east]"
+    },
+    {
+      "char": "o",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=top,open=true,facing=north]"
+    },
+    {
+      "char": "p",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=top,open=true,facing=east]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "embellishcraft:polished_basalt_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    },
+    {
+      "char": "t",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    },
+    {
+      "char": "w",
+      "block": "minecraft:chain[waterlogged=false,axis=y]"
+    }
+  ]
+}

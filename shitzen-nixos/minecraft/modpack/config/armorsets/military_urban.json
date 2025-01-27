@@ -1,0 +1,101 @@
+{
+  "armorSetName": "armors.military_urban.title",
+  "head": {
+    "itemKey": "apocalypsenow:military_urban_helmet",
+    "mixAndMatch": [
+      "apocalypsenow:pbf_hamstergasmask_helmet",
+      "apocalypsenow:pkm_4gasmask_helmet"
+    ]
+  },
+  "chest": {
+    "itemKey": "apocalypsenow:military_urban_chestplate"
+  },
+  "legs": {
+    "itemKey": "apocalypsenow:military_urban_leggings"
+  },
+  "boots": {
+    "itemKey": "apocalypsenow:military_urban_boots"
+  },
+  "mainHand": {
+    "itemKey": "tac:m24",
+    "mixAndMatch": [
+      "tac:m82a2",
+      "tac:ai_awp",
+      "tac:scar_mk20",
+      "tac:mrad"
+    ]
+  },
+  "partialBonusRequiredAmount": 4,
+  "partialSetBonuses": [
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.attack_damage",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "8e956211-b9cc-4e23-8c06-60a34e429cde",
+      "description": "armors.military_urban.description_damage",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "minecraft:generic.movement_speed",
+      "value": 0.15,
+      "interactionType": "self",
+      "attributeOperation": 1,
+      "modifierUUID": "8b1d17a1-eaca-4a65-8eda-4fef98fb6927",
+      "description": "armors.military_urban.description_movement",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "attribute",
+      "name": "forge:step_height_addition",
+      "value": 0.5,
+      "interactionType": "self",
+      "attributeOperation": 0,
+      "modifierUUID": "d5940a2d-ee1e-421d-9c3c-a4b7bda9cae1",
+      "description": "armors.military_urban.description_height",
+      "hideBonusDescription": false
+    },
+    {
+      "type": "effect",
+      "name": "minecraft:weakness",
+      "interactionType": "immunity",
+      "description": "armors.military_urban.description_weakness",
+      "onlyImmuneToNewEffects": true
+    }
+  ],
+  "fullSetBonuses": [
+      {
+        "type": "attribute",
+        "name": "puffish_skills:player.ranged_damage",
+        "value": 0.15,
+        "interactionType": "self",
+        "attributeOperation": 1,
+        "modifierUUID": "8d9f62a4-92b7-11ee-b9d1-0242ac120002",
+        "description": "armors.military_urban.description_sniper",
+        "hideBonusDescription": false
+      },
+      {
+        "type": "attribute",
+        "name": "minecraft:generic.movement_speed",
+        "value": 0.15,
+        "interactionType": "self",
+        "attributeOperation": 1,
+        "modifierUUID": "1b295580-92b8-11ee-b9d1-0242ac120002",
+        "description": "armors.military_urban.description_movement",
+        "hideBonusDescription": false
+      },
+      {
+        "type": "attribute",
+        "name": "forge:step_height_addition",
+        "value": 0.5,
+        "interactionType": "self",
+        "attributeOperation": 0,
+        "modifierUUID": "1b295774-92b8-11ee-b9d1-0242ac120002",
+        "description": "armors.military_urban.description_height",
+        "hideBonusDescription": false
+      }
+  ],
+  "hideGeneratedTooltip": false
+}

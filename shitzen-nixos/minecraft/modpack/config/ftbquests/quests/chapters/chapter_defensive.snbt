@@ -1,0 +1,1424 @@
+{
+	id: "18CA27881FB0F378"
+	group: "0CEF75605D0E77B3"
+	order_index: 2
+	filename: "chapter_defensive"
+	title: "{quest.armor}"
+	icon: {
+		id: "minecraft:leather_chestplate"
+		Count: 1b
+		tag: {
+			Damage: 0
+		}
+	}
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "{quest.armor.tiers.title}"
+			icon: "minecraft:leather"
+			x: -5.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "{quest.armor.tiers.subtitle}"
+			description: [
+				"{quest.armor.tiers.description_1}"
+				"{quest.armor.tiers.description_2}"
+				""
+				"{quest.armor.tiers.description_3}"
+			]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "7E0E20220482A0AD"
+			tasks: [{
+				id: "28B5E0EC062DB05C"
+				type: "checkmark"
+				title: "Protection"
+			}]
+			rewards: [{
+				id: "32BD3BD21F70AAE9"
+				type: "xp"
+				xp: 10
+			}]
+		}
+		{
+			title: "{quest.armor.t1_leather.title}"
+			x: 3.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "{quest.armor.t1_leather.subtitle}"
+			description: [
+				"{quest.armor.t1_leather.description_1}"
+				""
+				"{quest.armor.t1_leather.description_2}"
+				"{quest.armor.t1_leather.description_3}"
+			]
+			dependencies: ["7E0E20220482A0AD"]
+			dependency_requirement: "one_started"
+			size: 1.5d
+			progression_mode: "flexible"
+			id: "531210392B89F597"
+			tasks: [{
+				id: "4C4779C9B6565126"
+				type: "item"
+				title: "Any #armorset:leather"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:leather"
+					}
+				}
+			}]
+			rewards: [{
+				id: "2FBB8B99977A3805"
+				type: "xp"
+				xp: 50
+			}]
+		}
+		{
+			title: "{quest.armor.t2_chainmail.title}"
+			x: 11.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "{quest.armor.t2_chainmail.subtitle}"
+			description: [
+				"{quest.armor.t2_chainmail.description_1}"
+				""
+				"{quest.armor.t2_chainmail.description_2}"
+				"{quest.armor.t2_chainmail.description_3}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			size: 1.5d
+			progression_mode: "flexible"
+			id: "1B1EB334C4561997"
+			tasks: [{
+				id: "374897A717CEBE1E"
+				type: "item"
+				title: "Any #armorset:chainmail"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:chainmail"
+					}
+				}
+			}]
+			rewards: [{
+				id: "6F07DA58DA345AEC"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t3_steel.title}"
+			x: 19.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "{quest.armor.t3_steel.subtitle}"
+			description: [
+				"{quest.armor.t3_steel.description_1}"
+				""
+				"{quest.armor.t3_steel.description_2}"
+				"{quest.armor.t3_steel.description_3}"
+			]
+			dependencies: ["0E7353CB27E0D892"]
+			dependency_requirement: "one_started"
+			size: 1.5d
+			progression_mode: "flexible"
+			id: "0DDB1DF4FFFB6236"
+			tasks: [{
+				id: "35EB930CD184866E"
+				type: "item"
+				title: "Any #armorset:armor_steel"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:armor_steel"
+					}
+				}
+			}]
+			rewards: [{
+				id: "63502067F572F90F"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.armor.t4_netherite.title}"
+			x: 27.0d
+			y: 0.0d
+			shape: "hexagon"
+			subtitle: "{quest.armor.t4_netherite.subtitle}"
+			description: [
+				"{quest.armor.t4_netherite.description_1}"
+				""
+				"{quest.armor.t4_netherite.description_2}"
+				"{quest.armor.t4_netherite.description_3}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			size: 1.5d
+			progression_mode: "flexible"
+			id: "4AE5D93FE7346281"
+			tasks: [{
+				id: "63B2B0FF6F5DA766"
+				type: "item"
+				title: "Any #armorset:netherite"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:netherite"
+					}
+				}
+			}]
+			rewards: [{
+				id: "24E835B151E55220"
+				type: "xp"
+				xp: 400
+			}]
+		}
+		{
+			title: "{quest.armor.t1_police.title}"
+			x: 1.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t1_police.description_1}"
+				""
+				"{quest.armor.t1_police.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "2F125A5C7AE30B37"
+			tasks: [{
+				id: "765BDC8B7624D4F1"
+				type: "item"
+				title: "Any #armorset:police"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:police"
+					}
+				}
+			}]
+			rewards: [{
+				id: "11952B8C74FB9193"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t1_firefighter.title}"
+			x: 3.0d
+			y: -2.5d
+			description: [
+				"{quest.armor.t1_firefighter.description_1}"
+				""
+				"{quest.armor.t1_firefighter.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "225721B21DB52C3B"
+			tasks: [{
+				id: "11002A67AD6D96CD"
+				type: "item"
+				title: "Any #armorset:fire_figther"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:fire_figther"
+					}
+				}
+			}]
+			rewards: [{
+				id: "55B589A7BD25942A"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t1_nurse.title}"
+			x: 2.0d
+			y: -2.5d
+			description: [
+				"{quest.armor.t1_nurse.description_1}"
+				""
+				"{quest.armor.t1_nurse.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "628A005A412EBAAB"
+			tasks: [{
+				id: "72AB7E5E63EBAFEE"
+				type: "item"
+				title: "Any #armorset:nurse"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:nurse"
+					}
+				}
+			}]
+			rewards: [{
+				id: "716A6B223E07C744"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t1_ghillie.title}"
+			x: 4.5d
+			y: 1.0d
+			description: [
+				"{quest.armor.t1_ghillie.description_1}"
+				""
+				"{quest.armor.t1_ghillie.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			hide_text_until_complete: false
+			progression_mode: "flexible"
+			id: "6A7AB01AE5275569"
+			tasks: [{
+				id: "6DF9A9B123D8EA0B"
+				type: "item"
+				title: "Any ghillie suit"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "forge:ghilliesuits"
+					}
+				}
+			}]
+			rewards: [{
+				id: "526DC396625F7CB7"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t1_anarchy.title}"
+			x: 4.0d
+			y: -2.5d
+			description: [
+				"{quest.armor.t1_anarchy.description_1}"
+				""
+				"{quest.armor.t1_anarchy.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "0076D5C4CA5D1715"
+			tasks: [{
+				id: "2492299B471466C6"
+				type: "item"
+				title: "Any #armorset:anarchy"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:anarchy"
+					}
+				}
+			}]
+			rewards: [{
+				id: "6DAC2108765B691C"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t1_forestguard.title}"
+			x: 4.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t1_forestguard.description_1}"
+				""
+				"{quest.armor.t1_forestguard.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "18255788A834E46E"
+			tasks: [{
+				id: "6241DAC5FD46A357"
+				type: "item"
+				title: "Any #armorset:forestguard"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:forestguard"
+					}
+				}
+			}]
+			rewards: [{
+				id: "71F04838B140E672"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t1_hunting.title}"
+			x: 1.5d
+			y: 1.0d
+			shape: "circle"
+			description: [
+				"{quest.armor.t1_hunting.description_1}"
+				""
+				"{quest.armor.t1_hunting.description_2}"
+			]
+			dependencies: ["531210392B89F597"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "271585483FF42A70"
+			tasks: [{
+				id: "1A680203F04EF8BE"
+				type: "item"
+				title: "Any #armorset:hunting"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:hunting"
+					}
+				}
+			}]
+			rewards: [{
+				id: "4CAE3C9F86C06FA1"
+				type: "xp"
+				xp: 100
+			}]
+		}
+		{
+			title: "{quest.armor.t2_vanilla.title}"
+			x: 9.5d
+			y: 1.0d
+			description: [
+				"{quest.armor.t2_vanilla.description_1}"
+				""
+				"{quest.armor.t2_vanilla.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "2979EB32CD7DC8C7"
+			tasks: [{
+				id: "7EA6BC1EBAFB27AE"
+				type: "item"
+				title: "Any #forge:vanilla_chestplate"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "forge:vanilla_chestplate"
+					}
+				}
+			}]
+			rewards: [{
+				id: "39D2EB98C181A689"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.armor.t2_construction.title}"
+			x: 12.0d
+			y: -2.0d
+			description: [
+				"{quest.armor.t2_construction.description_1}"
+				""
+				"{quest.armor.t2_construction.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "61C71BEC9A92518E"
+			tasks: [{
+				id: "5AA19AE3094DA1CA"
+				type: "item"
+				title: "Any #armorset:construction"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:construction"
+					}
+				}
+			}]
+			rewards: [{
+				id: "408BC8D4A9E6807B"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.armor.t2_football.title}"
+			x: 10.0d
+			y: -2.0d
+			description: [
+				"{quest.armor.t2_football.description_1}"
+				""
+				"{quest.armor.t2_football.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "1E9ABEF2F2AA8B6E"
+			tasks: [{
+				id: "7EB55CED7B5158FB"
+				type: "item"
+				title: "Any #forge:football_chestplate"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "forge:football_chestplate"
+					}
+				}
+			}]
+			rewards: [{
+				id: "755E1112090F54A5"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.armor.t3_hazmat.title}"
+			x: 15.0d
+			y: 3.0d
+			subtitle: "{quest.armor.t3_hazmat.subtitle}"
+			description: [
+				"{quest.armor.t3_hazmat.description_1}"
+				""
+				"{quest.armor.t3_hazmat.description_2}"
+				"{quest.armor.t3_hazmat.description_3}"
+			]
+			dependencies: ["0E7353CB27E0D892"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "6CF961E0DB5E373B"
+			tasks: [{
+				id: "7FEE969F25D41D91"
+				type: "item"
+				title: "Any #armorset:hazmat_suit"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:hazmat_suit"
+					}
+				}
+			}]
+			rewards: [{
+				id: "47AC703E1796FE3D"
+				type: "xp"
+				xp: 400
+			}]
+		}
+		{
+			title: "{quest.armor.t2_general.title}"
+			x: 9.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t2_general.description_1}"
+				""
+				"{quest.armor.t2_general.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "7428FBB9799DE116"
+			tasks: [{
+				id: "2A54CED1C316653D"
+				type: "item"
+				item: {
+					id: "apocalypsenow:army_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": { }
+					}
+				}
+			}]
+			rewards: [{
+				id: "097C4A165E19AB0C"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.armor.t2_royal.title}"
+			x: 12.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t2_royal.description_1}"
+				""
+				"{quest.armor.t2_royal.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "345987BED0D56A21"
+			tasks: [{
+				id: "4D88271F35C5ED73"
+				type: "item"
+				title: "Any #armorset:royal_canada_police_officer"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:royal_canada_police_officer"
+					}
+				}
+			}]
+			rewards: [{
+				id: "381FCAC0979DA380"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.armor.t2_gasmask.title}"
+			x: 11.0d
+			y: 3.0d
+			subtitle: "{quest.armor.t2_gasmask.subtitle}"
+			description: [
+				"{quest.armor.t2_gasmask.description_1}"
+				""
+				"{quest.armor.t2_gasmask.description_2}"
+				""
+				"{quest.armor.t2_gasmask.description_3}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "47B4790C995550DD"
+			tasks: [{
+				id: "0A05E9E4429BB122"
+				type: "item"
+				item: {
+					id: "apocalypsenow:gasmask_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": { }
+					}
+				}
+			}]
+			rewards: [{
+				id: "2C731191E49E1E67"
+				type: "xp"
+				xp: 300
+			}]
+		}
+		{
+			title: "{quest.armor.t3_andesite.title}"
+			x: 14.0d
+			y: -2.5d
+			subtitle: "{quest.armor.t3_andesite.subtitle}"
+			description: [
+				"{quest.armor.t3_andesite.description_1}"
+				""
+				"{quest.armor.t3_andesite.description_2}"
+			]
+			dependencies: ["0E7353CB27E0D892"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "656BB2601020D432"
+			tasks: [{
+				id: "109296CF723E6948"
+				type: "item"
+				item: {
+					id: "create_sa:andesite_exoskeleton_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": {
+							Insulation: [ ]
+						}
+					}
+				}
+			}]
+			rewards: [{
+				id: "43E361F65B05330B"
+				type: "xp"
+				xp: 1200
+			}]
+		}
+		{
+			title: "{quest.armor.t3_army.title}"
+			x: 20.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t3_army.description_1}"
+				""
+				"{quest.armor.t3_army.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "25046E4A3DD04E7E"
+			tasks: [{
+				id: "6BDEAEB8627343A9"
+				type: "item"
+				title: "Any army chestplate"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "forge:army_chestplate"
+					}
+				}
+			}]
+			rewards: [{
+				id: "1C8F92C906D0E292"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.armor.t3_militaryriot.title}"
+			x: 18.0d
+			y: -2.0d
+			description: [
+				"{quest.armor.t3_militaryriot.description_1}"
+				""
+				"{quest.armor.t3_militaryriot.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "34DB6302CCD2A826"
+			tasks: [{
+				id: "654419FBAC3AFF28"
+				type: "item"
+				title: "Any #armorset:military_riot_armor"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:military_riot_armor"
+					}
+				}
+			}]
+			rewards: [{
+				id: "1D0325AFE6305293"
+				type: "xp"
+				xp: 300
+			}]
+		}
+		{
+			title: "{quest.armor.t3_urban.title}"
+			x: 20.0d
+			y: -2.0d
+			description: [
+				"{quest.armor.t3_urban.description_1}"
+				""
+				"{quest.armor.t3_urban.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "16E46F1ABE4B7B12"
+			tasks: [{
+				id: "08CDF60AA1B2F574"
+				type: "item"
+				title: "Any #armorset:military_urban"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:military_urban"
+					}
+				}
+			}]
+			rewards: [{
+				id: "32E436B043C432F4"
+				type: "xp"
+				xp: 300
+			}]
+		}
+		{
+			title: "{quest.armor.t3_biohazard.title}"
+			x: 15.0d
+			y: 4.0d
+			subtitle: "{quest.armor.t3_biohazard.subtitle}"
+			description: [
+				"{quest.armor.t3_biohazard.description_1}"
+				""
+				"{quest.armor.t3_biohazard.description_2}"
+				"{quest.armor.t3_biohazard.description_3}"
+			]
+			dependencies: ["6CF961E0DB5E373B"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "059421D1D09716EC"
+			tasks: [{
+				id: "7930C9F38E3071B3"
+				type: "item"
+				title: "Any #armorset:biohazard"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:biohazard"
+					}
+				}
+			}]
+			rewards: [{
+				id: "0AB76ECD8B9D5554"
+				type: "xp"
+				xp: 500
+			}]
+		}
+		{
+			title: "{quest.armor.t3_un.title}"
+			x: 17.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t3_un.description_1}"
+				""
+				"{quest.armor.t3_un.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "198151F9A4E9DF3C"
+			tasks: [{
+				id: "3FD0EC3F320DED9E"
+				type: "item"
+				title: "Any #armorset:un_armor"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:un_armor"
+					}
+				}
+			}]
+			rewards: [{
+				id: "61991EA4EEB2D23A"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.armor.t3_beret.title}"
+			x: 20.5d
+			y: 1.0d
+			description: [
+				"{quest.armor.t3_beret.description_1}"
+				""
+				"{quest.armor.t3_beret.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "2D40A51CC514EA20"
+			tasks: [{
+				id: "68939FCBAD21023D"
+				type: "item"
+				title: "Any #armorset:beret"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:beret"
+					}
+				}
+			}]
+			rewards: [{
+				id: "35C2BAF4C32A43A4"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.armor.t3_pilot.title}"
+			x: 17.5d
+			y: 1.0d
+			description: [
+				"{quest.armor.t3_pilot.description_1}"
+				""
+				"{quest.armor.t3_pilot.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "53C9FC7B67853063"
+			tasks: [{
+				id: "2D4B95A1F62C37A8"
+				type: "item"
+				title: "Any #armorset:military_pilot_headset"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:military_pilot_headset"
+					}
+				}
+			}]
+			rewards: [{
+				id: "08751180638CF33D"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.armor.t3_pilot.title}"
+			x: 18.0d
+			y: 2.0d
+			description: [
+				"{quest.armor.t3_pilot.description_1}"
+				""
+				"{quest.armor.t3_pilot.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "330321F44450BB81"
+			tasks: [{
+				id: "29AF4AD0ACE7D80A"
+				type: "item"
+				title: "Any #armorset:atlast_7"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:atlast_7"
+					}
+				}
+			}]
+			rewards: [{
+				id: "3DAA4918D1510841"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.armor.t3_beret.title}"
+			x: 20.0d
+			y: 2.0d
+			description: [
+				"{quest.armor.t3_beret.description_1}"
+				""
+				"{quest.armor.t3_beret.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "3F617864E90AA397"
+			tasks: [{
+				id: "72C168E4E1B1CAF6"
+				type: "item"
+				title: "Any #armorset:military_beret"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:military_beret"
+					}
+				}
+			}]
+			rewards: [{
+				id: "2BA47D26C0716678"
+				type: "xp"
+				xp: 200
+			}]
+		}
+		{
+			title: "{quest.armor.t3_brass.title}"
+			x: 15.0d
+			y: -3.5d
+			subtitle: "{quest.armor.t3_brass.subtitle}"
+			description: [
+				"{quest.armor.t3_brass.description_1}"
+				""
+				"{quest.armor.t3_brass.description_2}"
+			]
+			dependencies: ["0E7353CB27E0D892"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "3F43ACDDB820E837"
+			tasks: [{
+				id: "39E73E04713E33B9"
+				type: "item"
+				item: {
+					id: "create_sa:brass_exoskeleton_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": {
+							Insulation: [ ]
+						}
+					}
+				}
+			}]
+			rewards: [{
+				id: "0973749CDF6B80F6"
+				type: "xp"
+				xp: 2000
+			}]
+		}
+		{
+			title: "{quest.armor.t4_swat.title}"
+			x: 26.0d
+			y: -2.5d
+			description: [
+				"{quest.armor.t4_swat.description_1}"
+				""
+				"{quest.armor.t4_swat.description_2}"
+				"{quest.armor.t4_swat.description_3}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "159C0628E7C00C0B"
+			tasks: [{
+				id: "76FDE8A49ECA22EB"
+				type: "item"
+				title: "Any #armorset:swat"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:swat"
+					}
+				}
+			}]
+			rewards: [{
+				id: "5B8A7E364A7FF626"
+				type: "xp"
+				xp: 1000
+			}]
+		}
+		{
+			title: "{quest.armor.t4_swat_riot.title}"
+			x: 28.0d
+			y: -2.5d
+			description: [
+				"{quest.armor.t4_swat_riot.description_1}"
+				""
+				"{quest.armor.t4_swat_riot.description_2}"
+				"{quest.armor.t4_swat_riot.description_3}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "6D0B3C66E9005D5B"
+			tasks: [{
+				id: "4E44C85E482EB98B"
+				type: "item"
+				title: "Any #armorset:swatriotcontrol"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:swatriotcontrol"
+					}
+				}
+			}]
+			rewards: [{
+				id: "21CF81FEEB38EDB5"
+				type: "xp"
+				xp: 1000
+			}]
+		}
+		{
+			title: "{quest.armor.t4_juggernaut.title}"
+			x: 29.5d
+			y: 1.0d
+			description: [
+				"{quest.armor.t4_juggernaut.description_1}"
+				""
+				"{quest.armor.t4_juggernaut.description_2}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "7D0717798B2201F8"
+			tasks: [{
+				id: "369D1826261B6E7A"
+				type: "item"
+				title: "Any #armorset:juggernaut"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:juggernaut"
+					}
+				}
+			}]
+			rewards: [{
+				id: "5371C2F983D33681"
+				type: "xp"
+				xp: 1400
+			}]
+		}
+		{
+			title: "{quest.armor.t4_bomb_squad.title}"
+			x: 29.5d
+			y: -1.0d
+			description: [
+				"{quest.armor.t4_bomb_squad.description_1}"
+				""
+				"{quest.armor.t4_bomb_squad.description_2}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "2B3A82E868C4F4F9"
+			tasks: [{
+				id: "5EB6ECA291633776"
+				type: "item"
+				title: "Any #armorset:bombsquad"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:bombsquad"
+					}
+				}
+			}]
+			rewards: [{
+				id: "6471CC0EFED7D255"
+				type: "xp"
+				xp: 1400
+			}]
+		}
+		{
+			title: "{quest.armor.t4_specops.title}"
+			x: 28.0d
+			y: 2.5d
+			description: [
+				"{quest.armor.t4_specops.description_1}"
+				""
+				"{quest.armor.t4_specops.description_2}"
+				"{quest.armor.t4_specops.description_3}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "58ACC8B7E7ACFEB9"
+			tasks: [{
+				id: "4A8DFAB8872740F9"
+				type: "item"
+				title: "Any #armorset:spec_ops"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:spec_ops"
+					}
+				}
+			}]
+			rewards: [{
+				id: "717CE4F30D8C5814"
+				type: "xp"
+				xp: 2000
+			}]
+		}
+		{
+			title: "{quest.armor.t4_soldier.title}"
+			x: 26.0d
+			y: 2.5d
+			description: [
+				"{quest.armor.t4_soldier.description_1}"
+				""
+				"{quest.armor.t4_soldier.description_2}"
+				"{quest.armor.t4_soldier.description_3}"
+				""
+				"{quest.armor.t4_soldier.description_4}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "3AF45567FB66C54A"
+			tasks: [{
+				id: "405BA43CCCF7597F"
+				type: "item"
+				title: "Any #armorset:soldier"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:soldier"
+					}
+				}
+			}]
+			rewards: [{
+				id: "720AFBAB3E3C37E2"
+				type: "xp"
+				xp: 1400
+			}]
+		}
+		{
+			title: "{quest.armor.repair.title}"
+			icon: {
+				id: "immersiveengineering:hammer"
+				Count: 1b
+				tag: {
+					Damage: 0
+				}
+			}
+			x: -5.0d
+			y: -2.0d
+			shape: "gear"
+			subtitle: "{quest.armor.repair.subtitle}"
+			description: [
+				"{quest.armor.repair.description_1}"
+				"{quest.armor.repair.description_2}"
+				""
+				"{quest.armor.repair.description_3}"
+			]
+			dependency_requirement: "one_started"
+			size: 2.0d
+			progression_mode: "flexible"
+			id: "786F835291189409"
+			tasks: [{
+				id: "0DBD3D21CEE91083"
+				type: "checkmark"
+			}]
+			rewards: [{
+				id: "6CD6E91E9BB33E07"
+				type: "xp"
+				xp: 10
+			}]
+		}
+		{
+			title: "{quest.armor.mending.title}"
+			icon: {
+				id: "minecraft:enchanted_book"
+				Count: 1b
+				tag: {
+					StoredEnchantments: [{
+						id: "minecraft:mending"
+						lvl: 1s
+					}]
+				}
+			}
+			x: -4.0d
+			y: -1.0d
+			subtitle: "{quest.armor.mending.subtitle}"
+			description: ["{quest.armor.mending.description_1}"]
+			id: "4D4BC410243D3074"
+			tasks: [{
+				id: "336B8AAE1D3F8B49"
+				type: "checkmark"
+				title: "Mending"
+			}]
+			rewards: [{
+				id: "07389C4AB689233D"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+		{
+			title: "{quest.armor.t3_manufacture.title}"
+			icon: "create:mechanical_crafter"
+			x: 15.0d
+			y: 0.0d
+			shape: "gear"
+			subtitle: "{quest.armor.t3_manufacture.subtitle}"
+			description: ["{quest.armor.t3_manufacture.description_1}"]
+			dependencies: ["1B1EB334C4561997"]
+			hide: false
+			dependency_requirement: "one_started"
+			size: 1.5d
+			id: "0E7353CB27E0D892"
+			tasks: [{
+				id: "52DD0CC190BB7501"
+				type: "checkmark"
+				title: "The Mechanical Age"
+			}]
+			rewards: [{
+				id: "5E7ECD69CA422229"
+				type: "random"
+				exclude_from_claim_all: true
+				table_id: 3132227616718337425L
+			}]
+		}
+		{
+			title: "{quest.armor.t3_copper.title}"
+			x: 16.0d
+			y: -2.5d
+			subtitle: "{quest.armor.t3_copper.subtitle}"
+			description: [
+				"{quest.armor.t3_copper.description_1}"
+				""
+				"{quest.armor.t3_copper.description_2}"
+			]
+			dependencies: ["0E7353CB27E0D892"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "09CB0E6311280BD1"
+			tasks: [{
+				id: "43F68F77111AE023"
+				type: "item"
+				item: {
+					id: "create_sa:copper_exoskeleton_chestplate"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": {
+							Insulation: [ ]
+						}
+					}
+				}
+			}]
+			rewards: [{
+				id: "5EA6CAF438BF4AA5"
+				type: "xp"
+				xp: 1200
+			}]
+		}
+		{
+			title: "{quest.armor.t2_biker.title}"
+			x: 12.5d
+			y: 1.0d
+			description: [
+				"{quest.armor.t2_biker.description_1}"
+				""
+				"{quest.armor.t2_biker.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			id: "71B08B7A269BD704"
+			tasks: [{
+				id: "527EAF53B12FE53A"
+				type: "item"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "armorset:headgear"
+					}
+				}
+			}]
+			rewards: [{
+				id: "31C7509C0D56CAD2"
+				type: "xp"
+				xp: 150
+			}]
+		}
+		{
+			title: "{quest.armor.t3_gasmask.title}"
+			x: 19.0d
+			y: 3.0d
+			description: [
+				"{quest.armor.t3_gasmask.description_1}"
+				""
+				"{quest.armor.t3_gasmask.description_2}"
+			]
+			dependencies: ["0DDB1DF4FFFB6236"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "253F3054CC308C99"
+			tasks: [{
+				id: "60075014A80A4D39"
+				type: "item"
+				item: {
+					id: "apocalypsenow:pkm_4gasmask_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": {
+							Insulation: [ ]
+						}
+					}
+				}
+			}]
+			rewards: [{
+				id: "249ECB325302A54D"
+				type: "xp"
+				xp: 300
+			}]
+		}
+		{
+			title: "{quest.armor.t4_gasmask.title}"
+			x: 31.0d
+			y: 0.0d
+			description: [
+				"{quest.armor.t4_gasmask.description_1}"
+				""
+				"{quest.armor.t4_gasmask.description_2}"
+			]
+			dependencies: ["4AE5D93FE7346281"]
+			dependency_requirement: "one_started"
+			progression_mode: "flexible"
+			id: "49A17915F1F97118"
+			tasks: [{
+				id: "0C76BFE81DFE2483"
+				type: "item"
+				item: {
+					id: "apocalypsenow:pbf_hamstergasmask_helmet"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+					ForgeCaps: {
+						"cold_sweat:item_insulation": {
+							Insulation: [ ]
+						}
+					}
+				}
+			}]
+			rewards: [{
+				id: "672BA66BFC0351E8"
+				type: "xp"
+				xp: 300
+			}]
+		}
+		{
+			title: "{quest.armor.t2_fighter.title}"
+			x: 11.0d
+			y: -3.0d
+			subtitle: "{quest.armor.t2_fighter.subtitle}"
+			description: [
+				"{quest.armor.t2_fighter.description_1}"
+				""
+				"{quest.armor.t2_fighter.description_2}"
+			]
+			dependencies: ["1B1EB334C4561997"]
+			dependency_requirement: "one_started"
+			id: "70A7261F8896F924"
+			tasks: [{
+				id: "08E46B8F7731C8EE"
+				type: "item"
+				title: "Any #forge:fighting_chestplate"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "forge:fighting_chestplate"
+					}
+				}
+			}]
+		}
+	]
+	quest_links: [ ]
+}

@@ -1,0 +1,105 @@
+{
+  "name": "multi_megatower1_8_floor9_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "quark:spruce_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "i",
+      "block": "quark:spruce_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "j",
+      "block": "quark:spruce_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "quark:spruce_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "embellishcraft:oak_terrace_table[waterlogged=false]"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:oak_terrace_chair[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "n",
+      "block": "quark:polished_calcite_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "embellishcraft:oak_terrace_chair[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "p",
+      "block": "create:vertical_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "q",
+      "block": "biomesoplenty:hellbark_button[facing=east,face=floor]"
+    },
+    {
+      "char": "r",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=bottom,open=true,facing=east]"
+    },
+    {
+      "char": "s",
+      "block": "create:framed_glass_trapdoor[waterlogged=false,half=top,open=true,facing=east]"
+    },
+    {
+      "char": "t",
+      "block": "create:framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "u",
+      "block": "create:horizontal_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "embellishcraft:polished_basalt_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    }
+  ]
+}

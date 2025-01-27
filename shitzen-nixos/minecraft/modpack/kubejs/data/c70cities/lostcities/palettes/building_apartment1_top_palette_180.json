@@ -1,0 +1,121 @@
+{
+  "name": "building_apartment1_top_palette_180",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:smooth_quartz_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:smooth_marble_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=east,shape=inner_right]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=south,shape=outer_left]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:birch_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "o",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:smooth_quartz"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:iron_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "u",
+      "block": "immersiveengineering:steel_scaffolding_standard[waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "embellishcraft:vent_air_duct[facing=west]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:birch_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "y",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=south,face=floor]"
+    },
+    {
+      "char": "A",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=west,face=floor]"
+    },
+    {
+      "char": "B",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=east,face=floor]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:iron_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:cauldron"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

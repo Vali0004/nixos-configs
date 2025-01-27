@@ -1,0 +1,121 @@
+{
+  "name": "multi_megatower1_1_floor5_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "quark:spruce_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:birch_planks"
+    },
+    {
+      "char": "c",
+      "block": "quark:spruce_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "biomesoplenty:smooth_white_sandstone_stairs[waterlogged=false,half=top,facing=south,shape=straight]"
+    },
+    {
+      "char": "e",
+      "block": "biomesoplenty:smooth_white_sandstone_stairs[waterlogged=false,half=bottom,facing=south,shape=straight]"
+    },
+    {
+      "char": "f",
+      "block": "biomesoplenty:smooth_white_sandstone"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:spruce_fence[waterlogged=false]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:spruce_planks"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:birch_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "quark:calcite_bricks_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "biomesoplenty:smooth_white_sandstone_stairs[waterlogged=false,half=bottom,facing=north,shape=straight]"
+    },
+    {
+      "char": "m",
+      "block": "embellishcraft:spruce_plain_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "n",
+      "block": "create:vertical_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "o",
+      "block": "cfm:brown_sofa[type=left,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "p",
+      "block": "cfm:brown_sofa[type=right,waterlogged=false,facing=north]"
+    },
+    {
+      "char": "q",
+      "block": "cfm:brown_sofa[type=right,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "r",
+      "block": "cfm:brown_sofa[type=left,waterlogged=false,facing=south]"
+    },
+    {
+      "char": "s",
+      "block": "embellishcraft:spruce_plain_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "biomesoplenty:smooth_white_sandstone_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "u",
+      "block": "minecraft:redstone_wall_torch[facing=north,lit=true]"
+    },
+    {
+      "char": "w",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "create:framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "y",
+      "block": "create:horizontal_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:stripped_oak_log[axis=z]"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:stripped_oak_log[axis=x]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "D",
+      "block": "embellishcraft:polished_basalt_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "E",
+      "block": "simplylight:illuminant_slab[waterlogged=false,facing=down]"
+    }
+  ]
+}

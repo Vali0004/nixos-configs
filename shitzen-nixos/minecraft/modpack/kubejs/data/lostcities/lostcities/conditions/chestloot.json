@@ -1,0 +1,1698 @@
+{
+  "values": [
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/medicalsupply",
+      "inpart": "c70cities:multi_hospital_0_top"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/drawer",
+      "inpart": "c70cities:multi_hospital_2_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/medicalsupply",
+      "inpart": "c70cities:multi_hospital_2_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/underground",
+      "inpart": "c70cities:multi_hospital_0_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/underground",
+      "inpart": "c70cities:multi_hospital_1_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/underground",
+      "inpart": "c70cities:multi_hospital_2_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/underground",
+      "inpart": "c70cities:multi_hospital_3_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/underground",
+      "inpart": "c70cities:multi_hospital_1_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/underground",
+      "inpart": "c70cities:multi_hospital_0_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/drawer",
+      "inpart": "c70cities:multi_hospital_3_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hospital/food",
+      "inpart": "c70cities:multi_hospital_1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/cafeteria/snacks",
+      "inpart": "c70cities:multi_cafe_3_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/cafeteria/drinks",
+      "inpart": "c70cities:multi_cafe_2_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential1_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential1_ground_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential1_ground_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential1_ground_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential2_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential2_ground_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential2_ground_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential2_ground_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential3_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential3_ground_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential3_ground_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential3_ground_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential4_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential4_ground_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential4_ground_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:building_residential4_ground_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:multi_residential1_0_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/fridge",
+      "inpart": "c70cities:multi_residential2_0_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential1_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential1_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential1_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential2_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential2_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential2_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential2_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential3_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential3_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential3_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential3_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential4_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential4_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential4_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:building_residential4_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:multi_residential1_1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/residential/standard",
+      "inpart": "c70cities:multi_residential2_0_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/standard",
+      "inbuilding": "c70cities:building_restaurant1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/standard",
+      "inbuilding": "c70cities:building_restaurant1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/standard",
+      "inbuilding": "c70cities:building_restaurant1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/standard",
+      "inbuilding": "c70cities:building_restaurant1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/sushi",
+      "inbuilding": "c70cities:building_restaurant2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/sushi",
+      "inbuilding": "c70cities:building_restaurant2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/sushi",
+      "inbuilding": "c70cities:building_restaurant2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/restaurant/sushi",
+      "inbuilding": "c70cities:building_restaurant2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/standard",
+      "inpart": "c70cities:building_bank1_top_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/vault",
+      "inpart": "c70cities:building_bank1_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/vault",
+      "inpart": "c70cities:building_bank1_base1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/vault",
+      "inpart": "c70cities:building_bank1_base1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bank/vault",
+      "inpart": "c70cities:building_bank1_base1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/gas_station/food",
+      "inpart": "c70cities:building_gasstation1_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/gas_station/food",
+      "inpart": "c70cities:building_gasstation1_ground_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/gas_station/food",
+      "inpart": "c70cities:building_gasstation1_ground_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/gas_station/food",
+      "inpart": "c70cities:building_gasstation1_ground_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/gas_station/food",
+      "inpart": "c70cities:multi_gasstation_0_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/gas_station/standard",
+      "inpart": "c70cities:multi_gasstation_1_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel1_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel1_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel1_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor3_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor3_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel1_floor3_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel2_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel2_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel2_base1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel2_base1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel2_base1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor3_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor3_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor3_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/standard",
+      "inpart": "c70cities:building_hotel3_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel3_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel3_base1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel3_base1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/hotel/food",
+      "inpart": "c70cities:building_hotel3_base1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/convenient/food",
+      "inpart": "c70cities:multi_convenientstore_1_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/convenient/standard",
+      "inpart": "c70cities:multi_convenientstore_3_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office3_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office3_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office3_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office4_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office4_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office4_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office5_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office5_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/office/standard",
+      "inbuilding": "c70cities:building_office5_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/police/standard",
+      "inbuilding": "c70cities:building_policeoffice1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/police/standard",
+      "inbuilding": "c70cities:building_policeoffice1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/police/standard",
+      "inbuilding": "c70cities:building_policeoffice1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/police/standard",
+      "inbuilding": "c70cities:building_policeoffice1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/police/standard",
+      "inpart": "c70cities:fountain_10"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/car_service/standard",
+      "inbuilding": "c70cities:multi_carservice_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/car_service/standard",
+      "inbuilding": "c70cities:multi_carservice_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:building_warehouse2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bunker/standard",
+      "inbuilding": "c70cities:building_bunker1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bunker/standard",
+      "inbuilding": "c70cities:building_bunker1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bunker/standard",
+      "inbuilding": "c70cities:building_bunker1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/bunker/standard",
+      "inbuilding": "c70cities:building_bunker1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory/standard",
+      "inbuilding": "c70cities:building_factory1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory/standard",
+      "inbuilding": "c70cities:building_factory1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory/standard",
+      "inbuilding": "c70cities:building_factory1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory/standard",
+      "inbuilding": "c70cities:building_factory1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_blaze/standard",
+      "inbuilding": "c70cities:building_factory2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_blaze/standard",
+      "inbuilding": "c70cities:building_factory2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_blaze/standard",
+      "inbuilding": "c70cities:building_factory2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_blaze/standard",
+      "inbuilding": "c70cities:building_factory2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_furnace/standard",
+      "inbuilding": "c70cities:multi_factory_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_furnace/standard",
+      "inbuilding": "c70cities:multi_factory_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_pumpjack/standard",
+      "inpart": "c70cities:multi_pumpjack_0_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_pumpjack/standard",
+      "inpart": "c70cities:multi_pumpjack_1_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_pumpjack/fridge",
+      "inpart": "c70cities:multi_pumpjack_1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_pumpjack/office",
+      "inpart": "c70cities:multi_pumpjack_0_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_pumpjack/standard",
+      "inbuilding": "c70cities:multi_derrick_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/factory_pumpjack/standard",
+      "inbuilding": "c70cities:multi_derrick_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/warehouse/standard",
+      "inbuilding": "c70cities:multi_warehouse_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/ground",
+      "inbuilding": "c70cities:multi_militarycamp1_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/ground",
+      "inbuilding": "c70cities:multi_militarycamp1_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/ground",
+      "inpart": "c70cities:fountain_deadzone_9"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cannon",
+      "inpart": "c70cities:multi_militarybase_0_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cannon",
+      "inpart": "c70cities:multi_militarybase_1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cannon",
+      "inpart": "c70cities:multi_militarybase_2_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cannon",
+      "inpart": "c70cities:multi_militarybase_3_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/ground",
+      "inpart": "c70cities:multi_militarybase_2_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/ground",
+      "inpart": "c70cities:multi_militarybase_3_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/ground",
+      "inpart": "c70cities:multi_militarybase_4_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/medical",
+      "inpart": "c70cities:multi_militarybase_0_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/medical",
+      "inpart": "c70cities:multi_militarybase_1_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/office",
+      "inpart": "c70cities:multi_militarybase_5_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cabinet",
+      "inpart": "c70cities:multi_militarybase_0_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cabinet",
+      "inpart": "c70cities:multi_militarybase_2_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cabinet",
+      "inpart": "c70cities:multi_militarybase_3_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/cabinet",
+      "inpart": "c70cities:multi_militarybase_4_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/blaze",
+      "inpart": "c70cities:multi_militarybase_0_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/power_room",
+      "inpart": "c70cities:multi_militarybase_1_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/kitchen_storage",
+      "inpart": "c70cities:multi_militarybase_4_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/kitchen_cabinet",
+      "inpart": "c70cities:multi_militarybase_5_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/armory_ammunitions",
+      "inpart": "c70cities:multi_militarybase_0_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/armory_weapons",
+      "inpart": "c70cities:multi_militarybase_2_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/armory_weapons",
+      "inpart": "c70cities:multi_militarybase_3_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/military/armory_ammunitions",
+      "inpart": "c70cities:multi_militarybase_4_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/standard",
+      "inbuilding": "c70cities:multi_flatapartment_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/food",
+      "inbuilding": "c70cities:multi_flatapartment_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/standard",
+      "inbuilding": "c70cities:multi_flatapartment_2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/standard",
+      "inpart": "c70cities:building_apartment1_floor2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/standard",
+      "inpart": "c70cities:building_apartment1_floor2_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/standard",
+      "inpart": "c70cities:building_apartment1_floor2_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/standard",
+      "inpart": "c70cities:building_apartment1_floor2_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/food",
+      "inpart": "c70cities:building_apartment1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/food",
+      "inpart": "c70cities:building_apartment1_floor1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/food",
+      "inpart": "c70cities:building_apartment1_floor1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/apartment/food",
+      "inpart": "c70cities:building_apartment1_floor1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/community/standard",
+      "inbuilding": "c70cities:multi_communitycenter_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/community/standard",
+      "inbuilding": "c70cities:multi_communitycenter_2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/community/standard",
+      "inbuilding": "c70cities:multi_communitycenter_5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/community/standard",
+      "inbuilding": "c70cities:multi_communitycenter_6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/cafeteria/snacks",
+      "inbuilding": "c70cities:multi_communitycenter_7"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/community/standard",
+      "inbuilding": "c70cities:multi_communitycenter_8"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/cafeteria/snacks",
+      "inbuilding": "c70cities:multi_clubhouse1_8"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/clubhouse/standard",
+      "inbuilding": "c70cities:multi_clubhouse1_2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/clubhouse/standard",
+      "inbuilding": "c70cities:multi_clubhouse1_5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/community/standard",
+      "inbuilding": "c70cities:multi_gallery_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/security_room",
+      "inpart": "c70cities:multi_megatower1_0_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/security_room",
+      "inpart": "c70cities:multi_megatower1_3_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/security_room",
+      "inpart": "c70cities:multi_megatower1_4_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/gym_drinks",
+      "inpart": "c70cities:multi_megatower1_1_floor1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hidden_stash",
+      "inpart": "c70cities:multi_megatower1_1_floor2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hidden_stash",
+      "inpart": "c70cities:multi_megatower1_4_floor2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_3_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_4_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_5_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_6_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_7_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_8_floor3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_3_floor4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_4_floor4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_5_floor4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_6_floor4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_7_floor4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/hotel_room",
+      "inpart": "c70cities:multi_megatower1_8_floor4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/fridge_drinks",
+      "inpart": "c70cities:multi_megatower1_8_floor5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/kitchen_fridge",
+      "inpart": "c70cities:multi_megatower1_3_floor9"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/kitchen_cabinet",
+      "inpart": "c70cities:multi_megatower1_4_floor9"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/fridge_drinks",
+      "inpart": "c70cities:multi_megatower1_5_floor10"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/office_room",
+      "inpart": "c70cities:multi_megatower1_3_floor10"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/office_room",
+      "inpart": "c70cities:multi_megatower1_4_floor10"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/office_room",
+      "inpart": "c70cities:multi_megatower1_4_floor11"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/fridge_drinks",
+      "inpart": "c70cities:multi_megatower1_5_floor11"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/fridge_drinks",
+      "inpart": "c70cities:multi_megatower1_5_floor12"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/megabuilding/office_room",
+      "inpart": "c70cities:multi_megatower1_3_floor12"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/ground_floor",
+      "inpart": "c70cities:multi_laboratory1_7_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/ground_floor",
+      "inpart": "c70cities:multi_laboratory1_8_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/vending",
+      "inpart": "c70cities:multi_laboratory1_0_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/mushroom",
+      "inpart": "c70cities:multi_laboratory1_1_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/nether_end",
+      "inpart": "c70cities:multi_laboratory1_2_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/aquatic",
+      "inpart": "c70cities:multi_laboratory1_3_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/aquatic",
+      "inpart": "c70cities:multi_laboratory1_4_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/vending",
+      "inpart": "c70cities:multi_laboratory1_8_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_10_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/library",
+      "inpart": "c70cities:multi_laboratory1_11_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/office",
+      "inpart": "c70cities:multi_laboratory1_12_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/office",
+      "inpart": "c70cities:multi_laboratory1_13_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/office",
+      "inpart": "c70cities:multi_laboratory1_14_base1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/vending",
+      "inpart": "c70cities:multi_laboratory1_0_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/office",
+      "inpart": "c70cities:multi_laboratory1_1_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/medical",
+      "inpart": "c70cities:multi_laboratory1_2_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/medical",
+      "inpart": "c70cities:multi_laboratory1_3_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/snacks",
+      "inpart": "c70cities:multi_laboratory1_4_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/snacks",
+      "inpart": "c70cities:multi_laboratory1_9_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_10_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/library",
+      "inpart": "c70cities:multi_laboratory1_11_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/snacks",
+      "inpart": "c70cities:multi_laboratory1_14_base2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/survivor_stash",
+      "inpart": "c70cities:multi_laboratory1_0_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/office",
+      "inpart": "c70cities:multi_laboratory1_1_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/medical",
+      "inpart": "c70cities:multi_laboratory1_2_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/medical",
+      "inpart": "c70cities:multi_laboratory1_3_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/survivor_stash",
+      "inpart": "c70cities:multi_laboratory1_4_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/guard_stash",
+      "inpart": "c70cities:multi_laboratory1_8_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/guard_stash",
+      "inpart": "c70cities:multi_laboratory1_9_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_10_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/library",
+      "inpart": "c70cities:multi_laboratory1_11_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_12_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_13_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/guard_stash",
+      "inpart": "c70cities:multi_laboratory1_14_base3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/vending",
+      "inpart": "c70cities:multi_laboratory1_0_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/office",
+      "inpart": "c70cities:multi_laboratory1_1_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/survivor_stash",
+      "inpart": "c70cities:multi_laboratory1_2_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/medical",
+      "inpart": "c70cities:multi_laboratory1_3_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/snacks",
+      "inpart": "c70cities:multi_laboratory1_4_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/aquatic",
+      "inpart": "c70cities:multi_laboratory1_9_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_10_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/library",
+      "inpart": "c70cities:multi_laboratory1_11_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/power_room",
+      "inpart": "c70cities:multi_laboratory1_12_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/snacks",
+      "inpart": "c70cities:multi_laboratory1_14_base4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/decontaimination_room",
+      "inpart": "c70cities:multi_laboratory1_3_base5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/decontaimination_room",
+      "inpart": "c70cities:multi_laboratory1_4_base5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/security_room_locker",
+      "inpart": "c70cities:multi_laboratory1_10_base5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/vending",
+      "inpart": "c70cities:multi_laboratory1_0_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/decontaimination_room",
+      "inpart": "c70cities:multi_laboratory1_3_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/decontaimination_room",
+      "inpart": "c70cities:multi_laboratory1_4_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/last_survivor",
+      "inpart": "c70cities:multi_laboratory1_7_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/security_room",
+      "inpart": "c70cities:multi_laboratory1_10_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/last_survivor",
+      "inpart": "c70cities:multi_laboratory1_12_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/drill_room",
+      "inpart": "c70cities:multi_laboratory1_13_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/laboratory/drill_room",
+      "inpart": "c70cities:multi_laboratory1_14_base6"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/condo/standard",
+      "inbuilding": "c70cities:multi_condo1_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/condo/standard",
+      "inbuilding": "c70cities:multi_condo1_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/condo/standard",
+      "inbuilding": "c70cities:multi_condo1_2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/condo/standard",
+      "inbuilding": "c70cities:multi_condo1_3"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/condo/standard",
+      "inbuilding": "c70cities:multi_condo1_4"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/condo/standard",
+      "inbuilding": "c70cities:multi_condo1_5"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/penthouse_food",
+      "inpart": "c70cities:multi_condo1_0_floor2"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/penthouse_food",
+      "inpart": "c70cities:multi_condo1_2_floor2"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/penthouse",
+      "inpart": "c70cities:multi_condo1_3_floor2"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/penthouse",
+      "inpart": "c70cities:multi_condo1_5_floor2"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/survivor_stash",
+      "inpart": "c70cities:multi_condo1_3_floor3"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/gym",
+      "inpart": "c70cities:multi_condo1_2_floor6"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/gym",
+      "inpart": "c70cities:multi_condo1_5_floor6"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/gym",
+      "inpart": "c70cities:multi_condo1_0_floor6"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/gym",
+      "inpart": "c70cities:multi_condo1_3_floor6"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/convenient",
+      "inpart": "c70cities:multi_condo1_2_ground"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/convenient",
+      "inpart": "c70cities:multi_condo1_5_ground"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/cafeteria",
+      "inpart": "c70cities:multi_condo1_3_ground"
+    },
+    {
+      "factor": 9999999,
+      "value": "deceasedcraft:chests/condo/guard_stash",
+      "inpart": "c70cities:multi_condo1_4_ground"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/small_lab/standard",
+      "inbuilding": "c70cities:building_lab1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/small_lab/standard",
+      "inbuilding": "c70cities:building_lab1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/small_lab/standard",
+      "inbuilding": "c70cities:building_lab1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/small_lab/standard",
+      "inbuilding": "c70cities:building_lab1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/car_service/standard",
+      "inbuilding": "c70cities:building_carfactory1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/car_service/standard",
+      "inbuilding": "c70cities:building_carfactory1_90"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/car_service/standard",
+      "inbuilding": "c70cities:building_carfactory1_180"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/car_service/standard",
+      "inbuilding": "c70cities:building_carfactory1_270"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_1",
+      "inpart": "c70cities:cabin_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_2",
+      "inpart": "c70cities:cabin_2"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_1",
+      "inpart": "c70cities:cabin_3_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_2",
+      "inpart": "c70cities:cabin_4_0"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_2",
+      "inpart": "c70cities:cabin_4_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_1",
+      "inpart": "c70cities:cabin_5"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_2",
+      "inpart": "c70cities:cabin_6_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/cabin_2",
+      "inpart": "c70cities:treehouse_1"
+    },
+    {
+      "factor": 500,
+      "value": "deceasedcraft:chests/scattered/seahouse_1",
+      "inpart": "c70cities:seahouse_1"
+    },
+    {
+      "factor": 1,
+      "value": "deceasedcraft:chests/foodsupply"
+    }
+  ]
+}

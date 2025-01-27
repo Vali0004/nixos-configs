@@ -1,0 +1,45 @@
+{
+  "name": "building_factory1_floor1_palette_90",
+  "palette": [
+    {
+      "char": "a",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "embellishcraft:gray_corrugated_metal_plate_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:light_gray_corrugated_metal_plate"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:gray_corrugated_metal_plate"
+    },
+    {
+      "char": "e",
+      "block": "immersiveengineering:stairs_steel_scaffolding_standard[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "f",
+      "block": "immersiveengineering:slab_steel_scaffolding_standard[type=top,waterlogged=false]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:chain[waterlogged=false,axis=y]"
+    },
+    {
+      "char": "h",
+      "block": "immersiveengineering:stairs_steel_scaffolding_standard[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "i",
+      "block": "quark:dirty_glass"
+    },
+    {
+      "char": "j",
+      "block": "quark:dirty_glass_pane[waterlogged=false]"
+    }
+  ]
+}

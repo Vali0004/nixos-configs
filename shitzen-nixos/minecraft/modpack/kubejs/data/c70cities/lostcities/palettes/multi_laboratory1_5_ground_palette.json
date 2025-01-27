@@ -1,0 +1,153 @@
+{
+  "name": "multi_laboratory1_5_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:cracked_stone_bricks"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:polished_paving"
+    },
+    {
+      "char": "d",
+      "block": "create:polished_cut_scoria"
+    },
+    {
+      "char": "e",
+      "block": "create:layered_calcite"
+    },
+    {
+      "char": "f",
+      "block": "quark:polished_calcite"
+    },
+    {
+      "char": "g",
+      "block": "immersiveengineering:metal_barrel"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:polished_andesite"
+    },
+    {
+      "char": "i",
+      "block": "create:redstone_contact[facing=south]"
+    },
+    {
+      "char": "j",
+      "block": "create:redstone_contact[facing=north]"
+    },
+    {
+      "char": "k",
+      "block": "create:display_link[facing=east]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "l",
+      "block": "create:display_link[facing=north]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "m",
+      "block": "biomesoplenty:dead_button[facing=south,face=floor]"
+    },
+    {
+      "char": "n",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "o",
+      "block": "quark:smooth_stone_vertical_slab[type=north,waterlogged=false]"
+    },
+    {
+      "char": "p",
+      "block": "create:cut_limestone_bricks"
+    },
+    {
+      "char": "q",
+      "block": "create:polished_cut_scoria_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "r",
+      "block": "create:polished_cut_scoria_wall[waterlogged=false,up=false]"
+    },
+    {
+      "char": "s",
+      "block": "immersiveengineering:hempcrete"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "u",
+      "block": "quark:polished_andesite_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "quark:polished_andesite_vertical_slab[type=west,waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "create:contraption_controls[waterlogged=false,open=false,facing=west]",
+      "tag": {
+        "id": "create:contraption_controls"
+      }
+    },
+    {
+      "char": "y",
+      "block": "create:andesite_door[half=lower,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "A",
+      "block": "create:andesite_door[half=lower,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "B",
+      "block": "embellishcraft:gray_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "C",
+      "block": "create:cogwheel[waterlogged=false,axis=z]",
+      "tag": {
+        "id": "create:cogwheel"
+      }
+    },
+    {
+      "char": "D",
+      "block": "create:large_cogwheel[waterlogged=false,axis=z]"
+    },
+    {
+      "char": "E",
+      "block": "create:andesite_door[half=upper,open=false,hinge=left,facing=north]"
+    },
+    {
+      "char": "F",
+      "block": "create:andesite_door[half=upper,open=false,hinge=right,facing=north]"
+    },
+    {
+      "char": "I",
+      "block": "create:polished_cut_limestone"
+    },
+    {
+      "char": "J",
+      "block": "create:cut_limestone"
+    },
+    {
+      "char": "K",
+      "block": "biomesoplenty:stripped_dead_log[axis=x]"
+    },
+    {
+      "char": "L",
+      "block": "simplylight:illuminant_panel[waterlogged=false,facing=down]"
+    }
+  ]
+}

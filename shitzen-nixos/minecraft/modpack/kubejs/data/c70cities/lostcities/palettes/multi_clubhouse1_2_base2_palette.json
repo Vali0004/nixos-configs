@@ -1,0 +1,176 @@
+{
+  "name": "multi_clubhouse1_2_base2_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:polished_andesite"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:stone"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:basalt_large_bricks"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:seagrass"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:water[level=0]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:conduit[waterlogged=true]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:dirt"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:coarse_dirt"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:stone_slab[type=double,waterlogged=false]"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:dirt_path"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:magma_block"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:shroomlight"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:stripped_spruce_log[axis=y]"
+    },
+    {
+      "char": "o",
+      "block": "embellishcraft:smooth_andesite"
+    },
+    {
+      "char": "p",
+      "block": "quark:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "q",
+      "block": "cfm:stripped_spruce_blinds[waterlogged=false,open=true,facing=east]"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:oak_stairs[waterlogged=false,half=bottom,facing=east,shape=straight]"
+    },
+    {
+      "char": "s",
+      "block": "minecraft:light_gray_bed[occupied=false,part=head,facing=west]",
+      "tag": {
+        "id": "minecraft:bed"
+      }
+    },
+    {
+      "char": "t",
+      "block": "minecraft:light_gray_bed[occupied=false,part=foot,facing=west]",
+      "tag": {
+        "id": "minecraft:bed"
+      }
+    },
+    {
+      "char": "u",
+      "block": "minecraft:oak_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "w",
+      "block": "cfm:stripped_spruce_blinds[waterlogged=false,open=true,facing=west]"
+    },
+    {
+      "char": "x",
+      "block": "minecraft:peony[half=lower]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:oak_stairs[waterlogged=false,half=top,facing=north,shape=straight]"
+    },
+    {
+      "char": "A",
+      "block": "minecraft:lily_pad"
+    },
+    {
+      "char": "B",
+      "block": "minecraft:moss_carpet"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:stone_stairs[waterlogged=false,half=top,facing=east,shape=straight]"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:stone_stairs[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "E",
+      "block": "minecraft:flowering_azalea"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:dead_bush"
+    },
+    {
+      "char": "I",
+      "block": "minecraft:azalea"
+    },
+    {
+      "char": "J",
+      "block": "minecraft:large_fern[half=lower]"
+    },
+    {
+      "char": "K",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=north]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "L",
+      "block": "minecraft:spruce_leaves[persistent=true]"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:peony[half=upper]"
+    },
+    {
+      "char": "N",
+      "block": "another_furniture:spruce_planter_box[type=right,attached=false,facing=north]"
+    },
+    {
+      "char": "O",
+      "block": "another_furniture:spruce_planter_box[type=middle,attached=false,facing=north]"
+    },
+    {
+      "char": "P",
+      "block": "another_furniture:spruce_planter_box[type=left,attached=false,facing=north]"
+    },
+    {
+      "char": "Q",
+      "block": "minecraft:large_fern[half=upper]"
+    },
+    {
+      "char": "R",
+      "block": "cfm:spruce_hedge[waterlogged=false]"
+    },
+    {
+      "char": "S",
+      "block": "embellishcraft:smooth_andesite_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

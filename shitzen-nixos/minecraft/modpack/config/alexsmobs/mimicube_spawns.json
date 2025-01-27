@@ -2,14 +2,9 @@
   "biomes": [
     [
       {
-        "type": "BIOME_TAG",
-        "negate": true,
-        "value": "forge:no_default_monsters"
-      },
-      {
-        "type": "BIOME_TAG",
+        "type": "BIOME_DICT",
         "negate": false,
-        "value": "minecraft:is_end"
+        "value": "end"
       },
       {
         "type": "REGISTRY_NAME",

@@ -1,0 +1,61 @@
+{
+  "name": "multi_communitycenter_4_floor1_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:dark_oak_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "quark:stripped_dark_oak_post[waterlogged=false,chain_down=false,chain_up=false,axis=y]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:dark_oak_leaves[persistent=true]"
+    },
+    {
+      "char": "d",
+      "block": "create:cut_calcite_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "f",
+      "block": "create:cut_calcite"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:stripped_dark_oak_log[axis=y]"
+    },
+    {
+      "char": "j",
+      "block": "quark:framed_glass"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:dead_bush"
+    },
+    {
+      "char": "l",
+      "block": "minecraft:oak_sapling"
+    },
+    {
+      "char": "m",
+      "block": "minecraft:polished_deepslate_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:polished_deepslate_slab[type=bottom,waterlogged=false]"
+    }
+  ]
+}

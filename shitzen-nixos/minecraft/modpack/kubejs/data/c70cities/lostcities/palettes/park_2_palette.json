@@ -1,0 +1,45 @@
+{
+  "name": "park_2_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:oak_leaves[persistent=true]"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:stripped_oak_log[axis=y]"
+    },
+    {
+      "char": "c",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:oak_planks"
+    },
+    {
+      "char": "e",
+      "block": "quark:oak_leaf_carpet"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:sunflower[half=lower]"
+    },
+    {
+      "char": "g",
+      "block": "minecraft:lilac[half=lower]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:fern"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:sunflower[half=upper]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:lilac[half=upper]"
+    }
+  ]
+}

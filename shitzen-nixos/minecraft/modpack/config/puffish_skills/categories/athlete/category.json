@@ -1,0 +1,11 @@
+{
+	"unlocked_by_default": true,
+	"title": {"translate":"skills.athlete", "color":"blue"},
+	"icon": {
+		"type": "effect",
+		"data": {
+			"effect": "speed"
+		}
+	},
+	"background": "textures/block/cyan_wool.png"
+}

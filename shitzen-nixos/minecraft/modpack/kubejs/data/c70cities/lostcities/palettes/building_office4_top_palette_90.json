@@ -1,0 +1,81 @@
+{
+  "name": "building_office4_top_palette_90",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:gray_concrete_powder"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:smooth_marble_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:smooth_basalt"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:stripped_spruce_log[axis=y]"
+    },
+    {
+      "char": "g",
+      "block": "quark:spruce_ladder[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:stripped_spruce_log[axis=x]"
+    },
+    {
+      "char": "i",
+      "block": "minecraft:light_gray_stained_glass"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:gray_stained_glass"
+    },
+    {
+      "char": "k",
+      "block": "minecraft:oak_leaves[persistent=true]"
+    },
+    {
+      "char": "l",
+      "block": "another_furniture:spruce_bench[waterlogged=false,type_1=left,facing=east,type_2=left]"
+    },
+    {
+      "char": "m",
+      "block": "another_furniture:spruce_bench[waterlogged=false,type_1=right,facing=east,type_2=right]"
+    },
+    {
+      "char": "n",
+      "block": "another_furniture:spruce_bench[waterlogged=false,type_1=left,facing=south,type_2=left]"
+    },
+    {
+      "char": "o",
+      "block": "another_furniture:spruce_bench[waterlogged=false,type_1=right,facing=south,type_2=right]"
+    },
+    {
+      "char": "p",
+      "block": "another_furniture:spruce_bench[waterlogged=false,type_1=right,facing=west,type_2=right]"
+    },
+    {
+      "char": "q",
+      "block": "another_furniture:spruce_bench[waterlogged=false,type_1=left,facing=west,type_2=left]"
+    },
+    {
+      "char": "r",
+      "block": "simplylight:illuminant_block"
+    },
+    {
+      "char": "s",
+      "block": "simplylight:illuminant_block_on"
+    }
+  ]
+}

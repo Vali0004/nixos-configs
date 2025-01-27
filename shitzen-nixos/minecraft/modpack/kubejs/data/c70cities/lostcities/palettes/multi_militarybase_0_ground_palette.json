@@ -1,0 +1,189 @@
+{
+  "name": "multi_militarybase_0_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "create:layered_tuff"
+    },
+    {
+      "char": "b",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "c",
+      "block": "create:cut_tuff_bricks"
+    },
+    {
+      "char": "d",
+      "block": "embellishcraft:moist_paving"
+    },
+    {
+      "char": "e",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "f",
+      "block": "buildersdelight:industrial_1[facing=south]"
+    },
+    {
+      "char": "g",
+      "block": "buildersdelight:industrial_1[facing=north]"
+    },
+    {
+      "char": "h",
+      "block": "minecraft:piston[facing=up]"
+    },
+    {
+      "char": "i",
+      "block": "createdeco:andesite_support[waterlogged=false,facing=up]"
+    },
+    {
+      "char": "j",
+      "block": "biomesoplenty:dead_grass"
+    },
+    {
+      "char": "k",
+      "block": "create:layered_limestone"
+    },
+    {
+      "char": "l",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=true,west=false,east=false,south=false,north=false]"
+    },
+    {
+      "char": "m",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=west]"
+    },
+    {
+      "char": "n",
+      "block": "immersiveengineering:sheetmetal_steel"
+    },
+    {
+      "char": "o",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=east]"
+    },
+    {
+      "char": "p",
+      "block": "embellishcraft:rusty_wall_ladder[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "q",
+      "block": "minecraft:iron_bars[waterlogged=false]"
+    },
+    {
+      "char": "r",
+      "block": "embellishcraft:sturdy_steel_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "s",
+      "block": "createdeco:cast_iron_trapdoor[waterlogged=false,half=bottom,open=true,facing=south]"
+    },
+    {
+      "char": "t",
+      "block": "pfm:andesite_chair[facing=north]"
+    },
+    {
+      "char": "u",
+      "block": "pfm:mesh_trashcan[facing=south]"
+    },
+    {
+      "char": "w",
+      "block": "pfm:smooth_stone_kitchen_counter[facing=south]"
+    },
+    {
+      "char": "x",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=east]"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:stone_pressure_plate"
+    },
+    {
+      "char": "A",
+      "block": "create:polished_cut_limestone"
+    },
+    {
+      "char": "B",
+      "block": "quark:gray_framed_glass_pane[waterlogged=false]"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:redstone_torch[lit=true]"
+    },
+    {
+      "char": "D",
+      "block": "embellishcraft:sturdy_steel_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "E",
+      "block": "zombie_extreme:tube_tv[facing=north]"
+    },
+    {
+      "char": "F",
+      "block": "create:analog_lever[facing=south,face=floor]"
+    },
+    {
+      "char": "I",
+      "block": "zombie_extreme:radio_installation[facing=north]"
+    },
+    {
+      "char": "J",
+      "block": "immersiveengineering:slab_hempcrete[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "K",
+      "block": "create:polished_cut_limestone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "L",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "M",
+      "block": "immersiveengineering:steel_fence[waterlogged=false]"
+    },
+    {
+      "char": "N",
+      "block": "immersiveengineering:razor_wire[waterlogged=false,facing=south]"
+    },
+    {
+      "char": "O",
+      "block": "createbigcannons:cannon_mount[facing=north]"
+    },
+    {
+      "char": "P",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=false,north=false]"
+    },
+    {
+      "char": "Q",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=false,south=true,north=false]"
+    },
+    {
+      "char": "R",
+      "block": "createdeco:andesite_catwalk[waterlogged=false,bottom=false,west=false,east=true,south=false,north=false]"
+    },
+    {
+      "char": "S",
+      "block": "createdeco:andesite_catwalk_stair[waterlogged=false,facing=north]"
+    },
+    {
+      "char": "T",
+      "block": "minecraft:smooth_stone"
+    },
+    {
+      "char": "U",
+      "block": "minecraft:hopper[facing=south]"
+    },
+    {
+      "char": "V",
+      "block": "minecraft:lever[facing=west,face=wall]"
+    },
+    {
+      "char": "W",
+      "block": "createbigcannons:cannon_mount[facing=west]"
+    },
+    {
+      "char": "X",
+      "block": "minecraft:smooth_stone_slab[type=top,waterlogged=false]"
+    }
+  ]
+}

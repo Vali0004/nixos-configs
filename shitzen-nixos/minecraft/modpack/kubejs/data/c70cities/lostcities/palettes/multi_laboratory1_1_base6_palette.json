@@ -1,0 +1,135 @@
+{
+  "name": "multi_laboratory1_1_base6_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:cobblestone"
+    },
+    {
+      "char": "b",
+      "block": "buildersdelight:laboratory_2"
+    },
+    {
+      "char": "c",
+      "block": "embellishcraft:polished_basalt"
+    },
+    {
+      "char": "d",
+      "block": "create:layered_calcite"
+    },
+    {
+      "char": "e",
+      "block": "buildersdelight:industrial_1[facing=north]"
+    },
+    {
+      "char": "f",
+      "block": "create:polished_cut_scoria_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "g",
+      "block": "embellishcraft:air_duct"
+    },
+    {
+      "char": "h",
+      "block": "refinedstorage:disk_drive"
+    },
+    {
+      "char": "i",
+      "block": "pfm:light_gray_arm_chair[facing=north,shape=straight]"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:polished_deepslate"
+    },
+    {
+      "char": "k",
+      "block": "pfm:dark_concrete_kitchen_counter[facing=south]"
+    },
+    {
+      "char": "l",
+      "block": "quark:blaze_lantern"
+    },
+    {
+      "char": "m",
+      "block": "createaddition:seed_oil[level=8]"
+    },
+    {
+      "char": "n",
+      "block": "pfm:concrete_kitchen_counter[facing=east]"
+    },
+    {
+      "char": "o",
+      "block": "pfm:white_arm_chair[facing=west,shape=straight]"
+    },
+    {
+      "char": "p",
+      "block": "minecraft:stone_button[facing=west,face=floor]"
+    },
+    {
+      "char": "q",
+      "block": "create:framed_glass"
+    },
+    {
+      "char": "r",
+      "block": "refinedstorage:crafting_grid"
+    },
+    {
+      "char": "s",
+      "block": "create:blaze_burner[facing=east,blaze=none]",
+      "tag": {
+        "id": "create:blaze_heater"
+      }
+    },
+    {
+      "char": "t",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=east,face=wall]"
+    },
+    {
+      "char": "u",
+      "block": "create:blaze_burner[facing=east,blaze=smouldering]",
+      "tag": {
+        "id": "create:blaze_heater"
+      }
+    },
+    {
+      "char": "w",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=south,face=wall]"
+    },
+    {
+      "char": "x",
+      "block": "refinedstorage:controller"
+    },
+    {
+      "char": "y",
+      "block": "minecraft:repeater[facing=north]"
+    },
+    {
+      "char": "A",
+      "block": "buildersdelight:industrial_flat_2[waterlogged=false,facing=north,face=wall]"
+    },
+    {
+      "char": "B",
+      "block": "create:polished_cut_deepslate_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "C",
+      "block": "zombie_extreme:computer_monitor[facing=west]"
+    },
+    {
+      "char": "D",
+      "block": "minecraft:stone_button[facing=south,face=floor]"
+    },
+    {
+      "char": "E",
+      "block": "quark:iron_button[facing=west,face=floor]"
+    },
+    {
+      "char": "F",
+      "block": "zombie_extreme:radio_installation[facing=west]"
+    },
+    {
+      "char": "I",
+      "block": "embellishcraft:grid_air_duct[facing=down]"
+    }
+  ]
+}

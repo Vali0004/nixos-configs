@@ -1,0 +1,182 @@
+{
+  "name": "multi_megatower1_4_ground_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:stone_slab[type=double,waterlogged=false]"
+    },
+    {
+      "char": "b",
+      "block": "create:display_link[facing=west]",
+      "tag": {
+        "id": "create:display_link"
+      }
+    },
+    {
+      "char": "c",
+      "block": "create:redstone_contact[facing=north]"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:cyan_terracotta"
+    },
+    {
+      "char": "e",
+      "block": "embellishcraft:smooth_marble"
+    },
+    {
+      "char": "f",
+      "block": "minecraft:observer[facing=south]"
+    },
+    {
+      "char": "g",
+      "block": "immersivepetroleum:asphalt_stair[waterlogged=false,half=bottom,facing=west,shape=straight]"
+    },
+    {
+      "char": "h",
+      "block": "immersivepetroleum:asphalt_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "i",
+      "block": "embellishcraft:yellow_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "j",
+      "block": "minecraft:observer[facing=north]"
+    },
+    {
+      "char": "k",
+      "block": "quark:stone_vertical_slab[type=east,waterlogged=false]"
+    },
+    {
+      "char": "l",
+      "block": "embellishcraft:spruce_wooden_crate"
+    },
+    {
+      "char": "m",
+      "block": "apocalypsenow:iron_locker[facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "n",
+      "block": "minecraft:moss_block"
+    },
+    {
+      "char": "o",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=east]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "p",
+      "block": "immersiveengineering:sheetmetal_iron"
+    },
+    {
+      "char": "q",
+      "block": "quark:potato_crate"
+    },
+    {
+      "char": "r",
+      "block": "minecraft:cobweb"
+    },
+    {
+      "char": "s",
+      "block": "quark:carrot_crate"
+    },
+    {
+      "char": "t",
+      "block": "minecraft:tnt"
+    },
+    {
+      "char": "u",
+      "block": "embellishcraft:gray_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "w",
+      "block": "quark:stone_vertical_slab[type=south,waterlogged=false]"
+    },
+    {
+      "char": "x",
+      "block": "quark:iron_button[facing=south,face=wall]"
+    },
+    {
+      "char": "y",
+      "block": "embellishcraft:white_steel_door[half=lower,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "A",
+      "block": "embellishcraft:white_steel_door[half=lower,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "B",
+      "block": "quark:golden_apple_crate"
+    },
+    {
+      "char": "C",
+      "block": "minecraft:glowstone"
+    },
+    {
+      "char": "D",
+      "block": "embellishcraft:black_corrugated_metal_plate_pressure_plate"
+    },
+    {
+      "char": "E",
+      "block": "create:andesite_bars[waterlogged=false]"
+    },
+    {
+      "char": "F",
+      "block": "minecraft:stone_brick_wall[waterlogged=false,up=true]"
+    },
+    {
+      "char": "I",
+      "block": "lootr:lootr_chest[type=single,waterlogged=false,facing=west]",
+      "loot": "chestloot"
+    },
+    {
+      "char": "J",
+      "block": "embellishcraft:white_steel_door[half=upper,open=false,hinge=right,facing=south]"
+    },
+    {
+      "char": "K",
+      "block": "embellishcraft:white_steel_door[half=upper,open=false,hinge=left,facing=south]"
+    },
+    {
+      "char": "L",
+      "block": "quark:apple_crate"
+    },
+    {
+      "char": "M",
+      "block": "minecraft:stone_slab[type=top,waterlogged=false]"
+    },
+    {
+      "char": "N",
+      "block": "create:nixie_tube[waterlogged=false,double_face=ceiling,facing=east]",
+      "tag": {
+        "id": "create:nixie_tube"
+      }
+    },
+    {
+      "char": "O",
+      "block": "minecraft:stone_stairs[waterlogged=false,half=top,facing=west,shape=straight]"
+    },
+    {
+      "char": "P",
+      "block": "embellishcraft:marble_button[facing=south,face=floor]"
+    },
+    {
+      "char": "Q",
+      "block": "minecraft:smooth_stone_slab[type=bottom,waterlogged=false]"
+    },
+    {
+      "char": "R",
+      "block": "simplylight:illuminant_block"
+    },
+    {
+      "char": "S",
+      "block": "simplylight:illuminant_block_on"
+    },
+    {
+      "char": "T",
+      "block": "embellishcraft:marble_button[facing=west,face=floor]"
+    }
+  ]
+}

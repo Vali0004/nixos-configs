@@ -1,0 +1,25 @@
+{
+  "name": "fountain_5_palette",
+  "palette": [
+    {
+      "char": "a",
+      "block": "minecraft:oak_leaves[persistent=true]"
+    },
+    {
+      "char": "b",
+      "block": "cfm:rock_path[waterlogged=false]"
+    },
+    {
+      "char": "c",
+      "block": "quark:oak_leaf_carpet"
+    },
+    {
+      "char": "d",
+      "block": "minecraft:azalea"
+    },
+    {
+      "char": "e",
+      "block": "minecraft:dead_bush"
+    }
+  ]
+}
