@@ -3,7 +3,7 @@
 let
   fetchMods = modfile:
   let
-    modData = import modfile;
+    modData = import modfile { inherit (pkgs) runCommand; };
     f = { name, value }:
     {
       name = "${name}";
