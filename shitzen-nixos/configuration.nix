@@ -24,10 +24,16 @@
   };
 
   networking = {
-    firewall = {
-      allowedTCPPorts = [ 80 443 4300 4301 25565 ];
-      allowedUDPPorts = [ 4301 4302 ];
-    };
+    firewall =
+      if (config.vali.mc_prod || config.vali.mc_test)
+      then {
+        allowedTCPPorts = [ 80 443 4301 9703 ];
+        allowedUDPPorts = [ 4301 4302 ];
+      }
+      else {
+        allowedTCPPorts = [ 80 443 9703 ];
+        allowedUDPPorts = [ ];
+      };
     hostName = "shitzen-nixos";
   };
 
@@ -51,6 +57,22 @@
     nginx = {
       enable = true;
       virtualHosts = {
+        "valis.furryporn.ca" = {
+          enableACME = true;
+          forceSSL = true;
+          listen = [{port = 9703; addr="0.0.0.0"; ssl=true;}];
+          locations = {
+            "/" = {
+              alias = "/data/valisfurryporn/";
+              proxyPass = "http://127.0.0.1:9703";
+              index = "index.html";
+              extraConfig = ''
+                "proxy_ssl_server_name on;" +
+                "proxy_pass_header Authorization;" +
+              '';
+            };
+          };
+        };
         "fuckk.lol" = {
           enableACME = true;
           forceSSL = true;
@@ -65,7 +87,12 @@
             };
             "/" = {
               alias = "/data/web/";
+              proxyPass = "http://127.0.0.1:80";
               index = "index.html";
+              extraConfig = ''
+                "proxy_ssl_server_name on;" +
+                "proxy_pass_header Authorization;"; 
+              '';
             };
           };
         };
@@ -86,7 +113,7 @@
   };
 
   vali.mc_prod = false;
-  vali.mc_test = true;
+  vali.mc_test = false;
 
   # This option defines the first version of NixOS you have installed on this particular machine,
   # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.

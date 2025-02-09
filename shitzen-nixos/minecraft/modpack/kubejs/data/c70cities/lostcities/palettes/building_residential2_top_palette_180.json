@@ -1,9 +1,0 @@
-{
-  "name": "building_residential2_top_palette_180",
-  "palette": [
-    {
-      "char": "a",
-      "block": "minecraft:dark_oak_slab[type=bottom,waterlogged=false]"
-    }
-  ]
-}

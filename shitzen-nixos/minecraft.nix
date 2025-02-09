@@ -43,14 +43,16 @@ in {
             files = fetchMods ./minecraft/test.nix;
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+              Flippy640 = "f57d77c3-5dcd-4a6e-b50a-1bb61a229940";
               Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
               SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
               hophophop123 = "00000000-0000-0000-0009-01f4f5b93df8";
+              HY9X = "7d0e5df7-7df2-457d-84e4-132230eed497";
               kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
             };
             jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
-            package = pkgs.forgeServers.forge-1_18_2-40_3_0;
+            package = pkgs.forgeServers.forge-1_20_1-47_2_17;
             serverProperties = {
               admin-slot = true;
               allow-cheats = true;
@@ -73,7 +75,10 @@ in {
               server-name = "InertiaCraft";
               server-port = 4301;
               simulation-distance = 4;
-              sync-chunk-writes = false; 
+              sync-chunk-writes = false;
+              texturepack-required = true;
+              #require-resource-pack = true;
+              #resource-pack = "https://fuckk.lol/minecraft/resource-pack-test.zip";
               tick-distance = 12;
               use-alternate-keepalive = true;
               view-distance = 32;

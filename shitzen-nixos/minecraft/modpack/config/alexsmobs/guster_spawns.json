@@ -2,24 +2,24 @@
   "biomes": [
     [
       {
-        "type": "BIOME_DICT",
-        "negate": false,
-        "value": "overworld"
+        "type": "BIOME_TAG",
+        "negate": true,
+        "value": "forge:no_default_monsters"
       },
       {
-        "type": "BIOME_DICT",
+        "type": "BIOME_TAG",
         "negate": false,
-        "value": "hot"
+        "value": "forge:is_hot/overworld"
       },
       {
-        "type": "BIOME_DICT",
+        "type": "BIOME_TAG",
         "negate": false,
-        "value": "dry"
+        "value": "forge:is_dry/overworld"
       },
       {
-        "type": "BIOME_DICT",
+        "type": "BIOME_TAG",
         "negate": false,
-        "value": "sandy"
+        "value": "forge:is_sandy"
       }
     ],
     [

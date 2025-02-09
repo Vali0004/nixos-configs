@@ -32,7 +32,7 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 4300 4301 25565 ];
+      allowedTCPPorts = [ 80 443 4301 9703 ];
       allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "router";
@@ -68,8 +68,8 @@ in {
 
   systemd.services.forward80 = mkForward 80 "10.0.127.3";
   systemd.services.forward443 = mkForward 443 "10.0.127.3";
-  systemd.services.forward4300 = mkForward 4300 "10.0.127.3";
   systemd.services.forward4301 = mkForward 4301 "10.0.127.3";
+  systemd.services.forward9703 = mkForward 9703 "10.0.127.3";
   systemd.services.forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
   systemd.services.forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
 

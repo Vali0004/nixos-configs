@@ -1,8 +1,0 @@
-{
-  "config": {
-    "damageMultiplier": 1.5,
-    "range": 5.0,
-    "isEnable": true
-  },
-  "loot": []
-}

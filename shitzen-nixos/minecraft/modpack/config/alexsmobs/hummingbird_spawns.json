@@ -16,14 +16,9 @@
     ],
     [
       {
-        "type": "BIOME_DICT",
+        "type": "BIOME_TAG",
         "negate": false,
-        "value": "overworld"
-      },
-      {
-        "type": "BIOME_DICT",
-        "negate": false,
-        "value": "jungle"
+        "value": "minecraft:is_jungle"
       }
     ],
     [
@@ -157,6 +152,13 @@
         "type": "REGISTRY_NAME",
         "negate": false,
         "value": "terralith:skylands_summer"
+      }
+    ],
+    [
+      {
+        "type": "REGISTRY_NAME",
+        "negate": false,
+        "value": "minecraft:cherry_grove"
       }
     ]
   ]

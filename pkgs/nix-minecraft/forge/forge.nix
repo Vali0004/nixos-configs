@@ -1,4 +1,4 @@
- { lib, runCommand, version, fetchurl, openjdk, openjdk_headless, jdk21_headless, jdk8_headless, jdk11_headless }:
+{ lib, runCommand, version, fetchurl, openjdk, openjdk_headless, jdk21_headless, jdk17_headless, jdk8_headless, jdk11_headless }:
 
 let
   # There has to be a better way to do this...
@@ -38,8 +38,19 @@ let
       };
       javaArgs = "@libraries/net/minecraftforge/forge/${version}/unix_args.txt";
       # Should be fine to use modern jdk versions on anything past 1.16 :pray:
-      jdk = jdk21_headless;
+      jdk = jdk17_headless;
       offlineHash = "sha256-MLi62+xGKD0xVo9KbF90QKAm28TJqgg7rO23ouIDP6o=";
+    };
+    # https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.17/forge-1.20.1-47.2.17-installer.jar
+    "1.20.1-47.2.17" = {
+      src = fetchurl {
+        url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.2.17/forge-1.20.1-47.2.17-installer.jar";
+        hash = "sha256-RBWlzZjG/Ysh7CvN7dulL9uo5JiVRXcK97K9IFRM1SQ=";
+      };
+      javaArgs = "@libraries/net/minecraftforge/forge/${version}/unix_args.txt";
+      # Should be fine to use modern jdk versions on 1.2X.X
+      jdk = jdk21_headless;
+      offlineHash = "sha256-/xSyWwxBEkdUJgXj8NR/18mChukabCy2OdxX0aTI6wo=";
     };
     "1.20.1-47.3.0" = {
       src = fetchurl {

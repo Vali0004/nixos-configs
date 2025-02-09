@@ -1,5 +1,5 @@
-ignoreUpdate:1
-updateNotification:false
+ignoreUpdate:0
+updateNotification:true
 allowInternetAccess:true
 differentiateByServerAddress:true
 caveMapsAllowed:true
@@ -37,11 +37,11 @@ partialYTeleportation:true
 displayStainedGlass:true
 caveModeDepth:30
 caveModeStart:2147483647
-autoCaveMode:0
+autoCaveMode:-1
 legibleCaveMaps:false
-displayCaveModeStart:false
-caveModeToggleTimer:10000
-defaultCaveModeType:0
+displayCaveModeStart:true
+caveModeToggleTimer:1000
+defaultCaveModeType:1
 biomeBlending:true
 trackedPlayers:true
 multipleImagesExport:false
