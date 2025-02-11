@@ -27,11 +27,11 @@
     firewall =
       if (config.vali.mc_prod || config.vali.mc_test)
       then {
-        allowedTCPPorts = [ 80 443 4301 9703 ];
+        allowedTCPPorts = [ 80 443 4301 ];
         allowedUDPPorts = [ 4301 4302 ];
       }
       else {
-        allowedTCPPorts = [ 80 443 9703 ];
+        allowedTCPPorts = [ 80 443 ];
         allowedUDPPorts = [ ];
       };
     hostName = "shitzen-nixos";
@@ -60,16 +60,10 @@
         "valis.furryporn.ca" = {
           enableACME = true;
           forceSSL = true;
-          listen = [{port = 9703; addr="0.0.0.0"; ssl=true;}];
           locations = {
             "/" = {
               alias = "/data/valisfurryporn/";
-              proxyPass = "http://127.0.0.1:9703";
               index = "index.html";
-              extraConfig = ''
-                "proxy_ssl_server_name on;" +
-                "proxy_pass_header Authorization;" +
-              '';
             };
           };
         };
@@ -87,12 +81,7 @@
             };
             "/" = {
               alias = "/data/web/";
-              proxyPass = "http://127.0.0.1:80";
               index = "index.html";
-              extraConfig = ''
-                "proxy_ssl_server_name on;" +
-                "proxy_pass_header Authorization;"; 
-              '';
             };
           };
         };
