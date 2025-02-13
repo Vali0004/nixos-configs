@@ -32,7 +32,7 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 4301 9703 ];
+      allowedTCPPorts = [ 80 443 4301 5201 ];
       allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "router";
@@ -54,6 +54,7 @@ in {
     ffmpeg_6-headless
     git
     htop
+    iperf
     openssl
     wget
   ];

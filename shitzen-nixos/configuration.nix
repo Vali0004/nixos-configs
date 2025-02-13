@@ -27,11 +27,11 @@
     firewall =
       if (config.vali.mc_prod || config.vali.mc_test)
       then {
-        allowedTCPPorts = [ 80 443 4301 ];
+        allowedTCPPorts = [ 80 443 4301 5201 ];
         allowedUDPPorts = [ 4301 4302 ];
       }
       else {
-        allowedTCPPorts = [ 80 443 ];
+        allowedTCPPorts = [ 80 443 5201 ];
         allowedUDPPorts = [ ];
       };
     hostName = "shitzen-nixos";
@@ -41,8 +41,10 @@
     ffmpeg_6-headless
     git
     htop
+    iperf
     jdk
     neofetch
+    node2nix
     openssl
     pciutils
     screen
