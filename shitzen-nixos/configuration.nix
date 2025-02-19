@@ -27,11 +27,11 @@
     firewall =
       if (config.vali.mc_prod || config.vali.mc_test)
       then {
-        allowedTCPPorts = [ 80 443 4301 5201 ];
+        allowedTCPPorts = [ 80 443 4301 5201 8080 ];
         allowedUDPPorts = [ 4301 4302 ];
       }
       else {
-        allowedTCPPorts = [ 80 443 5201 ];
+        allowedTCPPorts = [ 80 443 5201 8080 ];
         allowedUDPPorts = [ ];
       };
     hostName = "shitzen-nixos";
@@ -45,6 +45,7 @@
     jdk
     neofetch
     node2nix
+    nodejs_20
     openssl
     pciutils
     screen
@@ -58,6 +59,10 @@
   services = {
     nginx = {
       enable = true;
+      recommendedGzipSettings = true;
+      recommendedOptimisation = true;
+      recommendedProxySettings = true;
+      recommendedTlsSettings = true;
       virtualHosts = {
         "valis.furryporn.ca" = {
           enableACME = true;
@@ -66,6 +71,16 @@
             "/" = {
               alias = "/data/valisfurryporn/";
               index = "index.html";
+            };
+            "/r34/" = {
+              proxyPass = "http://127.0.0.1:8080/";
+              proxyWebsockets = true;
+              extraConfig = ''
+                proxy_ssl_server_name on;
+                proxy_ssl_name $proxy_host;
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+              '';
             };
           };
         };
@@ -94,7 +109,18 @@
       localip = "10.0.127.3";
     };
   };
-  #systemd.services.minecraft-server-prod.serviceConfig.TimeoutStopSec = lib.mkForce "10s";
+
+  systemd.services.cors-anywhere = {
+    enable = true;
+    description = "Proxy to strip CORS from a request";
+    unitConfig = {
+      Type = "simple";
+    };
+    serviceConfig = {
+      ExecStart = "/nix/store/j7dx1n6m5axf9r2bvly580x2ixx546wq-nodejs-20.18.1/bin/node /root/cors-anywhere/result/lib/node_modules/cors-anywhere/server.js";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
 
   security = {
     acme = {
