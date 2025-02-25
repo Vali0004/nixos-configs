@@ -6,136 +6,136 @@
 let 
   spice = builtins.getFlake "github:Gerg-L/spicetify-nix";
   spicePkgs = spice.outputs.legacyPackages.x86_64-linux;
-  rescueBoot = import (pkgs.path + "/nixos/lib/eval-config.nix") {
-    modules = [
-      (pkgs.path + "/nixos/modules/installer/scan/detected.nix")
-      (pkgs.path + "/nixos/modules/installer/scan/not-detected.nix")
-      (pkgs.path + "/nixos/modules/profiles/clone-config.nix")
-      module
-    ];
-  };
-  module = {
-    imports = [
-      /etc/nixos/rescue-configuration.nix
-    ];
-    boot = {
-      initrd = {
-        availableKernelModules = [ "squashfs" "overlay" "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-        kernelModules = [ "loop" "overlay" ];
-        systemd.enable = true;
-      };
-      kernelParams = [
-        "boot.shell_on_fail"
-      ];
-      kernel.sysctl."vm.overcommit_memory" = "1";
-      enableContainers = false;
-      # Don't enable grub, we don't need it anyways and it causes a cyclic dep
-      loader.grub.enable = false;
-      loader.timeout = 10;
-      postBootCommands = ''
-        # After booting, register the contents of the Nix store
-        # in the Nix database in the tmpfs.
-        ${config.nix.package}/bin/nix-store --load-db < /nix/store/nix-path-registration
-
-        # nixos-rebuild also requires a "system" profile and an
-        # /etc/NIXOS tag.
-        touch /etc/NIXOS
-        ${config.nix.package}/bin/nix-env -p /nix/var/nix/profiles/system --set /run/current-system
-      '';
-      supportedFilesystems = [ "btrfs" "cifs" "f2fs" "ntfs" "vfat" "xfs" ];
-      swraid = {
-        enable = true;
-        mdadmConf = "PROGRAM ${pkgs.coreutils}/bin/true";
-      };
-    };
-
-    fileSystems = {
-      "/" = {
-        fsType = "tmpfs";
-        options = [ "mode=0755" ];
-      };
-      "/nix/.ro-store" = {
-        fsType = "squashfs";
-        device = "../nix-store.squashfs";
-        options = [ "loop" "threads=multi" ];
-        neededForBoot = true;
-      };
-      "/nix/.rw-store" = {
-        fsType = "tmpfs";
-        options = [ "mode=0755" ];
-        neededForBoot = true;
-      };
-      "/nix/store" = {
-        overlay = {
-          lowerdir = [ "/nix/.ro-store" ];
-          upperdir = "/nix/.rw-store/store";
-          workdir = "/nix/.rw-store/work";
-        };
-        neededForBoot = true;
-      };
-    };
-
-    system = with lib; {
-      # I know that it isn't alphabetically sorted, it's done that way on purpose.
-      build = with pkgs; {
-        # A script invoking kexec on ./bzImage and ./initrd.gz.
-        # Usually used through system.build.kexecTree, but exposed here for composability.
-        kexecScript = pkgs.writeScript "kexec-boot" ''
-          #!/usr/bin/env bash
-          if ! kexec -v >/dev/null 2>&1; then
-            echo "kexec not found: please install kexec-tools" 2>&1
-            exit 1
-          fi
-          SCRIPT_DIR=$( cd -- "$( dirname -- "''${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-          kexec --load ''${SCRIPT_DIR}/bzImage \
-            --initrd=''${SCRIPT_DIR}/initrd.gz \
-            --command-line "init=${module.config.system.build.toplevel}/init ${toString module.boot.kernelParams}"
-          kexec -e
-        '';
-        kexecTree = linkFarm "kexec-tree" [
-          {
-            name = "initrd.gz";
-            path = "${module.system.build.netbootRamdisk}/initrd";
-          }
-          {
-            name = "bzImage";
-            path = "${module.system.build.kernel}/${module.system.boot.loader.kernelFile}";
-          }
-          {
-            name = "kexec-boot";
-            path = module.system.build.kexecScript;
-          }
-        ];
-        # Create the squashfs that contains the Nix store
-        squashfsStore = callPackage (path + "/nixos/lib/make-squashfs.nix") {
-          storeContents = [ config.system.build.toplevel ];
-          comp = "zstd -Xcompression-level 19";
-        };
-        # Create the initrd
-        ramdisk = pkgs.makeInitrdNG {
-          inherit (config.boot.initrd) compressor;
-          #inherit (module.boot.initrd) compressor;
-          prepend = [ "${module.system.build.initialRamdisk}/initrd" ];
-
-          contents = [
-            {
-              source = module.system.build.squashfsStore;
-              target = "/nix-store.squashfs";
-            }
-          ];
-        };
-      };
-
-      stateVersion = trivial.release;
-
-      extraDependencies = with pkgs; [
-        busybox
-        jq # for closureInfo
-        # For boot.initrd.systemd
-        makeInitrdNGTool
-      ];
-    };
-  };
+#  rescueBoot = import (pkgs.path + "/nixos/lib/eval-config.nix") {
+#    modules = [
+#      (pkgs.path + "/nixos/modules/installer/scan/detected.nix")
+#      (pkgs.path + "/nixos/modules/installer/scan/not-detected.nix")
+#      (pkgs.path + "/nixos/modules/profiles/clone-config.nix")
+#      module
+#    ];
+#  };
+#  module = {
+#    imports = [
+#      /etc/nixos/rescue-configuration.nix
+#    ];
+#    boot = {
+#      initrd = {
+#        availableKernelModules = [ "squashfs" "overlay" "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+#        kernelModules = [ "loop" "overlay" ];
+#        systemd.enable = true;
+#      };
+#      kernelParams = [
+#        "boot.shell_on_fail"
+#      ];
+#      kernel.sysctl."vm.overcommit_memory" = "1";
+#      enableContainers = false;
+#      # Don't enable grub, we don't need it anyways and it causes a cyclic dep
+#      loader.grub.enable = false;
+#      loader.timeout = 10;
+#      postBootCommands = ''
+#        # After booting, register the contents of the Nix store
+#        # in the Nix database in the tmpfs.
+#        ${config.nix.package}/bin/nix-store --load-db < /nix/store/nix-path-registration
+#
+#        # nixos-rebuild also requires a "system" profile and an
+#        # /etc/NIXOS tag.
+#        touch /etc/NIXOS
+#        ${config.nix.package}/bin/nix-env -p /nix/var/nix/profiles/system --set /run/current-system
+#      '';
+#      supportedFilesystems = [ "btrfs" "cifs" "f2fs" "ntfs" "vfat" "xfs" ];
+#      swraid = {
+#        enable = true;
+#        mdadmConf = "PROGRAM ${pkgs.coreutils}/bin/true";
+#      };
+#    };
+#
+#    fileSystems = {
+#      "/" = {
+#        fsType = "tmpfs";
+#        options = [ "mode=0755" ];
+#      };
+#      "/nix/.ro-store" = {
+#        fsType = "squashfs";
+#        device = "../nix-store.squashfs";
+#        options = [ "loop" "threads=multi" ];
+#        neededForBoot = true;
+#      };
+#      "/nix/.rw-store" = {
+#        fsType = "tmpfs";
+#        options = [ "mode=0755" ];
+#        neededForBoot = true;
+#      };
+#      "/nix/store" = {
+#        overlay = {
+#          lowerdir = [ "/nix/.ro-store" ];
+#          upperdir = "/nix/.rw-store/store";
+#          workdir = "/nix/.rw-store/work";
+#        };
+#        neededForBoot = true;
+#      };
+#    };
+#
+#    system = with lib; {
+#      # I know that it isn't alphabetically sorted, it's done that way on purpose.
+#      build = with pkgs; {
+#        # A script invoking kexec on ./bzImage and ./initrd.gz.
+#        # Usually used through system.build.kexecTree, but exposed here for composability.
+#        kexecScript = pkgs.writeScript "kexec-boot" ''
+#          #!/usr/bin/env bash
+#          if ! kexec -v >/dev/null 2>&1; then
+#            echo "kexec not found: please install kexec-tools" 2>&1
+#            exit 1
+#          fi
+#          SCRIPT_DIR=$( cd -- "$( dirname -- "''${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+#          kexec --load ''${SCRIPT_DIR}/bzImage \
+#            --initrd=''${SCRIPT_DIR}/initrd.gz \
+#            --command-line "init=${module.config.system.build.toplevel}/init ${toString module.boot.kernelParams}"
+#          kexec -e
+#        '';
+#        kexecTree = linkFarm "kexec-tree" [
+#          {
+#            name = "initrd.gz";
+#            path = "${module.system.build.netbootRamdisk}/initrd";
+#          }
+#          {
+#            name = "bzImage";
+#            path = "${module.system.build.kernel}/${module.system.boot.loader.kernelFile}";
+#          }
+#          {
+#            name = "kexec-boot";
+#            path = module.system.build.kexecScript;
+#          }
+#        ];
+#        # Create the squashfs that contains the Nix store
+#        squashfsStore = callPackage (path + "/nixos/lib/make-squashfs.nix") {
+#          storeContents = [ config.system.build.toplevel ];
+#          comp = "zstd -Xcompression-level 19";
+#        };
+#        # Create the initrd
+#        ramdisk = pkgs.makeInitrdNG {
+#          inherit (config.boot.initrd) compressor;
+#          #inherit (module.boot.initrd) compressor;
+#          prepend = [ "${module.system.build.initialRamdisk}/initrd" ];
+#
+#          contents = [
+#            {
+#              source = module.system.build.squashfsStore;
+#              target = "/nix-store.squashfs";
+#            }
+#          ];
+#        };
+#      };
+#
+#      stateVersion = trivial.release;
+#
+#      extraDependencies = with pkgs; [
+#        busybox
+#        jq # for closureInfo
+#        # For boot.initrd.systemd
+#        makeInitrdNGTool
+#      ];
+#    };
+#  };
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -150,17 +150,18 @@ in {
       kernelModules = [ ];
       systemd.enable = true;
       # Silence Stage 1
-      verbose = false;
+      verbose = true;
     };
     kernelModules = [ "kvm-amd" ];
     kernelParams = [
       "boot.shell_on_fail"
       # https://wiki.archlinux.org/title/Silent_boot
-      "quiet"
-      "splash"
-      "rd.systemd.show_status=auto"
-      "rd.udev.log_level=3"
-      "vga=current"
+      #"quiet"
+      #"splash"
+      #"rd.systemd.show_status=auto"
+      #"rd.udev.log_level=3"
+      "usbhid.kbpoll=1"
+      #"vga=current"
     ];
     kernelPatches = [
       {
@@ -184,19 +185,19 @@ in {
         device = "nodev";
         efiSupport = true;
         efiInstallAsRemovable = false;
-        extraEntries = ''
-          menuentry "NixOS Rescue LiveCD" {
-            linux ($drive1)/rescue-kernel init=${rescueBoot.config.system.build.toplevel}/init ${toString module.boot.kernelParams}
-            initrd ($drive1)/rescue-initrd
-          }
-        '';
-        extraFiles = {
-          "rescue-kernel" = "${module.system.build.kernel}/bzImage";
-          "rescue-initrd" = "${module.system.build.ramdisk}/initrd";
-        };
+#        extraEntries = ''
+#          menuentry "NixOS Rescue LiveCD" {
+#            linux ($drive1)/rescue-kernel init=${rescueBoot.config.system.build.toplevel}/init ${toString module.boot.kernelParams}
+#            initrd ($drive1)/rescue-initrd
+#          }
+#        '';
+#        extraFiles = {
+#          "rescue-kernel" = "${module.system.build.kernel}/bzImage";
+#          "rescue-initrd" = "${module.system.build.ramdisk}/initrd";
+#        };
         memtest86.enable = true;
       };
-      timeout = 0;
+      timeout = 10;
     };
   };
 
@@ -215,11 +216,14 @@ in {
       alacritty
       alsa-utils
       alvr
+      colmena
       curl
       dos2unix
       direnv
+      edid-decode
       envsubst
       eog
+      easyeffects
       evtest
       fastfetch
       git
@@ -233,6 +237,7 @@ in {
       openssl
       pavucontrol
       pciutils
+      pcmanfm
       picom
       playerctl
       pulseaudio
@@ -258,6 +263,7 @@ in {
       xdg-desktop-portal-gtk
       xdg-launch
       xdg-utils
+      xorg.libxcvt
       zenity
       zip
     ];
@@ -329,6 +335,7 @@ in {
       openFirewall = true;
     };
     command-not-found.enable = true;
+    dconf.enable = true;
     git = {
       enable = true;
       lfs.enable = true;
@@ -373,6 +380,7 @@ in {
         use-damage = false;
       };
       shadow = true;
+      vSync = true;
     };
     pipewire = {
       enable = true;
@@ -389,6 +397,11 @@ in {
         xterm
       ];
       desktopManager.xterm.enable = false;
+      displayManager.setupCommands = ''
+        ${pkgs.xorg.xrandr}/bin/xrandr --newmode "2560x1440_239.97"  1442.50  2560 2800 3088 3616  1440 1443 1448 1663 -hsync +vsyn
+        ${pkgs.xorg.xrandr}/bin/xrandr --addmode DP-3 2560x1440_239.97
+        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --mode 2560x1440_239.97
+      '';
       # i3
       windowManager.i3 = {
         enable = true;
@@ -419,6 +432,22 @@ in {
   };
 
   systemd = {
+    user.services = {
+      easyeffects = {
+        enable = true;
+        after = [ "graphical-session-pre.target" ];
+        description = "EasyEffects Daemon";
+        partOf = [ "graphical-session.target" "pipewire.service" ];
+        requires = [ "dbus.service" ];
+        wantedBy = [ "graphical-session.target" ];
+        serviceConfig = {
+          ExecStart = "${pkgs.easyeffects}/bin/easyeffects --gapplication-service";
+          ExecStop = "${pkgs.easyeffects}/bin/easyeffects --quit";
+          Restart = "on-failure";
+          RestartSec = 5;
+        };
+      };
+    };
     watchdog.rebootTime = "0";
   };
 
