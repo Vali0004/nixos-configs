@@ -233,6 +233,7 @@ in {
       iperf
       mpv
       neovim
+      nodejs_23
       obs-studio
       openssl
       pavucontrol
@@ -353,6 +354,16 @@ in {
       theme = spicePkgs.themes.sleek;
       colorScheme = "Elementary";
     };
+    ssh.extraConfig = ''
+      Host router
+        Hostname 31.59.128.34
+      Host shitzen-nixos
+        Hostname 10.0.0.244
+      Host chromeshit
+        Hostname 10.0.0.124
+      Host r2d2box
+        Hostname 10.0.0.204
+    '';
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
