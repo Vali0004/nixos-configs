@@ -55,6 +55,7 @@ in {
     git
     htop
     iperf
+    neofetch
     openssl
     wget
   ];
