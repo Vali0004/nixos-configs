@@ -10,8 +10,10 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Modifer keys
-set $mod Mod4
+set $mod Mod1
 set $smod Shift
+set $win Mod4
+set $winc 133
 
 # Autostartup
 #  Start XDG autostart .desktop files using dex.
@@ -50,6 +52,7 @@ set $wm_app_browser google-chrome-stable
 bindsym $mod+Return exec $wm_app_terminal
 # Start a program launcher
 bindsym $mod+d exec $wm_app_launcher
+bindcode $winc exec $wm_app_launcher
 # Start a web browser
 bindsym $mod+$smod+Return exec $wm_app_browser
 
@@ -141,11 +144,11 @@ bindsym $mod+0 workspace 10
 bindsym $mod+$smod+0 move container to workspace 10
 
 # Reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+$smod+c reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+$smod+r restart
 # Exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+$smod+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

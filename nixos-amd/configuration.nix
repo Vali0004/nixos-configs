@@ -4,6 +4,7 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let 
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   spice = builtins.getFlake "github:Gerg-L/spicetify-nix";
   spicePkgs = spice.outputs.legacyPackages.x86_64-linux;
 #  rescueBoot = import (pkgs.path + "/nixos/lib/eval-config.nix") {
@@ -140,28 +141,40 @@ in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     spice.nixosModules.default
+    (import "${home-manager}/nixos")
   ];
 
   boot = {
     consoleLogLevel = 0;
+    extraModprobeConfig = "options vfio-pci ids=1002:7340,1002:ab38";
     extraModulePackages = [ ];
     initrd = {
       availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
       kernelModules = [ ];
       systemd.enable = true;
       # Silence Stage 1
-      verbose = true;
+      verbose = false;
     };
-    kernelModules = [ "kvm-amd" ];
+    kernelModules = [
+      "kvm-amd"
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+      "vfio_virqfd"
+    ];
     kernelParams = [
+      # Enable IOMMU
+      "amd_iommu=on"
       "boot.shell_on_fail"
       # https://wiki.archlinux.org/title/Silent_boot
-      #"quiet"
-      #"splash"
-      #"rd.systemd.show_status=auto"
+      "quiet"
+      "splash"
+      "rd.systemd.show_status=auto"
       #"rd.udev.log_level=3"
       "usbhid.kbpoll=1"
-      #"vga=current"
+      "vga=current"
+      # Isolate my 5500xt
+      "vfio-pci.ids=1002:7340,1002:ab38"
     ];
     kernelPatches = [
       {
@@ -216,10 +229,13 @@ in {
       alacritty
       alsa-utils
       alvr
+      bridge-utils
+      busybox
       colmena
       curl
       dos2unix
       direnv
+      dmidecode
       edid-decode
       envsubst
       eog
@@ -242,6 +258,7 @@ in {
       picom
       playerctl
       pulseaudio
+      qemu_full
       rofi
       spicetify-cli
       steamcmd
@@ -249,7 +266,9 @@ in {
       sysstat
       tmux
       unzip
+      usbutils
       vim
+      virt-viewer
       vscode
       vscode-extensions.mkhl.direnv
       vscode-extensions.bbenoist.nix
@@ -286,10 +305,10 @@ in {
       ];
     };
     # Mount the Windows C:\ drive
-    "/mnt/c" = {
-      device = "/dev/disk/by-uuid/5A40382940380E6F";
-      fsType = "ntfs";
-    };
+#    "/mnt/c" = {
+#      device = "/dev/disk/by-uuid/5A40382940380E6F";
+#      fsType = "ntfs";
+#    };
     # Mount D:\
     "/mnt/d" = {
       device = "/dev/disk/by-uuid/F696F03D96F00043";
@@ -299,6 +318,12 @@ in {
     "/mnt/x" = {
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";
       fsType = "ntfs";
+    };
+    # Mount the NFS
+    "/data" = {
+      device = "10.0.0.244:/data";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" "soft" ];
     };
   };
 
@@ -310,6 +335,35 @@ in {
       enable32Bit = true;
     };
     pulseaudio.support32Bit = true;
+  };
+
+  home-manager = {
+    users.vali = {
+      home.stateVersion = "24.11";
+      gtk = {
+        enable = true;
+        theme = {
+          name = "Adwaita-dark";
+          package = pkgs.gnome.gnome-themes-extra;
+        };
+      };
+      xsession.windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+        config = {
+          modifier = "Mod4";
+          smodifer = "Shift";
+          gaps = {
+            inner = 10;
+            outer = 5;
+          };
+          bars = [
+            {
+            }
+          ];
+        };
+      };
+    };
   };
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -341,6 +395,12 @@ in {
       enable = true;
       lfs.enable = true;
     };
+    gnupg.agent = {
+      enable = true;
+      enableBrowserSocket = true;
+      enableExtraSocket = true;
+      enableSSHSupport = true;
+    };
     java.enable = true;
     spicetify = {
       enable = true;
@@ -355,6 +415,8 @@ in {
       colorScheme = "Elementary";
     };
     ssh.extraConfig = ''
+      IdentityFile /home/vali/.ssh/id_rsa
+      IdentityFile /home/vali/.ssh/nixos_main
       Host router
         Hostname 31.59.128.34
       Host shitzen-nixos
@@ -370,6 +432,15 @@ in {
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
+    virt-manager = {
+      enable = true;
+    };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
   };
 
   services = {
@@ -401,6 +472,9 @@ in {
       };
       pulse.enable = true;
     };
+    udev.extraRules = ''
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
+    '';
     xserver = {
       enable = true;
       # Disable XTerm
@@ -464,21 +538,54 @@ in {
 
   time.timeZone = "America/Detroit";
 
-  users.users = {
-    vali = {
-      isNormalUser = true;
-      extraGroups = [ "render" "tty" "wheel" "video" ];
-      packages = with pkgs; [
-        (discord.override {
-          withVencord = true;
-        })
-        feh
-        flameshot
-        google-chrome
-        plex-desktop
-        tree
+  users = {
+    groups = {
+      libvirtd.members = [
+        "vali"
       ];
     };
+    users = {
+      vali = {
+        isNormalUser = true;
+        extraGroups = [
+          "qemu-libvirtd"
+          "render"
+          "tty"
+          "wheel"
+          "video"
+        ];
+        packages = with pkgs; [
+          (discord.override {
+            withVencord = true;
+          })
+          feh
+          flameshot
+          google-chrome
+          plex-desktop
+          tree
+        ];
+      };
+    };
+  };
+
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+      onShutdown = "shutdown";
+      qemu = {
+        ovmf.enable = true;
+        ovmf.packages = with pkgs; [
+          OVMFFull.fd
+        ];
+        package = pkgs.qemu.overrideAttrs (old: {
+          patches = [ ./qemu.patch ];
+        });
+#        package = pkgs.qemu_kvm;
+        runAsRoot = false;
+      };
+    };
+    spiceUSBRedirection.enable = true;
   };
 
   xdg.portal = {

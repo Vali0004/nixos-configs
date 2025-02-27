@@ -27,12 +27,12 @@
     firewall =
       if (config.vali.mc_prod || config.vali.mc_test)
       then {
-        allowedTCPPorts = [ 80 443 4301 5201 8080 ];
-        allowedUDPPorts = [ 4301 4302 ];
+        allowedTCPPorts = [ 80 443 111 2049 20048 4301 5201 8080 ];
+        allowedUDPPorts = [ 4301 4302 111 2049 ];
       }
       else {
-        allowedTCPPorts = [ 80 443 5201 8080 ];
-        allowedUDPPorts = [ ];
+        allowedTCPPorts = [ 80 443 111 2049 20048 5201 8080 ];
+        allowedUDPPorts = [ 111 2049 ];
       };
     hostName = "shitzen-nixos";
   };
@@ -57,6 +57,14 @@
   ];
 
   services = {
+    nfs = {
+      server = {
+        enable = true;
+        exports = ''
+          /data 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
+        '';
+      };
+    };
     nginx = {
       enable = true;
       recommendedGzipSettings = true;
