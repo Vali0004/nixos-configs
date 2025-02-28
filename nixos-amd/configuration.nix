@@ -4,139 +4,33 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let 
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
   spice = builtins.getFlake "github:Gerg-L/spicetify-nix";
   spicePkgs = spice.outputs.legacyPackages.x86_64-linux;
-#  rescueBoot = import (pkgs.path + "/nixos/lib/eval-config.nix") {
-#    modules = [
-#      (pkgs.path + "/nixos/modules/installer/scan/detected.nix")
-#      (pkgs.path + "/nixos/modules/installer/scan/not-detected.nix")
-#      (pkgs.path + "/nixos/modules/profiles/clone-config.nix")
-#      module
-#    ];
-#  };
-#  module = {
-#    imports = [
-#      /etc/nixos/rescue-configuration.nix
-#    ];
-#    boot = {
-#      initrd = {
-#        availableKernelModules = [ "squashfs" "overlay" "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-#        kernelModules = [ "loop" "overlay" ];
-#        systemd.enable = true;
-#      };
-#      kernelParams = [
-#        "boot.shell_on_fail"
-#      ];
-#      kernel.sysctl."vm.overcommit_memory" = "1";
-#      enableContainers = false;
-#      # Don't enable grub, we don't need it anyways and it causes a cyclic dep
-#      loader.grub.enable = false;
-#      loader.timeout = 10;
-#      postBootCommands = ''
-#        # After booting, register the contents of the Nix store
-#        # in the Nix database in the tmpfs.
-#        ${config.nix.package}/bin/nix-store --load-db < /nix/store/nix-path-registration
-#
-#        # nixos-rebuild also requires a "system" profile and an
-#        # /etc/NIXOS tag.
-#        touch /etc/NIXOS
-#        ${config.nix.package}/bin/nix-env -p /nix/var/nix/profiles/system --set /run/current-system
-#      '';
-#      supportedFilesystems = [ "btrfs" "cifs" "f2fs" "ntfs" "vfat" "xfs" ];
-#      swraid = {
-#        enable = true;
-#        mdadmConf = "PROGRAM ${pkgs.coreutils}/bin/true";
-#      };
-#    };
-#
-#    fileSystems = {
-#      "/" = {
-#        fsType = "tmpfs";
-#        options = [ "mode=0755" ];
-#      };
-#      "/nix/.ro-store" = {
-#        fsType = "squashfs";
-#        device = "../nix-store.squashfs";
-#        options = [ "loop" "threads=multi" ];
-#        neededForBoot = true;
-#      };
-#      "/nix/.rw-store" = {
-#        fsType = "tmpfs";
-#        options = [ "mode=0755" ];
-#        neededForBoot = true;
-#      };
-#      "/nix/store" = {
-#        overlay = {
-#          lowerdir = [ "/nix/.ro-store" ];
-#          upperdir = "/nix/.rw-store/store";
-#          workdir = "/nix/.rw-store/work";
-#        };
-#        neededForBoot = true;
-#      };
-#    };
-#
-#    system = with lib; {
-#      # I know that it isn't alphabetically sorted, it's done that way on purpose.
-#      build = with pkgs; {
-#        # A script invoking kexec on ./bzImage and ./initrd.gz.
-#        # Usually used through system.build.kexecTree, but exposed here for composability.
-#        kexecScript = pkgs.writeScript "kexec-boot" ''
-#          #!/usr/bin/env bash
-#          if ! kexec -v >/dev/null 2>&1; then
-#            echo "kexec not found: please install kexec-tools" 2>&1
-#            exit 1
-#          fi
-#          SCRIPT_DIR=$( cd -- "$( dirname -- "''${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-#          kexec --load ''${SCRIPT_DIR}/bzImage \
-#            --initrd=''${SCRIPT_DIR}/initrd.gz \
-#            --command-line "init=${module.config.system.build.toplevel}/init ${toString module.boot.kernelParams}"
-#          kexec -e
-#        '';
-#        kexecTree = linkFarm "kexec-tree" [
-#          {
-#            name = "initrd.gz";
-#            path = "${module.system.build.netbootRamdisk}/initrd";
-#          }
-#          {
-#            name = "bzImage";
-#            path = "${module.system.build.kernel}/${module.system.boot.loader.kernelFile}";
-#          }
-#          {
-#            name = "kexec-boot";
-#            path = module.system.build.kexecScript;
-#          }
-#        ];
-#        # Create the squashfs that contains the Nix store
-#        squashfsStore = callPackage (path + "/nixos/lib/make-squashfs.nix") {
-#          storeContents = [ config.system.build.toplevel ];
-#          comp = "zstd -Xcompression-level 19";
-#        };
-#        # Create the initrd
-#        ramdisk = pkgs.makeInitrdNG {
-#          inherit (config.boot.initrd) compressor;
-#          #inherit (module.boot.initrd) compressor;
-#          prepend = [ "${module.system.build.initialRamdisk}/initrd" ];
-#
-#          contents = [
-#            {
-#              source = module.system.build.squashfsStore;
-#              target = "/nix-store.squashfs";
-#            }
-#          ];
-#        };
-#      };
-#
-#      stateVersion = trivial.release;
-#
-#      extraDependencies = with pkgs; [
-#        busybox
-#        jq # for closureInfo
-#        # For boot.initrd.systemd
-#        makeInitrdNGTool
-#      ];
-#    };
-#  };
+  # i3 config extras
+  i3Config = {
+    # Modifer keys
+    windows = "Mod4";
+    windowsCode = "133";
+    modifier = "Mod1";
+    smodifier = "Shift";
+    # Application
+    wmAppLauncher = "\"rofi -modi drun,run -show drun\"";
+    wmAppTerminal = "i3-sensible-terminal";
+    wmAppBrowser = "google-chrome-stable";
+    # Theme
+    barBg = "#3B3B3B";
+    barStatusline = "#FFFFFF";
+    barSeparator = "#FFFFFF";
+    barFocusedWorkspaceBg = "#A3BE8C";
+    barFocusedWorkspaceFg = "#3B3B3B";
+    barActiveWorkspaceBg = "#EBCB8B";
+    barActiveWorkspaceFg = "#3B3B3B";
+    barInactiveWorkspaceBg = "#BF616A";
+    barInactiveWorkspaceFg = "#3B3B3B";
+    barUrgentWorkspaceBg = "#D08770";
+    barUrgentWorkspaceFg = "#3B3B3B";
+  };
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -157,24 +51,18 @@ in {
     };
     kernelModules = [
       "kvm-amd"
-      "vfio_pci"
-      "vfio"
-      "vfio_iommu_type1"
-      "vfio_virqfd"
     ];
     kernelParams = [
       # Enable IOMMU
       "amd_iommu=on"
       "boot.shell_on_fail"
       # https://wiki.archlinux.org/title/Silent_boot
-      "quiet"
-      "splash"
-      "rd.systemd.show_status=auto"
+#      "quiet"
+#      "splash"
+#      "rd.systemd.show_status=auto"
       #"rd.udev.log_level=3"
       "usbhid.kbpoll=1"
-      "vga=current"
-      # Isolate my 5500xt
-      "vfio-pci.ids=1002:7340,1002:ab38"
+#      "vga=current"
     ];
     kernelPatches = [
       {
@@ -198,16 +86,6 @@ in {
         device = "nodev";
         efiSupport = true;
         efiInstallAsRemovable = false;
-#        extraEntries = ''
-#          menuentry "NixOS Rescue LiveCD" {
-#            linux ($drive1)/rescue-kernel init=${rescueBoot.config.system.build.toplevel}/init ${toString module.boot.kernelParams}
-#            initrd ($drive1)/rescue-initrd
-#          }
-#        '';
-#        extraFiles = {
-#          "rescue-kernel" = "${module.system.build.kernel}/bzImage";
-#          "rescue-initrd" = "${module.system.build.ramdisk}/initrd";
-#        };
         memtest86.enable = true;
       };
       timeout = 10;
@@ -244,6 +122,7 @@ in {
       fastfetch
       git
       glib
+      gnome-software
       htop
       i3
       iperf
@@ -305,10 +184,10 @@ in {
       ];
     };
     # Mount the Windows C:\ drive
-#    "/mnt/c" = {
-#      device = "/dev/disk/by-uuid/5A40382940380E6F";
-#      fsType = "ntfs";
-#    };
+    "/mnt/c" = {
+      device = "/dev/disk/by-uuid/5A40382940380E6F";
+      fsType = "ntfs";
+    };
     # Mount D:\
     "/mnt/d" = {
       device = "/dev/disk/by-uuid/F696F03D96F00043";
@@ -336,7 +215,6 @@ in {
     };
     pulseaudio.support32Bit = true;
   };
-
   home-manager = {
     users.vali = {
       home.stateVersion = "24.11";
@@ -344,21 +222,213 @@ in {
         enable = true;
         theme = {
           name = "Adwaita-dark";
-          package = pkgs.gnome.gnome-themes-extra;
+          package = pkgs.gnome-themes-extra;
         };
+      };
+      xdg.mimeApps = {
+        defaultApplications = {
+          "x-scheme-handler/osu" = [ "osu.desktop" ];
+        };
+        enable = true;
       };
       xsession.windowManager.i3 = {
         enable = true;
-        package = pkgs.i3-gaps;
+        package = pkgs.i3-rounded;
         config = {
-          modifier = "Mod4";
-          smodifer = "Shift";
+          # Modifer keys
+          modifier = "${i3Config.modifier}";
+          # Theme
+          fonts = {
+            names = [ "DejaVu Sans Mono 11" "FontAwesome5Free" ];
+            style = "Regular";
+            size = 11.0;
+          };
+          colors = {
+            focused = {
+              border = "#0F0F0F";
+              background = "#0F0F0F";
+              text = "#FFFFFF";
+              indicator = "#0F0F0F";
+              childBorder = "#000000";
+            };
+            focusedInactive = {
+              border = "#0F0F0F";
+              background = "#0F0F0F";
+              text = "#FFFFFF";
+              indicator = "#0F0F0F";
+              childBorder = "#000000";
+            };
+            unfocused = {
+              border = "#3B3B3B";
+              background = "#3B3B3B";
+              text = "#FFFFFF";
+              indicator = "#3B3B3B";
+              childBorder = "#000000";
+            };
+            background = "#0F0F0F";
+          };
           gaps = {
-            inner = 10;
-            outer = 5;
+            inner = 2;
+            outer = 0;
+          };
+          # Use Mouse+$mod to drag floating windows to their wanted position
+          floating.modifier = "${i3Config.modifier}";
+          # Keybindings
+          keybindings = {
+            #  Applications
+            # Start a terminal
+            "${i3Config.modifier}+Return" = "exec ${i3Config.wmAppTerminal}";
+            # Start a program launcher
+            "${i3Config.modifier}+d" = "exec ${i3Config.wmAppTerminal}";
+            # Start a web browser
+            "${i3Config.modifier}+${i3Config.smodifier}+Return" = "exec ${i3Config.wmAppBrowser}";
+            
+            # Kill focused window
+            "${i3Config.modifier}+q" = "kill";
+
+            # Pipewire-pulse
+            "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
+            "XF86AudioMute --release" = "exec pkill -RTMIN+1 i3blocks";
+            "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
+            "XF86AudioLowerVolume --release" = "exec pkill -RTMIN+1 i3blocks";
+            "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
+            "XF86AudioRaiseVolume --release" = "exec pkill -RTMIN+1 i3blocks";
+
+            # Media player controls
+            "XF86AudioPlay" = "exec playerctl play-pause";
+            "XF86AudioPause" = "exec playerctl play-pause";
+            "XF86AudioNext" = "exec playerctl next";
+            "XF86AudioPrev" = "exec playerctl previous";
+
+            # Change focus (Alternatively, you can use the cursor keys)
+            "${i3Config.modifier}+j" = "focus left";
+            "${i3Config.modifier}+Left" = "focus left";
+            "${i3Config.modifier}+k" = "focus down";
+            "${i3Config.modifier}+Down" = "focus down";
+            "${i3Config.modifier}+i" = "focus up";
+            "${i3Config.modifier}+Up" = "focus up";
+            "${i3Config.modifier}+l" = "focus right";
+            "${i3Config.modifier}+Right" = "focus right";
+
+            # Move focused window (Alternatively, you can use the cursor keys)
+            "${i3Config.modifier}+${i3Config.smodifier}+j" = "move left";
+            "${i3Config.modifier}+${i3Config.smodifier}+Left" = "move left";
+            "${i3Config.modifier}+${i3Config.smodifier}+k" = "move down";
+            "${i3Config.modifier}+${i3Config.smodifier}+Down" = "move down";
+            "${i3Config.modifier}+${i3Config.smodifier}+i" = "move up";
+            "${i3Config.modifier}+${i3Config.smodifier}+Up" = "move up";
+            "${i3Config.modifier}+${i3Config.smodifier}+l" = "move right";
+            "${i3Config.modifier}+${i3Config.smodifier}+Right" = "move right";
+
+            # Split in horizontal orientation
+            "${i3Config.modifier}+h" = "split h";
+            # Split in vertical orientation
+            "${i3Config.modifier}+v" = "split v";
+
+            # Enter fullscreen mode for the focused container
+            "${i3Config.modifier}+f" = "fullscreen";
+            # Toggle between tiling and floating
+            "${i3Config.modifier}+${i3Config.smodifier}+f" = "floating toggle";
+            # Change focus between tiling and floating windows
+            "${i3Config.modifier}+space" = "focus mode_toggle";
+
+            # Change container layout (stacked, tabbed, toggle split)
+            "${i3Config.modifier}+s" = "layout stacking";
+            "${i3Config.modifier}+w" = "layout tabbed";
+            "${i3Config.modifier}+e" = "layout toggle split";
+            # Focus the parent container
+            "${i3Config.modifier}+a" = "focus parent";
+            # Focus the child container
+            #"${i3Config.modifier}+d" = "focus child";
+
+            # Switch to workspace (${smodifier} moves focused containers to workspace)
+            "${i3Config.modifier}+1" = "workspace 1";
+            "${i3Config.modifier}+${i3Config.smodifier}+1" = "move container to workspace 1";
+            "${i3Config.modifier}+2" = "workspace 2";
+            "${i3Config.modifier}+${i3Config.smodifier}+2" = "move container to workspace 2";
+            "${i3Config.modifier}+3" = "workspace 3";
+            "${i3Config.modifier}+${i3Config.smodifier}+3" = "move container to workspace 3";
+            "${i3Config.modifier}+4" = "workspace 4";
+            "${i3Config.modifier}+${i3Config.smodifier}+4" = "move container to workspace 4";
+            "${i3Config.modifier}+5" = "workspace 5";
+            "${i3Config.modifier}+${i3Config.smodifier}+5" = "move container to workspace 5";
+            "${i3Config.modifier}+6" = "workspace 6";
+            "${i3Config.modifier}+${i3Config.smodifier}+6" = "move container to workspace 6";
+            "${i3Config.modifier}+7" = "workspace 7";
+            "${i3Config.modifier}+${i3Config.smodifier}+7" = "move container to workspace 7";
+            "${i3Config.modifier}+8" = "workspace 8";
+            "${i3Config.modifier}+${i3Config.smodifier}+8" = "move container to workspace 8";
+            "${i3Config.modifier}+9" = "workspace 9";
+            "${i3Config.modifier}+${i3Config.smodifier}+9" = "move container to workspace 9";
+            "${i3Config.modifier}+0" = "workspace 10";
+            "${i3Config.modifier}+${i3Config.smodifier}+0" = "move container to workspace 10";
+            # Restart the configuration file
+            "${i3Config.modifier}+${i3Config.smodifier}+c" = "reload";
+            # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+            "${i3Config.modifier}+${i3Config.smodifier}+r" = "restart";
+            # Exit i3 (logs you out of your X session)
+            "${i3Config.modifier}+${i3Config.smodifier}+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'\"";
+            # Resize window (You can also use the mouse)
+            "${i3Config.modifier}+r" = "mode resize";
+            # Flameshot keybind
+            "Print" = "exec flameshot gui";
+          };
+          keycodebindings = {
+            # Start a program launcher
+            "${i3Config.windowsCode}" = "exec ${i3Config.wmAppLauncher}";
+          };
+          modes = {
+            resize = {
+              # These bindings trigger as soon as you enter the resize mode
+
+              # Pressing up or i will shrink the window's height.
+              "Up" = "resize shrink height 10 px or 10 ppt";
+              "i" = "resize shrink height 10 px or 10 ppt";
+              # Pressing down or kwill grow the window's height.
+              "Down" = "resize grow height 10 px or 10 ppt";
+              "k" = "resize grow height 10 px or 10 ppt";
+              # Pressing left or j will shrink the window's width.
+              "Left" = "resize shrink width 10 px or 10 ppt";
+              "j" = "resize shrink width 10 px or 10 ppt";
+              # Pressing right or l will grow the window's width.
+              "Right" = "resize grow width 10 px or 10 ppt";
+              "l" = "resize grow width 10 px or 10 ppt";
+              # Back to normal: Enter, Escape, or ${modifier}+r
+              "Escape" = "mode default";
+              "Return" = "mode default";
+              "${i3Config.modifier}+r" = "mode default";
+            };
           };
           bars = [
             {
+              position = "bottom";
+              statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+              colors = {
+                background = "${i3Config.barBg}";
+                statusline = "${i3Config.barStatusline}";
+                separator = "${i3Config.barSeparator}";
+
+                focusedWorkspace = {
+                  border = "${i3Config.barFocusedWorkspaceBg}";
+                  background = "${i3Config.barFocusedWorkspaceBg}";
+                  text = "${i3Config.barFocusedWorkspaceFg}";
+                };
+                activeWorkspace = {
+                  border = "${i3Config.barActiveWorkspaceBg}";
+                  background = "${i3Config.barActiveWorkspaceBg}";
+                  text = "${i3Config.barActiveWorkspaceFg}";
+                };
+                inactiveWorkspace = {
+                  border = "${i3Config.barInactiveWorkspaceBg}";
+                  background = "${i3Config.barInactiveWorkspaceBg}";
+                  text = "${i3Config.barInactiveWorkspaceFg}";
+                };
+                urgentWorkspace = {
+                  border = "${i3Config.barUrgentWorkspaceBg}";
+                  background = "${i3Config.barUrgentWorkspaceBg}";
+                  text = "${i3Config.barUrgentWorkspaceFg}";
+                };
+              };
             }
           ];
         };
@@ -495,6 +565,10 @@ in {
           i3lock
           i3blocks
         ];
+        extraSessionCommands = ''
+          feh --bg-center /home/vali/wallpaper.jpg
+        '';
+        package = pkgs.i3-rounded;
       };
       # Set our X11 Keyboard layout
       xkb = {
