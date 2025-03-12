@@ -47,7 +47,7 @@
     };
     vali = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "ipfs" ]; # Enable ‘sudo’ for the user.
       packages = with pkgs; [
         tree
       ];
