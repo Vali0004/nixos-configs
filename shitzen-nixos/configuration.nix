@@ -59,6 +59,7 @@
   };
   services = {
     kubo = {
+      dataDir = "/data/private/ipfs";
       enable = true;
     };
     nfs = {
