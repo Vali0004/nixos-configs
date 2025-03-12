@@ -37,26 +37,30 @@
     hostName = "shitzen-nixos";
   };
 
-  environment.systemPackages = with pkgs; [
-    ffmpeg_6-headless
-    git
-    htop
-    iperf
-    jdk
-    neofetch
-    node2nix
-    nodejs_20
-    openssl
-    pciutils
-    screen
-    tmux
-    tshark
-    unzip
-    wget
-    zip
-  ];
-
+  environment = {
+    systemPackages = with pkgs; [
+      ffmpeg_6-headless
+      git
+      htop
+      iperf
+      jdk
+      neofetch
+      node2nix
+      nodejs_20
+      openssl
+      pciutils
+      screen
+      tmux
+      tshark
+      unzip
+      wget
+      zip
+    ];
+  };
   services = {
+    kubo = {
+      enable = true;
+    };
     nfs = {
       server = {
         enable = true;
@@ -81,7 +85,7 @@
               index = "index.html";
             };
             "/r34/" = {
-              proxyPass = "http://127.0.0.1:8080/";
+              proxyPass = "http://127.0.0.1:9090/";
               proxyWebsockets = true;
               extraConfig = ''
                 proxy_ssl_server_name on;
@@ -119,7 +123,7 @@
   };
 
   systemd.services.cors-anywhere = {
-    enable = true;
+    enable = false;
     description = "Proxy to strip CORS from a request";
     unitConfig = {
       Type = "simple";
