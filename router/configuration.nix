@@ -30,7 +30,7 @@ in {
   };
 
   networking = {
-    defaultGateway = "31.59.128.1";
+    defaultGateway = "95.169.175.1";
     firewall = {
       allowedTCPPorts = [ 80 443 4301 5201 8080 ];
       allowedUDPPorts = [ 4301 4302 ];
@@ -39,14 +39,14 @@ in {
     interfaces.ens3 = {
       ipv4.addresses = [
         {
-          address = "31.59.128.34";
+          address = "95.169.175.34";
           prefixLength = 24;
         }
       ];
     };
     nameservers = [
       "9.9.9.9"
-      "8.8.4.4"
+      "1.1.1.1"
     ];
   };
 
