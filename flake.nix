@@ -28,7 +28,7 @@
         };
       };
       router = {
-        deployment.targetHost = "95.169.175.34";
+        deployment.targetHost = "31.59.128.8";
         deployment.targetUser = "root";
         imports = [
           ./core.nix

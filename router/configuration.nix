@@ -25,21 +25,21 @@ in {
   # Use the GRUB 2 boot loader.
   boot.loader = {
     grub = {
-      device = "/dev/vda";
+      device = "/dev/sda";
     };
   };
 
   networking = {
-    defaultGateway = "95.169.175.1";
+    defaultGateway = "31.59.128.1";
     firewall = {
       allowedTCPPorts = [ 80 443 4301 5201 8080 ];
       allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "router";
-    interfaces.ens3 = {
+    interfaces.ens18 = {
       ipv4.addresses = [
         {
-          address = "95.169.175.34";
+          address = "31.59.128.8";
           prefixLength = 24;
         }
       ];
@@ -75,24 +75,6 @@ in {
   systemd.services.forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
   systemd.services.forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
-
+  system.stateVersion = "25.05";
 }
 
