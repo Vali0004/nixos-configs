@@ -55,6 +55,7 @@
       unzip
       wget
       zip
+      zipline
     ];
   };
   services = {
@@ -85,16 +86,6 @@
               alias = "/data/valisfurryporn/";
               index = "index.html";
             };
-            "/r34/" = {
-              proxyPass = "http://127.0.0.1:9090/";
-              proxyWebsockets = true;
-              extraConfig = ''
-                proxy_ssl_server_name on;
-                proxy_ssl_name $proxy_host;
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
-              '';
-            };
           };
         };
         "fuckk.lol" = {
@@ -109,6 +100,16 @@
                 autoindex_exact_size off;
               '';
             };
+            "/r34/" = {
+              proxyPass = "http://127.0.0.1:8099/";
+              proxyWebsockets = true;
+              extraConfig = ''
+                proxy_ssl_server_name on;
+                proxy_ssl_name $proxy_host;
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+              '';
+            };
             "/" = {
               alias = "/data/web/";
               index = "index.html";
@@ -117,19 +118,35 @@
         };
       };
     };
+    postgresql = {
+      enable = true;
+      settings.port = 5432;
+    };
     toxvpn = {
-      auto_add_peers = [ "ae395131cb50234bed128ff0ff5ffd495517565b1de6522f41f18a925e575c23978546982368" ];
+      auto_add_peers = [ "a4ae9a2114f5310bef4381c463c09b9491c7f0cf0e962bc8083620e2555fd221020e75e411b4" ];
       localip = "10.0.127.3";
+    };
+    zipline = {
+      enable = true;
+      settings = {
+        CORE_HOSTNAME = "0.0.0.0";
+        CORE_PORT = "3000";
+        CORE_SECRET = "x9J+)()_(4.7nZ.\8aMj@#7u09u/;=bghpi678ki,k8l";
+        DATABASE_URL = "postgres://postgres:postgres@postgres/postgres";
+        DATASOURCE_LOCAL_DIRECTORY = "/data/zipline/uploads";
+        DATASOURCE_TYPE = "local";
+      };
     };
   };
 
   systemd.services.cors-anywhere = {
-    enable = false;
+    enable = true;
     description = "Proxy to strip CORS from a request";
     unitConfig = {
       Type = "simple";
     };
     serviceConfig = {
+      Environment = "PORT=8099";
       ExecStart = "/nix/store/j7dx1n6m5axf9r2bvly580x2ixx546wq-nodejs-20.18.1/bin/node /root/cors-anywhere/result/lib/node_modules/cors-anywhere/server.js";
     };
     wantedBy = [ "multi-user.target" ];
@@ -145,24 +162,6 @@
   vali.mc_prod = false;
   vali.mc_test = false;
 
-  # This option defines the first version of NixOS you have installed on this particular machine,
-  # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-  #
-  # Most users should NEVER change this value after the initial install, for any reason,
-  # even if you've upgraded your system to a new NixOS release.
-  #
-  # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-  # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-  # to actually do that.
-  #
-  # This value being lower than the current NixOS release does NOT mean your system is
-  # out of date, out of support, or vulnerable.
-  #
-  # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-  # and migrated your data accordingly.
-  #
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
-
+  system.stateVersion = "25.05";
 }
 
