@@ -157,17 +157,24 @@
     };
   };
 
-  systemd.services.cors-anywhere = {
-    enable = true;
-    description = "Proxy to strip CORS from a request";
-    unitConfig = {
-      Type = "simple";
+  systemd.services = {
+    cors-anywhere = {
+      enable = true;
+      description = "Proxy to strip CORS from a request";
+      unitConfig = {
+        Type = "simple";
+      };
+      serviceConfig = {
+        Environment = "PORT=8099";
+        ExecStart = "/nix/store/j7dx1n6m5axf9r2bvly580x2ixx546wq-nodejs-20.18.1/bin/node /root/cors-anywhere/result/lib/node_modules/cors-anywhere/server.js";
+      };
+      wantedBy = [ "multi-user.target" ];
     };
-    serviceConfig = {
-      Environment = "PORT=8099";
-      ExecStart = "/nix/store/j7dx1n6m5axf9r2bvly580x2ixx546wq-nodejs-20.18.1/bin/node /root/cors-anywhere/result/lib/node_modules/cors-anywhere/server.js";
+    zipline = {
+      serviceConfig = {
+        ReadWritePaths = [ "/data/zipline/uploads" ];
+      };
     };
-    wantedBy = [ "multi-user.target" ];
   };
 
   security = {
