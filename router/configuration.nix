@@ -51,11 +51,11 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    fastfetch
     ffmpeg_6-headless
     git
     htop
     iperf
-    neofetch
     openssl
     wget
   ];
@@ -63,7 +63,9 @@ in {
   services = {
     toxvpn = {
       localip = "10.0.127.1";
-      auto_add_peers = [ "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" ];
+      auto_add_peers = [
+        "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221"
+      ];
     };
     #openssh.openFirewall = false;
   };

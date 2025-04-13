@@ -39,17 +39,18 @@
 
   environment = {
     systemPackages = with pkgs; [
+      fastfetch
       ffmpeg_6-headless
       git
       htop
       iperf
       jdk
-      neofetch
       node2nix
       nodejs_20
       openssl
       pciutils
       screen
+      smartmontools
       tmux
       tshark
       unzip
@@ -61,7 +62,7 @@
   services = {
     kubo = {
       dataDir = "/data/private/ipfs";
-      enable = true;
+      enable = false;
     };
     nfs = {
       server = {
@@ -88,6 +89,22 @@
             };
           };
         };
+        "holy.fuckk.lol" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/" = {
+              proxyPass = "http://127.0.0.1:3000";
+              proxyWebsockets = true;
+              extraConfig = ''
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+              '';
+            };
+          };
+        };
         "fuckk.lol" = {
           enableACME = true;
           forceSSL = true;
@@ -100,8 +117,8 @@
                 autoindex_exact_size off;
               '';
             };
-            "/r34/" = {
-              proxyPass = "http://127.0.0.1:8099/";
+            "/r34" = {
+              proxyPass = "http://127.0.0.1:8099";
               proxyWebsockets = true;
               extraConfig = ''
                 proxy_ssl_server_name on;
@@ -123,16 +140,17 @@
       settings.port = 5432;
     };
     toxvpn = {
-      auto_add_peers = [ "a4ae9a2114f5310bef4381c463c09b9491c7f0cf0e962bc8083620e2555fd221020e75e411b4" ];
+      auto_add_peers = [
+        "a4ae9a2114f5310bef4381c463c09b9491c7f0cf0e962bc8083620e2555fd221020e75e411b4"
+      ];
       localip = "10.0.127.3";
     };
     zipline = {
       enable = true;
       settings = {
         CORE_HOSTNAME = "0.0.0.0";
-        CORE_PORT = "3000";
+        CORE_PORT = 3000;
         CORE_SECRET = "x9J+)()_(4.7nZ.\8aMj@#7u09u/;=bghpi678ki,k8l";
-        DATABASE_URL = "postgres://postgres:postgres@postgres/postgres";
         DATASOURCE_LOCAL_DIRECTORY = "/data/zipline/uploads";
         DATASOURCE_TYPE = "local";
       };
