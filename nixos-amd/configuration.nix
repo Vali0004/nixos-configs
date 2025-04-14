@@ -4,8 +4,9 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let 
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.11.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   spice = builtins.getFlake "github:Gerg-L/spicetify-nix";
+  toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
   spicePkgs = spice.outputs.legacyPackages.x86_64-linux;
   # i3 config extras
   i3Config = {
@@ -64,6 +65,18 @@ in {
       "usbhid.kbpoll=1"
 #      "vga=current"
     ];
+    kernelPackages = let
+      version = "6.14.2";
+      suffix = "zen1";
+    in pkgs.linuxPackagesFor (pkgs.linux_zen.override {
+      inherit version suffix;
+      modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
+      src = pkgs.fetchFromGitHub {
+        owner = "zen-kernel";
+        repo = "zen-kernel";
+        rev = "v${version}-${suffix}";
+      };
+    });
     kernelPatches = [
       {
         # ALVR has a stroke, as it needs this for asynchronous reprojection
@@ -109,6 +122,7 @@ in {
       alvr
       bridge-utils
       busybox
+      cachix
       colmena
       curl
       dos2unix
@@ -124,20 +138,20 @@ in {
       glib
       gnome-software
       htop
-      i3
       iperf
       mpv
       neovim
       nodejs_23
       obs-studio
       openssl
+      opentabletdriver
+      p7zip-rar
       pavucontrol
       pciutils
       pcmanfm
       picom
       playerctl
       pulseaudio
-      qemu_full
       rofi
       spicetify-cli
       steamcmd
@@ -146,6 +160,7 @@ in {
       tmux
       unzip
       usbutils
+      vesktop
       vim
       virt-viewer
       vscode
@@ -213,11 +228,15 @@ in {
       enable = true;
       enable32Bit = true;
     };
-    pulseaudio.support32Bit = true;
+    opentabletdriver = {
+      enable = true;
+      daemon.enable = true;
+    };
   };
+
   home-manager = {
     users.vali = {
-      home.stateVersion = "24.11";
+      home.stateVersion = "25.05";
       gtk = {
         enable = true;
         theme = {
@@ -226,6 +245,11 @@ in {
         };
       };
       xdg.mimeApps = {
+        associations = {
+          added = {
+            "x-scheme-handler/osu" = "osu.desktop";
+          };
+        };
         defaultApplications = {
           "x-scheme-handler/osu" = [ "osu.desktop" ];
         };
@@ -445,10 +469,12 @@ in {
   };
 
   # Setup NixOS exprimental features and unfree options for Chrome
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+  };
   nixpkgs = {
     config.allowUnfree = true;
     hostPlatform = "x86_64-linux";
@@ -488,7 +514,7 @@ in {
       IdentityFile /home/vali/.ssh/id_rsa
       IdentityFile /home/vali/.ssh/nixos_main
       Host router
-        Hostname 31.59.128.34
+        Hostname 31.59.128.8
       Host shitzen-nixos
         Hostname 10.0.0.244
       Host chromeshit
@@ -542,6 +568,17 @@ in {
       };
       pulse.enable = true;
     };
+    pulseaudio.support32Bit = true;
+    toxvpn = {
+      enable = true;
+      auto_add_peers = [
+        "e0f6bcec21be59c77cf338e3946a766cd17a8e9c40a2b7fe036e7996f3a59554b4ecafdc2df6" # chromeshit
+        "dd51f5f444b63c9c6d58ecf0637ce4c161fe776c86dc717b2e209bc686e56a5d2227dfee1338" # clever
+        "a4ae9a2114f5310bef4381c463c09b9491c7f0cf0e962bc8083620e2555fd221020e75e411b4" # router
+        "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" # shitzen
+      ];
+      localip = "10.0.127.4";
+    };
     udev.extraRules = ''
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
     '';
@@ -587,10 +624,11 @@ in {
 
   system = {
     copySystemConfiguration = true;
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 
   systemd = {
+    services.toxvpn.serviceConfig.TimeoutStartSec = "infinity";
     user.services = {
       easyeffects = {
         enable = true;
@@ -652,10 +690,7 @@ in {
         ovmf.packages = with pkgs; [
           OVMFFull.fd
         ];
-        package = pkgs.qemu.overrideAttrs (old: {
-          patches = [ ./qemu.patch ];
-        });
-#        package = pkgs.qemu_kvm;
+        package = pkgs.qemu_kvm;
         runAsRoot = false;
       };
     };
