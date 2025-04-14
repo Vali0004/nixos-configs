@@ -73,6 +73,43 @@
       };
     };
     nginx = {
+      appendHttpConfig = ''
+        # Add HSTS header with preloading to HTTPS requests
+        map $scheme $hsts_header {
+            https   "max-age=31536000; includeSubdomains; preload";
+        }
+        add_header Strict-Transport-Security $hsts_header;
+
+        # Enable CSP
+        #add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
+
+        # Minimize information leaked to other domains
+        add_header 'Referrer-Policy' 'origin-when-cross-origin';
+
+        # Disable embedding as a frame
+        add_header X-Frame-Options DENY;
+
+        # Prevent injection of code in other mime types (XSS Attacks)
+        add_header X-Content-Type-Options nosniff;
+      '';
+      /*commonHttpConfig =
+      let
+        realIpsFromList = lib.strings.concatMapStringsSep "\n" (x: "set_real_ip_from  ${x};");
+        fileToList = x: lib.strings.splitString "\n" (builtins.readFile x);
+        cfipv4 = fileToList (pkgs.fetchurl {
+          url = "https://www.cloudflare.com/ips-v4";
+          sha256 = "0ywy9sg7spafi3gm9q5wb59lbiq0swvf0q3iazl0maq1pj1nsb7h";
+        });
+        cfipv6 = fileToList (pkgs.fetchurl {
+          url = "https://www.cloudflare.com/ips-v6";
+          sha256 = "1ad09hijignj6zlqvdjxv7rjj8567z357zfavv201b9vx3ikk7cy";
+        });
+      in
+        ''
+          ${realIpsFromList cfipv4}
+          ${realIpsFromList cfipv6}
+          real_ip_header CF-Connecting-IP;
+        '';*/
       enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
@@ -105,6 +142,26 @@
             };
           };
         };
+        "r34.fuckk.lol" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/" = {
+              proxyPass = "http://127.0.0.1:8099";
+              proxyWebsockets = true;
+              extraConfig = ''
+                proxy_ssl_server_name on;
+                proxy_ssl_name $proxy_host;
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+                proxy_set_header X-Requested-With XMLHttpRequest;
+              '';
+            };
+          };
+        };
         "fuckk.lol" = {
           enableACME = true;
           forceSSL = true;
@@ -115,16 +172,6 @@
               extraConfig = ''
                 autoindex on;
                 autoindex_exact_size off;
-              '';
-            };
-            "/r34" = {
-              proxyPass = "http://127.0.0.1:8099";
-              proxyWebsockets = true;
-              extraConfig = ''
-                proxy_ssl_server_name on;
-                proxy_ssl_name $proxy_host;
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
               '';
             };
             "/" = {
