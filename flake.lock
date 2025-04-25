@@ -86,10 +86,45 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1729755165,
+        "narHash": "sha256-6IpnOHWsaSSjT3yvqlrWfHW6HVCT+wOAlUpcooGJ+FQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "cabaf14d3e69c9921d7acedf5d7d60bb2b90be02",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pterodactyl-wings-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1729819627,
+        "narHash": "sha256-jgCpl49e3d+HCJ2Y3AG/QMEMXBoWLqKIp8JFHS0bROo=",
+        "owner": "BadCoder-Network",
+        "repo": "pterodactyl-wings-nix",
+        "rev": "14479e4f25f80ae245a3ebbae0750f37e368fe0f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BadCoder-Network",
+        "repo": "pterodactyl-wings-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "nix-minecraft": "nix-minecraft",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "pterodactyl-wings-nix": "pterodactyl-wings-nix"
       }
     },
     "systems": {

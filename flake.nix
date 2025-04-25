@@ -2,17 +2,21 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
   };
-  outputs = { nixpkgs, nix-minecraft, self }:
+  outputs = { nixpkgs, nix-minecraft, pterodactyl-wings-nix, self }:
   {
     colmena = {
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = [
-            nix-minecraft.overlay 
+            nix-minecraft.overlay
             (self: super: {
               toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
+            })
+            (self: super: {
+              wings = pterodactyl-wings-nix.packages.x86_64-linux.pterodactyl-wings;
             })
             (self: super: {
               forgeServers = {
@@ -41,6 +45,7 @@
         imports = [
           ./core.nix
           nix-minecraft.nixosModules.minecraft-servers
+          pterodactyl-wings-nix.nixosModules.pterodactyl-wings
           ./shitzen-nixos/configuration.nix
         ];
       };

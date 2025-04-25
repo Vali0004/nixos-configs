@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, modulesPath, ... }:
 
 let
   mkForward = port: target: {
@@ -19,20 +19,54 @@ let
   };
 in {
   imports = [
-    ./hardware-configuration.nix
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
   # Use the GRUB 2 boot loader.
-  boot.loader = {
-    grub = {
-      device = "/dev/sda";
+  boot = {
+    extraModulePackages = [ ];
+    initrd = {
+      availableKernelModules = [
+        "ata_piix"
+        "uhci_hcd"
+        "virtio_pci"
+        "virtio_scsi"
+        "ahci"
+        "sd_mod"
+        "sr_mod"
+        "virtio_blk"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    loader = {
+      grub = {
+        device = "/dev/sda";
+      };
+    };
+  };
+
+  environment.systemPackages = with pkgs; [
+    fastfetch
+    ffmpeg_6-headless
+    git
+    htop
+    iperf
+    openssl
+    wget
+  ];
+
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/c313c7de-4109-4656-8916-774a7075adbc";
+      fsType = "ext4";
     };
   };
 
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 4301 5201 8080 ];
+      allowedTCPPorts = [ 80 443 2022 4301 5201 8080 9000 ];
       allowedUDPPorts = [ 4301 4302 ];
     };
     hostName = "router";
@@ -48,17 +82,12 @@ in {
       "9.9.9.9"
       "1.1.1.1"
     ];
+    useDHCP = false;
   };
 
-  environment.systemPackages = with pkgs; [
-    fastfetch
-    ffmpeg_6-headless
-    git
-    htop
-    iperf
-    openssl
-    wget
-  ];
+  nixpkgs = {
+    hostPlatform = "x86_64-linux";
+  };
 
   services = {
     toxvpn = {
@@ -70,10 +99,20 @@ in {
     #openssh.openFirewall = false;
   };
 
+  swapDevices = [
+    {
+      device = "/var/lib/swap1";
+      size = 1024;
+    }
+  ];
+
   systemd.services.forward80 = mkForward 80 "10.0.127.3";
   systemd.services.forward443 = mkForward 443 "10.0.127.3";
+  systemd.services.forward2022 = mkForward 2022 "10.0.127.3";
   systemd.services.forward4301 = mkForward 4301 "10.0.127.3";
+  systemd.services.forward4302 = mkForward 4302 "10.0.127.3";
   systemd.services.forward8080 = mkForward 8080 "10.0.127.3";
+  systemd.services.forward9000 = mkForward 9000 "10.0.127.3";
   systemd.services.forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
   systemd.services.forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
 

@@ -1,40 +1,30 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, modulesPath, ... }:
 
 {
   imports = [
-    ./hardware-configuration.nix
+    (modulesPath + "/installer/scan/not-detected.nix")
     ./samba.nix
     ./minecraft.nix
   ];
-  
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "minecraft-server"
-  ];
-  
-  # Use the GRUB 2 boot loader.
-  boot.loader = {
-    grub = {
-      memtest86.enable = true;
-      copyKernels = true;
-      device = "nodev";
-      efiSupport = true;
-      efiInstallAsRemovable = false;
-    };
-    efi.canTouchEfiVariables = true;
-  };
 
-  networking = {
-    firewall =
-      if (config.vali.mc_prod || config.vali.mc_test)
-      then {
-        allowedTCPPorts = [ 80 443 111 2049 20048 4301 5201 8080 ];
-        allowedUDPPorts = [ 4301 4302 111 2049 ];
-      }
-      else {
-        allowedTCPPorts = [ 80 443 111 2049 20048 5201 8080 ];
-        allowedUDPPorts = [ 111 2049 ];
+  # Use the GRUB 2 boot loader.
+  boot = {
+    extraModulePackages = [ ];
+    initrd = {
+      availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-amd" ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      grub = {
+        memtest86.enable = true;
+        copyKernels = true;
+        device = "nodev";
+        efiSupport = true;
+        efiInstallAsRemovable = false;
       };
-    hostName = "shitzen-nixos";
+    };
   };
 
   environment = {
@@ -55,10 +45,59 @@
       tshark
       unzip
       wget
+      wings
       zip
       zipline
     ];
   };
+
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/9ffafbc0-8e3a-4f71-80e8-c9f225398340";
+      fsType = "ext4";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/9E79-76DF";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
+    };
+    "/data" = {
+      fsType = "ext4";
+      label = "MAIN";
+    };
+  };
+
+  hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ 80 443 111 4301 5201 8080 9000 ];
+      allowedUDPPorts = [ 4301 4302 111 ];
+    };
+    hostName = "shitzen-nixos";
+    useDHCP = true;
+  };
+
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = "x86_64-linux";
+  };
+
+  security = {
+    acme = {
+      acceptTerms = true;
+      certs = {
+        "unison.fuckk.lol" = {
+          #group = config.services.wings.group;
+        };
+      };
+      defaults = {
+        #server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+        email = "diorcheats.vali@gmail.com";
+      };
+    };
+  };
+
   services = {
     kubo = {
       dataDir = "/data/private/ipfs";
@@ -92,24 +131,6 @@
         # Prevent injection of code in other mime types (XSS Attacks)
         add_header X-Content-Type-Options nosniff;
       '';
-      /*commonHttpConfig =
-      let
-        realIpsFromList = lib.strings.concatMapStringsSep "\n" (x: "set_real_ip_from  ${x};");
-        fileToList = x: lib.strings.splitString "\n" (builtins.readFile x);
-        cfipv4 = fileToList (pkgs.fetchurl {
-          url = "https://www.cloudflare.com/ips-v4";
-          sha256 = "0ywy9sg7spafi3gm9q5wb59lbiq0swvf0q3iazl0maq1pj1nsb7h";
-        });
-        cfipv6 = fileToList (pkgs.fetchurl {
-          url = "https://www.cloudflare.com/ips-v6";
-          sha256 = "1ad09hijignj6zlqvdjxv7rjj8567z357zfavv201b9vx3ikk7cy";
-        });
-      in
-        ''
-          ${realIpsFromList cfipv4}
-          ${realIpsFromList cfipv6}
-          real_ip_header CF-Connecting-IP;
-        '';*/
       enable = true;
       recommendedGzipSettings = true;
       recommendedOptimisation = true;
@@ -142,6 +163,16 @@
             };
           };
         };
+        "cdn.fuckk.lol" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/rdr3.7z/" = {
+              alias = "/data/bruh/";
+              index = "index.html";
+            };
+          };
+        };
         "r34.fuckk.lol" = {
           enableACME = true;
           forceSSL = true;
@@ -162,6 +193,19 @@
             };
           };
         };
+        "unison.fuckk.lol" = {
+          enableACME = true;
+          forceSSL = true;
+          locations = {
+            "/" = {
+              alias = "/data/private/";
+              index = "index.htm";
+              extraConfig = ''
+                return 404;
+              '';
+            };
+          };
+        };
         "fuckk.lol" = {
           enableACME = true;
           forceSSL = true;
@@ -172,6 +216,29 @@
               extraConfig = ''
                 autoindex on;
                 autoindex_exact_size off;
+              '';
+            };
+            "/private/nands/" = {
+              alias = "/data/private/nands/";
+              index = "index.htm";
+              extraConfig = ''
+                return 404;
+              }
+              location = "/private/nands/Clever Corona 16mb.zip" {
+                alias "/data/private/nands/Clever Corona 16mb.zip";
+              }
+              location = "/private/nands/White R2D2 Corona 16mb.zip" {
+                alias "/data/private/nands/White R2D2 Corona 16mb.zip";
+              }
+              location = "/private/nands/White Falcon Corona 16mb.zip" {
+                alias "/data/private/nands/White Falcon Corona 16mb.zip";
+              '';
+            };
+            "/private/secret/" = {
+              alias = "/data/private/secret/";
+              index = "index.htm";
+              extraConfig = ''
+                return 404;
               '';
             };
             "/" = {
@@ -192,6 +259,31 @@
       ];
       localip = "10.0.127.3";
     };
+    wings = {
+      enable = true;
+      tokenFile = "/data/private/secret/wingsFile";
+      config = {
+        uuid = "85da3dd7-7d31-4f60-9dc0-b06212f248cc";
+        token_id = "fmtcooaiB2dEnGPO";
+        remote = "https://panel.r33.live";
+        api = {
+          host = "0.0.0.0";
+          port = 9000;
+          ssl = {
+            enabled = true;
+            cert = "/var/lib/acme/unison.fuckk.lol/fullchain.pem";
+            key = "/var/lib/acme/unison.fuckk.lol/key.pem";
+          };
+        };
+        system = {
+          root_directory = "/data/pterodactyl/data";
+          log_directory = "/data/pterodactyl/logs";
+          data = "/data/pterodactyl/data/volumes";
+          archive_directory = "/data/pterodactyl/data/archives";
+          backup_directory = "/data/pterodactyl/data/backups";
+        };
+      };
+    };
     zipline = {
       enable = true;
       settings = {
@@ -203,6 +295,13 @@
       };
     };
   };
+
+  swapDevices = [
+    {
+      device = "/var/lib/swap1";
+      size = 8192;
+    }
+  ];
 
   systemd.services = {
     cors-anywhere = {
@@ -224,15 +323,23 @@
     };
   };
 
-  security = {
-    acme = {
-      acceptTerms = true;
-      defaults.email = "diorcheats.vali@gmail.com";
+  users = {
+    groups.pterodactyl = {};
+    users = {
+      pterodactyl = {
+        extraGroups = [ "docker" "nginx" ];
+        group = "pterodactyl";
+        isSystemUser = true;
+      };
     };
   };
 
   vali.mc_prod = false;
   vali.mc_test = false;
+
+  virtualisation = {
+    docker.enable = true;
+  };
 
   system.stateVersion = "25.05";
 }
