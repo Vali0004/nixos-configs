@@ -106,15 +106,17 @@ in {
     }
   ];
 
-  systemd.services.forward80 = mkForward 80 "10.0.127.3";
-  systemd.services.forward443 = mkForward 443 "10.0.127.3";
-  systemd.services.forward2022 = mkForward 2022 "10.0.127.3";
-  systemd.services.forward4301 = mkForward 4301 "10.0.127.3";
-  systemd.services.forward4302 = mkForward 4302 "10.0.127.3";
-  systemd.services.forward8080 = mkForward 8080 "10.0.127.3";
-  systemd.services.forward9000 = mkForward 9000 "10.0.127.3";
-  systemd.services.forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
-  systemd.services.forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
+  systemd.services = {
+    forward80 = mkForward 80 "10.0.127.3";
+    forward443 = mkForward 443 "10.0.127.3";
+    forward2022 = mkForward 2022 "10.0.127.3";
+    forward4301 = mkForward 4301 "10.0.127.3";
+    forward4302 = mkForward 4302 "10.0.127.3";
+    forward8080 = mkForward 8080 "10.0.127.3";
+    forward9000 = mkForward 9000 "10.0.127.3";
+    forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
+    forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
+  };
 
   system.stateVersion = "25.05";
 }

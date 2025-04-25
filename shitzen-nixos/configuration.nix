@@ -1,6 +1,23 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
-{
+let
+  mkForward = ip: port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},bind=${ip},fork,reuseaddr TCP4:${target}:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
+  mkForwardUDP = ip: port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString port},bind=${ip},fork,reuseaddr UDP:${target}:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ./samba.nix
@@ -321,6 +338,10 @@
         ReadWritePaths = [ "/data/zipline/uploads" ];
       };
     };
+    forward4301 = mkForward "10.0.127.3" 4301 "172.18.0.1";
+    forwardUDP4301 = mkForwardUDP "10.0.127.3" 4301 "172.18.0.1";
+    forward4302 = mkForward "10.0.127.3" 4302 "172.18.0.1";
+    forwardUDP4302 = mkForwardUDP "10.0.127.3" 4302 "172.18.0.1";
   };
 
   users = {
