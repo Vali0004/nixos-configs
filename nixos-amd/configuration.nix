@@ -1,9 +1,9 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
+# https:#search.nixos.org/options and in the NixOS manual (`nixos-help`).
 { config, lib, modulesPath, pkgs, ... }:
 
-let 
+let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   spice = builtins.getFlake "github:Gerg-L/spicetify-nix";
   toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
@@ -11,14 +11,13 @@ let
   # i3 config extras
   i3Config = {
     # Modifer keys
-    windows = "Mod4";
-    windowsCode = "133";
-    modifier = "Mod1";
+    modifier = "Mod4";
     smodifier = "Shift";
     # Application
     wmAppLauncher = "\"rofi -modi drun,run -show drun\"";
     wmAppTerminal = "i3-sensible-terminal";
     wmAppBrowser = "google-chrome-stable";
+    wmClipboardManager = "clipmenu";
     # Theme
     barBg = "#3B3B3B";
     barStatusline = "#FFFFFF";
@@ -32,6 +31,10 @@ let
     barUrgentWorkspaceBg = "#D08770";
     barUrgentWorkspaceFg = "#3B3B3B";
   };
+  flameshot_fuckk_lol = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
+    ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
+    ${pkgs.curl}/bin/curl -H "authorization: MTc0NTgwNjM3OTI1NA==.NTc3N2U3Yzc0NDBhMWExY2JhYWMyZWUwZGY2ZjEzOWIuM2I2MmQ0OTgwMzA0ZTIyNTFhYzZmNTcwN2ZhM2FjZjhjYzcyODgyYjIzZTIyZTEyOWZkN2VmNWMwMmViN2FlNTkxMjc3MzQ3MWQ2YjgyMWVhYzM0OGJiZTE2MTQyMDM4Mjg4Zjk5MGFkYzBjZDNmYWI3ODM1MjM2Y2MzYTU3OGE3ODZkYzExYTA3OTU2OWYzNGRlMGM0ZWJhNTZmYzEwZQ==" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
+  '';
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -57,13 +60,12 @@ in {
       # Enable IOMMU
       "amd_iommu=on"
       "boot.shell_on_fail"
-      # https://wiki.archlinux.org/title/Silent_boot
-#      "quiet"
-#      "splash"
-#      "rd.systemd.show_status=auto"
-      #"rd.udev.log_level=3"
+      # https:#wiki.archlinux.org/title/Silent_boot
+      "quiet"
+      "splash"
+      "rd.systemd.show_status=auto"
       "usbhid.kbpoll=1"
-#      "vga=current"
+      "vga=current"
     ];
     kernelPackages = let
       version = "6.14.2";
@@ -85,20 +87,24 @@ in {
         name = "amdgpu-ignore-ctx-privileges";
         patch = pkgs.fetchpatch {
           name = "cap_sys_nice_begone.patch";
-          url = "https://github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
+          url = "https:#github.com/Frogging-Family/community-patches/raw/master/linux61-tkg/cap_sys_nice_begone.mypatch";
           hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
         };
       }
     ];
     tmp.useTmpfs = false;
     loader = {
-      efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
       grub = {
         enable = true;
         copyKernels = true;
         device = "nodev";
         efiSupport = true;
         efiInstallAsRemovable = false;
+        useOSProber = true;
         memtest86.enable = true;
       };
       timeout = 10;
@@ -116,6 +122,9 @@ in {
       ll = null;
       lss = "ls --color -lha";
     };
+    shells = [
+      pkgs.zsh
+    ];
     systemPackages = with pkgs; [
       alacritty
       alsa-utils
@@ -125,39 +134,54 @@ in {
       cachix
       colmena
       curl
+      clipmenu # Clipboard Manager
       dos2unix
+      doas
+      doas-sudo-shim
       direnv
+      (discord.override {
+        withVencord = true;
+      })
       dmidecode
+      dunst
       edid-decode
       envsubst
       eog
-      easyeffects
+      easyeffects # Noise suppression
       evtest
-      fastfetch
+      fastfetch # Flexing
+      flameshot # Screenshot tool
+      flameshot_fuckk_lol # Screenshot tool with my uploader secret
+      feh # Wallpaper
+      fzf
       git
       glib
       gnome-software
+      google-chrome # Browser
       htop
       iperf
-      mpv
-      neovim
+      jq
+      mpv # Video Player
+      nemo-with-extensions # File browser
       nodejs_23
       obs-studio
       openssl
-      opentabletdriver
-      p7zip-rar
-      pavucontrol
+      opentabletdriver # Tablet Driver
+      p7zip-rar # WinRAR
+      pavucontrol # Audio control
       pciutils
-      pcmanfm
-      picom
+      picom # Compositer
       playerctl
-      pulseaudio
-      rofi
-      spicetify-cli
+      plex-desktop
+      pulseaudio # Audio server
+      rofi # Dmenu replacement
+      socat
+      spicetify-cli # Spotify mods
       steamcmd
       syncplay
       sysstat
       tmux
+      tree
       unzip
       usbutils
       vesktop
@@ -173,6 +197,7 @@ in {
       vulkan-validation-layers
       wget
       wireshark
+      xclip
       xdg-desktop-portal
       xdg-desktop-portal-gtk
       xdg-launch
@@ -181,6 +206,9 @@ in {
       zenity
       zip
     ];
+    variables = {
+      CM_LAUNCHER = "rofi";
+    };
   };
 
   fileSystems = {
@@ -220,6 +248,10 @@ in {
       options = [ "x-systemd.automount" "noauto" "soft" ];
     };
   };
+  
+  fonts.packages = with pkgs; [
+    nerd-fonts.dejavu-sans-mono
+  ];
 
   # Set hardware to support 32-bit graphics for Wine and Proton
   hardware = {
@@ -236,12 +268,153 @@ in {
 
   home-manager = {
     users.vali = {
-      home.stateVersion = "25.05";
+      home = {
+        # Fixes Zsh plugin for SSH Hostnames
+        file.".ssh/config".text = builtins.readFile "/etc/ssh/ssh_config";
+        stateVersion = "25.05";
+      };
       gtk = {
         enable = true;
         theme = {
           name = "Adwaita-dark";
           package = pkgs.gnome-themes-extra;
+        };
+      };
+      nixpkgs.config.allowUnfree = true;
+      programs = {
+        alacritty = {
+          enable = true;
+          settings = {
+            font = {
+              normal = {
+                family = "DejaVu SansM Nerd Font";
+              };
+              size = 11.5;
+            };
+            mouse.bindings = [
+              {
+                mouse = "Right";
+                action = "Paste";
+              }
+            ];
+            selection.save_to_clipboard = true;
+            window.blur = true;
+          };
+        };
+        fastfetch = {
+          enable = true;
+          settings = {
+            logo = {
+              type = "auto";
+              #color = {
+              #  "1" = "blue";
+              #  "2" = "green";
+              #};
+            };
+            display = {
+              constants = [
+                "─────────────────"
+              ];
+              key = {
+                type = "icon";
+                paddingLeft = 2;
+              };
+              separator = " → ";
+            };
+            modules = [
+              {
+                type = "custom"; # Hardware start
+                # {#1} is equivalent to `\u001b[1m`. {#} is equivalent to `\u001b[m`
+                format = "┌{$1} {#1}Hardware Information{#} {$1}┐";
+              }
+              "host"
+              "cpu"
+              "gpu"
+              "disk"
+              "memory"
+              {
+                type = "custom"; # SoftwareStart
+                format = "├{$1} {#1}Software Information{#} {$1}┤";
+              }
+              "os"
+              "kernel"
+              "uptime"
+              "wm"
+              "shell"
+              "terminal"
+              "theme"
+              "packages"
+              {
+                type = "custom"; # SoftwareEnd
+                format = "└{$1}{#1}──────────────────────{#}{$1}┘";
+              }
+              {
+                type = "colors";
+                paddingLeft = 2;
+                symbol = "circle";
+              }
+            ];
+          };
+        };
+        vscode = {
+          enable = true;
+          profiles.default = {
+            userSettings = {
+              "files.autoSave" = "afterDelay";
+              "files.autoSaveDelay" = 1000;
+              "terminal.integrated.defaultProfile.linux" = "zsh";
+              "security.workspace.trust.untrustedFiles" = "open";
+            };
+          };
+        };
+        zsh = {
+          enable = true;
+          plugins = [
+            {
+              # Sets the nix-shell to use zsh instead of bash
+              name = "zsh-nix-shell";
+              file = "nix-shell.plugin.zsh";
+              src = pkgs.fetchFromGitHub {
+                owner = "chisui";
+                repo = "zsh-nix-shell";
+                rev = "v0.8.0";
+                sha256 = "1lzrn0n4fxfcgg65v0qhnj7wnybybqzs4adz7xsrkgmcsr0ii8b7";
+              };
+            }
+            {
+              # Better host completion for ssh in Zsh
+              name = "zsh-ssh";
+              file = "zsh-ssh.plugin.zsh";
+              src = pkgs.fetchFromGitHub {
+                owner = "sunlei";
+                repo = "zsh-ssh";
+                rev = "f73b78bc8f0b40dc939e2819348b83afada09ba9";
+                sha256 = "jFcSIv4T1ZNBOujGZ2NLp6Ou3aDrXT76cR9bVbMMJhM=";
+              };
+            }
+          ];
+        };
+      };
+      services = {
+        clipmenu = {
+          enable = true;
+          launcher = "rofi";
+        };
+        dunst = {
+          enable = true;
+          settings = {
+            global = {
+              font = "DejaVu Sans Mono 11";
+              origin = "top-right";
+              scale = 1;
+              transparency = 20;
+            };
+            urgency_normal = {
+              background = "#37474f";
+              foreground = "#eceff1";
+              timeout = 10;
+            };
+          };
         };
       };
       xdg.mimeApps = {
@@ -303,9 +476,11 @@ in {
             # Start a terminal
             "${i3Config.modifier}+Return" = "exec ${i3Config.wmAppTerminal}";
             # Start a program launcher
-            "${i3Config.modifier}+d" = "exec ${i3Config.wmAppTerminal}";
+            "${i3Config.modifier}+d" = "exec ${i3Config.wmAppLauncher}";
             # Start a web browser
             "${i3Config.modifier}+${i3Config.smodifier}+Return" = "exec ${i3Config.wmAppBrowser}";
+            # Start the clipboard manager
+            "${i3Config.modifier}+v" = "exec ${i3Config.wmClipboardManager}";
             
             # Kill focused window
             "${i3Config.modifier}+q" = "kill";
@@ -347,7 +522,7 @@ in {
             # Split in horizontal orientation
             "${i3Config.modifier}+h" = "split h";
             # Split in vertical orientation
-            "${i3Config.modifier}+v" = "split v";
+            "${i3Config.modifier}+n" = "split v";
 
             # Enter fullscreen mode for the focused container
             "${i3Config.modifier}+f" = "fullscreen";
@@ -395,11 +570,7 @@ in {
             # Resize window (You can also use the mouse)
             "${i3Config.modifier}+r" = "mode resize";
             # Flameshot keybind
-            "Print" = "exec flameshot gui";
-          };
-          keycodebindings = {
-            # Start a program launcher
-            "${i3Config.windowsCode}" = "exec ${i3Config.wmAppLauncher}";
+            "Print" = "exec flameshot_fuckk_lol";
           };
           modes = {
             resize = {
@@ -474,6 +645,11 @@ in {
       "nix-command"
       "flakes"
     ];
+    trusted-users = [
+      "root"
+      "vali"
+      "@wheel"
+    ];
   };
   nixpkgs = {
     config.allowUnfree = true;
@@ -515,10 +691,13 @@ in {
       IdentityFile /home/vali/.ssh/nixos_main
       Host router
         Hostname 31.59.128.8
+
       Host shitzen-nixos
         Hostname 10.0.0.244
+
       Host chromeshit
         Hostname 10.0.0.124
+        
       Host r2d2box
         Hostname 10.0.0.204
     '';
@@ -531,12 +710,56 @@ in {
     virt-manager = {
       enable = true;
     };
+    zsh = {
+      autosuggestions.enable = false;
+      enable = true;
+      enableBashCompletion = true;
+      ohMyZsh = {
+        enable = true;
+        plugins = [ "git" ];
+      };
+      promptInit = ''
+        autoload -U promptinit && promptinit
+        autoload -U colors && colors
+        for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+            eval $COLOR='$fg_no_bold[''${(L)COLOR}]'
+            eval BOLD_$COLOR='$fg_bold[''${(L)COLOR}]'
+        done
+        eval RESET='%{$reset_color%}'
+        autoload -Uz vcs_info
+        setopt prompt_subst
+
+        # Git
+        precmd() {
+          psvar=()
+
+          vcs_info
+          [[ -n $vcs_info_msg_0_ ]] && print -v 'psvar[1]' -Pr -- "$vcs_info_msg_0_"
+        }
+        zstyle ':vcs_info:*' enable git svn
+        zstyle ':vcs_info:*' formats ' (%s:\\\\%b)'
+
+        # Prompt (Bash-like)
+        PROMPT_COLOR="''${BOLD_GREEN}"
+        (( UID )) || PROMPT_COLOR="''${BOLD_RED}"
+        PROMPT="%{$PROMPT_COLOR%}[%n@%m:%~]%1v%(!.#.$)%f "
+      '';
+      shellInit = ''
+        export SSH_CONFIG_FILE="/etc/ssh/ssh_config"
+      '';
+      syntaxHighlighting.enable = true;
+    };
   };
 
   qt = {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";
+  };
+
+  security = {
+    sudo.enable = false;
+    sudo-rs.enable = true;
   };
 
   services = {
@@ -603,7 +826,8 @@ in {
           i3blocks
         ];
         extraSessionCommands = ''
-          feh --bg-center /home/vali/wallpaper.jpg
+          ${pkgs.i3-rounded}/bin/i3-msg workspace 1
+          ${pkgs.feh}/bin/feh --bg-center /home/vali/wallpaper.jpg
         '';
         package = pkgs.i3-rounded;
       };
@@ -651,6 +875,7 @@ in {
   time.timeZone = "America/Detroit";
 
   users = {
+    defaultUserShell = pkgs.zsh;
     groups = {
       libvirtd.members = [
         "vali"
@@ -666,16 +891,8 @@ in {
           "wheel"
           "video"
         ];
-        packages = with pkgs; [
-          (discord.override {
-            withVencord = true;
-          })
-          feh
-          flameshot
-          google-chrome
-          plex-desktop
-          tree
-        ];
+        useDefaultShell = false;
+        shell = pkgs.zsh;
       };
     };
   };
@@ -703,7 +920,7 @@ in {
     # should either set `xdg.portal.config` or `xdg.portal.configPackages`
     # to specify which portal backend to use for the requested interface.
 
-    # https://github.com/flatpak/xdg-desktop-portal/blob/1.18.1/doc/portals.conf.rst.in
+    # https:#github.com/flatpak/xdg-desktop-portal/blob/1.18.1/doc/portals.conf.rst.in
     config.common.default = "*"; # Just go back to the behaviour before 1.17
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
