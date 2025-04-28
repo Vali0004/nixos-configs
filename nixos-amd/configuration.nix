@@ -248,7 +248,7 @@ in {
       options = [ "x-systemd.automount" "noauto" "soft" ];
     };
   };
-  
+
   fonts.packages = with pkgs; [
     nerd-fonts.dejavu-sans-mono
   ];
@@ -481,7 +481,7 @@ in {
             "${i3Config.modifier}+${i3Config.smodifier}+Return" = "exec ${i3Config.wmAppBrowser}";
             # Start the clipboard manager
             "${i3Config.modifier}+v" = "exec ${i3Config.wmClipboardManager}";
-            
+
             # Kill focused window
             "${i3Config.modifier}+q" = "kill";
 
@@ -697,7 +697,7 @@ in {
 
       Host chromeshit
         Hostname 10.0.0.124
-        
+
       Host r2d2box
         Hostname 10.0.0.204
     '';
