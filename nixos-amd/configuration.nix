@@ -12,6 +12,7 @@ let
   i3Config = {
     # Modifer keys
     modifier = "Mod4";
+    altModifier = "Mod1";
     smodifier = "Shift";
     # Application
     wmAppLauncher = "\"rofi -modi drun,run -show drun\"";
@@ -248,7 +249,7 @@ in {
       options = [ "x-systemd.automount" "noauto" "soft" ];
     };
   };
-
+  
   fonts.packages = with pkgs; [
     nerd-fonts.dejavu-sans-mono
   ];
@@ -298,7 +299,10 @@ in {
               }
             ];
             selection.save_to_clipboard = true;
-            window.blur = true;
+            window = {
+              opacity = 1;
+              blur = false;
+            };
           };
         };
         fastfetch = {
@@ -430,16 +434,48 @@ in {
       };
       xsession.windowManager.i3 = {
         enable = true;
+        extraConfig = ''
+          # Rounding
+          border_radius 5
+          # For some unknown fucking reason, i3 on NixOS (and NixOS only) defaults to ws10
+          exec --no-startup-id i3-msg "workspace 1"
+          # Better layouts
+          exec_always --no-startup-id i3-auto-layout
+        '';
         package = pkgs.i3-rounded;
         config = {
-          # Modifer keys
-          modifier = "${i3Config.modifier}";
-          # Theme
-          fonts = {
-            names = [ "DejaVu Sans Mono 11" "FontAwesome5Free" ];
-            style = "Regular";
-            size = 11.0;
-          };
+          # Bars
+          bars = [{
+            position = "bottom";
+            statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+            colors = {
+              background = "${i3Config.barBg}";
+              statusline = "${i3Config.barStatusline}";
+              separator = "${i3Config.barSeparator}";
+
+              focusedWorkspace = {
+                border = "${i3Config.barFocusedWorkspaceBg}";
+                background = "${i3Config.barFocusedWorkspaceBg}";
+                text = "${i3Config.barFocusedWorkspaceFg}";
+              };
+              activeWorkspace = {
+                border = "${i3Config.barActiveWorkspaceBg}";
+                background = "${i3Config.barActiveWorkspaceBg}";
+                text = "${i3Config.barActiveWorkspaceFg}";
+              };
+              inactiveWorkspace = {
+                border = "${i3Config.barInactiveWorkspaceBg}";
+                background = "${i3Config.barInactiveWorkspaceBg}";
+                text = "${i3Config.barInactiveWorkspaceFg}";
+              };
+              urgentWorkspace = {
+                border = "${i3Config.barUrgentWorkspaceBg}";
+                background = "${i3Config.barUrgentWorkspaceBg}";
+                text = "${i3Config.barUrgentWorkspaceFg}";
+              };
+            };
+          }];
+          # Colors
           colors = {
             focused = {
               border = "#0F0F0F";
@@ -464,13 +500,22 @@ in {
             };
             background = "#0F0F0F";
           };
+          # Theme
+          fonts = {
+            names = [ "DejaVu Sans Mono 11" "FontAwesome5Free" ];
+            style = "Regular";
+            size = 11.0;
+          };
+          # Gaps
           gaps = {
-            inner = 2;
-            outer = 0;
+            inner = 12;
+            outer = 1;
+            smartBorders = "on";
+            smartGaps = true;
           };
           # Use Mouse+$mod to drag floating windows to their wanted position
           floating.modifier = "${i3Config.modifier}";
-          # Keybindings
+          # Keys
           keybindings = {
             #  Applications
             # Start a terminal
@@ -481,7 +526,7 @@ in {
             "${i3Config.modifier}+${i3Config.smodifier}+Return" = "exec ${i3Config.wmAppBrowser}";
             # Start the clipboard manager
             "${i3Config.modifier}+v" = "exec ${i3Config.wmClipboardManager}";
-
+            
             # Kill focused window
             "${i3Config.modifier}+q" = "kill";
 
@@ -541,6 +586,8 @@ in {
             #"${i3Config.modifier}+d" = "focus child";
 
             # Switch to workspace (${smodifier} moves focused containers to workspace)
+            "${i3Config.modifier}+0" = "workspace 10";
+            "${i3Config.modifier}+${i3Config.smodifier}+0" = "move container to workspace 10";
             "${i3Config.modifier}+1" = "workspace 1";
             "${i3Config.modifier}+${i3Config.smodifier}+1" = "move container to workspace 1";
             "${i3Config.modifier}+2" = "workspace 2";
@@ -559,8 +606,10 @@ in {
             "${i3Config.modifier}+${i3Config.smodifier}+8" = "move container to workspace 8";
             "${i3Config.modifier}+9" = "workspace 9";
             "${i3Config.modifier}+${i3Config.smodifier}+9" = "move container to workspace 9";
-            "${i3Config.modifier}+0" = "workspace 10";
-            "${i3Config.modifier}+${i3Config.smodifier}+0" = "move container to workspace 10";
+            # Alt-Tab
+            "${i3Config.modifier}+Tab" = "workspace prev";
+            # Alt-Shift-Tab
+            "${i3Config.modifier}+${i3Config.smodifier}+Tab" = "workspace next";
             # Restart the configuration file
             "${i3Config.modifier}+${i3Config.smodifier}+c" = "reload";
             # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -594,38 +643,20 @@ in {
               "${i3Config.modifier}+r" = "mode default";
             };
           };
-          bars = [
-            {
-              position = "bottom";
-              statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
-              colors = {
-                background = "${i3Config.barBg}";
-                statusline = "${i3Config.barStatusline}";
-                separator = "${i3Config.barSeparator}";
-
-                focusedWorkspace = {
-                  border = "${i3Config.barFocusedWorkspaceBg}";
-                  background = "${i3Config.barFocusedWorkspaceBg}";
-                  text = "${i3Config.barFocusedWorkspaceFg}";
+          # Modifer keys
+          modifier = "${i3Config.modifier}";
+          # Window options
+          window = {
+            hideEdgeBorders = "both";
+            commands = [
+              {
+                command = "border pixel 0";
+                criteria = {
+                  class = "^.*";
                 };
-                activeWorkspace = {
-                  border = "${i3Config.barActiveWorkspaceBg}";
-                  background = "${i3Config.barActiveWorkspaceBg}";
-                  text = "${i3Config.barActiveWorkspaceFg}";
-                };
-                inactiveWorkspace = {
-                  border = "${i3Config.barInactiveWorkspaceBg}";
-                  background = "${i3Config.barInactiveWorkspaceBg}";
-                  text = "${i3Config.barInactiveWorkspaceFg}";
-                };
-                urgentWorkspace = {
-                  border = "${i3Config.barUrgentWorkspaceBg}";
-                  background = "${i3Config.barUrgentWorkspaceBg}";
-                  text = "${i3Config.barUrgentWorkspaceFg}";
-                };
-              };
-            }
-          ];
+              }
+            ];
+          };
         };
       };
     };
@@ -697,7 +728,7 @@ in {
 
       Host chromeshit
         Hostname 10.0.0.124
-
+        
       Host r2d2box
         Hostname 10.0.0.204
     '';
@@ -765,23 +796,71 @@ in {
   services = {
     displayManager.defaultSession = "none+i3";
     picom = {
-      enable = true;
       activeOpacity = 1;
+      backend = "glx";
+      enable = true;
       fade = true;
       inactiveOpacity = 0.8;
       settings = {
-        blur.strength = 5;
-        fade-in-step = 1;
-        fade-out-step = 1;
-        fade-delta = 0;
-        shadow-exclude = [
-          "name = 'cpt_frame_xcb_window'"
-          "class_g ?= 'discord'"
+        blur = {
+          background = false;
+          background-fixed = false;
+          background-frame = false;
+          method = "dual_kawase";
+          strength = 12;
+        };
+        blur-background-exclude = [
+          "class_g = 'Chrome'"
         ];
-        use-damage = false;
+        corner-radius = 10.0;
+        detect-rounded-corners = true;
+        refresh-rate = 0;
+        fading = true;
+        fade-in-step = 0.08;
+        fade-out-step = 0.08;
+        #fade-delta = 0;
+        opacity-rule = [
+          "90:class_g = 'Code'"
+          "90:class_g = 'discord'"
+        ];
+        round-borders = 10;
+        rounded-corners-exclude = [
+          #"window_type = 'normal'"
+          "class_g = 'i3blocks'"
+        ];
+        shadow-exclude = [
+          "class_g = 'discord'"
+          "argb && (override_redirect || wmwin)"
+        ];
+        use-damage = true;
       };
-      shadow = true;
-      vSync = true;
+      shadow = false;
+      vSync = false;
+      wintypes = {
+        dnd = {
+          shadow = false;
+        };
+        dock = {
+          clip-shadow-above = true;
+          shadow = false;
+        };
+        dropdown_menu = {
+          opacity = 0.8;
+        };
+        menu = {
+          shadow = false;
+        };
+        popup_menu = {
+          opacity = 0.8;
+        };
+        tooltip = {
+          fade = true;
+          focus = true; 
+          full-shadow = false;
+          opacity = 0.75;
+          shadow = true;
+        };
+      };
     };
     pipewire = {
       enable = true;
@@ -821,13 +900,13 @@ in {
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
+          i3-auto-layout
           i3status
-          i3lock
           i3blocks
         ];
         extraSessionCommands = ''
-          ${pkgs.i3-rounded}/bin/i3-msg workspace 1
-          ${pkgs.feh}/bin/feh --bg-center /home/vali/wallpaper.jpg
+          pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"\
+          feh --bg-center /home/vali/wallpaper.jpg
         '';
         package = pkgs.i3-rounded;
       };
