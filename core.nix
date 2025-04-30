@@ -21,6 +21,22 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services = {
+    fail2ban = {
+      enable = true;
+      maxretry = 5;
+      ignoreIP = [
+        # Whitelist some subnets
+        "10.0.127.0/8" "172.16.0.0/12" "192.168.0.0/16"
+        "8.8.8.8"
+      ];
+      bantime = "24h"; # Ban IPs for one day on the first ban
+      bantime-increment = {
+        enable = true; # Enable increment of bantime after each violation
+        formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
+        maxtime = "168h"; # Do not ban for more than 1 week
+        overalljails = true; # Calculate the bantime based on all the violations
+      };
+    };
     openssh = {
       enable = true;
       settings.PasswordAuthentication = false;

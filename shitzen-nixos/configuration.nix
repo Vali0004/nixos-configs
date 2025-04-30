@@ -103,23 +103,13 @@ in {
   security = {
     acme = {
       acceptTerms = true;
-      certs = {
-        "unison.fuckk.lol" = {
-          #group = config.services.wings.group;
-        };
-      };
       defaults = {
-        #server = "https://acme-staging-v02.api.letsencrypt.org/directory";
         email = "diorcheats.vali@gmail.com";
       };
     };
   };
 
   services = {
-    kubo = {
-      dataDir = "/data/private/ipfs";
-      enable = false;
-    };
     nfs = {
       server = {
         enable = true;
