@@ -1,0 +1,567 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_creative"
+	group: "719DAED049159F2E"
+	icon: "create:cogwheel"
+	id: "4FBA0F896C6EB7A0"
+	images: [
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.6d
+			hover: ["An example of a fully automated setup using conveyor belts, gears to change speed of fan vs. belt, gearboxes to turn corners, and funnels to put things onto / take things off the belt."]
+			image: "kubejs:textures/quests/iron_contraption.png"
+			rotation: 0.0d
+			width: 12.5d
+			x: 4.5d
+			y: -8.5d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 6.0d
+			hover: ["Water wheel setup"]
+			image: "kubejs:textures/quests/create_water_wheel.png"
+			rotation: 0.0d
+			width: 10.5d
+			x: 4.5d
+			y: 1.5d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 6.0d
+			hover: ["Manual bulk washer - toss gravel into the blue particles"]
+			image: "kubejs:textures/quests/create_manual_washing.png"
+			rotation: 0.0d
+			width: 10.5d
+			x: 4.5d
+			y: 7.0d
+		}
+	]
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["55B899DC63CFA8E3"]
+			description: [
+				"Ah, the Science Division. I bet you're really starting to like them by now!"
+				""
+				"Anyway... now that you've got Andesite Alloy, they believe that they've got a Create-ive method by which you can start producing Iron. I'll be honest, it's not what I would have expected, but I think you should stick with it... After all, Iron is such a useful and versatile material - you're definitely going to need to get a handle on it."
+			]
+			id: "6C3E0C8B8576F980"
+			shape: "gear"
+			tasks: [{
+				id: "6281355ACB7B6A00"
+				title: "Getting Creative"
+				type: "checkmark"
+			}]
+			title: "Getting Creative"
+			x: -10.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["6C3E0C8B8576F980"]
+			description: [
+				"If you're looking for a cheap and easy way to transfer rotational force, consider using a SHAFT!"
+				""
+				"A SHAFT! is also used a lot in crafting other things, can be 'disguised' using an Andesite Casing on it, and you get to say SHAFT! whenever you mention it."
+			]
+			id: "0A899DD696F50277"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "1E5E643BF0872398"
+				item: "create:shaft"
+				type: "item"
+			}]
+			title: "SHAFT!"
+			x: -6.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6C3E0C8B8576F980"]
+			description: [
+				"These small cogwheels are going to be a key ingredient moving forward."
+				""
+				"Not only will they form part of some machine crafting, but they're also super-useful when used to move rotational force around."
+			]
+			id: "680B42C6516DB7D8"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "010638142AC0B875"
+				item: "create:cogwheel"
+				type: "item"
+			}]
+			title: "Rotating and Cogitating"
+			x: -6.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["6C3E0C8B8576F980"]
+			description: [
+				"Andesite Casing can be used in the making of other things, but can also be used to make things like SHAFT!s look a bit better too - you just use an Andesite Casing on a plain shaft to turn it into an encased shaft."
+				""
+				"There are other ways they can be used too - have a look at the tooltips for it and press the key mentioning 'Ponder' to get a better idea of other uses."
+			]
+			id: "44FF4A5C9945D1CD"
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "71D24123DD4839E8"
+				item: "create:andesite_casing"
+				title: "Casing the joint"
+				type: "item"
+			}]
+			x: -6.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["6C3E0C8B8576F980"]
+			description: [
+				"Apparently you can waterlog a sieve or Create Sifter by crouching down and using a Bucket of Water on it. Probably a good idea to set it in the ground first so the water doesn't flow everywhere..."
+				""
+				"Once it's waterlogged, you can sieve some Sand to get different things dropped instead of the usual stuff. Essentially there are two additional things - Sea Pickle Eggs, and Kelp Seeds."
+			]
+			id: "4779353344322ACD"
+			optional: true
+			tasks: [{
+				id: "58093165635F886B"
+				item: "minecraft:water_bucket"
+				type: "item"
+			}]
+			title: "Waterlogging"
+			x: -6.5d
+			y: -10.0d
+		}
+		{
+			dependencies: ["4779353344322ACD"]
+			description: [
+				"Kelp grows under water."
+				""
+				"It is recommended that you plant it several blocks deep as it will grow up to the surface."
+				""
+				"The water does not need to be source blocks of water the whole way up."
+				""
+				"You can re-plant Kelp directly to be able to grow more Kelp too."
+			]
+			id: "17A54FEBE813E26D"
+			optional: true
+			subtitle: "The seaweed!"
+			tasks: [{
+				id: "0629C68D488128CB"
+				item: "minecraft:kelp"
+				type: "item"
+			}]
+			title: "Why did the beach blush?"
+			x: -4.5d
+			y: -10.0d
+		}
+		{
+			dependencies: ["17A54FEBE813E26D"]
+			description: [
+				"Kelp can be dried out in a furnace or in the Drying cupboard."
+				""
+				"Dried Kelp is a source of food, although not particularly nutritious. It can, however, also be used to create Mechanical Belts - a really useful way to transfer rotational force between SHAFT!s without changing the direction of rotation, as well as to transport loose items from place to place."
+				""
+				"There are other ways they can be used too - have a look at the tooltips for it and press the key mentioning 'Ponder' to get a better idea of other uses."
+			]
+			id: "28D3C01EE56D5B79"
+			optional: true
+			tasks: [
+				{
+					id: "48D7812D0B741FE4"
+					item: "minecraft:dried_kelp"
+					type: "item"
+				}
+				{
+					id: "37D88A46B721FADB"
+					item: "create:belt_connector"
+					type: "item"
+				}
+			]
+			title: "Another useful snack"
+			x: -2.5d
+			y: -7.5d
+		}
+		{
+			dependencies: ["6C3E0C8B8576F980"]
+			description: [
+				"A Large Cogwheel can be used in conjunction with a standard Cogwheel to change the speed of rotation. It does, however, also affect the Stress Units affecting your contraption."
+				""
+				"All sources of rotational force can support a certain number of Stress Units (SU). If you exceed the SU available, the contraption will stop working."
+				""
+				"In some cases, stepping down the speed (small Cogwheel on the source, Large Cogwheel feeding the contraption) will increase the available SU. When done the other way around, the speed of your contraption can increase, but the total SU that can be used will decrease."
+			]
+			id: "50FB7CC1E478CCA3"
+			shape: "square"
+			tasks: [{
+				count: 2L
+				id: "48D92F3CB0B2ED4D"
+				item: "create:large_cogwheel"
+				type: "item"
+			}]
+			title: "Moving up a gear"
+			x: -6.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["50FB7CC1E478CCA3"]
+			description: [
+				"If you're looking for a cheap form of continuous rotational force, our Science Division tells me that they have invented something called a Water Wheel. Once you've built one, all it needs is some flowing water to power it."
+				""
+				"You can even have some of them next to each other to provide more rotational Stress Units to power your contraptions."
+				""
+				"Once you've made the Water Wheel, hover over it in your inventory and use the 'Ponder' option for more information."
+			]
+			id: "1777B82D402C5471"
+			shape: "square"
+			tasks: [{
+				id: "367A85F683E3345B"
+				item: "create:water_wheel"
+				type: "item"
+			}]
+			title: "The turning of the wheel"
+			x: -4.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["0A899DD696F50277"]
+			description: ["If you just want to test something, a Hand Crank can be a useful way of checking out your contraptions. Have a decent supply of food with you though - cranking by hand can be hard work!"]
+			id: "137014889C556E1B"
+			optional: true
+			tasks: [{
+				id: "3CE0F6D747BFBE75"
+				item: "create:hand_crank"
+				type: "item"
+			}]
+			title: "Ye Olde Crank"
+			x: -5.0d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"680B42C6516DB7D8"
+				"44FF4A5C9945D1CD"
+				"0A899DD696F50277"
+				"48868065F44AA0F1"
+			]
+			description: [
+				"Now that you have an Andesite Casing, a Cogwheel, a SHAFT! and a Propeller you're able to make an Encased Fan."
+				""
+				"The Encased Fan can suck things towards it or blow things away from it depending on the direction of the rotational force it is supplied with."
+				""
+				"There are other ways they can be used too - have a look at the tooltips for it and press the key mentioning 'Ponder' to get a better idea of other uses."
+			]
+			id: "3A506625FA262911"
+			shape: "square"
+			tasks: [{
+				id: "3B773C0918BE6589"
+				item: "create:encased_fan"
+				type: "item"
+			}]
+			title: "Blown away"
+			x: -2.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["6C3E0C8B8576F980"]
+			description: [
+				"To make a propeller, you're going to need some metal sheets. Specifically, Iron or Nickel."
+				""
+				"By this stage you only have Nickel, so how do you make Nickel Plate? Well, there are a few methods, but the simplest one for now is to smoosh a Nickel Ingot flat using your trusty old Smoosher."
+				""
+				"Once you have 4 Nickel Plates and a piece of Andesite Alloy, you should be able to make a Propeller."
+			]
+			id: "48868065F44AA0F1"
+			shape: "square"
+			tasks: [
+				{
+					count: 4L
+					id: "0DFCA5BFA48FC7CE"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/nickel"
+						}
+					}
+					title: "Nickel Plates"
+					type: "item"
+				}
+				{
+					id: "181389A8528A9BD7"
+					item: "create:propeller"
+					type: "item"
+				}
+			]
+			title: "Propellerhead"
+			x: -6.5d
+			y: -8.0d
+		}
+		{
+			dependencies: [
+				"48868065F44AA0F1"
+				"680B42C6516DB7D8"
+			]
+			description: [
+				"The Wrench is a tool that can be used to rotate, disassemble, and configure Create blocks. It's extremely useful and an absolute necessity, so now that you have access to everything you need to make one, you should go ahead right away!"
+				""
+				"Note that many of the items in Create have got extensive tool tips, some of which you can only access by hovering over the item in your inventory or in JEI and pressing a key for more information."
+			]
+			id: "4F1059D2C6DF9A47"
+			shape: "square"
+			tasks: [{
+				id: "3D82F86575FD9742"
+				item: "create:wrench"
+				type: "item"
+			}]
+			title: "Wrenched"
+			x: -6.5d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"3A506625FA262911"
+				"1777B82D402C5471"
+			]
+			description: [
+				"The Gearbox provides a way to 'turn a corner' with your rotational force, as well as reverse the direction of the rotation."
+				""
+				"You can also convert a standard Gearbox into a Vertical Gearbox simply with a little bit of tinkering on a crafting table."
+				""
+				"Take a little time to 'Ponder' them (see tooltip) to ensure you understand their uses."
+			]
+			id: "23EBCB6229350FE6"
+			shape: "square"
+			tasks: [
+				{
+					id: "5A0B0752F9852CAD"
+					item: "create:gearbox"
+					type: "item"
+				}
+				{
+					id: "7A3F293AD718895E"
+					item: "create:vertical_gearbox"
+					type: "item"
+				}
+			]
+			title: "Turning the corner"
+			x: -0.5d
+			y: -3.0d
+		}
+		{
+			dependencies: [
+				"2EBBCC19159F245F"
+				"3373109DEB9D38F7"
+			]
+			description: ["Collect up a few Iron Nuggets from your contraption - we're about to see how to mass produce iron in a much more efficient manner."]
+			id: "2CE12FAB0BE4E9A1"
+			min_required_dependencies: 1
+			shape: "square"
+			subtitle: "Sort out that Iron deficiency!"
+			tasks: [{
+				count: 8L
+				id: "69AB275F2D31E29C"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:nuggets/iron"
+					}
+				}
+				title: "Iron Nuggets"
+				type: "item"
+			}]
+			title: "Don't be anemic"
+			x: 3.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["23EBCB6229350FE6"]
+			description: [
+				"At this point you have everything you need to bulk wash Gravel. Doing so will dissolve the Gravel, with a small chance of leaving behind Flint, an Iron Nugget, or nothing whatsoever."
+				""
+				"There are two routes forward - full automation, or a basic washing setup. The image above, and this description, explain the more creative fully automated version."
+				""
+				"You might want to put an SRG with a Gravel Singularity feeding into a chest, then use an Andesite Funnel on the side of the chest to pull out the gravel and put it onto a very slow-moving Mechanical Belt, at the end of which you can have another chest with an Andesite Funnel so that items coming off the belt end up in that output chest."
+				""
+				"You'll then want to place a half slab at the start of the belt, leave a 1 block gap, and then have an encased fan that blows the length of the belt (white air particles will show you how far the fan is blowing - use gears to speed it up if necessary)."
+				""
+				"Use Gearboxes and shafts to get power from your Water Wheel to both the Encased Fan and the Mechanical Belt."
+				""
+				"Essentially, you will want to time things so that all pieces of gravel placed onto the belt by the Andesite Funnel have enough time to be converted before reaching the funnel at the end of the belt."
+			]
+			id: "2EBBCC19159F245F"
+			shape: "diamond"
+			tasks: [{
+				id: "15DA5E544423C952"
+				title: "May the Rotational Force be with You!"
+				type: "checkmark"
+			}]
+			title: "May the Rotational Force be with you!"
+			x: 1.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["4F1059D2C6DF9A47"]
+			description: ["Engineer's Goggles let you see information about rotation speed and stress."]
+			id: "159C969EDD82D9E1"
+			tasks: [{
+				id: "6D759DCF946E8FDC"
+				item: "create:goggles"
+				type: "item"
+			}]
+			title: "Stress-Less Goggles"
+			x: -5.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["28D3C01EE56D5B79"]
+			description: [
+				"With just some Andesite Alloy and Dried Kelp you can now make Andesite Funnels (useful for transferring items to and from inventories) as well as Andesite Tunnels (which can cover up Mechanical Belts)."
+				""
+				"It's worth giving each of these a 'Ponder'."
+				""
+				"A bit later we'll have access to more advanced versions."
+			]
+			id: "424DA7F111A49D0A"
+			optional: true
+			tasks: [
+				{
+					id: "58C64C31BCDE236A"
+					item: "create:andesite_tunnel"
+					type: "item"
+				}
+				{
+					id: "10C24CEC9C4A157E"
+					item: "create:andesite_funnel"
+					type: "item"
+				}
+			]
+			title: "Simple Funnels and Tunnels"
+			x: -0.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["7969DD5D40849EA0"]
+			description: [
+				"It's important, in any contraption, to understand how much stress is being consumed, and how much you still have available to play with."
+				""
+				"If you run out of available Stress Units (SU) then your contraption will become over-stressed and stop working."
+				""
+				"In many cases, it's simpler to have a Stressometer attached so that you can see what's happening at a glance, and know when it's time to add more power through another Water Wheel or other source of SU."
+			]
+			id: "26816669B75CF243"
+			optional: true
+			tasks: [{
+				id: "7A36DD3185B96966"
+				item: "create:stressometer"
+				type: "item"
+			}]
+			title: "Stress Management"
+			x: -1.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["1777B82D402C5471"]
+			description: [
+				"With a Compass, two SHAFT!s and an Andesite Casing you should be able to cobble together a gadget that will measure the speed of rotation when attached to a SHAFT or other source of rotational power."
+				""
+				"Make yourself two for now. One we'll keep, and the other we'll turn into something else."
+			]
+			id: "7969DD5D40849EA0"
+			optional: true
+			tasks: [
+				{
+					count: 2L
+					id: "09390C5E645FD62B"
+					item: "minecraft:compass"
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "7AD2FB02FFC6D4EF"
+					item: "create:speedometer"
+					type: "item"
+				}
+			]
+			title: "Just how fast is this thing anyway?"
+			x: -3.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["2CE12FAB0BE4E9A1"]
+			description: [
+				"Putting an Iron Nugget and a Wikidium Chunk into a Quantum Transmutation Chamber causes a reaction at the atomic level - effectively breaking down the atoms in the Wikidium Chunk in such a way that they alchemically transform into iron filings."
+				""
+				"Given a little time and some energy to power this transformation will effectively let you turn an Iron Nugget into Iron Dust, which in turn can be smelted into an Iron Ingot, which can be broken down into 9 Iron Nuggets - mass iron production is now within reach."
+				""
+				"&aUnlocks: Getting Immersed (2/2)&f"
+				"&aUnlocks: Getting Mekanised (1/2)&f"
+				"&aUnlocks: Digging up the Dirt (1/2)&f"
+				"&aUnlocks: Powah to the Person!&f"
+			]
+			id: "2A3A34A47D8AF234"
+			shape: "gear"
+			size: 1.5d
+			subtitle: "We're not in Scotland anymore Dorothy!"
+			tasks: [
+				{
+					count: 8L
+					id: "75C3215BC8F96750"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:dusts/iron"
+						}
+					}
+					title: "8x Iron Dust"
+					type: "item"
+				}
+				{
+					count: 8L
+					id: "5028B9C268F83DFE"
+					item: "minecraft:iron_ingot"
+					type: "item"
+				}
+			]
+			title: "Irn Bru"
+			x: 5.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["23EBCB6229350FE6"]
+			description: [
+				"At this point you have everything you need to bulk wash Gravel. Doing so will dissolve the Gravel, with a small chance of leaving behind Flint, an Iron Nugget, or nothing whatsoever."
+				""
+				"If you're not feeling particularly creative right now and do not want to spend time trying to fully automate this bulk washing process, here's a basic shortcut for you... the image below shows what is being described."
+				""
+				"To make a basic (manual) setup, you need a source of rotational force (water wheel), some water, an encased fan, a half slab, and some blocks."
+				""
+				"Start by placing down your water wheel. add a shaft onto the axle on each side (you might need to move things around in a bit, so best to be prepared!)."
+				""
+				"Place the encased fan onto the end of one of the shafts - you want it to blow white particles away from the water wheel, so if it's not blowing, move it to the other side."
+				""
+				"Next, leave a gap, and place down a half slab in front of the fan, and a block on either side, then place water in front of the fan - you should now see blue water particles. Leave another gap, and then place down a block. You should now be able to drop some gravel in the gap before the block and it will be washed, resulting in one of 3 things - nothing, flint, or an iron nugget."
+			]
+			id: "3373109DEB9D38F7"
+			shape: "diamond"
+			tasks: [{
+				id: "4677694B59877CE6"
+				title: "I like it simple!"
+				type: "checkmark"
+			}]
+			title: "Feeling a little uncreative right now..."
+			x: 1.5d
+			y: -2.0d
+		}
+	]
+	title: "Getting Creative"
+}

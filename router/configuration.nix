@@ -66,8 +66,8 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 2022 4301 5201 8080 9000 ];
-      allowedUDPPorts = [ 4301 4302 ];
+      allowedTCPPorts = [ 80 443 2022 4100 4101 4301 5201 8080 9000 ];
+      allowedUDPPorts = [ 4100 4101 4301 4302 ];
     };
     hostName = "router";
     interfaces.ens18 = {
@@ -110,10 +110,14 @@ in {
     forward80 = mkForward 80 "10.0.127.3";
     forward443 = mkForward 443 "10.0.127.3";
     forward2022 = mkForward 2022 "10.0.127.3";
+    forward4100 = mkForward 4100 "10.0.127.3";
+    forward4101 = mkForward 4101 "10.0.127.3";
     forward4301 = mkForward 4301 "10.0.127.3";
     forward4302 = mkForward 4302 "10.0.127.3";
     forward8080 = mkForward 8080 "10.0.127.3";
     forward9000 = mkForward 9000 "10.0.127.3";
+    forwardUDP4100 = mkForwardUDP 4100 "10.0.127.3";
+    forwardUDP4101 = mkForwardUDP 4101 "10.0.127.3";
     forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
     forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
   };

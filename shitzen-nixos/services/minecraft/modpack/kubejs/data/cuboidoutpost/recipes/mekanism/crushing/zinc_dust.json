@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "tag":"forge:ores/zinc"
+    }
+  },
+  "output":{
+    "count":2,"item":"cuboidmod:zinc_dust"
+  }
+}

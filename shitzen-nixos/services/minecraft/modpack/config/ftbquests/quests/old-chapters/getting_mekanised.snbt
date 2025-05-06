@@ -1,0 +1,739 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_mekanised"
+	group: "719DAED049159F2E"
+	icon: "mekanism:alloy_infused"
+	id: "4263B8C4A58CC2F5"
+	order_index: 5
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: [
+				"2A3A34A47D8AF234"
+				"495C59666CD6C3A0"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.00.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.00.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.00.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.00.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.00.d.04}"
+			]
+			id: "222E7D1D24E47EE0"
+			rewards: [{
+				id: "722E792C7B9C563B"
+				item: {
+					Count: 1b
+					id: "mekanism:configurator"
+					tag: {
+						mekData: {
+							EnergyContainers: [{
+								Container: 0b
+								stored: "60000"
+							}]
+						}
+					}
+				}
+				type: "item"
+			}]
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.00.c.25.q.00.sub}"
+			tasks: [{
+				id: "0CCC9D6C4EEE6B7E"
+				title: "{cuboiddroid.quests.g.00.c.25.q.00.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.00}"
+			x: -19.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["222E7D1D24E47EE0"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.01.d.06}"
+			]
+			id: "2EDEBF605629EAF5"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.25.q.01.sub}"
+			tasks: [{
+				id: "758E7E22CD876569"
+				item: "mekanism:metallurgic_infuser"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.01}"
+			x: -17.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2EDEBF605629EAF5"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.02.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.02.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.02.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.02.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.02.d.04}"
+			]
+			id: "1DFD647EF1A8254C"
+			rewards: [{
+				id: "569CC30EE4D358B1"
+				item: "mekanism:alloy_infused"
+				random_bonus: 31
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 32L
+				id: "5FDCFF9A33FBC1D1"
+				item: "mekanism:alloy_infused"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.02}"
+			x: -21.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["2EDEBF605629EAF5"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.03.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.03.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.03.d.02}"
+			]
+			id: "2A2991C7A49282DB"
+			rewards: [{
+				id: "735DFA8249851257"
+				item: "mekanism:basic_control_circuit"
+				random_bonus: 15
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 32L
+				id: "12252D4D84D5F358"
+				item: "mekanism:basic_control_circuit"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.03}"
+			x: -17.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["2EDEBF605629EAF5"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.04.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.04.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.04.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.04.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.04.d.04}"
+			]
+			id: "58C29DF76FB2F288"
+			shape: "square"
+			tasks: [
+				{
+					count: 32L
+					id: "2341253C43B5149C"
+					item: "mekanism:enriched_iron"
+					type: "item"
+				}
+				{
+					count: 32L
+					id: "252106879C7832C4"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:dusts/steel"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.25.q.04.t.01}"
+					type: "item"
+				}
+				{
+					count: 32L
+					id: "638003E4CCA29C48"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/steel"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.25.q.04.t.02}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.25.q.04}"
+			x: -15.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"2A2991C7A49282DB"
+				"1DFD647EF1A8254C"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.05.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.05.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.05.d.02}"
+			]
+			id: "5095107E4E8235DE"
+			rewards: [{
+				id: "317F518BCD1712E8"
+				item: "mekanism:advanced_control_circuit"
+				random_bonus: 5
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 6L
+				id: "1EA02C3A398C9B20"
+				item: "mekanism:advanced_control_circuit"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.05}"
+			x: -17.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"5095107E4E8235DE"
+				"09E3F456104DF524"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.06.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.06.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.06.d.02}"
+			]
+			id: "61C0AA54A152FCAA"
+			rewards: [{
+				id: "61449BFD511E055A"
+				item: "mekanism:elite_control_circuit"
+				random_bonus: 3
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "54A946CE644136FF"
+				item: "mekanism:elite_control_circuit"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.06}"
+			x: -17.0d
+			y: 8.0d
+		}
+		{
+			dependencies: [
+				"61C0AA54A152FCAA"
+				"335E73D74980F177"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.07.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.07.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.07.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.07.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.07.d.04}"
+			]
+			id: "10E2C4E20F68BED8"
+			rewards: [{
+				id: "610D352C2F5E7BC7"
+				item: "mekanism:ultimate_control_circuit"
+				random_bonus: 3
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				count: 2L
+				id: "656E2E531B35E307"
+				item: "mekanism:ultimate_control_circuit"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.07}"
+			x: -17.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["1DFD647EF1A8254C"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.08.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.08.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.08.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.08.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.08.d.04}"
+			]
+			id: "09E3F456104DF524"
+			rewards: [{
+				id: "6EFF2F108869B4FE"
+				item: "mekanism:alloy_reinforced"
+				random_bonus: 15
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 16L
+				id: "7D23D114FB7A76D7"
+				item: "mekanism:alloy_reinforced"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.08}"
+			x: -21.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"09E3F456104DF524"
+				"7E01B04F285F87CF"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.09.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.09.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.09.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.09.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.09.d.04}"
+			]
+			id: "335E73D74980F177"
+			rewards: [{
+				id: "2EBCDAECC235D058"
+				item: "mekanism:alloy_atomic"
+				random_bonus: 5
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 6L
+				id: "46B7BD3931AFABFE"
+				item: "mekanism:alloy_atomic"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.09}"
+			x: -21.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["58C29DF76FB2F288"]
+			description: ["{cuboiddroid.quests.g.00.c.25.q.10.d.00}"]
+			id: "57047D57E53534BF"
+			rewards: [{
+				count: 3
+				id: "30C9CD6E26A177EB"
+				item: "mekanism:steel_casing"
+				random_bonus: 3
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "6D7A16FB467754E2"
+				item: "mekanism:steel_casing"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.10}"
+			x: -13.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"57047D57E53534BF"
+				"2A2991C7A49282DB"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.06}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.07}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.08}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.09}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.10}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.11}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.12}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.13}"
+				"{cuboiddroid.quests.g.00.c.25.q.11.d.14}"
+			]
+			id: "09801260481BD6F9"
+			shape: "square"
+			tasks: [
+				{
+					id: "2E5698A30208A3DD"
+					item: "mekanism:enrichment_chamber"
+					type: "item"
+				}
+				{
+					id: "2A48AB2725CA85FE"
+					item: "mekanism:energized_smelter"
+					type: "item"
+				}
+				{
+					id: "5262066C4C80EB76"
+					item: "mekanism:precision_sawmill"
+					type: "item"
+				}
+				{
+					id: "26A09644B3184AA7"
+					item: "mekanism:crusher"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.25.q.11}"
+			x: -15.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2A2991C7A49282DB"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.12.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.12.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.12.d.02}"
+			]
+			id: "79926615667744FB"
+			tasks: [{
+				id: "6EEA8DFD27372B8A"
+				item: "mekanism:basic_tier_installer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.12}"
+			x: -19.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["5095107E4E8235DE"]
+			description: ["{cuboiddroid.quests.g.00.c.25.q.13.d.00}"]
+			id: "6A91722A7C8216E2"
+			tasks: [{
+				id: "749122A429D71FB5"
+				item: "mekanism:advanced_tier_installer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.13}"
+			x: -19.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["61C0AA54A152FCAA"]
+			description: ["{cuboiddroid.quests.g.00.c.25.q.14.d.00}"]
+			id: "2DA204B08A16A02D"
+			tasks: [{
+				id: "629EE11C87FA1F0E"
+				item: "mekanism:elite_tier_installer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.14}"
+			x: -19.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["10E2C4E20F68BED8"]
+			description: ["{cuboiddroid.quests.g.00.c.25.q.15.d.00}"]
+			id: "55C8109845C482E3"
+			tasks: [{
+				id: "556F6D3438089741"
+				item: "mekanism:ultimate_tier_installer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.15}"
+			x: -19.0d
+			y: 10.0d
+		}
+		{
+			dependencies: [
+				"5095107E4E8235DE"
+				"09801260481BD6F9"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.16.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.16.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.16.d.02}"
+			]
+			id: "3338C7FA3C1698BE"
+			tasks: [
+				{
+					id: "08127692DE6233D0"
+					item: "mekanism:purification_chamber"
+					type: "item"
+				}
+				{
+					id: "762C8EE18DE29A9B"
+					item: "mekanism:osmium_compressor"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.25.q.16}"
+			x: -15.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["1DFD647EF1A8254C"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.06}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.07}"
+				"{cuboiddroid.quests.g.00.c.25.q.17.d.08}"
+			]
+			id: "7F093389CF7E25F9"
+			shape: "square"
+			tasks: [
+				{
+					id: "0726DEDF28110AA4"
+					item: "mekanism:electrolytic_core"
+					type: "item"
+				}
+				{
+					id: "34214171D8448434"
+					item: "mekanism:electrolytic_separator"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.25.q.17}"
+			x: -23.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["1DFD647EF1A8254C"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.18.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.18.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.18.d.02}"
+			]
+			id: "2BBDDBAB24C47867"
+			shape: "square"
+			tasks: [{
+				id: "02DE402C45690C38"
+				item: "mekanism:basic_chemical_tank"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.18}"
+			x: -23.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"2BBDDBAB24C47867"
+				"7F093389CF7E25F9"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.19.d.06}"
+			]
+			id: "3AEF883219F65FF5"
+			shape: "square"
+			tasks: [{
+				id: "1A9ADD9E2C17E732"
+				item: {
+					Count: 1b
+					id: "mekanism:jetpack"
+					tag: {
+						HideFlags: 2
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.19}"
+			x: -25.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["3AEF883219F65FF5"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.20.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.20.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.20.d.02}"
+			]
+			id: "3B9269E12FF51576"
+			tasks: [{
+				id: "635CC4AE475DCD32"
+				item: "mekanism:jetpack_armored"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.20}"
+			x: -25.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["1DFD647EF1A8254C"]
+			description: ["{cuboiddroid.quests.g.00.c.25.q.21.d.00}"]
+			id: "73469BF238C904F6"
+			tasks: [{
+				id: "41814C221F694106"
+				item: "mekanism:energy_tablet"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.21}"
+			x: -21.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["73469BF238C904F6"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.22.d.06}"
+			]
+			id: "162D84598C9C824A"
+			tasks: [{
+				id: "211074DD3F82FC1E"
+				item: "mekanism:free_runners"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.22}"
+			x: -23.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"57047D57E53534BF"
+				"09801260481BD6F9"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.06}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.07}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.08}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.09}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.10}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.11}"
+				"{cuboiddroid.quests.g.00.c.25.q.23.d.12}"
+			]
+			id: "7D512A79A62F1361"
+			shape: "square"
+			tasks: [
+				{
+					id: "669F11FEA270661A"
+					item: "mekanism:basic_universal_cable"
+					type: "item"
+				}
+				{
+					id: "443B9959DDC72C12"
+					item: "mekanism:basic_mechanical_pipe"
+					type: "item"
+				}
+				{
+					id: "13AB3D87412AAE01"
+					item: "mekanism:basic_pressurized_tube"
+					type: "item"
+				}
+				{
+					id: "183AC768E1F63896"
+					item: "mekanism:basic_logistical_transporter"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.25.q.23}"
+			x: -13.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["09801260481BD6F9"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.24.d.06}"
+			]
+			hide_dependency_lines: true
+			id: "7E01B04F285F87CF"
+			shape: "square"
+			tasks: [
+				{
+					id: "1761FBDECBD9AE9A"
+					item: "mekanism:dust_obsidian"
+					type: "item"
+				}
+				{
+					id: "501DBA1B60F28ED1"
+					item: "mekanism:dust_refined_obsidian"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.25.q.24}"
+			x: -23.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["162D84598C9C824A"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.25.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.25.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.25.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.25.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.25.d.04}"
+			]
+			id: "48C961DA8D4EE3D5"
+			tasks: [{
+				id: "5F15007FEC80E196"
+				item: "mekanism:chargepad"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.25}"
+			x: -25.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"3338C7FA3C1698BE"
+				"10E2C4E20F68BED8"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.00}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.01}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.02}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.03}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.04}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.05}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.06}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.07}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.08}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.09}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.10}"
+				"{cuboiddroid.quests.g.00.c.25.q.26.d.11}"
+			]
+			id: "58E7FC36824A169E"
+			tasks: [{
+				id: "40CC2619274FAF46"
+				item: {
+					Count: 1b
+					id: "mekanism:atomic_disassembler"
+					tag: {
+						HideFlags: 2
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.25.q.26}"
+			x: -15.0d
+			y: 9.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.00.c.25}"
+}

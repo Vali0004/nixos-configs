@@ -1,0 +1,831 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "whats_left_in_the_end"
+	group: "53EA7D6C6A1B0F69"
+	icon: "minecraft:purpur_block"
+	id: "38AC8E212787EB28"
+	order_index: 3
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"It seems that the veil between this dimension? world? plane of existence? is thinning as our Science Division postulated. They believe that you should be able to pierce the veil with a little bit of effort."
+				""
+				"There is a little bit more preparation required before you go, but here are some other things you should consider making sure you have before you actually attempt inter-dimensional travel. It might be a good idea to:"
+				""
+				"- have a Jetpack in case you need to fly (see 'Getting Mekanised' or 'Up, up and away!')"
+				""
+				"- have a Backpack to be able to carry things you find (see 'Pack yer bags')"
+				""
+				"- Have a bow and a good supply of arrows"
+				""
+				"- have decent armor and weaponry in case you need to protect yourself"
+				""
+				"- have a set of tools, some food, some fuel and some building materials in case you end up needing to stay there a while"
+			]
+			id: "3EB44710A602ED1E"
+			shape: "gear"
+			tasks: [
+				{
+					id: "489B46244C56D864"
+					item: "mekanism:ultimate_control_circuit"
+					type: "item"
+				}
+				{
+					id: "039832C9379F82A4"
+					item: "thermal:enderium_ingot"
+					type: "item"
+				}
+				{
+					id: "02BF74D604F29B44"
+					item: "powah:crystal_niotic"
+					type: "item"
+				}
+				{
+					id: "72DD36852D86144C"
+					item: "cookingforblockheads:preservation_chamber"
+					type: "item"
+				}
+				{
+					id: "737EF7E5A68A6FFA"
+					item: "cookingforblockheads:fridge"
+					type: "item"
+				}
+				{
+					id: "79FAE8B2E8970B31"
+					item: "thermal:machine_chiller"
+					type: "item"
+				}
+				{
+					id: "0BF6FBA2FCA09A1E"
+					item: "ironfurnaces:rainbow_core"
+					type: "item"
+				}
+			]
+			title: "What's left in the End?"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1BD8C96CC9C7495C"]
+			description: [
+				"To enable the Cryogenic Dimensional Teleporter to pierce the veil between this dimension and our target Dimension (The End), we will need to attune it using an Energized End Stone Brick."
+				""
+				"Once you have that, use it on the CDT and you will see it hovering in place above the CDT. Once the CDT is fully charged, you will be able to right-click on it with an empty hand to be teleported to the target dimension. You'll know it's ready when the key item starts spinning. &cKeys, once applied to the CDT are single use! Replacing with another key item, or picking up the CDT will not return a used key item to you.&f"
+				""
+				"Make sure you have a way of getting back if you need to, and ensure you have an easy way to get there again! Waystones are perfect for this."
+			]
+			id: "562DF660E5C68A16"
+			rewards: [
+				{
+					auto: "disabled"
+					icon: "storagedrawers:shroud_key"
+					id: "2AE3D2BED2F2FD8E"
+					stage: "end_access"
+					title: "Let's go!"
+					type: "gamestage"
+				}
+				{
+					id: "4F1683452FD564A8"
+					item: "mekanism:electric_bow"
+					type: "item"
+				}
+			]
+			shape: "square"
+			tasks: [{
+				id: "20EFEFA2CE836DA8"
+				item: "cuboidmod:energized_end_stone_bricks"
+				type: "item"
+			}]
+			title: "The Key to the End"
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["447CD827C10015DD"]
+			description: [
+				"Now that you have some Warp Stones, you should defintely make some Waystones. It might be a good idea to keep a Warp Stone with you so that you can travel back to a known (and presumably safe) spot when you need to."
+				""
+				"It will definitely be a good idea to place a Waystone in your base, and probably to place one in a safe spot in each dimension you visit, as that will allow you easy and predictable travel moving forward."
+				""
+				"Don't forget to take a Waystone through to the next dimension when you go! (Cuboid Corp (tm) assumes no responsibility for returning you to your original dimension should you ignore this advice)"
+			]
+			id: "183CEC42DC0F408F"
+			rewards: [{
+				id: "07A982FD4802D2AF"
+				item: "waystones:waystone"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "728811944443086A"
+				item: "waystones:waystone"
+				type: "item"
+			}]
+			title: "Is this the way to Armadillo?"
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3EB44710A602ED1E"]
+			description: [
+				"Using some Ender Pearls and an Emerald, plus a little bit of Amethyst, you should be able to make a Warp Stone."
+				""
+				"This stone can be used in the creation of a Waystone - a special device that allows for instantaneous travel across vast distances and even dimensions."
+				""
+				"You will need to have some experience in order to be able to use it, and a Warp Stone needs knowledge of Waystones to be of any use - so you're going to need at least a few of these to be able to craft up some Waystones too."
+				""
+				"Luckily for you, if you can scrounge up what's needed for your first one, we'll be able to supply you with some more."
+				""
+				"Once you have activated Waystones, you can hold and use a Warp Stone from anywhere to be able to travel instantly to an activated Waystone. The Warp Stone, when used on its own, does take about 5 minutes to recharge before it can be used again."
+			]
+			id: "447CD827C10015DD"
+			rewards: [{
+				id: "5CE18E0AC99212A2"
+				item: {
+					Count: 1b
+					id: "waystones:warp_stone"
+					tag: {
+						Damage: 0
+					}
+				}
+				random_bonus: 1
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "290EABFAA1EAC1A3"
+				item: {
+					Count: 1b
+					id: "waystones:warp_stone"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "Warp Stone - There and Back Again"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["183CEC42DC0F408F"]
+			description: [
+				"To break through to the next dimension, which the Science Division has called 'The End' for some reason (hopefully that's not prophetic!), you're going to need some specialist equipment."
+				""
+				"In particular, you need to take what you've learnt so far, and build a Cryogenic Dimensional Teleporter (CDT)."
+				""
+				"The CDT needs to be charged up, but will only start charging when 'loaded' with an appropriate key item, which we will get onto next."
+				""
+				"For now, just ensure that you place down the CDT somewhere that means it is being provided with power, and ensure that there is an air gap directly above it."
+				""
+				"&cNOTE: Once a key is applied to a CDT, the key cannot be retrieved from the device. You would be well advised to ensure you place the CDT in a position you wish it to stay.&f"
+			]
+			id: "1BD8C96CC9C7495C"
+			shape: "square"
+			tasks: [{
+				id: "4019309AD310F52B"
+				item: "cuboidmod:cryogenic_dimensional_teleporter"
+				type: "item"
+			}]
+			title: "Break Through"
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["562DF660E5C68A16"]
+			description: [
+				"A few small things to note about The End dimension..."
+				""
+				"There might be some kind of guardian (don't panic, but we believe there is a Dragon there)"
+				""
+				"The Dragon get regenerated by the crystal fires on top of the pillars - you'll want to destroy those as soon as possible."
+				""
+				"You might need some bottles (we will provide some when you arrive, but you might want more). You can use these to pick up dragon's breath."
+				""
+				"Don't look directly at the people there. They don't like it."
+				""
+				"Have fun!"
+			]
+			id: "10E3ABB4530A9F1A"
+			rewards: [{
+				auto: "enabled"
+				count: 32
+				id: "171FFD50A6604FE0"
+				item: "minecraft:glass_bottle"
+				random_bonus: 32
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				dimension: "minecraft:the_end"
+				id: "040E59DAC02B5AA7"
+				title: "Visit The End Dimension"
+				type: "dimension"
+			}]
+			title: "Here be Dragon!"
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["10E3ABB4530A9F1A"]
+			description: [
+				"&e(If the dragon is missing, or you just fancy another go, check out the Emergency Items in Appendix E)&f"
+				""
+				"Once you have defeated the Dragon, three things of note will happen:"
+				""
+				"1. A Dragon's Egg will appear. It's a bit tricky to pick up, but we'll leave you to figure that one out."
+				""
+				"2. A portal will appear around the base of the central pillar that the Dragon rests on. We believe that stepping into this portal will teleport you back home."
+				""
+				"3. An additional gateway will appear. If you toss an Ender Pearl through it, you will end up somewhere else where you can start exploration of this fascinating dimension."
+			]
+			id: "0734276C7081690C"
+			shape: "square"
+			tasks: [{
+				advancement: "minecraft:end/kill_dragon"
+				criterion: ""
+				id: "6DCA2C446D8F3563"
+				type: "advancement"
+			}]
+			title: "Extinction is such a dirty word."
+			x: 10.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["0734276C7081690C"]
+			description: ["I know it's a lot to handle, but during your fight with the Dragon, you can wait for it to shoot a projectile at you, step out of the way, and then use empty glass bottles on the purple particles given off by the Dragon's Breath in order to collect some. It's worth grabbing what you can and not just the 1 bottle!"]
+			id: "294CA66B71C450C8"
+			tasks: [{
+				id: "3D6E783E48886801"
+				item: "minecraft:dragon_breath"
+				type: "item"
+			}]
+			title: "I think more than a mint is needed here..."
+			x: 12.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["0734276C7081690C"]
+			description: [
+				"Once you've defeated the Dragon, a special Gateway will appear floating in mid-air somewhere near the main island."
+				""
+				"You should dig up a bit of end stone (or use some other building block if you remembered to bring some with you) and get up close. In the middle of the gateway you will see what looks a bit like a portal field shimmering - take an Ender Pearl and throw it through the shimmering field - hopefully it will hit some land on the other side and you'll be teleported somewhere else to begin your real exploration of this Dimension."
+			]
+			id: "34A91AA5B35BB04F"
+			shape: "square"
+			tasks: [{
+				advancement: "minecraft:end/enter_end_gateway"
+				criterion: ""
+				id: "0737048EFA878BF0"
+				type: "advancement"
+			}]
+			title: "Follow that Ender Pearl!"
+			x: 10.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["34A91AA5B35BB04F"]
+			description: [
+				"The Crystal Crag is a biome in the End full of interesting animal life. You will notice it on your map by the purple area that shows the violite it's made from - similar to stone from your world - and when you get close, there's a collection of massive psychedelic crystal spikes growing from the ground."
+				""
+				"Head over to one when you see it - we're going to need a few things..."
+				""
+				"In the Crystal Crag you will find two Mobs you won't typically find anywhere else. These are the Himmelite and the Sinker, both dangerous mobs in large numbers but you should be able to handle them."
+				""
+				"ps. Those two mobs are LOUD. You might want to turn down your volume before you take them on!"
+			]
+			icon: "outer_end:ender_roots"
+			id: "432CB8137F1E7DB4"
+			shape: "square"
+			tasks: [{
+				biome: "outer_end:crystal_crag"
+				icon: "outer_end:rose_crystal_bud"
+				id: "04C13BC9449E1E40"
+				type: "biome"
+			}]
+			title: "The Crystal Crag"
+			x: 8.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["432CB8137F1E7DB4"]
+			description: [
+				"The trunks of those Azure Trees are made from Azure Stem, which is essentially just another type of wood."
+				""
+				"p.s. You can also bonemeal a Azure Bush to turn it into an Azure Tree."
+			]
+			id: "4EDF7B80D828363A"
+			tasks: [{
+				id: "321D714007836771"
+				item: "outer_end:azure_bud"
+				type: "item"
+			}]
+			title: "Azure Bud"
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["432CB8137F1E7DB4"]
+			description: [
+				"At the top of the Azure Trees, you'll find two interesting things. Azure Petals and the wonderful Azure Stamen. "
+				""
+				"It's a great light source and abundantly available in the Azure Forest. Collect as many as you can and bring them back with you!"
+			]
+			id: "0665F1E05E3FC2FC"
+			tasks: [{
+				id: "69FDF584F432C0C8"
+				item: "outer_end:azure_stamen"
+				type: "item"
+			}]
+			title: "An interesting cluster"
+			x: 6.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["432CB8137F1E7DB4"]
+			description: ["Azure Berries occur naturally in the Azure Forest and are edible but a little lacking. However, they can also be used to craft crystalline berries by surrounding them with the various crystals you'll find dotted around the end for a far more fulfilling meal."]
+			id: "2ED131F41DC95DF6"
+			tasks: [{
+				id: "701DCDCCCC326E9A"
+				item: "outer_end:azure_berries"
+				type: "item"
+			}]
+			title: "Glowing Poise Stem"
+			x: 8.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["4EDF7B80D828363A"]
+			description: ["Azure Stem can be turned into Azure Planks just like making planks from other kinds of wood."]
+			id: "47368E8C5D9F42CE"
+			tasks: [{
+				count: 8L
+				id: "1D41BB131CB24515"
+				item: "outer_end:azure_planks"
+				type: "item"
+			}]
+			title: "Azure Planks"
+			x: 4.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["432CB8137F1E7DB4"]
+			description: ["See those crystals everywhere in the Crystal Crag? Grab yourself some and make a new helmet. Any of the crystal helmets will do."]
+			id: "39692BF31EB233EB"
+			tasks: [{
+				id: "1979D1E4056223C0"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any crystal helmet\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "outer_end:rose_crystal_helmet"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:mint_crystal_helmet"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:cobalt_crystal_helmet"
+								tag: {
+									Damage: 0
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			title: "Time for a new hat!"
+			x: 10.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["5AF013727BA31234"]
+			description: ["Looking sharp so far! Let's keep it going. Make yourself a set of leggings to match your helmet and chestplate!"]
+			id: "54256DDD256A563F"
+			tasks: [{
+				id: "69CC88098C67071D"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any crystal leggings\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "outer_end:rose_crystal_leggings"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:mint_crystal_leggings"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:cobalt_crystal_leggings"
+								tag: {
+									Damage: 0
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			title: "Hat, shirt. What's next? Pants!"
+			x: 13.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["34A91AA5B35BB04F"]
+			description: [
+				"The Dimensional Shard can be obtained by sieving crushed End Stone through a Netherite mesh. "
+				""
+				"Apart from being a critical component enabling you to travel to the next dimension on our list, it's also used in creating some fairly advanced machinery and equipment that require either an Infused Ender Pearl or Infused Diamond in order to operate correctly."
+			]
+			id: "3EEC5D84EB3A1195"
+			shape: "gear"
+			size: 1.2d
+			tasks: [{
+				id: "3071551DA75C15FA"
+				item: "rftoolsbase:dimensionalshard"
+				type: "item"
+			}]
+			title: "Dimensional Shardening"
+			x: 12.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["10E3ABB4530A9F1A"]
+			description: [
+				"The Chorus plant grows in the End on Endstone, and they are those tall, skinny, purple plants you'll come across, typically with 2 or 3 flowers - one at the top of each of their branches."
+				""
+				"If you break the stem, Chorus Fruit will be dropped, but the Chorus Flower will not."
+				""
+				"To get a Chorus Flower, you will need to get that before you break the stem."
+			]
+			id: "6DE6A228614AE83F"
+			tasks: [{
+				id: "4A5CA2B03C790911"
+				item: "minecraft:chorus_fruit"
+				type: "item"
+			}]
+			title: "A Chorus Line"
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6DE6A228614AE83F"]
+			description: [
+				"Popped Chorus fruit is obtained by smelting Chorus Fruit."
+				""
+				"The popped Chorus Fruit can then be combined into Purpur - a delightfully purple building block."
+			]
+			id: "44AD6C7B55469980"
+			tasks: [{
+				id: "546F31CE46E160B9"
+				item: "minecraft:popped_chorus_fruit"
+				type: "item"
+			}]
+			title: "Pop goes the weasel! (Chorus)"
+			x: 14.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["6DE6A228614AE83F"]
+			description: [
+				"Getting a Chorus Flower is not hard - just make sure you get the flower before breaking the stem."
+				""
+				"You can probably use a bow and arrow and knock a flower off that way too if you like."
+			]
+			id: "6F38B042859F84AB"
+			tasks: [{
+				id: "1782CA2AD8D6C2FB"
+				item: "minecraft:chorus_flower"
+				type: "item"
+			}]
+			title: "Chorus Flowers"
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["47368E8C5D9F42CE"]
+			description: ["With some azure wood comes an azure boat."]
+			id: "6C28E1C885BFEF86"
+			tasks: [{
+				id: "54817C97691444EB"
+				item: "outer_end:azure_boat"
+				type: "item"
+			}]
+			title: "A purple boat!"
+			x: 3.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["432CB8137F1E7DB4"]
+			description: [
+				"If you can find one of the eulsive End Cities, you might stumble upon some purple boxes attached to the outside of the buildings there. Don't be fooled! Those are Shulkers and they're waiting for YOU! They hide inside their shells, only peeking out occasionally to fire projectiles at you that make you float high in the sky. Crazy, right?"
+				""
+				"It'll be painful, but you're going to have to fight some of those. They will drop a Levitation Core and sometimes part of their shell. You're going to need both. Wait until their shells are open to do more damage!"
+			]
+			id: "586388ADC05A9E7C"
+			shape: "square"
+			subtitle: "I'm levitating"
+			tasks: [
+				{
+					id: "2B90894A77D04DA1"
+					item: "outer_end:levitation_core"
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "12BC812B434F2F3B"
+					item: "minecraft:shulker_shell"
+					type: "item"
+				}
+			]
+			title: "My Sugarboo"
+			x: 6.5d
+			y: 7.5d
+		}
+		{
+			dependencies: ["586388ADC05A9E7C"]
+			description: [
+				"See those floating squares everywhere? The ones with a tiny mob inside? If you kill them they'll drop their teeth and they can be used for all sorts of cool things like knives and shurikens. "
+				""
+				"Most importantly, you can also use them to make a Shulker Shield. And you're going to need one of those in the near future."
+			]
+			id: "1CF4FF16ECAC59B1"
+			rewards: [{
+				count: 4
+				id: "0FF6CB1A552643A5"
+				item: "outer_end:sinker_shuriken"
+				random_bonus: 2
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.2d
+			tasks: [{
+				count: 6L
+				id: "2C12288CDE39F52A"
+				item: "outer_end:sinker_tooth"
+				type: "item"
+			}]
+			title: "Tell me where you are Josh!"
+			x: 5.3999999999999995d
+			y: 9.0d
+		}
+		{
+			dependencies: ["34A91AA5B35BB04F"]
+			description: [
+				"Finding an End City can be a daunting and time consuming task, and even if you do find one, it might be a small one or one without an End Ship nearby."
+				""
+				"It's up to you whether you want to try and raid the smaller ones (there's usually fairly decent loot in them), but if it's an Elytra you're really after, you might want to keep looking until you do find one with a Ship."
+				""
+				"While seasoned explorers have their tried and tested methods for finding End Cities, a basic strategy that seems to work quite well is to pick a cardinal direction and generally travel that way. Whenever you come across a larger island, explore it reasonably fully, and use your Map to double-check what's there. Once you've ruled out the island, keep going in the original direction until the next large island and repeat."
+				""
+				"Or just trust to luck / your own methods as you see fit!"
+			]
+			id: "34C57639DE500A70"
+			subtitle: "(preferably one with an End Ship!)"
+			tasks: [{
+				advancement: "minecraft:end/find_end_city"
+				criterion: ""
+				id: "2D80EB7C8696600B"
+				type: "advancement"
+			}]
+			title: "Find an End City"
+			x: 12.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["39692BF31EB233EB"]
+			description: ["Now that you have a fancy new helmet, why not add a chestplate to the mix? "]
+			id: "5AF013727BA31234"
+			tasks: [{
+				id: "6098354E4E67BD59"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any crystal chestplate\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "outer_end:rose_crystal_chestplate"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:mint_crystal_chestplate"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:cobalt_crystal_chestplate"
+								tag: {
+									Damage: 0
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			title: "What's a hat without a nice shirt?"
+			x: 11.5d
+			y: 7.5d
+		}
+		{
+			dependencies: ["54256DDD256A563F"]
+			description: ["What's a nice outfit withouth some matching shoes? Make yourself a pair of the finest crystal boots you can to complete the armor set!"]
+			id: "780F0D293CB9C4D1"
+			tasks: [{
+				id: "1AEA166CFEB8D5CC"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any crystal leggings\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "outer_end:rose_crystal_boots"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:mint_crystal_boots"
+								tag: {
+									Damage: 0
+								}
+							}
+							{
+								Count: 1b
+								id: "outer_end:cobalt_crystal_boots"
+								tag: {
+									Damage: 0
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			title: "Now let's bring it all together!"
+			x: 14.5d
+			y: 7.5d
+		}
+		{
+			dependencies: ["34C57639DE500A70"]
+			description: [
+				"End Cities are guarded by Shulkers. They are kinda like teleporting armored clams."
+				""
+				"While in their shell, they take significantly less damage. When their shell is open, they fire auto-targeting spit balls at you which, if they hit, not only do a hefty amount of damage, but cause you to levitate for a few seconds. Really, really, really annoying in summary."
+				""
+				"Shulkers have an additional defensive mechanism too - they can sometimes teleport away after being hit. They will typically only teleport a handful of blocks away (within spitting distance as it were)."
+				""
+				"Killing a Shulker will sometimes cause them to drop a Shulker Shell."
+			]
+			id: "7DFC01B9EC1CF045"
+			rewards: [{
+				id: "40DA1BA0BF8CD706"
+				item: "minecraft:shulker_shell"
+				type: "item"
+			}]
+			tasks: [{
+				id: "30780BCBB0C8672D"
+				item: "minecraft:shulker_shell"
+				type: "item"
+			}]
+			title: "Stop shulking and think happy thoughts!"
+			x: 14.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7DFC01B9EC1CF045"]
+			description: [
+				"When two Shulker Shells are combined with a chest, the result is a Shulker Box."
+				""
+				"Shulker Boxes are essentially like chests, except that they look cool when they open and close, and they 'remember' their contents rather than spewing them all over the ground when the Shulker Box is picked up, making it a handy way to carry around lots of stuff with you."
+				""
+				"If you're running out of inventory space, hacking down a slimy tree or getting your hands on some Poise Stems and making a chest to combine with a couple of Shulker Shells can save you from needing to get rid of stuff mid-adventure."
+			]
+			id: "0C5B869B63CF490B"
+			optional: true
+			tasks: [{
+				id: "0394B82F6B2FA303"
+				item: "minecraft:shulker_box"
+				type: "item"
+			}]
+			title: "Unforgettable Chests"
+			x: 15.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["7DFC01B9EC1CF045"]
+			description: [
+				"I'm not entirely sure how to pronounce it, but I do know how to spell it, so thank goodness we're communicating via text!"
+				""
+				"Anyway... The Elytra can be equiped instead of a chestplate and essentially gives you wings you can use to glide around. Getting 'lift' is a bit trickier though."
+				""
+				"Perhaps you'll be able to figure that out at a later date though - definitely grab an Elytra if you can!"
+				""
+				"The Elytra is usually found inside an End Ship in an Item Frame - just punch the item frame to release it."
+			]
+			id: "3A06772DF6608936"
+			tasks: [{
+				id: "0168DAB25CE4AD55"
+				item: {
+					Count: 1b
+					id: "minecraft:elytra"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "Wings and things"
+			x: 16.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7DFC01B9EC1CF045"]
+			description: [
+				"End Ships usually have a Dragon Head decorating their prow."
+				""
+				"If you fancy grabbing one, that's where to get it - just be careful not to drop it into the void!"
+				""
+				"If you didn't already know, you can 'animate' the Dragon Head by placing it down in the world and applying a redstone signal to it."
+			]
+			id: "49D1742C77B45F37"
+			optional: true
+			tasks: [{
+				id: "3453612326FB2E5A"
+				item: "minecraft:dragon_head"
+				type: "item"
+			}]
+			title: "The Head of the Dragon"
+			x: 15.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["34A91AA5B35BB04F"]
+			description: [
+				"You will probably come across some different looking End Cities, and even some underground structures. We've sent probes in to these structures before and there's not a lot to see, but you might still want to have a look around inside the towers at least. "
+				""
+				"&aTo complete this task, just visit one of the End Towers dotted around in The End. They look similar to normal End Cities, just with a hint of blue.&f"
+			]
+			disable_toast: true
+			id: "32557E526FABB4B9"
+			optional: true
+			rewards: [{
+				id: "252CE7E5E387FFCA"
+				item: "waystones:waystone"
+				type: "item"
+			}]
+			tasks: [{
+				advancement: "outer_end:end/find_end_tower"
+				criterion: ""
+				id: "3D90ECFBF42DFAE8"
+				type: "advancement"
+			}]
+			title: "Useless Portals and Stuff"
+			x: 8.0d
+			y: 2.0d
+		}
+	]
+	title: "What's left in the End?"
+}

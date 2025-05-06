@@ -1,0 +1,439 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_tinks_done"
+	group: "719DAED049159F2E"
+	icon: "minecraft:netherite_scrap"
+	id: "6B875C77BF0C8CD5"
+	order_index: 3
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["11F9CF9280A7259D"]
+			description: ["It's time to start tinkering and getting some things done."]
+			id: "0BA4183E9254B2AD"
+			shape: "gear"
+			tasks: [{
+				id: "56218806F1A5FC3D"
+				title: "Getting Tinks Done"
+				type: "checkmark"
+			}]
+			title: "Getting No Tinks Done"
+			x: -4.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["0BA4183E9254B2AD"]
+			description: [
+				"It turns out that Bone Meal and Clay when mixed together form a kind of Porcelain which is suitable, once fired, to hold extremely hot liquids."
+				""
+				"Make at least 6 balls of Porcelain Clay and some Aggregate, and shape them into an Unfired Crucible."
+			]
+			id: "307E3B89B44B462C"
+			shape: "square"
+			tasks: [
+				{
+					count: 6L
+					id: "1A4674119DEF63F2"
+					item: "exnihilosequentia:porcelain_clay"
+					type: "item"
+				}
+				{
+					id: "6876EAA3C6D0CE1A"
+					item: "exnihilosequentia:unfired_crucible"
+					type: "item"
+				}
+			]
+			title: "Kinda like Bone China"
+			x: -2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["307E3B89B44B462C"]
+			description: ["Pop that Unfired Crucible into a furnace to get a Fired Crucible."]
+			id: "3546C3F02222AD0D"
+			shape: "square"
+			tasks: [{
+				id: "59E4D769813EB5C0"
+				item: "exnihilosequentia:fired_crucible"
+				type: "item"
+			}]
+			title: "All Fired up"
+			x: -2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["3546C3F02222AD0D"]
+			description: [
+				"Put a heat source underneath the Fired Crucible and it will slowly rise in temperature until it gets hot enough to turn stone into Lava."
+				""
+				"Different materials provide different amounts of molten rock (aka Lava). The most efficient method right now is likely to be 4 rocks, which will produce enough Lava to fill a standard Bucket."
+				""
+				"To start with, use a torch underneath the crucible - check JEI for more efficient methods you can work towards later."
+			]
+			id: "7ABCB955100B92C0"
+			shape: "square"
+			tasks: [{
+				id: "2DA12207E7FA9DA5"
+				item: "minecraft:lava_bucket"
+				type: "item"
+			}]
+			title: "Lava Palava"
+			x: -0.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["1D85898B092C9EC0"]
+			description: [
+				"Use a piece of Redstone on a Stone Barrel full of Lava and you will be able to create a hellish material called Netherrack."
+				""
+				"We'll look at ways of doing this more quickly later, but for now, setting fire to a block of Netherrack under a Fired Crucible will give you a decent speed boost when it comes to making Lava."
+			]
+			id: "79F700177E90BB51"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "6D90414844FDED91"
+				item: "minecraft:netherrack"
+				type: "item"
+			}]
+			title: "Tonetherness"
+			x: 5.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["7ABCB955100B92C0"]
+			description: [
+				"Now that you have lava, you should be able to make a cobblestone generator by placing down water and lava near eachother - just make sure that the water doesn't reach the source block of lava or it will turn into Obsidian."
+				""
+				"Perhaps the simplest cobblestone generator to make can be done by digging a 3x1 trench, placing some stairs at one end (with the 'open' side facing the end of the trench), then waterlogging the stairs. (If the water flows, youve done something wrong!) Leave the gap in the middle, and put down a bucket of Lava at the other end of the trench."
+				""
+				"When the lava flows and touches the waterlogged stair, a piece of cobble will form."
+			]
+			id: "02B6D4809390E44E"
+			shape: "square"
+			tasks: [{
+				count: 9L
+				id: "0B47650F2688464A"
+				item: "minecraft:cobblestone"
+				type: "item"
+			}]
+			title: "Cobble together"
+			x: -0.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["02B6D4809390E44E"]
+			description: [
+				"Take 9 of the cobble you've made and pop them into a furnace to get 9 Stone."
+				""
+				"p.s. Now that you have ways to get your hands on Stone, you might want to start thinking about making a Mob farm if you haven't already done so. There's a chapter in section 4 called '&aThe Slaughterhouse&f', which has a sub-section for tools you might find useful in making a decent starter Mob farm."
+			]
+			id: "554C2B8969903BC6"
+			shape: "square"
+			tasks: [{
+				count: 9L
+				id: "0F16B5080A380453"
+				item: "minecraft:stone"
+				type: "item"
+			}]
+			title: "Smoothing it out"
+			x: 1.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["554C2B8969903BC6"]
+			description: ["3 Stone in a row in the crafting table can be split into 6 half-height Stone Slabs."]
+			id: "6661387F6A3E1BCA"
+			shape: "square"
+			tasks: [{
+				count: 6L
+				id: "6D7351AB69CCF2B9"
+				item: "minecraft:stone_slab"
+				type: "item"
+			}]
+			title: "Slabs"
+			x: 1.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["6661387F6A3E1BCA"]
+			description: [
+				"Now that you have Stone and Stone Slabs, you can make a Stone Barrel. Unlike its Wood counter-part, the Stone Barrel can hold high-temperature liquids, including Lava."
+				""
+				"&cNote: If you're going to use your barrel to make Obsidian, don't place a hopper underneath it to extract! You MUST use an item pipe! If your barrel keeps filling with air, remove the hopper and restart the pack, then replace the hopper with an item pipe!&r"
+			]
+			id: "1D85898B092C9EC0"
+			shape: "square"
+			tasks: [{
+				id: "667247C878E418E8"
+				item: "exnihilosequentia:stone_barrel"
+				type: "item"
+			}]
+			title: "A more useful Barrel"
+			x: 2.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["79F700177E90BB51"]
+			description: ["Crushed Netherrack can be sieved using an Iron Mesh or higher."]
+			id: "24E0AF40A7800C82"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "6BEAA253B08B1B63"
+				item: "exnihilosequentia:crushed_netherrack"
+				type: "item"
+			}]
+			title: "Crushed Netherrack"
+			x: 7.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["1D85898B092C9EC0"]
+			description: ["Use a piece of Glowstone Dust on a Stone Barrel full of Lava and you will create some End Stone."]
+			id: "55130CF64C4F9EBB"
+			optional: true
+			tasks: [{
+				count: 8L
+				id: "3560FFE36865EE7C"
+				item: "minecraft:end_stone"
+				type: "item"
+			}]
+			title: "Not from Stonehenge"
+			x: 2.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["55130CF64C4F9EBB"]
+			description: ["Crushed End Stone can be sieved using an Iron Mesh or higher to give you a chance of getting an Ender Pearl (without needing to kill an Enderman for it)."]
+			id: "29EB650396A8609B"
+			optional: true
+			tasks: [{
+				count: 8L
+				id: "72D9FD24B0A83E18"
+				item: "exnihilosequentia:crushed_end_stone"
+				type: "item"
+			}]
+			title: "Crushed End Stone"
+			x: 2.5d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"24E0AF40A7800C82"
+				"6418606FCB78AE9F"
+			]
+			description: [
+				"You can get Netherite Scraps from sieving Crushed Netherrack, which is a nice bonus!"
+				""
+				"As soon as you have your first scrap or two, you might want to check on how to make Ancient Debris, and how you might be able to crush and enrich that for a more reliable method of getting more Netherite Scraps."
+			]
+			id: "2CDC1C706AFA2E47"
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "5BA1FE72963139D3"
+				item: "minecraft:netherite_scrap"
+				type: "item"
+			}]
+			title: "It's a scrap from the Nether, right?"
+			x: 9.5d
+			y: -2.0d
+		}
+		{
+			dependencies: ["24E0AF40A7800C82"]
+			description: ["Sieving Crushed Netherrack with an Iron Mesh or higher will give a chance of getting Gold Ore Pieces, which can be combined into a Gold Ore Chunk."]
+			id: "41533B9883BC8046"
+			shape: "square"
+			subtitle: "Always believe in your soul"
+			tasks: [{
+				id: "06EB9253FE030BFD"
+				item: "exnihilosequentia:gold_pieces"
+				type: "item"
+			}]
+			title: "Gold! (Gold)"
+			x: 7.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["41533B9883BC8046"]
+			description: [
+				"Smelt up some Gold Ingots - they're going to be useful for all sorts of things."
+				""
+				"Who doesn't like a bit of bling too?"
+				""
+				"&aUnlocks: Getting Digital&f"
+				"&aUnlocks: Industrial Foreboding&f"
+				"&aUnlocks: Ther-malcontent&f"
+				"&aUnlocks: Networks for X-Men&f"
+			]
+			id: "3B00278F3DDF103C"
+			shape: "gear"
+			size: 1.5d
+			subtitle: "We'll walk in fields of gold"
+			tasks: [{
+				count: 4L
+				id: "01616EB880322908"
+				item: "minecraft:gold_ingot"
+				type: "item"
+			}]
+			title: "But I swear in the days still left"
+			x: 7.5d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"2CDC1C706AFA2E47"
+				"3B00278F3DDF103C"
+			]
+			description: ["Now that you have some Gold and Netherite Scraps, you can make Netherite Ingots."]
+			id: "2AFD34A536E1F29A"
+			tasks: [{
+				id: "6CD1DA551BCF8758"
+				item: "minecraft:netherite_ingot"
+				type: "item"
+			}]
+			title: "Netherite!"
+			x: 9.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["29EB650396A8609B"]
+			description: ["Sieve the Crushed End Stone using an Iron Mesh or higher and, with a bit of luck, you'll end up with an Ender Pearl or two."]
+			id: "17073588CB8CC58B"
+			optional: true
+			tasks: [{
+				id: "4A7F1AE7D925C083"
+				item: "minecraft:ender_pearl"
+				type: "item"
+			}]
+			title: "Beware of the oysters"
+			x: 2.5d
+			y: 1.5d
+		}
+		{
+			dependencies: [
+				"5D14F476E568B129"
+				"742CB98CD34C3815"
+			]
+			description: ["Adding a Blazing Doll to a barrel of Lava will spawn a Blaze. This is particularly useful for getting your hands on some Blaze Rods."]
+			id: "6418606FCB78AE9F"
+			tasks: [
+				{
+					count: 5L
+					id: "647C981B3E0D1CE1"
+					item: "exnihilosequentia:porcelain_clay"
+					type: "item"
+				}
+				{
+					id: "74C0592F1B3A46C2"
+					item: "exnihilosequentia:porcelain_doll"
+					type: "item"
+				}
+				{
+					id: "7BFB98282F8CA846"
+					item: "exnihilosequentia:blaze_doll"
+					type: "item"
+				}
+			]
+			title: "My Little Blazey"
+			x: 9.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["1D85898B092C9EC0"]
+			description: [
+				"Ancient Spores can be obtained by sieving Silica Dust Blocks using a diamond mesh."
+				""
+				"If you haven't figured it out yet, Diamonds can be obtained by sieving Gravel or Crushed Diorite with an Iron Mesh."
+				""
+				"&aAncient spores can be used on dirt to turn it into Mycelium&f. Be careful though - the stuff spreads! It might be a good idea to make a border of some sort of stone around a 3x3 area of dirt and then use the Ancient Spores on the middle block."
+			]
+			id: "7F6BB5E95997690C"
+			shape: "square"
+			tasks: [{
+				id: "3CE850AFE9C0341A"
+				item: "exnihilosequentia:mycelium_spores"
+				title: "Ancient Spores"
+				type: "item"
+			}]
+			title: "Olde Fungus"
+			x: 5.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["7F6BB5E95997690C"]
+			description: [
+				"Place a wooden barrel, such as an Oak Barrel, on top of a block of Mycelium, and then fill it with water."
+				""
+				"After a few seconds, the water inside the barrel will be transformed into Witch Water."
+				""
+				"If you pour this stuff on the ground, it can transform some hostile mobs into more potent versions - such as Skeletons to Wither Skeletons, and Creepers to Charged Creepers. Be careful!"
+			]
+			id: "1640986D10506C1D"
+			shape: "square"
+			tasks: [{
+				id: "0A6EB3EF495CA016"
+				item: "exnihilosequentia:witch_water_bucket"
+				type: "item"
+			}]
+			title: "Watery Witches"
+			x: 6.5d
+			y: -6.5d
+		}
+		{
+			dependencies: ["1640986D10506C1D"]
+			description: [
+				"Adding Sand to a barrel full of Witch Water will transform the Sand into Soul Sand, consuming the Witch Water in the process."
+				""
+				"p.s. Automating the production of Soul Sand can be notoriously difficult. If you decide you would like to try it anyway, the Science Division gurus have come up with a step-by-step method for you to try. You will need to have access to gold and redstone first, but once those are in hand, take a look at the 'Networks for X-Men' section of this Survival Guide in Appendix A."
+			]
+			id: "185FD41758B01CB1"
+			shape: "square"
+			tasks: [{
+				id: "42EA454D1CD57C9E"
+				item: "minecraft:soul_sand"
+				type: "item"
+			}]
+			title: "Spooky Dirty Sand"
+			x: 8.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["185FD41758B01CB1"]
+			description: [
+				"Sieving Soul Sand with an Iron Mesh can result in some Nether Wart."
+				""
+				"Nether Wart can be grown on Soul Sand, and is an ingredient in many recipes. It will be especially useful later on when we start brewing potions."
+			]
+			id: "5D14F476E568B129"
+			shape: "square"
+			subtitle: "Not the kind you supposedly get from frogs"
+			tasks: [{
+				id: "3BF851A35704A7D8"
+				item: "minecraft:nether_wart"
+				type: "item"
+			}]
+			title: "More like St John's Wort"
+			x: 9.5d
+			y: -6.5d
+		}
+		{
+			dependencies: ["1D85898B092C9EC0"]
+			description: ["Blaze Powder can be obtained from sieving Dust with an Iron Mesh"]
+			id: "742CB98CD34C3815"
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "041A23E2D7932DE3"
+				item: "minecraft:blaze_powder"
+				type: "item"
+			}]
+			title: "Powdered Blaze"
+			x: 6.5d
+			y: -4.0d
+		}
+	]
+	title: "Getting No Tinks Done"
+}

@@ -1,0 +1,182 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "a_new_beginning"
+	group: "298C586EA6E5A561"
+	icon: "minecraft:grass_block"
+	id: "5E2656C57DE61A5F"
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: [
+				"327A619C473DC760"
+				"2B6BC28B06186D7B"
+				"34D38F5115D8D5AB"
+				"7F08B486E9150C8E"
+				"36D099113E0B2042"
+				"1CF4D6DD0070E2A6"
+				"10E3ABB4530A9F1A"
+				"248E373FA159A972"
+			]
+			description: [
+				"Now that you've visited (and hopefully conquered) the End and the Nether, and have pulled together all of the requirements needed, you should be able to make yourself a block of Energized Thatlduvium."
+				""
+				"Apart from looking a bit ridiculous and cool at the same time, the most important thing to recognise is that we believe that this block of material, when used in a Cryogenic Dimensional Teleporter, will open up a pathway to another new dimension. Some postulate that this is just going to target an existing dimension, whereas others (including the cake lady, Chaynne, for whatever that's worth) think it's actually going to be brought into existence! Either way, we believe this one is something special..."
+				""
+				"According to the Science Division, this dimension should be teeming with life, should have sentient beings (albeit a little 'undercooked'), and should offer you a chance at having a fairly normal, if agrarian, existence. Given where we are and what's happened to your home, this has got to be an upgrade. Right?"
+				""
+				"Well, we'll leave that assessment to you - this is as far as we go. From here on out, you're on your own... Explore your new world, apply what you've learnt so far, and try not to mess this one up as badly as we did our own!"
+				""
+				"Good luck, and farewell!"
+			]
+			id: "51C4DAB656980D21"
+			rewards: [
+				{
+					auto: "disabled"
+					icon: "storagedrawers:shroud_key"
+					id: "4BB7F44427C78A91"
+					ignore_reward_blocking: true
+					stage: "cuboid_overworld_access"
+					title: "Let's go!"
+					type: "gamestage"
+				}
+				{
+					id: "4E1509C654D9434A"
+					item: "waystones:waystone"
+					type: "item"
+				}
+			]
+			shape: "square"
+			tasks: [{
+				id: "78AC14702F7E8F14"
+				item: "cuboidmod:energized_thatlduvium"
+				type: "item"
+			}]
+			title: "The Key to Everything"
+			x: 0.0d
+			y: 5.5d
+		}
+		{
+			id: "327A619C473DC760"
+			shape: "gear"
+			tasks: [{
+				id: "2AB6FCBB07234906"
+				item: "cuboidmod:thatldu_block"
+				type: "item"
+			}]
+			x: -2.0d
+			y: 5.0d
+		}
+		{
+			id: "2B6BC28B06186D7B"
+			shape: "gear"
+			tasks: [{
+				id: "4E02094658106539"
+				item: "ae2:singularity"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 4.0d
+		}
+		{
+			id: "34D38F5115D8D5AB"
+			shape: "gear"
+			tasks: [{
+				id: "37FD120055B298C1"
+				item: "extendedcrafting:ultimate_singularity"
+				type: "item"
+			}]
+			x: -0.5d
+			y: 3.5d
+		}
+		{
+			id: "7F08B486E9150C8E"
+			shape: "gear"
+			tasks: [{
+				id: "0EB4E4487E4E04BB"
+				item: "powah:capacitor_nitro"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 3.5d
+		}
+		{
+			id: "36D099113E0B2042"
+			shape: "gear"
+			tasks: [{
+				id: "6F8752D8D61DFDFD"
+				item: "industrialforegoing:ether_gas_bucket"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 4.0d
+		}
+		{
+			disable_toast: true
+			id: "1CF4D6DD0070E2A6"
+			shape: "gear"
+			tasks: [{
+				id: "007124EB02A4D758"
+				item: "quark:blaze_lantern"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["51C4DAB656980D21"]
+			id: "16324378203BF827"
+			shape: "square"
+			tasks: [{
+				dimension: "cuboidmod:cuboid_overworld"
+				id: "22F98966F6AC219A"
+				title: "Visit the Cuboid Overworld (tm)"
+				type: "dimension"
+			}]
+			title: "Visit Cuboid Overworld (tm)"
+			x: 0.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["16324378203BF827"]
+			description: [
+				"Well done! You've reached the end of the surival guide! Welcome to your new life!"
+				""
+				"There is more, though... There are a bunch of additional structures, dungeons, villagers, pillagers, and more. It's entirely up to you as to whether you feel you're done, want to explore some more, or want to dig deeper into the different tools and technologies available."
+				""
+				"Your main choice though is this... pillage this dimension for personnel and materials to supplement your existing base and world, or head out and subjugate the masses on this one?"
+				""
+				"Whatever you decide, thanks for taking the time and putting in the effort to get this far! We hope you've found the end of existence as you knew it to be a rewarding experience."
+				""
+				"Yours sincerely,"
+				""
+				"Cuboid Corp (tm)"
+			]
+			id: "7CC0A39D2D7EE62D"
+			rewards: [{
+				exclude_from_claim_all: true
+				icon: {
+					Count: 1b
+					id: "minecraft:firework_rocket"
+					tag: {
+						Fireworks: {
+							Flight: 1b
+						}
+					}
+				}
+				id: "284B6E4AC7222E73"
+				table_id: 14445345906588080L
+				type: "choice"
+			}]
+			tasks: [{
+				id: "01C2A1EAD965AA7F"
+				type: "checkmark"
+			}]
+			title: "More to explore..."
+			x: 0.0d
+			y: 9.5d
+		}
+	]
+	title: "A New Beginning?"
+}

@@ -4,10 +4,16 @@
   "config" = {
     src = ./modpack/config;
   };
+  "ESM" = {
+    src = ./modpack/ESM;
+  };
+  "kubejs" = {
+    src = ./modpack/kubejs;
+  };
   "mods" = {
     src = let
       mods_tar = runCommand "mods.tar.gz" {
-        outputHash = "73c967fab8b6e841894e5f94ad27b5a17418198d292a98cc677582a612c91fad";
+        outputHash = "12459ff0cca2c51ee958944ef5d14768672d2ecfa81e8a87f825a68754adcd72";
         outputHashAlgo = "sha256";
         outputHashMode = "flat";
       } ''
@@ -18,10 +24,6 @@
       cd $out
       tar -xvf ${mods_tar}
     '';
-  };
-  "mods/skyboxloader-1.0.0-forge-1.20.1.jar" = {
-    hash = "sha256-2V3dc0fm+8FeFrEwBLMjiu2JYVcyIqsgQJXWF+60Kmo=";
-    url = "https://mediafilez.forgecdn.net/files/5398/839/skyboxloader-1.0.0-forge-1.20.1.jar";
   };
   "server-icon.png" = {
     hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";

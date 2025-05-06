@@ -1,0 +1,13 @@
+{
+    "type": "exnihilosequentia:crook",
+    "results": [
+        {
+            "chance": 0.05,
+            "item": "minecraft:apple",
+            "count": 1
+        }
+    ],
+    "input": {
+        "item/tag": "minecraft:leaves"
+
+}

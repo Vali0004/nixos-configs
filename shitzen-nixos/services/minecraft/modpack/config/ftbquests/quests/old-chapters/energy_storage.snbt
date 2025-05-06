@@ -1,0 +1,374 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "energy_storage"
+	group: "24F09E0B1AD125E9"
+	icon: "powah:energy_cell_basic"
+	id: "1DFBC234A86906B5"
+	order_index: 5
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.00.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.00.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.00.d.02}"
+				"{cuboiddroid.quests.g.06.c.12.q.00.d.03}"
+				"{cuboiddroid.quests.g.06.c.12.q.00.d.04}"
+			]
+			id: "19FD7F44BF12B9CC"
+			shape: "gear"
+			tasks: [{
+				id: "337CF673D763E1C0"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.12.q.00}"
+			x: 1.0d
+			y: -0.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.12.q.01.d.00}"]
+			id: "17955004B38A3C96"
+			tasks: [{
+				id: "6197DEC5631DA4F8"
+				item: "mekanism:basic_energy_cube"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["7545A28EC99DDD1C"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.02}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.03}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.04}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.05}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.06}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.07}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.08}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.09}"
+				"{cuboiddroid.quests.g.06.c.12.q.02.d.10}"
+			]
+			id: "040AE11A8FC02A34"
+			tasks: [
+				{
+					id: "5D28DA09716D11DB"
+					item: "mekanism:induction_casing"
+					type: "item"
+				}
+				{
+					id: "43698A185FEC30F2"
+					item: "mekanism:induction_port"
+					type: "item"
+				}
+				{
+					id: "4B97C3B019F0CF8A"
+					item: "mekanism:basic_induction_cell"
+					type: "item"
+				}
+				{
+					id: "73A8B8E435765407"
+					item: "mekanism:basic_induction_provider"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.06.c.12.q.02}"
+			x: 5.0d
+			y: 1.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.03.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.03.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.03.d.02}"
+			]
+			id: "4E5135EEC5FF54F6"
+			tasks: [{
+				id: "581F33AE8D923CB5"
+				item: {
+					Count: 1b
+					id: "ae2:energy_cell"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["4E5135EEC5FF54F6"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.04.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.04.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.04.d.02}"
+			]
+			id: "2954202B0EF6F084"
+			tasks: [{
+				id: "19312B53704E1476"
+				item: {
+					Count: 1b
+					id: "ae2:dense_energy_cell"
+					tag: { }
+				}
+				type: "item"
+			}]
+			x: 1.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["17955004B38A3C96"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.05.d.00}"]
+			id: "4B89D0ABD031547B"
+			tasks: [{
+				id: "19FE5E1C6C309619"
+				item: "mekanism:advanced_energy_cube"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["4B89D0ABD031547B"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.06.d.00}"]
+			id: "553895A4868C5827"
+			tasks: [{
+				id: "3DCE0A84D4E12BED"
+				item: "mekanism:elite_energy_cube"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["553895A4868C5827"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.07.d.00}"]
+			id: "66830DB294453D9C"
+			tasks: [{
+				id: "5FB1A2BED8344946"
+				item: "mekanism:ultimate_energy_cube"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["040AE11A8FC02A34"]
+			id: "244DE84998736BCA"
+			tasks: [
+				{
+					id: "12EB08C1BE9BF62A"
+					item: "mekanism:advanced_induction_cell"
+					type: "item"
+				}
+				{
+					id: "0B988123EC9F29E1"
+					item: "mekanism:advanced_induction_provider"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.06.c.12.q.08}"
+			x: 5.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["244DE84998736BCA"]
+			id: "2AC37402D13774E6"
+			tasks: [
+				{
+					id: "39EF36BB98B843D8"
+					item: "mekanism:elite_induction_cell"
+					type: "item"
+				}
+				{
+					id: "75B092F0D1B66DDC"
+					item: "mekanism:elite_induction_provider"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.06.c.12.q.09}"
+			x: 5.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["2AC37402D13774E6"]
+			id: "4F9A331CC2D78524"
+			tasks: [
+				{
+					id: "20DBCF350B6599E0"
+					item: "mekanism:ultimate_induction_cell"
+					type: "item"
+				}
+				{
+					id: "59BED154931BC32E"
+					item: "mekanism:ultimate_induction_provider"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.06.c.12.q.10}"
+			x: 5.0d
+			y: 6.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.11.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.11.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.11.d.02}"
+				"{cuboiddroid.quests.g.06.c.12.q.11.d.03}"
+				"{cuboiddroid.quests.g.06.c.12.q.11.d.04}"
+			]
+			id: "3F652A888F48C0F3"
+			tasks: [{
+				id: "0EA0D0175EB491BD"
+				item: {
+					Count: 1b
+					id: "thermal:energy_cell"
+					tag: {
+						BlockEntityTag: {
+							Energy: 0
+							EnergyMax: 1000000
+							EnergyRecv: 1000
+							EnergySend: 1000
+						}
+					}
+				}
+				type: "item"
+			}]
+			x: -1.0d
+			y: 1.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.02}"
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.03}"
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.04}"
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.05}"
+				"{cuboiddroid.quests.g.06.c.12.q.12.d.06}"
+			]
+			disable_toast: true
+			id: "317225FAA8F4EE62"
+			tasks: [{
+				id: "368E9211B31C5225"
+				item: "powah:energy_cell_starter"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["317225FAA8F4EE62"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.13.d.00}"]
+			disable_toast: true
+			id: "02896AF012D63D68"
+			tasks: [{
+				id: "2343880EB024892D"
+				item: "powah:energy_cell_basic"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["02896AF012D63D68"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.14.d.00}"]
+			disable_toast: true
+			id: "5129EAA3D6B0F2CB"
+			tasks: [{
+				id: "63A1A0CD0F3A27C1"
+				item: "powah:energy_cell_hardened"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["5129EAA3D6B0F2CB"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.15.d.00}"]
+			disable_toast: true
+			id: "122E783FC632AC64"
+			tasks: [{
+				id: "01545A9C6776325C"
+				item: "powah:energy_cell_blazing"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["122E783FC632AC64"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.16.d.00}"]
+			disable_toast: true
+			id: "0F669E9BAC134BC5"
+			tasks: [{
+				id: "59022D4524960CCD"
+				item: "powah:energy_cell_niotic"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["0F669E9BAC134BC5"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.17.d.00}"]
+			disable_toast: true
+			id: "58E29073090B3298"
+			tasks: [{
+				id: "49B7EE727DDCA322"
+				item: "powah:energy_cell_spirited"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 9.0d
+		}
+		{
+			dependencies: ["58E29073090B3298"]
+			description: ["{cuboiddroid.quests.g.06.c.12.q.18.d.00}"]
+			disable_toast: true
+			id: "20048F66B67FC7E0"
+			tasks: [{
+				id: "6DB979EF20A33557"
+				item: "powah:energy_cell_nitro"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 10.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.00}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.01}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.02}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.03}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.04}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.05}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.06}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.07}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.08}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.09}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.10}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.11}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.12}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.13}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.14}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.15}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.16}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.17}"
+				"{cuboiddroid.quests.g.06.c.12.q.19.d.18}"
+			]
+			id: "7545A28EC99DDD1C"
+			tasks: [{
+				id: "559AEB5C0C5BCD12"
+				item: "mekanism:dust_lithium"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.12.q.19}"
+			x: 5.0d
+			y: -0.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.06.c.12}"
+}

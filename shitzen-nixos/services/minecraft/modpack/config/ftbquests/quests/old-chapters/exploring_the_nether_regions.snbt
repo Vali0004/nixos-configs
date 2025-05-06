@@ -1,0 +1,323 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "exploring_the_nether_regions"
+	group: "53EA7D6C6A1B0F69"
+	icon: "exnihilosequentia:crushed_netherrack"
+	id: "224354F4BDF62683"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			description: ["{cuboiddroid.quests.g.03.c.14.q.00.d.00}"]
+			id: "2280A6EEC1BFDEDD"
+			shape: "gear"
+			tasks: [
+				{
+					id: "598A8BA555915DF1"
+					item: "rftoolsbase:dimensionalshard"
+					type: "item"
+				}
+				{
+					id: "50FDF0F8AA087D2F"
+					item: "minecraft:nether_bricks"
+					type: "item"
+				}
+				{
+					id: "21E3DEA97509F418"
+					item: "powah:crystal_niotic"
+					type: "item"
+				}
+				{
+					id: "5C575C37D9D2698D"
+					item: "endergetic:boof_block"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.03.c.14.q.00}"
+			x: -1.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2280A6EEC1BFDEDD"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.01.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.01.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.01.d.02}"
+			]
+			id: "46821A52352BBC8F"
+			rewards: [{
+				auto: "disabled"
+				icon: "storagedrawers:shroud_key"
+				id: "672DC08DB4F9A8FB"
+				stage: "nether_access"
+				title: "Let's go!"
+				type: "gamestage"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "08117E8BF30437D8"
+				item: "cuboidmod:energized_nether_bricks"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["46821A52352BBC8F"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.02.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.02.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.02.d.02}"
+				"{cuboiddroid.quests.g.03.c.14.q.02.d.03}"
+				"{cuboiddroid.quests.g.03.c.14.q.02.d.04}"
+			]
+			id: "248E373FA159A972"
+			shape: "square"
+			tasks: [{
+				dimension: "minecraft:the_nether"
+				id: "62434700F775BD85"
+				title: "{cuboiddroid.quests.g.03.c.14.q.02.t.00}"
+				type: "dimension"
+			}]
+			x: -1.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["42F7BB732588FE2B"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.03.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.03.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.03.d.02}"
+			]
+			id: "1E782624571D6928"
+			tasks: [{
+				advancement: "minecraft:nether/obtain_blaze_rod"
+				criterion: ""
+				id: "68F7AB3C0286EEFA"
+				type: "advancement"
+			}]
+			x: 0.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["42F7BB732588FE2B"]
+			description: ["{cuboiddroid.quests.g.03.c.14.q.04.d.00}"]
+			id: "2CCD8D8A135B4012"
+			tasks: [{
+				advancement: "minecraft:nether/get_wither_skull"
+				criterion: ""
+				id: "55930FCDE6793F9D"
+				type: "advancement"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.04}"
+			x: -2.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.02}"
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.03}"
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.04}"
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.05}"
+				"{cuboiddroid.quests.g.03.c.14.q.05.d.06}"
+			]
+			id: "42F7BB732588FE2B"
+			tasks: [{
+				advancement: "minecraft:nether/find_fortress"
+				criterion: ""
+				id: "10EF5F1603135887"
+				type: "advancement"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.05}"
+			x: -1.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["2CCD8D8A135B4012"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.07.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.07.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.07.d.02}"
+				"{cuboiddroid.quests.g.03.c.14.q.07.d.03}"
+				"{cuboiddroid.quests.g.03.c.14.q.07.d.04}"
+			]
+			id: "201E274E8AF73865"
+			rewards: [{
+				count: 3
+				id: "1DF1D59D6DE8C13D"
+				item: "minecraft:wither_skeleton_skull"
+				random_bonus: 6
+				type: "item"
+			}]
+			tasks: [{
+				count: 3L
+				id: "6D8923FBDC026412"
+				item: "minecraft:wither_skeleton_skull"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.07}"
+			x: -2.0d
+			y: 11.5d
+		}
+		{
+			dependencies: ["1E782624571D6928"]
+			description: ["{cuboiddroid.quests.g.03.c.14.q.08.d.00}"]
+			id: "14DD4220E654B1A5"
+			rewards: [{
+				count: 4
+				id: "2ABED4487128C00B"
+				item: "minecraft:blaze_rod"
+				random_bonus: 4
+				type: "item"
+			}]
+			tasks: [{
+				id: "117DC9F090335B5A"
+				item: "minecraft:blaze_rod"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 11.5d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.13.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.13.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.13.d.02}"
+			]
+			id: "52B9B245AEAB386B"
+			optional: true
+			tasks: [{
+				advancement: "minecraft:nether/find_bastion"
+				criterion: ""
+				id: "026869BFC0248580"
+				type: "advancement"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.13}"
+			x: -3.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.14.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.14.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.14.d.02}"
+			]
+			id: "793BD41368775901"
+			optional: true
+			subtitle: "{cuboiddroid.quests.g.03.c.14.q.14.sub}"
+			tasks: [{
+				advancement: "minecraft:nether/return_to_sender"
+				criterion: ""
+				id: "08ED9E2374B6AB91"
+				type: "advancement"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.14}"
+			x: -3.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["3C37857BCEA55086"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.16.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.16.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.16.d.02}"
+				"{cuboiddroid.quests.g.03.c.14.q.16.d.03}"
+				"{cuboiddroid.quests.g.03.c.14.q.16.d.04}"
+			]
+			id: "7D30BCCFA1ACF48B"
+			rewards: [{
+				id: "19D4CD775F57156D"
+				item: "minecraft:nether_star"
+				random_bonus: 1
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "116D7BB3AEA275A0"
+				item: "minecraft:nether_star"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.16}"
+			x: -1.0d
+			y: 14.5d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.17.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.17.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.17.d.02}"
+			]
+			id: "68E5299643C9D8E3"
+			optional: true
+			rewards: [{
+				id: "13B7E2E58AF24D9A"
+				table_id: 2037880618578575318L
+				type: "choice"
+			}]
+			subtitle: "{cuboiddroid.quests.g.03.c.14.q.17.sub}"
+			tasks: [{
+				advancement: "minecraft:nether/explore_nether"
+				criterion: ""
+				id: "773788BEB5397CA1"
+				type: "advancement"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.17}"
+			x: 1.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["201E274E8AF73865"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.02}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.03}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.04}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.05}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.06}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.07}"
+				"{cuboiddroid.quests.g.03.c.14.q.18.d.08}"
+			]
+			id: "3C37857BCEA55086"
+			tasks: [{
+				advancement: "minecraft:nether/summon_wither"
+				criterion: ""
+				id: "0991948E533FD474"
+				type: "advancement"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.18}"
+			x: -1.0d
+			y: 13.0d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"{cuboiddroid.quests.g.03.c.14.q.19.d.00}"
+				"{cuboiddroid.quests.g.03.c.14.q.19.d.01}"
+				"{cuboiddroid.quests.g.03.c.14.q.19.d.02}"
+				"{cuboiddroid.quests.g.03.c.14.q.19.d.03}"
+				"{cuboiddroid.quests.g.03.c.14.q.19.d.04}"
+			]
+			id: "036A00C69FE8FD59"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "5EE34EC0795F7010"
+				item: "quark:blaze_lantern"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.03.c.14.q.19}"
+			x: 1.5d
+			y: 6.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.03.c.14}"
+}

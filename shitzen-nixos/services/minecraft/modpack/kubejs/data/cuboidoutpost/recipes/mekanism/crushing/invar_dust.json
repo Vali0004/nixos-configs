@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "tag":"forge:ingots/invar"
+    }
+  },
+  "output":{
+    "count":2,"item":"thermal:invar_dust"
+  }
+}

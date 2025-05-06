@@ -1,0 +1,11 @@
+{
+  "type": "cuboidmod:collapsing",
+  "input": {
+    "item": "cuboidmod:notsogudium_ingot",
+    "count": 320
+  },
+  "result": {
+    "item": "cuboidmod:notsogudium_quantum_singularity",
+    "count": 1
+  }
+}

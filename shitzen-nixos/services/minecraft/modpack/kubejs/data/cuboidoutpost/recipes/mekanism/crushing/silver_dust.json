@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "tag":"forge:ingots/silver"
+    }
+  },
+  "output":{
+    "count":1,"item":"immersiveengineering:dust_silver"
+  }
+}

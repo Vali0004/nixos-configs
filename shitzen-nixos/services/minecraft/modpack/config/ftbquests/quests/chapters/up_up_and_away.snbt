@@ -1,0 +1,831 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "up_up_and_away"
+	group: "53EA7D6C6A1B0F69"
+	icon: {
+		Count: 1b
+		id: "ironjetpacks:jetpack"
+		tag: {
+			Id: "ironjetpacks:iron"
+			Throttle: 1.0d
+		}
+	}
+	id: "105861C16B41E52C"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["2A3A34A47D8AF234"]
+			description: [
+				"Jetpacks are a great way to get around quickly. The Science Division of Cuboid Corp (tm) highly recommends these, but assumes no responsibility for their reliability and/or accidents relating to their misuse or lack of maintenance. Just be careful when coming down again!"
+				""
+				"These ones use energy as a power source, so you might also want to look into something like a portable power source or even a Player Transmitter in the 'Powah to the Person!' chapter to keep you moving."
+			]
+			id: "2D7913541C49FFF6"
+			shape: "gear"
+			tasks: [
+				{
+					id: "16139737BF70909C"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/copper"
+						}
+					}
+					title: "Copper Ingot"
+					type: "item"
+				}
+				{
+					id: "7C0D53C8D8E0490D"
+					item: "minecraft:iron_ingot"
+					type: "item"
+				}
+				{
+					id: "6EDB636CB0BB15D6"
+					item: "minecraft:redstone"
+					type: "item"
+				}
+				{
+					id: "4812DF820CCE5F27"
+					item: "minecraft:leather"
+					type: "item"
+				}
+			]
+			title: "Up, up and away!"
+			x: -2.5d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"3020C958933E26AC"
+				"50789F888C7A9700"
+			]
+			id: "20C73AED87AC83AB"
+			tasks: [{
+				id: "1BA5998F86444B2D"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:copper"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 7.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2D7913541C49FFF6"]
+			description: ["A leather strap is needed to, well, strap a jetpack onto your back..."]
+			id: "6DE6B643A3111E36"
+			rewards: [{
+				id: "3EDB797AB9788B84"
+				item: "minecraft:leather"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "2CA5C85E8C1B8A30"
+				item: "ironjetpacks:strap"
+				type: "item"
+			}]
+			title: "Strapping young man"
+			x: -0.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["6DE6B643A3111E36"]
+			description: [
+				"The Basic Coil is a Tier 1 and 2 Jetpack component used in the making of Energy Cells, Capacitors and Thrusters."
+				""
+				"You will need 11 coils to complete a Jetpack or Jetpack Upgrade."
+			]
+			id: "2683972A5731A8DF"
+			rewards: [{
+				id: "21CDDB517419589F"
+				item: "ironjetpacks:basic_coil"
+				random_bonus: 10
+				type: "item"
+			}]
+			tasks: [{
+				count: 11L
+				id: "67C7FCB17202F235"
+				item: "ironjetpacks:basic_coil"
+				type: "item"
+			}]
+			title: "Coiled potential"
+			x: 1.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2683972A5731A8DF"]
+			description: ["You will need a total of five of these energy cells - 3 for the capacitor, and 1 in each of the 2 thrusters."]
+			id: "739345E4FAA7DCB0"
+			tasks: [{
+				count: 5L
+				id: "720FB653361819F6"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:cell"
+					tag: {
+						Id: "ironjetpacks:copper"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Rapid Charged (The One With the Copper Top)"
+			x: 3.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["739345E4FAA7DCB0"]
+			id: "3020C958933E26AC"
+			tasks: [{
+				id: "3F00BEC6474C5D97"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:capacitor"
+					tag: {
+						Id: "ironjetpacks:copper"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 5.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["739345E4FAA7DCB0"]
+			id: "50789F888C7A9700"
+			tasks: [{
+				count: 2L
+				id: "55618FB905A1322D"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:thruster"
+					tag: {
+						Id: "ironjetpacks:copper"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Copper Thrusters"
+			x: 5.5d
+			y: 2.5d
+		}
+		{
+			dependencies: [
+				"7DC15B8B7C5762D9"
+				"02DE6BDF57356E02"
+				"07D2E6B12373A0DF"
+			]
+			id: "421C0BF503F1EC3D"
+			tasks: [{
+				id: "55BD36FC785000F7"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:iron"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 7.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["2683972A5731A8DF"]
+			description: ["You will need a total of five of these energy cells - 3 for the capacitor, and 1 in each of the 2 thrusters."]
+			id: "6F6A0121EB5BDF1A"
+			tasks: [{
+				count: 5L
+				id: "149E263AAD4A9901"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:cell"
+					tag: {
+						Id: "ironjetpacks:iron"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Rapid Charged (Iron)"
+			x: 3.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["6F6A0121EB5BDF1A"]
+			id: "7DC15B8B7C5762D9"
+			tasks: [{
+				id: "68EF3CFE17E85A65"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:capacitor"
+					tag: {
+						Id: "ironjetpacks:iron"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 5.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["6F6A0121EB5BDF1A"]
+			id: "02DE6BDF57356E02"
+			tasks: [{
+				count: 2L
+				id: "5344A4CA4380A091"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:thruster"
+					tag: {
+						Id: "ironjetpacks:iron"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Iron Thrusters"
+			x: 5.5d
+			y: 4.5d
+		}
+		{
+			dependencies: [
+				"2683972A5731A8DF"
+				"3B00278F3DDF103C"
+			]
+			description: [
+				"The Advanced Coil is a Tier 3 Jetpack component used in the making of Energy Cells, Capacitors and Thrusters."
+				""
+				"You will need 11 coils to upgrade from a Tier 2 Jetpack to a Tier 3 jetpack."
+			]
+			id: "536D0F7E72FE44CE"
+			optional: true
+			rewards: [{
+				id: "49028702C240CF42"
+				item: "ironjetpacks:advanced_coil"
+				random_bonus: 10
+				type: "item"
+			}]
+			tasks: [{
+				count: 11L
+				id: "7224CB16F52F601D"
+				item: "ironjetpacks:advanced_coil"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"568EF73E9B1C470E"
+				"5AA74F9512E7AFB9"
+				"10B99EDF2D22FB4C"
+			]
+			id: "51903865FE73BECD"
+			optional: true
+			tasks: [{
+				id: "4930C1BF3B8BD840"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:gold"
+						Throttle: 1.0d
+					}
+				}
+				type: "item"
+			}]
+			x: 7.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["536D0F7E72FE44CE"]
+			description: ["You will need a total of five of these energy cells - 3 for the capacitor, and 1 in each of the 2 thrusters."]
+			id: "48118599BE29BDD1"
+			optional: true
+			tasks: [{
+				count: 5L
+				id: "1761113EEAD3ADCF"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:cell"
+					tag: {
+						Id: "ironjetpacks:gold"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Rapid Charged (Gold)"
+			x: 3.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["48118599BE29BDD1"]
+			id: "5AA74F9512E7AFB9"
+			optional: true
+			tasks: [{
+				id: "0ADBD79BB30ABFB7"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:capacitor"
+					tag: {
+						Id: "ironjetpacks:gold"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 5.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["48118599BE29BDD1"]
+			id: "10B99EDF2D22FB4C"
+			optional: true
+			tasks: [{
+				count: 2L
+				id: "477AFF39F3545F10"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:thruster"
+					tag: {
+						Id: "ironjetpacks:gold"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Gold Thrusters"
+			x: 5.5d
+			y: 6.5d
+		}
+		{
+			dependencies: [
+				"568EF73E9B1C470E"
+				"3BB3CAC272887E20"
+				"7A055268E774D0C1"
+			]
+			id: "5ED8E50C20DC774A"
+			optional: true
+			tasks: [{
+				id: "1D0476373D16DC97"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:steel"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 7.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["398F79AD501B5119"]
+			id: "7A055268E774D0C1"
+			optional: true
+			tasks: [{
+				count: 2L
+				id: "657B9DF990309332"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:thruster"
+					tag: {
+						Id: "ironjetpacks:steel"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Steel Thrusters"
+			x: 5.5d
+			y: 8.5d
+		}
+		{
+			dependencies: ["398F79AD501B5119"]
+			id: "3BB3CAC272887E20"
+			optional: true
+			tasks: [{
+				id: "5B0548B4D880B319"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:capacitor"
+					tag: {
+						Id: "ironjetpacks:steel"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 5.5d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"536D0F7E72FE44CE"
+				"58C29DF76FB2F288"
+			]
+			description: ["You will need a total of five of these energy cells - 3 for the capacitor, and 1 in each of the 2 thrusters."]
+			id: "398F79AD501B5119"
+			optional: true
+			tasks: [{
+				count: 5L
+				id: "68C6155BAD60FDFD"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:cell"
+					tag: {
+						Id: "ironjetpacks:steel"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Rapid Charged (Steel)"
+			x: 3.5d
+			y: 8.0d
+		}
+		{
+			dependencies: [
+				"536D0F7E72FE44CE"
+				"2B11E00B187113A9"
+			]
+			description: [
+				"The Elite Coil is a Tier 4 Jetpack component used in the making of Energy Cells, Capacitors and Thrusters."
+				""
+				"You will need 11 coils to complete a jetpack upgrade."
+			]
+			id: "52CB46DFD78DF601"
+			optional: true
+			rewards: [{
+				count: 16
+				id: "5C7F2706D28636F0"
+				item: "minecraft:diamond"
+				random_bonus: 16
+				type: "item"
+			}]
+			tasks: [{
+				count: 11L
+				id: "52C0393AAAB5AE2D"
+				item: "ironjetpacks:elite_coil"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["52CB46DFD78DF601"]
+			description: ["You will need a total of five of these energy cells - 3 for the capacitor, and 1 in each of the 2 thrusters."]
+			id: "456CD22C93DBBA9E"
+			optional: true
+			tasks: [{
+				count: 5L
+				id: "170B60CEA0C162DD"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:cell"
+					tag: {
+						Id: "ironjetpacks:diamond"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Rapid Charged (Diamond)"
+			x: 3.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["456CD22C93DBBA9E"]
+			id: "6609CDA9D443F376"
+			optional: true
+			tasks: [{
+				id: "0C6BB7A401908D0E"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:capacitor"
+					tag: {
+						Id: "ironjetpacks:diamond"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 5.5d
+			y: 9.5d
+		}
+		{
+			dependencies: ["456CD22C93DBBA9E"]
+			id: "3E5A3234B1B9619A"
+			optional: true
+			tasks: [{
+				count: 2L
+				id: "44F344CB820C6231"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:thruster"
+					tag: {
+						Id: "ironjetpacks:diamond"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Diamond Thrusters"
+			x: 5.5d
+			y: 10.5d
+		}
+		{
+			dependencies: [
+				"02DF37426C10390C"
+				"3E5A3234B1B9619A"
+				"6609CDA9D443F376"
+			]
+			id: "3FCA1AB10413654F"
+			optional: true
+			tasks: [{
+				id: "4E0798A6D488A865"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:diamond"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 7.5d
+			y: 10.0d
+		}
+		{
+			dependencies: [
+				"6763445AB993ED25"
+				"12A160164ACE3348"
+				"406EE25D7FA0D23F"
+			]
+			id: "729864A3652D31A5"
+			optional: true
+			tasks: [{
+				id: "72E5D653BCB4B21B"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:emerald"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 7.5d
+			y: 12.0d
+		}
+		{
+			dependencies: ["0EF1118C3D13D65D"]
+			id: "12A160164ACE3348"
+			optional: true
+			tasks: [{
+				count: 2L
+				id: "1FFCC697C74E7C3F"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:thruster"
+					tag: {
+						Id: "ironjetpacks:emerald"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Emerald Thrusters"
+			x: 5.5d
+			y: 12.5d
+		}
+		{
+			dependencies: ["0EF1118C3D13D65D"]
+			id: "406EE25D7FA0D23F"
+			optional: true
+			tasks: [{
+				id: "36B785C6517F4FD1"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:capacitor"
+					tag: {
+						Id: "ironjetpacks:emerald"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			x: 5.5d
+			y: 11.5d
+		}
+		{
+			dependencies: ["5B674C9861BBB1DC"]
+			description: ["You will need a total of five of these energy cells - 3 for the capacitor, and 1 in each of the 2 thrusters."]
+			id: "0EF1118C3D13D65D"
+			optional: true
+			tasks: [{
+				count: 5L
+				id: "48D14A909D41C9E6"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:cell"
+					tag: {
+						Id: "ironjetpacks:emerald"
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Rapid Charged (Emerald)"
+			x: 3.5d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"52CB46DFD78DF601"
+				"14BB147EA5184E68"
+			]
+			description: [
+				"The Ultimate Coil is a Tier 5 Jetpack component used in the making of Energy Cells, Capacitors and Thrusters."
+				""
+				"As with previous tiers, you will need 11 coils to complete a jetpack upgrade."
+			]
+			id: "5B674C9861BBB1DC"
+			optional: true
+			rewards: [{
+				count: 16
+				id: "2A9BD45CC44C3FC4"
+				item: "minecraft:emerald"
+				random_bonus: 16
+				type: "item"
+			}]
+			tasks: [{
+				count: 11L
+				id: "19E957370A7B7841"
+				item: "ironjetpacks:ultimate_coil"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 12.0d
+		}
+		{
+			dependencies: ["20C73AED87AC83AB"]
+			disable_toast: true
+			id: "07D2E6B12373A0DF"
+			tasks: [{
+				id: "53BAC331242A80B8"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:copper"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Tier 1 Jetpack"
+			x: 9.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["421C0BF503F1EC3D"]
+			description: [
+				"An Iron Jetpack will probably do in a pinch. If you would like to be able to fly further and faster, then feel free to keep going!"
+				""
+				"Note that these Jetpacks are specially designed to fit on your special dedicated body slot, which means you can still wear a chestplate while using one."
+			]
+			id: "568EF73E9B1C470E"
+			rewards: [{
+				id: "09723EBA537BB55C"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:iron"
+						Throttle: 1.0d
+					}
+				}
+				type: "item"
+			}]
+			tasks: [
+				{
+					id: "462BD85C90079876"
+					item: {
+						Count: 1b
+						id: "ironjetpacks:jetpack"
+						tag: {
+							Id: "ironjetpacks:iron"
+							Throttle: 1.0d
+						}
+					}
+					match_nbt: true
+					type: "item"
+				}
+				{
+					id: "0E2378C31389EE2D"
+					title: "Got it!"
+					type: "checkmark"
+				}
+			]
+			title: "Tier 2 Jetpack"
+			x: 9.5d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"51903865FE73BECD"
+				"5ED8E50C20DC774A"
+			]
+			dependency_requirement: "one_completed"
+			description: ["You will only need one of the Tier 3 jetpacks to proceed."]
+			icon: {
+				Count: 1b
+				id: "ironjetpacks:jetpack"
+				tag: {
+					Id: "ironjetpacks:gold"
+					Throttle: 1.0d
+				}
+			}
+			id: "02DF37426C10390C"
+			min_required_dependencies: 1
+			optional: true
+			tasks: [{
+				id: "3A33F81409843DCB"
+				title: "More speed!"
+				type: "checkmark"
+			}]
+			title: "Tier 3 Jetpack"
+			x: 9.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["3FCA1AB10413654F"]
+			id: "6763445AB993ED25"
+			optional: true
+			tasks: [{
+				id: "4A819D6A6CBA5570"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:diamond"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Tier 4 Jetpack"
+			x: 9.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["729864A3652D31A5"]
+			id: "5F75BDAC0B5C16DB"
+			optional: true
+			tasks: [{
+				id: "1E5DAC9993B8CC0B"
+				item: {
+					Count: 1b
+					id: "ironjetpacks:jetpack"
+					tag: {
+						Id: "ironjetpacks:emerald"
+						Throttle: 1.0d
+					}
+				}
+				match_nbt: true
+				type: "item"
+			}]
+			title: "Tier 5 Jetpack"
+			x: 9.5d
+			y: 12.0d
+		}
+	]
+	title: "Up, up and away"
+}

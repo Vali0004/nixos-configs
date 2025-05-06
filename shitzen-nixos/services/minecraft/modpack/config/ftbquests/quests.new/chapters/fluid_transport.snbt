@@ -1,0 +1,270 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "fluid_transport"
+	group: "033EC740B2EF1FC1"
+	icon: "enderstorage:ender_tank"
+	id: "7504D2F4D88313C5"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.00.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.00.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.00.d.02}"
+			]
+			id: "5E419353EC2F2F44"
+			tasks: [{
+				id: "73B097E020BC0B9A"
+				item: "mekanism:basic_mechanical_pipe"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5E419353EC2F2F44"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.01.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.01.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.01.d.02}"
+			]
+			id: "721A102962C8373F"
+			tasks: [{
+				id: "472D4D80A157E367"
+				item: "mekanism:advanced_mechanical_pipe"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["721A102962C8373F"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.02.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.02.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.02.d.02}"
+			]
+			id: "09EDB80081CCAA54"
+			tasks: [{
+				id: "1E916F420B2E1600"
+				item: "mekanism:elite_mechanical_pipe"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["09EDB80081CCAA54"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.03.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.03.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.03.d.02}"
+			]
+			id: "14E47EE15819EF3D"
+			tasks: [{
+				id: "2639228F1B2DE6C9"
+				item: "mekanism:ultimate_mechanical_pipe"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 6.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.04.d.00}"]
+			id: "725F5C52C894F657"
+			tasks: [{
+				id: "76D946183175597C"
+				item: "mekanism:electric_pump"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 2.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.05.d.00}"]
+			id: "64B1FD08E6E2B140"
+			tasks: [{
+				id: "5DB02A4C6E1F26F8"
+				item: "immersiveengineering:fluid_pipe"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.17.q.05}"
+			x: -0.5d
+			y: 2.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.06.d.00}"]
+			id: "133AC42B97A5ACBF"
+			tasks: [{
+				id: "6A782A6A10284D31"
+				item: "create:fluid_pipe"
+				type: "item"
+			}]
+			x: 5.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["133AC42B97A5ACBF"]
+			description: ["{cuboiddroid.quests.g.05.c.17.q.07.d.00}"]
+			id: "25E394F9E9C727E5"
+			tasks: [{
+				id: "7A812FA6750FB272"
+				item: "create:smart_fluid_pipe"
+				type: "item"
+			}]
+			x: 5.0d
+			y: 3.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.08.d.00}"]
+			id: "182026EEBE95B146"
+			tasks: [{
+				id: "236034ADD050CFCA"
+				item: "immersiveengineering:fluid_pump"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.17.q.08}"
+			x: -1.5d
+			y: 2.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.09.d.00}"]
+			id: "1A189C9FA030E922"
+			tasks: [{
+				id: "3E5C822799E3A611"
+				item: "create:mechanical_pump"
+				type: "item"
+			}]
+			x: 4.5d
+			y: 2.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.10.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.10.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.10.d.02}"
+				"{cuboiddroid.quests.g.05.c.17.q.10.d.03}"
+				"{cuboiddroid.quests.g.05.c.17.q.10.d.04}"
+			]
+			id: "3837867475B59F18"
+			tasks: [{
+				id: "0747AC7427213B38"
+				item: "enderstorage:ender_tank"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 2.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.02}"
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.03}"
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.04}"
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.05}"
+				"{cuboiddroid.quests.g.05.c.17.q.11.d.06}"
+			]
+			id: "26642B00376F3070"
+			tasks: [
+				{
+					icon: "xnet:connector_blue"
+					id: "17CA4CE1C8650ECD"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "xnet:connectors"
+						}
+					}
+					title: "{cuboiddroid.quests.g.05.c.17.q.11.t.00}"
+					type: "item"
+				}
+				{
+					icon: "xnet:netcable_blue"
+					id: "6603FA3C57ABF327"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "xnet:cables"
+						}
+					}
+					title: "{cuboiddroid.quests.g.05.c.17.q.11.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.05.c.17.q.11}"
+			x: -3.5d
+			y: 2.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.12.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.12.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.12.d.02}"
+			]
+			id: "7F4EEC10573D1EB4"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "2C676AA9A71CAFE9"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.17.q.12}"
+			x: 3.8d
+			y: 0.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.13.d.00}"]
+			id: "7DB74266994654BB"
+			tasks: [{
+				id: "74CE124D630B37CE"
+				item: "minecraft:bucket"
+				type: "item"
+			}]
+			x: -5.5d
+			y: 2.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.14.d.00}"]
+			id: "47C3812B2944C18C"
+			tasks: [{
+				id: "04D8A47038A41DFF"
+				item: "immersiveengineering:jerrycan"
+				type: "item"
+			}]
+			x: 9.5d
+			y: 2.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.17.q.15.d.00}"
+				"{cuboiddroid.quests.g.05.c.17.q.15.d.01}"
+				"{cuboiddroid.quests.g.05.c.17.q.15.d.02}"
+			]
+			id: "3A53D5F1E7426C55"
+			tasks: [{
+				id: "5670EB889425CF2B"
+				item: "industrialforegoing:fluid_transporter_type"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 2.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.17.q.16.d.00}"]
+			id: "6CF2A3AD1FE8A99D"
+			tasks: [{
+				id: "5A3CAF06472F0395"
+				item: "pipez:fluid_pipe"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 2.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.05.c.17}"
+}

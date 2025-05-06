@@ -1,0 +1,99 @@
+[
+    {
+        "passive": true,
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:wandering_trader",
+        "when": "onjoin",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:trader_llama",
+        "when": "onjoin",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:zombie_villager",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:pillager",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:slime",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:vindicator",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:evoker",
+        "dimension": "minecraft:overworld",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:cod",
+        "dimension": "minecraft:overworld",
+        "biome": "minecraft:ocean",
+        "result": "default",
+        "mincount": 5
+    },
+    {
+        "mob": "minecraft:dolphin",
+        "dimension": "minecraft:overworld",
+        "when": "onjoin",
+        "result": "deny"
+    },
+    {
+        "mob": "minecraft:bat",
+        "dimension": "minecraft:overworld",
+        "when": "onjoin",
+        "result": "deny"
+    },
+    {
+        "mob": "outer_end:entombed",
+        "dimension": "minecraft:the_end",
+        "biome": "outer_end:crystal_crag",
+        "result": "allow"
+    },
+    {
+        "mob": "outer_end:sinker",
+        "dimension": "minecraft:the_end",
+        "biome": "outer_end:azure_forest",
+        "result": "allow"
+    },
+    {
+        "mob": "outer_end:himmelite",
+        "dimension": "minecraft:the_end",
+        "biome": "outer_end:azure_forest",
+        "result": "allow"
+    },
+    {
+        "mob": "outer_end:entombed",
+        "dimension": "minecraft:the_end",
+        "biome": "minecraft:the_end",
+        "result": "deny"
+    },
+    {
+        "mob": "outer_end:sinker",
+        "dimension": "minecraft:the_end",
+        "biome": "minecraft:the_end",
+        "result": "deny"
+    },
+    {
+        "mob": "outer_end:himmelite",
+        "dimension": "minecraft:the_end",
+        "biome": "minecraft:the_end",
+        "result": "deny"
+    }
+]

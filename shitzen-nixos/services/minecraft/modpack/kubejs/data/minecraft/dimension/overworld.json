@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:overworld",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "minecraft:ocean",
+      "lakes": false,
+      "features": false,
+      "layers": [
+        {
+          "block": "minecraft:air",
+          "height": 64
+        },
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        },
+        {
+          "block": "cuboidmod:notarfbadium_ore",
+          "height": 10
+        },
+        {
+          "block": "cuboidmod:kudbebedda_ore",
+          "height": 24
+        },
+        {
+          "block": "cuboidmod:notsogudium_ore",
+          "height": 36
+        },
+        {
+          "block": "minecraft:snow_block",
+          "height": 1
+        }
+      ],
+      "structure_overrides": []
+    }
+  }
+}

@@ -1,0 +1,630 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "tool_tinkering"
+	group: "6E3D5CD175F7344D"
+	icon: {
+		Count: 1b
+		id: "tconstruct:cleaver"
+		tag: {
+			Damage: 0
+			HideFlags: 3
+			tic_broken: 0b
+			tic_materials: [
+				"tconstruct:manyullyn"
+				"tconstruct:manyullyn"
+				"tconstruct:manyullyn"
+				"tconstruct:manyullyn"
+			]
+			tic_modifiers: [
+				{
+					level: 4s
+					name: "tconstruct:insatiable"
+				}
+				{
+					level: 2s
+					name: "tconstruct:severing"
+				}
+				{
+					level: 1s
+					name: "tconstruct:silky_aoe_shears"
+				}
+				{
+					level: 1s
+					name: "tconstruct:two_handed"
+				}
+			]
+			tic_multipliers: {
+				"tconstruct:attack_damage": 1.5f
+				"tconstruct:durability": 3.5f
+				"tconstruct:mining_speed": 0.3f
+			}
+			tic_persistent_data: {
+				abilities: 1
+				traits: 0
+				upgrades: 2
+			}
+			tic_stats: {
+				"tconstruct:attack_damage": 13.1f
+				"tconstruct:attack_speed": 0.9f
+				"tconstruct:durability": 4812.5f
+				"tconstruct:harvest_level": 4.0f
+				"tconstruct:mining_speed": 1.5f
+			}
+		}
+	}
+	id: "33F4535B8E4C3579"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["164AA3AA7EEDB5DC"]
+			description: ["{cuboiddroid.quests.g.01.c.40.q.00.d.00}"]
+			id: "32E874AAA865CA9C"
+			rewards: [{
+				id: "1BB158FA4FBADD5D"
+				item: "minecraft:crafting_table"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [{
+				id: "5AC52B6410FD097D"
+				item: "minecraft:oak_log"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.00}"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["32E874AAA865CA9C"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.01.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.01.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.01.d.02}"
+			]
+			id: "2407EB86462E9AA4"
+			rewards: [{
+				count: 16
+				id: "66D5889ED751D476"
+				item: "tconstruct:pattern"
+				random_bonus: 16
+				type: "item"
+			}]
+			tasks: [{
+				count: 6L
+				id: "28220A10052165B5"
+				item: "tconstruct:pattern"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.01}"
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2407EB86462E9AA4"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.02.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.02.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.02.d.02}"
+			]
+			id: "225F2F452807CAE0"
+			tasks: [{
+				id: "2B4D2D42C82CC5EF"
+				item: {
+					Count: 1b
+					id: "tconstruct:crafting_station"
+					tag: { }
+				}
+				title: "{cuboiddroid.quests.g.01.c.40.q.02.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.02}"
+			x: -1.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["2407EB86462E9AA4"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.03.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.03.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.03.d.02}"
+			]
+			id: "441E5C590FD64D90"
+			tasks: [{
+				id: "0728C460FC46D219"
+				item: {
+					Count: 1b
+					id: "tconstruct:part_builder"
+					tag: { }
+				}
+				title: "{cuboiddroid.quests.g.01.c.40.q.03.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.03}"
+			x: 0.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["2407EB86462E9AA4"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.04.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.04.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.04.d.02}"
+			]
+			id: "7DED5CD6998498A6"
+			tasks: [{
+				id: "77ED20CAC5FB6FAD"
+				item: {
+					Count: 1b
+					id: "tconstruct:tinker_station"
+					tag: { }
+				}
+				title: "{cuboiddroid.quests.g.01.c.40.q.04.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.04}"
+			x: 1.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["047F3185F9885869"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.02}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.03}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.04}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.05}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.06}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.07}"
+				"{cuboiddroid.quests.g.01.c.40.q.05.d.08}"
+			]
+			icon: {
+				Count: 1b
+				id: "tconstruct:hand_axe"
+				tag: {
+					Damage: 0
+					HideFlags: 3
+					tic_broken: 0b
+					tic_materials: [
+						"tconstruct:wood"
+						"tconstruct:wood"
+						"tconstruct:wood"
+					]
+					tic_modifiers: [
+						{
+							level: 3s
+							name: "tconstruct:cultivated"
+						}
+						{
+							level: 1s
+							name: "tconstruct:axe_transform_hidden"
+						}
+					]
+					tic_multipliers: { }
+					tic_persistent_data: {
+						abilities: 1
+						traits: 0
+						upgrades: 3
+					}
+					tic_stats: {
+						"tconstruct:attack_damage": 6.0f
+						"tconstruct:attack_speed": 0.9f
+						"tconstruct:durability": 60.0f
+						"tconstruct:harvest_level": 0.0f
+						"tconstruct:mining_speed": 2.0f
+					}
+				}
+			}
+			id: "0FBD70A678F713DE"
+			rewards: [{
+				id: "6B43BD0CBA8A9B08"
+				item: {
+					Count: 1b
+					id: "tconstruct:repair_kit"
+					tag: {
+						Material: "tconstruct:wood"
+					}
+				}
+				type: "item"
+			}]
+			tasks: [{
+				id: "7959A44CD51C7394"
+				item: {
+					Count: 1b
+					id: "tconstruct:hand_axe"
+					tag: {
+						Damage: 0
+						HideFlags: 3
+						tic_broken: 0b
+						tic_materials: [
+							"tconstruct:wood"
+							"tconstruct:wood"
+							"tconstruct:wood"
+						]
+						tic_modifiers: [
+							{
+								level: 3s
+								name: "tconstruct:cultivated"
+							}
+							{
+								level: 1s
+								name: "tconstruct:axe_transform_hidden"
+							}
+						]
+						tic_multipliers: { }
+						tic_persistent_data: { }
+						tic_stats: {
+							"tconstruct:attack_damage": 6.0f
+							"tconstruct:attack_speed": 0.9f
+							"tconstruct:durability": 60.0f
+							"tconstruct:harvest_level": 0.0f
+							"tconstruct:mining_speed": 2.0f
+						}
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.05}"
+			x: 0.0d
+			y: 8.0d
+		}
+		{
+			dependencies: [
+				"225F2F452807CAE0"
+				"441E5C590FD64D90"
+				"7DED5CD6998498A6"
+			]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.06.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.06.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.06.d.02}"
+			]
+			id: "047F3185F9885869"
+			tasks: [
+				{
+					id: "4B3D02A02FD4EBA7"
+					item: {
+						Count: 1b
+						id: "tconstruct:small_axe_head"
+						tag: {
+							Material: "tconstruct:wood"
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "53C9F514978FED05"
+					item: {
+						Count: 1b
+						id: "tconstruct:tool_binding"
+						tag: {
+							Material: "tconstruct:wood"
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "44E6521EE5059874"
+					item: {
+						Count: 1b
+						id: "tconstruct:tool_handle"
+						tag: {
+							Material: "tconstruct:wood"
+						}
+					}
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.40.q.06}"
+			x: 0.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["0FBD70A678F713DE"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.02}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.03}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.04}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.05}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.06}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.07}"
+				"{cuboiddroid.quests.g.01.c.40.q.07.d.08}"
+			]
+			id: "30E592B9968A4B46"
+			tasks: [
+				{
+					id: "2B6EF24D09E52C6E"
+					item: {
+						Count: 1b
+						id: "tconstruct:small_axe_head"
+						tag: {
+							Material: "tconstruct:stone"
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "25B26DD231CDA123"
+					title: "{cuboiddroid.quests.g.01.c.40.q.07.t.01}"
+					type: "checkmark"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.40.q.07}"
+			x: 0.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["30E592B9968A4B46"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.08.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.08.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.08.d.02}"
+			]
+			id: "382ACEA3B14FE049"
+			rewards: [{
+				id: "694E20EFF1595E50"
+				item: "tconstruct:puny_smelting"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [{
+				id: "69287F70ED08AFB3"
+				item: {
+					Count: 1b
+					id: "tconstruct:small_axe_head"
+					tag: {
+						Material: "tconstruct:iron"
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.08}"
+			x: 2.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["382ACEA3B14FE049"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.02}"
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.03}"
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.04}"
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.05}"
+				"{cuboiddroid.quests.g.01.c.40.q.09.d.06}"
+			]
+			id: "2497581D002D9694"
+			rewards: [{
+				count: 5
+				id: "1F8C64E72C38CD62"
+				item: "tconstruct:silky_cloth"
+				type: "item"
+			}]
+			tasks: [{
+				id: "10BFDB20C95492E7"
+				title: "{cuboiddroid.quests.g.01.c.40.q.09.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.09}"
+			x: 4.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["2497581D002D9694"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.10.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.10.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.10.d.02}"
+				"{cuboiddroid.quests.g.01.c.40.q.10.d.03}"
+				"{cuboiddroid.quests.g.01.c.40.q.10.d.04}"
+			]
+			id: "32BD594EE5DEF1FA"
+			rewards: [{
+				id: "19C5D1294A115DA8"
+				item: "tconstruct:mighty_smelting"
+				type: "item"
+			}]
+			tasks: [{
+				id: "5D94B2B948A1287E"
+				item: {
+					Count: 1b
+					id: "tconstruct:tinkers_anvil"
+					tag: { }
+				}
+				title: "{cuboiddroid.quests.g.01.c.40.q.10.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.40.q.10}"
+			x: 6.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["32BD594EE5DEF1FA"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.11.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.11.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.11.d.02}"
+			]
+			id: "048DD287EC811A58"
+			rewards: [{
+				id: "4F1D4F7B7956ADEF"
+				item: {
+					Count: 1b
+					id: "tconstruct:creative_slot"
+					tag: {
+						slot: "abilities"
+					}
+				}
+				type: "item"
+			}]
+			tasks: [
+				{
+					count: 2L
+					id: "0078E5803F22C337"
+					item: {
+						Count: 1b
+						id: "tconstruct:tough_handle"
+						tag: { }
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.11.t.00}"
+					type: "item"
+				}
+				{
+					id: "3F4F3433F923AD5F"
+					item: {
+						Count: 1b
+						id: "tconstruct:broad_blade"
+						tag: { }
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.11.t.01}"
+					type: "item"
+				}
+				{
+					id: "6D2B1ACB5BDAD035"
+					item: {
+						Count: 1b
+						id: "tconstruct:large_plate"
+						tag: { }
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.11.t.02}"
+					type: "item"
+				}
+				{
+					id: "259D65F2CE40E689"
+					item: {
+						Count: 1b
+						id: "tconstruct:cleaver"
+						tag: {
+							Damage: 0
+							HideFlags: 3
+							tic_broken: 0b
+							tic_modifiers: [
+								{
+									level: 2s
+									name: "tconstruct:severing"
+								}
+								{
+									level: 1s
+									name: "tconstruct:silky_aoe_shears"
+								}
+								{
+									level: 1s
+									name: "tconstruct:two_handed"
+								}
+							]
+							tic_multipliers: {
+								"tconstruct:attack_damage": 1.5f
+								"tconstruct:durability": 3.5f
+								"tconstruct:mining_speed": 0.3f
+							}
+							tic_persistent_data: { }
+							tic_stats: {
+								"tconstruct:attack_damage": 5.3f
+								"tconstruct:attack_speed": 0.9f
+								"tconstruct:durability": 3.5f
+								"tconstruct:mining_speed": 0.3f
+							}
+						}
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.11.t.03}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.40.q.11}"
+			x: 8.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["32BD594EE5DEF1FA"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.40.q.12.d.00}"
+				"{cuboiddroid.quests.g.01.c.40.q.12.d.01}"
+				"{cuboiddroid.quests.g.01.c.40.q.12.d.02}"
+			]
+			id: "4E4BD248C7BF3A19"
+			rewards: [{
+				id: "3E52F9E4C37915EC"
+				item: {
+					Count: 1b
+					id: "tconstruct:creative_slot"
+					tag: {
+						slot: "upgrades"
+					}
+				}
+				type: "item"
+			}]
+			tasks: [
+				{
+					count: 2L
+					id: "3875AF169ED6A46C"
+					item: {
+						Count: 1b
+						id: "tconstruct:large_plate"
+						tag: { }
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.12.t.00}"
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "6B550B487627AC35"
+					item: {
+						Count: 1b
+						id: "tconstruct:tough_handle"
+						tag: { }
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.12.t.01}"
+					type: "item"
+				}
+				{
+					id: "145BF10E5A813E30"
+					item: {
+						Count: 1b
+						id: "tconstruct:excavator"
+						tag: {
+							Damage: 0
+							HideFlags: 3
+							tic_broken: 0b
+							tic_modifiers: [
+								{
+									level: 2s
+									name: "tconstruct:knockback"
+								}
+								{
+									level: 1s
+									name: "tconstruct:shovel_transform_hidden"
+								}
+								{
+									level: 1s
+									name: "tconstruct:two_handed"
+								}
+							]
+							tic_multipliers: {
+								"tconstruct:attack_damage": 1.2f
+								"tconstruct:durability": 3.8f
+								"tconstruct:mining_speed": 0.3f
+							}
+							tic_persistent_data: { }
+							tic_stats: {
+								"tconstruct:attack_damage": 1.8f
+								"tconstruct:attack_speed": 1.0f
+								"tconstruct:durability": 3.8f
+								"tconstruct:mining_speed": 0.3f
+							}
+						}
+					}
+					title: "{cuboiddroid.quests.g.01.c.40.q.12.t.02}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.40.q.12}"
+			x: 8.0d
+			y: 8.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.01.c.40}"
+}

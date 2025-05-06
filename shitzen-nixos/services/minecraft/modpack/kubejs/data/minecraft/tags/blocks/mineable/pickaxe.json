@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "rsgauges:rustic_lever",
+    "rsgauges:rustic_button",
+    "rsgauges:door_sensor_switch"
+  ]
+}

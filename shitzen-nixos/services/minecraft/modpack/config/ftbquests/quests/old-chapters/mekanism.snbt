@@ -1,0 +1,231 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "mekanism"
+	group: "24F09E0B1AD125E9"
+	icon: "mekanism:basic_fluid_tank"
+	id: "6362652E582C4885"
+	order_index: 3
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.00.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.00.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.00.d.02}"
+				"{cuboiddroid.quests.g.06.c.33.q.00.d.03}"
+				"{cuboiddroid.quests.g.06.c.33.q.00.d.04}"
+			]
+			id: "42653A59BE87EB10"
+			tasks: [{
+				id: "1586EEDD33F211F8"
+				item: "mekanism:basic_fluid_tank"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 2.5d
+		}
+		{
+			dependencies: ["42653A59BE87EB10"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.01.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.01.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.01.d.02}"
+			]
+			id: "106D46ACF4A554A1"
+			tasks: [{
+				id: "1D729892B72DACFC"
+				item: "mekanism:advanced_fluid_tank"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["106D46ACF4A554A1"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.02.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.02.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.02.d.02}"
+			]
+			id: "1D475D06EFC829B5"
+			tasks: [{
+				id: "73524C25A340E976"
+				item: "mekanism:elite_fluid_tank"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["1D475D06EFC829B5"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.03.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.03.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.03.d.02}"
+			]
+			id: "7FB133615DC58178"
+			tasks: [{
+				id: "0A4AE2A91A70F726"
+				item: "mekanism:ultimate_fluid_tank"
+				type: "item"
+			}]
+			x: 0.5d
+			y: 7.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.02}"
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.03}"
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.04}"
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.05}"
+				"{cuboiddroid.quests.g.06.c.33.q.04.d.06}"
+			]
+			id: "6EA1BED42FEAFC0C"
+			tasks: [
+				{
+					id: "77712FE8EB1ABC14"
+					item: "mekanism:dynamic_tank"
+					type: "item"
+				}
+				{
+					id: "52F2FB024B373273"
+					item: "mekanism:dynamic_valve"
+					type: "item"
+				}
+			]
+			x: -1.5d
+			y: 2.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.33.q.05.d.00}"]
+			id: "064A1B5AC31A3824"
+			tasks: [{
+				id: "4733423E499441B0"
+				item: "create:fluid_tank"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 2.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.33.q.10.d.00}"]
+			id: "14ACC056658FE59C"
+			tasks: [{
+				id: "665FD057DEBCF1C5"
+				item: "industrialforegoing:common_black_hole_tank"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 2.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.33.q.11.d.00}"]
+			id: "7486BE3EE148DB62"
+			tasks: [{
+				id: "2E6F5247392D7BA1"
+				item: "industrialforegoing:pity_black_hole_tank"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 3.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.33.q.12.d.00}"]
+			id: "126C76D1A7178D26"
+			tasks: [{
+				id: "35A97A70ED7C3974"
+				item: "industrialforegoing:simple_black_hole_tank"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 4.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.33.q.13.d.00}"]
+			id: "14F553BA1ABCEDEA"
+			tasks: [{
+				id: "2C0C70C069B020A5"
+				item: "industrialforegoing:advanced_black_hole_tank"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 5.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.33.q.14.d.00}"]
+			id: "20BB802691FB3B2B"
+			tasks: [{
+				id: "40041A6C578B24AD"
+				item: "industrialforegoing:supreme_black_hole_tank"
+				type: "item"
+			}]
+			x: 2.5d
+			y: 6.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.15.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.15.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.15.d.02}"
+				"{cuboiddroid.quests.g.06.c.33.q.15.d.03}"
+				"{cuboiddroid.quests.g.06.c.33.q.15.d.04}"
+			]
+			id: "6FBCCE519B37691C"
+			tasks: [{
+				id: "5FEE4E350CD93F12"
+				item: "enderstorage:ender_tank"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 2.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.16.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.16.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.16.d.02}"
+			]
+			id: "07ECB3D29598CFBC"
+			shape: "gear"
+			tasks: [{
+				id: "6143AF856557D38C"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.33.q.16}"
+			x: 1.5d
+			y: 0.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.33.q.17.d.00}"
+				"{cuboiddroid.quests.g.06.c.33.q.17.d.01}"
+				"{cuboiddroid.quests.g.06.c.33.q.17.d.02}"
+			]
+			id: "343A0B3CF993D5B0"
+			tasks: [{
+				id: "726F271DE4E64E40"
+				item: {
+					Count: 1b
+					id: "thermal:fluid_cell"
+					tag: {
+						BlockEntityTag: {
+							TankInv: [{
+								Amount: 0
+								Capacity: 32000
+								FluidName: "minecraft:empty"
+								Tank: 0b
+							}]
+						}
+					}
+				}
+				type: "item"
+			}]
+			x: 4.5d
+			y: 2.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.06.c.33}"
+}

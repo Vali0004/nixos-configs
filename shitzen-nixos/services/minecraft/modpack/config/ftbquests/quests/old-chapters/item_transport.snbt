@@ -1,0 +1,1790 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "item_transport"
+	group: "24F09E0B1AD125E9"
+	icon: "storagedrawers:controller"
+	id: "1EB726BA93F81517"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.00.d.00}"]
+			disable_toast: true
+			id: "12A954110A989E1F"
+			optional: true
+			tasks: [{
+				id: "60E5F847F56F3A79"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:chests/wooden"
+					}
+				}
+				title: "{cuboiddroid.quests.g.06.c.31.q.00.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.31.q.00}"
+			x: -15.5d
+			y: -9.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.01.d.00}"]
+			disable_toast: true
+			id: "5B255ED5F6657CDF"
+			optional: true
+			tasks: [{
+				id: "616D42B80379A93D"
+				item: "cuboidmod:notsogudium_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -9.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.02.d.00}"]
+			disable_toast: true
+			id: "247CD90098BD0ECE"
+			optional: true
+			tasks: [{
+				id: "1C935C29CE7D8646"
+				item: "cuboidmod:kudbebedda_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -8.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.03.d.00}"]
+			disable_toast: true
+			id: "423EB3CD14FC03C5"
+			optional: true
+			tasks: [{
+				id: "7A1E0AA19DBA516A"
+				item: "cuboidmod:notarfbadium_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -6.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.04.d.00}"]
+			id: "746C4F64F0B327D8"
+			optional: true
+			tasks: [{
+				id: "6E0AE58DEF17FCB6"
+				item: "cuboidmod:wikidium_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -5.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.05.d.00}"]
+			disable_toast: true
+			id: "05C6D4E917907308"
+			optional: true
+			tasks: [{
+				id: "587F600CBF0B8DE2"
+				item: "cuboidmod:thatldu_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["4A0E0BDEF7FC6B12"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.06.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.06.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.06.d.02}"
+			]
+			disable_toast: true
+			id: "1DDBB5FD51842B72"
+			optional: true
+			tasks: [{
+				id: "05ABA5BB5AAEF30E"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -15.5d
+			y: -8.0d
+		}
+		{
+			dependencies: ["12A954110A989E1F"]
+			description: ["{cuboiddroid.quests.g.06.c.31.q.07.d.00}"]
+			disable_toast: true
+			id: "4A0E0BDEF7FC6B12"
+			optional: true
+			tasks: [{
+				id: "62E4D1CF39CBA0C6"
+				item: "sophisticatedstorage:basic_tier_upgrade"
+				type: "item"
+			}]
+			x: -17.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["1DDBB5FD51842B72"]
+			description: ["{cuboiddroid.quests.g.06.c.31.q.08.d.00}"]
+			disable_toast: true
+			id: "6ED4DF3D5D28E60B"
+			optional: true
+			tasks: [{
+				id: "6E1B7A37EFA59C24"
+				item: "sophisticatedstorage:basic_to_iron_tier_upgrade"
+				type: "item"
+			}]
+			x: -14.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["6ED4DF3D5D28E60B"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.09.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.09.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.09.d.02}"
+			]
+			disable_toast: true
+			id: "2AC31DB5ABC583EA"
+			optional: true
+			tasks: [{
+				id: "6BE3C5B2201E9696"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Iron Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -14.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["0B29223D36E7784F"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.12.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.12.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.12.d.02}"
+			]
+			disable_toast: true
+			id: "2A59B788436BA026"
+			optional: true
+			tasks: [{
+				id: "7358885D98A6368D"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Diamond Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -15.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["2AC31DB5ABC583EA"]
+			description: ["{cuboiddroid.quests.g.06.c.31.q.13.d.00}"]
+			disable_toast: true
+			id: "0D3A8D017ECDDC0B"
+			optional: true
+			tasks: [{
+				id: "759E08E0CCAF8C23"
+				item: "sophisticatedstorage:iron_to_gold_tier_upgrade"
+				type: "item"
+			}]
+			x: -15.5d
+			y: -6.5d
+		}
+		{
+			dependencies: ["0D3A8D017ECDDC0B"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.14.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.14.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.14.d.02}"
+			]
+			disable_toast: true
+			id: "57C94DB6868CC7E0"
+			optional: true
+			tasks: [{
+				id: "6D53AE4402DA5D3B"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Gold Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -17.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["57C94DB6868CC7E0"]
+			description: ["{cuboiddroid.quests.g.06.c.31.q.15.d.00}"]
+			disable_toast: true
+			id: "0B29223D36E7784F"
+			optional: true
+			tasks: [{
+				id: "69DFC8A85670F2FB"
+				item: "sophisticatedstorage:gold_to_diamond_tier_upgrade"
+				type: "item"
+			}]
+			x: -17.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["2A59B788436BA026"]
+			description: ["{cuboiddroid.quests.g.06.c.31.q.16.d.00}"]
+			disable_toast: true
+			id: "6C078D761856F799"
+			optional: true
+			tasks: [{
+				id: "744795D5AB66F27E"
+				item: "sophisticatedstorage:diamond_to_netherite_tier_upgrade"
+				type: "item"
+			}]
+			x: -14.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["6C078D761856F799"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.17.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.17.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.17.d.02}"
+			]
+			disable_toast: true
+			id: "5DCB6DF90CEFB86E"
+			optional: true
+			tasks: [{
+				id: "2982B7F1BBAFFE83"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Netherite Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -15.5d
+			y: -3.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.22.d.00}"]
+			id: "25F528C808746B34"
+			optional: true
+			tasks: [{
+				id: "512167B1A5797337"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "storagedrawers:full_drawers_1"
+					}
+				}
+				title: "{cuboiddroid.quests.g.06.c.31.q.22.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.31.q.22}"
+			x: -11.0d
+			y: -9.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.23.d.00}"]
+			id: "5474572A4A105DA0"
+			optional: true
+			tasks: [{
+				id: "38FFB6FB2C9EDA51"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "storagedrawers:full_drawers_2"
+					}
+				}
+				title: "{cuboiddroid.quests.g.06.c.31.q.23.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.31.q.23}"
+			x: -11.0d
+			y: -8.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.24.d.00}"]
+			id: "1D2256EED95CE6CB"
+			optional: true
+			tasks: [{
+				id: "581FE8D8AB5AB4DF"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "storagedrawers:full_drawers_4"
+					}
+				}
+				title: "{cuboiddroid.quests.g.06.c.31.q.24.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.31.q.24}"
+			x: -11.0d
+			y: -7.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.02}"
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.03}"
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.04}"
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.05}"
+				"{cuboiddroid.quests.g.06.c.31.q.25.d.06}"
+			]
+			id: "56658D95108D7C3B"
+			optional: true
+			tasks: [{
+				id: "6803089632855519"
+				item: "framedcompactdrawers:framed_full_one"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -5.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.26.d.00}"]
+			id: "3CA9BEDD18E77D5A"
+			optional: true
+			tasks: [{
+				id: "651303A3B00AE379"
+				item: "framedcompactdrawers:framed_full_two"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -4.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.27.d.00}"]
+			id: "0B8F2187A32388C0"
+			optional: true
+			tasks: [{
+				id: "704B4AFBF0FF29FF"
+				item: "framedcompactdrawers:framed_full_four"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -3.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.28.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.28.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.28.d.02}"
+			]
+			id: "0495227FC8A82808"
+			optional: true
+			tasks: [{
+				id: "148FACD2FDD06426"
+				item: "storagedrawers:compacting_drawers_3"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -9.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.29.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.29.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.29.d.02}"
+			]
+			id: "20CD42FBD0FCF182"
+			optional: true
+			tasks: [{
+				id: "75AC40E11ADE7AE0"
+				item: "storagedrawers:controller"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -8.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.30.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.30.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.30.d.02}"
+			]
+			id: "7502F4864B72BF9F"
+			optional: true
+			tasks: [{
+				id: "67433F7D8B81D9BC"
+				item: "storagedrawers:controller_slave"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -7.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.31.d.00}"]
+			id: "27FD652D4C45B6EB"
+			optional: true
+			tasks: [{
+				id: "3F6E227E6AD00AD0"
+				item: "framedcompactdrawers:framed_compact_drawer"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -5.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.32.d.00}"]
+			id: "782F4E9BE52EF131"
+			optional: true
+			tasks: [{
+				id: "432CB30538511960"
+				item: "framedcompactdrawers:framed_drawer_controller"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -4.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.33.d.00}"]
+			id: "2A17587B14B14AFA"
+			optional: true
+			tasks: [{
+				id: "0C12B5EEFEAD4F6C"
+				item: "framedcompactdrawers:framed_slave"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -3.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.34.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.34.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.34.d.02}"
+				"{cuboiddroid.quests.g.06.c.31.q.34.d.03}"
+				"{cuboiddroid.quests.g.06.c.31.q.34.d.04}"
+			]
+			id: "2DC352147FF24667"
+			optional: true
+			tasks: [{
+				id: "08C057A5A64BEDC0"
+				item: "storagedrawers:drawer_key"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -9.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.35.d.00}"]
+			id: "731AE238CEBDC740"
+			optional: true
+			tasks: [{
+				id: "1D2D0FA5C1C566D9"
+				item: "storagedrawers:quantify_key"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -9.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.36.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.36.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.36.d.02}"
+			]
+			id: "0EB52E9B35FF03B4"
+			optional: true
+			tasks: [{
+				id: "192A61E80C55DE97"
+				item: "storagedrawers:upgrade_template"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -7.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.37.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.37.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.37.d.02}"
+			]
+			id: "6F98522124FA09E2"
+			optional: true
+			tasks: [{
+				id: "6E0706DF9295A5C7"
+				item: "storagedrawers:one_stack_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -4.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.38.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.38.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.38.d.02}"
+			]
+			id: "3075EBA8A71F49C0"
+			optional: true
+			tasks: [{
+				id: "3BD3B2AEF9990DAE"
+				item: "storagedrawers:obsidian_storage_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -3.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.39.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.39.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.39.d.02}"
+			]
+			id: "5ED61530B665CBE6"
+			optional: true
+			tasks: [{
+				id: "0EB53055D6542B55"
+				item: "storagedrawers:iron_storage_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -3.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.40.d.00}"]
+			id: "2AF07D1E245F45F6"
+			optional: true
+			tasks: [{
+				id: "4557D7F2104E1717"
+				item: "storagedrawers:gold_storage_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -2.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.41.d.00}"]
+			id: "2481DA40ADAD78B6"
+			optional: true
+			tasks: [{
+				id: "123553470BD2E714"
+				item: "storagedrawers:diamond_storage_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -2.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.42.d.00}"]
+			id: "3E871FA598551EF6"
+			optional: true
+			tasks: [{
+				id: "0B7CDEB46485CD73"
+				item: "storagedrawers:emerald_storage_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -1.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.43.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.43.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.43.d.02}"
+				"{cuboiddroid.quests.g.06.c.31.q.43.d.03}"
+				"{cuboiddroid.quests.g.06.c.31.q.43.d.04}"
+			]
+			id: "505201DC593A0870"
+			optional: true
+			tasks: [{
+				id: "2168E20466AE38A9"
+				item: "storagedrawers:void_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -4.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.45.d.00}"]
+			id: "7E734EF822FFF44C"
+			optional: true
+			tasks: [{
+				id: "04653DDEA7857339"
+				item: "storagedrawers:illumination_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -6.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.46.d.00}"]
+			id: "30237C22E955F9A1"
+			optional: true
+			tasks: [{
+				id: "2A2A885A35ED8487"
+				item: "storagedrawers:redstone_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -6.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.47.d.00}"]
+			id: "614269F190D376AE"
+			optional: true
+			tasks: [{
+				id: "4F1C1B4A07D24502"
+				item: "storagedrawers:max_redstone_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -7.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.48.d.00}"]
+			id: "3887B17AC0A88999"
+			optional: true
+			tasks: [{
+				id: "7CB5B4B46C25FB6D"
+				item: "storagedrawers:min_redstone_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -5.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.49.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.49.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.49.d.02}"
+				"{cuboiddroid.quests.g.06.c.31.q.49.d.03}"
+				"{cuboiddroid.quests.g.06.c.31.q.49.d.04}"
+			]
+			disable_toast: true
+			id: "749585308C91E2F8"
+			optional: true
+			tasks: [{
+				id: "4C1C0FA0BC49FA2F"
+				item: "enderstorage:ender_chest"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -9.5d
+		}
+		{
+			dependencies: ["2A2991C7A49282DB"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.50.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.50.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.50.d.02}"
+			]
+			id: "7AF60E5B56810596"
+			tasks: [{
+				id: "6ACE24AF25F08A66"
+				item: "mekanism:basic_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"7AF60E5B56810596"
+				"5095107E4E8235DE"
+			]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.51.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.51.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.51.d.02}"
+			]
+			id: "1F77564BFE7347DB"
+			tasks: [{
+				id: "4B4E129C2346982E"
+				item: "mekanism:advanced_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"1F77564BFE7347DB"
+				"61C0AA54A152FCAA"
+			]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.52.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.52.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.52.d.02}"
+			]
+			id: "58D10C4F363CCEC9"
+			tasks: [{
+				id: "3BB18E82D033E6AE"
+				item: "mekanism:elite_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"58D10C4F363CCEC9"
+				"10E2C4E20F68BED8"
+			]
+			description: [
+				"{cuboiddroid.quests.g.06.c.31.q.53.d.00}"
+				"{cuboiddroid.quests.g.06.c.31.q.53.d.01}"
+				"{cuboiddroid.quests.g.06.c.31.q.53.d.02}"
+			]
+			id: "6C8D88A9AD8264B8"
+			tasks: [{
+				id: "56B3C098FE5BD9A4"
+				item: "mekanism:ultimate_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -3.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.06.c.31.q.54.d.00}"]
+			id: "2C99514A8166587C"
+			tasks: [{
+				id: "6C2E26D1FFE1F303"
+				item: "storagedrawers:shroud_key"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -10.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.06.c.31}"
+}

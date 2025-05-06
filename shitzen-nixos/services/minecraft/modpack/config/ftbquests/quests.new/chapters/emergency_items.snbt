@@ -1,0 +1,161 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "emergency_items"
+	group: "73C2C2D59F8E4DE2"
+	icon: "minecraft:dragon_head"
+	id: "1CD2D67D5E56DD13"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["10E3ABB4530A9F1A"]
+			description: [
+				"{cuboiddroid.quests.g.09.c.11.q.00.d.00}"
+				"{cuboiddroid.quests.g.09.c.11.q.00.d.01}"
+				"{cuboiddroid.quests.g.09.c.11.q.00.d.02}"
+			]
+			icon: "minecraft:dragon_head"
+			id: "49A42F0726EFA8CB"
+			optional: true
+			rewards: [{
+				count: 4
+				id: "3B9E66A13E06BEE7"
+				item: "minecraft:end_crystal"
+				type: "item"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "0C9C5B8BEA683FF5"
+				title: "{cuboiddroid.quests.g.09.c.11.q.00.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.09.c.11.q.00}"
+			x: 3.0d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.09.c.11.q.01.d.00}"
+				"{cuboiddroid.quests.g.09.c.11.q.01.d.01}"
+				"{cuboiddroid.quests.g.09.c.11.q.01.d.02}"
+				"{cuboiddroid.quests.g.09.c.11.q.01.d.03}"
+				"{cuboiddroid.quests.g.09.c.11.q.01.d.04}"
+			]
+			icon: "cuboidmod:ration_pack"
+			id: "58BCE1E85A605E84"
+			optional: true
+			rewards: [{
+				count: 4
+				id: "1E557D673B0F0B1C"
+				item: "cuboidmod:ration_pack"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "1C355FA787F0CE73"
+				title: "{cuboiddroid.quests.g.09.c.11.q.01.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.09.c.11.q.01}"
+			x: 0.0d
+			y: -1.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.09.c.11.q.02.d.00}"]
+			icon: "tconstruct:materials_and_you"
+			id: "095A5628202AD4D1"
+			optional: true
+			rewards: [{
+				id: "0CD5EE018418DFF8"
+				item: "tconstruct:materials_and_you"
+				type: "item"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "29F6AB0D917E24C1"
+				title: "{cuboiddroid.quests.g.09.c.11.q.02.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.09.c.11.q.02}"
+			x: 1.5d
+			y: -1.5d
+		}
+		{
+			dependencies: ["562DF660E5C68A16"]
+			description: ["{cuboiddroid.quests.g.09.c.11.q.03.d.00}"]
+			icon: "cuboidmod:energized_end_stone_bricks"
+			id: "4BFEA90E3190E5D1"
+			optional: true
+			rewards: [{
+				auto: "disabled"
+				icon: "cuboidmod:energized_end_stone_bricks"
+				id: "2F3DF9C2B125482F"
+				stage: "end_access"
+				team_reward: true
+				title: "Let me in to the End!"
+				type: "gamestage"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "5E1B390EC364E2CE"
+				title: "{cuboiddroid.quests.g.09.c.11.q.03.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.09.c.11.q.03}"
+			x: 3.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["46821A52352BBC8F"]
+			description: ["{cuboiddroid.quests.g.09.c.11.q.04.d.00}"]
+			icon: "cuboidmod:energized_nether_bricks"
+			id: "002E9AE6A28F22CF"
+			optional: true
+			rewards: [{
+				auto: "disabled"
+				icon: "cuboidmod:energized_nether_bricks"
+				id: "2643F170CE20050B"
+				stage: "nether_access"
+				team_reward: true
+				title: "Let me in to the Nether!"
+				type: "gamestage"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "5CEB140C0276AEAC"
+				title: "{cuboiddroid.quests.g.09.c.11.q.04.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.09.c.11.q.04}"
+			x: 4.5d
+			y: -1.5d
+		}
+		{
+			dependencies: ["51C4DAB656980D21"]
+			description: ["{cuboiddroid.quests.g.09.c.11.q.05.d.00}"]
+			icon: "cuboidmod:energized_thatlduvium"
+			id: "0C30417644852F83"
+			rewards: [{
+				auto: "disabled"
+				icon: "cuboidmod:energized_thatlduvium"
+				id: "54CDC1A580F92D11"
+				stage: "cuboid_overworld_access"
+				team_reward: true
+				title: "Let me in to the Cuboid Overworld!"
+				type: "gamestage"
+			}]
+			shape: "octagon"
+			tasks: [{
+				id: "4C3BE3C13A9CC9B1"
+				title: "{cuboiddroid.quests.g.09.c.11.q.05.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.09.c.11.q.05}"
+			x: 6.0d
+			y: -1.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.09.c.11}"
+}

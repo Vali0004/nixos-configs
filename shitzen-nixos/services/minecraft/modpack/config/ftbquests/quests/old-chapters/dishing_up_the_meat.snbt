@@ -1,0 +1,518 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "dishing_up_the_meat"
+	group: "6E3D5CD175F7344D"
+	icon: "minecraft:chicken"
+	id: "3EFF31C92A1EC870"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["060D9DD7789DB5C5"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.04}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.05}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.06}"
+				"{cuboiddroid.quests.g.01.c.09.q.00.d.07}"
+			]
+			id: "08E383BD1910ECD4"
+			shape: "gear"
+			tasks: [{
+				id: "51F8838903D06494"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.00}"
+			x: 0.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["76528FB8C0913777"]
+			dependency_requirement: "one_completed"
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.04}"
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.05}"
+				"{cuboiddroid.quests.g.01.c.09.q.01.d.06}"
+			]
+			id: "05E0AE86BB17A33C"
+			shape: "square"
+			tasks: [{
+				id: "701894EAF2A2D852"
+				item: "kubejs:rna"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.01}"
+			x: 0.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["08E383BD1910ECD4"]
+			description: ["{cuboiddroid.quests.g.01.c.09.q.02.d.00}"]
+			id: "4903A7F989486276"
+			optional: true
+			tasks: [{
+				id: "25B38E67A711948D"
+				item: "minecraft:bone"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.02}"
+			x: -0.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["08E383BD1910ECD4"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.03.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.03.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.03.d.02}"
+			]
+			id: "76528FB8C0913777"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "38CC39DD4FA6BCBB"
+				item: "minecraft:rotten_flesh"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.03}"
+			x: 1.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["76528FB8C0913777"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.04.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.04.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.04.d.02}"
+			]
+			id: "41496EE5EE76DC58"
+			shape: "square"
+			tasks: [
+				{
+					id: "4A7A9EA022A11ECC"
+					item: "cuboidmod:silica_dust"
+					type: "item"
+				}
+				{
+					id: "36229CB337DB4880"
+					item: "cuboidmod:protein_paste"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.04}"
+			x: 2.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["41496EE5EE76DC58"]
+			description: ["{cuboiddroid.quests.g.01.c.09.q.05.d.00}"]
+			id: "61497419EBD02DB9"
+			shape: "square"
+			tasks: [
+				{
+					id: "561B860DF080FC58"
+					item: "cuboidmod:wikidium_dust"
+					type: "item"
+				}
+				{
+					id: "61E5E151E1442AD9"
+					item: "cuboidmod:protein_fiber"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.05}"
+			x: 3.5d
+			y: 3.5d
+		}
+		{
+			dependencies: [
+				"41496EE5EE76DC58"
+				"05E0AE86BB17A33C"
+			]
+			description: ["{cuboiddroid.quests.g.01.c.09.q.06.d.00}"]
+			id: "53CEDE6D17D353F5"
+			shape: "square"
+			tasks: [{
+				id: "42EAE16A2B2F67D5"
+				item: "kubejs:primordial_gloop"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.06}"
+			x: 1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: [
+				"53CEDE6D17D353F5"
+				"61497419EBD02DB9"
+			]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.07.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.07.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.07.d.02}"
+			]
+			id: "377A606304CD8D19"
+			shape: "square"
+			tasks: [{
+				id: "6A43F3F0D4B632C0"
+				item: "kubejs:dna"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.07}"
+			x: 2.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["377A606304CD8D19"]
+			description: ["{cuboiddroid.quests.g.01.c.09.q.08.d.00}"]
+			id: "13886489459A87C8"
+			shape: "square"
+			tasks: [
+				{
+					id: "40E60E51E8A934B0"
+					item: "minecraft:bone_meal"
+					type: "item"
+				}
+				{
+					id: "61C60EED1D7FE74A"
+					item: "kubejs:albumen"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.08}"
+			x: 4.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["13886489459A87C8"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.09.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.09.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.09.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.09.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.09.d.04}"
+			]
+			id: "6CD9C6679E598E91"
+			shape: "square"
+			tasks: [{
+				id: "432B409523994366"
+				item: "minecraft:egg"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.09}"
+			x: 5.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["08E383BD1910ECD4"]
+			id: "00EDB66EC0496C81"
+			shape: "square"
+			tasks: [{
+				id: "7B9D02DDB59092DD"
+				item: "exnihilosequentia:witch_water_bucket"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.10}"
+			x: 2.5d
+			y: -2.5d
+		}
+		{
+			dependencies: [
+				"6CD9C6679E598E91"
+				"4BB2AF29BC6BA080"
+			]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.04}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.05}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.06}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.07}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.08}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.09}"
+				"{cuboiddroid.quests.g.01.c.09.q.11.d.10}"
+			]
+			id: "30E793C110473B32"
+			shape: "square"
+			tasks: [{
+				id: "2423D3CEBBC44857"
+				item: "minecraft:chicken_spawn_egg"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.11}"
+			x: 4.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["30E793C110473B32"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.12.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.12.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.12.d.02}"
+			]
+			id: "62EB9B9BD1FB1035"
+			shape: "square"
+			tasks: [
+				{
+					id: "1479560A0A29913A"
+					item: "minecraft:white_wool"
+					type: "item"
+				}
+				{
+					id: "63A91D0A1529E672"
+					item: "ae2:smooth_sky_stone_block"
+					type: "item"
+				}
+				{
+					id: "01E9D7C3303E10AE"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "466F81C9B1CD37A0"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.12}"
+			x: 5.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["62EB9B9BD1FB1035"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.13.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.13.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.13.d.02}"
+			]
+			id: "07E96BCF479B5C4D"
+			shape: "square"
+			tasks: [{
+				id: "1F0E2230483C868F"
+				item: "minecraft:sheep_spawn_egg"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.13}"
+			x: 6.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["07E96BCF479B5C4D"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.14.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.14.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.14.d.02}"
+			]
+			id: "4823D1F8EC861304"
+			shape: "square"
+			tasks: [
+				{
+					id: "0814EF0B4D682443"
+					item: "minecraft:mutton"
+					type: "item"
+				}
+				{
+					id: "3AEA9FAE19C1DA25"
+					item: "minecraft:dirt"
+					type: "item"
+				}
+				{
+					id: "0C491DC9E421D891"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "2613A7A6D164E5EE"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.14}"
+			x: 7.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["4823D1F8EC861304"]
+			description: ["{cuboiddroid.quests.g.01.c.09.q.15.d.00}"]
+			id: "61B962D3125436C3"
+			shape: "square"
+			tasks: [{
+				id: "44BAD38BEED07A7D"
+				item: "minecraft:pig_spawn_egg"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.15}"
+			x: 8.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["61B962D3125436C3"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.16.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.16.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.16.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.16.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.16.d.04}"
+			]
+			id: "5C087A68C6D837C9"
+			shape: "square"
+			tasks: [
+				{
+					id: "08D36D24CBFEFBF7"
+					item: "minecraft:porkchop"
+					type: "item"
+				}
+				{
+					id: "37BB19E63E81E673"
+					item: "minecraft:mutton"
+					type: "item"
+				}
+				{
+					id: "583B4C0B63B3B31A"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "3983113BE501F91F"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.16}"
+			x: 9.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["5C087A68C6D837C9"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.04}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.05}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.06}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.07}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.08}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.09}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.10}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.11}"
+				"{cuboiddroid.quests.g.01.c.09.q.17.d.12}"
+			]
+			id: "4A1CC3ACD2F86E07"
+			rewards: [{
+				id: "779B6B2F1F543258"
+				item: "minecraft:saddle"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "5C20A7FFE6FCF82C"
+				item: "minecraft:horse_spawn_egg"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.17}"
+			x: 10.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["4A1CC3ACD2F86E07"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.18.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.18.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.18.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.18.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.18.d.04}"
+			]
+			id: "3254E6F98E2CC544"
+			shape: "square"
+			tasks: [
+				{
+					id: "199977C39FCF7A68"
+					item: "minecraft:leather"
+					type: "item"
+				}
+				{
+					id: "06CCD4C1C7621C4B"
+					item: "minecraft:bucket"
+					type: "item"
+				}
+				{
+					id: "5DB0696034C36440"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "6A5F976242069098"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.09.q.18}"
+			x: 11.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["3254E6F98E2CC544"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.19.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.19.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.19.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.19.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.19.d.04}"
+			]
+			id: "4D0F1810876E3DF6"
+			shape: "gear"
+			size: 1.5d
+			subtitle: "{cuboiddroid.quests.g.01.c.09.q.19.sub}"
+			tasks: [{
+				id: "22E5FA984BF969B9"
+				item: "minecraft:cow_spawn_egg"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.19}"
+			x: 12.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["00EDB66EC0496C81"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.00}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.01}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.02}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.03}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.04}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.05}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.06}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.07}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.08}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.09}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.10}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.11}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.12}"
+				"{cuboiddroid.quests.g.01.c.09.q.20.d.13}"
+			]
+			id: "4BB2AF29BC6BA080"
+			shape: "square"
+			tasks: [{
+				id: "5880125EE2A272E7"
+				item: "minecraft:wheat_seeds"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.09.q.20}"
+			x: 3.5d
+			y: -0.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.01.c.09}"
+}

@@ -1,0 +1,1770 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "item_transport"
+	group: "24F09E0B1AD125E9"
+	icon: "storagedrawers:controller"
+	id: "1EB726BA93F81517"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: ["A standard wooden chest holds 27 stacks (3 rows of 9)."]
+			disable_toast: true
+			id: "12A954110A989E1F"
+			optional: true
+			tasks: [{
+				id: "60E5F847F56F3A79"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:chests/wooden"
+					}
+				}
+				title: "Any Wooden Chest"
+				type: "item"
+			}]
+			title: "Chest"
+			x: -15.5d
+			y: -9.5d
+		}
+		{
+			description: ["The Notsogudium Chest holds 18 stacks (2 rows), &cdrops&r its content when broken, and &ccannot&r be opened if obstructed above."]
+			disable_toast: true
+			id: "5B255ED5F6657CDF"
+			optional: true
+			tasks: [{
+				id: "616D42B80379A93D"
+				item: "cuboidmod:notsogudium_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -9.5d
+		}
+		{
+			description: ["The Kudbebedda Chest holds 27 stacks (3 rows), &cdrops&r its content when broken, and &ccannot&r be opened if obstructed above."]
+			disable_toast: true
+			id: "247CD90098BD0ECE"
+			optional: true
+			tasks: [{
+				id: "1C935C29CE7D8646"
+				item: "cuboidmod:kudbebedda_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -8.0d
+		}
+		{
+			description: ["The Notarfbadium Chest holds 36 stacks (4 rows), &cdrops&r its content when broken, and &acan&r be opened if obstructed above."]
+			disable_toast: true
+			id: "423EB3CD14FC03C5"
+			optional: true
+			tasks: [{
+				id: "7A1E0AA19DBA516A"
+				item: "cuboidmod:notarfbadium_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -6.5d
+		}
+		{
+			description: ["The Wikidium Chest holds 45 stacks (5 rows), &akeeps&r its content when broken, and &acan&r be opened if obstructed above."]
+			id: "746C4F64F0B327D8"
+			optional: true
+			tasks: [{
+				id: "6E0AE58DEF17FCB6"
+				item: "cuboidmod:wikidium_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -5.0d
+		}
+		{
+			description: ["The Thatldu Chest holds 54 stacks (6 rows), &akeeps&r its content when broken, and &acan&r be opened if obstructed above."]
+			disable_toast: true
+			id: "05C6D4E917907308"
+			optional: true
+			tasks: [{
+				id: "587F600CBF0B8DE2"
+				item: "cuboidmod:thatldu_chest"
+				type: "item"
+			}]
+			x: -20.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["4A0E0BDEF7FC6B12"]
+			description: ["Sophisticated Storage Chests can also be crafted by surrounding a redstone torch with planks in a crafting table, or crafting a vanilla chest and a redstone torch together."]
+			disable_toast: true
+			id: "1DDBB5FD51842B72"
+			optional: true
+			tasks: [{
+				id: "05ABA5BB5AAEF30E"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -15.5d
+			y: -8.0d
+		}
+		{
+			dependencies: ["12A954110A989E1F"]
+			description: ["Any wooden chest can be upgraded to a Sophisticated Storage chest without having to move it simply by using one of these upgrades on it."]
+			disable_toast: true
+			id: "4A0E0BDEF7FC6B12"
+			optional: true
+			tasks: [{
+				id: "62E4D1CF39CBA0C6"
+				item: "sophisticatedstorage:basic_tier_upgrade"
+				type: "item"
+			}]
+			x: -17.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["1DDBB5FD51842B72"]
+			description: ["Any Sophisticated Storage chest can be upgraded to an Iron Sophisticated Storage Chest without having to move it simply by using one of these upgrades on it."]
+			disable_toast: true
+			id: "6ED4DF3D5D28E60B"
+			optional: true
+			tasks: [{
+				id: "6E1B7A37EFA59C24"
+				item: "sophisticatedstorage:basic_to_iron_tier_upgrade"
+				type: "item"
+			}]
+			x: -14.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["6ED4DF3D5D28E60B"]
+			description: ["Iron Sophisticated Storage Chests can also be crafted by surrounding a Sophisticated Storage chest with Iron Ingots in a crafting table."]
+			disable_toast: true
+			id: "2AC31DB5ABC583EA"
+			optional: true
+			tasks: [{
+				id: "6BE3C5B2201E9696"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Iron Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:iron_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -14.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["0B29223D36E7784F"]
+			description: ["Diamond Sophisticated Storage Chests can also be crafted by surrounding a Gold Sophisticated Storage Chest with Diamonds in a crafting table."]
+			disable_toast: true
+			id: "2A59B788436BA026"
+			optional: true
+			tasks: [{
+				id: "7358885D98A6368D"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Diamond Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:diamond_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -15.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["2AC31DB5ABC583EA"]
+			description: ["An Iron Sophisticated Storage Chest can be upgraded to a Gold Sophisticated Storage Chest without having to move it simply by using one of these upgrades on it."]
+			disable_toast: true
+			id: "0D3A8D017ECDDC0B"
+			optional: true
+			tasks: [{
+				id: "759E08E0CCAF8C23"
+				item: "sophisticatedstorage:iron_to_gold_tier_upgrade"
+				type: "item"
+			}]
+			x: -15.5d
+			y: -6.5d
+		}
+		{
+			dependencies: ["0D3A8D017ECDDC0B"]
+			description: ["Gold Sophisticated Storage Chests can also be crafted by surrounding an Iron Sophisticated Storage Chest with Gold Ingots in a crafting table."]
+			disable_toast: true
+			id: "57C94DB6868CC7E0"
+			optional: true
+			tasks: [{
+				id: "6D53AE4402DA5D3B"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Gold Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:gold_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -17.0d
+			y: -6.5d
+		}
+		{
+			dependencies: ["57C94DB6868CC7E0"]
+			description: ["A Gold Sophisticated Storage Chest can be upgraded to a Diamond Sophisticated Storage Chest without having to move it simply by using one of these upgrades on it."]
+			disable_toast: true
+			id: "0B29223D36E7784F"
+			optional: true
+			tasks: [{
+				id: "69DFC8A85670F2FB"
+				item: "sophisticatedstorage:gold_to_diamond_tier_upgrade"
+				type: "item"
+			}]
+			x: -17.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["2A59B788436BA026"]
+			description: ["A Diamond Sophisticated Storage Chest can be upgraded to a Netherite Sophisticated Storage Chest without having to move it simply by using one of these upgrades on it."]
+			disable_toast: true
+			id: "6C078D761856F799"
+			optional: true
+			tasks: [{
+				id: "744795D5AB66F27E"
+				item: "sophisticatedstorage:diamond_to_netherite_tier_upgrade"
+				type: "item"
+			}]
+			x: -14.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["6C078D761856F799"]
+			description: ["A Netherite Sophisticated Storage Chest can be crafted from a Diamond Sophisticated Storage Chest and a netherite ingot  in a crafting table."]
+			disable_toast: true
+			id: "5DCB6DF90CEFB86E"
+			optional: true
+			tasks: [{
+				id: "2982B7F1BBAFFE83"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						display: {
+							Name: "{\"text\":\"Any Sophisticated Storage Netherite Chest\"}"
+						}
+						items: [
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "birch"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "mangrove"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "warped"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "spruce"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "dark_oak"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "acacia"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "crimson"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									woodType: "jungle"
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 16383998
+									mainColor: 16383998
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 16351261
+									mainColor: 16351261
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 13061821
+									mainColor: 13061821
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 3847130
+									mainColor: 3847130
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 16701501
+									mainColor: 16701501
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 8439583
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 15961002
+									mainColor: 15961002
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 4673362
+									mainColor: 4673362
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 10329495
+									mainColor: 10329495
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 1481884
+									mainColor: 1481884
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8991416
+									mainColor: 8991416
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 3949738
+									mainColor: 3949738
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8606770
+									mainColor: 8606770
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 6192150
+									mainColor: 6192150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 11546150
+									mainColor: 11546150
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 1908001
+									mainColor: 1908001
+								}
+							}
+							{
+								Count: 1b
+								id: "sophisticatedstorage:netherite_chest"
+								tag: {
+									accentColor: 8439583
+									mainColor: 16701501
+								}
+							}
+						]
+					}
+				}
+				type: "item"
+			}]
+			x: -15.5d
+			y: -3.5d
+		}
+		{
+			description: ["Before upgrades, a 1x1 drawer has a base storage value of 2048, which means it can hold up to 2048 of one type of item."]
+			id: "25F528C808746B34"
+			optional: true
+			tasks: [{
+				id: "512167B1A5797337"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "storagedrawers:full_drawers_1"
+					}
+				}
+				title: "Any Full Size 1x1 Drawer"
+				type: "item"
+			}]
+			title: "Full Size 1x1 Drawers"
+			x: -11.0d
+			y: -9.5d
+		}
+		{
+			description: ["Before upgrades, a 1x2 drawer has a base storage value of 1024, which means it can hold up to 1024 of each of two types of item in its two drawers."]
+			id: "5474572A4A105DA0"
+			optional: true
+			tasks: [{
+				id: "38FFB6FB2C9EDA51"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "storagedrawers:full_drawers_2"
+					}
+				}
+				title: "Any Full Size 1x2 Drawer"
+				type: "item"
+			}]
+			title: "Full Size 1x2 Drawers"
+			x: -11.0d
+			y: -8.5d
+		}
+		{
+			description: ["Before upgrades, a 2x2 drawer has a base storage value of 512, which means it can hold up to 512 of each of four types of item in its four drawers."]
+			id: "1D2256EED95CE6CB"
+			optional: true
+			tasks: [{
+				id: "581FE8D8AB5AB4DF"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "storagedrawers:full_drawers_4"
+					}
+				}
+				title: "Any Full Size 2x2 Drawer"
+				type: "item"
+			}]
+			title: "Full Size 2x2 Drawers"
+			x: -11.0d
+			y: -7.5d
+		}
+		{
+			description: [
+				"Framed drawers work exactly the same as their plain wood counterparts, but allow for customisation of appearance to fit in better with your base design."
+				""
+				"To use a framed drawer, place 3 blocks of the materials you would like to use in the drawer construction into a crafting grid in a 2x2 arrangement with the Framed Drawer in the bottom right slot of the 2x2 arrangement."
+				""
+				"The top left block will be used for the back and sides, the top right will be used for the edges/frame, and the bottom left block will be used for the drawer front."
+				""
+				"{image:kubejs:textures/quests/framed_drawer_crafting.png width:200 height:100 align:1}"
+			]
+			id: "56658D95108D7C3B"
+			optional: true
+			tasks: [{
+				id: "6803089632855519"
+				item: "framedcompactdrawers:framed_full_one"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -5.5d
+		}
+		{
+			description: ["Framed drawers work exactly the same as their plain wood counterparts, but allow for customisation of appearance to fit in better with your base design. For a description of how this works, see the entry for the 1x1 Framed Drawer."]
+			id: "3CA9BEDD18E77D5A"
+			optional: true
+			tasks: [{
+				id: "651303A3B00AE379"
+				item: "framedcompactdrawers:framed_full_two"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -4.5d
+		}
+		{
+			description: ["Framed drawers work exactly the same as their plain wood counterparts, but allow for customisation of appearance to fit in better with your base design. For a description of how this works, see the entry for the 1x1 Framed Drawer."]
+			id: "0B8F2187A32388C0"
+			optional: true
+			tasks: [{
+				id: "704B4AFBF0FF29FF"
+				item: "framedcompactdrawers:framed_full_four"
+				type: "item"
+			}]
+			x: -11.0d
+			y: -3.5d
+		}
+		{
+			description: [
+				"The Compacting Drawer automatically compresses items that can be compressed or decompressed in a crafting grid. For example, if you place an iron block in the top drawer slot (the highest compression drawer), then it will automatically show the Iron Ingots and Iron Nuggets."
+				""
+				"The Compacting Drawer will hold up to 8192 of the highest compressed item before upgrades!"
+			]
+			id: "0495227FC8A82808"
+			optional: true
+			tasks: [{
+				id: "148FACD2FDD06426"
+				item: "storagedrawers:compacting_drawers_3"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -9.0d
+		}
+		{
+			description: [
+				"The Drawer Controller allows you to interact with connected drawers up to 12 blocks away, providing an easy drop-off point for any items for which a drawer is already assigned. It can be piped into, and your ME system can even use an ME Storage Bus on it to use it (and hence all connected drawers) as external storage. Drawer controllers can share drawers, but cannot share Controller Slaves."
+				""
+				"Drawer Trim can be used to connect drawers without needing to have a drawer in place. This can be useful when 'turning corners' with your drawer arrays."
+			]
+			id: "20CD42FBD0FCF182"
+			optional: true
+			tasks: [{
+				id: "75AC40E11ADE7AE0"
+				item: "storagedrawers:controller"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -8.0d
+		}
+		{
+			description: [
+				"A Drawer Controller Slave can be used to mimic a drawer controller anywhere in the drawer network while still in the same network of storage drawers as the controller (remember, there can be only one Drawer Controller in a network of drawers). This allows for better automation options (e.g. hiding the cables connecting your ME system to the storage drawers)"
+				""
+				"Unlike drawers, slaves cannot be shared across Drawer Controller Networks, so you must ensure that, when placing them, there is no overlap."
+			]
+			id: "7502F4864B72BF9F"
+			optional: true
+			tasks: [{
+				id: "67433F7D8B81D9BC"
+				item: "storagedrawers:controller_slave"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -7.0d
+		}
+		{
+			description: ["Framed Compacting Drawers work exactly the same as their plain counterpart, but allows for customisation of appearance to fit in better with your base design. For a description of how this works, see the entry for the 1x1 Framed Drawer."]
+			id: "27FD652D4C45B6EB"
+			optional: true
+			tasks: [{
+				id: "3F6E227E6AD00AD0"
+				item: "framedcompactdrawers:framed_compact_drawer"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -5.0d
+		}
+		{
+			description: ["Framed Drawer Controllers work exactly the same as their plain counterparts, but allow for customisation of appearance to fit in better with your base design. For a description of how this works, see the entry for the 1x1 Framed Drawer."]
+			id: "782F4E9BE52EF131"
+			optional: true
+			tasks: [{
+				id: "432CB30538511960"
+				item: "framedcompactdrawers:framed_drawer_controller"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -4.0d
+		}
+		{
+			description: ["Framed Controller Slaves work exactly the same as their plain counterparts, but allow for customisation of appearance to fit in better with your base design. For a description of how this works, see the entry for the 1x1 Framed Drawer."]
+			id: "2A17587B14B14AFA"
+			optional: true
+			tasks: [{
+				id: "0C12B5EEFEAD4F6C"
+				item: "framedcompactdrawers:framed_slave"
+				type: "item"
+			}]
+			x: -10.0d
+			y: -3.0d
+		}
+		{
+			description: [
+				"A Drawer Key can be used on a Storage Drawer to lock it to a specific item (or unlock it to allow another item type to be used in that drawer). This can be very useful in an array of drawers where items are being piped in via a Drawer Controller, or when hooked up to an ME system. Instead of empty drawers being taken over for storing other things, this allows you to reserve drawers for a specific purpose."
+				""
+				"If a drawer is locked without anything in it, you can still manually place an item into it, at which point the drawer will be locked to that item type."
+				""
+				"You can lock / unlock an entire network of drawers by using the key on the Drawer Controller."
+			]
+			id: "2DC352147FF24667"
+			optional: true
+			tasks: [{
+				id: "08C057A5A64BEDC0"
+				item: "storagedrawers:drawer_key"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -9.5d
+		}
+		{
+			description: ["The Quantify Key will make any drawer it is used on display the quantity of items held in each drawer. It's not recommended that you use this on every drawer, it is useful if used on drawers when you need a little notice when things are running low or getting too full."]
+			id: "731AE238CEBDC740"
+			optional: true
+			tasks: [{
+				id: "1D2D0FA5C1C566D9"
+				item: "storagedrawers:quantify_key"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -9.0d
+		}
+		{
+			description: [
+				"The great thing about Storage Drawers is that they can have up to 7 different upgrades applied to them at once. To make an upgrade, you will need an upgrade base."
+				""
+				"Once you have an upgrade, you can apply it to a drawer either by using it directly on the drawer, or by opening up the drawer interface by sneaking and using the drawer with an empty hand (which is also how you can remove upgrades that aren't being used)"
+			]
+			id: "0EB52E9B35FF03B4"
+			optional: true
+			tasks: [{
+				id: "192A61E80C55DE97"
+				item: "storagedrawers:upgrade_template"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -7.0d
+		}
+		{
+			description: [
+				"This upgrade actually downgrades the drawer's base storage size to a single stack."
+				""
+				"At first you might wonder why you might ever want this, but there are situations where you might have a very expensive automated process running, but you do not need thousands of the resulting items. By downgrading the drawer size to single stack, you can allow that system to back up sooner when the drawer fills up, and thereby limit the amount of expensive processing that occurs."
+			]
+			id: "6F98522124FA09E2"
+			optional: true
+			tasks: [{
+				id: "6E0706DF9295A5C7"
+				item: "storagedrawers:one_stack_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -4.0d
+		}
+		{
+			description: [
+				"Increases storage by 2x the drawer's base storage value (additive)."
+				""
+				"For example, on a 1x1 storage drawer which has a base storage size of 2k items, each one of these upgrades added would add an extra 4k items to the maximum that the drawer can store, resulting in a drawer that can store 6k total. Adding another one of these would add another 4k items, giving 10k total, and so on."
+			]
+			id: "3075EBA8A71F49C0"
+			optional: true
+			tasks: [{
+				id: "3BD3B2AEF9990DAE"
+				item: "storagedrawers:obsidian_storage_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -3.5d
+		}
+		{
+			description: [
+				"Increases storage by 4 times base storage value (additive)."
+				""
+				"For example, on a 2x2 storage drawer which has a base storage size of 512 items per drawer, each one of these upgrades added would add an extra 2k items per drawer to the maximum that they can store, resulting in a drawers that can store 2.5k items each. Adding another one of these would add another 2k items per drawer, giving 4.5k per drawer, and so on."
+			]
+			id: "5ED61530B665CBE6"
+			optional: true
+			tasks: [{
+				id: "0EB53055D6542B55"
+				item: "storagedrawers:iron_storage_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -3.0d
+		}
+		{
+			description: ["Increases storage by 8x the drawer's base storage value (additive)."]
+			id: "2AF07D1E245F45F6"
+			optional: true
+			tasks: [{
+				id: "4557D7F2104E1717"
+				item: "storagedrawers:gold_storage_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -2.5d
+		}
+		{
+			description: ["Increases storage by 16x the drawer's base storage value (additive)."]
+			id: "2481DA40ADAD78B6"
+			optional: true
+			tasks: [{
+				id: "123553470BD2E714"
+				item: "storagedrawers:diamond_storage_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -2.0d
+		}
+		{
+			description: ["Increases storage by 32x the drawer's base storage value (additive)."]
+			id: "3E871FA598551EF6"
+			optional: true
+			tasks: [{
+				id: "0B7CDEB46485CD73"
+				item: "storagedrawers:emerald_storage_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -1.5d
+		}
+		{
+			description: [
+				"The drawer will destroy any excess items when deposited into it."
+				""
+				"This can be useful in situations where a system is in place where items keep coming in, but you don't need to keep them all. For example, there might be a secondary output from an automated process where you only want the main process to back up when another drawer (without this upgrade) is full, but you don't want the secondary item to back up and bring the process to a stop, so the secondary output is put into a drawer with this upgrade on it, which means any excess just gets destroyed and the process can continue filling up the main drawer."
+				""
+				"Another good use case is on Mob Drops from a mob farm - you definitely don't want tons of items collecting on the ground, and you don't want to have to store them all, so store some in a drawer, and let the excess be destroyed by this upgrade."
+			]
+			id: "505201DC593A0870"
+			optional: true
+			tasks: [{
+				id: "2168E20466AE38A9"
+				item: "storagedrawers:void_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -4.5d
+		}
+		{
+			description: ["Illuminates drawer labels in the dark."]
+			id: "7E734EF822FFF44C"
+			optional: true
+			tasks: [{
+				id: "04653DDEA7857339"
+				item: "storagedrawers:illumination_upgrade"
+				type: "item"
+			}]
+			x: -8.5d
+			y: -6.0d
+		}
+		{
+			description: ["Drawer emits a redstone signal for the total combined storage across all drawer slots."]
+			id: "30237C22E955F9A1"
+			optional: true
+			tasks: [{
+				id: "2A2A885A35ED8487"
+				item: "storagedrawers:redstone_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -6.5d
+		}
+		{
+			description: ["Drawer emits a signal for the most full drawer slot."]
+			id: "614269F190D376AE"
+			optional: true
+			tasks: [{
+				id: "4F1C1B4A07D24502"
+				item: "storagedrawers:max_redstone_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -7.5d
+		}
+		{
+			description: ["Drawer emits a redstone signal for the least full drawer slot."]
+			id: "3887B17AC0A88999"
+			optional: true
+			tasks: [{
+				id: "7CB5B4B46C25FB6D"
+				item: "storagedrawers:min_redstone_upgrade"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -5.5d
+		}
+		{
+			description: [
+				"All Ender Chests sharing the same channel (set by applying dyes to the buttons on top, or in a crafting grid) have access to the same chest inventory (27 stacks - 3 rows of 9 stacks - same size as a standard Chest)"
+				""
+				"Essentially what this means is that if you have two Ender Chests with the same channel and fill one with Cobblestone, you can extract that Cobblestone from the other Ender Chest - this works cross-dimensionally as well as over any distance!"
+				""
+				"p.s. If you're paranoid about other people in other dimensions nicking your stuff, you can make your Ender Chests private by applying a Diamond to the latch on the Ender Chest. Note that you should be careful here - if there is already something in the chest, that's on the public channel - so applying a diamond will change to a private channel, but not keep the contents!"
+			]
+			disable_toast: true
+			id: "749585308C91E2F8"
+			optional: true
+			tasks: [{
+				id: "4C1C0FA0BC49FA2F"
+				item: "enderstorage:ender_chest"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -9.5d
+		}
+		{
+			dependencies: ["2A2991C7A49282DB"]
+			description: [
+				"A Bin is a block used to store large quantities of a single type of item."
+				""
+				"The Basic Bin has a capacity of 4,096 items."
+			]
+			id: "7AF60E5B56810596"
+			tasks: [{
+				id: "6ACE24AF25F08A66"
+				item: "mekanism:basic_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -7.5d
+		}
+		{
+			dependencies: [
+				"7AF60E5B56810596"
+				"5095107E4E8235DE"
+			]
+			description: [
+				"A Bin is a block used to store large quantities of a single type of item."
+				""
+				"An Advanced Bin has a capacity of 8,192 items."
+			]
+			id: "1F77564BFE7347DB"
+			tasks: [{
+				id: "4B4E129C2346982E"
+				item: "mekanism:advanced_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"1F77564BFE7347DB"
+				"61C0AA54A152FCAA"
+			]
+			description: [
+				"A Bin is a block used to store large quantities of a single type of item."
+				""
+				"An Elite Bin has a capacity of 32,768 items."
+			]
+			id: "58D10C4F363CCEC9"
+			tasks: [{
+				id: "3BB18E82D033E6AE"
+				item: "mekanism:elite_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -4.5d
+		}
+		{
+			dependencies: [
+				"58D10C4F363CCEC9"
+				"10E2C4E20F68BED8"
+			]
+			description: [
+				"A Bin is a block used to store large quantities of a single type of item."
+				""
+				"An Ultimate Bin has a capacity of 262,144 items."
+			]
+			id: "6C8D88A9AD8264B8"
+			tasks: [{
+				id: "56B3C098FE5BD9A4"
+				item: "mekanism:ultimate_bin"
+				type: "item"
+			}]
+			x: -4.5d
+			y: -3.0d
+		}
+		{
+			description: ["The Concealment Key will stop your storage drawer from showing what's inside it. This is useful if you want to hide what a drawer contains - however, in some situations where there are lots and lots of drawers, displaying their contents can interfere with the speed at which you perceive reality (the Science Division has termed this phenomenon 'lag'), and therefore in such situations it might be beneficial to use a concealment key to remove some of those negative effects."]
+			id: "2C99514A8166587C"
+			tasks: [{
+				id: "6C2E26D1FFE1F303"
+				item: "storagedrawers:shroud_key"
+				type: "item"
+			}]
+			x: -7.5d
+			y: -10.0d
+		}
+	]
+	title: "Chests and Drawers"
+}

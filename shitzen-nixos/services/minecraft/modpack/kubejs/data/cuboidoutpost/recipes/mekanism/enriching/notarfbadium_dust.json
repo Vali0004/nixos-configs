@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:enriching",
+  "input":{
+    "ingredient":{
+      "item":"cuboidmod:notarfbadium_chunk"
+    }
+  },
+  "output":{
+    "count":2,"item":"cuboidmod:notarfbadium_dust"
+  }
+}

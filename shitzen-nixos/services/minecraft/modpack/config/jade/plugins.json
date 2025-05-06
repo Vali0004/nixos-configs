@@ -4,9 +4,10 @@
     "furnace": true,
     "harvest_tool.show_unbreakable": false,
     "animal_owner": true,
+    "animal_owner.fetch_names": true,
     "harvest_tool.effective_tool": true,
-    "item_storage.normal_amount": 9,
     "item_storage": true,
+    "item_storage.normal_amount": 9,
     "harvest_tool": true,
     "armor_stand": true,
     "fluid_storage.detailed": false,
@@ -50,8 +51,11 @@
     "painting": true,
     "chiseled_bookshelf": true
   },
-  "ars_nouveau": {
-    "mob_jar": true
+  "tombstone": {
+    "graves": true
+  },
+  "immersiveengineering": {
+    "multiblock_icon": true
   },
   "jade": {
     "coordinates.rel": false,
@@ -61,7 +65,95 @@
     "registry_name": "OFF",
     "mod_name": true
   },
+  "mcjtylib": {
+    "jadeaddons": true
+  },
+  "lootr": {
+    "info": true
+  },
+  "refinedcooking": {
+    "kitchen_access_point": true,
+    "kitchen_station": true
+  },
+  "ae2": {
+    "part_icon": true,
+    "charger": true,
+    "debug": true,
+    "part_tooltip": true,
+    "grid_node_state": true,
+    "pattern_provider": true,
+    "part_mod_name": true,
+    "power_storage": true,
+    "crafting_monitor": true,
+    "part_name": true
+  },
+  "extendedcrafting": {
+    "elite_auto_table": true,
+    "ender_crafter": true,
+    "basic_auto_table": true,
+    "flux_crafter": true,
+    "advanced_table": true,
+    "auto_ender_crafter": true,
+    "ultimate_table": true,
+    "ultimate_auto_table": true,
+    "elite_table": true,
+    "basic_table": true,
+    "crafting_core": true,
+    "advanced_auto_table": true,
+    "compressor": true
+  },
+  "jadeaddons": {
+    "equipment_requirement": ""
+  },
+  "mekanism": {
+    "infuse_type": true,
+    "gas": true,
+    "remove_builtin": true,
+    "pigment": true,
+    "fluid": true,
+    "slurry": true,
+    "energy": true,
+    "tooltip_renderer": true
+  },
+  "exnihilosequentia": {
+    "barrel": true,
+    "crucible": true,
+    "sieve": true,
+    "infesting_leaves": true
+  },
+  "pipez": {
+    "pipe": true
+  },
+  "appliedcooking": {
+    "kitchen_station": true
+  },
+  "supplementaries": {
+    "hat_stand": true
+  },
+  "create": {
+    "filter": true,
+    "backtank_capacity": true,
+    "goggles.requires_goggles": true,
+    "goggles": false,
+    "blaze_burner": true,
+    "exact_block": true,
+    "crafting_blueprint": true,
+    "goggles.detailed": false,
+    "placard": true
+  },
   "waystones": {
     "waystone": true
+  },
+  "cookingforblockheads": {
+    "fridge": true,
+    "oven": true,
+    "sink": true,
+    "milk_jar": true,
+    "toaster": true
+  },
+  "storagedrawers": {
+    "display.stacklimit": true,
+    "display.content": true,
+    "display.status": true
   }
 }

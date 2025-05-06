@@ -1,0 +1,895 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "industrial_forbidding"
+	group: "4785B5C7E26FA669"
+	id: "04D54A9ECAA72ADA"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.00.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.00.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.00.d.02}"
+			]
+			disable_toast: true
+			id: "76732FBE9A8C66D9"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "354A9521767970E2"
+				item: "industrialforegoing:plastic"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.00}"
+			x: 0.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.01.d.00}"]
+			id: "77411B682D02F4E2"
+			tasks: [{
+				id: "73F383D5EF544132"
+				item: "industrialforegoing:block_breaker"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.01}"
+			x: -1.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.02.d.00}"]
+			disable_toast: true
+			id: "533B5517A1ECB654"
+			tasks: [{
+				id: "33DAC19ADC3F8E3E"
+				item: "industrialforegoing:block_placer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.02}"
+			x: -2.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.03.d.00}"]
+			id: "067FBABC0776FE74"
+			tasks: [{
+				id: "5EE324FC5BE88F1C"
+				item: "industrialforegoing:fluid_collector"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.03}"
+			x: -1.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.04.d.00}"]
+			id: "029622AFBFB99C6A"
+			tasks: [{
+				id: "1F8DF6C4155E14A6"
+				item: "industrialforegoing:fluid_placer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.04}"
+			x: 0.0d
+			y: -4.5d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.04}"
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.05}"
+				"{cuboiddroid.quests.g.08.c.29.q.05.d.06}"
+			]
+			id: "6008564FC758C4C5"
+			tasks: [{
+				id: "0F5294A4A2E2B6D3"
+				item: "industrialforegoing:plant_sower"
+				type: "item"
+			}]
+			x: 0.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["6008564FC758C4C5"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.06.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.06.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.06.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.06.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.06.d.04}"
+			]
+			id: "018967A12D6042A1"
+			tasks: [{
+				id: "6AA5E198EA5A48A6"
+				item: "industrialforegoing:plant_gatherer"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["018967A12D6042A1"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.07.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.07.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.07.d.02}"
+			]
+			id: "293343406BD1BD8A"
+			tasks: [{
+				id: "0155F8C3235281DD"
+				item: "industrialforegoing:sludge_refiner"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 2.5d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.08.d.00}"]
+			disable_toast: true
+			id: "6A5678138716AF96"
+			tasks: [{
+				id: "207E6091E2182007"
+				item: "industrialforegoing:dye_mixer"
+				type: "item"
+			}]
+			x: 1.5d
+			y: -4.0d
+		}
+		{
+			disable_toast: true
+			id: "5569711F6E3BEA01"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "5C9F04CD8D7FA453"
+				item: "industrialforegoing:plastic"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.09}"
+			x: 7.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["5569711F6E3BEA01"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.04}"
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.05}"
+				"{cuboiddroid.quests.g.08.c.29.q.10.d.06}"
+			]
+			id: "7C271DDB34C7CF5D"
+			tasks: [{
+				id: "698FB17A791A7A67"
+				item: "industrialforegoing:animal_rancher"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.10}"
+			x: 9.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["5569711F6E3BEA01"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.11.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.11.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.11.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.11.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.11.d.04}"
+			]
+			id: "0204E4D9E6300101"
+			tasks: [{
+				id: "0781208B96AA98F0"
+				item: "industrialforegoing:animal_feeder"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.11}"
+			x: 7.0d
+			y: -4.5d
+		}
+		{
+			dependencies: ["5569711F6E3BEA01"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.12.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.12.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.12.d.02}"
+			]
+			id: "41F7D8A3A22F6F91"
+			tasks: [{
+				id: "3F188D251D3B45D6"
+				item: "industrialforegoing:animal_baby_separator"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.12}"
+			x: 5.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["5569711F6E3BEA01"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.13.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.13.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.13.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.13.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.13.d.04}"
+			]
+			id: "27651D4BF3C2A478"
+			subtitle: "{cuboiddroid.quests.g.08.c.29.q.13.sub}"
+			tasks: [{
+				id: "0C72BBE3D942B105"
+				item: "industrialforegoing:sewer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.13}"
+			x: 7.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["27651D4BF3C2A478"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.14.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.14.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.14.d.02}"
+			]
+			id: "51A474A57192808E"
+			tasks: [{
+				id: "4CE20F86A6827244"
+				item: "industrialforegoing:sewage_composter"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.14}"
+			x: 7.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["51A474A57192808E"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.15.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.15.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.15.d.02}"
+			]
+			id: "50F6022EB42C71BB"
+			rewards: [{
+				count: 8
+				id: "261C6792FB3F9080"
+				item: "industrialforegoing:fertilizer"
+				random_bonus: 8
+				type: "item"
+			}]
+			subtitle: "{cuboiddroid.quests.g.08.c.29.q.15.sub}"
+			tasks: [{
+				id: "49F82192D991ED78"
+				item: "industrialforegoing:fertilizer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.15}"
+			x: 7.0d
+			y: 2.5d
+		}
+		{
+			disable_toast: true
+			id: "3D8ADEC8E08C0C88"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "262D4DB16C3B6DF9"
+				item: "industrialforegoing:machine_frame_simple"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.16}"
+			x: 14.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["76732FBE9A8C66D9"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.17.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.17.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.17.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.17.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.17.d.04}"
+			]
+			disable_toast: true
+			id: "5D956852A7CA4CF2"
+			tasks: [{
+				id: "337195C66293BF35"
+				item: "industrialforegoing:dissolution_chamber"
+				type: "item"
+			}]
+			x: 2.0d
+			y: -2.5d
+		}
+		{
+			dependencies: [
+				"3D8ADEC8E08C0C88"
+				"50F6022EB42C71BB"
+			]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.04}"
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.05}"
+				"{cuboiddroid.quests.g.08.c.29.q.18.d.06}"
+			]
+			id: "08B0E7CCF4261CF4"
+			tasks: [{
+				id: "2340305BE6029D97"
+				item: "industrialforegoing:hydroponic_bed"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.18}"
+			x: 14.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.19.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.19.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.19.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.19.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.19.d.04}"
+			]
+			id: "4680373A78B8F0F1"
+			subtitle: "{cuboiddroid.quests.g.08.c.29.q.19.sub}"
+			tasks: [{
+				id: "4DEF1FEC70804C0D"
+				item: "industrialforegoing:plant_fertilizer"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.19}"
+			x: 16.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.20.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.20.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.20.d.02}"
+			]
+			id: "06856E9683A0E4DD"
+			tasks: [{
+				id: "1306E26A35735D05"
+				item: "industrialforegoing:marine_fisher"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.08.c.29.q.20}"
+			x: 12.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			dependency_requirement: "one_completed"
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.04}"
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.05}"
+				"{cuboiddroid.quests.g.08.c.29.q.21.d.06}"
+			]
+			disable_toast: true
+			id: "1AD240B7CC719585"
+			tasks: [{
+				id: "550F655F0D522776"
+				item: "industrialforegoing:laser_drill"
+				type: "item"
+			}]
+			x: 14.0d
+			y: -4.5d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.22.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.22.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.22.d.02}"
+			]
+			id: "1B862F3D13008CAC"
+			tasks: [{
+				id: "2C712A68531FFE92"
+				item: "industrialforegoing:mob_detector"
+				type: "item"
+			}]
+			x: 12.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.23.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.23.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.23.d.02}"
+			]
+			id: "0CBF45A8A7A7C44B"
+			tasks: [{
+				id: "641F6E26078349CB"
+				item: "industrialforegoing:fermentation_station"
+				type: "item"
+			}]
+			x: 15.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.24.d.00}"]
+			disable_toast: true
+			hide_dependency_lines: true
+			id: "2996F0F6C75C18CE"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "25332D071220CA22"
+				item: "industrialforegoing:machine_frame_advanced"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.25.d.00}"]
+			id: "014B7AC405EA2A18"
+			tasks: [{
+				id: "6B0119B2FFC628B2"
+				item: "industrialforegoing:fluid_sieving_machine"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.26.d.00}"]
+			id: "43C07C9C8F81B664"
+			tasks: [{
+				id: "1E0494FFD9F5477C"
+				item: "industrialforegoing:infinity_charger"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.27.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.27.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.27.d.02}"
+			]
+			id: "6E8F6A093FCECB82"
+			tasks: [{
+				id: "23E845BDB7C0145D"
+				item: "industrialforegoing:potion_brewer"
+				type: "item"
+			}]
+			x: -2.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.28.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.28.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.28.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.28.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.28.d.04}"
+			]
+			disable_toast: true
+			id: "4DFA2CEA803CD973"
+			tasks: [{
+				id: "38855F4C0A352530"
+				item: "industrialforegoing:fluid_laser_base"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.29.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.29.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.29.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.29.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.29.d.04}"
+			]
+			disable_toast: true
+			id: "6C39F9EE5CD29A70"
+			tasks: [{
+				id: "16B46A186FD3D742"
+				item: "industrialforegoing:stasis_chamber"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 9.5d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.30.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.30.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.30.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.30.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.30.d.04}"
+			]
+			id: "50A22A3ED8A775A3"
+			tasks: [{
+				id: "02D876C87AAF92A7"
+				item: "industrialforegoing:material_stonework_factory"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.31.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.31.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.31.d.02}"
+				"{cuboiddroid.quests.g.08.c.29.q.31.d.03}"
+				"{cuboiddroid.quests.g.08.c.29.q.31.d.04}"
+			]
+			id: "4D4AD4D62B9AB65A"
+			tasks: [{
+				id: "2A86A5FB4F5D9A0B"
+				item: "industrialforegoing:ore_laser_base"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.32.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.32.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.32.d.02}"
+			]
+			id: "265AB2D17A6FA8F2"
+			tasks: [{
+				id: "1EB59DFDA8EAF6FB"
+				item: "industrialforegoing:washing_factory"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 5.5d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.33.d.00}"]
+			disable_toast: true
+			hide_dependency_lines: true
+			id: "531C316189E908F5"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "65A80ACBDA1C1CC0"
+				item: "industrialforegoing:machine_frame_supreme"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["531C316189E908F5"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.34.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.34.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.34.d.02}"
+			]
+			disable_toast: true
+			id: "2757A23A4100A52B"
+			tasks: [{
+				id: "128F824F44BE2288"
+				item: "industrialforegoing:wither_builder"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 5.5d
+		}
+		{
+			dependencies: ["531C316189E908F5"]
+			description: ["{cuboiddroid.quests.g.08.c.29.q.35.d.00}"]
+			id: "09EC26A89D4CE5E0"
+			tasks: [{
+				id: "4189035CDC7577B9"
+				item: "industrialforegoing:black_hole_controller"
+				type: "item"
+			}]
+			x: 7.0d
+			y: 9.5d
+		}
+		{
+			dependencies: ["531C316189E908F5"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.36.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.36.d.01}"
+				"{cuboiddroid.quests.g.08.c.29.q.36.d.02}"
+			]
+			id: "087B1B24B1CEB64D"
+			tasks: [{
+				id: "2F7B8F7127BCED5B"
+				item: "industrialforegoing:mycelial_reactor"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 7.5d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.37.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.37.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "1F13871D302C247E"
+			tasks: [{
+				id: "1E545998D95A04E0"
+				item: "industrialforegoing:mycelial_furnace"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.38.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.38.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "25119080A30B87B6"
+			tasks: [{
+				id: "4ED5AAEF913A7351"
+				item: "industrialforegoing:mycelial_slimey"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.39.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.39.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "084642F7108A86BD"
+			tasks: [{
+				id: "36622266BFB432EB"
+				item: "industrialforegoing:mycelial_culinary"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.40.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.40.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "4B0DA7311482E35D"
+			tasks: [{
+				id: "530B4BCA8799F8D9"
+				item: "industrialforegoing:mycelial_potion"
+				type: "item"
+			}]
+			x: 10.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.41.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.41.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "40FA1054CF0F4B36"
+			tasks: [{
+				id: "593D8EAA6CFF913A"
+				item: "industrialforegoing:mycelial_disenchantment"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.42.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.42.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "3F5FA6CBC1DC4734"
+			tasks: [{
+				id: "652FD401F48543C8"
+				item: "industrialforegoing:mycelial_ender"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.43.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.43.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "77C84C932F3529E0"
+			tasks: [{
+				id: "0BEE696D88056496"
+				item: "industrialforegoing:mycelial_explosive"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.44.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.44.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "5BE659FCA09580FD"
+			tasks: [{
+				id: "24B5D65D9111D56A"
+				item: "industrialforegoing:mycelial_frosty"
+				type: "item"
+			}]
+			x: 11.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["531C316189E908F5"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.45.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.45.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "4E258DA8B1DB307F"
+			tasks: [{
+				id: "4FCDFA43CE2F3E6A"
+				item: "industrialforegoing:mycelial_halitosis"
+				type: "item"
+			}]
+			x: 12.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.46.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.46.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "2EAAACD86EFD1A78"
+			tasks: [{
+				id: "27AB4BC9F32FA2AA"
+				item: "industrialforegoing:mycelial_magma"
+				type: "item"
+			}]
+			x: 12.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["3D8ADEC8E08C0C88"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.47.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.47.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "7A70D3BA58ED438B"
+			tasks: [{
+				id: "5DDE7C4BF08D73FF"
+				item: "industrialforegoing:mycelial_pink"
+				type: "item"
+			}]
+			x: 12.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["531C316189E908F5"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.48.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.48.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "186527276B05032F"
+			tasks: [{
+				id: "69CB3425D6B57F95"
+				item: "industrialforegoing:mycelial_netherstar"
+				type: "item"
+			}]
+			x: 12.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.49.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.49.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "305540D9B90FCD24"
+			tasks: [{
+				id: "12338FAF3AA9ABC2"
+				item: "industrialforegoing:mycelial_death"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.50.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.50.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "7D3A0BDDB67E55C8"
+			tasks: [{
+				id: "4E6D56822EF3BA66"
+				item: "industrialforegoing:mycelial_rocket"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["2996F0F6C75C18CE"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.51.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.51.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "711CBBA866A34A57"
+			tasks: [{
+				id: "4CB5AF005FC23EBB"
+				item: "industrialforegoing:mycelial_crimed"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["531C316189E908F5"]
+			description: [
+				"{cuboiddroid.quests.g.08.c.29.q.52.d.00}"
+				"{cuboiddroid.quests.g.08.c.29.q.52.d.01}"
+			]
+			hide_dependency_lines: true
+			id: "154A6BCBB48DF0D2"
+			tasks: [{
+				id: "23B95FBB4BBEC468"
+				item: "industrialforegoing:mycelial_meatallurgic"
+				type: "item"
+			}]
+			x: 13.5d
+			y: 9.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.08.c.29}"
+}

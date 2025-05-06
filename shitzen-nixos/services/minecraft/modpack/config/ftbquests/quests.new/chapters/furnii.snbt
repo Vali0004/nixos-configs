@@ -1,0 +1,443 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "furnii"
+	group: "4F582DBBFACF1F69"
+	icon: "ironfurnaces:million_furnace"
+	id: "428ED2EA3F42160E"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["164AA3AA7EEDB5DC"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.03}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.04}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.05}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.06}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.07}"
+				"{cuboiddroid.quests.g.02.c.18.q.00.d.08}"
+			]
+			id: "6F523723CEDC4C89"
+			shape: "gear"
+			tasks: [
+				{
+					id: "00BEF0EFD5583F21"
+					item: "minecraft:iron_ingot"
+					type: "item"
+				}
+				{
+					id: "39EF1551D09C6EAE"
+					item: "minecraft:redstone"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.02.c.18.q.00}"
+			x: -1.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6F523723CEDC4C89"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.01.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.01.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.01.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.01.d.03}"
+				"{cuboiddroid.quests.g.02.c.18.q.01.d.04}"
+			]
+			id: "3480BA37EF1BC9FB"
+			shape: "square"
+			tasks: [{
+				id: "50433AE0BE19BD40"
+				item: "ironfurnaces:iron_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.01}"
+			x: 1.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["6F523723CEDC4C89"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.02.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.02.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.02.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.02.d.03}"
+				"{cuboiddroid.quests.g.02.c.18.q.02.d.04}"
+			]
+			id: "6B976D6C51C88594"
+			optional: true
+			tasks: [{
+				id: "149F91D7A88BFF68"
+				item: "ironfurnaces:copper_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.02}"
+			x: 0.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["6B976D6C51C88594"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.03.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.03.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.03.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.03.d.03}"
+				"{cuboiddroid.quests.g.02.c.18.q.03.d.04}"
+			]
+			id: "06BE9F026B6857AF"
+			optional: true
+			tasks: [{
+				id: "72BDFE47F5613337"
+				item: "ironfurnaces:silver_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.03}"
+			x: 2.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["3480BA37EF1BC9FB"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.04.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.04.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.04.d.02}"
+			]
+			id: "0888F8C192976BB9"
+			shape: "square"
+			tasks: [{
+				id: "41DA67ADFC778B91"
+				item: "ironfurnaces:gold_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.04}"
+			x: 3.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["0888F8C192976BB9"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.05.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.05.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.05.d.02}"
+			]
+			id: "1A4B501C3A7BBB37"
+			rewards: [{
+				id: "46728B93ADC1B2D2"
+				item: "ironfurnaces:upgrade_diamond"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "4EF1D72D52C2ED8F"
+				item: "ironfurnaces:diamond_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.05}"
+			x: 4.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1A4B501C3A7BBB37"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.06.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.06.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.06.d.02}"
+			]
+			id: "16046F3BCF2AE6D4"
+			rewards: [{
+				id: "390473B90671403C"
+				item: "ironfurnaces:upgrade_emerald"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "46F8F76341F1F1CA"
+				item: "ironfurnaces:emerald_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.06}"
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: [
+				"16046F3BCF2AE6D4"
+				"19E59602755AA85F"
+			]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.07.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.07.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.07.d.02}"
+			]
+			id: "37E89D33460536FD"
+			rewards: [
+				{
+					id: "060C441F64E2BED9"
+					item: "ironfurnaces:upgrade_obsidian"
+					type: "item"
+				}
+				{
+					id: "0A92B0871E6F8123"
+					item: "ironfurnaces:upgrade_obsidian2"
+					type: "item"
+				}
+			]
+			shape: "square"
+			tasks: [{
+				id: "6C5D96B25CFC90A0"
+				item: "ironfurnaces:obsidian_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.07}"
+			x: 7.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["1A4B501C3A7BBB37"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.08.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.08.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.08.d.02}"
+			]
+			id: "32039F7DDE84BDCE"
+			rewards: [{
+				id: "37005624C9315AA2"
+				item: "ironfurnaces:upgrade_crystal"
+				type: "item"
+			}]
+			tasks: [{
+				id: "041B112AF245CC17"
+				item: "ironfurnaces:crystal_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.08}"
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["37E89D33460536FD"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.09.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.09.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.09.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.09.d.03}"
+			]
+			id: "248E99BD7D655952"
+			rewards: [{
+				id: "4FE675B2D13B9A9A"
+				item: "ironfurnaces:upgrade_netherite"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "29EC55E45E4D89DB"
+				item: "ironfurnaces:netherite_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.09}"
+			x: 9.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["37E89D33460536FD"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.03}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.04}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.05}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.06}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.07}"
+				"{cuboiddroid.quests.g.02.c.18.q.10.d.08}"
+			]
+			id: "1D8895C4AF9C916D"
+			rewards: [{
+				count: 8
+				id: "14596729BA46F120"
+				item: "ironfurnaces:rainbow_plating"
+				type: "item"
+			}]
+			tasks: [{
+				count: 8L
+				id: "0D2C1653C40C8715"
+				item: "ironfurnaces:rainbow_plating"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.10}"
+			x: 10.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["248E99BD7D655952"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.11.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.11.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.11.d.02}"
+				"{cuboiddroid.quests.g.02.c.18.q.11.d.03}"
+				"{cuboiddroid.quests.g.02.c.18.q.11.d.04}"
+			]
+			id: "58400C24E1A5B14B"
+			rewards: [{
+				id: "11C3BCE68314B3DD"
+				item: "ironfurnaces:rainbow_core"
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "59727F13D36F6A8F"
+				item: "ironfurnaces:rainbow_core"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.11}"
+			x: 11.0d
+			y: 1.0d
+		}
+		{
+			dependencies: [
+				"58400C24E1A5B14B"
+				"1D8895C4AF9C916D"
+			]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.12.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.12.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.12.d.02}"
+			]
+			id: "44D9832C88B16755"
+			tasks: [{
+				id: "0625A695BA0B6BBE"
+				item: "ironfurnaces:million_furnace"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.12}"
+			x: 12.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["6F523723CEDC4C89"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.13.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.13.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.13.d.02}"
+			]
+			id: "796072D8AB53D130"
+			tasks: [{
+				id: "09F5608BC47B9A96"
+				item: "ironfurnaces:heater"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.13}"
+			x: -1.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["796072D8AB53D130"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.14.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.14.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.14.d.02}"
+			]
+			id: "37D2959298434CC9"
+			tasks: [{
+				id: "36D116FE06D4CA8F"
+				item: "ironfurnaces:item_heater"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.14}"
+			x: 0.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["37D2959298434CC9"]
+			description: ["{cuboiddroid.quests.g.02.c.18.q.15.d.00}"]
+			id: "5C68D0517708F745"
+			optional: true
+			tasks: [{
+				id: "6B4615ADA868FEB7"
+				item: "ironfurnaces:augment_blasting"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.15}"
+			x: 1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["37D2959298434CC9"]
+			description: ["{cuboiddroid.quests.g.02.c.18.q.16.d.00}"]
+			id: "022CC4243530B40D"
+			optional: true
+			tasks: [{
+				id: "4C67B0D134B078CB"
+				item: "ironfurnaces:augment_smoking"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.16}"
+			x: 1.5d
+			y: 3.0d
+		}
+		{
+			dependencies: ["37D2959298434CC9"]
+			description: ["{cuboiddroid.quests.g.02.c.18.q.17.d.00}"]
+			id: "297880E7894F583C"
+			optional: true
+			tasks: [{
+				id: "7B1471848C91D5DB"
+				item: "ironfurnaces:augment_speed"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.17}"
+			x: 0.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["37D2959298434CC9"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.18.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.18.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.18.d.02}"
+			]
+			id: "16EB826CB6000B77"
+			optional: true
+			tasks: [{
+				id: "614174FEE0F06914"
+				item: "ironfurnaces:augment_fuel"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.18.q.18}"
+			x: -1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["16046F3BCF2AE6D4"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.18.q.19.d.00}"
+				"{cuboiddroid.quests.g.02.c.18.q.19.d.01}"
+				"{cuboiddroid.quests.g.02.c.18.q.19.d.02}"
+			]
+			hide_dependency_lines: true
+			id: "19E59602755AA85F"
+			rewards: [{
+				count: 2
+				id: "646DD3CFC39AC6FC"
+				item: "minecraft:blaze_rod"
+				random_bonus: 6
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 2L
+				id: "3E54806CC2FAEB93"
+				item: "minecraft:blaze_rod"
+				type: "item"
+			}]
+			x: 7.5d
+			y: -2.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.02.c.18}"
+}

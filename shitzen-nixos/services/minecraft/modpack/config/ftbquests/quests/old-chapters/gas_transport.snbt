@@ -1,0 +1,155 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "gas_transport"
+	group: "033EC740B2EF1FC1"
+	icon: "mekanism:basic_mechanical_pipe"
+	id: "7245BEC5B17E8B67"
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			description: ["{cuboiddroid.quests.g.05.c.20.q.00.d.00}"]
+			id: "4D50DCFC7ABA3DE0"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "7EE8E8F937DD11DB"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.20.q.00}"
+			x: 0.8d
+			y: -0.8d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.20.q.01.d.00}"
+				"{cuboiddroid.quests.g.05.c.20.q.01.d.01}"
+				"{cuboiddroid.quests.g.05.c.20.q.01.d.02}"
+				"{cuboiddroid.quests.g.05.c.20.q.01.d.03}"
+				"{cuboiddroid.quests.g.05.c.20.q.01.d.04}"
+			]
+			id: "0D3FF9FC5DB9F402"
+			tasks: [{
+				id: "1A607E38F25046D3"
+				item: "mekanism:basic_pressurized_tube"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["0D3FF9FC5DB9F402"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.20.q.02.d.00}"
+				"{cuboiddroid.quests.g.05.c.20.q.02.d.01}"
+				"{cuboiddroid.quests.g.05.c.20.q.02.d.02}"
+			]
+			id: "115406F6904219FA"
+			tasks: [{
+				id: "3DAB2F18FDB037AC"
+				item: "mekanism:advanced_pressurized_tube"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["115406F6904219FA"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.20.q.03.d.00}"
+				"{cuboiddroid.quests.g.05.c.20.q.03.d.01}"
+				"{cuboiddroid.quests.g.05.c.20.q.03.d.02}"
+			]
+			id: "77C9370879035020"
+			tasks: [{
+				id: "6236FC5CDD50AAE7"
+				item: "mekanism:elite_pressurized_tube"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 4.5d
+		}
+		{
+			dependencies: ["77C9370879035020"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.20.q.04.d.00}"
+				"{cuboiddroid.quests.g.05.c.20.q.04.d.01}"
+				"{cuboiddroid.quests.g.05.c.20.q.04.d.02}"
+			]
+			id: "2E07B0C35F4790C5"
+			tasks: [{
+				id: "33D8789465679EA5"
+				item: "mekanism:ultimate_pressurized_tube"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 6.0d
+		}
+		{
+			dependency_requirement: "one_completed"
+			description: [
+				"{cuboiddroid.quests.g.05.c.20.q.05.d.00}"
+				"{cuboiddroid.quests.g.05.c.20.q.05.d.01}"
+				"{cuboiddroid.quests.g.05.c.20.q.05.d.02}"
+				"{cuboiddroid.quests.g.05.c.20.q.05.d.03}"
+				"{cuboiddroid.quests.g.05.c.20.q.05.d.04}"
+			]
+			id: "48E08A97659F6B85"
+			tasks: [
+				{
+					icon: "xnet:connector_blue"
+					id: "4D4094409BDB2182"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "xnet:connectors"
+						}
+					}
+					title: "{cuboiddroid.quests.g.05.c.20.q.05.t.00}"
+					type: "item"
+				}
+				{
+					icon: "xnet:netcable_blue"
+					id: "1FFF9541C491E2DF"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "xnet:cables"
+						}
+					}
+					title: "{cuboiddroid.quests.g.05.c.20.q.05.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.05.c.20.q.05}"
+			x: -2.0d
+			y: 1.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.20.q.06.d.00}"]
+			id: "3CFDC5A35FD9DD08"
+			tasks: [{
+				id: "5137DFA5FFDA6EDA"
+				item: "mekanism:basic_chemical_tank"
+				type: "item"
+			}]
+			x: 2.0d
+			y: 1.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.20.q.07.d.00}"]
+			id: "73F2525F3CE42FAE"
+			tasks: [{
+				id: "49F8D19837FA125D"
+				item: "pipez:gas_pipe"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 1.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.05.c.20}"
+}

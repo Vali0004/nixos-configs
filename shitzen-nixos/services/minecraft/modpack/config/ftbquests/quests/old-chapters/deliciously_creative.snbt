@@ -1,0 +1,887 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "deliciously_creative"
+	group: "6E3D5CD175F7344D"
+	icon: "create:sweet_roll"
+	id: "621C89BFC53401DE"
+	images: [
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_1a.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 11.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_1b.png"
+			rotation: 0.0d
+			width: 3.0d
+			x: 7.0d
+			y: 11.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_1c.png"
+			rotation: 0.0d
+			width: 2.0d
+			x: 9.5d
+			y: 11.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_2.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 16.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_3.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 21.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_4.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 26.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_5.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 31.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_6.png"
+			rotation: 0.0d
+			width: 5.8d
+			x: 4.0d
+			y: 36.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_7.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 41.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_8.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 46.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_9.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 51.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_10a.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: 3.5d
+			y: 56.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_10b.png"
+			rotation: 0.0d
+			width: 5.5d
+			x: 8.0d
+			y: 56.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_10c.png"
+			rotation: 0.0d
+			width: 5.4d
+			x: 13.0d
+			y: 56.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 6.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_11.png"
+			rotation: 0.0d
+			width: 4.5d
+			x: 3.5d
+			y: 61.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 6.0d
+			hover: [ ]
+			image: "kubejs:textures/quests/create_sweet_roll_step_power.png"
+			rotation: 0.0d
+			width: 7.2d
+			x: 9.0d
+			y: 61.0d
+		}
+	]
+	order_index: 5
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["4D0F1810876E3DF6"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.00.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.00.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.00.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.00.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.00.d.04}"
+			]
+			id: "574CE4094B4ABC72"
+			rewards: [
+				{
+					id: "0D2A7F623B2049D9"
+					item: "trashcans:item_trash_can"
+					type: "item"
+				}
+				{
+					count: 2
+					id: "38F6A689FA6F6382"
+					item: "create:encased_fan"
+					type: "item"
+				}
+				{
+					count: 4
+					id: "5411F8D680851196"
+					item: "create:cogwheel"
+					random_bonus: 6
+					type: "item"
+				}
+			]
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.01.c.04.q.00.sub}"
+			tasks: [
+				{
+					disable_toast: true
+					id: "58DE25E7837DA81C"
+					item: "create:millstone"
+					type: "item"
+				}
+				{
+					disable_toast: true
+					id: "4D804011516A2ABF"
+					item: "create:encased_fan"
+					type: "item"
+				}
+				{
+					id: "52B7CEEEE676AA53"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/brass"
+						}
+					}
+					title: "{cuboiddroid.quests.g.01.c.04.q.00.t.02}"
+					type: "item"
+				}
+				{
+					id: "3496EA2CCF18AB81"
+					item: "minecraft:quartz"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "34738D0F74A67F73"
+					item: "create:cogwheel"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.00}"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["574CE4094B4ABC72"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.01.d.00}"]
+			id: "4FB9FA967B3EE350"
+			optional: true
+			rewards: [{
+				id: "525C9BCA7FCEF353"
+				item: "create:depot"
+				type: "item"
+			}]
+			tasks: [{
+				count: 2L
+				id: "6361C0B2B607EDFF"
+				item: "create:depot"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.01}"
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["35989B99214D45F6"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.02.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.02.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.02.d.02}"
+			]
+			id: "79232363587AA883"
+			optional: true
+			rewards: [
+				{
+					count: 8
+					id: "4973D1E62379860B"
+					item: "create:shaft"
+					random_bonus: 8
+					type: "item"
+				}
+				{
+					count: 4
+					id: "00374152BA9B84A6"
+					item: "create:belt_connector"
+					random_bonus: 4
+					type: "item"
+				}
+				{
+					count: 2
+					id: "06823C54DE0D61A6"
+					item: "create:gearbox"
+					random_bonus: 2
+					type: "item"
+				}
+				{
+					count: 2
+					id: "471C571C1D98DB93"
+					item: "create:vertical_gearbox"
+					random_bonus: 2
+					type: "item"
+				}
+			]
+			tasks: [{
+				count: 4L
+				id: "5065DC74E0553D42"
+				item: "create:brass_funnel"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.02}"
+			x: 0.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["4FB9FA967B3EE350"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.03.d.00}"]
+			id: "6690650E031AC11C"
+			optional: true
+			rewards: [{
+				count: 4
+				id: "01C5DBCCA99CE172"
+				item: "minecraft:quartz"
+				random_bonus: 4
+				type: "item"
+			}]
+			tasks: [{
+				id: "1BCADA9B313BB6D3"
+				item: {
+					Count: 1b
+					id: "create:sand_paper"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			x: -1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["4FB9FA967B3EE350"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.04.d.00}"]
+			id: "2AC873F2B792C194"
+			optional: true
+			tasks: [{
+				id: "1314E64FDD4E229F"
+				item: "create:rose_quartz"
+				type: "item"
+			}]
+			x: 1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"6690650E031AC11C"
+				"2AC873F2B792C194"
+			]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.05.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.05.d.01}"
+			]
+			id: "35989B99214D45F6"
+			optional: true
+			rewards: [{
+				count: 4
+				id: "060411288A5FC60A"
+				item: "create:brass_ingot"
+				random_bonus: 4
+				type: "item"
+			}]
+			tasks: [{
+				count: 4L
+				id: "737B0AFFD2372F31"
+				item: "create:polished_rose_quartz"
+				title: "{cuboiddroid.quests.g.01.c.04.q.05.t.00}"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["79232363587AA883"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.06.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.06.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.06.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.06.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.06.d.04}"
+			]
+			id: "5B6C59479BE6A4F8"
+			optional: true
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "14C24C0AB09B4AF9"
+					item: "create:millstone"
+					type: "item"
+				}
+				{
+					id: "59621F3CF108CE5C"
+					item: "trashcans:item_trash_can"
+					type: "item"
+				}
+				{
+					id: "551EF42B89D3E526"
+					item: "create:chute"
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "0825EAA154FFE7C0"
+					item: "create:brass_funnel"
+					type: "item"
+				}
+				{
+					id: "6880BECD88DB69E0"
+					item: "create:depot"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.06}"
+			x: 0.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["5B6C59479BE6A4F8"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.04}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.05}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.06}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.07}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.08}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.09}"
+				"{cuboiddroid.quests.g.01.c.04.q.07.d.10}"
+			]
+			id: "76781961999FE587"
+			optional: true
+			tasks: [{
+				id: "04452542F7D92B10"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.07}"
+			x: 0.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["76781961999FE587"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.08.d.00}"]
+			id: "2FFAF634FDD29430"
+			optional: true
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "36EEE940BD6DD9E2"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "minecraft:wooden_stairs"
+						}
+					}
+					title: "{cuboiddroid.quests.g.01.c.04.q.08.t.00}"
+					type: "item"
+				}
+				{
+					id: "55FCDCFF75FA308B"
+					item: "create:encased_fan"
+					type: "item"
+				}
+				{
+					id: "2921FF77100C336E"
+					item: "minecraft:water_bucket"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.08}"
+			x: 0.0d
+			y: 15.0d
+		}
+		{
+			dependencies: ["2FFAF634FDD29430"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.09.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.09.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.09.d.02}"
+			]
+			id: "64FE60E8C1EC5BFF"
+			optional: true
+			tasks: [{
+				id: "3312653404ECCBCA"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.09}"
+			x: 0.0d
+			y: 17.0d
+		}
+		{
+			dependencies: ["64FE60E8C1EC5BFF"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.10.d.00}"]
+			id: "213DA57A37086E6D"
+			optional: true
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "15AE5BAD075568A7"
+					item: "create:depot"
+					type: "item"
+				}
+				{
+					id: "29668FC0E6B85E35"
+					item: "create:brass_funnel"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.10}"
+			x: 0.0d
+			y: 20.0d
+		}
+		{
+			dependencies: ["64FE60E8C1EC5BFF"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.11.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.11.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.11.d.02}"
+			]
+			id: "60B3626BC014EFB6"
+			optional: true
+			tasks: [{
+				id: "710443F4D8D98546"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.11}"
+			x: 0.0d
+			y: 22.0d
+		}
+		{
+			dependencies: ["60B3626BC014EFB6"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.12.d.00}"]
+			id: "721DF79A9838A88D"
+			optional: true
+			tasks: [
+				{
+					count: 4L
+					id: "0177483B3457DB04"
+					item: "create:cogwheel"
+					type: "item"
+				}
+				{
+					id: "46BD189FD5A66CCC"
+					item: "create:vertical_gearbox"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.12}"
+			x: 0.0d
+			y: 25.0d
+		}
+		{
+			dependencies: ["721DF79A9838A88D"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.13.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.13.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.13.d.02}"
+			]
+			id: "00D76BF71ADD54B1"
+			optional: true
+			tasks: [{
+				id: "3D152ECA83D697A6"
+				title: "{cuboiddroid.quests.g.01.c.04.q.13.t.00}"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 27.0d
+		}
+		{
+			dependencies: ["00D76BF71ADD54B1"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.14.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.14.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.14.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.14.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.14.d.04}"
+			]
+			id: "3BD9E729B4CF0882"
+			optional: true
+			rewards: [{
+				id: "602DC3E465E278B9"
+				item: "create:builders_tea"
+				type: "item"
+			}]
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "3AA77758482E7A2A"
+					item: "minecraft:campfire"
+					type: "item"
+				}
+				{
+					id: "4DB8B4EFE5B95D8F"
+					item: "create:encased_fan"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.14}"
+			x: 0.0d
+			y: 30.0d
+		}
+		{
+			dependencies: ["3BD9E729B4CF0882"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.15.d.00}"]
+			id: "4E31461BA80A95BD"
+			optional: true
+			tasks: [{
+				id: "5E60B6828734C888"
+				title: "{cuboiddroid.quests.g.01.c.04.q.15.t.00}"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 32.0d
+		}
+		{
+			dependencies: ["4E31461BA80A95BD"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.16.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.16.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.16.d.02}"
+			]
+			id: "58D47E7A29724AC5"
+			optional: true
+			shape: "hexagon"
+			tasks: [
+				{
+					count: 4L
+					id: "33F7631B2F72B95B"
+					item: "create:cogwheel"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "431D531D28703BD4"
+					item: "create:shaft"
+					title: "{cuboiddroid.quests.g.01.c.04.q.16.t.01}"
+					type: "item"
+				}
+				{
+					id: "25ABDC77E51B9DC5"
+					item: "create:belt_connector"
+					type: "item"
+				}
+				{
+					id: "3C76001BCFC13F52"
+					item: "create:brass_funnel"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.16}"
+			x: 0.0d
+			y: 35.0d
+		}
+		{
+			dependencies: ["58D47E7A29724AC5"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.17.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.17.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.17.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.17.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.17.d.04}"
+			]
+			id: "519951BD1642E5DA"
+			optional: true
+			tasks: [{
+				id: "13536B13302E1547"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.17}"
+			x: 0.0d
+			y: 37.0d
+		}
+		{
+			dependencies: ["519951BD1642E5DA"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.18.d.00}"]
+			id: "493DC7F5FB52E63C"
+			optional: true
+			shape: "hexagon"
+			tasks: [{
+				id: "2E2D2A4B932E3BC3"
+				item: "create:spout"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.18}"
+			x: 0.0d
+			y: 40.0d
+		}
+		{
+			dependencies: ["493DC7F5FB52E63C"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.19.d.00}"]
+			id: "3978608E0C61E60D"
+			optional: true
+			tasks: [{
+				id: "345F90F805D95E34"
+				title: "{cuboiddroid.quests.g.01.c.04.q.19.t.00}"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 42.0d
+		}
+		{
+			dependencies: ["3978608E0C61E60D"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.20.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.20.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.20.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.20.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.20.d.04}"
+			]
+			id: "3B11688AFC597D5B"
+			optional: true
+			tasks: [
+				{
+					id: "4D05ED0F83B60B97"
+					item: "cookingforblockheads:cow_jar"
+					type: "item"
+				}
+				{
+					id: "7D5314CD4DCF4AB5"
+					item: "mekanism:basic_mechanical_pipe"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.20}"
+			x: 0.0d
+			y: 45.0d
+		}
+		{
+			dependencies: ["3B11688AFC597D5B"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.21.d.00}"]
+			id: "6C235AAF3C518909"
+			optional: true
+			tasks: [{
+				id: "2A0A621762CC9565"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.21}"
+			x: 0.0d
+			y: 47.0d
+		}
+		{
+			dependencies: ["6C235AAF3C518909"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.22.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.22.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.22.d.02}"
+			]
+			id: "08886DE0FD266ADB"
+			optional: true
+			rewards: [{
+				id: "61B385BC1E505766"
+				item: "create:builders_tea"
+				type: "item"
+			}]
+			tasks: [{
+				id: "14F5C402450B37AE"
+				item: "create:sweet_roll"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.22}"
+			x: 0.0d
+			y: 51.0d
+		}
+		{
+			dependencies: ["08886DE0FD266ADB"]
+			description: ["{cuboiddroid.quests.g.01.c.04.q.23.d.00}"]
+			id: "5FD4BF7EDEE97960"
+			optional: true
+			shape: "hexagon"
+			tasks: [
+				{
+					id: "01110C28ABB4CFA9"
+					item: "storagedrawers:oak_full_drawers_1"
+					type: "item"
+				}
+				{
+					id: "6A69B33D90390F01"
+					item: "create:brass_funnel"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.01.c.04.q.23}"
+			x: 0.0d
+			y: 55.0d
+		}
+		{
+			dependencies: ["5FD4BF7EDEE97960"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.24.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.24.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.24.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.24.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.24.d.04}"
+			]
+			id: "3985B75DD006791A"
+			optional: true
+			rewards: [
+				{
+					id: "29FBE64077AF185B"
+					item: "botanypots:hopper_botany_pot"
+					type: "item"
+				}
+				{
+					id: "3D6BE76378552590"
+					item: "minecraft:farmland"
+					type: "item"
+				}
+				{
+					id: "44CBCB383888C763"
+					item: "minecraft:wheat_seeds"
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "3AEEF9C7CEAAB1A9"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.01.c.04.q.24}"
+			x: 0.0d
+			y: 57.0d
+		}
+		{
+			dependencies: ["3985B75DD006791A"]
+			description: [
+				"{cuboiddroid.quests.g.01.c.04.q.25.d.00}"
+				"{cuboiddroid.quests.g.01.c.04.q.25.d.01}"
+				"{cuboiddroid.quests.g.01.c.04.q.25.d.02}"
+				"{cuboiddroid.quests.g.01.c.04.q.25.d.03}"
+				"{cuboiddroid.quests.g.01.c.04.q.25.d.04}"
+			]
+			id: "2CC618DE549047D3"
+			optional: true
+			shape: "gear"
+			tasks: [{
+				id: "3FCB54BD4FC06FB2"
+				title: "{cuboiddroid.quests.g.01.c.04.q.25.t.00}"
+				type: "checkmark"
+			}]
+			x: 0.0d
+			y: 61.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.01.c.04}"
+}

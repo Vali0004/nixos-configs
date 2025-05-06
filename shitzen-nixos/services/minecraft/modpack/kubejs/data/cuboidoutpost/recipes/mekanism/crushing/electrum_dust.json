@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "tag":"forge:ingots/electrum"
+    }
+  },
+  "output":{
+    "count":1,"item":"immersiveengineering:dust_electrum"
+  }
+}

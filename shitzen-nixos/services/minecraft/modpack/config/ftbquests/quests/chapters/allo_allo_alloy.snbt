@@ -1,0 +1,321 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "allo_allo_alloy"
+	group: "4F582DBBFACF1F69"
+	icon: "thermal:signalum_ingot"
+	id: "5B7F1F5BEAA79098"
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["556EC4397E364D31"]
+			description: [
+				"Your Tinker's Smeltery is your friend when it comes to creating metal alloys. Simply ensure that you're not automatically pouring out the materials, and then get the appropriate molten ingredients into the smeltery - they will automatically mix and form the alloys."
+				""
+				"Be careful though! If you try too much at once, you might end up creating alloys you did not mean to!"
+				""
+				"Many of the upcoming advanced machinery will require alloyed materials to be able to construct them, so if you ever find yourself wondering what is needed to make an alloy, you can check this section of the survival guide."
+				""
+				"Unlocked in:"
+				"- &aGetting Tinks Done&f"
+			]
+			id: "369719631E5F14B6"
+			shape: "gear"
+			tasks: [{
+				id: "37128A3A1919068D"
+				item: "mekanism:ingot_osmium"
+				type: "item"
+			}]
+			title: "Allo? Allo? Alloy!"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Bronze is a blend of Copper and Tin at a ratio of 3 Copper to 1 Tin."]
+			id: "140955639DEA4214"
+			tasks: [{
+				id: "2788D6BBBA7E47AC"
+				item: {
+					Count: 1b
+					id: "itemfilters:or"
+					tag: {
+						items: [
+							{
+								Count: 1b
+								id: "thermal:bronze_ingot"
+							}
+							{
+								Count: 1b
+								id: "mekanism:ingot_bronze"
+							}
+						]
+					}
+				}
+				title: "Bronze Ingot"
+				type: "item"
+			}]
+			title: "Bronze"
+			x: -2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Osmium can be made through alloying Fullerene (molten Carbon Nanotubes), Iron, and Thatldu in a 1:1:1 ratio."]
+			id: "090F38009D34E249"
+			shape: "square"
+			tasks: [{
+				id: "7377946EE335A42F"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/osmium"
+					}
+				}
+				title: "Osmium Ingot"
+				type: "item"
+			}]
+			title: "Osmium"
+			x: 0.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Brass is an alloy of Zinc and Copper in a 1:1 ratio."]
+			id: "24F30CABB4C47AA4"
+			tasks: [{
+				id: "4D7579571257E572"
+				item: "create:brass_ingot"
+				title: "Brass Ingot"
+				type: "item"
+			}]
+			title: "Brass"
+			x: -3.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Electrum is an alloy of Silver and Gold in a 1:1 ratio."]
+			id: "51DA3ED80175B5E0"
+			tasks: [{
+				id: "07FDE9F495A0E112"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/electrum"
+					}
+				}
+				title: "Electrum Ingot"
+				type: "item"
+			}]
+			title: "Electrum"
+			x: 2.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Invar is a blend of Iron and Nickel at a ratio of 2 Iron to 1 Nickel."]
+			id: "370DC91DCE34BD2B"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "2A40D373CB6FC281"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/invar"
+					}
+				}
+				title: "Invar Ingot"
+				type: "item"
+			}]
+			title: "Invar"
+			x: 0.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Constantan is a blend of Copper and Nickel in a 1:1 ratio"]
+			id: "239ABB6920C2D4C2"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "0F503CB9D5CB7B53"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/constantan"
+					}
+				}
+				title: "Constantan Ingot"
+				type: "item"
+			}]
+			title: "Constantan"
+			x: 3.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["067D1B88BA7BF46C"]
+			description: [
+				"Some alloys require specialized equipment like the Induction Smelter in order to make them."
+				""
+				"We have included more information about the bits and bobs required for an Induction Smelter in the section called 'Ther-malcontents'"
+			]
+			id: "4212A4F682A37D7D"
+			shape: "square"
+			tasks: [{
+				id: "3B3C143B7C05EB46"
+				item: "thermal:machine_smelter"
+				type: "item"
+			}]
+			title: "Inducted Alloys"
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["370DC91DCE34BD2B"]
+			id: "067D1B88BA7BF46C"
+			shape: "square"
+			tasks: [{
+				id: "1E30B9376F2B456B"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:gears/invar"
+					}
+				}
+				title: "Invar Gear"
+				type: "item"
+			}]
+			x: 3.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["4212A4F682A37D7D"]
+			description: ["Can only be made in an Induction Smelter."]
+			id: "571E7C3571C1AA0F"
+			tasks: [{
+				id: "7CF05D5B2FE29E6A"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/lumium"
+					}
+				}
+				title: "Lumium Ingot"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["4212A4F682A37D7D"]
+			description: ["Can only be made in an Induction Smelter."]
+			id: "777ED16468E1F16B"
+			tasks: [{
+				id: "22B84CF093340F70"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/signalum"
+					}
+				}
+				title: "Signalum Ingot"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["4212A4F682A37D7D"]
+			description: [
+				"Can only be made in an Induction Smelter."
+				""
+				"&aRequired for: What's left in the End?&f"
+			]
+			id: "486A31DE17117257"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "180487716D208E6C"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:ingots/enderium"
+					}
+				}
+				title: "Enderium Ingot"
+				type: "item"
+			}]
+			x: 9.0d
+			y: 5.25d
+		}
+		{
+			dependencies: ["369719631E5F14B6"]
+			description: ["Some alloys can simply be made in a crafting table."]
+			id: "4E7D71A91E344942"
+			shape: "square"
+			tasks: [{
+				id: "326A70FC9230332D"
+				item: "minecraft:iron_ingot"
+				title: "Iron Ingot"
+				type: "item"
+			}]
+			title: "Simple Alloys"
+			x: -3.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["4E7D71A91E344942"]
+			description: ["A Black Iron ingot can be made by crafting together an Iron Ingot and Black Dye."]
+			id: "4110F460124B1386"
+			shape: "square"
+			tasks: [{
+				id: "1508BEF7F3B6D0F4"
+				item: "extendedcrafting:black_iron_ingot"
+				title: "Black Iron Ingot"
+				type: "item"
+			}]
+			title: "Black Iron Ingot"
+			x: -5.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["4E7D71A91E344942"]
+			description: ["Redstone Ingot can be made by crafting together an Iron Ingot and some Redstone Dust."]
+			id: "26369EFF641A1340"
+			tasks: [{
+				id: "143A6153CF070AD5"
+				item: "extendedcrafting:redstone_ingot"
+				title: "Redstone Ingot"
+				type: "item"
+			}]
+			title: "Redstone Ingot"
+			x: -4.5d
+			y: 4.5d
+		}
+		{
+			dependencies: ["4E7D71A91E344942"]
+			description: ["An Ender Ingot can be crafted by combining an Iron Ingot and an Ender Pearl."]
+			id: "2E1B604422C7B074"
+			tasks: [{
+				id: "0F03AED5B4283601"
+				item: "extendedcrafting:ender_ingot"
+				type: "item"
+			}]
+			title: "Ender Ingot"
+			x: -3.0d
+			y: 5.0d
+		}
+	]
+	title: "Allo? Allo? Alloy!"
+}

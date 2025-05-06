@@ -1,0 +1,397 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "extending_reality"
+	group: "298C586EA6E5A561"
+	icon: "extendedcrafting:ultimate_table"
+	id: "61D154122E71A9ED"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["6C7EA2C8289435E6"]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.00.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.00.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.00.d.02}"
+				"{cuboiddroid.quests.g.04.c.15.q.00.d.03}"
+				"{cuboiddroid.quests.g.04.c.15.q.00.d.04}"
+			]
+			id: "5816A28D1A733245"
+			shape: "square"
+			tasks: [{
+				id: "5EDBA6D207693C7D"
+				item: "extendedcrafting:compressor"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 7.0d
+		}
+		{
+			dependencies: [
+				"2A3A34A47D8AF234"
+				"73ADCC28894D93DA"
+			]
+			description: ["{cuboiddroid.quests.g.04.c.15.q.01.d.00}"]
+			id: "4BB1A12C3A2C3421"
+			rewards: [{
+				count: 16
+				id: "2B1F0654E3628559"
+				item: "extendedcrafting:black_iron_ingot"
+				random_bonus: 32
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 16L
+				id: "5B89287E192DB587"
+				item: "extendedcrafting:black_iron_ingot"
+				type: "item"
+			}]
+			x: 6.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["4BB1A12C3A2C3421"]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.02.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.02.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.02.d.02}"
+				"{cuboiddroid.quests.g.04.c.15.q.02.d.03}"
+				"{cuboiddroid.quests.g.04.c.15.q.02.d.04}"
+				"{cuboiddroid.quests.g.04.c.15.q.02.d.05}"
+			]
+			id: "2E7D0C59FCAEC0E9"
+			rewards: [{
+				count: 8
+				id: "4BE59D4936268892"
+				item: "extendedcrafting:black_iron_slate"
+				random_bonus: 16
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "0B17C8A3A645EDE7"
+				item: "extendedcrafting:black_iron_slate"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5B6C15083527B310"]
+			id: "63DDA4FF2238E2B3"
+			shape: "square"
+			tasks: [{
+				id: "01FDC17933F3790B"
+				item: "extendedcrafting:basic_catalyst"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["2E7D0C59FCAEC0E9"]
+			id: "5B6C15083527B310"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "40269884E646D3B8"
+				item: "extendedcrafting:basic_component"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["63DDA4FF2238E2B3"]
+			id: "69C6ED05E847BA4F"
+			rewards: [{
+				id: "46DC98F1A84546DE"
+				item: "extendedcrafting:basic_table"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "0DE78977801E4C4E"
+				item: "extendedcrafting:basic_table"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2E7D0C59FCAEC0E9"]
+			id: "1470747D35D3D196"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "3758468ECA2B4AD5"
+				item: "extendedcrafting:advanced_component"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["1470747D35D3D196"]
+			id: "3ACF037A7A317F6F"
+			shape: "square"
+			tasks: [{
+				id: "3DF21E9E554B26AA"
+				item: "extendedcrafting:advanced_catalyst"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"3ACF037A7A317F6F"
+				"69C6ED05E847BA4F"
+			]
+			id: "36DBDB92426FAC0F"
+			rewards: [{
+				id: "16FFC492B01F7C5B"
+				item: "extendedcrafting:advanced_table"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "75B16D8B1A3636B7"
+				item: "extendedcrafting:advanced_table"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["2E7D0C59FCAEC0E9"]
+			id: "4EE30516DA41D2E5"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "429B2162E0F7BC3D"
+				item: "extendedcrafting:elite_component"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["4EE30516DA41D2E5"]
+			id: "6008394412BDF379"
+			shape: "square"
+			tasks: [{
+				id: "03D2361941EEB05C"
+				item: "extendedcrafting:elite_catalyst"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"6008394412BDF379"
+				"36DBDB92426FAC0F"
+			]
+			id: "6771E8ED6A02A5B1"
+			rewards: [{
+				id: "7DF1CD5030457ED2"
+				item: "extendedcrafting:elite_table"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "7486E96AD97C9EE1"
+				item: "extendedcrafting:elite_table"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["6771E8ED6A02A5B1"]
+			description: ["{cuboiddroid.quests.g.04.c.15.q.12.d.00}"]
+			id: "6C7EA2C8289435E6"
+			shape: "square"
+			tasks: [{
+				id: "26B8F00549D6E042"
+				item: "extendedcrafting:frame"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["2E7D0C59FCAEC0E9"]
+			id: "3DEB7AA0FCB90D95"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "2E3E43953B6148D6"
+				item: "extendedcrafting:ultimate_component"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["3DEB7AA0FCB90D95"]
+			id: "43AFDACB073946B5"
+			shape: "square"
+			tasks: [{
+				id: "77A66547B0FC28F0"
+				item: "extendedcrafting:ultimate_catalyst"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"43AFDACB073946B5"
+				"6771E8ED6A02A5B1"
+			]
+			description: ["{cuboiddroid.quests.g.04.c.15.q.15.d.00}"]
+			id: "1B77906ED5BDB46E"
+			rewards: [{
+				id: "27870E8BD74644D8"
+				item: "extendedcrafting:ultimate_catalyst"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "56F3D414E0998BC0"
+				item: "extendedcrafting:ultimate_table"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 5.0d
+		}
+		{
+			dependencies: [
+				"5816A28D1A733245"
+				"1B77906ED5BDB46E"
+			]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.16.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.16.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.16.d.02}"
+				"{cuboiddroid.quests.g.04.c.15.q.16.d.03}"
+				"{cuboiddroid.quests.g.04.c.15.q.16.d.04}"
+			]
+			id: "1C41E13DA168579E"
+			shape: "gear"
+			size: 1.2d
+			tasks: [{
+				id: "12EC2B79191738A6"
+				item: "extendedcrafting:ultimate_singularity"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.04.c.15.q.16}"
+			x: 12.0d
+			y: 7.0d
+		}
+		{
+			dependencies: [
+				"49B2FC7C055AAC4A"
+				"7D30BCCFA1ACF48B"
+			]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.02}"
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.03}"
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.04}"
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.05}"
+				"{cuboiddroid.quests.g.04.c.15.q.17.d.06}"
+			]
+			id: "73ADCC28894D93DA"
+			rewards: [{
+				count: 16
+				id: "5AB7ACD36438635A"
+				item: "extendedcrafting:luminessence"
+				random_bonus: 16
+				type: "item"
+			}]
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.04.c.15.q.17.sub}"
+			tasks: [{
+				count: 16L
+				id: "5F27B1BFA0AE880A"
+				item: "extendedcrafting:luminessence"
+				type: "item"
+			}]
+			x: 4.0d
+			y: -1.0d
+		}
+		{
+			dependencies: [
+				"55E9D9E41FCDB264"
+				"7D30BCCFA1ACF48B"
+				"7AB259F629E00DD9"
+			]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.18.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.18.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.18.d.02}"
+			]
+			id: "6559792A54D4ABA8"
+			shape: "gear"
+			tasks: [
+				{
+					id: "6322398849494365"
+					item: "ae2:condenser"
+					type: "item"
+				}
+				{
+					id: "6B0BD333EB49D32D"
+					item: "ae2:cell_component_64k"
+					type: "item"
+				}
+			]
+			x: 14.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["6559792A54D4ABA8"]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.19.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.19.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.19.d.02}"
+				"{cuboiddroid.quests.g.04.c.15.q.19.d.03}"
+				"{cuboiddroid.quests.g.04.c.15.q.19.d.04}"
+			]
+			id: "17D6C3A7E868026C"
+			shape: "gear"
+			size: 1.2d
+			tasks: [{
+				id: "041C3A8A968C0FE5"
+				item: "ae2:singularity"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["17D6C3A7E868026C"]
+			description: [
+				"{cuboiddroid.quests.g.04.c.15.q.20.d.00}"
+				"{cuboiddroid.quests.g.04.c.15.q.20.d.01}"
+				"{cuboiddroid.quests.g.04.c.15.q.20.d.02}"
+			]
+			id: "35FF6178EB0AE116"
+			shape: "circle"
+			tasks: [{
+				id: "09FC5C69B91CDB30"
+				item: "ae2:quantum_entangled_singularity"
+				type: "item"
+			}]
+			x: 14.0d
+			y: 7.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.04.c.15}"
+}

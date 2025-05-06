@@ -1,0 +1,544 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_immersed"
+	group: "719DAED049159F2E"
+	icon: "immersiveengineering:cloche"
+	id: "3BF3D90FE131483F"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: [
+				"1F8D8241F7495CD3"
+				"2A3A34A47D8AF234"
+			]
+			description: [
+				"We're about to dip our toes into the Immersive world of Engineering..."
+				""
+				"We're not going to drown at this stage though! We've got a specific goal to work toward, which will make farming a much simpler endeavour in the very near future."
+			]
+			id: "656C9C0843F67B03"
+			shape: "gear"
+			subtitle: "... in Engineering"
+			tasks: [{
+				id: "2FA23F81FE8D046A"
+				title: "Getting Immersed"
+				type: "checkmark"
+			}]
+			title: "Getting Immersed"
+			x: -20.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["522535CBDFA3DEB3"]
+			description: [
+				"The first thing the Scientists are saying we will need to build is a Coke oven. No, not that kind of Coke - Coal Coke. We're actually more interested in the by-product, but for now, here's how you can go about making one of these simple contraptions:"
+				""
+				"1. Gather up 72 balls of clay, put half aside (36)."
+				""
+				"2. Cook the other half of them in a furnace to make 36 bricks."
+				""
+				"3. Using 36 Sand, make 9 Sandstone in a Crafting Table."
+				""
+				"4. Make 27 Coke Bricks from these ingredients."
+				""
+				"5. Create a 3x3x3 cube of Coke Bricks."
+				""
+				"6. Use an Engineer's Hammer on the center brick in the side you want the opening on of the Coke Oven."
+				""
+				"7. Celebrate!"
+			]
+			id: "68465745375E0488"
+			shape: "square"
+			tasks: [
+				{
+					count: 36L
+					id: "1DDD096E693B2B44"
+					item: "minecraft:brick"
+					type: "item"
+				}
+				{
+					count: 36L
+					id: "006C73CFFC0A1F36"
+					item: "minecraft:clay_ball"
+					type: "item"
+				}
+				{
+					count: 9L
+					id: "131F99FBADBC471D"
+					item: "minecraft:sandstone"
+					type: "item"
+				}
+				{
+					count: 27L
+					id: "326376C6497CBB74"
+					item: "immersiveengineering:cokebrick"
+					type: "item"
+				}
+			]
+			title: "These Bricks have nothing to do with cola."
+			x: -14.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["68465745375E0488"]
+			description: [
+				"Put Logs, Coal or Blocks of Coal into the Coke Oven and it will start working."
+				""
+				"Logs produce Charcoal and 250mb of Creosote Oil."
+				""
+				"Coal produces Coal Coke and 500mb of Creosote Oil."
+				""
+				"A Block of Coal produces a Block of Coal Coke and 5000mb of Creosote Oil."
+				""
+				"We're going to need quite a bit of the Creosote Oil, so you might want to repurpose that Basic Fluid Tank that came next to the Fridge (if you still have it!), or look into making some other kind of fluid storage. You can use a bucket to extract the Creosote Oil, or if you have access to fluid pipes, you can pipe it out. The result of the smelting can be extracted out the bottom of the Coke Oven using something like a hopper."
+				""
+				"Note: The Coke Oven is very slow, so you might want to leave using Blocks of Coal until after you've got some Creosote Oil to work with."
+			]
+			id: "79B8FE775F1EC0C0"
+			shape: "square"
+			tasks: [{
+				id: "5337D773C92B2886"
+				item: "immersiveengineering:creosote_bucket"
+				type: "item"
+			}]
+			title: "Smells like wooden telephone poles."
+			x: -11.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: [
+				"It's obviously just a small Smoosher used in Engineering, but for some reason the Science Division is insisting on calling it an Engineer's Hammer instead."
+				""
+				"Sorry."
+				""
+				"Anyway... you're going to need one, so you might as well go ahead and make one now."
+			]
+			id: "522535CBDFA3DEB3"
+			shape: "square"
+			subtitle: "(aka the Engineer's Hammer)"
+			tasks: [{
+				id: "26651C168F294A67"
+				item: {
+					Count: 1b
+					id: "immersiveengineering:hammer"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "An Engineer's Smoosher"
+			x: -17.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["79B8FE775F1EC0C0"]
+			description: ["To make Treated Wood, surround a Bucket of Creosote Oil (or a Jerry Can containing Creosote Oil) with wooden planks of any variety in a crafting table."]
+			id: "30C5A4F358C28E95"
+			shape: "square"
+			tasks: [{
+				count: 32L
+				id: "7DC5DFB06DB49FBE"
+				item: "immersiveengineering:treated_wood_horizontal"
+				type: "item"
+			}]
+			title: "Treat yourself to something special"
+			x: -9.0d
+			y: -5.5d
+		}
+		{
+			dependencies: ["30C5A4F358C28E95"]
+			description: ["The Engineer's Crafting Table is a slightly upgraded crafting table that has a small internal inventory for storing commonly needed materials, and also 'remembers' what is put in the crafting grid. It can be used just like any other crafting table too."]
+			id: "521D6EEB89F46D51"
+			shape: "square"
+			tasks: [
+				{
+					count: 3L
+					id: "113A0A0578E149EF"
+					item: "immersiveengineering:slab_treated_wood_horizontal"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "41C79191BDFF5B64"
+					item: "immersiveengineering:stick_treated"
+					type: "item"
+				}
+				{
+					id: "5827DB344C3514FB"
+					item: "minecraft:crafting_table"
+					type: "item"
+				}
+				{
+					id: "16ABC23D9759BC9D"
+					item: "immersiveengineering:craftingtable"
+					type: "item"
+				}
+			]
+			title: "A Crafting Table suitable for an Engineer"
+			x: -9.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["521D6EEB89F46D51"]
+			description: [
+				"The Engineer's Workbench is where some of the more delicate components are made. Depending on the blueprint inserted, different components can be crafted."
+				""
+				"Some of the components (such as Iron Mechanical Components) can be made in a regular crafting table too, but it can be cheaper to use this more specialised workbench when making them."
+			]
+			id: "69409ABBD1FE2E52"
+			shape: "square"
+			tasks: [
+				{
+					count: 2L
+					id: "4805B7D6AADFD888"
+					item: "immersiveengineering:slab_treated_wood_horizontal"
+					type: "item"
+				}
+				{
+					id: "6588B8D3C122FE9D"
+					item: "immersiveengineering:treated_fence"
+					type: "item"
+				}
+				{
+					id: "46BF37B5D775AD50"
+					item: "immersiveengineering:craftingtable"
+					type: "item"
+				}
+				{
+					id: "31AB74A6EE6DC0C4"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/iron"
+						}
+					}
+					title: "Iron Ingot"
+					type: "item"
+				}
+				{
+					id: "30D92BD4AE857DCA"
+					item: "immersiveengineering:workbench"
+					type: "item"
+				}
+			]
+			title: "A Workbench for the budding Engineer"
+			x: -11.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["69409ABBD1FE2E52"]
+			description: [
+				"The first Engineer's Blueprint we're going to need is one for Crafting Components."
+				""
+				"Gather up an Ingot each of Copper, Iron and Aluminium, 3 pieces of paper, and 3 Blue Dye, and combine them in a crafting table to make the blueprint."
+			]
+			id: "0FB9A68D0ED3A906"
+			shape: "square"
+			tasks: [
+				{
+					id: "314A4173299524D2"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/copper"
+						}
+					}
+					title: "Copper Ingot"
+					type: "item"
+				}
+				{
+					id: "7D4CF18EB6776BFF"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/aluminum"
+						}
+					}
+					title: "Aluminum Ingot"
+					type: "item"
+				}
+				{
+					id: "2A3213168D2FDD27"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/iron"
+						}
+					}
+					title: "Iron Ingot"
+					type: "item"
+				}
+				{
+					count: 3L
+					id: "2A686FBC1D8561EE"
+					item: "minecraft:paper"
+					type: "item"
+				}
+				{
+					count: 3L
+					id: "6DF97FADB31AABE6"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:dyes/blue"
+						}
+					}
+					title: "Blue Dye"
+					type: "item"
+				}
+				{
+					id: "7D76E69E8CD8D96F"
+					item: {
+						Count: 1b
+						id: "immersiveengineering:blueprint"
+						tag: {
+							blueprint: "components"
+						}
+					}
+					type: "item"
+				}
+			]
+			title: "Engineer's Blueprint: Crafting Components"
+			x: -14.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: ["The Engineer's Screwdriver is a tool that can be used to make fine adjustments to certain machinery."]
+			id: "1B83BF9E1ACC9C74"
+			optional: true
+			tasks: [{
+				id: "2A06FB2382A1FF20"
+				item: "immersiveengineering:screwdriver"
+				type: "item"
+			}]
+			title: "Got a screw loose?"
+			x: -19.0d
+			y: -7.0d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: ["The Engineer's Wire Cutters can be used to cut wires from metal plates."]
+			id: "54983D63C5517CFC"
+			shape: "square"
+			tasks: [{
+				id: "0230E1373E33E08B"
+				item: {
+					Count: 1b
+					id: "immersiveengineering:wirecutter"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "Getting Wired"
+			x: -19.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"54983D63C5517CFC"
+				"3CE5CF8C36B51169"
+			]
+			description: [
+				"Use your Engineer's Wire Cutters in a crafting table with a metal plate to make wires."
+				""
+				"For example, a Copper Plate will result in a Copper Wire."
+			]
+			id: "3A832DC0E3B1D216"
+			shape: "square"
+			tasks: [{
+				id: "5DC75D776748531F"
+				item: "immersiveengineering:wire_copper"
+				type: "item"
+			}]
+			title: "Wires"
+			x: -17.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["522535CBDFA3DEB3"]
+			description: ["Metal Plates can be made in a crafting table by smooshing an ingot using either the Engineer's Hammer, or a Smoosher."]
+			id: "3CE5CF8C36B51169"
+			shape: "square"
+			tasks: [
+				{
+					id: "654EDC5977A21B8D"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/copper"
+						}
+					}
+					title: "Copper Plates"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "35A209CA4B4CAF6C"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/iron"
+						}
+					}
+					title: "Iron Plates"
+					type: "item"
+				}
+				{
+					id: "35DCD74A69CA5CF6"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/nickel"
+						}
+					}
+					title: "Nickel Plates"
+					type: "item"
+				}
+			]
+			title: "Plates"
+			x: -16.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"3CE5CF8C36B51169"
+				"0FB9A68D0ED3A906"
+				"3A832DC0E3B1D216"
+			]
+			description: ["While it's now possible to make other Crafting Components, what we really need right now are Iron Mechanical Components and Incandescent Light Bulbs. Go ahead and make some!"]
+			id: "48246E128129FBBB"
+			shape: "square"
+			tasks: [
+				{
+					count: 3L
+					id: "5F69CA8B664D7D2B"
+					item: "immersiveengineering:electron_tube"
+					type: "item"
+				}
+				{
+					id: "40EFAE95F810FEEA"
+					item: "immersiveengineering:component_iron"
+					type: "item"
+				}
+			]
+			title: "Components for Crafting"
+			x: -16.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["48246E128129FBBB"]
+			description: [
+				"The Science Division reliably informs me that we're now in a position to be able to make our first Garden Cloche. What they can't reliably tell me though is how to pronounce 'Cloche', which is why I'm happy that I'm having to communicate with you via the written word, rather than sounding like an idiot trying to get it right."
+				""
+				"The Garden Cloche is an amazing bit of kit that when provided with power and water, a seed, and the appropriate material for the seed to grow on, can automatically grow and harvest plants."
+				""
+				"Right now our options are limited, but we're going to be looking to change that soon! You might want to take a little extra time and make some extra Garden Cloches while you're in the groove, but it's not serious - you can always come back again later and make more as needed."
+				""
+				"&aUnlocks: Digging Up the Dirt (2/2)&f"
+			]
+			id: "60EF2E8135447636"
+			shape: "gear"
+			size: 1.5d
+			subtitle: "(no, I don't quite know how to pronounce it either)"
+			tasks: [{
+				id: "096A94B3D659DC99"
+				item: "immersiveengineering:cloche"
+				type: "item"
+			}]
+			title: "Automated Farming"
+			x: -14.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: [
+				"Sometimes it helps to have a manual available to get more details on Engineering projects."
+				""
+				"While we're basically only dipping into Engineering at this stage rather than getting fully Immersed, the Engineer's Manual might still be of use."
+			]
+			id: "110EC25E62CF3A97"
+			optional: true
+			tasks: [{
+				id: "00882C39E86C0FC1"
+				item: "immersiveengineering:manual"
+				type: "item"
+			}]
+			title: "RTFM"
+			x: -22.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"3CE5CF8C36B51169"
+				"79B8FE775F1EC0C0"
+			]
+			description: ["The Jerry Can is a useful way of moving 10 buckets of Creosote Oil at a time, and can also be used in place of a bucket when making Treated Wood."]
+			id: "60297B140796BB2E"
+			optional: true
+			subtitle: "Just give Jerry a chance!"
+			tasks: [{
+				id: "181A5512CAFF49A7"
+				item: "immersiveengineering:jerrycan"
+				type: "item"
+			}]
+			title: "Jerry Can"
+			x: -11.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["30C5A4F358C28E95"]
+			description: [
+				"Osmium, a key element for use in advanced mechanisms, can be made through alloying Carbon Nanotubes, Iron, and Thatldu in an Induction Smelter. You've made one of those already, right? No? You're going to need some Invar first. Consider making an Alloy Kiln to get started!"
+				""
+				"Osmium is actually a pure element, so even our Science Division is uncertain as to what the actual process here is, but there's something 'hinky' about that Thatldu stuff that seems to make this possible."
+				""
+				"You're probably going to need quite a bit of Osmium moving forward, so you might as well stock up a bit."
+				""
+				"&aUnlocks: Allo? Allo? Alloy!&f"
+				"&aUnlocks: Getting Mekanised (2/2)&f"
+			]
+			id: "556EC4397E364D31"
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					count: 3L
+					id: "4D97DA6059F91DEC"
+					item: "mekanism:ingot_osmium"
+					type: "item"
+				}
+				{
+					count: 8L
+					id: "47EF58B1F360E498"
+					item: "immersiveengineering:alloybrick"
+					type: "item"
+				}
+				{
+					count: 8L
+					id: "3F2BA2F8EB780ECE"
+					item: "thermal:invar_ingot"
+					type: "item"
+				}
+			]
+			title: "Osmium Osmosis"
+			x: -5.5d
+			y: -5.5d
+		}
+	]
+	title: "Getting Immersed"
+}

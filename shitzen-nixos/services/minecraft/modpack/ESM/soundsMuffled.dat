@@ -1,0 +1,8 @@
+{
+  "outer_end:entity.outer_end.himmelite.hurt": 0.15,
+  "outer_end:entity.outer_end.himmelite.death": 0.15,
+  "outer_end:entity.outer_end.entombed.idle": 0.15,
+  "outer_end:entity.outer_end.entombed.hurt": 0.15,
+  "outer_end:entity.outer_end.entombed.death": 0.15,
+  "outer_end:entity.outer_end.himmelite.idle": 0.15
+}

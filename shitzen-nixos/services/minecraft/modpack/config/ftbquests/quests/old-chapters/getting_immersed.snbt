@@ -1,0 +1,504 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_immersed"
+	group: "719DAED049159F2E"
+	icon: "immersiveengineering:cloche"
+	id: "3BF3D90FE131483F"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: [
+				"1F8D8241F7495CD3"
+				"2A3A34A47D8AF234"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.00.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.00.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.00.d.02}"
+			]
+			id: "656C9C0843F67B03"
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.00.c.24.q.00.sub}"
+			tasks: [{
+				id: "2FA23F81FE8D046A"
+				title: "{cuboiddroid.quests.g.00.c.24.q.00.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.00}"
+			x: -20.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["522535CBDFA3DEB3"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.02}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.03}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.04}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.05}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.06}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.07}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.08}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.09}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.10}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.11}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.12}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.13}"
+				"{cuboiddroid.quests.g.00.c.24.q.01.d.14}"
+			]
+			id: "68465745375E0488"
+			shape: "square"
+			tasks: [
+				{
+					count: 36L
+					id: "1DDD096E693B2B44"
+					item: "minecraft:brick"
+					type: "item"
+				}
+				{
+					count: 36L
+					id: "006C73CFFC0A1F36"
+					item: "minecraft:clay_ball"
+					type: "item"
+				}
+				{
+					count: 9L
+					id: "131F99FBADBC471D"
+					item: "minecraft:sandstone"
+					type: "item"
+				}
+				{
+					count: 27L
+					id: "326376C6497CBB74"
+					item: "immersiveengineering:cokebrick"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.24.q.01}"
+			x: -14.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["68465745375E0488"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.02}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.03}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.04}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.05}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.06}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.07}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.08}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.09}"
+				"{cuboiddroid.quests.g.00.c.24.q.02.d.10}"
+			]
+			id: "79B8FE775F1EC0C0"
+			shape: "square"
+			tasks: [{
+				id: "5337D773C92B2886"
+				item: "immersiveengineering:creosote_bucket"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.02}"
+			x: -11.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.03.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.03.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.03.d.02}"
+				"{cuboiddroid.quests.g.00.c.24.q.03.d.03}"
+				"{cuboiddroid.quests.g.00.c.24.q.03.d.04}"
+			]
+			id: "522535CBDFA3DEB3"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.24.q.03.sub}"
+			tasks: [{
+				id: "26651C168F294A67"
+				item: {
+					Count: 1b
+					id: "immersiveengineering:hammer"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.03}"
+			x: -17.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["79B8FE775F1EC0C0"]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.04.d.00}"]
+			id: "30C5A4F358C28E95"
+			shape: "square"
+			tasks: [{
+				count: 32L
+				id: "7DC5DFB06DB49FBE"
+				item: "immersiveengineering:treated_wood_horizontal"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.04}"
+			x: -8.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["30C5A4F358C28E95"]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.05.d.00}"]
+			id: "521D6EEB89F46D51"
+			shape: "square"
+			tasks: [
+				{
+					count: 3L
+					id: "113A0A0578E149EF"
+					item: "immersiveengineering:slab_treated_wood_horizontal"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "41C79191BDFF5B64"
+					item: "immersiveengineering:stick_treated"
+					type: "item"
+				}
+				{
+					id: "5827DB344C3514FB"
+					item: "minecraft:crafting_table"
+					type: "item"
+				}
+				{
+					id: "16ABC23D9759BC9D"
+					item: "immersiveengineering:craftingtable"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.24.q.05}"
+			x: -8.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["521D6EEB89F46D51"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.06.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.06.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.06.d.02}"
+			]
+			id: "69409ABBD1FE2E52"
+			shape: "square"
+			tasks: [
+				{
+					count: 2L
+					id: "4805B7D6AADFD888"
+					item: "immersiveengineering:slab_treated_wood_horizontal"
+					type: "item"
+				}
+				{
+					id: "6588B8D3C122FE9D"
+					item: "immersiveengineering:treated_fence"
+					type: "item"
+				}
+				{
+					id: "46BF37B5D775AD50"
+					item: "immersiveengineering:craftingtable"
+					type: "item"
+				}
+				{
+					id: "31AB74A6EE6DC0C4"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/iron"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.06.t.03}"
+					type: "item"
+				}
+				{
+					id: "30D92BD4AE857DCA"
+					item: "immersiveengineering:workbench"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.24.q.06}"
+			x: -11.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["69409ABBD1FE2E52"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.07.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.07.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.07.d.02}"
+			]
+			id: "0FB9A68D0ED3A906"
+			shape: "square"
+			tasks: [
+				{
+					id: "314A4173299524D2"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/copper"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.07.t.00}"
+					type: "item"
+				}
+				{
+					id: "7D4CF18EB6776BFF"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/aluminum"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.07.t.01}"
+					type: "item"
+				}
+				{
+					id: "2A3213168D2FDD27"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/iron"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.07.t.02}"
+					type: "item"
+				}
+				{
+					count: 3L
+					id: "2A686FBC1D8561EE"
+					item: "minecraft:paper"
+					type: "item"
+				}
+				{
+					id: "6DF97FADB31AABE6"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:dyes/blue"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.07.t.04}"
+					type: "item"
+				}
+				{
+					id: "7D76E69E8CD8D96F"
+					item: {
+						Count: 1b
+						id: "immersiveengineering:blueprint"
+						tag: {
+							blueprint: "components"
+						}
+					}
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.24.q.07}"
+			x: -14.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.08.d.00}"]
+			id: "1B83BF9E1ACC9C74"
+			optional: true
+			tasks: [{
+				id: "2A06FB2382A1FF20"
+				item: "immersiveengineering:screwdriver"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.08}"
+			x: -19.0d
+			y: -7.0d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.09.d.00}"]
+			id: "54983D63C5517CFC"
+			shape: "square"
+			tasks: [{
+				id: "0230E1373E33E08B"
+				item: {
+					Count: 1b
+					id: "immersiveengineering:wirecutter"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.09}"
+			x: -19.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"54983D63C5517CFC"
+				"3CE5CF8C36B51169"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.10.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.10.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.10.d.02}"
+			]
+			id: "3A832DC0E3B1D216"
+			shape: "square"
+			tasks: [{
+				id: "5DC75D776748531F"
+				item: "immersiveengineering:wire_copper"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.10}"
+			x: -17.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["522535CBDFA3DEB3"]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.11.d.00}"]
+			id: "3CE5CF8C36B51169"
+			shape: "square"
+			tasks: [
+				{
+					id: "654EDC5977A21B8D"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/copper"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.11.t.00}"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "35A209CA4B4CAF6C"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/iron"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.11.t.01}"
+					type: "item"
+				}
+				{
+					id: "35DCD74A69CA5CF6"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:plates/nickel"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.24.q.11.t.02}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.24.q.11}"
+			x: -16.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"3CE5CF8C36B51169"
+				"0FB9A68D0ED3A906"
+				"3A832DC0E3B1D216"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.12.d.00}"]
+			id: "48246E128129FBBB"
+			shape: "square"
+			tasks: [
+				{
+					count: 3L
+					id: "5F69CA8B664D7D2B"
+					item: "immersiveengineering:electron_tube"
+					type: "item"
+				}
+				{
+					id: "40EFAE95F810FEEA"
+					item: "immersiveengineering:component_iron"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.24.q.12}"
+			x: -16.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["48246E128129FBBB"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.02}"
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.03}"
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.04}"
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.05}"
+				"{cuboiddroid.quests.g.00.c.24.q.13.d.06}"
+			]
+			id: "60EF2E8135447636"
+			shape: "gear"
+			size: 1.5d
+			subtitle: "{cuboiddroid.quests.g.00.c.24.q.13.sub}"
+			tasks: [{
+				id: "096A94B3D659DC99"
+				item: "immersiveengineering:cloche"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.13}"
+			x: -14.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["656C9C0843F67B03"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.24.q.14.d.00}"
+				"{cuboiddroid.quests.g.00.c.24.q.14.d.01}"
+				"{cuboiddroid.quests.g.00.c.24.q.14.d.02}"
+			]
+			id: "110EC25E62CF3A97"
+			optional: true
+			tasks: [{
+				id: "00882C39E86C0FC1"
+				item: "immersiveengineering:manual"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.14}"
+			x: -22.0d
+			y: -4.0d
+		}
+		{
+			dependencies: [
+				"3CE5CF8C36B51169"
+				"79B8FE775F1EC0C0"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.24.q.15.d.00}"]
+			id: "60297B140796BB2E"
+			optional: true
+			subtitle: "{cuboiddroid.quests.g.00.c.24.q.15.sub}"
+			tasks: [{
+				id: "181A5512CAFF49A7"
+				item: "immersiveengineering:jerrycan"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.24.q.15}"
+			x: -10.0d
+			y: -4.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.00.c.24}"
+}

@@ -1,0 +1,571 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "thermal_content"
+	group: "4F582DBBFACF1F69"
+	icon: "thermal:machine_pulverizer"
+	id: "4C3211D7C7EB80CF"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["3B00278F3DDF103C"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.00.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.00.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.00.d.02}"
+				"{cuboiddroid.quests.g.02.c.38.q.00.d.03}"
+				"{cuboiddroid.quests.g.02.c.38.q.00.d.04}"
+			]
+			id: "304B2612E56845AB"
+			shape: "gear"
+			tasks: [
+				{
+					id: "40E39A53CB16A9DC"
+					item: "minecraft:gold_ingot"
+					type: "item"
+				}
+				{
+					id: "5132997F84207BD0"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/tin"
+						}
+					}
+					title: "{cuboiddroid.quests.g.02.c.38.q.00.t.01}"
+					type: "item"
+				}
+				{
+					id: "7DF5C6055A7E2589"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/copper"
+						}
+					}
+					title: "{cuboiddroid.quests.g.02.c.38.q.00.t.02}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.02.c.38.q.00}"
+			x: 0.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["304B2612E56845AB"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.01.d.00}"]
+			id: "5E3BB220C87D1E87"
+			shape: "square"
+			tasks: [
+				{
+					id: "061E4D95E2898E08"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:gears/tin"
+						}
+					}
+					title: "{cuboiddroid.quests.g.02.c.38.q.01.t.00}"
+					type: "item"
+				}
+				{
+					id: "469B6CB3DAA67A7B"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:gears/copper"
+						}
+					}
+					title: "{cuboiddroid.quests.g.02.c.38.q.01.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.02.c.38.q.01}"
+			x: 2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5E3BB220C87D1E87"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.02.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.02.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.02.d.02}"
+			]
+			id: "177C75AD8B222FD5"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.02.c.38.q.02.sub}"
+			tasks: [{
+				id: "1D0BB74EF86256D5"
+				item: "thermal:machine_frame"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.02}"
+			x: 4.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["43FA19C5DEEEF7E2"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.03.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.03.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.03.d.02}"
+			]
+			id: "7FCD766C2820B7F3"
+			optional: true
+			tasks: [{
+				id: "16FFB95BAEC11B3C"
+				item: "thermal:machine_furnace"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["177C75AD8B222FD5"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.04.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.04.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.04.d.02}"
+			]
+			id: "43FA19C5DEEEF7E2"
+			shape: "square"
+			tasks: [{
+				id: "195143340B6A367F"
+				item: "thermal:rf_coil"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.04}"
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["43FA19C5DEEEF7E2"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.05.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.05.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.05.d.02}"
+			]
+			id: "0D0D0371C13D40E3"
+			optional: true
+			tasks: [{
+				id: "12E3E6E94C0A9E5E"
+				item: "thermal:machine_sawmill"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -2.0d
+		}
+		{
+			dependencies: ["43FA19C5DEEEF7E2"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.06.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.06.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.06.d.02}"
+			]
+			id: "26CEE055CC89D4EC"
+			optional: true
+			tasks: [{
+				id: "4C9D635160353E20"
+				item: "thermal:machine_pulverizer"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 1.0d
+		}
+		{
+			dependencies: ["508B9043053F83F3"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.07.d.00}"]
+			id: "751956F759096D80"
+			tasks: [{
+				id: "5A2F8CB859362CE1"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:gears/lumium"
+					}
+				}
+				title: "{cuboiddroid.quests.g.02.c.38.q.07.t.00}"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["43FA19C5DEEEF7E2"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.08.d.00}"]
+			id: "28B5AB28799FEE21"
+			optional: true
+			tasks: [{
+				id: "3AC692EE0A66BECB"
+				item: "thermal:machine_bottler"
+				type: "item"
+			}]
+			x: 8.0d
+			y: -1.0d
+		}
+		{
+			dependencies: ["43FA19C5DEEEF7E2"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.09.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.09.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.09.d.02}"
+			]
+			id: "0C96F700BB74F8DC"
+			optional: true
+			tasks: [{
+				id: "01129D9D67C55C4F"
+				item: "thermal:machine_crafter"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["239ABB6920C2D4C2"]
+			dependency_requirement: "one_completed"
+			id: "7E0F0541B4718277"
+			optional: true
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.02.c.38.q.10.sub}"
+			tasks: [{
+				id: "49390DD485B72533"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:gears/constantan"
+					}
+				}
+				title: "{cuboiddroid.quests.g.02.c.38.q.10.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.10}"
+			x: 0.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["751956F759096D80"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.02}"
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.03}"
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.04}"
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.05}"
+				"{cuboiddroid.quests.g.02.c.38.q.11.d.06}"
+			]
+			id: "5040463B5E776B76"
+			optional: true
+			tasks: [{
+				id: "725D641063961DA7"
+				item: "thermal:machine_insolator"
+				type: "item"
+			}]
+			x: 8.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7E0F0541B4718277"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.12.d.00}"]
+			id: "50B1893A30931C26"
+			optional: true
+			tasks: [{
+				id: "6C0370AB3BD82613"
+				item: "thermal:machine_centrifuge"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["7E0F0541B4718277"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.13.d.00}"]
+			id: "75FF9C12DE5741E0"
+			optional: true
+			tasks: [{
+				id: "3541A8A76C5A8377"
+				item: "thermal:machine_press"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 5.0d
+		}
+		{
+			dependencies: ["5040463B5E776B76"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.14.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.14.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.14.d.02}"
+			]
+			id: "49B3B842F3607B54"
+			optional: true
+			tasks: [{
+				id: "776A551942C142F3"
+				item: "thermal:phytogro"
+				type: "item"
+			}]
+			x: 10.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["370DC91DCE34BD2B"]
+			id: "6B6CBCB0904E17C4"
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.02.c.38.q.15.sub}"
+			tasks: [{
+				id: "27E01E0F92322595"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:gears/invar"
+					}
+				}
+				title: "{cuboiddroid.quests.g.02.c.38.q.15.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.15}"
+			x: 2.0d
+			y: 3.5d
+		}
+		{
+			dependencies: ["7E0F0541B4718277"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.16.d.00}"]
+			id: "71CA68F42A658AD1"
+			optional: true
+			tasks: [{
+				id: "4016337303D01A7D"
+				item: "thermal:machine_brewer"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["7E0F0541B4718277"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.17.d.00}"]
+			id: "4070E83E154D268C"
+			optional: true
+			tasks: [{
+				id: "2645874E180406BB"
+				item: "thermal:machine_pyrolyzer"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["6B6CBCB0904E17C4"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.18.d.00}"]
+			id: "508B9043053F83F3"
+			shape: "square"
+			tasks: [{
+				id: "42AD38D4EFF90D13"
+				item: "thermal:machine_smelter"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["6B6CBCB0904E17C4"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.19.d.00}"]
+			id: "60ECC7258A85864D"
+			optional: true
+			tasks: [{
+				id: "64FE1EC996FD1B4C"
+				item: "thermal:machine_crucible"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["6B6CBCB0904E17C4"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.20.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.20.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.20.d.02}"
+				"{cuboiddroid.quests.g.02.c.38.q.20.d.03}"
+				"{cuboiddroid.quests.g.02.c.38.q.20.d.04}"
+			]
+			id: "131A4A51271715E2"
+			shape: "gear"
+			size: 1.2d
+			tasks: [{
+				id: "6A75705700D0E322"
+				item: "thermal:machine_chiller"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["6B6CBCB0904E17C4"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.21.d.00}"]
+			id: "5D58C72431929C9D"
+			optional: true
+			tasks: [{
+				id: "0AF1FDDCC1A84ACA"
+				item: "thermal:machine_refinery"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["304B2612E56845AB"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.22.d.00}"]
+			id: "25C51F1B3C28DE9F"
+			optional: true
+			tasks: [{
+				id: "3AB055309AA35766"
+				item: "thermal:redstone_servo"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.22}"
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["25C51F1B3C28DE9F"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.23.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.23.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.23.d.02}"
+				"{cuboiddroid.quests.g.02.c.38.q.23.d.03}"
+				"{cuboiddroid.quests.g.02.c.38.q.23.d.04}"
+			]
+			id: "57EC076D817C1485"
+			optional: true
+			tasks: [{
+				id: "2980167E3F9857AB"
+				item: "thermal:device_collector"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.23}"
+			x: -4.0d
+			y: 0.5d
+		}
+		{
+			dependencies: ["25C51F1B3C28DE9F"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.02}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.03}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.04}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.05}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.06}"
+				"{cuboiddroid.quests.g.02.c.38.q.24.d.07}"
+			]
+			id: "17A8A53541D15D3F"
+			optional: true
+			tasks: [{
+				id: "78AC9DA7FF42F898"
+				item: "thermal:device_tree_extractor"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.24}"
+			x: -4.0d
+			y: -0.5d
+		}
+		{
+			dependencies: ["508B9043053F83F3"]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.25.d.00}"]
+			id: "649E4011A9875F66"
+			optional: true
+			tasks: [{
+				id: "01AD9FE0D0C3F7D9"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:gears/signalum"
+					}
+				}
+				title: "{cuboiddroid.quests.g.02.c.38.q.25.t.00}"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 7.0d
+		}
+		{
+			dependencies: ["370DC91DCE34BD2B"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.26.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.26.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.26.d.02}"
+			]
+			id: "5807222BFBC0B66A"
+			optional: true
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.02.c.38.q.26.sub}"
+			tasks: [{
+				id: "3A164F4B53B08EF7"
+				item: "thermal:upgrade_augment_1"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.38.q.26}"
+			x: 2.0d
+			y: 7.5d
+		}
+		{
+			dependencies: [
+				"649E4011A9875F66"
+				"5807222BFBC0B66A"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.27.d.00}"]
+			id: "7045B2B822678989"
+			optional: true
+			tasks: [{
+				id: "5115AE24141071ED"
+				item: "thermal:upgrade_augment_2"
+				type: "item"
+			}]
+			x: 4.0d
+			y: 9.5d
+		}
+		{
+			dependencies: ["508B9043053F83F3"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.38.q.28.d.00}"
+				"{cuboiddroid.quests.g.02.c.38.q.28.d.01}"
+				"{cuboiddroid.quests.g.02.c.38.q.28.d.02}"
+			]
+			id: "7DB0567D4BF1657C"
+			shape: "gear"
+			size: 1.2d
+			tasks: [{
+				id: "25FCCD5AD0F5B9C4"
+				item: "thermal:enderium_ingot"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"7045B2B822678989"
+				"7DB0567D4BF1657C"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.38.q.29.d.00}"]
+			id: "435B559A8CA70380"
+			optional: true
+			tasks: [{
+				id: "1869DE0E3916DB51"
+				item: "thermal:upgrade_augment_3"
+				type: "item"
+			}]
+			x: 6.0d
+			y: 7.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.02.c.38}"
+}

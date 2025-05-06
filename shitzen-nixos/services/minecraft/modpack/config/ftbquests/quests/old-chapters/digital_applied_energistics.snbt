@@ -1,0 +1,696 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "digital_applied_energistics"
+	group: "24F09E0B1AD125E9"
+	icon: "ae2:charged_certus_quartz_crystal"
+	id: "4563107BC3215F01"
+	images: [
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 4.5d
+			hover: [
+				"A typical example of simple automation for a furnace."
+				""
+				"On top is an ME Interface with Encoded Patterns for processing recipes."
+				""
+				"On the side is an ME Export Bus which is exporting Coal from the ME System into the furnace as fuel."
+				""
+				"On the bottom is an ME Import Bus to import the resulting smelted item back into the ME System."
+			]
+			image: "kubejs:textures/quests/ae2/ae2-furnace-automation.png"
+			rotation: 0.0d
+			width: 4.0d
+			x: -11.0d
+			y: 4.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 5.5d
+			hover: [
+				"An example of how you might choose to set up your ME Interfaces and Molecular Assemblers."
+				""
+				"Note that a block this size is bigger than would usually work if channels were enabled."
+			]
+			image: "kubejs:textures/quests/ae2/ae2-molecular-assemblers.png"
+			rotation: 0.0d
+			width: 8.0d
+			x: -12.5d
+			y: 8.5d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.5d
+			hover: [
+				"Examples of valid Crafting CPU multi-block structures. From left to right:"
+				"."
+				"A single 1K Crafting Storage block, allowing for single small crafts to be processed."
+				"."
+				"A single 1K Crafting Storage block (as above) with a Crafting Monitor to show what is being crafted."
+				"."
+				"A Crafting Co-Processor Unit, a 4K Crafting Storage, a Crafting Monitor and a 'filler' Crafting Unit. This would be capable of crafting two things at once for slightly more complex recipes."
+				"."
+				"Four 16K Crafting Storage as the Crafting CPU. Only a single job can be processed at a time, but would cater for larger crafts (equivalent of a single 64K Crafting Storage)."
+				"."
+				"A 2x3x2 cuboid Crafting CPU comprised of a Crafting Monitor, multiple Crafting Co-Processor Units and multiple Crafting Storage blocks. Capable of processing multiple crafts simultaneously and dealing with very large crafting jobs."
+			]
+			image: "kubejs:textures/quests/ae2/ae2-crafting-cpus.png"
+			rotation: 0.0d
+			width: 8.0d
+			x: -12.5d
+			y: 13.0d
+		}
+	]
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["2A0BA655B05B5F2D"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.00.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.00.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.00.d.02}"
+			]
+			id: "1828513DFF41506C"
+			shape: "gear"
+			tasks: [{
+				id: "22697D3B1DCA9046"
+				item: "ae2:cell_component_1k"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.06.q.00}"
+			x: -3.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["180567EB6F3528A8"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.01.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.01.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.01.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.01.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.01.d.04}"
+			]
+			id: "36AF60405BD070AE"
+			rewards: [{
+				id: "53218249D89795D7"
+				item: "ae2:storage_bus"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "445E36BFF3518FB7"
+				item: "ae2:storage_bus"
+				type: "item"
+			}]
+			x: -4.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["6DE3F70EB4CD0CD9"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.02.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.02.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.02.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.02.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.02.d.04}"
+			]
+			id: "43B99DA053AE15C6"
+			rewards: [{
+				count: 8
+				id: "5B7F27346548F39A"
+				item: "ae2:fluix_glass_cable"
+				random_bonus: 17
+				type: "item"
+			}]
+			tasks: [{
+				count: 4L
+				id: "0F64B776FFD75FA2"
+				item: "ae2:fluix_glass_cable"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["6E2690379CD0039D"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.03.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.03.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.03.d.02}"
+			]
+			id: "344C915EFD13A8E9"
+			optional: true
+			rewards: [{
+				count: 8
+				id: "70BDFD1040CF52D6"
+				item: "ae2:fluix_smart_cable"
+				random_bonus: 8
+				type: "item"
+			}]
+			tasks: [{
+				id: "1996CB75650E804A"
+				item: "ae2:fluix_smart_cable"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["43B99DA053AE15C6"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.04.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.04.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.04.d.02}"
+			]
+			id: "6E2690379CD0039D"
+			rewards: [{
+				count: 8
+				id: "485420F7035BEB19"
+				item: "ae2:fluix_covered_cable"
+				random_bonus: 8
+				type: "item"
+			}]
+			tasks: [{
+				id: "7EA0931A15C2F38E"
+				item: "ae2:fluix_covered_cable"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["6E2690379CD0039D"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.05.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.05.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.05.d.02}"
+			]
+			id: "565C5E839DFBAEC5"
+			optional: true
+			rewards: [{
+				count: 8
+				id: "65568848382305F3"
+				item: "ae2:fluix_covered_dense_cable"
+				random_bonus: 8
+				type: "item"
+			}]
+			tasks: [{
+				id: "4C5B30D4178D35ED"
+				item: "ae2:fluix_covered_dense_cable"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["565C5E839DFBAEC5"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.06.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.06.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.06.d.02}"
+			]
+			id: "3CACED282D4B8D8C"
+			optional: true
+			rewards: [{
+				count: 8
+				id: "6132FB0E9716ED1C"
+				item: "ae2:fluix_smart_dense_cable"
+				random_bonus: 8
+				type: "item"
+			}]
+			tasks: [{
+				id: "7091325FC917CB4C"
+				item: "ae2:fluix_smart_dense_cable"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["6DE3F70EB4CD0CD9"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.07.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.07.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.07.d.02}"
+			]
+			id: "432597A05BA9C1ED"
+			rewards: [{
+				count: 16
+				id: "07D70B1A09812740"
+				item: "ae2:cable_anchor"
+				random_bonus: 16
+				type: "item"
+			}]
+			tasks: [{
+				id: "6B95D1C5BF0E9528"
+				item: "ae2:cable_anchor"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["1828513DFF41506C"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.08.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.08.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.08.d.02}"
+			]
+			id: "6DE3F70EB4CD0CD9"
+			rewards: [{
+				count: 12
+				id: "024581DEEEA3835D"
+				item: "ae2:quartz_fiber"
+				random_bonus: 20
+				type: "item"
+			}]
+			tasks: [{
+				id: "4D56B9B64AF1F0F7"
+				item: "ae2:quartz_fiber"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.06.q.08}"
+			x: 0.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["1828513DFF41506C"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.09.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.09.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.09.d.02}"
+			]
+			id: "4C2B4423040C29D4"
+			rewards: [
+				{
+					count: 4
+					id: "11CC31228BB97490"
+					item: "ae2:annihilation_core"
+					random_bonus: 4
+					type: "item"
+				}
+				{
+					count: 4
+					id: "735CFD505A37D813"
+					item: "ae2:formation_core"
+					random_bonus: 4
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					count: 2L
+					id: "3DE024DFFA4503EF"
+					item: "ae2:annihilation_core"
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "0C303FEB1A9D98FD"
+					item: "ae2:formation_core"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.06.c.06.q.09}"
+			x: -6.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["4C2B4423040C29D4"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.10.d.06}"
+			]
+			id: "180567EB6F3528A8"
+			rewards: [
+				{
+					id: "0F976FA3D77E2258"
+					item: "ae2:pattern_provider"
+					random_bonus: 3
+					type: "item"
+				}
+				{
+					id: "4E936F8EF675DC28"
+					item: "ae2:cable_pattern_provider"
+					random_bonus: 3
+					type: "item"
+				}
+				{
+					id: "678A307A51C3824B"
+					item: "ae2:pattern_access_terminal"
+					type: "item"
+				}
+			]
+			tasks: [
+				{
+					id: "451596785BD2E33D"
+					item: "ae2:pattern_provider"
+					type: "item"
+				}
+				{
+					id: "47BA10A37065C5BD"
+					item: "ae2:cable_pattern_provider"
+					type: "item"
+				}
+			]
+			x: -6.0d
+			y: 5.0d
+		}
+		{
+			dependencies: ["4C2B4423040C29D4"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.11.d.06}"
+			]
+			id: "25B5DCD66A623987"
+			rewards: [{
+				id: "7974AA4EEFE86CBE"
+				item: "ae2:import_bus"
+				random_bonus: 3
+				type: "item"
+			}]
+			tasks: [{
+				id: "00D3122F17912915"
+				item: "ae2:import_bus"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.06.q.11}"
+			x: -7.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["4C2B4423040C29D4"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.12.d.06}"
+			]
+			id: "522EE9FFDCDF2F41"
+			rewards: [{
+				id: "099590FD6373B39C"
+				item: "ae2:export_bus"
+				random_bonus: 3
+				type: "item"
+			}]
+			tasks: [{
+				id: "215CFB3F950501CB"
+				item: "ae2:export_bus"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.06.q.12}"
+			x: -4.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["180567EB6F3528A8"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.13.d.06}"
+			]
+			id: "0B8E819D14DB5D63"
+			rewards: [{
+				count: 4
+				id: "25A87EBC04901650"
+				item: "ae2:molecular_assembler"
+				random_bonus: 12
+				type: "item"
+			}]
+			tasks: [{
+				id: "109C5CBF3A73768F"
+				item: "ae2:molecular_assembler"
+				type: "item"
+			}]
+			x: -6.0d
+			y: 6.5d
+		}
+		{
+			dependencies: ["107150FFDD89FCC2"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.14.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.14.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.14.d.02}"
+			]
+			id: "01B3726D689E5266"
+			rewards: [{
+				id: "580BE70B1E3BBE8A"
+				item: "ae2:1k_crafting_storage"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "1815D135E79DCB91"
+				item: "ae2:1k_crafting_storage"
+				type: "item"
+			}]
+			x: -6.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["0B8E819D14DB5D63"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.06}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.07}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.08}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.09}"
+				"{cuboiddroid.quests.g.06.c.06.q.15.d.10}"
+			]
+			id: "107150FFDD89FCC2"
+			rewards: [{
+				count: 4
+				id: "514C22A840EBACC1"
+				item: "ae2:crafting_unit"
+				random_bonus: 12
+				type: "item"
+			}]
+			tasks: [{
+				id: "5EEA68A7FA657F22"
+				item: "ae2:crafting_unit"
+				type: "item"
+			}]
+			x: -6.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["47BABFF51CE7E145"]
+			description: ["{cuboiddroid.quests.g.06.c.06.q.16.d.00}"]
+			id: "7F9F12F66725A42E"
+			rewards: [{
+				id: "3FDEBD85BB1032F8"
+				item: "ae2:crafting_monitor"
+				random_bonus: 3
+				type: "item"
+			}]
+			tasks: [{
+				id: "02C847EEE2712F19"
+				item: "ae2:crafting_monitor"
+				type: "item"
+			}]
+			x: -6.0d
+			y: 14.0d
+		}
+		{
+			dependencies: ["01B3726D689E5266"]
+			description: ["{cuboiddroid.quests.g.06.c.06.q.17.d.00}"]
+			id: "47BABFF51CE7E145"
+			rewards: [
+				{
+					id: "0FCDE19BFF56284E"
+					item: "ae2:storage_monitor"
+					type: "item"
+				}
+				{
+					id: "6D13FDF939D96954"
+					item: "ae2:crafting_accelerator"
+					random_bonus: 1
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "65431C90A4A0BB13"
+				item: "ae2:crafting_accelerator"
+				type: "item"
+			}]
+			x: -6.0d
+			y: 12.0d
+		}
+		{
+			dependencies: ["180567EB6F3528A8"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.18.d.06}"
+			]
+			id: "07EEAF0509F099EC"
+			rewards: [
+				{
+					id: "40C88D23B2D435FB"
+					item: "ae2:pattern_encoding_terminal"
+					type: "item"
+				}
+				{
+					count: 16
+					id: "3E4A361F658B4DF6"
+					item: "ae2:blank_pattern"
+					random_bonus: 16
+					type: "item"
+				}
+			]
+			tasks: [{
+				id: "259BDFEDABD624F9"
+				item: "ae2:blank_pattern"
+				type: "item"
+			}]
+			x: -7.5d
+			y: 6.5d
+		}
+		{
+			dependencies: ["01B3726D689E5266"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.19.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.19.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.19.d.02}"
+			]
+			id: "095F7882930EE411"
+			optional: true
+			rewards: [{
+				id: "4520CA46227DF67C"
+				item: "ae2:4k_crafting_storage"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "4C877C11C06E2C55"
+				item: "ae2:4k_crafting_storage"
+				type: "item"
+			}]
+			x: -4.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["095F7882930EE411"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.20.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.20.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.20.d.02}"
+			]
+			id: "62612FD5DFB76BD4"
+			optional: true
+			rewards: [{
+				id: "547255217A290F4D"
+				item: "ae2:16k_crafting_storage"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "056628837A00C3C6"
+				item: "ae2:16k_crafting_storage"
+				type: "item"
+			}]
+			x: -3.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["62612FD5DFB76BD4"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.21.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.21.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.21.d.02}"
+			]
+			id: "1CD5667305D728A8"
+			optional: true
+			rewards: [{
+				id: "4810E29025151C1E"
+				item: "ae2:64k_crafting_storage"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "0B9CD7AB1FBA922E"
+				item: "ae2:64k_crafting_storage"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["1828513DFF41506C"]
+			description: [
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.00}"
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.01}"
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.02}"
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.03}"
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.04}"
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.05}"
+				"{cuboiddroid.quests.g.06.c.06.q.22.d.06}"
+			]
+			id: "25E84A0A4A537F38"
+			rewards: [
+				{
+					id: "2DAA4ECB1D4B8CCD"
+					item: "appliedenergistics2:controller"
+					type: "item"
+				}
+				{
+					id: "6F6B34B81A361FF3"
+					item: "appliedenergistics2:energy_acceptor"
+					type: "item"
+				}
+				{
+					id: "6BD8C17DD5008764"
+					item: {
+						Count: 1b
+						id: "appliedenergistics2:energy_cell"
+						tag: { }
+					}
+					type: "item"
+				}
+			]
+			shape: "octagon"
+			tasks: [{
+				id: "2F8EBD7B9B3C7DFA"
+				title: "{cuboiddroid.quests.g.06.c.06.q.22.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.06.c.06.q.22}"
+			x: -3.0d
+			y: 2.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.06.c.06}"
+}

@@ -1,0 +1,14 @@
+{
+	chapter_groups: [
+		{ id: "719DAED049159F2E", title: "{cuboiddroid.quests.g.00}" }
+		{ id: "6E3D5CD175F7344D", title: "{cuboiddroid.quests.g.01}" }
+		{ id: "4F582DBBFACF1F69", title: "{cuboiddroid.quests.g.02}" }
+		{ id: "53EA7D6C6A1B0F69", title: "{cuboiddroid.quests.g.03}" }
+		{ id: "298C586EA6E5A561", title: "{cuboiddroid.quests.g.04}" }
+		{ id: "033EC740B2EF1FC1", title: "{cuboiddroid.quests.g.05}" }
+		{ id: "24F09E0B1AD125E9", title: "{cuboiddroid.quests.g.06}" }
+		{ id: "0B5EDAD5D67C6935", title: "{cuboiddroid.quests.g.07}" }
+		{ id: "4785B5C7E26FA669", title: "{cuboiddroid.quests.g.08}" }
+		{ id: "73C2C2D59F8E4DE2", title: "{cuboiddroid.quests.g.09}" }
+	]
+}

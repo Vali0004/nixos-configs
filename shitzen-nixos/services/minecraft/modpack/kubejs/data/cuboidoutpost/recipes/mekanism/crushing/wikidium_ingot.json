@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "item":"cuboidmod:wikidium_ingot"
+    }
+  },
+  "output":{
+    "count":1,"item":"cuboidmod:wikidium_dust"
+  }
+}

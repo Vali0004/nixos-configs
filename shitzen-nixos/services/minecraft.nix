@@ -43,10 +43,6 @@ in {
             files = fetchMods ./minecraft/test.nix;
             whitelist = {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
-              Flippy640 = "f57d77c3-5dcd-4a6e-b50a-1bb61a229940";
-              Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
-              SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
-              hophophop123 = "00000000-0000-0000-0009-01f4f5b93df8";
               HY9X = "7d0e5df7-7df2-457d-84e4-132230eed497";
               kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
@@ -70,10 +66,10 @@ in {
               max-tick-time = 60000;
               motd = "Hello!";
               network-compression-threshold = 512;
-              query-port = 4301;
+              query-port = 4100;
               server-ip = "0.0.0.0";
               server-name = "InertiaCraft";
-              server-port = 4301;
+              server-port = 4100;
               simulation-distance = 4;
               sync-chunk-writes = false;
               texturepack-required = true;
@@ -93,7 +89,6 @@ in {
               FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
               Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
               SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
-              hophophop123 = "00000000-0000-0000-0009-01f4f5b93df8";
               kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
             };
@@ -115,10 +110,10 @@ in {
               max-threads = 0;
               max-tick-time = 60000;
               network-compression-threshold = 512;
-              query-port = 4301;
+              query-port = 4100;
               server-ip = "0.0.0.0";
               server-name = "InertiaCraft";
-              server-port = 4301;
+              server-port = 4100;
               simulation-distance = 4;
               sync-chunk-writes = false; 
               texturepack-required = true;

@@ -1,0 +1,67 @@
+[
+  {
+    "mob": "minecraft:cod",
+    "persecond": 0.5,
+    "attempts": 20,
+    "amount": {
+      "minimum": 2,
+      "maximum": 5,
+      "groupdistance": 3
+    },
+    "conditions": {
+      "dimension": "minecraft:overworld",
+      "inwater": true,
+      "minheight": 1,
+      "maxheight": 200,
+      "maxthis": 20
+    }
+  },
+  {
+    "mob": "outer_end:entombed",
+    "persecond": 0.5,
+    "attempts": 20,
+    "amount": {
+      "minimum": 2,
+      "maximum": 5,
+      "groupdistance": 3
+    },
+    "conditions": {
+      "dimension": "minecraft:the_end",
+      "minheight": 1,
+      "maxheight": 200,
+      "maxthis": 8
+    }
+  },
+  {
+    "mob": "outer_end:sinker",
+    "persecond": 0.5,
+    "attempts": 20,
+    "amount": {
+      "minimum": 2,
+      "maximum": 5,
+      "groupdistance": 3
+    },
+    "conditions": {
+      "dimension": "minecraft:the_end",
+      "minheight": 1,
+      "maxheight": 200,
+      "maxthis": 8
+    }
+  },
+  {
+    "mob": "outer_end:himmelite",
+    "persecond": 0.5,
+    "attempts": 20,
+    "amount": {
+      "minimum": 2,
+      "maximum": 5,
+      "groupdistance": 3
+    },
+    "conditions": {
+      "dimension": "minecraft:the_end",
+      "minheight": 1,
+      "maxheight": 200,
+      "maxthis": 8
+    }
+  }
+]

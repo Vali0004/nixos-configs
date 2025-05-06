@@ -1,0 +1,518 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "dishing_up_the_meat"
+	group: "6E3D5CD175F7344D"
+	icon: "minecraft:chicken"
+	id: "3EFF31C92A1EC870"
+	order_index: 2
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["060D9DD7789DB5C5"]
+			description: [
+				"Apart from a somewhat dodgy supply of meat, and a fairly time-consuming supply of fish, you don't have easy access to meat and animal products!"
+				""
+				"It's time to try and rectify this!"
+				""
+				"You need to start working on recreating some familiar animal life now - get to it!"
+				""
+				"Unlocked in:"
+				"- Dirtying the Dishes"
+			]
+			id: "08E383BD1910ECD4"
+			shape: "gear"
+			tasks: [{
+				id: "51F8838903D06494"
+				type: "checkmark"
+			}]
+			title: "Dishing up the Meat"
+			x: 0.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["76528FB8C0913777"]
+			dependency_requirement: "one_completed"
+			description: [
+				"As we all know, ribonucleic acid (RNA) is a complex compound of high molecular weight that functions in cellular protein synthesis..."
+				""
+				"Blah blah blah. The Science Division did say more, but let me dumb it down for you."
+				""
+				"You pop some Bone or Rotten Flesh into the Molecular Recycler and you get back some RNA, which we'll use to make other stuff. "
+				""
+				"Get on with it."
+			]
+			id: "05E0AE86BB17A33C"
+			shape: "square"
+			tasks: [{
+				id: "701894EAF2A2D852"
+				item: "kubejs:rna"
+				type: "item"
+			}]
+			title: "Ribonucleic Acid (RNA)"
+			x: 0.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["08E383BD1910ECD4"]
+			description: ["An alternative ingredient for one of the early recipes is to use Bone instead of Rotten Flesh, so you might want to consider using bone where you can instead of Rotten Flesh."]
+			id: "4903A7F989486276"
+			optional: true
+			tasks: [{
+				id: "25B38E67A711948D"
+				item: "minecraft:bone"
+				type: "item"
+			}]
+			title: "Raw Material #2"
+			x: -0.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["08E383BD1910ECD4"]
+			description: [
+				"According to our Science Division, the primary ingredient we're going to need is Rotten Flesh."
+				""
+				"You'll need quite a bit of it by the time we're done, so stock up!"
+			]
+			id: "76528FB8C0913777"
+			shape: "square"
+			tasks: [{
+				count: 8L
+				id: "38CC39DD4FA6BCBB"
+				item: "minecraft:rotten_flesh"
+				type: "item"
+			}]
+			title: "Raw Material #1"
+			x: 1.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["76528FB8C0913777"]
+			description: [
+				"Unsurprisingly, we need a fairly 'clean' source of protein to work with."
+				""
+				"Make a stash of Protein Paste - we'll use it in different ways to eventually craft the specific DNA structures we need, to create the animal lifeforms we're after."
+			]
+			id: "41496EE5EE76DC58"
+			shape: "square"
+			tasks: [
+				{
+					id: "4A7A9EA022A11ECC"
+					item: "cuboidmod:silica_dust"
+					type: "item"
+				}
+				{
+					id: "36229CB337DB4880"
+					item: "cuboidmod:protein_paste"
+					type: "item"
+				}
+			]
+			title: "Protein Paste is not a waste"
+			x: 2.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["41496EE5EE76DC58"]
+			description: ["We're going to need to provide strands of protein for our DNA production - luckily we already know how to make Protein Strands using Wikidium Dust and Protein Paste in the QTC - you just need to make some more up so we can move on."]
+			id: "61497419EBD02DB9"
+			shape: "square"
+			tasks: [
+				{
+					id: "561B860DF080FC58"
+					item: "cuboidmod:wikidium_dust"
+					type: "item"
+				}
+				{
+					id: "61E5E151E1442AD9"
+					item: "cuboidmod:protein_fiber"
+					type: "item"
+				}
+			]
+			title: "Strand and Deliver"
+			x: 3.5d
+			y: 3.5d
+		}
+		{
+			dependencies: [
+				"41496EE5EE76DC58"
+				"05E0AE86BB17A33C"
+			]
+			description: ["Mixing RNA with Protein Paste in a Quantum Transmutation Chamber produces a Primordial Gloop which will allow us to form the base DNA strands we need."]
+			id: "53CEDE6D17D353F5"
+			shape: "square"
+			tasks: [{
+				id: "42EAE16A2B2F67D5"
+				item: "kubejs:primordial_gloop"
+				type: "item"
+			}]
+			title: "Gloop is not just for kids"
+			x: 1.5d
+			y: 3.5d
+		}
+		{
+			dependencies: [
+				"53CEDE6D17D353F5"
+				"61497419EBD02DB9"
+			]
+			description: [
+				"Dioxyribonucleic Acid (DNA) is a helical double-stranded nucleic acid that is crucial for containing the genetic information for cell growth, division, and function and is ... more blah blah blah I'm afraid."
+				""
+				"The important bit you need to know at the moment is that you're at a point where you can make some fairly generic DNA by putting Protein Strands and Primordial Gloop into the Quantum Transmutation Chamber."
+			]
+			id: "377A606304CD8D19"
+			shape: "square"
+			tasks: [{
+				id: "6A43F3F0D4B632C0"
+				item: "kubejs:dna"
+				type: "item"
+			}]
+			title: "Dioxyribonucleic Acid (DNA)"
+			x: 2.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["377A606304CD8D19"]
+			description: ["One more time through the QTC - this time using DNA and Bone Meal will result in Albumen, which is basically egg white, plus or minus some random genetic mutation."]
+			id: "13886489459A87C8"
+			shape: "square"
+			tasks: [
+				{
+					id: "40E60E51E8A934B0"
+					item: "minecraft:bone_meal"
+					type: "item"
+				}
+				{
+					id: "61C60EED1D7FE74A"
+					item: "kubejs:albumen"
+					type: "item"
+				}
+			]
+			title: "Don't shoot until you can see the white of their eggs."
+			x: 4.5d
+			y: 5.5d
+		}
+		{
+			dependencies: ["13886489459A87C8"]
+			description: [
+				"Put some of that Albumen into a Drying Cupboard, and over time you will end up with an Egg."
+				""
+				"Now, you could you throw these eggs around and hope for the best, but we're going to try and be smarter about this, and give ourselves a guaranteed way of hatching chickens."
+				""
+				"So keep a few eggs, and keep following the instructions to see how this can be done."
+			]
+			id: "6CD9C6679E598E91"
+			shape: "square"
+			tasks: [{
+				id: "432B409523994366"
+				item: "minecraft:egg"
+				type: "item"
+			}]
+			title: "Eggs, Benedict?"
+			x: 5.5d
+			y: 3.5d
+		}
+		{
+			dependencies: ["08E383BD1910ECD4"]
+			id: "00EDB66EC0496C81"
+			shape: "square"
+			tasks: [{
+				id: "7B9D02DDB59092DD"
+				item: "exnihilosequentia:witch_water_bucket"
+				type: "item"
+			}]
+			title: "Watery Witchcraft"
+			x: 2.5d
+			y: -2.5d
+		}
+		{
+			dependencies: [
+				"6CD9C6679E598E91"
+				"4BB2AF29BC6BA080"
+			]
+			description: [
+				"You've heard it said that Science, if sufficiently advanced, will be indistinguishable from Magic. Well, this is one of those times."
+				""
+				"We think."
+				""
+				"At least the Science Division folk reckon there is a scientific basis for what is about to happen, although they have not been able to sufficiently explain it! Anyway..."
+				""
+				"Make a hole, and fill it with a bucket of Witch Water."
+				""
+				"Throw in an Egg, a piece of Primordial Gloop, some Wheat Seeds and some extra RNA, and a (totally explainable by Science) chemical reaction will occur, resulting in a special egg, specifically encoded to guarantee hatching a Chicken."
+				""
+				"Before using it, you might want to fence off an area, and make 2 of these Chicken Spawn Eggs so that you can breed up more and start collecting extra Eggs moving forward rather than needing to make more!"
+			]
+			id: "30E793C110473B32"
+			shape: "square"
+			tasks: [{
+				id: "2423D3CEBBC44857"
+				item: "minecraft:chicken_spawn_egg"
+				type: "item"
+			}]
+			title: "The Spawn of Science and Magic,"
+			x: 4.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["30E793C110473B32"]
+			description: [
+				"Next up we're going to recreate sheep."
+				""
+				"To do this, gather up a piece of White Wool, a Sky Stone Block, some Primordial Gloop and an Egg, and toss them into a puddle of Witchwater."
+			]
+			id: "62EB9B9BD1FB1035"
+			shape: "square"
+			tasks: [
+				{
+					id: "1479560A0A29913A"
+					item: "minecraft:white_wool"
+					type: "item"
+				}
+				{
+					id: "63A91D0A1529E672"
+					item: "ae2:smooth_sky_stone_block"
+					type: "item"
+				}
+				{
+					id: "01E9D7C3303E10AE"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "466F81C9B1CD37A0"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "Not a Dolly."
+			x: 5.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["62EB9B9BD1FB1035"]
+			description: [
+				"Again, it'd be sensible to make at least two Sheep Spawn Eggs, and spawn the sheep inside a fenced-off area. Breed them up with wheat in the usual fashion before you start slaughtering them."
+				""
+				"Be careful! You'll want to ensure you always have at least 2 sheep alive at any one time to be able to easily breed up more."
+			]
+			id: "07E96BCF479B5C4D"
+			shape: "square"
+			tasks: [{
+				id: "1F0E2230483C868F"
+				item: "minecraft:sheep_spawn_egg"
+				type: "item"
+			}]
+			title: "Not half Baaad."
+			x: 6.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["07E96BCF479B5C4D"]
+			description: [
+				"Mmmm... bacon."
+				""
+				"Not long now - you just need to gather up some Raw Mutton, Dirt, an Egg, and Primordial Gloop, toss them into a puddle of Witchwater, and next thing you know, it'll be bacon and sausages for brekkie!"
+			]
+			id: "4823D1F8EC861304"
+			shape: "square"
+			tasks: [
+				{
+					id: "0814EF0B4D682443"
+					item: "minecraft:mutton"
+					type: "item"
+				}
+				{
+					id: "3AEA9FAE19C1DA25"
+					item: "minecraft:dirt"
+					type: "item"
+				}
+				{
+					id: "0C491DC9E421D891"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "2613A7A6D164E5EE"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "Porcine, not Porcupine"
+			x: 7.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["4823D1F8EC861304"]
+			description: ["A couple of Pig Spawn Eggs plus a supply of carrots will mean you can have bacon 'til the pigs come home (because eating bacon in front of them would be wrong)."]
+			id: "61B962D3125436C3"
+			shape: "square"
+			tasks: [{
+				id: "44BAD38BEED07A7D"
+				item: "minecraft:pig_spawn_egg"
+				type: "item"
+			}]
+			title: "Better than Peppa and George"
+			x: 8.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["61B962D3125436C3"]
+			description: [
+				"It's time to start horsing around."
+				""
+				"That's right - Horses! (and possibly Donkeys and Mules too)"
+				""
+				"This time it's just a Raw Pork Chop, Raw Mutton, an Egg and some Primordial Gloop and voila! Friendship is Magic!"
+			]
+			id: "5C087A68C6D837C9"
+			shape: "square"
+			tasks: [
+				{
+					id: "08D36D24CBFEFBF7"
+					item: "minecraft:porkchop"
+					type: "item"
+				}
+				{
+					id: "37BB19E63E81E673"
+					item: "minecraft:mutton"
+					type: "item"
+				}
+				{
+					id: "583B4C0B63B3B31A"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "3983113BE501F91F"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "Neigh-bors, everybody needs good Neigh-bors!"
+			x: 9.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["5C087A68C6D837C9"]
+			description: [
+				"It's a bit trickier breeding horses than one might think."
+				""
+				"Firstly, you'll have to tame them first... so hop on, hold on, and hope it's quick and easy!"
+				""
+				"Secondly, to get horses to breed, you need to treat them like royalty and feed them either Golden Apples or Golden Carrots."
+				""
+				"Remember that you can speed up growing times of foals by feeding them. Suitable foods include:"
+				"- Sugar"
+				"- Wheat"
+				"- Apples"
+				"- Golden Carrots"
+				"- Golden Apples"
+				"- Haybales"
+			]
+			id: "4A1CC3ACD2F86E07"
+			rewards: [{
+				id: "779B6B2F1F543258"
+				item: "minecraft:saddle"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "5C20A7FFE6FCF82C"
+				item: "minecraft:horse_spawn_egg"
+				type: "item"
+			}]
+			title: "Horses for Courses"
+			x: 10.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["4A1CC3ACD2F86E07"]
+			description: [
+				"Don't have a cow man!"
+				""
+				"Have two or more!"
+				""
+				"You can manufacture a Cow Spawn egg by tossing some Leather, a Bucket, an Egg, and Primordial Gloop into a puddle of Witchwater."
+			]
+			id: "3254E6F98E2CC544"
+			shape: "square"
+			tasks: [
+				{
+					id: "199977C39FCF7A68"
+					item: "minecraft:leather"
+					type: "item"
+				}
+				{
+					id: "06CCD4C1C7621C4B"
+					item: "minecraft:bucket"
+					type: "item"
+				}
+				{
+					id: "5DB0696034C36440"
+					item: "minecraft:egg"
+					type: "item"
+				}
+				{
+					id: "6A5F976242069098"
+					item: "kubejs:primordial_gloop"
+					type: "item"
+				}
+			]
+			title: "Moovin' on up!"
+			x: 11.5d
+			y: -0.5d
+		}
+		{
+			dependencies: ["3254E6F98E2CC544"]
+			description: [
+				"Remember to make a couple of Cow Spawn eggs so that you can start breeding up cows (using Wheat). Cows will be a great source of Leather, but also Milk and Beef, which will open up a whole new world of options in terms of food and all the health benefits that come along with it."
+				""
+				"&aUnlocks: Meeting the Udders&f"
+				"&aUnlocks: Deliciously Creative&f"
+				"&aUnlocks: Industrial Foreboding: Ranching&f"
+			]
+			id: "4D0F1810876E3DF6"
+			shape: "gear"
+			size: 1.5d
+			subtitle: "Because they Lactose."
+			tasks: [{
+				id: "22E5FA984BF969B9"
+				item: "minecraft:cow_spawn_egg"
+				type: "item"
+			}]
+			title: "Why do cows have hooves instead of feet?"
+			x: 12.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["00EDB66EC0496C81"]
+			description: [
+				"The first animal we're going to aim for is a chicken. Chickens like wheat seeds."
+				""
+				"Nuff was a fairy."
+				""
+				""
+				""
+				""
+				""
+				""
+				""
+				""
+				""
+				""
+				"Fairy Nuff."
+			]
+			id: "4BB2AF29BC6BA080"
+			shape: "square"
+			tasks: [{
+				id: "5880125EE2A272E7"
+				item: "minecraft:wheat_seeds"
+				type: "item"
+			}]
+			title: "A necessary seeding ingredient"
+			x: 3.5d
+			y: -0.5d
+		}
+	]
+	title: "Dishing up the Meat"
+}

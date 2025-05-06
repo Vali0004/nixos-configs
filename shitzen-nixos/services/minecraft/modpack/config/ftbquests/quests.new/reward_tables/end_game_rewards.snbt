@@ -1,0 +1,32 @@
+{
+	icon: "bountifulbaubles:horseshoe_balloon"
+	id: "003351F72F6B79B0"
+	loot_size: 1
+	order_index: 1
+	rewards: [
+		{ item: "curios:ring" }
+		{ item: "bountifulbaubles:horseshoe_balloon" }
+		{ item: "bountifulbaubles:ankh_charm" }
+		{ item: "bountifulbaubles:mixed_dragon_scale" }
+		{ item: "bountifulbaubles:ring_free_action" }
+		{ item: "sophisticatedbackpacks:stack_upgrade_tier_4" }
+		{
+			icon: {
+				Count: 1b
+				id: "tconstruct:creative_slot"
+				tag: {
+					slot: "abilities"
+				}
+			}
+			item: {
+				Count: 1b
+				id: "tconstruct:creative_slot"
+				tag: {
+					slot: "abilities"
+				}
+			}
+			title: "Creative Ability"
+		}
+	]
+	title: "End Game Rewards"
+}

@@ -134,7 +134,7 @@
       address = "0.0.0.0";
       clone-remote-port = false;
       enable-proxy-protocol = false;
-      port = 4302;
+      port = 4101;
       server-name = "InertiaCraft Bedrock";
       motd1 = ".gg/d9ccwK2TNk";
     };

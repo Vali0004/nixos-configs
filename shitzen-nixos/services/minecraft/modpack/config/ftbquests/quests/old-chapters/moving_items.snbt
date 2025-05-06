@@ -1,0 +1,404 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "moving_items"
+	group: "033EC740B2EF1FC1"
+	icon: "enderstorage:ender_chest"
+	id: "39AE34428D014BEC"
+	order_index: 3
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.04}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.05}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.06}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.07}"
+				"{cuboiddroid.quests.g.05.c.34.q.00.d.08}"
+			]
+			id: "771FE160AB82E93D"
+			tasks: [{
+				id: "0BD379BA344489C2"
+				item: "mekanism:basic_logistical_transporter"
+				type: "item"
+			}]
+			x: -1.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["771FE160AB82E93D"]
+			description: ["{cuboiddroid.quests.g.05.c.34.q.01.d.00}"]
+			id: "77164C9BAEC48316"
+			tasks: [{
+				id: "238C05BA44C21445"
+				item: "mekanism:advanced_logistical_transporter"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 1.5d
+		}
+		{
+			dependencies: ["77164C9BAEC48316"]
+			description: ["{cuboiddroid.quests.g.05.c.34.q.02.d.00}"]
+			id: "6ABF0D13FB892268"
+			tasks: [{
+				id: "699E6DFA9FF05587"
+				item: "mekanism:elite_logistical_transporter"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 3.0d
+		}
+		{
+			dependencies: ["6ABF0D13FB892268"]
+			description: ["{cuboiddroid.quests.g.05.c.34.q.03.d.00}"]
+			id: "11E0226EAE21EE6D"
+			tasks: [{
+				id: "534FD3B0C49A281D"
+				item: "mekanism:ultimate_logistical_transporter"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 4.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.04.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.04.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.04.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.04.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.04.d.04}"
+			]
+			id: "5B40CF0C26FA4D48"
+			tasks: [{
+				id: "4FDB062B18603C9B"
+				item: "mekanism:logistical_sorter"
+				type: "item"
+			}]
+			x: -0.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.05.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.05.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.05.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.05.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.05.d.04}"
+			]
+			id: "4023C40F3002AC45"
+			tasks: [{
+				id: "3CF13788C2B39FE3"
+				item: "immersiveengineering:conveyor_basic"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 0.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.06.d.00}"]
+			id: "515712C92361FDD4"
+			tasks: [{
+				id: "6E2230C6B4BA4AFB"
+				item: "immersiveengineering:conveyor_vertical"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 1.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.07.d.00}"]
+			id: "2CEE014FDACFB2AA"
+			tasks: [{
+				id: "2C6D31312B3B0C81"
+				item: "immersiveengineering:conveyor_dropper"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 3.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.08.d.00}"]
+			id: "78E1C171E5D7755D"
+			tasks: [{
+				id: "717E71775F7F1BFD"
+				item: "immersiveengineering:conveyor_extract"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 4.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.09.d.00}"]
+			id: "511603C278061999"
+			tasks: [{
+				id: "03176BD4E21F9638"
+				item: "immersiveengineering:conveyor_splitter"
+				type: "item"
+			}]
+			x: -3.5d
+			y: 6.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.04}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.05}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.06}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.07}"
+				"{cuboiddroid.quests.g.05.c.34.q.10.d.08}"
+			]
+			id: "04FD705635701534"
+			tasks: [
+				{
+					id: "5CC333372A82FBF5"
+					item: "create:belt_connector"
+					type: "item"
+				}
+				{
+					id: "7A249A0113A94819"
+					item: "create:shaft"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.05.c.34.q.10}"
+			x: -6.0d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.11.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.11.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.11.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.11.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.11.d.04}"
+			]
+			id: "76B554CC34945020"
+			tasks: [{
+				id: "7DB9FB4895D7C06C"
+				item: "create:andesite_tunnel"
+				type: "item"
+			}]
+			x: -6.5d
+			y: 1.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.12.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.12.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.12.d.02}"
+			]
+			id: "03C17F549EA160DE"
+			tasks: [{
+				id: "668C73363498DE8E"
+				item: "create:brass_tunnel"
+				type: "item"
+			}]
+			x: -5.5d
+			y: 1.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.13.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.13.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.13.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.13.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.13.d.04}"
+			]
+			id: "020FC982F30FA0C0"
+			tasks: [{
+				id: "321A84D8C066D893"
+				item: "create:andesite_funnel"
+				type: "item"
+			}]
+			x: -6.5d
+			y: 3.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.14.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.14.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.14.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.14.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.14.d.04}"
+			]
+			id: "7166B30D53F350AC"
+			tasks: [{
+				id: "0978D35D2967EF1F"
+				item: "create:brass_funnel"
+				type: "item"
+			}]
+			x: -5.5d
+			y: 3.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.15.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.15.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.15.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.15.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.15.d.04}"
+			]
+			id: "281118B8A2CCB6CD"
+			tasks: [{
+				id: "05CC428EEBA215C6"
+				item: "create:chute"
+				type: "item"
+			}]
+			x: -6.5d
+			y: 4.5d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.16.d.00}"]
+			id: "5537B428F502B4BA"
+			tasks: [{
+				id: "18BBA00035668CB3"
+				item: "create:smart_chute"
+				type: "item"
+			}]
+			x: -5.5d
+			y: 4.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.17.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.17.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.17.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.17.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.17.d.04}"
+			]
+			id: "5E674CC0FE9ECD44"
+			tasks: [{
+				id: "203EA348A09ECC3D"
+				item: "enderstorage:ender_chest"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.18.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.18.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.18.d.02}"
+			]
+			id: "5F95CF05B912275D"
+			tasks: [{
+				id: "7B383462518155B9"
+				item: "enderstorage:ender_pouch"
+				type: "item"
+			}]
+			x: 1.5d
+			y: 1.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.19.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.19.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.19.d.02}"
+				"{cuboiddroid.quests.g.05.c.34.q.19.d.03}"
+				"{cuboiddroid.quests.g.05.c.34.q.19.d.04}"
+			]
+			id: "2C69BA63A47A0E40"
+			tasks: [
+				{
+					icon: "xnet:netcable_blue"
+					id: "5ED38A1C95DD9D5C"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "xnet:cables"
+						}
+					}
+					title: "{cuboiddroid.quests.g.05.c.34.q.19.t.00}"
+					type: "item"
+				}
+				{
+					icon: "xnet:connector_blue"
+					id: "363C1254FAE20EE1"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "xnet:connectors"
+						}
+					}
+					title: "{cuboiddroid.quests.g.05.c.34.q.19.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.05.c.34.q.19}"
+			x: 3.5d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.20.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.20.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.20.d.02}"
+			]
+			id: "44D7204AAA23552C"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "5BDF007D5D3390F7"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.34.q.20}"
+			x: 0.0d
+			y: -2.3d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.21.d.00}"]
+			id: "03937D67746BE765"
+			tasks: [{
+				id: "300F36E6A95B2B59"
+				item: {
+					Count: 1b
+					id: "create:filter"
+					tag: {
+						Items: { }
+					}
+				}
+				type: "item"
+			}]
+			x: -6.0d
+			y: 6.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.34.q.22.d.00}"
+				"{cuboiddroid.quests.g.05.c.34.q.22.d.01}"
+				"{cuboiddroid.quests.g.05.c.34.q.22.d.02}"
+			]
+			id: "4CD2F74DF812083B"
+			tasks: [{
+				id: "569631D59D8BFA8B"
+				item: "industrialforegoing:item_transporter_type"
+				type: "item"
+			}]
+			x: 5.5d
+			y: 0.0d
+		}
+		{
+			description: ["{cuboiddroid.quests.g.05.c.34.q.23.d.00}"]
+			id: "47C0486BA8120EB0"
+			tasks: [{
+				id: "7FD9DB0052845816"
+				item: "pipez:item_pipe"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 0.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.05.c.34}"
+}

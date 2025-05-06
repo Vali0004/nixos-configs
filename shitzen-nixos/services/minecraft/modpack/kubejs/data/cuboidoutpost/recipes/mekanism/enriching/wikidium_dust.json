@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:enriching",
+  "input":{
+    "ingredient":{
+      "item":"cuboidmod:wikidium_chunk"
+    }
+  },
+  "output":{
+    "count":2,"item":"cuboidmod:wikidium_dust"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "item":"cuboidmod:notsogudium_ingot"
+    }
+  },
+  "output":{
+    "count":1,"item":"cuboidmod:notsogudium_dust"
+  }
+}

@@ -1,0 +1,202 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "farewell"
+	group: ""
+	icon: "minecraft:writable_book"
+	id: "0950DB97D4C589FC"
+	order_index: 0
+	quest_links: [ ]
+	quests: [
+		{
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.06}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.07}"
+				"{cuboiddroid.quests.g.root.c.16.q.00.d.08}"
+			]
+			disable_toast: true
+			icon: "minecraft:writable_book"
+			id: "197A96E41270A0A4"
+			shape: "gear"
+			subtitle: "{cuboiddroid.quests.g.root.c.16.q.00.sub}"
+			tasks: [{
+				id: "53C8D2DB609C3A1E"
+				title: "{cuboiddroid.quests.g.root.c.16.q.00.t.00}"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.00}"
+			x: 6.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["197A96E41270A0A4"]
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.06}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.07}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.08}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.09}"
+				"{cuboiddroid.quests.g.root.c.16.q.01.d.10}"
+			]
+			disable_toast: true
+			icon: "minecraft:writable_book"
+			id: "0A0FB7D6F6EEE0AB"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.root.c.16.q.01.sub}"
+			tasks: [{
+				id: "30BF87C9D8F1359E"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.01}"
+			x: 8.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["0A0FB7D6F6EEE0AB"]
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.06}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.07}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.08}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.09}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.10}"
+				"{cuboiddroid.quests.g.root.c.16.q.02.d.11}"
+			]
+			disable_toast: true
+			icon: "minecraft:writable_book"
+			id: "283B6CFF3F804676"
+			rewards: [{
+				count: 8
+				id: "0655ABEF2FB4FF64"
+				item: "cuboidmod:ration_pack"
+				type: "item"
+			}]
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.root.c.16.q.02.sub}"
+			tasks: [{
+				id: "38B5126D24B27E92"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.02}"
+			x: 10.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["283B6CFF3F804676"]
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.03.d.06}"
+			]
+			disable_toast: true
+			icon: "minecraft:writable_book"
+			id: "5BB19605EF94827E"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.root.c.16.q.03.sub}"
+			tasks: [{
+				id: "0D5193CE76C546BB"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.03}"
+			x: 12.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5BB19605EF94827E"]
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.06}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.07}"
+				"{cuboiddroid.quests.g.root.c.16.q.04.d.08}"
+			]
+			disable_toast: true
+			icon: "minecraft:writable_book"
+			id: "42182228C9517AA2"
+			rewards: [{
+				id: "4DBD8AE825A5FD29"
+				item: "darkutils:charm_sleep"
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			subtitle: "{cuboiddroid.quests.g.root.c.16.q.04.sub}"
+			tasks: [{
+				id: "209B7C631E208E9B"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.04}"
+			x: 14.0d
+			y: 0.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.05.d.06}"
+			]
+			id: "28877C7DC0FB478C"
+			optional: true
+			tasks: [{
+				id: "03B368440F87C0DB"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.05}"
+			x: 10.0d
+			y: 3.5d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.00}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.01}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.02}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.03}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.04}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.05}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.06}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.07}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.08}"
+				"{cuboiddroid.quests.g.root.c.16.q.06.d.09}"
+			]
+			id: "108D30AC48535DA5"
+			optional: true
+			tasks: [{
+				id: "09B1BA699B8963A8"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.root.c.16.q.06}"
+			x: 10.0d
+			y: 4.5d
+		}
+	]
+	subtitle: ["{cuboiddroid.quests.g.root.c.16.sub.00}"]
+	title: "{cuboiddroid.quests.g.root.c.16}"
+}

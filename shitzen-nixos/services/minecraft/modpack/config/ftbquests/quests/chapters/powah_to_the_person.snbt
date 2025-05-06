@@ -1,0 +1,684 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "powah_to_the_person"
+	group: "4F582DBBFACF1F69"
+	icon: "powah:player_transmitter_nitro"
+	id: "0FA1CE245782DC11"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["2A3A34A47D8AF234"]
+			description: [
+				"While the Singularity Power Generators are great, if you need more power options, or have high power needs, you're going to have to look at other options."
+				""
+				"In this section of this guide to your new life, we're going to cover some of the prerequisites for these new Powah options and find new ways to push the boundaries of technology. Appendix D has full details on the actual Powah producing machinery for your edification."
+				""
+				"You're also going to need some of this stuff to break through the dimensional veils so you can pillage other dimensions for critical materials..."
+			]
+			id: "7EB1619CE1AB76BB"
+			rewards: [{
+				id: "4DBD3E9D1ADCD10F"
+				item: "powah:book"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [
+				{
+					id: "488A4EE45A383BED"
+					item: "minecraft:iron_ingot"
+					type: "item"
+				}
+				{
+					id: "4925ED68F64C1DAA"
+					item: "minecraft:redstone"
+					type: "item"
+				}
+				{
+					id: "0E5C36C81029075E"
+					item: "minecraft:coal"
+					type: "item"
+				}
+				{
+					id: "3F815C2DF7DC55D2"
+					item: "minecraft:clay_ball"
+					type: "item"
+				}
+			]
+			title: "Powah to the Person!"
+			x: 0.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7EB1619CE1AB76BB"]
+			description: ["Dielectric paste is the basic material you're going to need for this next lot of machinery - it's worth stocking up on the stuff!"]
+			id: "5D2E655D627DE6AA"
+			rewards: [{
+				count: 32
+				id: "745552BFEAB808F4"
+				item: "powah:dielectric_paste"
+				random_bonus: 32
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "3B890E344A4521FF"
+				item: "powah:dielectric_paste"
+				type: "item"
+			}]
+			title: "It's to die for!"
+			x: 2.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5D2E655D627DE6AA"]
+			description: [
+				"Dielectric rods are a sturdy, Powah-friendly construction material that forms the basis of Dielectric Casings and many other components."
+				""
+				"You can easily convert the horizontal version into the vertical version in a crafting table."
+			]
+			id: "3A1537AD1DA341FB"
+			rewards: [{
+				count: 16
+				id: "566B00155A3D8F21"
+				item: "powah:dielectric_rod_horizontal"
+				random_bonus: 16
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "5AF296F4D2E8F2CA"
+				item: "powah:dielectric_rod_horizontal"
+				type: "item"
+			}]
+			title: "Horizontal rods"
+			x: 4.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5D2E655D627DE6AA"]
+			description: [
+				"Dielectric rods are a sturdy, Powah-friendly construction material that forms the basis of Dielectric Casings and many other components."
+				""
+				"You can easily convert the vertical version into the horizontal version in a crafting table."
+			]
+			id: "6F7F710AF3DFEFB6"
+			rewards: [{
+				count: 16
+				id: "1FC4E32785AC87A3"
+				item: "powah:dielectric_rod"
+				random_bonus: 16
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "573ED108B258EB0E"
+				item: "powah:dielectric_rod"
+				type: "item"
+			}]
+			title: "Vertical rods"
+			x: 4.5d
+			y: 1.0d
+		}
+		{
+			dependencies: [
+				"3A1537AD1DA341FB"
+				"6F7F710AF3DFEFB6"
+			]
+			description: [
+				"Dielectric Casings are used for building a lot of the Powah-ful machinery in this section of the survival guide."
+				""
+				"It's worth stocking up on these too if you're planning on making a fair number of the gadgets that will become possible."
+			]
+			id: "4F6101F00C8E011E"
+			rewards: [{
+				count: 4
+				id: "61A73E31E97CEB4E"
+				item: "powah:dielectric_casing"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "50E8A04F25ECB97D"
+				item: "powah:dielectric_casing"
+				type: "item"
+			}]
+			title: "Casing the joint"
+			x: 6.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4F6101F00C8E011E"]
+			description: [
+				"The Energizing Orb is where you can place (or pipe in) items to be energized. The Orb itself does not accept power directly, but must be powered by Energizing Rods."
+				""
+				"A comparator can be used to determine if a recipe is finished being energized, or you can use X-Net to help automate this process. If you put a hopper underneath, it will pull out completed crafts, but hoppers feeding to the orb will keep feeding in ingredients until the orb is full, so automation might take a bit of work to get right as you will need to control what gets input and how many at a time."
+			]
+			id: "313C2018A2C04815"
+			rewards: [{
+				id: "2E476E6EE2FC58D8"
+				item: "powah:energizing_orb"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "260F3BE37987ABC9"
+				item: "powah:energizing_orb"
+				type: "item"
+			}]
+			title: "Energizing!"
+			x: 8.5d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"03BEA2FE7419FFEF"
+				"6F7F710AF3DFEFB6"
+				"4F6101F00C8E011E"
+			]
+			description: [
+				"Energizing Rods should be powered, and placed close to an Energizing Orb. The Energizing Rod will automatically link to a nearby Orb."
+				""
+				"If you hold your wrench and change it to link mode (crouch and right-click to change mode), you will be shown which orb each energizing rod is connected to. To change this, use your wrench on the rod and then on the Orb you want it to provide power to."
+				""
+				"To start energizing something, put the ingredients into the orb (you can remove them using an empty hand), and once a valid recipe is found, the Energizing Rod will start transferring the power to the Orb."
+			]
+			id: "69B4C609EF508876"
+			rewards: [
+				{
+					id: "3FF674B036C26BAA"
+					item: {
+						Count: 1b
+						id: "powah:wrench"
+						tag: {
+							PowahWrenchNBT: { }
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "1D769C78F7E64326"
+					item: "powah:energizing_rod_starter"
+					type: "item"
+				}
+			]
+			shape: "square"
+			tasks: [{
+				id: "2CDE3D68E23A1328"
+				item: "powah:energizing_rod_starter"
+				type: "item"
+			}]
+			title: "Energizing in action"
+			x: 6.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5D2E655D627DE6AA"]
+			description: ["Basic Capacitors can be made from Dielectric Paste, Redstone and Iron. These are used in the making of various equipment, and can be converted into the tiny and large versions in a crafting grid."]
+			id: "51B58AF1E1899878"
+			rewards: [{
+				count: 8
+				id: "489F8569732369CA"
+				item: "powah:capacitor_basic"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "0D0E3D993A4D76C1"
+				item: "powah:capacitor_basic"
+				type: "item"
+			}]
+			title: "Capacitors"
+			x: 2.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["51B58AF1E1899878"]
+			description: ["A Basic Capacitor can be crafted down into two Tiny versions in a crafting grid."]
+			id: "03BEA2FE7419FFEF"
+			rewards: [{
+				count: 8
+				id: "463A81DDEB085425"
+				item: "powah:capacitor_basic_tiny"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "50FA8F2C02899A2B"
+				item: "powah:capacitor_basic_tiny"
+				type: "item"
+			}]
+			title: "Teeny tiny ones"
+			x: 4.5d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"313C2018A2C04815"
+				"69B4C609EF508876"
+			]
+			description: ["The first energized material you're going to need to make is Energized Steel. This is done by placing Gold Ingot and an Iron Ingot into the Energizing Orb, and (assuming it's being supplied power from one or more Energizing Rods), waiting until they are combined and energized. The result is Energized Steel."]
+			id: "3B895232E8390F8F"
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "125B7C4FBF3A9BE8"
+				item: "powah:steel_energized"
+				type: "item"
+			}]
+			title: "Energized Steel Ingots"
+			x: 8.5d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"69B4C609EF508876"
+				"1D6F6B69D5EF353D"
+			]
+			description: [
+				"Upgrading your energising rods is a really good idea. As you need to energize more and more materials, the power requirements increase. The higher the tier of the energizing rods in use, the quicker that items can be energized."
+				""
+				"While the Starter rods provide power to the Energizing Orb at just 10 FE per tick, the Basic version does the same job 5x quicker at 50FE per tick - that equates to a lot less waiting around!"
+			]
+			id: "50AFF3D04D20E37D"
+			rewards: [{
+				id: "7B32ECC91CEF7899"
+				item: "powah:energizing_rod_starter"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "50EBA98C7FE09004"
+				item: "powah:energizing_rod_basic"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"50AFF3D04D20E37D"
+				"5C269BA7E9F8936E"
+			]
+			description: ["The Hardened version of the Energizing Rod delivers 120 FE/t instead of just the 50 FE/t of the Basic version - that means it's 140% quicker than the previous tier."]
+			id: "0BCDD33FA243BA9E"
+			rewards: [{
+				id: "6E5BCB13492B4871"
+				item: "powah:energizing_rod_hardened"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "4990C742BA9F1CA9"
+				item: "powah:energizing_rod_hardened"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["3B895232E8390F8F"]
+			description: [
+				"Automating the usage of the Energizing Orb can be a bit tedious. It can be done using comparators and redstone, but a fairly neat way of doing this is using X-Net. It might be worth checking out the 'Networks for X-Men' chapter if you want some idea of how you can automate the Energizing Orb in a fairly efficient manner."
+				""
+				"Totally optional of course! Just a suggestion."
+			]
+			id: "22DB40E959062974"
+			shape: "pentagon"
+			tasks: [{
+				id: "27AEF42DEA81023E"
+				type: "checkmark"
+			}]
+			title: "Time to be a squirrel?"
+			x: 8.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["22DB40E959062974"]
+			description: ["Hardened Capacitors, two of which are made from 4x Energized Steel, 4x Dielectric Paste, and a Large Capacitor, are required for all Hardened Tier machines, including the Energizing Rods."]
+			id: "5C269BA7E9F8936E"
+			rewards: [{
+				count: 4
+				id: "27D8F43114F9197D"
+				item: "powah:capacitor_hardened"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "1489231D145D1DB0"
+				item: "powah:capacitor_hardened"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"0BCDD33FA243BA9E"
+				"5B2DE820AEC7AD5D"
+			]
+			description: ["The Blazing Energizing Rod delivers powah to the Energizing Orb it is linked to at a rate of 300 FE/t, as opposed to the 120 FE/t of the Hardened version - that's 2.5x faster!"]
+			id: "157413C5D7A3BD36"
+			rewards: [{
+				id: "286F28682F116B2E"
+				item: "powah:energizing_rod_blazing"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "6B3F8BF87000C7FE"
+				item: "powah:energizing_rod_blazing"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["0BCDD33FA243BA9E"]
+			description: ["Blazing Crystals are made in the Energizing Orb from 4 Blaze Powder and 120k FE of energy per crystal. There is a cheaper recipe of a single Blaze Rod and 90k FE, but Blaze Rods are a lot harder to come by at the moment."]
+			id: "4B03FC50AF4FB103"
+			rewards: [{
+				count: 12
+				id: "7E8264A7BC952A07"
+				item: "powah:crystal_blazing"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "7ADBE7AA5DD9DF90"
+				item: "powah:crystal_blazing"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["4B03FC50AF4FB103"]
+			description: ["Blazing Capacitors, two of which are made from 4x Blazing Crystals, 4x Dielectric Paste, and a Large Capacitor, are required for all Blazing Tier machines, including the Energizing Rods."]
+			id: "5B2DE820AEC7AD5D"
+			rewards: [{
+				count: 4
+				id: "450014EB2C1770F4"
+				item: "powah:capacitor_blazing"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "06D8DC09E3A322A2"
+				item: "powah:capacitor_blazing"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 8.0d
+		}
+		{
+			dependencies: [
+				"157413C5D7A3BD36"
+				"52129C82DA500585"
+			]
+			description: ["The Niotic Energizing Rod delivers powah to the Energizing Orb it is linked to at a rate of 700 FE/t, as opposed to the 300 FE/t of the Blazing version - that's over 2.3x faster!"]
+			id: "69937502450BA849"
+			rewards: [{
+				id: "276B5459FCB0A919"
+				item: "powah:energizing_rod_niotic"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "51E32BC24FE17FFC"
+				item: "powah:energizing_rod_niotic"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["157413C5D7A3BD36"]
+			description: [
+				"Niotic Crystals are made in the Energizing Orb from a Diamond and 300k FE of energy. If you haven't already taken a look into other power production and storage options, now might be a good time to browse through the &a'All Powah-ful'&f section of Appendix D!"
+				""
+				"Required for: &aWhat's left in the End?&f"
+			]
+			id: "5FB416898A60641C"
+			rewards: [{
+				count: 8
+				id: "0078EAED95A41A05"
+				item: "powah:crystal_niotic"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "7DAB1779EAABF92A"
+				item: "powah:crystal_niotic"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["5FB416898A60641C"]
+			description: ["Niotic Capacitors, one of which is made from 4x Niotic Crystals, 4x Dielectric Paste, and a Large Capacitor, are required for all Niotic Tier machines, including the Energizing Rods."]
+			id: "52129C82DA500585"
+			rewards: [{
+				count: 4
+				id: "1262C58B5842B395"
+				item: "powah:capacitor_niotic"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "5E50977C91B9854C"
+				item: "powah:capacitor_niotic"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 10.0d
+		}
+		{
+			dependencies: [
+				"69937502450BA849"
+				"04956D12ACA7737F"
+			]
+			description: ["The Spirited Energizing Rod delivers powah to the Energizing Orb it is linked to at a rate of 1.2k FE/t, as opposed to the 700 FE/t of the Niotic version - that's over 1.7x faster!"]
+			id: "03DDE5288BB7AEEE"
+			rewards: [{
+				id: "5E48C66BA7CFAD03"
+				item: "powah:energizing_rod_spirited"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "2DD8F4653B1632D6"
+				item: "powah:energizing_rod_spirited"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 12.0d
+		}
+		{
+			dependencies: ["69937502450BA849"]
+			description: ["Spirited Crystals are made in the Energizing Orb from an Emerald and 1 million FE of energy. If you still have not taken a look into other power production and storage options in the &a'All Powah-ful'&f section of Appendix D, then what are you waiting for?!"]
+			id: "7643B8FEE6A22D62"
+			rewards: [{
+				count: 6
+				id: "4C7048FC34AD8E09"
+				item: "powah:crystal_spirited"
+				random_bonus: 6
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "6B29854FD895148B"
+				item: "powah:crystal_spirited"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 11.0d
+		}
+		{
+			dependencies: ["7643B8FEE6A22D62"]
+			description: ["Spirited Capacitors, one of which is made from 4x Spirited Crystals, 4x Dielectric Paste, and a Large Capacitor, are required for all Spirited Tier machines, including the Energizing Rods."]
+			id: "04956D12ACA7737F"
+			rewards: [{
+				count: 4
+				id: "6BA64F1CB84E092B"
+				item: "powah:capacitor_spirited"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "516710251AE0E4C6"
+				item: "powah:capacitor_spirited"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"03DDE5288BB7AEEE"
+				"2D29B68E6C38D2C6"
+			]
+			description: ["The Nitro Energizing Rod delivers powah to the Energizing Orb it is linked to at a rate of 3.0k FE/t, as opposed to the 1.2 FE/t of the Spirited version - that's 2.5x faster!"]
+			id: "05C70C35EB850CFE"
+			rewards: [{
+				id: "431228CCB694138B"
+				item: "powah:energizing_rod_nitro"
+				type: "item"
+			}]
+			tasks: [{
+				id: "68409C55D71C4C99"
+				item: "powah:energizing_rod_nitro"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 14.0d
+		}
+		{
+			dependencies: [
+				"03DDE5288BB7AEEE"
+				"66CD57943D87FA8D"
+			]
+			description: ["Ok - these are most definitely top-tier now! Luckily you get 16 Nitro Crystals at a time from a Nether Star, 2x Redstone Blocks and a Block of Blazing Crystal! Oh, and 20 million FE!"]
+			id: "272B81B875079A94"
+			rewards: [{
+				count: 8
+				id: "67BF7BCAB5FC76A0"
+				item: "powah:crystal_nitro"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "51C86FB44EFFC939"
+				item: "powah:crystal_nitro"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 14.0d
+		}
+		{
+			dependencies: ["272B81B875079A94"]
+			description: [
+				"Nitro Capacitors, one of which is made from 4x Nitro Crystals, 4x Dielectric Paste, and a Large Capacitor, are required for all Nitro Tier machines, including the Energizing Rods."
+				""
+				"A Nitro Capacitor is also a required item when making a block of Energized Thalduvium, which you'll need to make at some point much later!"
+				""
+				"Required in &a'A New Beginning'&f"
+			]
+			id: "2D29B68E6C38D2C6"
+			rewards: [{
+				count: 2
+				id: "448B8320F9B812A4"
+				item: "powah:capacitor_nitro"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "762D40CC5ADA2CA9"
+				item: "powah:capacitor_nitro"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 15.8d
+		}
+		{
+			dependencies: ["51B58AF1E1899878"]
+			description: ["You can combine two Basic Capacitors into a Large one in a crafting grid."]
+			id: "1D6F6B69D5EF353D"
+			rewards: [{
+				count: 8
+				id: "5F2B483BF5F05696"
+				item: "powah:capacitor_basic_large"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "659482688098511D"
+				item: "powah:capacitor_basic_large"
+				type: "item"
+			}]
+			title: "A grt big 'un"
+			x: 2.5d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"69B4C609EF508876"
+				"313C2018A2C04815"
+			]
+			id: "7ACE7541EFF51907"
+			optional: true
+			tasks: [{
+				id: "44A8F5C75802BD6B"
+				item: "powah:charged_snowball"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 1.0d
+		}
+		{
+			dependencies: ["7D30BCCFA1ACF48B"]
+			description: [
+				"To get your hands on a Nether Star, you'll need to defeat the Wither."
+				""
+				"To get hold of a Blaze Lantern, you will need to visit the Nether first..."
+				""
+				"See how in the chapter &a'Exploring Nether Regions'&f"
+			]
+			disable_toast: true
+			id: "66CD57943D87FA8D"
+			shape: "gear"
+			tasks: [
+				{
+					id: "661DEA7AF9FA2F9D"
+					item: "minecraft:nether_star"
+					type: "item"
+				}
+				{
+					id: "06F7DB3A02B848E7"
+					item: "quark:blaze_lantern"
+					type: "item"
+				}
+			]
+			title: "Nitro Requirements"
+			x: 10.0d
+			y: 13.0d
+		}
+	]
+	title: "Powah to the Person!"
+}

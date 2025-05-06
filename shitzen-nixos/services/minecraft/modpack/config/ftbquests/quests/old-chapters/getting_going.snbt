@@ -1,0 +1,1254 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "getting_going"
+	group: "719DAED049159F2E"
+	icon: "exnihilosequentia:oak_sieve"
+	id: "09FE676C0CEB86EC"
+	order_index: 1
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["164AA3AA7EEDB5DC"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.04}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.05}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.06}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.07}"
+				"{cuboiddroid.quests.g.00.c.23.q.00.d.08}"
+			]
+			icon: "minecraft:oak_log"
+			id: "3851A991AC7B9CC6"
+			rewards: [{
+				id: "36F93DA2AD7444DB"
+				item: "cuboidmod:kebab_cooked"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [{
+				id: "664C7C33962CC41E"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.00}"
+			x: -17.0d
+			y: -10.5d
+		}
+		{
+			dependencies: ["3851A991AC7B9CC6"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.01.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.01.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.01.d.02}"
+			]
+			id: "1438CB442450350F"
+			shape: "square"
+			tasks: [{
+				icon: {
+					Count: 1b
+					id: "exnihilosequentia:wooden_crook"
+					tag: {
+						Damage: 0
+					}
+				}
+				id: "759181E80DE41947"
+				item: {
+					Count: 1b
+					id: "exnihilosequentia:wooden_crook"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.01}"
+			x: -23.5d
+			y: -8.0d
+		}
+		{
+			dependencies: ["3027392E2062395C"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.02.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.02.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.02.d.02}"
+			]
+			id: "0810233938445D12"
+			shape: "square"
+			tasks: [{
+				count: 6L
+				id: "6F5350EA63C58A2F"
+				item: "exnihilosequentia:silkworm"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.02}"
+			x: -20.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["0810233938445D12"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.03.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.03.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.03.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.03.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.03.d.04}"
+			]
+			id: "3D7F38B0BB1A15AE"
+			tasks: [{
+				id: "4E81733C982EE1F2"
+				item: "exnihilosequentia:cooked_silkworm"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.03}"
+			x: -19.5d
+			y: -7.0d
+		}
+		{
+			dependencies: ["0810233938445D12"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.04.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.04.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.04.d.02}"
+			]
+			id: "3513BE459009658F"
+			shape: "square"
+			tasks: [{
+				count: 32L
+				id: "35654C55E7A87208"
+				item: "minecraft:string"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.04}"
+			x: -19.0d
+			y: -5.5d
+		}
+		{
+			dependencies: [
+				"3513BE459009658F"
+				"428FD7AF1B49A51D"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.05.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.05.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.05.d.02}"
+			]
+			id: "6AF8FD5317351B8A"
+			shape: "square"
+			tasks: [{
+				id: "26A43EF0879761F4"
+				item: "exnihilosequentia:string_mesh"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.05}"
+			x: -17.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["3851A991AC7B9CC6"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.06.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.06.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.06.d.02}"
+			]
+			id: "428FD7AF1B49A51D"
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					count: 4L
+					id: "0E35258E81651894"
+					item: "minecraft:oak_planks"
+					title: "{cuboiddroid.quests.g.00.c.23.q.06.t.00}"
+					type: "item"
+				}
+				{
+					count: 2L
+					id: "262BA7BC4930B72D"
+					item: "minecraft:stick"
+					type: "item"
+				}
+				{
+					id: "5D49BCD3A96AFF2D"
+					item: "minecraft:oak_slab"
+					type: "item"
+				}
+				{
+					id: "346620DF8CA6BF15"
+					item: "exnihilosequentia:oak_sieve"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.06}"
+			x: -17.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["3851A991AC7B9CC6"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.04}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.05}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.06}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.07}"
+				"{cuboiddroid.quests.g.00.c.23.q.07.d.08}"
+			]
+			id: "37652379CE1B798B"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.07.sub}"
+			tasks: [{
+				id: "0A0512592765F4B5"
+				item: {
+					Count: 1b
+					id: "exnihilosequentia:wooden_hammer"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.07}"
+			x: -14.0d
+			y: -8.0d
+		}
+		{
+			dependencies: ["37652379CE1B798B"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.08.d.00}"]
+			id: "546A3E1E5069E3D6"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.08.sub}"
+			tasks: [{
+				id: "7DF9FBC4DAF6AE63"
+				item: "exnihilosequentia:dust"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.08}"
+			x: -13.0d
+			y: -6.0d
+		}
+		{
+			dependencies: [
+				"6AF8FD5317351B8A"
+				"546A3E1E5069E3D6"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.09.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.09.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.09.d.02}"
+			]
+			id: "473BE4B46491DEEA"
+			tasks: [{
+				id: "786D75AA4A4C10CE"
+				item: "minecraft:gunpowder"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.09}"
+			x: -15.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["3851A991AC7B9CC6"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.10.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.10.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.10.d.02}"
+			]
+			id: "53F89DDA31E8A134"
+			shape: "square"
+			tasks: [{
+				id: "3C534E407B030D9C"
+				item: "exnihilosequentia:oak_barrel"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.10}"
+			x: -11.0d
+			y: -8.0d
+		}
+		{
+			dependencies: [
+				"546A3E1E5069E3D6"
+				"53F89DDA31E8A134"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.11.d.00}"]
+			id: "60C790CDAC49476B"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.11.sub}"
+			tasks: [{
+				id: "68E114FC2AE73D08"
+				item: "minecraft:clay"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.11}"
+			x: -11.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["473BE4B46491DEEA"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.12.d.00}"]
+			id: "639FAD5D76D7C78A"
+			rewards: [{
+				count: 16
+				id: "6BE91C75DB2BA437"
+				item: "minecraft:redstone"
+				random_bonus: 16
+				type: "item"
+			}]
+			tasks: [{
+				id: "492AA61E25EA62FB"
+				item: "minecraft:redstone"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.12}"
+			x: -13.0d
+			y: -5.0d
+		}
+		{
+			dependencies: [
+				"7DFF7B15FCC186F8"
+				"60C790CDAC49476B"
+				"16F877D52D0B4336"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.04}"
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.05}"
+				"{cuboiddroid.quests.g.00.c.23.q.13.d.06}"
+			]
+			id: "33D7D002936CF024"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.13.sub}"
+			tasks: [
+				{
+					id: "044E88D2B894D650"
+					item: "cuboidmod:aggregate"
+					type: "item"
+				}
+				{
+					id: "0242E4869B6F5C89"
+					item: "minecraft:gravel"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.13}"
+			x: -9.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["33D7D002936CF024"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.14.d.00}"]
+			id: "5F897F5B4A3C5F15"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.14.sub}"
+			tasks: [{
+				id: "64DFA232203AEA73"
+				item: "minecraft:flint"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.14}"
+			x: -8.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["5F897F5B4A3C5F15"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.15.d.00}"]
+			id: "753DB049680259E8"
+			shape: "square"
+			tasks: [{
+				id: "18225BCDB2D69598"
+				item: "exnihilosequentia:flint_mesh"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.15}"
+			x: -7.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["6AF8FD5317351B8A"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.16.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.16.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.16.d.02}"
+			]
+			id: "622A14D949B6F090"
+			shape: "square"
+			tasks: [
+				{
+					id: "1DC32D8905C139EF"
+					item: "minecraft:oak_sapling"
+					type: "item"
+				}
+				{
+					id: "4C8708E98DFCCFEF"
+					item: "minecraft:spruce_sapling"
+					type: "item"
+				}
+				{
+					id: "1285E4D6EFABCA22"
+					item: "minecraft:birch_sapling"
+					type: "item"
+				}
+				{
+					id: "4844D798370B8D1E"
+					item: "minecraft:jungle_sapling"
+					type: "item"
+				}
+				{
+					id: "08155ED95E672AD8"
+					item: "minecraft:acacia_sapling"
+					type: "item"
+				}
+				{
+					id: "3CD5637D8EB3FCFA"
+					item: "minecraft:dark_oak_sapling"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.16}"
+			x: -15.0d
+			y: -5.0d
+		}
+		{
+			dependencies: ["753DB049680259E8"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.17.d.00}"]
+			id: "63D63B464E338443"
+			shape: "square"
+			tasks: [{
+				id: "72902CEC54488ADD"
+				item: "minecraft:sand"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.17}"
+			x: -5.0d
+			y: -6.0d
+		}
+		{
+			dependencies: ["63D63B464E338443"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.18.d.00}"]
+			id: "3692DB87A200AEAA"
+			shape: "square"
+			tasks: [{
+				id: "6125B175000FD76D"
+				item: "minecraft:cactus"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.18}"
+			x: -6.0d
+			y: -7.0d
+		}
+		{
+			dependencies: ["1438CB442450350F"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.04}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.05}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.06}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.07}"
+				"{cuboiddroid.quests.g.00.c.23.q.19.d.08}"
+			]
+			id: "4FE0F1F1907DE0D3"
+			shape: "square"
+			tasks: [{
+				count: 3L
+				id: "7F8AF730AB97C311"
+				item: "minecraft:apple"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.19}"
+			x: -23.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["4FE0F1F1907DE0D3"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.20.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.20.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.20.d.02}"
+			]
+			id: "5FFEBF55D0A30DAB"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.20.sub}"
+			tasks: [{
+				id: "596787749D99A67A"
+				item: "cuboidmod:apple_cider_vinegar"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.20}"
+			x: -22.0d
+			y: -3.0d
+		}
+		{
+			dependencies: ["4FE0F1F1907DE0D3"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.21.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.21.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.21.d.02}"
+			]
+			id: "3027392E2062395C"
+			shape: "square"
+			tasks: [{
+				id: "4A75E9CC3AF0B9F1"
+				item: "cuboidmod:rotten_apple"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.21}"
+			x: -22.0d
+			y: -5.5d
+		}
+		{
+			dependencies: ["6AF8FD5317351B8A"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.22.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.22.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.22.d.02}"
+			]
+			id: "6151DF88A40CD55B"
+			shape: "square"
+			tasks: [
+				{
+					id: "44D08101E426FF2F"
+					item: "exnihilosequentia:andesite_pebble"
+					type: "item"
+				}
+				{
+					id: "040B58AD7131EDF1"
+					item: "exnihilosequentia:granite_pebble"
+					type: "item"
+				}
+				{
+					id: "650B9E6818920B29"
+					item: "exnihilosequentia:diorite_pebble"
+					type: "item"
+				}
+				{
+					id: "5BCC0A282192A763"
+					item: "exnihilosequentia:basalt_pebble"
+					type: "item"
+				}
+				{
+					id: "44F7A7E8A0129BAC"
+					item: "exnihilosequentia:blackstone_pebble"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.22}"
+			x: -15.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["6151DF88A40CD55B"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.23.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.23.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.23.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.23.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.23.d.04}"
+			]
+			id: "09E583ACB8521C0D"
+			shape: "square"
+			tasks: [
+				{
+					count: 16L
+					id: "591AE1721F9A5446"
+					item: "minecraft:andesite"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "7E6FAF98063D2F92"
+					item: "minecraft:granite"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "0B9C2F1ECE98E9AF"
+					item: "minecraft:diorite"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "3607F32C1368E49A"
+					item: "minecraft:basalt"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "7F0DD423EDAF5844"
+					item: "minecraft:blackstone"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.23}"
+			x: -13.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["09E583ACB8521C0D"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.24.d.00}"]
+			id: "5D41AFE88B363373"
+			shape: "square"
+			tasks: [{
+				id: "15F9F6561D4C8EFF"
+				item: {
+					Count: 1b
+					id: "exnihilosequentia:stone_hammer"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.24}"
+			x: -11.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["5D41AFE88B363373"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.25.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.25.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.25.d.02}"
+			]
+			id: "7DFF7B15FCC186F8"
+			shape: "square"
+			tasks: [
+				{
+					count: 16L
+					id: "5E1906BA235B8611"
+					item: "exnihilosequentia:crushed_andesite"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "154FEE180E81F013"
+					item: "exnihilosequentia:crushed_diorite"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "29E39DA60B08FD70"
+					item: "exnihilosequentia:crushed_granite"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.25}"
+			x: -9.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["63D63B464E338443"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.04}"
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.05}"
+				"{cuboiddroid.quests.g.00.c.23.q.26.d.06}"
+			]
+			id: "465B8B56A73F884D"
+			shape: "square"
+			tasks: [{
+				id: "3026C2962C6BBC13"
+				item: "minecraft:sugar_cane"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.26}"
+			x: -5.0d
+			y: -7.5d
+		}
+		{
+			dependencies: ["63D63B464E338443"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.27.d.00}"]
+			id: "68FB0BC06AF50D6A"
+			shape: "square"
+			tasks: [{
+				id: "14EDFD3DBB80DF3D"
+				item: "minecraft:bamboo"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.27}"
+			x: -4.0d
+			y: -7.0d
+		}
+		{
+			dependencies: [
+				"09E583ACB8521C0D"
+				"542FE8F3A4EDD091"
+			]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.28.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.28.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.28.d.02}"
+			]
+			id: "55B899DC63CFA8E3"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				count: 18L
+				id: "3A23ABB952E79EC1"
+				item: "create:andesite_alloy"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.28}"
+			x: -13.0d
+			y: 0.5d
+		}
+		{
+			dependencies: [
+				"753DB049680259E8"
+				"7DFF7B15FCC186F8"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.29.d.00}"]
+			id: "2A78D30A0B063CD4"
+			shape: "square"
+			tasks: [
+				{
+					count: 16L
+					id: "473718479E40C60E"
+					item: "exnihilosequentia:zinc_pieces"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "1A7F5B604497B901"
+					item: "exnihilosequentia:tin_pieces"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.29}"
+			x: -10.5d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"753DB049680259E8"
+				"7DFF7B15FCC186F8"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.30.d.00}"]
+			id: "78B85E020187C16A"
+			shape: "square"
+			tasks: [
+				{
+					count: 16L
+					id: "1B2A15AE2AE18A22"
+					item: "exnihilosequentia:silver_pieces"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "22392A41F95A459D"
+					item: "exnihilosequentia:aluminum_pieces"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.30}"
+			x: -5.5d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"753DB049680259E8"
+				"7DFF7B15FCC186F8"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.31.d.00}"]
+			id: "0FF5B2944BADD9E4"
+			shape: "square"
+			tasks: [
+				{
+					count: 16L
+					id: "559201D864D916A7"
+					item: "exnihilosequentia:copper_pieces"
+					type: "item"
+				}
+				{
+					count: 16L
+					id: "0B4A12ADE9E7D64E"
+					item: "exnihilosequentia:nickel_pieces"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.31}"
+			x: -8.0d
+			y: -1.5d
+		}
+		{
+			dependencies: ["2A78D30A0B063CD4"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.32.d.00}"]
+			id: "542FE8F3A4EDD091"
+			shape: "square"
+			tasks: [
+				{
+					count: 4L
+					id: "68688DA9CC0B4506"
+					item: "exnihilosequentia:raw_zinc"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "360948DB752A3ACB"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/zinc"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.23.q.32.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.32}"
+			x: -11.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["2A78D30A0B063CD4"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.33.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.33.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.33.d.02}"
+			]
+			id: "5F0557BE95A5A634"
+			shape: "square"
+			tasks: [
+				{
+					count: 4L
+					id: "58F308941B6F1122"
+					item: "exnihilosequentia:raw_tin"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "2395D797CD9E3FFE"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/tin"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.23.q.33.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.33}"
+			x: -10.0d
+			y: 0.5d
+		}
+		{
+			dependencies: ["0FF5B2944BADD9E4"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.34.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.34.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.34.d.02}"
+			]
+			id: "11F9CF9280A7259D"
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					count: 4L
+					id: "74A9E81612C44446"
+					item: "minecraft:raw_copper"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "1ED496BE95E1FFBF"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/copper"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.23.q.34.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.34}"
+			x: -8.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["0FF5B2944BADD9E4"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.35.d.00}"]
+			id: "2FF831E930E77273"
+			shape: "square"
+			tasks: [
+				{
+					count: 4L
+					id: "77C881580A110995"
+					item: "exnihilosequentia:raw_nickel"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "60F8AAB4CCB5EC4E"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/nickel"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.23.q.35.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.35}"
+			x: -7.0d
+			y: 0.5d
+		}
+		{
+			dependencies: ["78B85E020187C16A"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.36.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.36.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.36.d.02}"
+			]
+			id: "33371313528B9C26"
+			shape: "square"
+			tasks: [
+				{
+					count: 4L
+					id: "70986199AD5BA147"
+					item: "exnihilosequentia:raw_silver"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "257FA5A97A008C52"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/silver"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.23.q.36.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.36}"
+			x: -5.5d
+			y: 0.5d
+		}
+		{
+			dependencies: ["78B85E020187C16A"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.37.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.37.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.37.d.02}"
+			]
+			id: "1F8D8241F7495CD3"
+			shape: "gear"
+			size: 1.5d
+			tasks: [
+				{
+					count: 4L
+					id: "6B14507456012806"
+					item: "exnihilosequentia:raw_aluminum"
+					type: "item"
+				}
+				{
+					count: 4L
+					id: "0836F6E4FB8DFD4A"
+					item: {
+						Count: 1b
+						id: "itemfilters:tag"
+						tag: {
+							value: "forge:ingots/aluminum"
+						}
+					}
+					title: "{cuboiddroid.quests.g.00.c.23.q.37.t.01}"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.00.c.23.q.37}"
+			x: -4.0d
+			y: 0.5d
+		}
+		{
+			dependencies: [
+				"5FFEBF55D0A30DAB"
+				"38A57A4898341AFA"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.38.d.00}"]
+			id: "7E7F87ED3FE0EDF2"
+			tasks: [{
+				id: "5D42FFB769A58176"
+				item: "cuboidmod:cured_flesh"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.38}"
+			x: -20.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["6AF8FD5317351B8A"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.39.d.00}"]
+			id: "38A57A4898341AFA"
+			tasks: [{
+				id: "6F8831F876C2185C"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "forge:dusts/salt"
+					}
+				}
+				title: "{cuboiddroid.quests.g.00.c.23.q.39.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.39}"
+			x: -20.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["6AF8FD5317351B8A"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.04}"
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.05}"
+				"{cuboiddroid.quests.g.00.c.23.q.40.d.06}"
+			]
+			id: "7D0687B0C3527D41"
+			tasks: [{
+				id: "4756E38867F740E1"
+				item: "createsifter:sifter"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.40}"
+			x: -16.5d
+			y: -3.5d
+		}
+		{
+			dependencies: ["622A14D949B6F090"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.41.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.41.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.41.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.41.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.41.d.04}"
+			]
+			id: "16F877D52D0B4336"
+			shape: "square"
+			tasks: [{
+				id: "365BA9D95E041F75"
+				item: "cuboidmod:drying_cupboard"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.41}"
+			x: -13.0d
+			y: -3.5d
+		}
+		{
+			dependencies: ["3513BE459009658F"]
+			description: [
+				"{cuboiddroid.quests.g.00.c.23.q.42.d.00}"
+				"{cuboiddroid.quests.g.00.c.23.q.42.d.01}"
+				"{cuboiddroid.quests.g.00.c.23.q.42.d.02}"
+				"{cuboiddroid.quests.g.00.c.23.q.42.d.03}"
+				"{cuboiddroid.quests.g.00.c.23.q.42.d.04}"
+			]
+			id: "35F547ACB0E2CFD8"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.42.sub}"
+			tasks: [{
+				id: "79A8DC1287956E39"
+				item: {
+					Count: 1b
+					id: "minecraft:fishing_rod"
+					tag: {
+						Damage: 0
+					}
+				}
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.42}"
+			x: -19.0d
+			y: -2.5d
+		}
+		{
+			dependencies: ["35F547ACB0E2CFD8"]
+			id: "1D822A48AB7D58C5"
+			tasks: [{
+				id: "6E6DAD3B23E7535A"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "minecraft:fishes"
+					}
+				}
+				title: "{cuboiddroid.quests.g.00.c.23.q.43.t.00}"
+				type: "item"
+			}]
+			x: -17.5d
+			y: -2.0d
+		}
+		{
+			dependencies: [
+				"1D822A48AB7D58C5"
+				"16F877D52D0B4336"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.44.d.00}"]
+			id: "71C6C7B9C6E1BB83"
+			tasks: [{
+				id: "7A21F97534674C26"
+				item: "cuboidmod:hardfiskur"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.44}"
+			x: -15.5d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"7E7F87ED3FE0EDF2"
+				"16F877D52D0B4336"
+			]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.45.d.00}"]
+			id: "4867992DCBF29C06"
+			rewards: [{
+				count: 2
+				id: "74C8435037E8E6DD"
+				item: "cuboidmod:biltong_zombie"
+				random_bonus: 2
+				type: "item"
+			}]
+			tasks: [{
+				id: "0C329970815D2BFE"
+				item: "cuboidmod:biltong_zombie"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.45}"
+			x: -15.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["753DB049680259E8"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.46.d.00}"]
+			id: "7988A4A5437282D2"
+			shape: "square"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.46.sub}"
+			tasks: [{
+				count: 16L
+				id: "70EBD940EE70A15D"
+				item: "minecraft:gravel"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.46}"
+			x: -3.5d
+			y: -4.0d
+		}
+		{
+			dependencies: ["7988A4A5437282D2"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.47.d.00}"]
+			id: "57BDC073A6FF7EAF"
+			tasks: [{
+				id: "546AAEFF5F40CBAF"
+				item: "thermal:niter"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.47}"
+			x: -3.5d
+			y: -5.5d
+		}
+		{
+			dependencies: ["7988A4A5437282D2"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.48.d.00}"]
+			id: "3D6027E5BD7101C3"
+			tasks: [{
+				id: "62B3D63168CADF67"
+				item: "thermal:apatite"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.48}"
+			x: -2.5d
+			y: -5.0d
+		}
+		{
+			dependencies: ["7988A4A5437282D2"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.49.d.00}"]
+			id: "3811CEE735335546"
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.49.sub}"
+			tasks: [{
+				id: "4A9763149BCEF289"
+				item: "thermal:cinnabar"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.49}"
+			x: -2.0d
+			y: -4.0d
+		}
+		{
+			dependencies: ["7988A4A5437282D2"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.50.d.00}"]
+			id: "5E990B8B91DD3200"
+			tasks: [{
+				id: "046A1CAF096E5701"
+				item: "minecraft:coal"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.50}"
+			x: -2.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["7988A4A5437282D2"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.51.d.00}"]
+			id: "683CFCFCE9480C64"
+			tasks: [{
+				id: "4B5A9CED5CA8A790"
+				item: "minecraft:lapis_lazuli"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.51}"
+			x: -3.5d
+			y: -2.5d
+		}
+		{
+			dependencies: ["7988A4A5437282D2"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.52.d.00}"]
+			id: "2F9B6B63C2690972"
+			tasks: [{
+				id: "37C88649BFAC5703"
+				item: "thermal:sulfur"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.52}"
+			x: -4.5d
+			y: -3.0d
+		}
+		{
+			dependencies: ["4867992DCBF29C06"]
+			description: ["{cuboiddroid.quests.g.00.c.23.q.53.d.00}"]
+			id: "16F4815BB74482D3"
+			optional: true
+			subtitle: "{cuboiddroid.quests.g.00.c.23.q.53.sub}"
+			tasks: [{
+				id: "59415A5FA700F7C4"
+				item: "minecraft:leather"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.00.c.23.q.53}"
+			x: -15.5d
+			y: 1.5d
+		}
+	]
+	title: "{cuboiddroid.quests.g.00.c.23}"
+}

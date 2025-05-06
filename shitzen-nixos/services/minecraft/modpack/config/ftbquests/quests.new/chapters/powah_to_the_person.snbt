@@ -1,0 +1,684 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "powah_to_the_person"
+	group: "4F582DBBFACF1F69"
+	icon: "powah:player_transmitter_nitro"
+	id: "0FA1CE245782DC11"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["2A3A34A47D8AF234"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.00.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.00.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.00.d.02}"
+				"{cuboiddroid.quests.g.02.c.36.q.00.d.03}"
+				"{cuboiddroid.quests.g.02.c.36.q.00.d.04}"
+			]
+			id: "7EB1619CE1AB76BB"
+			rewards: [{
+				id: "4DBD3E9D1ADCD10F"
+				item: "powah:book"
+				type: "item"
+			}]
+			shape: "gear"
+			tasks: [
+				{
+					id: "488A4EE45A383BED"
+					item: "minecraft:iron_ingot"
+					type: "item"
+				}
+				{
+					id: "4925ED68F64C1DAA"
+					item: "minecraft:redstone"
+					type: "item"
+				}
+				{
+					id: "0E5C36C81029075E"
+					item: "minecraft:coal"
+					type: "item"
+				}
+				{
+					id: "3F815C2DF7DC55D2"
+					item: "minecraft:clay_ball"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.02.c.36.q.00}"
+			x: 0.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["7EB1619CE1AB76BB"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.01.d.00}"]
+			id: "5D2E655D627DE6AA"
+			rewards: [{
+				count: 32
+				id: "745552BFEAB808F4"
+				item: "powah:dielectric_paste"
+				random_bonus: 32
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "3B890E344A4521FF"
+				item: "powah:dielectric_paste"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.01}"
+			x: 2.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["5D2E655D627DE6AA"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.02.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.02.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.02.d.02}"
+			]
+			id: "3A1537AD1DA341FB"
+			rewards: [{
+				count: 16
+				id: "566B00155A3D8F21"
+				item: "powah:dielectric_rod_horizontal"
+				random_bonus: 16
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "5AF296F4D2E8F2CA"
+				item: "powah:dielectric_rod_horizontal"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.02}"
+			x: 4.5d
+			y: -1.0d
+		}
+		{
+			dependencies: ["5D2E655D627DE6AA"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.03.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.03.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.03.d.02}"
+			]
+			id: "6F7F710AF3DFEFB6"
+			rewards: [{
+				count: 16
+				id: "1FC4E32785AC87A3"
+				item: "powah:dielectric_rod"
+				random_bonus: 16
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "573ED108B258EB0E"
+				item: "powah:dielectric_rod"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.03}"
+			x: 4.5d
+			y: 1.0d
+		}
+		{
+			dependencies: [
+				"3A1537AD1DA341FB"
+				"6F7F710AF3DFEFB6"
+			]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.04.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.04.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.04.d.02}"
+			]
+			id: "4F6101F00C8E011E"
+			rewards: [{
+				count: 4
+				id: "61A73E31E97CEB4E"
+				item: "powah:dielectric_casing"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "50E8A04F25ECB97D"
+				item: "powah:dielectric_casing"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.04}"
+			x: 6.5d
+			y: 0.0d
+		}
+		{
+			dependencies: ["4F6101F00C8E011E"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.05.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.05.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.05.d.02}"
+			]
+			id: "313C2018A2C04815"
+			rewards: [{
+				id: "2E476E6EE2FC58D8"
+				item: "powah:energizing_orb"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "260F3BE37987ABC9"
+				item: "powah:energizing_orb"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.05}"
+			x: 8.5d
+			y: 0.0d
+		}
+		{
+			dependencies: [
+				"03BEA2FE7419FFEF"
+				"6F7F710AF3DFEFB6"
+				"4F6101F00C8E011E"
+			]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.06.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.06.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.06.d.02}"
+				"{cuboiddroid.quests.g.02.c.36.q.06.d.03}"
+				"{cuboiddroid.quests.g.02.c.36.q.06.d.04}"
+			]
+			id: "69B4C609EF508876"
+			rewards: [
+				{
+					id: "3FF674B036C26BAA"
+					item: {
+						Count: 1b
+						id: "powah:wrench"
+						tag: {
+							PowahWrenchNBT: { }
+						}
+					}
+					type: "item"
+				}
+				{
+					id: "1D769C78F7E64326"
+					item: "powah:energizing_rod_starter"
+					type: "item"
+				}
+			]
+			shape: "square"
+			tasks: [{
+				id: "2CDE3D68E23A1328"
+				item: "powah:energizing_rod_starter"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.06}"
+			x: 6.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["5D2E655D627DE6AA"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.07.d.00}"]
+			id: "51B58AF1E1899878"
+			rewards: [{
+				count: 8
+				id: "489F8569732369CA"
+				item: "powah:capacitor_basic"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "0D0E3D993A4D76C1"
+				item: "powah:capacitor_basic"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.07}"
+			x: 2.5d
+			y: 2.0d
+		}
+		{
+			dependencies: ["51B58AF1E1899878"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.08.d.00}"]
+			id: "03BEA2FE7419FFEF"
+			rewards: [{
+				count: 8
+				id: "463A81DDEB085425"
+				item: "powah:capacitor_basic_tiny"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "50FA8F2C02899A2B"
+				item: "powah:capacitor_basic_tiny"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.08}"
+			x: 4.5d
+			y: 3.0d
+		}
+		{
+			dependencies: [
+				"313C2018A2C04815"
+				"69B4C609EF508876"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.09.d.00}"]
+			id: "3B895232E8390F8F"
+			shape: "square"
+			tasks: [{
+				count: 4L
+				id: "125B7C4FBF3A9BE8"
+				item: "powah:steel_energized"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.09}"
+			x: 8.5d
+			y: 2.0d
+		}
+		{
+			dependencies: [
+				"69B4C609EF508876"
+				"1D6F6B69D5EF353D"
+			]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.10.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.10.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.10.d.02}"
+			]
+			id: "50AFF3D04D20E37D"
+			rewards: [{
+				id: "7B32ECC91CEF7899"
+				item: "powah:energizing_rod_starter"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "50EBA98C7FE09004"
+				item: "powah:energizing_rod_basic"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"50AFF3D04D20E37D"
+				"5C269BA7E9F8936E"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.11.d.00}"]
+			id: "0BCDD33FA243BA9E"
+			rewards: [{
+				id: "6E5BCB13492B4871"
+				item: "powah:energizing_rod_hardened"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "4990C742BA9F1CA9"
+				item: "powah:energizing_rod_hardened"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["3B895232E8390F8F"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.12.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.12.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.12.d.02}"
+			]
+			id: "22DB40E959062974"
+			shape: "pentagon"
+			tasks: [{
+				id: "27AEF42DEA81023E"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.12}"
+			x: 8.5d
+			y: 4.0d
+		}
+		{
+			dependencies: ["22DB40E959062974"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.13.d.00}"]
+			id: "5C269BA7E9F8936E"
+			rewards: [{
+				count: 4
+				id: "27D8F43114F9197D"
+				item: "powah:capacitor_hardened"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "1489231D145D1DB0"
+				item: "powah:capacitor_hardened"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 6.0d
+		}
+		{
+			dependencies: [
+				"0BCDD33FA243BA9E"
+				"5B2DE820AEC7AD5D"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.14.d.00}"]
+			id: "157413C5D7A3BD36"
+			rewards: [{
+				id: "286F28682F116B2E"
+				item: "powah:energizing_rod_blazing"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "6B3F8BF87000C7FE"
+				item: "powah:energizing_rod_blazing"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 8.0d
+		}
+		{
+			dependencies: ["0BCDD33FA243BA9E"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.15.d.00}"]
+			id: "4B03FC50AF4FB103"
+			rewards: [{
+				count: 12
+				id: "7E8264A7BC952A07"
+				item: "powah:crystal_blazing"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "7ADBE7AA5DD9DF90"
+				item: "powah:crystal_blazing"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 7.0d
+		}
+		{
+			dependencies: ["4B03FC50AF4FB103"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.16.d.00}"]
+			id: "5B2DE820AEC7AD5D"
+			rewards: [{
+				count: 4
+				id: "450014EB2C1770F4"
+				item: "powah:capacitor_blazing"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "06D8DC09E3A322A2"
+				item: "powah:capacitor_blazing"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 8.0d
+		}
+		{
+			dependencies: [
+				"157413C5D7A3BD36"
+				"52129C82DA500585"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.17.d.00}"]
+			id: "69937502450BA849"
+			rewards: [{
+				id: "276B5459FCB0A919"
+				item: "powah:energizing_rod_niotic"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "51E32BC24FE17FFC"
+				item: "powah:energizing_rod_niotic"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 10.0d
+		}
+		{
+			dependencies: ["157413C5D7A3BD36"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.18.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.18.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.18.d.02}"
+			]
+			id: "5FB416898A60641C"
+			rewards: [{
+				count: 8
+				id: "0078EAED95A41A05"
+				item: "powah:crystal_niotic"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "7DAB1779EAABF92A"
+				item: "powah:crystal_niotic"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 9.0d
+		}
+		{
+			dependencies: ["5FB416898A60641C"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.19.d.00}"]
+			id: "52129C82DA500585"
+			rewards: [{
+				count: 4
+				id: "1262C58B5842B395"
+				item: "powah:capacitor_niotic"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "5E50977C91B9854C"
+				item: "powah:capacitor_niotic"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 10.0d
+		}
+		{
+			dependencies: [
+				"69937502450BA849"
+				"04956D12ACA7737F"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.20.d.00}"]
+			id: "03DDE5288BB7AEEE"
+			rewards: [{
+				id: "5E48C66BA7CFAD03"
+				item: "powah:energizing_rod_spirited"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "2DD8F4653B1632D6"
+				item: "powah:energizing_rod_spirited"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 12.0d
+		}
+		{
+			dependencies: ["69937502450BA849"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.21.d.00}"]
+			id: "7643B8FEE6A22D62"
+			rewards: [{
+				count: 6
+				id: "4C7048FC34AD8E09"
+				item: "powah:crystal_spirited"
+				random_bonus: 6
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "6B29854FD895148B"
+				item: "powah:crystal_spirited"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 11.0d
+		}
+		{
+			dependencies: ["7643B8FEE6A22D62"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.22.d.00}"]
+			id: "04956D12ACA7737F"
+			rewards: [{
+				count: 4
+				id: "6BA64F1CB84E092B"
+				item: "powah:capacitor_spirited"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "516710251AE0E4C6"
+				item: "powah:capacitor_spirited"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 12.0d
+		}
+		{
+			dependencies: [
+				"03DDE5288BB7AEEE"
+				"2D29B68E6C38D2C6"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.23.d.00}"]
+			id: "05C70C35EB850CFE"
+			rewards: [{
+				id: "431228CCB694138B"
+				item: "powah:energizing_rod_nitro"
+				type: "item"
+			}]
+			tasks: [{
+				id: "68409C55D71C4C99"
+				item: "powah:energizing_rod_nitro"
+				type: "item"
+			}]
+			x: 6.5d
+			y: 14.0d
+		}
+		{
+			dependencies: [
+				"03DDE5288BB7AEEE"
+				"66CD57943D87FA8D"
+			]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.24.d.00}"]
+			id: "272B81B875079A94"
+			rewards: [{
+				count: 8
+				id: "67BF7BCAB5FC76A0"
+				item: "powah:crystal_nitro"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "51C86FB44EFFC939"
+				item: "powah:crystal_nitro"
+				type: "item"
+			}]
+			x: 8.5d
+			y: 14.0d
+		}
+		{
+			dependencies: ["272B81B875079A94"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.25.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.25.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.25.d.02}"
+				"{cuboiddroid.quests.g.02.c.36.q.25.d.03}"
+				"{cuboiddroid.quests.g.02.c.36.q.25.d.04}"
+			]
+			id: "2D29B68E6C38D2C6"
+			rewards: [{
+				count: 2
+				id: "448B8320F9B812A4"
+				item: "powah:capacitor_nitro"
+				random_bonus: 4
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "762D40CC5ADA2CA9"
+				item: "powah:capacitor_nitro"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 15.8d
+		}
+		{
+			dependencies: ["51B58AF1E1899878"]
+			description: ["{cuboiddroid.quests.g.02.c.36.q.26.d.00}"]
+			id: "1D6F6B69D5EF353D"
+			rewards: [{
+				count: 8
+				id: "5F2B483BF5F05696"
+				item: "powah:capacitor_basic_large"
+				random_bonus: 8
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "659482688098511D"
+				item: "powah:capacitor_basic_large"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.02.c.36.q.26}"
+			x: 2.5d
+			y: 4.0d
+		}
+		{
+			dependencies: [
+				"69B4C609EF508876"
+				"313C2018A2C04815"
+			]
+			id: "7ACE7541EFF51907"
+			optional: true
+			tasks: [{
+				id: "44A8F5C75802BD6B"
+				item: "powah:charged_snowball"
+				type: "item"
+			}]
+			x: 7.5d
+			y: 1.0d
+		}
+		{
+			dependencies: ["7D30BCCFA1ACF48B"]
+			description: [
+				"{cuboiddroid.quests.g.02.c.36.q.28.d.00}"
+				"{cuboiddroid.quests.g.02.c.36.q.28.d.01}"
+				"{cuboiddroid.quests.g.02.c.36.q.28.d.02}"
+				"{cuboiddroid.quests.g.02.c.36.q.28.d.03}"
+				"{cuboiddroid.quests.g.02.c.36.q.28.d.04}"
+			]
+			disable_toast: true
+			id: "66CD57943D87FA8D"
+			shape: "gear"
+			tasks: [
+				{
+					id: "661DEA7AF9FA2F9D"
+					item: "minecraft:nether_star"
+					type: "item"
+				}
+				{
+					id: "06F7DB3A02B848E7"
+					item: "quark:blaze_lantern"
+					type: "item"
+				}
+			]
+			title: "{cuboiddroid.quests.g.02.c.36.q.28}"
+			x: 10.0d
+			y: 13.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.02.c.36}"
+}

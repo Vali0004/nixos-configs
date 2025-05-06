@@ -1,0 +1,19 @@
+{
+	id: "41284C6F82835696"
+	loot_size: 1
+	order_index: 1
+	rewards: [
+		{ item: "refinedstorage:64k_storage_disk" }
+		{
+			item: {
+				Count: 1b
+				id: "ae2:item_storage_cell_64k"
+				tag: { }
+			}
+		}
+		{ item: "pipez:ultimate_upgrade" }
+		{ item: "sophisticatedstorage:basic_to_netherite_tier_upgrade" }
+		{ item: "sophisticatedbackpacks:netherite_backpack" }
+	]
+	title: "Rewards"
+}

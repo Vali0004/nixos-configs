@@ -1,0 +1,336 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "exploring_the_nether_regions"
+	group: "53EA7D6C6A1B0F69"
+	icon: "exnihilosequentia:crushed_netherrack"
+	id: "224354F4BDF62683"
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["1CF4FF16ECAC59B1"]
+			description: ["Now that you've managed to visit the End and have survived to tell the tale, you're going to need some of the materials you have gathered so far to explore the next dimension. This time, it's where the Science Division believes the Mobs originate from."]
+			id: "2280A6EEC1BFDEDD"
+			shape: "gear"
+			tasks: [
+				{
+					id: "598A8BA555915DF1"
+					item: "rftoolsbase:dimensionalshard"
+					type: "item"
+				}
+				{
+					id: "50FDF0F8AA087D2F"
+					item: "minecraft:nether_bricks"
+					type: "item"
+				}
+				{
+					id: "21E3DEA97509F418"
+					item: "powah:crystal_niotic"
+					type: "item"
+				}
+				{
+					id: "5C575C37D9D2698D"
+					item: {
+						Count: 1b
+						id: "outer_end:shulker_shield"
+						tag: {
+							Damage: 0
+						}
+					}
+					type: "item"
+				}
+			]
+			title: "Exploring Nether Regions"
+			x: -1.0d
+			y: 2.0d
+		}
+		{
+			dependencies: ["2280A6EEC1BFDEDD"]
+			description: [
+				"You will need a new key for the Cryogenic Dimensional Teleporter to be able to access the next dimension. The Science Division gives their assurances that energizing some Nether Bricks will attune the CDT to allow for safe passage."
+				""
+				"Hopefully it'll work, but let's not dwell on that right now... just go ahead and make the Energised Nether Bricks and let's see shall we?"
+			]
+			id: "46821A52352BBC8F"
+			rewards: [{
+				auto: "disabled"
+				icon: "storagedrawers:shroud_key"
+				id: "672DC08DB4F9A8FB"
+				stage: "nether_access"
+				title: "Let's go!"
+				type: "gamestage"
+			}]
+			shape: "square"
+			tasks: [{
+				id: "08117E8BF30437D8"
+				item: "cuboidmod:energized_nether_bricks"
+				type: "item"
+			}]
+			x: -1.0d
+			y: 4.0d
+		}
+		{
+			dependencies: ["46821A52352BBC8F"]
+			description: [
+				"As with the exploration of the End dimension, it's a good idea to go prepared."
+				""
+				"Ensure you've got a way to fly around (and that your jetpack is sufficiently charged!), have somewhere to store things, have some weaponry and armor, and some waystones to make getting there and back a bit easier if you ever need to return!"
+				""
+				"p.s. One of our more geeky - I mean dedicated! - scientists seems to think that the 'Nether' dimension might be a hellish plane of existence from what was previously only perceived as mythology. Apparently, at least as far as the stories go, there might be some denizens there who like Gold, and dislike anyone not wearing something with a bit of bling. Then again, that's just what Ashrem says, so we'll leave you to make your own mind up on that one."
+			]
+			id: "248E373FA159A972"
+			rewards: [{
+				id: "7E931FFA996DCA42"
+				item: "waystones:waystone"
+				type: "item"
+			}]
+			shape: "square"
+			tasks: [{
+				dimension: "minecraft:the_nether"
+				id: "62434700F775BD85"
+				title: "Enter The Nether"
+				type: "dimension"
+			}]
+			x: -1.0d
+			y: 6.0d
+		}
+		{
+			dependencies: ["42F7BB732588FE2B"]
+			description: [
+				"You have quite possibly already encountered a Blaze by now. It turns out that they come from the Nether."
+				""
+				"They are most often found in the vicinity of Nether Fortresses, and often seem to be birthed from spawner devices."
+			]
+			id: "1E782624571D6928"
+			tasks: [{
+				advancement: "minecraft:nether/obtain_blaze_rod"
+				criterion: ""
+				id: "68F7AB3C0286EEFA"
+				type: "advancement"
+			}]
+			x: 0.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["42F7BB732588FE2B"]
+			description: ["Once you've found a Nether Fortress, just be careful. According to myth, there are some tall, aggressive undead creatures called Wither Skeletons that patrol them. Even a single touch can bring about a swift death if you're not prepared."]
+			id: "2CCD8D8A135B4012"
+			tasks: [{
+				advancement: "minecraft:nether/get_wither_skull"
+				criterion: ""
+				id: "55930FCDE6793F9D"
+				type: "advancement"
+			}]
+			title: "A bit like Conan without the flesh..."
+			x: -2.0d
+			y: 10.0d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"If you're lucky enough, your map, so kindly provided by Cuboid Corp (tm), will show you a nearby structure or two."
+				""
+				"Our tertiary Artificial Intelligence array, the Digitally Extraneous Literary Forensicist (D.E.L.F.), has predicted that there should be large fortress-like structures to be found in the Nether dimension."
+				""
+				"When it comes to literary forensics (like trying to understand the mythological texts Ashrem provided that caused the rest of the Science Division to lead you here in the first place), we tend to trust what D.E.L.F. thinks... so head out and find one! According to D.E.L.F., there's a 99.97% chance that they actually do exist!"
+				""
+				"... although he did once predict the existence of unicorns with a similar level of certainty, and proceeded to try and fool all of us by sticking a carrot onto a donkey's forehead."
+			]
+			id: "42F7BB732588FE2B"
+			tasks: [{
+				advancement: "minecraft:nether/find_fortress"
+				criterion: ""
+				id: "10EF5F1603135887"
+				type: "advancement"
+			}]
+			title: "Locate a Nether Fortress"
+			x: -1.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["2CCD8D8A135B4012"]
+			description: [
+				"Something else that Wither Skeletons have, that you will need, is a Wither Skeleton Skull. Unfortunately, they tend to come attached to Wither Skeletons, so you will need to try and resolve that small issue."
+				""
+				"According to the mythology, you will need 3 in order to summon a more powerful entity, and that in turn will give you access to another vital ingredient."
+				""
+				"You will also need quite a few of those, so it might actually be worthwhile to try and capture a Wither Skeleton in a Mob Imprisonment tool and then set about duplicating them in a controlled manner back at base. Alternatively, you can run / fly around seeing how many skulls you can collect and hope it will be enough."
+			]
+			id: "201E274E8AF73865"
+			rewards: [{
+				count: 3
+				id: "1DF1D59D6DE8C13D"
+				item: "minecraft:wither_skeleton_skull"
+				random_bonus: 6
+				type: "item"
+			}]
+			tasks: [{
+				count: 3L
+				id: "6D8923FBDC026412"
+				item: "minecraft:wither_skeleton_skull"
+				type: "item"
+			}]
+			title: "Skulls as dark as night"
+			x: -2.0d
+			y: 11.5d
+		}
+		{
+			dependencies: ["1E782624571D6928"]
+			description: ["Destroy a few Blazes and gather up some blaze rods."]
+			id: "14DD4220E654B1A5"
+			rewards: [{
+				count: 4
+				id: "2ABED4487128C00B"
+				item: "minecraft:blaze_rod"
+				random_bonus: 4
+				type: "item"
+			}]
+			tasks: [{
+				id: "117DC9F090335B5A"
+				item: "minecraft:blaze_rod"
+				type: "item"
+			}]
+			x: 0.0d
+			y: 11.5d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"We believe that there could be large structures in this dimension called Bastions. They should be largely built from a black stone."
+				""
+				"It might be worth exploring one or two of them."
+			]
+			id: "52B9B245AEAB386B"
+			optional: true
+			tasks: [{
+				advancement: "minecraft:nether/find_bastion"
+				criterion: ""
+				id: "026869BFC0248580"
+				type: "advancement"
+			}]
+			title: "Explore a Bastion"
+			x: -3.5d
+			y: 6.0d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"Those big white floating mobs are pretty ghastly. The fact that they keep spitting fireballs at you doesn't exactly make them any nicer!"
+				""
+				"Why not see if you can hit back one of those fireballs and give it a taste of its own medicine!"
+			]
+			id: "793BD41368775901"
+			optional: true
+			subtitle: "Enough to drive you mad!"
+			tasks: [{
+				advancement: "minecraft:nether/return_to_sender"
+				criterion: ""
+				id: "08ED9E2374B6AB91"
+				type: "advancement"
+			}]
+			title: "Ghastly shrieks!"
+			x: -3.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["3C37857BCEA55086"]
+			description: [
+				"Slaying a Wither causes them to collapse in on themselves and form what we are terming a Nether Star. This will be an important ingredient for some of the advanced crafting we have ahead of us, so you will need a few."
+				""
+				"Luckily, there appears to be enough reserve energy in this digital survival guide to perform some replication upon your first success, so you will be rewarded for your efforts this first time."
+				""
+				"Good luck!"
+			]
+			id: "7D30BCCFA1ACF48B"
+			rewards: [{
+				id: "19D4CD775F57156D"
+				item: "minecraft:nether_star"
+				random_bonus: 1
+				type: "item"
+			}]
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "116D7BB3AEA275A0"
+				item: "minecraft:nether_star"
+				type: "item"
+			}]
+			title: "Star-Crossed Blubber"
+			x: -1.0d
+			y: 14.5d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"It seems that the Nether is not quite as boring and empty as you'd expect for somewhere that's supposed to be akin to the underworld!"
+				""
+				"Take a little time to explore some more - once you've done enough exploration by visiting all of the biomes in this dimension (in the name of Science of course), then we will be able to provide you with a special token of our appreciation."
+			]
+			id: "68E5299643C9D8E3"
+			optional: true
+			rewards: [{
+				id: "64320C2F7D9DFBBD"
+				item: "minecraft:wither_skeleton_skull"
+				random_bonus: 2
+				type: "item"
+			}]
+			subtitle: "There's quite a bit to explore"
+			tasks: [{
+				advancement: "minecraft:nether/explore_nether"
+				criterion: ""
+				id: "773788BEB5397CA1"
+				type: "advancement"
+			}]
+			title: "Take your time!"
+			x: 1.0d
+			y: 8.0d
+		}
+		{
+			dependencies: ["201E274E8AF73865"]
+			description: [
+				"This is, perhaps, the most challenging thing we're going to ask you to do. Yet."
+				""
+				"It's time to try and summon a Wither. It's a fairly nasty piece of work, so it will be worth taking any sensible precautions you can think of. For example, ensure your jetpack is charged, have good weaponry and armor, have a good supply of food, and see if there's a way to 'cheese' it."
+				""
+				"You might want to avoid summoning one of these things too close to anything you like - your base for example."
+				""
+				"To summon a Wither, use 4 blocks of Soul Sand placed in a T shape, and then place 3 Wither Skeleton Skulls across the top of the T. As soon as you place the third one, we predict that the Wither will immediately appear."
+				""
+				"You might want to stand back initially as the ancient texts suggest that they can make a bit on an explosive entrance when summoned."
+			]
+			id: "3C37857BCEA55086"
+			tasks: [{
+				advancement: "minecraft:nether/summon_wither"
+				criterion: ""
+				id: "0991948E533FD474"
+				type: "advancement"
+			}]
+			title: "Heathcliff!"
+			x: -1.0d
+			y: 13.0d
+		}
+		{
+			dependencies: ["248E373FA159A972"]
+			description: [
+				"One of the key ingredients you will need from the Nether is a Blaze Lantern."
+				""
+				"You can find these in tall spires in lava oceans, and they are typically protected by their namesake."
+				""
+				"Alternatively, you can make one from Blaze Rods, Blaze Powder, and the nether variant of Dimensional Share Ore (you will need to use a pickaxe with Silk Touch or a Tinkers Tool with the Silky ability on it to pick up a block of it rather than just the shards)"
+			]
+			id: "036A00C69FE8FD59"
+			shape: "gear"
+			size: 1.5d
+			tasks: [{
+				id: "5EE34EC0795F7010"
+				item: "quark:blaze_lantern"
+				type: "item"
+			}]
+			title: "Obtain a Blaze Lantern"
+			x: 1.5d
+			y: 6.0d
+		}
+	]
+	title: "Exploring Nether Regions"
+}

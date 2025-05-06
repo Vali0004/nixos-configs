@@ -1,0 +1,427 @@
+{
+	default_hide_dependency_lines: false
+	default_quest_shape: ""
+	filename: "networks_for_xmen"
+	group: "033EC740B2EF1FC1"
+	icon: "xnet:controller"
+	id: "16F6E346E0584C7C"
+	images: [
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 5.5d
+			hover: ["An Infinite Netherrack / End Stone Generator"]
+			image: "kubejs:textures/quests/netherrack_gen.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: -5.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.8d
+			hover: [ ]
+			image: "kubejs:textures/quests/netherrack_gen_config.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: -1.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 6.5d
+			hover: [ ]
+			image: "kubejs:textures/quests/energizing_orb.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 4.5d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.8d
+			hover: [ ]
+			image: "kubejs:textures/quests/energizing_orb_config.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 9.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.0d
+			hover: ["The basic layout of the Soul Sand Generator."]
+			image: "kubejs:textures/quests/soulsand/xnet-soulsand-generator.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 13.5d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.5d
+			hover: [ ]
+			image: "kubejs:textures/quests/soulsand/xnet-soulsand-1-water.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 16.5d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.5d
+			hover: [ ]
+			image: "kubejs:textures/quests/soulsand/xnet-soulsand-2-witchwater.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 19.8d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.5d
+			hover: [ ]
+			image: "kubejs:textures/quests/soulsand/xnet-soulsand-3-sand.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 23.0d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.5d
+			hover: [ ]
+			image: "kubejs:textures/quests/soulsand/xnet-soulsand-4-soulsand.png"
+			rotation: 0.0d
+			width: 7.5d
+			x: 10.0d
+			y: 26.3d
+		}
+		{
+			click: ""
+			corner: false
+			dev: false
+			height: 3.0d
+			hover: ["If you build this outdoors, add a slab above the barrel in which you make Soul Sand to stop rain from filling it up with plain water!"]
+			image: "kubejs:textures/quests/soulsand/xnet-soulsand-rain-protection.png"
+			rotation: 0.0d
+			width: 3.5d
+			x: 15.5d
+			y: 13.5d
+		}
+	]
+	order_index: 4
+	quest_links: [ ]
+	quests: [
+		{
+			dependencies: ["3B00278F3DDF103C"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.00.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.00.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.00.d.02}"
+			]
+			id: "2EBE94F050C5DCA6"
+			shape: "gear"
+			tasks: [{
+				id: "6CCFBE7BFD955FFD"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.00}"
+			x: -2.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["2EBE94F050C5DCA6"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.01.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.01.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.01.d.02}"
+			]
+			id: "08A8C51EB01F3C18"
+			tasks: [{
+				icon: "xnet:netcable_blue"
+				id: "75022431F4C6570E"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "xnet:cables"
+					}
+				}
+				title: "{cuboiddroid.quests.g.05.c.35.q.01.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.01}"
+			x: -0.5d
+			y: 1.5d
+		}
+		{
+			dependencies: ["2EBE94F050C5DCA6"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.02.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.02.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.02.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.02.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.02.d.04}"
+			]
+			id: "3074D94C2567198F"
+			tasks: [{
+				icon: "xnet:connector_blue"
+				id: "203465D598754FAB"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "xnet:connectors"
+					}
+				}
+				title: "{cuboiddroid.quests.g.05.c.35.q.02.t.00}"
+				type: "item"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.02}"
+			x: -0.5d
+			y: -1.5d
+		}
+		{
+			dependencies: [
+				"08A8C51EB01F3C18"
+				"3074D94C2567198F"
+			]
+			id: "792D60E6C75B19E1"
+			tasks: [{
+				id: "62AE2F45FBBC7157"
+				item: "xnet:controller"
+				type: "item"
+			}]
+			x: 1.0d
+			y: 0.0d
+		}
+		{
+			dependencies: ["3074D94C2567198F"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.04.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.04.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.04.d.02}"
+			]
+			id: "693B99EEE4A98DDF"
+			tasks: [{
+				icon: "xnet:advanced_connector_blue"
+				id: "2931062668143553"
+				item: {
+					Count: 1b
+					id: "itemfilters:tag"
+					tag: {
+						value: "xnet:advanced_connectors"
+					}
+				}
+				title: "{cuboiddroid.quests.g.05.c.35.q.04.t.00}"
+				type: "item"
+			}]
+			x: 2.5d
+			y: -1.5d
+		}
+		{
+			dependencies: ["3074D94C2567198F"]
+			description: ["{cuboiddroid.quests.g.05.c.35.q.05.d.00}"]
+			id: "36731AE0D76D7BEE"
+			optional: true
+			tasks: [{
+				id: "1EB3C214AD11125F"
+				item: "xnet:connector_upgrade"
+				type: "item"
+			}]
+			x: 1.0d
+			y: -3.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.04}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.05}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.06}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.07}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.08}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.09}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.10}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.11}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.12}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.13}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.14}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.15}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.16}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.17}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.18}"
+				"{cuboiddroid.quests.g.05.c.35.q.06.d.19}"
+			]
+			id: "3597BCB5AFE09176"
+			optional: true
+			tasks: [{
+				id: "1452B5581E97DEC3"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.06}"
+			x: 6.0d
+			y: -3.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.04}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.05}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.06}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.07}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.08}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.09}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.10}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.11}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.12}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.13}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.14}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.15}"
+				"{cuboiddroid.quests.g.05.c.35.q.07.d.16}"
+			]
+			id: "045B1C5B7E2A3503"
+			optional: true
+			tasks: [{
+				id: "3959BA1C1F566282"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.07}"
+			x: 6.0d
+			y: 7.0d
+		}
+		{
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.04}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.05}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.06}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.07}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.08}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.09}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.10}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.11}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.12}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.13}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.14}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.15}"
+				"{cuboiddroid.quests.g.05.c.35.q.08.d.16}"
+			]
+			id: "768A534C21FC6B8E"
+			optional: true
+			tasks: [{
+				id: "1A8F1C63A3D6B0E6"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.08}"
+			x: 6.0d
+			y: 15.0d
+		}
+		{
+			dependencies: ["768A534C21FC6B8E"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.04}"
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.05}"
+				"{cuboiddroid.quests.g.05.c.35.q.09.d.06}"
+			]
+			id: "5BDB9BF9E69F02C2"
+			optional: true
+			tasks: [{
+				id: "0DB6DC4DFD3B610A"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.09}"
+			x: 6.0d
+			y: 20.0d
+		}
+		{
+			dependencies: ["5BDB9BF9E69F02C2"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.04}"
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.05}"
+				"{cuboiddroid.quests.g.05.c.35.q.10.d.06}"
+			]
+			id: "6FE284033A7200F2"
+			optional: true
+			tasks: [{
+				id: "389FA5106FEF6627"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.10}"
+			x: 6.0d
+			y: 23.0d
+		}
+		{
+			dependencies: ["6FE284033A7200F2"]
+			description: [
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.00}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.01}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.02}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.03}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.04}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.05}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.06}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.07}"
+				"{cuboiddroid.quests.g.05.c.35.q.11.d.08}"
+			]
+			id: "65E6B36767117199"
+			optional: true
+			tasks: [{
+				id: "4373A5BAE8F29A7D"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.11}"
+			x: 6.0d
+			y: 26.0d
+		}
+		{
+			dependencies: ["65E6B36767117199"]
+			description: ["{cuboiddroid.quests.g.05.c.35.q.12.d.00}"]
+			id: "25868E38BE8CD503"
+			optional: true
+			subtitle: "{cuboiddroid.quests.g.05.c.35.q.12.sub}"
+			tasks: [{
+				id: "070F5D6DFC067BCF"
+				type: "checkmark"
+			}]
+			title: "{cuboiddroid.quests.g.05.c.35.q.12}"
+			x: 6.0d
+			y: 29.0d
+		}
+	]
+	title: "{cuboiddroid.quests.g.05.c.35}"
+}

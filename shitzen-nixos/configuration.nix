@@ -69,7 +69,7 @@ in {
           enabled,
           all,
         }: enabled ++ (with all; [
-            redis
+          redis
         ]);
         extraConfig = ''
           memory_limit = 2G
@@ -108,8 +108,8 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 80 443 111 4301 5201 8080 9000 ];
-      allowedUDPPorts = [ 4301 4302 111 ];
+      allowedTCPPorts = [ 80 443 111 4100 4101 4301 4302 5201 8080 9000 ];
+      allowedUDPPorts = [ 111 4100 4101 4301 4302 ];
     };
     hostName = "shitzen-nixos";
     useDHCP = true;
@@ -175,7 +175,7 @@ in {
   };
 
   vali.mc_prod = false;
-  vali.mc_test = false;
+  vali.mc_test = true;
 
   system.stateVersion = "25.05";
 }

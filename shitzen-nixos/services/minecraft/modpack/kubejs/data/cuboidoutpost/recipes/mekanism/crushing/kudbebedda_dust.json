@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "item":"cuboidmod:kudbebedda_chunk"
+    }
+  },
+  "output":{
+    "count":2,"item":"cuboidmod:kudbebedda_dust"
+  }
+}

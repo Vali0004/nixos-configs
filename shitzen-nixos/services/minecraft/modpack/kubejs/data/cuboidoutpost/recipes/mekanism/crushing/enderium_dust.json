@@ -1,0 +1,11 @@
+{
+  "type":"mekanism:crushing",
+  "input":{
+    "ingredient":{
+      "tag":"forge:ingots/enderium"
+    }
+  },
+  "output":{
+    "count":1,"item":"thermal:enderium_dust"
+  }
+}
