@@ -24,6 +24,7 @@ in {
     services/nginx.nix
     services/samba.nix
     services/wings.nix
+    services/zipline.nix
   ];
 
   # Use the GRUB 2 boot loader.
@@ -136,16 +137,6 @@ in {
       ];
       localip = "10.0.127.3";
     };
-    zipline = {
-      enable = true;
-      settings = {
-        CORE_HOSTNAME = "0.0.0.0";
-        CORE_PORT = 3000;
-        CORE_SECRET = "x9J+)()_(4.7nZ.\8aMj@#7u09u/;=bghpi678ki,k8l";
-        DATASOURCE_LOCAL_DIRECTORY = "/data/zipline/uploads";
-        DATASOURCE_TYPE = "local";
-      };
-    };
   };
 
   swapDevices = [
@@ -167,11 +158,6 @@ in {
         ExecStart = "/nix/store/j7dx1n6m5axf9r2bvly580x2ixx546wq-nodejs-20.18.1/bin/node /root/cors-anywhere/result/lib/node_modules/cors-anywhere/server.js";
       };
       wantedBy = [ "multi-user.target" ];
-    };
-    zipline = {
-      serviceConfig = {
-        ReadWritePaths = [ "/data/zipline/uploads" ];
-      };
     };
     forward4301 = mkForward "10.0.127.3" 4301 "172.18.0.1";
     forwardUDP4301 = mkForwardUDP "10.0.127.3" 4301 "172.18.0.1";

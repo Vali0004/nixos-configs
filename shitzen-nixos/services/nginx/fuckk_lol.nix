@@ -18,19 +18,6 @@ in {
         };
       };
     };
-
-    # Zipline
-    "holy.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
-      locations = {
-        "/" = mkProxy {
-          port = 3000;
-          webSockets = true;
-        };
-      };
-    };
-
     # Cors anywhere
     "r34.fuckk.lol" = {
       enableACME = true;
