@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkProxy = import ./mkproxy.nix;
+  mkProxy = import ./nginx/mkproxy.nix;
 in {
   services.nginx.virtualHosts = {
     # Zipline

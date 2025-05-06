@@ -26,4 +26,19 @@
       };
     };
   };
+  
+  users = {
+    groups.pterodactyl = {};
+    users = {
+      pterodactyl = {
+        extraGroups = [ "docker" "nginx" ];
+        group = "pterodactyl";
+        isSystemUser = true;
+      };
+    };
+  };
+
+  virtualisation = {
+    docker.enable = true;
+  };
 }

@@ -49,6 +49,7 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
+      docker-compose
       fastfetch
       ffmpeg_6-headless
       git
@@ -58,13 +59,23 @@ in {
       magic-wormhole
       node2nix
       nodejs_20
+      nodePackages.pnpm
+      nodePackages.yarn
+      mysql84
       openssl
       pciutils
       (php.buildEnv {
+        extensions = {
+          enabled,
+          all,
+        }: enabled ++ (with all; [
+            redis
+        ]);
         extraConfig = ''
           memory_limit = 2G
         '';
       })
+      redis
       screen
       smartmontools
       tmux
@@ -139,12 +150,10 @@ in {
     };
   };
 
-  swapDevices = [
-    {
-      device = "/var/lib/swap1";
-      size = 8192;
-    }
-  ];
+  swapDevices = [{
+    device = "/var/lib/swap1";
+    size = 8192;
+  }];
 
   systemd.services = {
     cors-anywhere = {
@@ -165,23 +174,8 @@ in {
     forwardUDP4302 = mkForwardUDP "10.0.127.3" 4302 "172.18.0.1";
   };
 
-  users = {
-    groups.pterodactyl = {};
-    users = {
-      pterodactyl = {
-        extraGroups = [ "docker" "nginx" ];
-        group = "pterodactyl";
-        isSystemUser = true;
-      };
-    };
-  };
-
   vali.mc_prod = false;
   vali.mc_test = false;
-
-  virtualisation = {
-    docker.enable = true;
-  };
 
   system.stateVersion = "25.05";
 }
