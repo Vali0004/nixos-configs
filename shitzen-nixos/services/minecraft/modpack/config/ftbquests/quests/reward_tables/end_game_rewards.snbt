@@ -1,41 +1,32 @@
 {
-	icon: {
-		Count: 1b
-		id: "immersiveengineering:balloon"
-		tag: { }
-	}
 	id: "003351F72F6B79B0"
+	order_index: 1
+	title: "End Game Rewards"
+	icon: "bountifulbaubles:horseshoe_balloon"
 	loot_size: 1
-	order_index: 0
 	rewards: [
+		{ item: "curios:ring" }
+		{ item: "bountifulbaubles:horseshoe_balloon" }
+		{ item: "bountifulbaubles:ankh_charm" }
+		{ item: "bountifulbaubles:mixed_dragon_scale" }
+		{ item: "bountifulbaubles:ring_free_action" }
+		{ item: "sophisticatedbackpacks:stack_upgrade_tier_4" }
 		{
-			item: {
+			title: "Creative Ability"
+			icon: {
+				id: "tconstruct:creative_slot"
 				Count: 1b
-				id: "mekanism:creative_energy_cube"
 				tag: {
-					mekData: {
-						EnergyContainers: [{
-							Container: 0b
-							stored: "18446744073709551615.9999"
-						}]
-						componentConfig: {
-							config0: {
-								side0: 4
-								side1: 4
-								side2: 4
-								side3: 4
-								side4: 4
-								side5: 4
-							}
-						}
-					}
+					slot: "abilities"
+				}
+			}
+			item: {
+				id: "tconstruct:creative_slot"
+				Count: 1b
+				tag: {
+					slot: "abilities"
 				}
 			}
 		}
-		{ item: "mekanism:creative_fluid_tank" }
-		{ item: "create:creative_motor" }
-		{ item: "refinedstorage:creative_storage_disk" }
-		{ item: "ae2:creative_item_cell" }
 	]
-	title: "End Game Rewards"
 }

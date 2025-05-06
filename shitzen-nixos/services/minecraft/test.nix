@@ -4,16 +4,22 @@
   "config" = {
     src = ./modpack/config;
   };
-  "ESM" = {
-    src = ./modpack/ESM;
+  "defaultconfigs" = {
+    src = ./modpack/defaultconfigs;
   };
   "kubejs" = {
     src = ./modpack/kubejs;
   };
+  "patchouli_books" = {
+    src = ./modpack/patchouli_books;
+  };
+  "scripts" = {
+    src = ./modpack/scripts;
+  };
   "mods" = {
     src = let
       mods_tar = runCommand "mods.tar.gz" {
-        outputHash = "12459ff0cca2c51ee958944ef5d14768672d2ecfa81e8a87f825a68754adcd72";
+        outputHash = "250fb524f7dfe7c15802c60a576f140df482ac8b4094e6c01df9dac61130cc4d";
         outputHashAlgo = "sha256";
         outputHashMode = "flat";
       } ''

@@ -19,7 +19,5 @@
   "speedHover": 0.1,
   "sprintSpeedMulti": 1.0,
   "sprintSpeedMultiVertical": 1.0,
-  "sprintFuelMulti": 1.0,
-  "speedHoverAscend": 0.18,
-  "curios": true
+  "sprintFuelMulti": 1.0
 }

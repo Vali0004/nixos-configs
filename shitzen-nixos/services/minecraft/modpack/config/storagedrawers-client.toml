@@ -2,8 +2,6 @@
 [General]
 	#Invert the behavior of the shift key for extracting items
 	invertShift = false
-	#Invert left and right click action on drawers
-	invertClick = false
 
 [Render]
 	#Distance in blocks before quantity numbers begin to fade out

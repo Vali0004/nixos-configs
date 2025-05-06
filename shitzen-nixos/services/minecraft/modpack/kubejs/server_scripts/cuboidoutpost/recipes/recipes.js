@@ -1,7 +1,8 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
     // helper functions
+
     const crushing = (name) => {
         e.recipes.create.crushing({
           ingredients: [
@@ -18,6 +19,11 @@ ServerEvents.recipes(e => {
             Item.of('cuboidmod:silica_dust').withChance(0.5)
           ],             
           'cuboidmod:' + name + '_chunk')
+
+        e.recipes.mekanism.crushing('2x cuboidmod:' + name + '_dust', 'cuboidmod:' + name + '_chunk')
+        e.recipes.mekanism.enriching('2x cuboidmod:' + name + '_dust', 'cuboidmod:' + name + '_chunk')
+
+        e.recipes.mekanism.crushing('cuboidmod:' + name + '_dust', 'cuboidmod:' + name + '_ingot')
     }
 
     const cuboid_ores = [
@@ -29,33 +35,15 @@ ServerEvents.recipes(e => {
         crushing(name)
     })
 
-    // pulverizer recipe to add create cogwheels
-    e.remove({ output: 'thermal:machine_pulverizer' });
-
-    // remove busted overworld teleporter
-    e.remove({ output: 'cuboidmod:energized_stone_bricks' });
-
-    e.shaped('thermal:machine_pulverizer', [
-      ' H ',
-      'RAR',
-      'CFC'
-    ], {
-      C: 'create:cogwheel',
-      H: 'minecraft:piston',
-      R: 'minecraft:flint',
-      A: 'thermal:machine_frame',
-      F: 'thermal:rf_coil',
-    })
-
     // ZINC dust
     e.recipes.thermal.pulverizer(
       ['2x cuboidmod:zinc_dust'],
       '#forge:ores/zinc'
     )
 
-    e.recipes.thermal.pulverizer(
-      ['cuboidmod:zinc_dust'],
-      'create:raw_zinc'
+    e.recipes.mekanism.crushing(
+      '2x cuboidmod:zinc_dust',
+      '#forge:ores/zinc'
     )
 
     e.smelting('1x create:zinc_ingot', 'cuboidmod:zinc_dust')
@@ -67,22 +55,48 @@ ServerEvents.recipes(e => {
       '#forge:ores/cobalt'
     )
 
+    e.recipes.mekanism.crushing(
+      '2x cuboidmod:cobalt_dust',
+      '#forge:ores/cobalt'
+    )
+
+    e.smelting('1x tconstruct:cobalt_ingot', 'cuboidmod:cobalt_dust')
+    e.blasting('1x tconstruct:cobalt_ingot', 'cuboidmod:cobalt_dust')
+
     // platinum dust
     e.recipes.thermal.pulverizer(
-      ['kubejs:platinum_dust'],
-      '#forge:ingots/platinum'
+      ['2x kubejs:platinum_dust'],
+      '#forge:ores/platinum'
     )
 
-    // osmium dust
-    e.recipes.thermal.pulverizer(
-      ['1x mekanism:dust_osmium'],
-      'mekanism:raw_osmium'
+    e.recipes.mekanism.crushing(
+      '2x kubejs:platinum_dust',
+      '#forge:ores/platinum'
     )
 
-    e.smelting('1x exnihilosequentia:platinum_ingot', 'kubejs:platinum_dust')
-    e.smelting('1x exnihilosequentia:platinum_ingot', 'exnihilosequentia:raw_platinum')
-    e.blasting('1x exnihilosequentia:platinum_ingot', 'kubejs:platinum_dust')
-    e.blasting('1x exnihilosequentia:platinum_ingot', 'exnihilosequentia:raw_platinum')
+    e.smelting('1x exnihilosequentia:ingot_platinum', 'kubejs:platinum_dust')
+    e.blasting('1x exnihilosequentia:ingot_platinum', 'kubejs:platinum_dust')
+
+    // nickel dust - enrichment chamber
+    e.recipes.mekanism.enriching(
+      '2x immersiveengineering:dust_nickel',
+      '#forge:ores/nickel'
+    )
+
+    // ingot crushing - mekanism
+    e.recipes.mekanism.crushing('immersiveengineering:dust_nickel', '#forge:ingots/nickel')
+    e.recipes.mekanism.crushing('cuboidmod:zinc_dust', '#forge:ingots/zinc')
+    e.recipes.mekanism.crushing('create:crushed_brass', '#forge:ingots/brass')
+    e.recipes.mekanism.crushing('thermal:invar_dust', '#forge:ingots/invar')
+    e.recipes.mekanism.crushing('thermal:signalum_dust', '#forge:ingots/signalum')
+    e.recipes.mekanism.crushing('thermal:lumium_dust', '#forge:ingots/lumium')
+    e.recipes.mekanism.crushing('thermal:enderium_dust', '#forge:ingots/enderium')
+    e.recipes.mekanism.crushing('cuboidmod:cobalt_dust', '#forge:ingots/cobalt')
+    e.recipes.mekanism.crushing('immersiveengineering:dust_aluminum', '#forge:ingots/aluminum')
+    e.recipes.mekanism.crushing('immersiveengineering:dust_silver', '#forge:ingots/silver')
+    e.recipes.mekanism.crushing('immersiveengineering:dust_constantan', '#forge:ingots/constantan')
+    e.recipes.mekanism.crushing('immersiveengineering:dust_electrum', '#forge:ingots/electrum')
+    e.recipes.mekanism.crushing('kubejs:platinum_dust', '#forge:ingots/platinum')
 
     // initial molecular recycler recipe
     e.shaped('cuboidmod:molecular_recycler', [
@@ -122,12 +136,11 @@ ServerEvents.recipes(e => {
     ], {
       H: 'minecraft:hopper',
       R: 'minecraft:redstone',
-      A: 'ae2:controller',
+      A: 'appliedenergistics2:controller',
       F: 'thermal:machine_furnace',
       Q: '#cuboidmod:quantum_singularities'
     })
 
-    // silkworms
     e.custom({
       type: 'cuboidmod:transmuting',
       base: {
@@ -142,6 +155,21 @@ ServerEvents.recipes(e => {
       },
       work_ticks: 120,
       energy: 3000
+    })
+
+    // substitute with additional 5% chance apple drops instead
+    e.custom({
+      type: 'exnihilosequentia:crook',
+      results: [
+        {
+          chance: 0.05,
+          item: 'minecraft:apple',
+          count: 1
+        }
+      ],
+      input: {
+        tag: 'minecraft:leaves'
+      }
     })
 
     // shears
@@ -182,22 +210,6 @@ ServerEvents.recipes(e => {
       '#cuboidmod:ingots'
     ])
 
-    // shadow steel casing recipe
-    e.shapeless('create:shadow_steel_casing', [
-      '9x create:shadow_steel',
-    ])
-
-
-    // glowstone to glowstone dust
-    e.shapeless('4x minecraft:glowstone_dust', [
-      'minecraft:glowstone',
-    ])
-
-    // clay block to clay
-    e.shapeless('4x minecraft:clay_ball', [
-      'minecraft:clay',
-    ])
-
     // compass
     e.shaped('minecraft:compass', [
       ' W ',
@@ -208,7 +220,6 @@ ServerEvents.recipes(e => {
       R: 'minecraft:redstone'
     })
 
-    // iron dust
     e.custom({
       type: 'cuboidmod:transmuting',
       base: {
@@ -236,6 +247,15 @@ ServerEvents.recipes(e => {
       'storagedrawers:drawer_key',
       'minecraft:ender_pearl'
     ])
+
+    // eumus furnace recipe
+    e.shaped('cuboidmod:eumus_furnace', [
+      'EEE',
+      'E E',
+      'EEE'
+    ], {
+      E: 'endergetic:eumus'
+    })
 
     // piston recipe
     e.shaped('minecraft:name_tag', [
@@ -275,6 +295,25 @@ ServerEvents.recipes(e => {
       }
     })
 
+    // make producing cellulose a bit easier by letting people use water bottles instead
+    e.custom({
+      "type": "cuboidmod:transmuting",
+      "base": {
+        "item": "cuboidmod:carbon_deposit"
+      },
+      "addition": {
+          "type": "forge:nbt",
+          "item": "minecraft:potion",
+          "nbt": "{Potion:'minecraft:water'}"
+      },
+      "result": {
+        "item": "cuboidmod:cellulose",
+        "count": 2
+      },
+      "work_ticks": 150,
+      "energy": 5000
+    })
+
     // fiber optic tree
     e.shaped('cuboidmod:fiber_optic_tree', [
       'FOT',
@@ -299,18 +338,6 @@ ServerEvents.recipes(e => {
       N: '#forge:nuggets/iron'
     })
     
-    // restore cloche recipe to 1.16.5 version
-    e.shaped('immersiveengineering:cloche', [
-      'GVG',
-      'G G',
-      'TCT'
-    ], {
-      T: '#forge:treated_wood',
-      V: 'immersiveengineering:electron_tube',
-      G: '#forge:glass',
-      C: 'immersiveengineering:component_iron'
-    }).id("immersiveengineering:crafting/cloche");
-
     // stonecutter
     e.shaped('minecraft:stonecutter', [
       ' W ',
@@ -320,200 +347,4 @@ ServerEvents.recipes(e => {
       S: '#forge:stone'
     })
 
-    // remove default crucible recipe
-    e.remove({ output: 'exnihilosequentia:unfired_crucible' });
-
-    // replace vanilla tools with cuboid tools in recipes (where possible)
-
-    const minecraft_default_tools = [ 'stone', 'iron', 'golden', 'diamond', 'netherite']
-
-    minecraft_default_tools.forEach((mc_name, index) => {
-    
-    const cuboid_name = cuboid_ores[index];
-    
-      e.replaceInput(
-          { input: Item.of('minecraft:' + mc_name + '_sword'), type: 'minecraft:crafting_shaped'},
-            Item.of('minecraft:' + mc_name + '_sword'),
-            Item.of('cuboidmod:' + cuboid_name + '_sword')
-          )
-    
-      e.replaceInput(
-          { input: Item.of('minecraft:' + mc_name + '_axe'), type: 'minecraft:crafting_shaped'},
-            Item.of('minecraft:' + mc_name + '_axe'),
-            Item.of('cuboidmod:' + cuboid_name + '_axe')
-          )
-
-      e.replaceInput(
-          { input: Item.of('minecraft:' + mc_name + '_pickaxe'), type: 'minecraft:crafting_shaped'},
-            Item.of('minecraft:' + mc_name + '_pickaxe'),
-            Item.of('cuboidmod:' + cuboid_name + '_pickaxe')
-          )
-
-      e.replaceInput(
-          { input: Item.of('minecraft:' + mc_name + '_shovel'), type: 'minecraft:crafting_shaped'},
-            Item.of('minecraft:' + mc_name + '_shovel'),
-            Item.of('cuboidmod:' + cuboid_name + '_shovel')
-          )
-    })
-
-    // replace smithing templates with cuboid variant
-    e.replaceInput(
-      { input: 'minecraft:netherite_upgrade_smithing_template' }, 
-      'minecraft:netherite_upgrade_smithing_template',            
-      'cuboidmod:thatldu_upgrade_smithing_template'
-    )
-
-    // three gravel makes flint
-    e.shapeless('minecraft:flint', [
-      'minecraft:gravel',
-      'minecraft:gravel',
-      'minecraft:gravel'
-    ])
-
-    // three maple syrup makes slime
-    e.shapeless('minecraft:slime_ball', [
-      'pamhc2trees:maplesyrupitem',
-      'pamhc2trees:maplesyrupitem',
-      'pamhc2trees:maplesyrupitem'
-    ])
-
-    // restore old darkutils blank plate recipe...
-    e.custom({
-      "type": "minecraft:crafting_shaped",
-      "pattern": [
-        'III',
-        'SSS',
-        'III'
-      ],
-      "key": {
-        I: 'minecraft:black_dye',
-        S: 'minecraft:stone'
-      },
-      "result": {
-        "item": "darkutils:blank_plate",
-        "count": 24
-      }
-    })
-
-    // ...and remove the new one
-    e.remove({id: "darkutils:stonecutting/dark_stones_to_blank_plate"})
-
-    // ex nihilo sieves to create sieves and back
-    e.shapeless('exnihilosequentia:string_mesh', [
-      'createsifter:string_mesh'
-    ])
-    e.shapeless('createsifter:string_mesh', [
-      'exnihilosequentia:string_mesh'
-    ])
-
-    e.shapeless('exnihilosequentia:flint_mesh', [
-      'createsifter:andesite_mesh'
-    ])
-    e.shapeless('createsifter:andesite_mesh', [
-      'exnihilosequentia:flint_mesh'
-    ])
-
-    e.shapeless('exnihilosequentia:iron_mesh', [
-      'createsifter:zinc_mesh'
-    ])
-    e.shapeless('createsifter:zinc_mesh', [
-      'exnihilosequentia:iron_mesh'
-    ])    
-
-    e.shapeless('exnihilosequentia:diamond_mesh', [
-      'createsifter:brass_mesh'
-    ])
-    e.shapeless('createsifter:brass_mesh', [
-      'exnihilosequentia:diamond_mesh'
-    ])
-
-    e.shapeless('exnihilosequentia:emerald_mesh', [
-      'createsifter:custom_mesh'
-    ])
-    e.shapeless('createsifter:custom_mesh', [
-      'exnihilosequentia:emerald_mesh'
-    ])
-
-    e.shapeless('exnihilosequentia:netherite_mesh', [
-      'createsifter:advanced_brass_mesh'
-    ])
-    e.shapeless('createsifter:advanced_brass_mesh', [
-      'exnihilosequentia:netherite_mesh'
-    ])
-
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // recipes below this line are thanks to Fizz!
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -        
-
-    // thermal crystallizer - certus quartz dust to crystal with water
-    e.custom({
-        "type": "thermal:crystallizer",
-        "ingredients": [
-        {
-          "fluid": "minecraft:water",
-          "amount": 2000
-        },
-        {
-          "tag": "forge:dusts/certus_quartz"
-        }],
-        "result": [
-        {
-          "item": "ae2:certus_quartz_crystal"
-        }],
-        "energy": 1000
-      })
-  
-    e.custom({
-        "type": "thermal:crystallizer",
-        "ingredients": [
-        {
-          "fluid": "exnihilosequentia:sea_water",
-          "amount": 200
-        },
-        {
-          "tag": "forge:dusts/certus_quartz"
-        }],
-        "result": [
-        {
-          "item": "ae2:certus_quartz_crystal"
-        }],
-        "energy": 100
-      })
-
-    // concrete powder to concrete via crucible
-    let colors  = ["white", "light_gray", "gray", "black", "brown", "red", "orange", "yellow", "lime", "green", "cyan", "light_blue", "blue", "purple", "magenta", "pink"];
-
-    for (const element of colors) {
-      e.recipes.exnihilosequentia.precipitate(('minecraft:' + element + '_concrete_powder'), ('minecraft:' + element + '_concrete') , 'minecraft:water')
-    }   
-
-    // hammering wood drops sawdust
-    e.recipes.exnihilosequentia.crushing(Item.of('#minecraft:logs'),[
-      {
-            chance: 1.0,
-            count: 1,
-            item: 'thermal:sawdust'
-        },
-        {
-            chance: 0.75,
-            count: 1,
-            item: 'thermal:sawdust'
-        },
-        {
-            chance: 0.5,
-            count: 2,
-            item: 'thermal:sawdust'
-        }
-    ])
-
-    // add sawdust to composting recipe
-    e.recipes.exnihilosequentia.compost('#forge:sawdust', 200)
-
-    e.smithing(
-      Item.of('sophisticatedbackpacks:netherite_backpack'),
-      'cuboidmod:thatldu_upgrade_smithing_template',
-      Item.of('sophisticatedbackpacks:diamond_backpack'),
-      'minecraft:netherite_ingot'
-    )
-
-}) 
+})

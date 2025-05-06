@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Cryogenic Dimensional Teleporter recipes
@@ -47,7 +47,7 @@ ServerEvents.recipes(e => {
       "ingredients": [
         {"item": "minecraft:nether_bricks"},
         {"item": "rftoolsbase:dimensionalshard"},
-        {"item": "outer_end:shulker_shield"},
+        {"item": "endergetic:boof_block"},
         {"item": "powah:crystal_niotic"},
         {"item": "powah:crystal_niotic"}
       ],
@@ -59,13 +59,31 @@ ServerEvents.recipes(e => {
     })
   
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Energized Stone Bricks
+  
+    e.custom({
+      "type": "powah:energizing",
+      "ingredients": [
+        {"item": "minecraft:stone_bricks"},
+        {"tag": "forge:storage_blocks/redstone"},
+        {"item": "powah:capacitor_hardened"},
+        {"item": "powah:capacitor_hardened"}
+      ],
+      "energy": 1000000,
+      "result": {
+        "item": "cuboidmod:energized_stone_bricks",
+        "count": 1
+      }
+    })
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Energized Thatlduvium
   
     e.custom({
       "type": "powah:energizing",
       "ingredients": [
         {"item": "cuboidmod:thatldu_block"},
-        {"item": "ae2:singularity"},
+        {"item": "appliedenergistics2:singularity"},
         {"item": "extendedcrafting:ultimate_singularity"},
         {"item": "powah:capacitor_nitro"},
         {"item": "industrialforegoing:ether_gas_bucket"},

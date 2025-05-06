@@ -1,16 +1,16 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     e.custom({
       "type": "cuboidmod:inscribing",
       "mode": "inscribe",
       "result": {
-        "item": "ae2:printed_engineering_processor"
+        "item": "appliedenergistics2:printed_engineering_processor"
       },
       "ingredients": {
         "top": {
-          "item": "ae2:engineering_processor_press"
+          "item": "appliedenergistics2:engineering_processor_press"
         },
         "middle": {
           "tag": "forge:gems/diamond"

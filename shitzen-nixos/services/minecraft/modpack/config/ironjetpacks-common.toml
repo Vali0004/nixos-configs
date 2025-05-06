@@ -1,10 +1,8 @@
 
 #General configuration options.
 [General]
-	#Should jetpacks be enchantable?
+	#Should jetpacks be enachantable?
 	enchantableJetpacks = false
-	#Enable Curios integration.
-	curiosIntegration = true
 
 #Dynamic recipe options.
 [Recipe]

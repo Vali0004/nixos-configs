@@ -26,6 +26,9 @@
 		#Maximum durability of Steel leggings.
 		#Range: > 1
 		steelLeggingDurability = 600
+		#Harvest level of Steel paxels.
+		#Range: > 0
+		steelPaxelHarvestLevel = 3
 		#Attack damage modifier of Steel paxels.
 		steelPaxelDamage = 8.0
 		#Attack damage modifier of Steel pickaxes.
@@ -75,6 +78,9 @@
 		#Protection value of Steel helmets.
 		#Range: > 0
 		steelHelmetArmor = 3
+		#Harvest level of Steel tools.
+		#Range: > 0
+		steelHarvestLevel = 3
 		#Natural enchantability factor of Steel items.
 		#Range: > 0
 		steelEnchantability = 10
@@ -100,6 +106,9 @@
 		#Maximum durability of Osmium shields.
 		#Range: > 0
 		osmiumShieldDurability = 1344
+		#Harvest level of Osmium tools.
+		#Range: > 0
+		osmiumHarvestLevel = 2
 		#Natural enchantability factor of Osmium items.
 		#Range: > 0
 		osmiumEnchantability = 12
@@ -136,6 +145,9 @@
 		#Base armor toughness value of Osmium armor.
 		#Range: 0.0 ~ 3.4028234663852886E38
 		osmiumToughness = 1.0
+		#Harvest level of Osmium paxels.
+		#Range: > 0
+		osmiumPaxelHarvestLevel = 3
 		#Natural enchantability factor of Osmium paxels.
 		#Range: > 0
 		osmiumPaxelEnchantability = 16
@@ -161,17 +173,11 @@
 		osmiumSwordAtkSpeed = -2.4000000953674316
 
 	[tools.mobArmorSpawnRate]
-		#The chance that Mekanism Armor can spawn on mobs. This is multiplied modified by the chunk's difficulty modifier. Vanilla uses 0.15 for its armor spawns, we use 0.1 as default to lower chances of mobs getting some vanilla and some mek armor.
+		#The chance that Mekanism Armor can spawn on mobs.
 		#Range: 0.0 ~ 1.0
 		general = 0.03
-		#The chance that Mekanism Weapons can spawn in a zombie's hand.
-		#Range: 0.0 ~ 1.0
-		weapon = 0.01
-		#The chance that Mekanism Weapons can spawn in a zombie's hand when on hard difficulty.
-		#Range: 0.0 ~ 1.0
-		weaponHard = 0.05000000074505806
 
-		#Spawn chances for pieces of Steel gear. Note: These values are after the general mobArmorSpawnRate (or corresponding weapon rate) has been checked, and after an even split between material types has been done.
+		#Spawn chances for pieces of Steel gear. Note: These values are after the general mobArmorSpawnRate has been checked, and after an even split between armor types has been done.
 		[tools.mobArmorSpawnRate.steel]
 			#The chance that mobs can spawn with Steel Chestplates.
 			#Range: 0.0 ~ 1.0
@@ -185,25 +191,11 @@
 			#The chance that mobs can spawn with Steel Helmets.
 			#Range: 0.0 ~ 1.0
 			helmetChance = 0.5
-			#Whether mobs can spawn with Steel Weapons.
-			canSpawnWeapon = true
-			#The chance that mobs will spawn with Steel Swords rather than Steel Shovels.
+			#The chance that mobs can spawn with Steel Swords.
 			#Range: 0.0 ~ 1.0
-			swordWeight = 0.33
-			#The chance that after each piece of Steel Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChance = 0.25
-			#The chance on hard mode that after each piece of Steel Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChanceHard = 0.1
-			#The chance that if a mob spawns with Steel Weapons that it will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			weaponEnchantmentChance = 0.25
-			#The chance that if a mob spawns with Steel Armor that they will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			armorEnchantmentChance = 0.5
+			swordChance = 0.5
 
-		#Spawn chances for pieces of Refined Glowstone gear. Note: These values are after the general mobArmorSpawnRate (or corresponding weapon rate) has been checked, and after an even split between material types has been done.
+		#Spawn chances for pieces of Refined Glowstone gear. Note: These values are after the general mobArmorSpawnRate has been checked, and after an even split between armor types has been done.
 		[tools.mobArmorSpawnRate.refined_glowstone]
 			#The chance that mobs can spawn with Refined Glowstone Chestplates.
 			#Range: 0.0 ~ 1.0
@@ -217,25 +209,11 @@
 			#The chance that mobs can spawn with Refined Glowstone Helmets.
 			#Range: 0.0 ~ 1.0
 			helmetChance = 0.5
-			#Whether mobs can spawn with Refined Glowstone Weapons.
-			canSpawnWeapon = true
-			#The chance that mobs will spawn with Refined Glowstone Swords rather than Refined Glowstone Shovels.
+			#The chance that mobs can spawn with Refined Glowstone Swords.
 			#Range: 0.0 ~ 1.0
-			swordWeight = 0.33
-			#The chance that after each piece of Refined Glowstone Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChance = 0.25
-			#The chance on hard mode that after each piece of Refined Glowstone Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChanceHard = 0.1
-			#The chance that if a mob spawns with Refined Glowstone Weapons that it will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			weaponEnchantmentChance = 0.25
-			#The chance that if a mob spawns with Refined Glowstone Armor that they will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			armorEnchantmentChance = 0.5
+			swordChance = 0.5
 
-		#Spawn chances for pieces of Lapis Lazuli gear. Note: These values are after the general mobArmorSpawnRate (or corresponding weapon rate) has been checked, and after an even split between material types has been done.
+		#Spawn chances for pieces of Lapis Lazuli gear. Note: These values are after the general mobArmorSpawnRate has been checked, and after an even split between armor types has been done.
 		[tools.mobArmorSpawnRate.lapis_lazuli]
 			#The chance that mobs can spawn with Lapis Lazuli Chestplates.
 			#Range: 0.0 ~ 1.0
@@ -249,25 +227,11 @@
 			#The chance that mobs can spawn with Lapis Lazuli Helmets.
 			#Range: 0.0 ~ 1.0
 			helmetChance = 0.5
-			#Whether mobs can spawn with Lapis Lazuli Weapons.
-			canSpawnWeapon = true
-			#The chance that mobs will spawn with Lapis Lazuli Swords rather than Lapis Lazuli Shovels.
+			#The chance that mobs can spawn with Lapis Lazuli Swords.
 			#Range: 0.0 ~ 1.0
-			swordWeight = 0.33
-			#The chance that after each piece of Lapis Lazuli Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChance = 0.25
-			#The chance on hard mode that after each piece of Lapis Lazuli Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChanceHard = 0.1
-			#The chance that if a mob spawns with Lapis Lazuli Weapons that it will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			weaponEnchantmentChance = 0.25
-			#The chance that if a mob spawns with Lapis Lazuli Armor that they will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			armorEnchantmentChance = 0.5
+			swordChance = 0.5
 
-		#Spawn chances for pieces of Osmium gear. Note: These values are after the general mobArmorSpawnRate (or corresponding weapon rate) has been checked, and after an even split between material types has been done.
+		#Spawn chances for pieces of Osmium gear. Note: These values are after the general mobArmorSpawnRate has been checked, and after an even split between armor types has been done.
 		[tools.mobArmorSpawnRate.osmium]
 			#The chance that mobs can spawn with Osmium Chestplates.
 			#Range: 0.0 ~ 1.0
@@ -281,25 +245,11 @@
 			#The chance that mobs can spawn with Osmium Helmets.
 			#Range: 0.0 ~ 1.0
 			helmetChance = 0.5
-			#Whether mobs can spawn with Osmium Weapons.
-			canSpawnWeapon = true
-			#The chance that mobs will spawn with Osmium Swords rather than Osmium Shovels.
+			#The chance that mobs can spawn with Osmium Swords.
 			#Range: 0.0 ~ 1.0
-			swordWeight = 0.33
-			#The chance that after each piece of Osmium Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChance = 0.25
-			#The chance on hard mode that after each piece of Osmium Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChanceHard = 0.1
-			#The chance that if a mob spawns with Osmium Weapons that it will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			weaponEnchantmentChance = 0.25
-			#The chance that if a mob spawns with Osmium Armor that they will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			armorEnchantmentChance = 0.5
+			swordChance = 0.5
 
-		#Spawn chances for pieces of Refined Obsidian gear. Note: These values are after the general mobArmorSpawnRate (or corresponding weapon rate) has been checked, and after an even split between material types has been done.
+		#Spawn chances for pieces of Refined Obsidian gear. Note: These values are after the general mobArmorSpawnRate has been checked, and after an even split between armor types has been done.
 		[tools.mobArmorSpawnRate.refined_obsidian]
 			#The chance that mobs can spawn with Refined Obsidian Chestplates.
 			#Range: 0.0 ~ 1.0
@@ -313,25 +263,11 @@
 			#The chance that mobs can spawn with Refined Obsidian Helmets.
 			#Range: 0.0 ~ 1.0
 			helmetChance = 0.5
-			#Whether mobs can spawn with Refined Obsidian Weapons.
-			canSpawnWeapon = true
-			#The chance that mobs will spawn with Refined Obsidian Swords rather than Refined Obsidian Shovels.
+			#The chance that mobs can spawn with Refined Obsidian Swords.
 			#Range: 0.0 ~ 1.0
-			swordWeight = 0.33
-			#The chance that after each piece of Refined Obsidian Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChance = 0.25
-			#The chance on hard mode that after each piece of Refined Obsidian Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChanceHard = 0.1
-			#The chance that if a mob spawns with Refined Obsidian Weapons that it will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			weaponEnchantmentChance = 0.25
-			#The chance that if a mob spawns with Refined Obsidian Armor that they will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			armorEnchantmentChance = 0.5
+			swordChance = 0.5
 
-		#Spawn chances for pieces of Bronze gear. Note: These values are after the general mobArmorSpawnRate (or corresponding weapon rate) has been checked, and after an even split between material types has been done.
+		#Spawn chances for pieces of Bronze gear. Note: These values are after the general mobArmorSpawnRate has been checked, and after an even split between armor types has been done.
 		[tools.mobArmorSpawnRate.bronze]
 			#The chance that mobs can spawn with Bronze Chestplates.
 			#Range: 0.0 ~ 1.0
@@ -345,23 +281,9 @@
 			#The chance that mobs can spawn with Bronze Helmets.
 			#Range: 0.0 ~ 1.0
 			helmetChance = 0.5
-			#Whether mobs can spawn with Bronze Weapons.
-			canSpawnWeapon = true
-			#The chance that mobs will spawn with Bronze Swords rather than Bronze Shovels.
+			#The chance that mobs can spawn with Bronze Swords.
 			#Range: 0.0 ~ 1.0
-			swordWeight = 0.33
-			#The chance that after each piece of Bronze Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChance = 0.25
-			#The chance on hard mode that after each piece of Bronze Armor a mob spawns with that no more pieces will be added. Order of pieces tried is boots, leggings, chestplate, helmet.
-			#Range: 0.0 ~ 1.0
-			multiplePieceChanceHard = 0.1
-			#The chance that if a mob spawns with Bronze Weapons that it will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			weaponEnchantmentChance = 0.25
-			#The chance that if a mob spawns with Bronze Armor that they will be enchanted. This is multiplied modified by the chunk's difficulty modifier.
-			#Range: 0.0 ~ 1.0
-			armorEnchantmentChance = 0.5
+			swordChance = 0.5
 
 	#Material Settings for Bronze
 	[tools.bronze]
@@ -373,6 +295,9 @@
 		bronzeBootArmor = 2
 		#Attack speed of Bronze hoes.
 		bronzeHoeAtkSpeed = 3.0
+		#Harvest level of Bronze tools.
+		#Range: > 0
+		bronzeHarvestLevel = 2
 		#Protection value of Bronze chestplates.
 		#Range: > 0
 		bronzeChestplateArmor = 6
@@ -402,6 +327,9 @@
 		#Protection value of Bronze leggings.
 		#Range: > 0
 		bronzeLeggingArmor = 5
+		#Harvest level of Bronze paxels.
+		#Range: > 0
+		bronzePaxelHarvestLevel = 3
 		#Base armor knockback resistance value of Bronze armor.
 		#Range: 0.0 ~ 3.4028234663852886E38
 		bronzeKnockbackResistance = 0.0
@@ -453,6 +381,9 @@
 		stonePaxelEnchantability = 5
 		#Attack speed of Stone paxels.
 		stonePaxelAtkSpeed = -2.4000000953674316
+		#Harvest level of Stone paxels.
+		#Range: > 0
+		stonePaxelHarvestLevel = 1
 		#Maximum durability of Stone paxels.
 		#Range: > 1
 		stonePaxelMaxUses = 262
@@ -468,6 +399,9 @@
 		netheritePaxelDamage = 6.0
 		#Efficiency of Netherite paxels.
 		netheritePaxelEfficiency = 9.0
+		#Harvest level of Netherite paxels.
+		#Range: > 0
+		netheritePaxelHarvestLevel = 4
 		#Natural enchantability factor of Netherite paxels.
 		#Range: > 0
 		netheritePaxelEnchantability = 15
@@ -481,6 +415,9 @@
 		goldPaxelMaxUses = 64
 		#Attack damage modifier of Gold paxels.
 		goldPaxelDamage = 7.0
+		#Harvest level of Gold paxels.
+		#Range: > 0
+		goldPaxelHarvestLevel = 0
 		#Natural enchantability factor of Gold paxels.
 		#Range: > 0
 		goldPaxelEnchantability = 22
@@ -499,6 +436,9 @@
 		#Maximum durability of Diamond paxels.
 		#Range: > 1
 		diamondPaxelMaxUses = 3122
+		#Harvest level of Diamond paxels.
+		#Range: > 0
+		diamondPaxelHarvestLevel = 3
 		#Attack speed of Diamond paxels.
 		diamondPaxelAtkSpeed = -2.4000000953674316
 
@@ -535,6 +475,9 @@
 		#Protection value of Refined Glowstone chestplates.
 		#Range: > 0
 		refined_glowstoneChestplateArmor = 7
+		#Harvest level of Refined Glowstone tools.
+		#Range: > 0
+		refined_glowstoneHarvestLevel = 2
 		#Attack speed of Refined Glowstone shovels.
 		refined_glowstoneShovelAtkSpeed = -3.0
 		#Protection value of Refined Glowstone helmets.
@@ -549,6 +492,9 @@
 		refined_glowstonePaxelEfficiency = 18.0
 		#Efficiency of Refined Glowstone tools.
 		refined_glowstoneEfficiency = 14.0
+		#Harvest level of Refined Glowstone paxels.
+		#Range: > 0
+		refined_glowstonePaxelHarvestLevel = 3
 		#Attack damage modifier of Refined Glowstone axes.
 		refined_glowstoneAxeDamage = 3.0
 		#Maximum durability of Refined Glowstone boots.
@@ -583,6 +529,9 @@
 
 	#Material Settings for Lapis Lazuli
 	[tools.lapis_lazuli]
+		#Harvest level of Lapis Lazuli paxels.
+		#Range: > 0
+		lapis_lazuliPaxelHarvestLevel = 2
 		#Attack speed of Lapis Lazuli pickaxes.
 		lapis_lazuliPickaxeAtkSpeed = -2.799999952316284
 		#Maximum durability of Lapis Lazuli shields.
@@ -643,6 +592,9 @@
 		lapis_lazuliPaxelMaxUses = 250
 		#Attack damage modifier of Lapis Lazuli hoes.
 		lapis_lazuliHoeDamage = -1.0
+		#Harvest level of Lapis Lazuli tools.
+		#Range: > 0
+		lapis_lazuliHarvestLevel = 2
 		#Maximum durability of Lapis Lazuli helmets.
 		#Range: > 1
 		lapis_lazuliHelmetDurability = 143
@@ -664,6 +616,9 @@
 	[tools.iron]
 		#Attack damage modifier of Iron paxels.
 		ironPaxelDamage = 7.0
+		#Harvest level of Iron paxels.
+		#Range: > 0
+		ironPaxelHarvestLevel = 2
 		#Maximum durability of Iron paxels.
 		#Range: > 1
 		ironPaxelMaxUses = 500
@@ -686,6 +641,9 @@
 		woodPaxelMaxUses = 118
 		#Attack damage modifier of Wood paxels.
 		woodPaxelDamage = 7.0
+		#Harvest level of Wood paxels.
+		#Range: > 0
+		woodPaxelHarvestLevel = 0
 		#Natural enchantability factor of Wood paxels.
 		#Range: > 0
 		woodPaxelEnchantability = 15
@@ -699,6 +657,9 @@
 		refined_obsidianAxeDamage = 2.0
 		#Attack speed of Refined Obsidian pickaxes.
 		refined_obsidianPickaxeAtkSpeed = -2.799999952316284
+		#Harvest level of Refined Obsidian paxels.
+		#Range: > 0
+		refined_obsidianPaxelHarvestLevel = 3
 		#Base armor toughness value of Refined Obsidian armor.
 		#Range: 0.0 ~ 3.4028234663852886E38
 		refined_obsidianToughness = 4.0
@@ -749,6 +710,9 @@
 		#Base armor knockback resistance value of Refined Obsidian armor.
 		#Range: 0.0 ~ 3.4028234663852886E38
 		refined_obsidianKnockbackResistance = 0.10000000149011612
+		#Harvest level of Refined Obsidian tools.
+		#Range: > 0
+		refined_obsidianHarvestLevel = 3
 		#Attack speed of Refined Obsidian paxels.
 		refined_obsidianPaxelAtkSpeed = -2.4000000953674316
 		#Protection value of Refined Obsidian boots.

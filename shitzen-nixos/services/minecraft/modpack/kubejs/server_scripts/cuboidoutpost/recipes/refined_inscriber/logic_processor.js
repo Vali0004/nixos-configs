@@ -1,22 +1,22 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     e.custom({
       "type": "cuboidmod:inscribing",
       "mode": "press",
       "result": {
-        "item": "ae2:logic_processor"
+        "item": "appliedenergistics2:logic_processor"
       },
       "ingredients": {
         "top": {
-          "item": "ae2:printed_logic_processor"
+          "item": "appliedenergistics2:printed_logic_processor"
         },
         "middle": {
           "tag": "forge:dusts/redstone"
         },
         "bottom": {
-          "item": "ae2:printed_silicon"
+          "item": "appliedenergistics2:printed_silicon"
         }
       },
       "work_ticks": 40,

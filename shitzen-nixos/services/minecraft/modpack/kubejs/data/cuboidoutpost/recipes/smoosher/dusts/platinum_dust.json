@@ -5,11 +5,11 @@
       "item": "cuboidmod:smoosher"
     },
     {
-      "tag": "forge:ingots/platinum"
+      "tag": "forge:ores/platinum"
     }
   ],
   "result": {
     "item": "kubejs:platinum_dust",
-    "count": 1
+    "count": 2
   }
 }

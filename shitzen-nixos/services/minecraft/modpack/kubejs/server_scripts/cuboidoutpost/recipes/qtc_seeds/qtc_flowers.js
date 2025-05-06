@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
     // Quantum Transmutation Chamber recipes for flowers
     
     const qtc = (result, input1, input2) => {

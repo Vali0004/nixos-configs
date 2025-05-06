@@ -61,14 +61,12 @@
 	chemicalDissolutionChamber = "400"
 	#Energy per operation tick (Joules).
 	chemicalWasher = "200"
-	#Energy per chunk per tick (Joules).
-	dimensionalStabilizer = "5000"
 
 	#Teleporter
 	[usage.teleporter]
 		#Joules per unit of distance travelled during teleportation - sqrt(xDiff^2 + yDiff^2 + zDiff^2).
 		teleporterDistance = "10"
-		#Flat additional cost for interdimensional teleportation. Distance is still taken into account minimizing energy cost based on dimension scales.
+		#Flat additional cost for interdimensional teleportation.
 		teleporterDimensionPenalty = "10000"
 		#Base Joules cost for a teleportation.
 		teleporterBase = "1000"

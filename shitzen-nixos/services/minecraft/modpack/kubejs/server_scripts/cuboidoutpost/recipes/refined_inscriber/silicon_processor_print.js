@@ -1,19 +1,19 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     e.custom({
       "type": "cuboidmod:inscribing",
       "mode": "inscribe",
       "result": {
-        "item": "ae2:printed_silicon"
+        "item": "appliedenergistics2:printed_silicon"
       },
       "ingredients": {
         "top": {
-          "item": "ae2:silicon_press"
+          "item": "appliedenergistics2:silicon_press"
         },
         "middle": {
-          "tag": "ae2:silicon"
+          "tag": "appliedenergistics2:silicon"
         }
       },
       "work_ticks": 40,

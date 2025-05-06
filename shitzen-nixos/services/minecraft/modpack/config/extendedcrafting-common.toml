@@ -1,20 +1,8 @@
 
-#Settings for Singularities.
-[Singularities]
-	#Should the default recipe for the Ultimate Singularity be generated?
-	ultimateSingularityRecipe = false
-	#The default amount of items required to create a Singularity.
-	#Range: > 1
-	defaultMaterialsRequired = 2000
-	#Should default recipes be generated for Singularities?
-	defaultRecipes = true
-	#The default amount of FE required to create a Singularity.
-	#Range: > 0
-	defaultPowerRequired = 1500000
-	#Should the Singularities be enabled?
-	enabled = true
-	#The item to use as the Catalyst in default Singularity recipes.
-	defaultCatalyst = "extendedcrafting:ultimate_catalyst"
+#Settings for general things.
+[General]
+	#Should the Handheld Crafting Table be enabled?
+	handheldWorkbench = true
 
 #Settings for the Crafting Core.
 ["Combination Crafting"]
@@ -26,11 +14,6 @@
 	powerRate = 500
 	#Should the Crafting Core be enabled?
 	enabled = true
-
-#Settings for general things.
-[General]
-	#Should the Handheld Crafting Table be enabled?
-	handheldWorkbench = true
 
 #Settings for the Extended Crafting Tables.
 ["Table Crafting"]
@@ -61,6 +44,34 @@
 	#Should the Quantum Compressor be enabled?
 	enabled = true
 
+#Settings for the Ender Crafter.
+["Ender Crafting"]
+	#How long a single Ender Crafter crafting operation should take (in seconds) by default.
+	#Range: > 1
+	defaultTimeRequired = 60
+	#How much a single Ender Alternator should speed up a craft. This is a percentage of the time required.
+	#Range: 0.0 ~ 1.0
+	alternatorEffectiveness = 0.01
+	#Should the Ender Crafter be enabled?
+	enabled = true
+
+#Settings for Singularities.
+[Singularities]
+	#Should the default recipe for the Ultimate Singularity be generated?
+	ultimateSingularityRecipe = false
+	#The default amount of items required to create a Singularity.
+	#Range: > 1
+	defaultMaterialsRequired = 2000
+	#Should default recipes be generated for Singularities?
+	defaultRecipes = true
+	#The default amount of FE required to create a Singularity.
+	#Range: > 0
+	defaultPowerRequired = 1500000
+	#Should the Singularities be enabled?
+	enabled = true
+	#The item to use as the Catalyst in default Singularity recipes.
+	defaultCatalyst = "extendedcrafting:ultimate_catalyst"
+
 #Settings for the Recipe Maker.
 ["Recipe Maker"]
 	#Should the recipe maker add NBT tags when possible?
@@ -69,42 +80,4 @@
 	useTags = false
 	#Should the Recipe Maker be enabled?
 	enabled = true
-
-#Settings for the Flux Crafter.
-["Flux Crafting"]
-	#How much FE/t the Flux Crafter should pull from each Flux Alternator when crafting by default.
-	#Range: > 0
-	defaultPowerRate = 400
-	#How much FE the Flux Alternator should hold.
-	#Range: > 0
-	powerCapacity = 80000
-	#How much FE the Auto Flux Crafter should hold.
-	#Range: > 0
-	autoCrafterPowerCapacity = 500000
-	#How much FE the Auto Flux Crafter should use when auto inserting items.
-	#Range: > 0
-	autoCrafterInsertPowerRate = 100
-	#Should the Flux Crafter be enabled?
-	enabled = true
-	#Should the Auto Flux Crafter be enabled?
-	autoCrafterEnabled = true
-
-#Settings for the Ender Crafter.
-["Ender Crafting"]
-	#How long a single Ender Crafter crafting operation should take (in seconds) by default.
-	#Range: > 1
-	defaultTimeRequired = 60
-	#How much FE the Auto Ender Crafter should hold.
-	#Range: > 0
-	autoCrafterPowerCapacity = 500000
-	#How much FE the Auto Ender Crafter should use when auto inserting items.
-	#Range: > 0
-	autoCrafterInsertPowerRate = 100
-	#How much a single Ender Alternator should speed up a craft. This is a percentage of the time required.
-	#Range: 0.0 ~ 1.0
-	alternatorEffectiveness = 0.01
-	#Should the Ender Crafter be enabled?
-	enabled = true
-	#Should the Auto Ender Crafter be enabled?
-	autoCrafterEnabled = true
 

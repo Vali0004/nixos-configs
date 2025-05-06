@@ -14,9 +14,5 @@
     {
         "mob": "minecraft:zombie",
         "remove": "minecraft:potato"
-    },
-    {
-        "mob": "minecraft:shulker",
-        "item": "outer_end:levitation_core"
     }
 ]

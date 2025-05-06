@@ -1,19 +1,19 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     e.custom({
       "type": "cuboidmod:inscribing",
       "mode": "inscribe",
       "result": {
-        "item": "ae2:printed_calculation_processor"
+        "item": "appliedenergistics2:printed_calculation_processor"
       },
       "ingredients": {
         "top": {
-          "item": "ae2:calculation_processor_press"
+          "item": "appliedenergistics2:calculation_processor_press"
         },
         "middle": {
-          "item": "ae2:purified_certus_quartz_crystal"
+          "item": "appliedenergistics2:purified_certus_quartz_crystal"
         }
       },
       "work_ticks": 40,

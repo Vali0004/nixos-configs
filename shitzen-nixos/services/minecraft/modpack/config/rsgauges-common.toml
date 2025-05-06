@@ -37,7 +37,4 @@
 		autoswitch_volumetric_update_interval = 10
 		#Gauges shall not frequently lookup weak power provided to the block they are attached to.
 		without_gauge_weak_power_measurement = false
-		#Sample interval of the Comparator Switch
-		#Range: 1 ~ 50
-		comparator_switch_update_interval = 4
 

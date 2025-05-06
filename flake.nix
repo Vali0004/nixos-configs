@@ -26,6 +26,7 @@
                 forge-1_18_2-40_3_0 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.18.2-40.3.0"; };
                 forge-1_20_1-47_2_17 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.20.1-47.2.17"; };
                 forge-1_20_1-47_3_0 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.20.1-47.3.0"; };
+                forge-1_20_1-47_4_0 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.20.1-47.4.0"; };
               };
             })
           ];

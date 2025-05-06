@@ -21,7 +21,6 @@
 	woodBarrelMaxTemp = 300
 	#Should Ex Nihilo show any Patricle?
 	showParticles = true
-	#Should nether barrels sound like nether wood? (Default: true)
 	#If set to false, the blocks have same sounds as wooden barrels
 	netherBarrelSoundsEnabled = true
 	#How much fluid rain will fill per iteration (Default: 2)
@@ -54,8 +53,6 @@
 	#How much half hearts damage a pebble should do. (Default: 0)
 	#Range: > 0
 	pebbleDamage = 0
-	#Should pebbles be throwable? (Default: true)
-	enableThrowable = true
 
 #Ore Configs
 [ore]
@@ -83,6 +80,11 @@
 	enableZinc = true
 	#Enable tin ore pieces, chunks and ingots if they exist. 'enableOreOverride' must be true for this to work. (Default: true)
 	enableTin = true
+
+#Debug Configs
+[debug]
+	#Enable extra logging? (Default: false)
+	enableDebugLogging = false
 
 #Crook Configs
 [crook]
@@ -140,9 +142,6 @@
 		#Durability of Granite Crook (Default: 256)
 		#Range: > 1
 		crookGraniteValue = 256
-		#Durability of Netherite Crook (Default: 8192)
-		#Range: > 1
-		crookNetheriteValue = 8192
 		#Durability of Andesite Crook (Default: 256)
 		#Range: > 1
 		crookAndesiteValue = 256
@@ -182,7 +181,6 @@
 	#Number of buckets the crucible will hold (Default: 4)
 	#Range: > 1
 	crucibleNumberOfBuckets = 4
-	#Should nether crucibles sound like nether wood? (Default: true)
 	#If set to false, the blocks have same sounds as wooden crucibles
 	netherCrucibleSoundsEnabled = true
 
@@ -201,7 +199,6 @@
 	maxSieveClicks = 10
 	#Meshes will have durability and can break, but don't stack. (Default: false)
 	enableMeshDurability = false
-	#Should nether sieves sound like nether wood? (Default: true)
 	#If set to false, the blocks have same sounds as wooden sieves
 	netherSieveSoundsEnabled = true
 	#Meshes will stack, but don't have durability. (Default: 64)

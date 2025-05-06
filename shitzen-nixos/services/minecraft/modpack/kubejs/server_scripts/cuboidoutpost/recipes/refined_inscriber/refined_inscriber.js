@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // Refined Inscriber machine recipe
@@ -11,12 +11,12 @@ ServerEvents.recipes(e => {
       'IPI',
       'QFQ'
     ], {
-      I: 'ae2:inscriber',
+      I: 'appliedenergistics2:inscriber',
       P: 'minecraft:piston',
-      L: 'ae2:logic_processor',
+      L: 'appliedenergistics2:logic_processor',
       F: 'minecraft:furnace',
-      E: 'ae2:engineering_processor',
-      Q: 'ae2:charged_certus_quartz_crystal'
+      E: 'appliedenergistics2:engineering_processor',
+      Q: 'appliedenergistics2:charged_certus_quartz_crystal'
     })
   
   })

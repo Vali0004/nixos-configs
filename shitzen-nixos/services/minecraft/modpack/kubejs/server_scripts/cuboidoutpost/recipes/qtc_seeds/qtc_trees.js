@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
     // Quantum Transmutation Chamber recipes for seeds
     
     const qtc = (result, input1, input2) => {
@@ -24,7 +24,7 @@ ServerEvents.recipes(e => {
     // pinenut to be able to make pinenut sapling 
     qtc("pamhc2trees:pinenutitem", "pamhc2crops:pineappleseeditem", "pamhc2crops:pineappleseeditem")
     // maple syrup to be able to make maple sapling 
-    qtc("pamhc2trees:maplesyrupitem", "minecraft:sugar", "minecraft:sugar_cane")
+    qtc("pamhc2trees:maplesyrupitem", "minecraft:sugar", "exnihilosequentia:seed_sugarcane")
 
     // - A -
     qtc("pamhc2trees:avocado_sapling", "pamhc2trees:candlenut_sapling", "pamhc2trees:pinenut_sapling")
@@ -38,7 +38,6 @@ ServerEvents.recipes(e => {
     // - C -
     qtc("pamhc2trees:candlenut_sapling", "pamhc2trees:pinenut_sapling", "pamhc2trees:apple_sapling")
     qtc("pamhc2trees:cherry_sapling", "pamhc2trees:maple_sapling", "pamhc2trees:apple_sapling")
-    qtc("minecraft:cherry_sapling", "pamhc2trees:cherry_sapling", "pamhc2trees:cherry_sapling")
     qtc("pamhc2trees:chestnut_sapling", "pamhc2trees:candlenut_sapling", "pamhc2trees:cherry_sapling")
     qtc("pamhc2trees:cashew_sapling", "pamhc2trees:soursop_sapling", "pamhc2trees:hazelnut_sapling")
     qtc("pamhc2trees:cinnamon_sapling", "pamhc2trees:hazelnut_sapling", "pamhc2trees:banana_sapling")
@@ -112,7 +111,7 @@ ServerEvents.recipes(e => {
     // Sunny Blossom Sapling
     qtc("quark:yellow_blossom_sapling", "quark:red_blossom_sapling", "quark:blue_blossom_sapling")
     // Sweet Blossom Sapling
-    qtc("quark:ancient_sapling", "quark:orange_blossom_sapling", "quark:yellow_blossom_sapling")
+    qtc("quark:pink_blossom_sapling", "quark:orange_blossom_sapling", "quark:yellow_blossom_sapling")
 
     // - T -
     qtc("pamhc2trees:tamarind_sapling", "pamhc2trees:passionfruit_sapling", "pamhc2trees:rambutan_sapling")

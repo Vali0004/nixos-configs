@@ -1,4 +1,4 @@
-StartupEvents.registry('item', e => {
+onEvent('item.registry', e => {
 	// see: https://mods.latvian.dev/books/kubejs/page/custom-items
 
 	e.create('rna').displayName('Ribonucleic Acid (RNA)')

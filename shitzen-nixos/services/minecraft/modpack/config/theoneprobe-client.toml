@@ -1,4 +1,3 @@
-#General configuration
 #This is a list of entities that will not be rendered by TOP. This option also works if it is set client-side alone
 renderBlacklist = []
 #The amount of milliseconds to wait before updating probe information from the server
@@ -49,7 +48,7 @@ showHorseStatSetting = "EXTENDED"
 showSilverfish = "NOT"
 #The distance to the left side of the screen. Use -1 if you don't want to set this
 #Range: -1 ~ 10000
-boxLeftX = -1
+boxLeftX = 5
 #The distance to the right side of the screen. Use -1 if you don't want to set this
 #Range: -1 ~ 10000
 boxRightX = -1

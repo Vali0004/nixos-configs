@@ -1,13 +1,11 @@
-StartupEvents.registry("block", (event) => {
+onEvent('block.registry', e => {
 
-    event.create('platinum_block')
-        .displayName('Block of Platinum')
+    e.create('platinum_block')
         .material('metal')
         .hardness(6)
-        .tagBlock("mineable/pickaxe")
-        .tagBlock('minecraft:needs_iron_tool')
+        .harvestTool('pickaxe', 2)
         .requiresTool(true)
-        
+        .displayName('Block of Platinum')
 
 })
 

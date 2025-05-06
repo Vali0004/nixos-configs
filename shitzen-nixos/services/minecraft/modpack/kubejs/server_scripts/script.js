@@ -8,8 +8,7 @@
 
 console.info('Cuboid Outpost - Server resources loaded')
 
-ServerEvents.tags('item', e => {
-	//onEvent('item.tags', event => {
+onEvent('item.tags', event => {
 	// Get the #forge:cobblestone tag collection and add Diamond Ore to it
 	// event.get('forge:cobblestone').add('minecraft:diamond_ore')
 

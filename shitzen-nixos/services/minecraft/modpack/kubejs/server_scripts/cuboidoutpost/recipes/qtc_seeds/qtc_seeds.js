@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
     // Quantum Transmutation Chamber recipes for seeds
     
     const qtc = (result, input1, input2) => {
@@ -40,7 +40,7 @@ ServerEvents.recipes(e => {
     }
 
     // - A -
-    qtc("pamhc2crops:agaveseeditem", "minecraft:fern", "minecraft:cactus")
+    qtc("pamhc2crops:agaveseeditem", "minecraft:fern", "exnihilosequentia:seed_cactus")
     qtc("pamhc2crops:amaranthseeditem", "pamhc2crops:chilipepperseeditem", "pamhc2crops:oatsseeditem")
     qtc("pamhc2crops:arrowrootseeditem", "pamhc2crops:lentilseeditem", "pamhc2crops:quinoaseeditem")
     qtc("pamhc2crops:artichokeseeditem", "pamhc2crops:leekseeditem", "pamhc2crops:onionseeditem")
@@ -59,13 +59,13 @@ ServerEvents.recipes(e => {
     qtc("pamhc2crops:cabbageseeditem", "pamhc2crops:lettuceseeditem", "pamhc2crops:cauliflowerseeditem")
     qtc("pamhc2crops:cactusfruitseeditem", "pamhc2crops:agaveseeditem", "pamhc2crops:cantaloupeseeditem")
     qtc("pamhc2crops:candleberryseeditem", "pamhc2crops:juteseeditem", "pamhc2crops:peasseeditem")
-    qtc("pamhc2crops:cantaloupeseeditem", "minecraft:sugar_cane", "minecraft:cactus")
+    qtc("pamhc2crops:cantaloupeseeditem", "exnihilosequentia:seed_sugarcane", "minecraft:cactus")
     qtc("pamhc2crops:cassavaseeditem", "pamhc2crops:mustardseedsseeditem", "pamhc2crops:oatsseeditem")
     qtc("pamhc2crops:cauliflowerseeditem", "pamhc2crops:broccoliseeditem", "pamhc2crops:wintersquashseeditem")
     qtc("pamhc2crops:celeryseeditem", "pamhc2crops:broccoliseeditem", "pamhc2crops:rhubarbseeditem")
     qtc("pamhc2crops:chickpeaseeditem", "pamhc2crops:peasseeditem", "pamhc2crops:soybeanseeditem")
     qtc("pamhc2crops:chilipepperseeditem", "pamhc2crops:gingerseeditem", "pamhc2crops:bellpepperseeditem")
-    qtc("pamhc2crops:coffeebeanseeditem", "minecraft:large_fern", "minecraft:cactus")
+    qtc("pamhc2crops:coffeebeanseeditem", "exnihilosequentia:seed_fern", "exnihilosequentia:seed_cactus")
     qtc("pamhc2crops:cornseeditem", "minecraft:carrot", "minecraft:wheat")
     qtc("pamhc2crops:cottonseeditem", "pamhc2crops:cauliflowerseeditem", "pamhc2crops:celeryseeditem")
     qtc("pamhc2crops:cranberryseeditem", "pamhc2crops:peasseeditem", "pamhc2crops:mulberryseeditem")
@@ -95,7 +95,7 @@ ServerEvents.recipes(e => {
     qtc("pamhc2crops:juteseeditem", "pamhc2crops:wintersquashseeditem", "pamhc2crops:cactusfruitseeditem")
 
     // - K -
-    qtc("pamhc2crops:kaleseeditem", "minecraft:bamboo", "minecraft:large_fern")
+    qtc("pamhc2crops:kaleseeditem", "minecraft:bamboo", "exnihilosequentia:seed_large_fern")
     qtc("pamhc2crops:kenafseeditem", "pamhc2crops:turnipseeditem", "pamhc2crops:rutabagaseeditem")
     qtc("pamhc2crops:kiwiseeditem", "pamhc2crops:okraseeditem", "pamhc2crops:agaveseeditem")
     qtc("pamhc2crops:kohlrabiseeditem", "pamhc2crops:bellpepperseeditem", "pamhc2crops:cucumberseeditem")
@@ -113,11 +113,11 @@ ServerEvents.recipes(e => {
     // - N -
     // - O -
     qtc("pamhc2crops:oatsseeditem", "pamhc2crops:barleyseeditem", "pamhc2crops:ryeseeditem")
-    qtc("pamhc2crops:okraseeditem", "minecraft:bamboo", "minecraft:carrot")
+    qtc("pamhc2crops:okraseeditem", "exnihilosequentia:seed_bamboo", "minecraft:carrot")
     qtc("pamhc2crops:onionseeditem", "pamhc2crops:gingerseeditem", "pamhc2crops:garlicseeditem")
 
     // - P -
-    qtc("pamhc2crops:parsnipseeditem", "minecraft:carrot", "minecraft:potato")
+    qtc("pamhc2crops:parsnipseeditem", "exnihilosequentia:seed_carrot", "minecraft:potato")
     qtc("pamhc2crops:peanutseeditem", "pamhc2crops:waterchestnutseeditem", "pamhc2crops:milletseeditem")
     qtc("pamhc2crops:peasseeditem", "pamhc2crops:brusselsproutseeditem", "pamhc2crops:grapeseeditem")
     qtc("pamhc2crops:pineappleseeditem", "pamhc2crops:kiwiseeditem", "pamhc2crops:cactusfruitseeditem")
@@ -128,7 +128,7 @@ ServerEvents.recipes(e => {
     // - R -
     qtc("pamhc2crops:radishseeditem", "pamhc2crops:chilipepperseeditem", "pamhc2crops:onionseeditem")
     qtc("pamhc2crops:raspberryseeditem", "pamhc2crops:mulberryseeditem", "pamhc2crops:greengrapeseeditem")
-    qtc("pamhc2crops:rhubarbseeditem", "minecraft:sugar_cane", "minecraft:bamboo")
+    qtc("pamhc2crops:rhubarbseeditem", "minecraft:sugar_cane", "exnihilosequentia:seed_bamboo")
     qtc("pamhc2crops:riceseeditem", "pamhc2crops:oatsseeditem", "pamhc2crops:cassavaseeditem")
     qtc("pamhc2crops:rutabagaseeditem", "pamhc2crops:mulberryseeditem", "pamhc2crops:jicamaseeditem")
     qtc("pamhc2crops:ryeseeditem", "minecraft:poisonous_potato", "minecraft:wheat")
@@ -141,7 +141,7 @@ ServerEvents.recipes(e => {
     qtc("pamhc2crops:spiceleafseeditem", "pamhc2crops:tealeafseeditem", "pamhc2crops:taroseeditem")
     qtc("pamhc2crops:spinachseeditem", "pamhc2crops:lettuceseeditem", "pamhc2crops:celeryseeditem")
     qtc("pamhc2crops:strawberryseeditem", "pamhc2crops:cranberryseeditem", "pamhc2crops:raspberryseeditem")
-    qtc("pamhc2crops:sweetpotatoseeditem", "minecraft:sugar_cane", "minecraft:potato")
+    qtc("pamhc2crops:sweetpotatoseeditem", "minecraft:sugar_cane", "exnihilosequentia:seed_potato")
 
     // - T -
     qtc("pamhc2crops:taroseeditem", "pamhc2crops:eggplantseeditem", "pamhc2crops:cabbageseeditem")
@@ -161,26 +161,5 @@ ServerEvents.recipes(e => {
     // - Y -
     // - Z -
     qtc("pamhc2crops:zucchiniseeditem", "pamhc2crops:cucumberseeditem", "pamhc2crops:leekseeditem")
-
-    // - New Seeds - 
-    qtc("pamhc2crops:alfalfaseeditem", "pamhc2crops:ryeseeditem", "pamhc2crops:papyrusseeditem")
-    qtc("pamhc2crops:aloeseeditem", "pamhc2crops:agaveseeditem", "pamhc2crops:nopalesseeditem")
-    qtc("pamhc2crops:barrelcactusseeditem", "pamhc2crops:agaveseeditem", "pamhc2crops:cactusfruitseeditem")
-    qtc("pamhc2crops:canolaseeditem", "pamhc2crops:cornseeditem", "pamhc2crops:cloudberryseeditem")
-    qtc("pamhc2crops:cattailseeditem", "pamhc2crops:asparagusseeditem", "pamhc2crops:arrowrootseeditem")
-    qtc("pamhc2crops:chiaseeditem", "pamhc2crops:mustardseedsitem", "pamhc2crops:alfalfaseeditem")
-    qtc("pamhc2crops:cloudberryseeditem", "pamhc2crops:mulberryseeditem", "pamhc2crops:cottonseeditem")
-    qtc("pamhc2crops:lotusseeditem", "minecraft:potato", "pamhc2crops:juteseeditem")
-    qtc("pamhc2crops:nettlesseeditem", "pamhc2crops:ryeseeditem", "pamhc2crops:spiceleafseeditem")
-    qtc("pamhc2crops:nopalesseeditem", "pamhc2crops:cactusfruitseeditem", "pamhc2crops:barrelcactusseeditem")
-    qtc("pamhc2crops:sorghumseeditem", "pamhc2crops:chickpeaseeditem", "pamhc2crops:soybeanseeditem")
-    qtc("pamhc2crops:truffleseeditem", "pamhc2crops:whitemushroomseeditem", "minecraft:pig_spawn_egg")
-    qtc("pamhc2crops:wolfberryseeditem", "minecraft:wolf_spawn_egg", "pamhc2crops:cranberryseeditem")
-    qtc("pamhc2crops:yuccaseeditem", "minecraft:bamboo", "pamhc2crops:leekseeditem")
-    qtc("pamhc2crops:bokchoyseeditem", "pamhc2crops:kohlrabiseeditem", "pamhc2crops:onionseeditem")
-    qtc("pamhc2crops:calabashseeditem", "pamhc2crops:wintersquashseeditem", "pamhc2crops:tomatilloseeditem")
-    qtc("pamhc2crops:guaranaseeditem", "pamhc2crops:waterchestnutseeditem", "pamhc2crops:coffeebeanseeditem")
-    qtc("pamhc2crops:papyrusseeditem", "minecraft:bamboo", "pamhc2crops:alfalfaseeditem")
-    qtc("pamhc2crops:sunchokeseeditem", "pamhc2crops:artichokeseeditem", "pamhc2crops:tomatilloseeditem")
 
 })

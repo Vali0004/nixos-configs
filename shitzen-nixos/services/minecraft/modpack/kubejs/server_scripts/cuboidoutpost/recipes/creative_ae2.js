@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // appliedenegistics2:creative_energy_cell (ie)
@@ -12,11 +12,11 @@ ServerEvents.recipes(e => {
           "DDD"
         ],
         "key": {
-          "D": { "item": "ae2:dense_energy_cell" },
+          "D": { "item": "appliedenergistics2:dense_energy_cell" },
           "#": { "item": "immersiveengineering:capacitor_creative" }
         },
         "result": {
-          "item": "ae2:creative_energy_cell"
+          "item": "appliedenergistics2:creative_energy_cell"
         }
       })
 
@@ -30,11 +30,11 @@ ServerEvents.recipes(e => {
         "DDD"
       ],
       "key": {
-        "D": { "item": "ae2:dense_energy_cell" },
+        "D": { "item": "appliedenergistics2:dense_energy_cell" },
         "#": { "item": "mekanism:creative_energy_cube" }
       },
       "result": {
-        "item": "ae2:creative_energy_cell"
+        "item": "appliedenergistics2:creative_energy_cell"
       }
     })
 
@@ -48,11 +48,11 @@ ServerEvents.recipes(e => {
         "DDD"
       ],
       "key": {
-        "D": { "item": "ae2:dense_energy_cell" },
+        "D": { "item": "appliedenergistics2:dense_energy_cell" },
         "#": { "item": "powah:energy_cell_creative" }
       },
       "result": {
-        "item": "ae2:creative_energy_cell"
+        "item": "appliedenergistics2:creative_energy_cell"
       }
     })
 
@@ -66,11 +66,11 @@ ServerEvents.recipes(e => {
         "DDD"
       ],
       "key": {
-        "D": { "item": "ae2:dense_energy_cell" },
+        "D": { "item": "appliedenergistics2:dense_energy_cell" },
         "#": { "item": "thermal:rf_coil_creative_augment" }
       },
       "result": {
-        "item": "ae2:creative_energy_cell"
+        "item": "appliedenergistics2:creative_energy_cell"
       }
     })
 
@@ -91,15 +91,15 @@ ServerEvents.recipes(e => {
       ],
       "key": {
         "S": { "item": "storagedrawers:creative_storage_upgrade" },
-        "M": { "item": "ae2:molecular_assembler" },
-        "6": { "item": "ae2:64k_crafting_storage" },
-        "s": { "item": "ae2:spatial_storage_cell_2" },
+        "M": { "item": "appliedenergistics2:molecular_assembler" },
+        "6": { "item": "appliedenergistics2:64k_crafting_storage" },
+        "s": { "item": "appliedenergistics2:2_cubed_spatial_storage_cell" },
         "#": { "item": "extendedcrafting:the_ultimate_block" },
         "-": { "item": "extendedcrafting:the_ultimate_ingot" },
         "*": { "item": "extendedcrafting:ultimate_singularity" }
     },
       "result": {
-        "item": "ae2:creative_item_cell"
+        "item": "appliedenergistics2:creative_storage_cell"
       }
     })
 

@@ -1,5 +1,5 @@
 // priority: 0
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     e.remove({id: 'create:pressing/copper_ingot'})
     e.remove({id: 'create:pressing/gold_ingot'})

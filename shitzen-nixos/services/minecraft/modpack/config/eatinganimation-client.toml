@@ -1,5 +1,0 @@
-
-[general]
-	#If the eating animation of items should be rendered in the inventory as well.
-	renderInventoryEating = true
-

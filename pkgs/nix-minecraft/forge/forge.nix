@@ -62,6 +62,16 @@ let
       jdk = jdk21_headless;
       offlineHash = "sha256-2pjk8N6Pfxn4FdWzEvKsnywLBVsf1JLooJWHtireVic=";
     };
+    "1.20.1-47.4.0" = {
+      src = fetchurl {
+        url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.4.0/forge-1.20.1-47.4.0-installer.jar";
+        hash = "sha256-8/V0ZeLL3DKBk/d7p/DJTLZEBfMe1VZ1PZJ16L3Abiw=";
+      };
+      javaArgs = "@libraries/net/minecraftforge/forge/${version}/unix_args.txt";
+      # Should be fine to use modern jdk versions on 1.2X.X
+      jdk = jdk21_headless;
+      offlineHash = "sha256-YOAU9B+cWnf9+N14FgNnot0QDuNeEVr1vLCij3Erch8=";
+    };
   };
   forge = forgeVersions.${version};
   offline = runCommand "forge-offline" {

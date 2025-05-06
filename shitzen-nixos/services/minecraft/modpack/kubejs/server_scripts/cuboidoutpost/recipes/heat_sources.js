@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
   // 2 - Torch
   e.remove({id: 'exnihilosequentia:heat/ens_torch'})
@@ -74,17 +74,17 @@ ServerEvents.recipes(e => {
     "amount": 8
   })
   
-  // 15 - Uranium block
+  // 10 - Blazewood
   e.custom({
     "type": "exnihilosequentia:heat",
-    "block": "immersiveengineering:storage_uranium",
-    "amount": 15
+    "block": "tconstruct:blazewood",
+    "amount": 10
   })
 
   // 15 - Uranium block
   e.custom({
     "type": "exnihilosequentia:heat",
-    "block": "mekanism:block_uranium",
+    "block": "immersiveengineering:storage_uranium",
     "amount": 15
   })
 

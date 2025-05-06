@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
     e.shapeless('minecraft:glass_pane', ['create:tiled_glass_pane']);
     e.shapeless('minecraft:glass_pane', ['create:framed_glass_pane']);

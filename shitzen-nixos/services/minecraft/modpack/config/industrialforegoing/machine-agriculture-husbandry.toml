@@ -22,8 +22,6 @@
 		maxSludgeTankSize = 8000
 		#Amount of Power Consumer per Operation - Default: [400FE]
 		powerPerOperation = 400
-		#Max Amount of Stored Fluid for 'EtherTank' - Default: [1000mB]
-		maxEtherTankSize = 1000
 
 	[MachineAgricultureHusbandryConfig.WitherBuilderConfig]
 		#Max Stored Power [FE] - Default: [70000 FE]

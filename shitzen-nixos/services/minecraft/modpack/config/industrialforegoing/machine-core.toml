@@ -1,6 +1,10 @@
 
 [MachineCoreConfig]
 
+	[MachineCoreConfig.LatexProcessingUnitBlock]
+		#Power consumed every tick when the machine is working
+		POWER_CONSUMED_EVERY_TICK = 20
+
 	[MachineCoreConfig.LatexProcessingUnitConfig]
 		#Amount of Power Consumed per Tick - Default: [400FE]
 		powerPerTick = 20

@@ -1,11 +1,11 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
 
   // get rid of silkworm 10% chance drop from crooks on leaves
   e.remove({id: 'exnihilosequentia:crook/ens_leaves'})
 
-  e.shaped('exnihilosequentia:stone_hammer', [
+  e.shaped('exnihilosequentia:hammer_stone', [
     ' S ',
     ' RS',
     'R  '

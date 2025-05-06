@@ -1,6 +1,6 @@
 // priority: 0
 
-ServerEvents.recipes(e => {
+onEvent('recipes', e => {
     // thermal gears using thatldu nuggets rather than iron nuggets
 
     e.shaped('thermal:iron_gear', [
@@ -196,10 +196,5 @@ ServerEvents.recipes(e => {
   
   e.recipes.thermal.smelter('2x immersiveengineering:ingot_electrum', ['#forge:ingots/silver','#forge:ingots/gold'])
   e.recipes.thermal.smelter('3x thermal:invar_ingot', ['#forge:ingots/nickel','2x #forge:ingots/iron'])
-  e.recipes.thermal.smelter('4x mekanism:ingot_osmium', ['2x cuboidmod:thatldu_ingot', '2x cuboidmod:carbon_nanotube', '2x #forge:ingots/iron'])
-  e.recipes.thermal.smelter('2x create:brass_ingot', ['create:zinc_ingot', 'minecraft:copper_ingot'])
-
-  // - - - - - - - MULTISERVO PRESSIPES - - - - - - - -
-  e.recipes.thermal.press('minecraft:blaze_rod', ['5x minecraft:blaze_powder'])
 
 })

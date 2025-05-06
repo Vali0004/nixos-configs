@@ -574,16 +574,4 @@
 	[misc.misc]
 		# Logs additional information when loading Quantum Singularity and Molecular Recycler Blacklist config files.
 		verbose_logging = false
-		# Forces the classic CuboidOutpost flat lands.
-		# NOTE: Some mods are required for this feature to work:
-		# - Applied Energistics 2 (ae2)
-		# - Framed Compacting Drawers (framedcompactdrawers)
-		# - Gauges and Switches (rsgauges)
-		# - Glassential Renewed (glassential)
-		# - Mekanism (mekanism)
-		# - Mekanism: Generators (mekanismgenerators)
-		# - MrCrayfish's Furniture Mod (cfm)
-		# - Simply Light (simplylight)
-		# - Thermal Expansion (thermal)
-		forced_cuboid_flat = false
 
