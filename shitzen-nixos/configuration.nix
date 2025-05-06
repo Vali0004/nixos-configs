@@ -19,9 +19,11 @@ let
   };
 in {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    ./samba.nix
-    ./minecraft.nix
+    "${modulesPath}/installer/scan/not-detected.nix"
+    services/minecraft.nix
+    services/nginx.nix
+    services/samba.nix
+    services/wings.nix
   ];
 
   # Use the GRUB 2 boot loader.
@@ -52,10 +54,16 @@ in {
       htop
       iperf
       jdk
+      magic-wormhole
       node2nix
       nodejs_20
       openssl
       pciutils
+      (php.buildEnv {
+        extraConfig = ''
+          memory_limit = 2G
+        '';
+      })
       screen
       smartmontools
       tmux
@@ -118,144 +126,6 @@ in {
         '';
       };
     };
-    nginx = {
-      appendHttpConfig = ''
-        # Add HSTS header with preloading to HTTPS requests
-        map $scheme $hsts_header {
-            https   "max-age=31536000; includeSubdomains; preload";
-        }
-        add_header Strict-Transport-Security $hsts_header;
-
-        # Enable CSP
-        #add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
-
-        # Minimize information leaked to other domains
-        add_header 'Referrer-Policy' 'origin-when-cross-origin';
-
-        # Disable embedding as a frame
-        add_header X-Frame-Options DENY;
-
-        # Prevent injection of code in other mime types (XSS Attacks)
-        add_header X-Content-Type-Options nosniff;
-      '';
-      enable = true;
-      recommendedGzipSettings = true;
-      recommendedOptimisation = true;
-      recommendedProxySettings = true;
-      recommendedTlsSettings = true;
-      virtualHosts = {
-        "valis.furryporn.ca" = {
-          enableACME = true;
-          forceSSL = true;
-          locations = {
-            "/" = {
-              alias = "/data/valisfurryporn/";
-              index = "index.html";
-            };
-          };
-        };
-        "holy.fuckk.lol" = {
-          enableACME = true;
-          forceSSL = true;
-          locations = {
-            "/" = {
-              proxyPass = "http://127.0.0.1:3000";
-              proxyWebsockets = true;
-              extraConfig = ''
-                proxy_set_header Host $host;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header X-Forwarded-Proto $scheme;
-              '';
-            };
-          };
-        };
-        "cdn.fuckk.lol" = {
-          enableACME = true;
-          forceSSL = true;
-          locations = {
-            "/rdr3.7z/" = {
-              alias = "/data/bruh/";
-              index = "index.html";
-            };
-          };
-        };
-        "r34.fuckk.lol" = {
-          enableACME = true;
-          forceSSL = true;
-          locations = {
-            "/" = {
-              proxyPass = "http://127.0.0.1:8099";
-              proxyWebsockets = true;
-              extraConfig = ''
-                proxy_ssl_server_name on;
-                proxy_ssl_name $proxy_host;
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header X-Forwarded-Proto $scheme;
-                proxy_set_header X-Requested-With XMLHttpRequest;
-              '';
-            };
-          };
-        };
-        "unison.fuckk.lol" = {
-          enableACME = true;
-          forceSSL = true;
-          locations = {
-            "/" = {
-              alias = "/data/private/";
-              index = "index.htm";
-              extraConfig = ''
-                return 404;
-              '';
-            };
-          };
-        };
-        "fuckk.lol" = {
-          enableACME = true;
-          forceSSL = true;
-          locations = {
-            "/private/" = {
-              alias = "/data/private/";
-              index = "index.htm";
-              extraConfig = ''
-                autoindex on;
-                autoindex_exact_size off;
-              '';
-            };
-            "/private/nands/" = {
-              alias = "/data/private/nands/";
-              index = "index.htm";
-              extraConfig = ''
-                return 404;
-              }
-              location = "/private/nands/Clever Corona 16mb.zip" {
-                alias "/data/private/nands/Clever Corona 16mb.zip";
-              }
-              location = "/private/nands/White R2D2 Corona 16mb.zip" {
-                alias "/data/private/nands/White R2D2 Corona 16mb.zip";
-              }
-              location = "/private/nands/White Falcon Corona 16mb.zip" {
-                alias "/data/private/nands/White Falcon Corona 16mb.zip";
-              '';
-            };
-            "/private/secret/" = {
-              alias = "/data/private/secret/";
-              index = "index.htm";
-              extraConfig = ''
-                return 404;
-              '';
-            };
-            "/" = {
-              alias = "/data/web/";
-              index = "index.html";
-            };
-          };
-        };
-      };
-    };
     postgresql = {
       enable = true;
       settings.port = 5432;
@@ -265,31 +135,6 @@ in {
         "a4ae9a2114f5310bef4381c463c09b9491c7f0cf0e962bc8083620e2555fd221020e75e411b4"
       ];
       localip = "10.0.127.3";
-    };
-    wings = {
-      enable = true;
-      tokenFile = "/data/private/secret/wingsFile";
-      config = {
-        uuid = "85da3dd7-7d31-4f60-9dc0-b06212f248cc";
-        token_id = "fmtcooaiB2dEnGPO";
-        remote = "https://panel.r33.live";
-        api = {
-          host = "0.0.0.0";
-          port = 9000;
-          ssl = {
-            enabled = true;
-            cert = "/var/lib/acme/unison.fuckk.lol/fullchain.pem";
-            key = "/var/lib/acme/unison.fuckk.lol/key.pem";
-          };
-        };
-        system = {
-          root_directory = "/data/pterodactyl/data";
-          log_directory = "/data/pterodactyl/logs";
-          data = "/data/pterodactyl/data/volumes";
-          archive_directory = "/data/pterodactyl/data/archives";
-          backup_directory = "/data/pterodactyl/data/backups";
-        };
-      };
     };
     zipline = {
       enable = true;
