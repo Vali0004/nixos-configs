@@ -4,7 +4,9 @@ let
   i3Config = import ./../../i3config.nix;
 in {
   home.file.".config/polybar/pipewire.sh" = {
-    source = pkgs.callPackage ./pipewire-polybar.nix {};
+    source = pkgs.callPackage ./pipewire-polybar.nix {
+      i3Config = import ./../../i3config.nix;
+    };
     executable = true;
   };
   home.file.".config/polybar/playerctl.sh" = {

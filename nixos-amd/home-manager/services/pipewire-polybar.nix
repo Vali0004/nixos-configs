@@ -1,4 +1,4 @@
-{ lib, coreutils, gnused, gawk, pamixer, pulseaudio, pipewire, writeShellScript }:
+{ i3Config, lib, coreutils, gnused, gawk, pamixer, pulseaudio, pipewire, writeShellScript }:
 
 writeShellScript "pipewire.sh" ''
 PATH=${lib.makeBinPath [ coreutils gnused gawk pamixer pulseaudio pipewire ]}
@@ -46,9 +46,9 @@ case $1 in
     ;;
   "output")
     if [ "$IS_MUTED" = "yes" ]; then
-      echo "󰝟 ''${SINK_DESCRIPTION}"
+      echo "%{F${i3Config.barPrimary}}󰝟%{F-} %{F${i3Config.barSecondary}}''${VOLUME}%%{F-} ''${SINK_DESCRIPTION}"
     else
-      echo " ''${VOLUME}% ''${SINK_DESCRIPTION}"
+      echo "%{F${i3Config.barPrimary}}%{F-} %{F${i3Config.barSecondary}}''${VOLUME}%%{F-} ''${SINK_DESCRIPTION}"
     fi
     ;;
   *)
@@ -57,10 +57,10 @@ esac
 
 case $2 in
   "up")
-    pamixer --sink "$SINK_NAME" --increase 10
+    pamixer --sink "$SINK_NAME" --increase 5
     ;;
   "down")
-    pamixer --sink "$SINK_NAME" --decrease 10
+    pamixer --sink "$SINK_NAME" --decrease 5
     ;;
   "mute")
     pamixer --sink "$SINK_NAME" --toggle-mute
