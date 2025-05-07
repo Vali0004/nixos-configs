@@ -1,8 +1,8 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
 let
-  mkForwardTCP = services/mkforwardtcp.nix;
-  mkForwardUDP = services/mkforwardudp.nix;
+  mkForwardTCP = import services/mkforwardtcp.nix;
+  mkForwardUDP = import services/mkforwardudp.nix;
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
