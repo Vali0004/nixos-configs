@@ -5,9 +5,9 @@
     enable = true;
     tokenFile = "/data/private/secret/wingsFile";
     config = {
-      uuid = "85da3dd7-7d31-4f60-9dc0-b06212f248cc";
-      token_id = "fmtcooaiB2dEnGPO";
-      remote = "https://panel.r33.live";
+      uuid = "7493f305-63fb-4047-b8e4-136435e6180a";
+      token_id = "5oz7AoZJENydrkoX";
+      remote = "https://panel.fuckk.lol";
       api = {
         host = "0.0.0.0";
         port = 9000;
@@ -16,6 +16,7 @@
           cert = "/var/lib/acme/unison.fuckk.lol/fullchain.pem";
           key = "/var/lib/acme/unison.fuckk.lol/key.pem";
         };
+        upload_limit = 100;
       };
       system = {
         root_directory = "/data/pterodactyl/data";
@@ -23,6 +24,9 @@
         data = "/data/pterodactyl/data/volumes";
         archive_directory = "/data/pterodactyl/data/archives";
         backup_directory = "/data/pterodactyl/data/backups";
+        sftp = {
+          bind_port = 2022;
+        };
       };
     };
   };

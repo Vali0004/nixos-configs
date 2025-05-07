@@ -1,4 +1,4 @@
-{ config, lib, pkgs, port, ip ? "10.0.127.3", target ? "172.18.0.1" }:
+{ pkgs, port, ip ? "10.0.127.3", target ? "172.18.0.1" }:
 {
   wantedBy = [ "multi-user.target" ];
   serviceConfig = {
