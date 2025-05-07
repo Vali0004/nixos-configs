@@ -154,7 +154,7 @@ in {
         # Flameshot keybind
         "Print" = "exec flameshot_fuckk_lol";
         # Flameshot keybind
-        "Control+Print" = "exec flameshot gui --accept-on-select --clipboard";
+        "${i3Config.modifier}+Print" = "exec flameshot gui --accept-on-select --clipboard";
       };
       modes = {
         resize = {
