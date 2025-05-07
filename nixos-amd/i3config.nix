@@ -1,0 +1,19 @@
+{
+  # Modifer keys
+  modifier = "Mod4";
+  altModifier = "Mod1";
+  smodifier = "Shift";
+  # Application
+  wmAppLauncher = "\"rofi -modi drun,run -show drun\"";
+  wmAppTerminal = "i3-sensible-terminal";
+  wmAppBrowser = "google-chrome-stable";
+  wmClipboardManager = "clipmenu";
+  # Theme
+  barBackground = "#282A2E";
+  barBackgroundAlt = "#373B41";
+  barForeground = "#C5C8C6";
+  barPrimary = "#7EBAE4";
+  barSecondary = "#5277C3";
+  barAlert = "#A54242";
+  barDisabled = "#707880";
+}
