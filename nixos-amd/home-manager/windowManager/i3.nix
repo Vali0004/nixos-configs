@@ -154,7 +154,7 @@ in {
         # Flameshot keybind
         "Print" = "exec flameshot_fuckk_lol";
         # Flameshot keybind
-        "${i3Config.modifier}+Print" = "exec flameshot gui --accept-on-select --clipboard";
+        "${i3Config.altModifier}+Print" = "exec flameshot gui --accept-on-select --clipboard";
       };
       modes = {
         resize = {
@@ -174,7 +174,7 @@ in {
           # Back to normal: Enter, Escape, or ${modifier}+r
           "Escape" = "mode default";
           "Return" = "mode default";
-          "${i3Config.altModifier}+r" = "mode default";
+          "${i3Config.modifier}+r" = "mode default";
         };
       };
       # Modifer keys
