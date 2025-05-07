@@ -153,6 +153,8 @@ in {
         "${i3Config.modifier}+r" = "mode resize";
         # Flameshot keybind
         "Print" = "exec flameshot_fuckk_lol";
+        # Flameshot keybind
+        "Control+Print" = "exec ${pkgs.flameshot}/bin/flameshot gui --accept-on-select";
       };
       modes = {
         resize = {
