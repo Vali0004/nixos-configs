@@ -174,7 +174,7 @@ in {
           # Back to normal: Enter, Escape, or ${modifier}+r
           "Escape" = "mode default";
           "Return" = "mode default";
-          "${i3Config.modifier}+r" = "mode default";
+          "${i3Config.altModifier}+r" = "mode default";
         };
       };
       # Modifer keys
