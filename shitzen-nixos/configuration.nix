@@ -1,27 +1,16 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
 let
-  mkForward = ip: port: target: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},bind=${ip},fork,reuseaddr TCP4:${target}:${toString port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
-  mkForwardUDP = ip: port: target: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString port},bind=${ip},fork,reuseaddr UDP:${target}:${toString port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
+  mkForwardTCP = services/mkforwardtcp.nix;
+  mkForwardUDP = services/mkforwardudp.nix;
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     services/minecraft.nix
     services/nginx.nix
+    services/php.nix
+    services/pterodactyl-panel.nix
+    services/redis.nix
     services/samba.nix
     services/wings.nix
     services/zipline.nix
@@ -64,17 +53,6 @@ in {
       mysql84
       openssl
       pciutils
-      (php.buildEnv {
-        extensions = {
-          enabled,
-          all,
-        }: enabled ++ (with all; [
-          redis
-        ]);
-        extraConfig = ''
-          memory_limit = 2G
-        '';
-      })
       redis
       screen
       smartmontools
@@ -108,7 +86,7 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 80 443 111 4100 4101 4301 4302 5201 8080 9000 ];
+      allowedTCPPorts = [ 80 443 111 4100 4101 4301 4302 5201 6379 8080 9000 ];
       allowedUDPPorts = [ 111 4100 4101 4301 4302 ];
     };
     hostName = "shitzen-nixos";
@@ -130,6 +108,10 @@ in {
   };
 
   services = {
+    mysql = {
+      enable = true;
+      package = pkgs.mariadb;
+    };
     nfs = {
       server = {
         enable = true;
@@ -168,14 +150,22 @@ in {
       };
       wantedBy = [ "multi-user.target" ];
     };
-    forward4301 = mkForward "10.0.127.3" 4301 "172.18.0.1";
-    forwardUDP4301 = mkForwardUDP "10.0.127.3" 4301 "172.18.0.1";
-    forward4302 = mkForward "10.0.127.3" 4302 "172.18.0.1";
-    forwardUDP4302 = mkForwardUDP "10.0.127.3" 4302 "172.18.0.1";
+    forward4300 = mkForwardTCP { port = 4300; };
+    forward4300UDP = mkForwardUDP { port = 4300; };
+    forward4301 = mkForwardTCP { port = 4301; };
+    forward4301UDP = mkForwardUDP { port = 4301; };
+    forward4302 = mkForwardTCP { port = 4302; };
+    forward4302UDP = mkForwardUDP { port = 4302; };
+    forward4303 = mkForwardTCP { port = 4303; };
+    forward4303UDP = mkForwardUDP { port = 4303; };
+    forward4304 = mkForwardTCP { port = 4304; };
+    forward4304UDP = mkForwardUDP { port = 4304; };
+    forward4305 = mkForwardTCP { port = 4305; };
+    forward4305UDP = mkForwardUDP { port = 4305; };
   };
 
   vali.mc_prod = false;
-  vali.mc_test = true;
+  vali.mc_test = false;
 
   system.stateVersion = "25.05";
 }

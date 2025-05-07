@@ -48,7 +48,7 @@ in {
               ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
             };
             jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch";
-            package = pkgs.forgeServers.forge-1_16_5-36_2_42;
+            package = pkgs.forgeServers.forge-1_16_5-36_2_39;
             serverProperties = {
               admin-slot = true;
               allow-cheats = false;

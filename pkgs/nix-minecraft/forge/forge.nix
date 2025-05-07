@@ -13,6 +13,15 @@ let
       jdk = jdk8_headless;
       offlineHash = "sha256-a5QuodkvjVhQT3r8e44RCWDhTEmR23KcOuwr+Cau8ok=";
     };
+    "1.16.5-36.2.26" = {
+      src = fetchurl {
+        url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.26/forge-1.16.5-36.2.26-installer.jar";
+        hash = "sha256-yXVtSlcdUWqsAnTK3w18HTFX++MTkxA3Pgmx4iyEJ/s=";
+      };
+      javaArgs = "${offline}/forge-${version}.jar";
+      jdk = jdk11_headless;
+      offlineHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    };
     "1.16.5-36.2.39" = {
       src = fetchurl {
         url = "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.39/forge-1.16.5-36.2.39-installer.jar";
@@ -20,7 +29,7 @@ let
       };
       javaArgs = "${offline}/forge-${version}.jar";
       jdk = jdk11_headless;
-      offlineHash = "sha256-bGYgqwM8VS1RORPbRFDZDlt7N2MOHssXtDz9qefeE4s=";
+      offlineHash = "sha256-OAgoStxooKGfxF3KHy3htkiT4kj8mTfHEPSvdN0CMR0=";
     };
     "1.16.5-36.2.42" = {
       src = fetchurl {
@@ -29,7 +38,7 @@ let
       };
       javaArgs = "-jar ${offline}/forge-${version}.jar";
       jdk = jdk11_headless;
-      offlineHash = "sha256-dmHB8KsVLXjIjgd97R9R0x6ZBxt3pADV2ERbWio8Gww=";
+      offlineHash = "sha256-XGi/hWRY2bk0+ULe1ERVAwGs9FAaPbXXCqJ1+A8aoCw=";
     };
     "1.18.2-40.3.0" = {
       src = fetchurl {

@@ -66,17 +66,15 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 2022 4100 4101 4301 5201 8080 9000 ];
+      allowedTCPPorts = [ 80 443 2022 4100 4101 4301 5201 6379 8080 9000 ];
       allowedUDPPorts = [ 4100 4101 4301 4302 ];
     };
     hostName = "router";
     interfaces.ens18 = {
-      ipv4.addresses = [
-        {
-          address = "31.59.128.8";
-          prefixLength = 24;
-        }
-      ];
+      ipv4.addresses = [{
+        address = "31.59.128.8";
+        prefixLength = 24;
+      }];
     };
     nameservers = [
       "9.9.9.9"
@@ -114,14 +112,20 @@ in {
     forward4101 = mkForward 4101 "10.0.127.3";
     forward4301 = mkForward 4301 "10.0.127.3";
     forward4302 = mkForward 4302 "10.0.127.3";
+    forward4303 = mkForward 4303 "10.0.127.3";
+    forward4304 = mkForward 4304 "10.0.127.3";
+    forward4305 = mkForward 4305 "10.0.127.3";
+    forward6379 = mkForward 6379 "10.0.127.3";
     forward8080 = mkForward 8080 "10.0.127.3";
     forward9000 = mkForward 9000 "10.0.127.3";
     forwardUDP4100 = mkForwardUDP 4100 "10.0.127.3";
     forwardUDP4101 = mkForwardUDP 4101 "10.0.127.3";
     forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
     forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
+    forwardUDP4303 = mkForwardUDP 4303 "10.0.127.3";
+    forwardUDP4304 = mkForwardUDP 4304 "10.0.127.3";
+    forwardUDP4305 = mkForwardUDP 4305 "10.0.127.3";
   };
 
   system.stateVersion = "25.05";
 }
-
