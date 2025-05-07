@@ -1,8 +1,22 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
 let
-  mkForwardTCP = import services/mkforwardtcp.nix;
-  mkForwardUDP = import services/mkforwardudp.nix;
+  mkForwardTCP = port: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},bind=10.0.127.3,fork,reuseaddr TCP4:172.18.0.1:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
+  mkForwardUDP = port: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString port},bind=10.0.127.3,fork,reuseaddr UDP:172.18.0.1:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
@@ -150,18 +164,18 @@ in {
       };
       wantedBy = [ "multi-user.target" ];
     };
-    forward4300 = mkForwardTCP { port = 4300; };
-    forward4300UDP = mkForwardUDP { port = 4300; };
-    forward4301 = mkForwardTCP { port = 4301; };
-    forward4301UDP = mkForwardUDP { port = 4301; };
-    forward4302 = mkForwardTCP { port = 4302; };
-    forward4302UDP = mkForwardUDP { port = 4302; };
-    forward4303 = mkForwardTCP { port = 4303; };
-    forward4303UDP = mkForwardUDP { port = 4303; };
-    forward4304 = mkForwardTCP { port = 4304; };
-    forward4304UDP = mkForwardUDP { port = 4304; };
-    forward4305 = mkForwardTCP { port = 4305; };
-    forward4305UDP = mkForwardUDP { port = 4305; };
+    forward4300 = mkForwardTCP 4300;
+    forward4300UDP = mkForwardUDP 4300;
+    forward4301 = mkForwardTCP 4301;
+    forward4301UDP = mkForwardUDP 4301;
+    forward4302 = mkForwardTCP 4302;
+    forward4302UDP = mkForwardUDP 4302;
+    forward4303 = mkForwardTCP 4303;
+    forward4303UDP = mkForwardUDP 4303;
+    forward4304 = mkForwardTCP 4304;
+    forward4304UDP = mkForwardUDP 4304;
+    forward4305 = mkForwardTCP 4305;
+    forward4305UDP = mkForwardUDP 4305;
   };
 
   vali.mc_prod = false;
