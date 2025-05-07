@@ -4,14 +4,24 @@ let
   mkProxy = import ./mkproxy.nix;
 in {
   services.nginx.virtualHosts = {
+    # smtp
+    "smtp.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+      locations = {
+        "/" = {
+          extraConfig = ''
+            return 404;
+          '';
+        };
+      };
+    };
     # Unison
     "unison.fuckk.lol" = {
       enableACME = true;
       forceSSL = true;
       locations = {
         "/" = {
-          alias = "/data/private/";
-          index = "index.htm";
           extraConfig = ''
             return 404;
           '';

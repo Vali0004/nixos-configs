@@ -20,6 +20,7 @@ let
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+    services/mailserver.nix
     services/minecraft.nix
     services/nginx.nix
     services/php.nix
@@ -100,7 +101,7 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 80 443 111 4100 4101 4301 4302 5201 6379 8080 9000 ];
+      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 4100 4101 4301 4302 5201 6379 8080 9000 ];
       allowedUDPPorts = [ 111 4100 4101 4301 4302 ];
     };
     hostName = "shitzen-nixos";

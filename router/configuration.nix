@@ -66,7 +66,7 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 80 443 2022 4100 4101 4301 5201 6379 8080 9000 ];
+      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5201 6379 8080 9000 ];
       allowedUDPPorts = [ 4100 4101 4301 4302 ];
     };
     hostName = "router";
@@ -97,16 +97,21 @@ in {
     #openssh.openFirewall = false;
   };
 
-  swapDevices = [
-    {
-      device = "/var/lib/swap1";
-      size = 1024;
-    }
-  ];
+  swapDevices = [{
+    device = "/var/lib/swap1";
+    size = 1024;
+  }];
 
   systemd.services = {
+    forward25 = mkForward 25 "10.0.127.3";
     forward80 = mkForward 80 "10.0.127.3";
+    forward110 = mkForward 110 "10.0.127.3";
+    forward143 = mkForward 143 "10.0.127.3";
     forward443 = mkForward 443 "10.0.127.3";
+    forward465 = mkForward 465 "10.0.127.3";
+    forward587 = mkForward 587 "10.0.127.3";
+    forward993 = mkForward 993 "10.0.127.3";
+    forward995 = mkForward 995 "10.0.127.3";
     forward2022 = mkForward 2022 "10.0.127.3";
     forward4100 = mkForward 4100 "10.0.127.3";
     forward4101 = mkForward 4101 "10.0.127.3";
