@@ -154,7 +154,7 @@ in {
         # Flameshot keybind
         "Print" = "exec flameshot_fuckk_lol";
         # Flameshot keybind
-        "Control+Print" = "exec ${pkgs.flameshot}/bin/flameshot gui --accept-on-select";
+        "Control+Print" = "exec flameshot gui --accept-on-select --clipboard";
       };
       modes = {
         resize = {
