@@ -20,17 +20,13 @@ let
     wmAppBrowser = "google-chrome-stable";
     wmClipboardManager = "clipmenu";
     # Theme
-    barBg = "#3B3B3B";
-    barStatusline = "#FFFFFF";
-    barSeparator = "#FFFFFF";
-    barFocusedWorkspaceBg = "#A3BE8C";
-    barFocusedWorkspaceFg = "#3B3B3B";
-    barActiveWorkspaceBg = "#EBCB8B";
-    barActiveWorkspaceFg = "#3B3B3B";
-    barInactiveWorkspaceBg = "#BF616A";
-    barInactiveWorkspaceFg = "#3B3B3B";
-    barUrgentWorkspaceBg = "#D08770";
-    barUrgentWorkspaceFg = "#3B3B3B";
+    barBackground = "#282A2E";
+    barBackgroundAlt = "#373B41";
+    barForeground = "#C5C8C6";
+    barPrimary = "#7EBAE4";
+    barSecondary = "#5277C3";
+    barAlert = "#A54242";
+    barDisabled = "#707880";
   };
   flameshot_fuckk_lol = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
     ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
@@ -60,13 +56,11 @@ in {
     kernelParams = [
       # Enable IOMMU
       "amd_iommu=on"
+      # Enable high-poll rate
+      "usbhid.kbpoll=1"
       "boot.shell_on_fail"
-      # https:#wiki.archlinux.org/title/Silent_boot
-      "quiet"
       "splash"
       "rd.systemd.show_status=auto"
-      "usbhid.kbpoll=1"
-      "vga=current"
     ];
     kernelPackages = let
       version = "6.14.2";
@@ -93,7 +87,6 @@ in {
         };
       }
     ];
-    tmp.useTmpfs = false;
     loader = {
       efi = {
         canTouchEfiVariables = true;
@@ -110,6 +103,16 @@ in {
       };
       timeout = 10;
     };
+    plymouth = {
+      enable = true;
+      theme = "cross_hud";
+      themePackages = with pkgs; [
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "cross_hud" ];
+        })
+      ];
+    };
+    tmp.useTmpfs = false;
   };
 
   console = {
@@ -131,14 +134,13 @@ in {
       alsa-utils
       alvr
       bridge-utils
+      btop
       busybox
       cachix
       colmena
       curl
       clipmenu # Clipboard Manager
       dos2unix
-      doas
-      doas-sudo-shim
       direnv
       (discord.override {
         withVencord = true;
@@ -159,7 +161,6 @@ in {
       glib
       gnome-software
       google-chrome # Browser
-      htop
       iperf
       jq
       mpv # Video Player
@@ -169,6 +170,7 @@ in {
       openssl
       opentabletdriver # Tablet Driver
       p7zip-rar # WinRAR
+      pamixer # Different audio control
       pavucontrol # Audio control
       pciutils
       picom # Compositer
@@ -310,10 +312,6 @@ in {
           settings = {
             logo = {
               type = "auto";
-              #color = {
-              #  "1" = "blue";
-              #  "2" = "green";
-              #};
             };
             display = {
               constants = [
@@ -368,6 +366,14 @@ in {
               "files.autoSaveDelay" = 1000;
               "terminal.integrated.defaultProfile.linux" = "zsh";
               "security.workspace.trust.untrustedFiles" = "open";
+              "C_Cpp.default.compilerPath" = "";
+              "files.exclude" = {
+                "**/.git" = false;
+                "**/.svn" = false;
+                "**/.hg" = false;
+                "**/.DS_Store" = false;
+                "**/Thumbs.db" = false;
+              };
             };
           };
         };
@@ -420,6 +426,195 @@ in {
             };
           };
         };
+        polybar = {
+          enable = true;
+          script = "polybar bar &";
+          settings = {
+            "colors" = {
+              background = i3Config.barBackground;
+              background-alt = i3Config.barBackgroundAlt;
+              foreground = i3Config.barForeground;
+              primary = i3Config.barPrimary;
+              secondary = i3Config.barSecondary;
+              alert = i3Config.barAlert;
+              disabled = i3Config.barDisabled;
+            };
+            "bar/bar" = {
+              background = i3Config.barBackground;
+              border = {
+                size = "4pt";
+                color = "#00000000";
+              };
+              cursor = {
+                click = "pointer";
+                scroll = "ns-resize";
+              };
+              enable-ipc = true;
+              font = [
+                "DejaVu Sans Mono:size=12"
+              ];
+              foreground = i3Config.barForeground;
+              line-size = "4pt";
+              module-margin = 1;
+              modules = {
+                left = "xworkspaces xwindow";
+                right = "cpu ram swap eth filesystem xkeyboard date pulseaudio systray";
+              };
+              padding = {
+                left = 0;
+                right = 0;
+              };
+              height = "24pt";
+              radius = 8;
+              separator = {
+                text = "|";
+                foreground = i3Config.barSecondary;
+              };
+              width = "100%";
+              wm-restack = "i3";
+            };
+            "module/cpu" = {
+              format.prefix = {
+                text = "CPU ";
+                foreground = i3Config.barPrimary;
+              };
+              interval = 2;
+              label = "%percentage%%";
+              type = "internal/cpu";
+            };
+            "module/date" = {
+              date = "%Y-%m-%d%";
+              interval = 1;
+              label = "%time%";
+              label-foreground = i3Config.barPrimary;
+              time = "%H:%M:%S";
+              type = "internal/date";
+            };
+            "module/eth" = {
+              "inherit" = "network-base";
+              interface.type = "wired";
+              label.connected = "%{F${i3Config.barPrimary}}ETH%{F-} %local_ip%";
+              label.disconnected = "%{F${i3Config.barPrimary}}ETH%{F${i3Config.barDisabled}} disconnected";
+            };
+            "module/filesystem" = {
+              interval = 25;
+              label = {
+                mounted = {
+                  text = "%{F${i3Config.barPrimary}}%mountpoint%%{F-} %used%/%total% (%{F${i3Config.barPrimary}}%percentage_used%%%{F-})";
+                };
+                unmounted = {
+                  text = "%mountpoint% not mounted";
+                  foreground = i3Config.barDisabled;
+                };
+              };
+              mount = [ "/" ];
+              type = "internal/fs";
+            };
+            "module/pulseaudio" = {
+              click.right = "pavucontrol &";
+              #format = {
+              #  prefix = {
+              #    text = "VOL ";
+              #    foreground = i3Config.barPrimary;
+              #  };
+              #  text = "<label-volume>";
+              #};
+              #label.muted = {
+              #  text = "muted";
+              #  foreground = i3Config.barDisabled;
+              #};
+              interval = 5;
+              reverse-scroll = false;
+              type = "internal/pulseaudio";
+              use-ui-max = true;
+            };
+            "module/ram" = {
+              format.prefix = {
+                text = "RAM ";
+                foreground = i3Config.barPrimary;
+              };
+              interval = 1;
+              label = {
+                text = "%gb_used%%{F${i3Config.barPrimary}}/%{F-}%gb_total% (%{F${i3Config.barPrimary}}%percentage_used%%%{F-})";
+              };
+              type = "internal/memory";
+            };
+            "module/swap" = {
+              format.prefix = {
+                text = "";
+                foreground = i3Config.barPrimary;
+              };
+              interval = 3;
+              label = {
+                text = "%gb_swap_used%%{F${i3Config.barPrimary}}/%{F-}%gb_swap_total% (%{F${i3Config.barPrimary}}%percentage_swap_used%%%{F-})";
+              };
+              type = "internal/memory";
+            };
+            "module/systray" = {
+              format.margin = "8pt";
+              tray.spacing = "16pt";
+              type = "internal/tray";
+            };
+            "module/xkeyboard" = {
+              blacklist = [ "num lock" ];
+              label = {
+                indicator = {
+                  background = i3Config.barSecondary;
+                  foreground = i3Config.barBackground;
+                  margin = 1;
+                  padding = 2;
+                };
+                layout.text = "%layout%";
+                layout.foreground = i3Config.barPrimary;
+              };
+              type = "internal/xkeyboard";
+            };
+            "module/xworkspaces" = {
+              type = "internal/xworkspaces";
+              label = {
+                active = {
+                  text = "%name%";
+                  background = i3Config.barBackgroundAlt;
+                  underline = i3Config.barPrimary;
+                  padding = 1;
+                };
+                occupied = {
+                  text = "%name%";
+                  padding = 1;
+                };
+                urgent = {
+                  text = "%name%";
+                  background = i3Config.barAlert;
+                  padding = 1;
+                };
+                empty = {
+                  text = "%name%";
+                  foreground = i3Config.barDisabled;
+                  padding = 1;
+                };
+              };
+            };
+            "module/xwindow" = {
+              type = "internal/xwindow";
+              label = "%title:0:70:...%";
+            };
+            "network-base" = {
+              format = {
+                connected.text = "<label-connected>";
+                disconnected.text = "<label-disconnected>";
+              };
+              label.disconnected = "%{F${i3Config.barPrimary}}%ifname%%{F${i3Config.barDisabled}} disconnected";
+              type = "internal/network";
+            };
+            "settings" = {
+              screenchange-reload = true;
+              pseudo-transparency = true;
+            };
+          };
+        };
+      };
+      systemd.user.services.polybar = {
+        Install.WantedBy = [ "graphical-session.target" ];
       };
       xdg.mimeApps = {
         associations = {
@@ -435,45 +630,20 @@ in {
       xsession.windowManager.i3 = {
         enable = true;
         extraConfig = ''
-          # Rounding
-          border_radius 5
           # For some unknown fucking reason, i3 on NixOS (and NixOS only) defaults to ws10
           exec --no-startup-id i3-msg "workspace 1"
           # Better layouts
           exec_always --no-startup-id i3-auto-layout
         '';
-        package = pkgs.i3-rounded;
         config = {
-          # Bars
+          # Bar
           bars = [{
-            position = "bottom";
-            statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
-            colors = {
-              background = "${i3Config.barBg}";
-              statusline = "${i3Config.barStatusline}";
-              separator = "${i3Config.barSeparator}";
-
-              focusedWorkspace = {
-                border = "${i3Config.barFocusedWorkspaceBg}";
-                background = "${i3Config.barFocusedWorkspaceBg}";
-                text = "${i3Config.barFocusedWorkspaceFg}";
-              };
-              activeWorkspace = {
-                border = "${i3Config.barActiveWorkspaceBg}";
-                background = "${i3Config.barActiveWorkspaceBg}";
-                text = "${i3Config.barActiveWorkspaceFg}";
-              };
-              inactiveWorkspace = {
-                border = "${i3Config.barInactiveWorkspaceBg}";
-                background = "${i3Config.barInactiveWorkspaceBg}";
-                text = "${i3Config.barInactiveWorkspaceFg}";
-              };
-              urgentWorkspace = {
-                border = "${i3Config.barUrgentWorkspaceBg}";
-                background = "${i3Config.barUrgentWorkspaceBg}";
-                text = "${i3Config.barUrgentWorkspaceFg}";
-              };
-            };
+            hiddenState = "hide";
+            mode = "hide";
+            extraConfig = ''
+              i3bar_command = ""
+              status_command = ""
+            '';
           }];
           # Colors
           colors = {
@@ -508,13 +678,12 @@ in {
           };
           # Gaps
           gaps = {
-            inner = 12;
-            outer = 1;
-            smartBorders = "on";
+            inner = 4;
+            outer = 2;
             smartGaps = true;
           };
           # Use Mouse+$mod to drag floating windows to their wanted position
-          floating.modifier = "${i3Config.modifier}";
+          floating.modifier = i3Config.modifier;
           # Keys
           keybindings = {
             #  Applications
@@ -532,11 +701,8 @@ in {
 
             # Pipewire-pulse
             "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
-            "XF86AudioMute --release" = "exec pkill -RTMIN+1 i3blocks";
             "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
-            "XF86AudioLowerVolume --release" = "exec pkill -RTMIN+1 i3blocks";
             "XF86AudioRaiseVolume" = "exec pactl set-sink-volume 0 +5%";
-            "XF86AudioRaiseVolume --release" = "exec pkill -RTMIN+1 i3blocks";
 
             # Media player controls
             "XF86AudioPlay" = "exec playerctl play-pause";
@@ -613,9 +779,9 @@ in {
             # Restart the configuration file
             "${i3Config.modifier}+${i3Config.smodifier}+c" = "reload";
             # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-            "${i3Config.modifier}+${i3Config.smodifier}+r" = "restart";
+            "${i3Config.modifier}+${i3Config.smodifier}+r" = "restart && exec \"polybar-msg cmd restart\"";
             # Exit i3 (logs you out of your X session)
-            "${i3Config.modifier}+${i3Config.smodifier}+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'\"";
+            "${i3Config.modifier}+${i3Config.smodifier}+e" = "exec \"i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit && polybar-msg exit'\"";
             # Resize window (You can also use the mouse)
             "${i3Config.modifier}+r" = "mode resize";
             # Flameshot keybind
@@ -728,7 +894,7 @@ in {
 
       Host chromeshit
         Hostname 10.0.0.124
-        
+
       Host r2d2box
         Hostname 10.0.0.204
     '';
@@ -789,8 +955,7 @@ in {
   };
 
   security = {
-    sudo.enable = false;
-    sudo-rs.enable = true;
+    sudo.enable = true;
   };
 
   services = {
@@ -820,14 +985,10 @@ in {
         fade-out-step = 0.08;
         #fade-delta = 0;
         opacity-rule = [
-          "90:class_g = 'Code'"
-          "90:class_g = 'discord'"
+          "75:class_g = 'Code'"
+          "75:class_g = 'discord'"
         ];
         round-borders = 10;
-        rounded-corners-exclude = [
-          #"window_type = 'normal'"
-          "class_g = 'i3blocks'"
-        ];
         shadow-exclude = [
           "class_g = 'discord'"
           "argb && (override_redirect || wmwin)"
@@ -891,24 +1052,41 @@ in {
         xterm
       ];
       desktopManager.xterm.enable = false;
-      displayManager.setupCommands = ''
-        ${pkgs.xorg.xrandr}/bin/xrandr --newmode "2560x1440_239.97"  1442.50  2560 2800 3088 3616  1440 1443 1448 1663 -hsync +vsyn
-        ${pkgs.xorg.xrandr}/bin/xrandr --addmode DP-3 2560x1440_239.97
-        ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --mode 2560x1440_239.97
-      '';
+      displayManager = {
+        lightdm = {
+          background = /home/vali/wallpaper.png;
+          extraConfig = ''
+            user-background = false
+          '';
+          greeters.gtk = {
+            theme.name = "Noridc-darker";
+          };
+        };
+        setupCommands = ''
+          ${pkgs.xorg.xrandr}/bin/xrandr --newmode "2560x1440_239.97"  1442.50  2560 2800 3088 3616  1440 1443 1448 1663 -hsync +vsyn
+          ${pkgs.xorg.xrandr}/bin/xrandr --addmode DP-3 2560x1440_239.97
+          ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --mode 2560x1440_239.97
+        '';
+      };
       # i3
       windowManager.i3 = {
         enable = true;
         extraPackages = with pkgs; [
           i3-auto-layout
           i3status
-          i3blocks
+          (polybar.override {
+            alsaSupport = true;
+            pulseSupport = true;
+            iwSupport = true;
+            i3Support = true;
+          })
+          polybar-pulseaudio-control
         ];
         extraSessionCommands = ''
-          pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"\
-          feh --bg-center /home/vali/wallpaper.jpg
+          ${pkgs.pulseaudio}/bin/pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"
+          ${pkgs.feh}/bin/feh --bg-center /home/vali/wallpaper.png
         '';
-        package = pkgs.i3-rounded;
+        package = pkgs.i3;
       };
       # Set our X11 Keyboard layout
       xkb = {
