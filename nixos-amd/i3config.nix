@@ -16,4 +16,6 @@
   barSecondary = "#5277C3";
   barAlert = "#A54242";
   barDisabled = "#707880";
+  barVolumeBg = "#000000";
+  barVolumeFg = "#7EBAE4";
 }

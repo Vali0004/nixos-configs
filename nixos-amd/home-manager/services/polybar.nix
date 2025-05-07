@@ -1,8 +1,16 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   i3Config = import ./../../i3config.nix;
 in {
+  home.file.".config/polybar/pipewire.sh" = {
+    source = pkgs.callPackage ./pipewire-polybar.nix {};
+    executable = true;
+  };
+  home.file.".config/polybar/playerctl.sh" = {
+    source = pkgs.callPackage ./playerctl-polybar.nix {};
+    executable = true;
+  };
   services.polybar = {
     enable = true;
     script = "polybar bar &";
@@ -28,14 +36,16 @@ in {
         };
         enable-ipc = true;
         font = [
-          "DejaVu Sans Mono:size=12"
+          "DejaVuSansM Nerd Font:size=10;2"
+          "DejaVuSansM Nerd Font:size=12;2"
         ];
         foreground = i3Config.barForeground;
         line-size = "4pt";
         module-margin = 1;
         modules = {
           left = "xworkspaces xwindow";
-          right = "cpu ram swap eth filesystem xkeyboard date pulseaudio systray";
+          center = "xkeyboard";
+          right = "cpu ram eth filesystem playerctl pipewire-output date systray";
         };
         padding = {
           left = 0;
@@ -44,16 +54,17 @@ in {
         height = "24pt";
         radius = 8;
         separator = {
-          text = "|";
           foreground = i3Config.barSecondary;
+          text = "|";
         };
         width = "100%";
         wm-restack = "i3";
       };
       "module/cpu" = {
         format.prefix = {
-          text = "CPU ";
           foreground = i3Config.barPrimary;
+          padding = 1;
+          text = " ";
         };
         interval = 2;
         label = "%percentage%%";
@@ -61,23 +72,25 @@ in {
       };
       "module/date" = {
         date = "%Y-%m-%d%";
-        interval = 1;
-        label = "%time%";
-        label-foreground = i3Config.barPrimary;
+        interval = 0;
+        label = {
+          text = "%time%";
+          foreground = i3Config.barPrimary;
+        };
         time = "%H:%M:%S";
         type = "internal/date";
       };
       "module/eth" = {
         "inherit" = "network-base";
         interface.type = "wired";
-        label.connected = "%{F${i3Config.barPrimary}}ETH%{F-} %local_ip%";
-        label.disconnected = "%{F${i3Config.barPrimary}}ETH%{F${i3Config.barDisabled}} disconnected";
+        label.connected = "%{F${i3Config.barPrimary}}󰈀%{F-} %local_ip%";
+        label.disconnected = "%{F${i3Config.barPrimary}}󰈀%{F${i3Config.barDisabled}} disconnected";
       };
       "module/filesystem" = {
         interval = 25;
         label = {
           mounted = {
-            text = "%{F${i3Config.barPrimary}}%mountpoint%%{F-} %used%/%total% (%{F${i3Config.barPrimary}}%percentage_used%%%{F-})";
+            text = "%{F${i3Config.barPrimary}}󰋊%{F-} %free%";
           };
           unmounted = {
             text = "%mountpoint% not mounted";
@@ -87,54 +100,75 @@ in {
         mount = [ "/" ];
         type = "internal/fs";
       };
-      "module/pulseaudio" = {
-        click.right = "pavucontrol &";
-        #format = {
-        #  prefix = {
-        #    text = "VOL ";
-        #    foreground = i3Config.barPrimary;
-        #  };
-        #  text = "<label-volume>";
-        #};
-        #label.muted = {
-        #  text = "muted";
-        #  foreground = i3Config.barDisabled;
-        #};
-        interval = 5;
-        reverse-scroll = false;
-        type = "internal/pulseaudio";
-        use-ui-max = true;
+      "module/pipewire-input" = {
+        click.right = "exec ${pkgs.pavucontrol}/bin/pavucontrol &";
+        click.left = "~/.config/polybar/pipewire.sh output mute &";
+        scroll.up = "~/.config/polybar/pipewire.sh output up &";
+        scroll.down = "~/.config/polybar/pipewire.sh output down &";
+        exec = "~/.config/polybar/pipewire.sh input";
+        interval = 0;
+        label = {
+          text = "%output%";
+        };
+        type = "custom/script";
+      };
+      "module/pipewire-output" = {
+        click.right = "exec ${pkgs.pavucontrol}/bin/pavucontrol &";
+        click.left = "~/.config/polybar/pipewire.sh input mute &";
+        scroll.up = "~/.config/polybar/pipewire.sh input up &";
+        scroll.down = "~/.config/polybar/pipewire.sh input down &";
+        exec = "~/.config/polybar/pipewire.sh output";
+        interval = 0;
+        label = {
+          text = "%output%";
+        };
+        type = "custom/script";
+      };
+      "module/playerctl" = {
+        click.right = "exec ${pkgs.playerctl}/bin/playerctl previous &";
+        click.left = "exec ${pkgs.playerctl}/bin/playerctl next &";
+        click.middle = "exec ${pkgs.playerctl}/bin/playerctl play-pause &";
+        exec = "~/.config/polybar/playerctl.sh";
+        interval = 1;
+        label = {
+          text = "%{F${i3Config.barPrimary}}%{F-} %{F${i3Config.barSecondary}}%output%%{F-}";
+        };
+        type = "custom/script";
       };
       "module/ram" = {
         format.prefix = {
-          text = "RAM ";
+          text = "  ";
           foreground = i3Config.barPrimary;
         };
         interval = 1;
         label = {
-          text = "%gb_used%%{F${i3Config.barPrimary}}/%{F-}%gb_total% (%{F${i3Config.barPrimary}}%percentage_used%%%{F-})";
+          text = "%gb_used% (%{F${i3Config.barPrimary}}%percentage_used%%%{F-})";
         };
         type = "internal/memory";
       };
       "module/swap" = {
         format.prefix = {
-          text = "";
+          text = " ";
           foreground = i3Config.barPrimary;
         };
         interval = 3;
         label = {
-          text = "%gb_swap_used%%{F${i3Config.barPrimary}}/%{F-}%gb_swap_total% (%{F${i3Config.barPrimary}}%percentage_swap_used%%%{F-})";
+          text = "%gb_swap_used% (%{F${i3Config.barPrimary}}%percentage_swap_used%%%{F-})";
         };
         type = "internal/memory";
       };
       "module/systray" = {
-        format.margin = "8pt";
-        tray.spacing = "16pt";
+        format.margin = "4pt";
+        tray.spacing = "8pt";
         type = "internal/tray";
       };
       "module/xkeyboard" = {
         blacklist = [ "num lock" ];
+        format = {
+          text = "%{F${i3Config.barPrimary}}󰌌%{F-} <label-layout> <label-indicator>";
+        };
         label = {
+          font = 1;
           indicator = {
             background = i3Config.barSecondary;
             foreground = i3Config.barBackground;
@@ -142,7 +176,6 @@ in {
             padding = 2;
           };
           layout.text = "%layout%";
-          layout.foreground = i3Config.barPrimary;
         };
         type = "internal/xkeyboard";
       };
