@@ -78,6 +78,7 @@ in {
       wings
       zip
       zipline
+      zstd  
     ];
   };
 

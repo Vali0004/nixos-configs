@@ -40,8 +40,12 @@ in {
     };
     kernelModules = [ "kvm-intel" ];
     loader = {
+      efi.canTouchEfiVariables = true;
       grub = {
-        device = "/dev/sda";
+        copyKernels = true;
+        device = "nodev";
+        efiSupport = true;
+        efiInstallAsRemovable = false;
       };
     };
   };
@@ -58,8 +62,13 @@ in {
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/c313c7de-4109-4656-8916-774a7075adbc";
+      device = "/dev/disk/by-uuid/d57234d2-c964-49d0-be3c-268d200ee66c";
       fsType = "ext4";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/EB29-DF01";
+      fsType = "vfat";
+      options = [ "fmask=0022" "dmask=0022" ];
     };
   };
 
@@ -70,15 +79,15 @@ in {
       allowedUDPPorts = [ 4100 4101 4301 4302 ];
     };
     hostName = "router";
-    interfaces.ens18 = {
+    interfaces.ens3 = {
       ipv4.addresses = [{
         address = "31.59.128.8";
         prefixLength = 24;
       }];
     };
     nameservers = [
-      "9.9.9.9"
       "1.1.1.1"
+      "1.0.0.1"
     ];
     useDHCP = false;
   };
