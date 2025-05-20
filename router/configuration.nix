@@ -62,11 +62,11 @@ in {
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/d57234d2-c964-49d0-be3c-268d200ee66c";
+      device = "/dev/disk/by-uuid/d10bbb51-11c7-4c6e-8d79-345785c31b73";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/EB29-DF01";
+      device = "/dev/disk/by-uuid/B89C-765B";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
@@ -86,8 +86,8 @@ in {
       }];
     };
     nameservers = [
-      "9.9.9.9"
       "1.1.1.1"
+      "1.0.0.1"
     ];
     useDHCP = false;
   };
