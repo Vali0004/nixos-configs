@@ -142,7 +142,7 @@ in {
     };
     toxvpn = {
       auto_add_peers = [
-        "a4ae9a2114f5310bef4381c463c09b9491c7f0cf0e962bc8083620e2555fd221020e75e411b4"
+        "8b59f8e352f19169f46f9152c31f7275286df14a40c9680a43e64984ab11d573cd21ebd0c760" # router
       ];
       localip = "10.0.127.3";
     };
