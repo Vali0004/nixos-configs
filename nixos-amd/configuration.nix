@@ -239,7 +239,7 @@ in {
 
   system = {
     copySystemConfiguration = true;
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
 
   systemd.watchdog.rebootTime = "0";

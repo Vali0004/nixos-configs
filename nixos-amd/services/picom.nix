@@ -9,11 +9,12 @@
     inactiveOpacity = 0.8;
     settings = {
       blur = {
-        background = false;
-        background-fixed = false;
-        background-frame = false;
-        method = "dual_kawase";
-        strength = 12;
+        background = true;
+        background-fixed = true;
+        background-frame = true;
+        direction = 30;
+        method = "gaussian";
+        strength = 30;
       };
       blur-background-exclude = [
         "class_g = 'discord'"
@@ -21,13 +22,13 @@
       ];
       corner-radius = 10.0;
       detect-rounded-corners = true;
-      refresh-rate = 0;
+      refresh-rate = 240;
       fading = true;
       fade-in-step = 0.08;
       fade-out-step = 0.08;
-      #fade-delta = 0;
+      fade-delta = 0;
       opacity-rule = [
-        "75:class_g = 'Code'"
+        "85:class_g = 'Code'"
       ];
       round-borders = 10;
       shadow-exclude = [

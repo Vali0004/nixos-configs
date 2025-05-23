@@ -5,12 +5,6 @@ let
 in {
   xsession.windowManager.i3 = {
     enable = true;
-    extraConfig = ''
-      # For some unknown fucking reason, i3 on NixOS (and NixOS only) defaults to ws10
-      exec --no-startup-id i3-msg "workspace 1"
-      # Better layouts
-      exec_always --no-startup-id i3-auto-layout
-    '';
     config = {
       # Bar
       bars = [{
@@ -179,16 +173,27 @@ in {
       };
       # Modifer keys
       modifier = "${i3Config.modifier}";
+      startup = [
+        # For some unknown fucking reason, i3 on NixOS (and NixOS only) defaults to ws10
+        { command = "i3-msg \"workspace 1\""; notification = false; }
+        # Better layouts
+        { command = "i3-auto-layout"; always = true; notification = false; }
+        # Autostart Alacritty
+        { command = "alacritty"; notification = false; }
+        # Autostart Discord
+        { command = "discord"; notification = false; }
+      ];
       # Window options
       window = {
         hideEdgeBorders = "both";
         commands = [
-          {
-            command = "border pixel 0";
-            criteria = {
-              class = "^.*";
-            };
-          }
+          { command = "border pixel 0"; criteria.class = "^.*"; }
+          # Handle container 2
+          { command = "move container to workspace 2"; criteria.class = "chrome"; }
+          # Handle container 3
+          { command = "move container to workspace 3"; criteria.class = "alacritty"; }
+          # Handle container 4
+          { command = "move container to workspace 4"; criteria.class = "discord"; }
         ];
       };
     };

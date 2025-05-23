@@ -13,14 +13,13 @@ in {
       programs/rofi.nix
       programs/vscode.nix
       programs/zsh.nix
+      services/clipmenu.nix
       services/dunst.nix
-      windowManager/i3.nix
       services/polybar.nix
+      windowManager/i3.nix
     ];
 
-    home = {
-      stateVersion = "25.05";
-    };
+    home.stateVersion = "25.05";
 
     gtk = {
       enable = true;
@@ -31,11 +30,6 @@ in {
     };
 
     nixpkgs.config.allowUnfree = true;
-
-    services.clipmenu = {
-      enable = true;
-      launcher = "rofi";
-    };
 
     xdg.mimeApps = {
       associations = {

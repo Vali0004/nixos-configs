@@ -5,7 +5,7 @@
     enable = true;
     profiles.default = {
       userSettings = {
-        "explorer.confirmDragAndDrop" = true;
+        "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 1000;
         "terminal.integrated.defaultProfile.linux" = "zsh";
