@@ -5,6 +5,7 @@
     enable = true;
     profiles.default = {
       userSettings = {
+        "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 1000;

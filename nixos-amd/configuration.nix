@@ -11,6 +11,7 @@ in {
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
+    pkgs/cider.nix
     programs/spicetify.nix
     programs/zsh.nix
     services/displayManager.nix
