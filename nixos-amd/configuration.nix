@@ -67,7 +67,7 @@ in {
     jq
     mpv # Video Player
     nemo-with-extensions # File browser
-    nodejs_23
+    nodejs_24
     obs-studio
     openssl
     opentabletdriver # Tablet Driver

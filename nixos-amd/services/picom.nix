@@ -16,6 +16,7 @@
         strength = 12;
       };
       blur-background-exclude = [
+        "class_g = 'discord'"
         "class_g = 'Chrome'"
       ];
       corner-radius = 10.0;
@@ -27,11 +28,9 @@
       #fade-delta = 0;
       opacity-rule = [
         "75:class_g = 'Code'"
-        "75:class_g = 'discord'"
       ];
       round-borders = 10;
       shadow-exclude = [
-        "class_g = 'discord'"
         "argb && (override_redirect || wmwin)"
       ];
       use-damage = true;
