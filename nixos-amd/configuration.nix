@@ -13,6 +13,8 @@ in {
     home-manager/home.nix
     pkgs/cider.nix
     programs/spicetify.nix
+    programs/ssh.nix
+    programs/steam.nix
     programs/zsh.nix
     services/displayManager.nix
     services/easyEffects.nix
