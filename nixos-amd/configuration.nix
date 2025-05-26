@@ -68,6 +68,7 @@ in {
     google-chrome # Browser
     iperf
     jq
+    magic-wormhole
     mpv # Video Player
     nemo-with-extensions # File browser
     nodejs_24
@@ -148,7 +149,7 @@ in {
       fsType = "ntfs";
     };
     # Mount the NFS
-    "/data" = {
+    "/mnt/data" = {
       device = "10.0.0.244:/data";
       fsType = "nfs";
       options = [ "x-systemd.automount" "noauto" "soft" ];
@@ -199,7 +200,7 @@ in {
   };
 
   programs = {
-    alvr = {
+    envision = {
       enable = true;
       openFirewall = true;
     };
@@ -222,7 +223,10 @@ in {
 
   services = {
     udev.extraRules = ''
+      # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
+      # VR
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de|8089", ATTRS{idProduct}=="0bb4|2c87", GROUP="wheel|video"
     '';
     xserver = {
       enable = true;
