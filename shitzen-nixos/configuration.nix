@@ -110,10 +110,11 @@ in {
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
-    #"/data" = {
-    #  fsType = "ext4";
-    #  label = "MAIN";
-    #};
+    "/data" = {
+      device = "zpool/data";
+      fsType = "zfs";
+      options = [ "zfsutil" ];
+    };
   };
 
   hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;

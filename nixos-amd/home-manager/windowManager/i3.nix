@@ -179,11 +179,11 @@ in {
         # Better layouts
         { command = "i3-auto-layout"; always = true; notification = false; }
         # Autostart Google Chrome
-        { workspace = "2"; command = "google-chrome; sleep 2"; notification = true; }
+        { workspace = "2"; command = "google-chrome; sleep 10"; notification = true; }
         # Autostart Discord
-        { workspace = "4"; command = "discord; sleep 5"; notification = true; }
+        { workspace = "4"; command = "discord; sleep 8"; notification = true; }
         # Autostart Cider
-        { workspace = "5"; command = "Cider; sleep 10"; notification = true; }
+        { workspace = "5"; command = "Cider"; notification = true; }
       ];
       # Window options
       window = {
