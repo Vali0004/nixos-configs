@@ -1,7 +1,6 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let
-  # i3 config extras
   flameshot_fuckk_lol = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
     ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
     ${pkgs.curl}/bin/curl -H "authorization: MTc0NTgwNjM3OTI1NA==.NTc3N2U3Yzc0NDBhMWExY2JhYWMyZWUwZGY2ZjEzOWIuM2I2MmQ0OTgwMzA0ZTIyNTFhYzZmNTcwN2ZhM2FjZjhjYzcyODgyYjIzZTIyZTEyOWZkN2VmNWMwMmViN2FlNTkxMjc3MzQ3MWQ2YjgyMWVhYzM0OGJiZTE2MTQyMDM4Mjg4Zjk5MGFkYzBjZDNmYWI3ODM1MjM2Y2MzYTU3OGE3ODZkYzExYTA3OTU2OWYzNGRlMGM0ZWJhNTZmYzEwZQ==" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
@@ -12,6 +11,7 @@ in {
     boot/boot.nix
     home-manager/home.nix
     pkgs/cider.nix
+    #programs/hypr.nix
     programs/spicetify.nix
     programs/ssh.nix
     programs/steam.nix
@@ -22,7 +22,7 @@ in {
     services/pipewire.nix
     services/toxvpn.nix
     services/virtualisation.nix
-    services/windowManager.nix
+    services/windowManager/i3.nix
   ];
 
   console = {
@@ -117,7 +117,6 @@ in {
   ];
 
   environment.variables.CM_LAUNCHER = "rofi";
-
   fileSystems = {
     # Mount the Root Partition
     "/" = {

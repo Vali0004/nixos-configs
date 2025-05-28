@@ -31,15 +31,15 @@ let
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    services/mailserver.nix
+    #services/mailserver.nix
     services/minecraft.nix
-    services/nginx.nix
-    services/php.nix
-    services/pterodactyl-panel.nix
-    services/redis.nix
-    services/samba.nix
-    services/wings.nix
-    services/zipline.nix
+    #services/nginx.nix
+    #services/php.nix
+    #services/pterodactyl-panel.nix
+    #services/redis.nix
+    #services/samba.nix
+    #services/wings.nix
+    #services/zipline.nix
   ];
 
   # Use the GRUB 2 boot loader.
@@ -67,23 +67,27 @@ in {
 
   environment = {
     systemPackages = with pkgs; [
+      btop
       docker-compose
       fastfetch
       ffmpeg_6-headless
       git
+      hdparm
       htop
       iperf
       jdk
+      lsscsi
       magic-wormhole
+      mysql84
       node2nix
       nodejs_20
       nodePackages.pnpm
       nodePackages.yarn
-      mysql84
       openssl
       pciutils
       redis
       screen
+      sg3_utils
       smartmontools
       tmux
       tshark
@@ -106,10 +110,10 @@ in {
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
-    "/data" = {
-      fsType = "ext4";
-      label = "MAIN";
-    };
+    #"/data" = {
+    #  fsType = "ext4";
+    #  label = "MAIN";
+    #};
   };
 
   hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
@@ -181,18 +185,18 @@ in {
       };
       wantedBy = [ "multi-user.target" ];
     };
-    forward4300 = mkForwardTCP 4300;
-    forward4300UDP = mkForwardUDP 4300;
-    forward4301 = mkForwardTCP 4301;
-    forward4301UDP = mkForwardUDP 4301;
-    forward4302 = mkForwardTCP 4302;
-    forward4302UDP = mkForwardUDP 4302;
-    forward4303 = mkForwardTCP 4303;
-    forward4303UDP = mkForwardUDP 4303;
-    forward4304 = mkForwardTCP 4304;
-    forward4304UDP = mkForwardUDP 4304;
-    forward4305 = mkForwardTCP 4305;
-    forward4305UDP = mkForwardUDP 4305;
+    #forward4300 = mkForwardTCP 4300;
+    #forward4300UDP = mkForwardUDP 4300;
+    #forward4301 = mkForwardTCP 4301;
+    #forward4301UDP = mkForwardUDP 4301;
+    #forward4302 = mkForwardTCP 4302;
+    #forward4302UDP = mkForwardUDP 4302;
+    #forward4303 = mkForwardTCP 4303;
+    #forward4303UDP = mkForwardUDP 4303;
+    #forward4304 = mkForwardTCP 4304;
+    #forward4304UDP = mkForwardUDP 4304;
+    #forward4305 = mkForwardTCP 4305;
+    #forward4305UDP = mkForwardUDP 4305;
   };
 
   vali.mc_prod = false;

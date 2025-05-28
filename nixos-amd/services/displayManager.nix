@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.displayManager.defaultSession = "none+i3";
   services.xserver.displayManager = {
     lightdm = {
+      enable = true;
       background = /home/vali/wallpaper.png;
       extraConfig = ''
         user-background = false
@@ -18,5 +18,13 @@
       ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --mode 2560x1440_239.97
       ${pkgs.i3-auto-layout}/bin/i3-auto-layout &
     '';
+  };
+  services.displayManager = {
+    defaultSession = "none+i3";
+    #sddm = {
+    #  enable = true;
+    #  wayland.enable = true;
+    #  theme = "Noridc-darker";
+    #};
   };
 }

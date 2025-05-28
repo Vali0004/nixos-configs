@@ -12,11 +12,13 @@ in {
       programs/fastfetch.nix
       programs/rofi.nix
       programs/vscode.nix
+      #programs/waybar.nix
       programs/zsh.nix
       services/clipmenu.nix
       services/dunst.nix
       services/polybar.nix
       windowManager/i3.nix
+      #windowManager/hypr.nix
     ];
 
     home.stateVersion = "25.05";
