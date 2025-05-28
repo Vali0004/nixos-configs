@@ -175,25 +175,21 @@ in {
       modifier = "${i3Config.modifier}";
       startup = [
         # For some unknown fucking reason, i3 on NixOS (and NixOS only) defaults to ws10
-        { command = "i3-msg \"workspace 1\""; notification = false; }
+        { workspace = "1"; command = "workspace 1"; notification = true; }
         # Better layouts
         { command = "i3-auto-layout"; always = true; notification = false; }
-        # Autostart Alacritty
-        { command = "alacritty"; notification = false; }
+        # Autostart Google Chrome
+        { workspace = "2"; command = "google-chrome; sleep 2"; notification = true; }
         # Autostart Discord
-        { command = "discord"; notification = false; }
+        { workspace = "4"; command = "discord; sleep 5"; notification = true; }
+        # Autostart Cider
+        { workspace = "5"; command = "Cider; sleep 10"; notification = true; }
       ];
       # Window options
       window = {
         hideEdgeBorders = "both";
         commands = [
           { command = "border pixel 0"; criteria.class = "^.*"; }
-          # Handle container 2
-          { command = "move container to workspace 2"; criteria.class = "chrome"; }
-          # Handle container 3
-          { command = "move container to workspace 3"; criteria.class = "alacritty"; }
-          # Handle container 4
-          { command = "move container to workspace 4"; criteria.class = "discord"; }
         ];
       };
     };
