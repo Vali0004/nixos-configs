@@ -3,6 +3,7 @@
 let
   mkProxy = import ./nginx/mkproxy.nix;
 in {
+  environment.systemPackages = [ pkgs.zipline ];
   services.nginx.virtualHosts = {
     # Zipline
     "holy.fuckk.lol" = {

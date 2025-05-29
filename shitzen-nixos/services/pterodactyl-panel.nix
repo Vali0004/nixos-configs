@@ -4,8 +4,8 @@
   systemd.services.pterodactyl-panel-scheduler = {
     description = "Pterodactyl Panel";
 
-    after = ["redis-pterodactyl.service"];
-    wantedBy = ["multi-user.target"];
+    after = [ "redis-pterodactyl.service" ];
+    wantedBy = [ "multi-user.target" ];
 
     unitConfig = {
       ConditionPathExists = "/var/lib/pterodactyl-panel/.env";

@@ -4,14 +4,18 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    agenix.url = "github:ryantm/agenix";
   };
-  outputs = { nixpkgs, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, self }:
   {
     colmena = {
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = [
+            (self: super: {
+              agenix = agenix.packages.x86_64-linux.default;
+            })
             nix-minecraft.overlay
             (self: super: {
               toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
@@ -49,6 +53,7 @@
         deployment.targetHost = "10.0.0.244";
         deployment.targetUser = "root";
         imports = [
+          agenix.nixosModules.age
           ./core.nix
           nix-minecraft.nixosModules.minecraft-servers
           pterodactyl-wings-nix.nixosModules.pterodactyl-wings
