@@ -10,5 +10,10 @@
       owner = "pterodactyl";
       group = "pterodactyl";
     };
+    zipline = {
+      file = ./../../secrets/zipline.age;
+      owner = "zipline";
+      group = "zipline";
+    };
   };
 }

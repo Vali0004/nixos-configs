@@ -19,10 +19,12 @@ in {
   };
   services.zipline = {
     enable = true;
+    environmentFiles = [
+      config.age.secrets.zipline.path
+    ];
     settings = {
       CORE_HOSTNAME = "0.0.0.0";
       CORE_PORT = 3000;
-      CORE_SECRET = "x9J+)()_(4.7nZ.8aMj@#7u09u/;=bghpi6ki,k8lu7kjh";
       DATASOURCE_LOCAL_DIRECTORY = "/data/zipline/uploads";
       DATASOURCE_TYPE = "local";
     };
