@@ -3,7 +3,7 @@
 {
   services.wings = {
     enable = true;
-    tokenFile = "/data/private/secret/wingsFile";
+    tokenFile = config.age.secrets.pterodactyl.path;
     config = {
       uuid = "7493f305-63fb-4047-b8e4-136435e6180a";
       token_id = "5oz7AoZJENydrkoX";
