@@ -59,7 +59,6 @@ in {
     wget
     wings
     zip
-    zipline
   ];
 
   fileSystems = {
