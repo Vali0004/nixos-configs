@@ -13,4 +13,5 @@ let
   ];
 in {
   "pterodactyl.age".publicKeys = machines ++ ssh_keys;
+  "zipline.age".publicKeys = machines ++ ssh_keys;
 }
