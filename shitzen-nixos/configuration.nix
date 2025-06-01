@@ -21,6 +21,8 @@ in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/agenix.nix
+    modules/cors-anywhere/service.nix
+    modules/docker.nix
     modules/boot.nix
     modules/zfs.nix
     services/mailserver.nix
@@ -82,7 +84,7 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 4100 4101 4301 4302 5201 6379 8080 9000 ];
+      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 4100 4101 4301 4302 5001 5201 6379 8080 9000 ];
       allowedUDPPorts = [ 111 4100 4101 4301 4302 ];
     };
     hostId = "0626c0ac";

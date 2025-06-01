@@ -1,11 +1,13 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
-{
+let
+  cors_anywhere = pkgs.callPackage ./package.nix {};
+in {
   # TODO: Setup a auto-deploy script
   environment.systemPackages = with pkgs; [
     nodejs_20
-    nodePackages.pnpm
-    nodePackages.yarn
+    cors_anywhere_pkg
+    cors_anywhere
   ];
   systemd.services.cors-anywhere = {
     enable = true;
@@ -15,7 +17,7 @@
     };
     serviceConfig = {
       Environment = "PORT=8099";
-      ExecStart = "/nix/store/j7dx1n6m5axf9r2bvly580x2ixx546wq-nodejs-20.18.1/bin/node/root/cors-anywhere/result/lib/node_modules/cors-anywhere/server.js";
+      ExecStart = "${pkgs.nodejs_20}/bin/node ${cors_anywhere}/lib/node_modules/cors-anywhere/server.js";
     };
     wantedBy = [ "multi-user.target" ];
   };

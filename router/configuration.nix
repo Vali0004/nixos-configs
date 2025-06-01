@@ -75,7 +75,7 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5201 6379 8080 9000 ];
+      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 9000 ];
       allowedUDPPorts = [ 4100 4101 4301 4302 ];
     };
     hostName = "router";
@@ -129,6 +129,8 @@ in {
     forward4303 = mkForward 4303 "10.0.127.3";
     forward4304 = mkForward 4304 "10.0.127.3";
     forward4305 = mkForward 4305 "10.0.127.3";
+    forward5001 = mkForward 5001 "10.0.127.3";
+    forward5201 = mkForward 5201 "10.0.127.3";
     forward6379 = mkForward 6379 "10.0.127.3";
     forward8080 = mkForward 8080 "10.0.127.3";
     forward9000 = mkForward 9000 "10.0.127.3";
