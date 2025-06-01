@@ -41,8 +41,4 @@
       };
     };
   };
-
-  virtualisation = {
-    docker.enable = true;
-  };
 }
