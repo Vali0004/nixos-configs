@@ -6,7 +6,6 @@ in {
   # TODO: Setup a auto-deploy script
   environment.systemPackages = with pkgs; [
     nodejs_20
-    cors_anywhere_pkg
     cors_anywhere
   ];
   systemd.services.cors-anywhere = {
