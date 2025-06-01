@@ -13,11 +13,11 @@
         volumes = [
           "/var/run/docker.sock:/var/run/docker.sock"
           "./data:/app/data"
-          "/data/dockge/stacks:/data/dockge/stacks"
+          "/data/stacks:/data/stacks"
         ];
-        entrypoint = "/data/dockge/dockge-run";
+        entrypoint = "/data/dockge";
         environment = {
-          DOCKGE_STACKS_DIR = "/data/dockge/stacks";
+          DOCKGE_STACKS_DIR = "/data/stacks";
         };
         extraOptions = [ "--cap-add=NET_ADMIN" ];
       };
