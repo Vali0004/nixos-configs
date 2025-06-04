@@ -2,6 +2,7 @@
 
 {
   virtualisation = {
+    docker.enable = true;
     podman.enable = true;
     oci-containers.containers = {
       dockge = {
@@ -11,7 +12,7 @@
           "5001:5001"
         ];
         volumes = [
-          "/var/run/podman/podman.sock:/var/run/docker.sock"
+          "/var/run/docker.sock:/var/run/docker.sock"
           "/data/dockge/data:/app/data:Z"
           "/data/stacks:/data/stacks"
         ];
