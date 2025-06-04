@@ -28,8 +28,8 @@ in {
         };
       };
     };
-    # Dockage
-    "dockage.fuckk.lol" = {
+    # Dockge
+    "dockge.fuckk.lol" = {
       enableACME = true;
       forceSSL = true;
       locations = {

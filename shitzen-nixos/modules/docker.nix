@@ -11,11 +11,10 @@
           "5001:5001"
         ];
         volumes = [
-          "/var/run/docker.sock:/var/run/docker.sock"
-          "./data:/app/data:Z"
+          "/var/run/podman/podman.sock:/var/run/docker.sock"
+          "/data/dockge/data:/app/data:Z"
           "/data/stacks:/data/stacks"
         ];
-        entrypoint = "/data/dockge";
         environment = {
           DOCKGE_STACKS_DIR = "/data/stacks";
         };

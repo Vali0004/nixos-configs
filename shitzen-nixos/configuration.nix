@@ -149,8 +149,6 @@ in {
     forward4304UDP = mkForwardUDP 4304;
     forward4305 = mkForwardTCP 4305;
     forward4305UDP = mkForwardUDP 4305;
-    forward5001 = mkForwardTCP 5001;
-    forward5001UDP = mkForwardUDP 5001;
   };
 
   vali.mc_prod = false;
