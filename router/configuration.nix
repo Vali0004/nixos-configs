@@ -133,6 +133,7 @@ in {
     forward5201 = mkForward 5201 "10.0.127.3";
     forward6379 = mkForward 6379 "10.0.127.3";
     forward8080 = mkForward 8080 "10.0.127.3";
+    forward8096 = mkForward 8096 "10.0.127.3";
     forward9000 = mkForward 9000 "10.0.127.3";
     forwardUDP4100 = mkForwardUDP 4100 "10.0.127.3";
     forwardUDP4101 = mkForwardUDP 4101 "10.0.127.3";
