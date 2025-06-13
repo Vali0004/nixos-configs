@@ -3,6 +3,9 @@
 let
   i3Config = import ./../../i3config.nix;
 in {
+  home = {
+    file."wallpaper.png".source = ./../wallpaper.png;
+  };
   xsession.windowManager.i3 = {
     enable = true;
     config = {
@@ -178,10 +181,8 @@ in {
         { workspace = "1"; command = "workspace 1"; notification = true; }
         # Better layouts
         { command = "i3-auto-layout"; always = true; notification = false; }
-        # Autostart Google Chrome
-        { workspace = "2"; command = "google-chrome; sleep 10"; notification = true; }
         # Autostart Discord
-        { workspace = "4"; command = "discord; sleep 8"; notification = true; }
+        { workspace = "4"; command = "discord; sleep 15"; notification = true; }
         # Autostart Cider
         { workspace = "5"; command = "Cider"; notification = true; }
       ];

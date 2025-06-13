@@ -1,9 +1,14 @@
 { config, lib, pkgs, ... }:
 
+let
+  sddm-theme = pkgs.sddm-astronaut.override {
+    embeddedTheme = "pixel_sakura";
+  };
+in
 {
   services.xserver.displayManager = {
     lightdm = {
-      enable = true;
+      enable = false;
       background = /home/vali/wallpaper.png;
       extraConfig = ''
         user-background = false
@@ -19,12 +24,21 @@
       ${pkgs.i3-auto-layout}/bin/i3-auto-layout &
     '';
   };
+  environment.systemPackages = [ sddm-theme ];
   services.displayManager = {
     defaultSession = "none+i3";
-    #sddm = {
-    #  enable = true;
-    #  wayland.enable = true;
-    #  theme = "Noridc-darker";
-    #};
+    sddm = {
+      enable = true;
+      extraPackages = with pkgs.kdePackages; [
+        sddm-theme
+        sddm-kcm
+        qtsvg
+        qtmultimedia
+        qtvirtualkeyboard
+      ];
+      package = pkgs.kdePackages.sddm;
+      theme = "sddm-astronaut-theme";
+      wayland.enable = false;
+    };
   };
 }

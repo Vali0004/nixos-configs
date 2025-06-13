@@ -83,6 +83,7 @@ in {
     playerctl
     plex-desktop
     pulseaudio # Audio server
+    qemu_kvm
     rofi # Dmenu replacement
     socat
     spicetify-cli # Spotify mods
@@ -106,6 +107,11 @@ in {
     vulkan-validation-layers
     wget
     wireshark
+    (writeShellScriptBin "qemu-system-x86_64-uefi" ''
+      qemu-system-x86_64 \
+        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
+        "$@"
+    '')
     xclip
     xdg-desktop-portal
     xdg-desktop-portal-gtk
