@@ -10,6 +10,7 @@ in {
     imports = [
       programs/alacritty.nix
       programs/fastfetch.nix
+      programs/git.nix
       programs/rofi.nix
       programs/vscode.nix
       #programs/waybar.nix
