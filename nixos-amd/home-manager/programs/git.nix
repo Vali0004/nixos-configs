@@ -2,7 +2,9 @@
 
 {
   programs.git = {
-    userName = "Vali0004";
+    enable = true;
+    lfs.enable = true;
     userEmail = "diorcheats.vali@gmail.com";
+    userName = "Vali0004";
   };
 }
