@@ -74,7 +74,7 @@ in {
       };
       "module/date" = {
         date = "%Y-%m-%d%";
-        interval = 0;
+        interval = 1;
         label = {
           text = "%time%";
           foreground = i3Config.barPrimary;

@@ -142,6 +142,7 @@ in {
     forwardUDP4303 = mkForwardUDP 4303 "10.0.127.3";
     forwardUDP4304 = mkForwardUDP 4304 "10.0.127.3";
     forwardUDP4305 = mkForwardUDP 4305 "10.0.127.3";
+    forwardUDP8096 = mkForwardUDP 8096 "10.0.127.3";
   };
 
   system.stateVersion = "25.05";

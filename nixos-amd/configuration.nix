@@ -73,6 +73,7 @@ in {
     iperf
     jq
     magic-wormhole
+    morph # Deploy system
     mpv # Video Player
     nemo-with-extensions # File browser
     nodejs_24

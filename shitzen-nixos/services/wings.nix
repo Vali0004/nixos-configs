@@ -30,7 +30,7 @@
       };
     };
   };
-  
+
   users = {
     groups.pterodactyl = {};
     users = {

@@ -3,7 +3,7 @@
 let
   app = "php-fpm";
   php-env = pkgs.php.buildEnv {
-    extensions = { enabled, all }: with all; enabled ++ [ 
+    extensions = { enabled, all }: with all; enabled ++ [
       memcached redis mbstring bcmath mysqli curl zip gd
     ];
     extraConfig = ''
