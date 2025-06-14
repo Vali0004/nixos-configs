@@ -56,7 +56,7 @@
 
   hardware = {
     enableRedistributableFirmware = false;
-
+    cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
   };
 
   networking = {
@@ -72,16 +72,6 @@
 
   # Allow 'nixos' to nix-copy to live system
   nix.settings.trusted-users = [ "nixos" ];
-
-  # Install less voices for speechd to save some space
-  nixpkgs.overlays = [
-    (_: prev: {
-      mbrola-voices = prev.mbrola-voices.override {
-        # only ship with one voice per language
-        languages = [ "*1" ];
-      };
-    })
-  ];
 
   programs = {
     command-not-found.enable = false;
@@ -118,6 +108,8 @@
     };
     udisks2.enable = false;
   };
+
+  system.stateVersion = "25.11";
 
   users.users = {
     nixos = {

@@ -4,6 +4,7 @@
   imports = [
     ./kernel.nix
     ./loader.nix
+    ./rescue.nix
   ];
 
   boot.consoleLogLevel = 0;
