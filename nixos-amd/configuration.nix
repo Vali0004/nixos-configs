@@ -14,13 +14,13 @@ in {
     boot/boot.nix
     home-manager/home.nix
     pkgs/cider.nix
-    #programs/hypr.nix
     programs/spicetify.nix
     programs/ssh.nix
     programs/steam.nix
     programs/zsh.nix
     services/displayManager.nix
     services/easyEffects.nix
+    services/monado.nix
     services/picom.nix
     services/pipewire.nix
     services/toxvpn.nix
@@ -50,6 +50,7 @@ in {
     colmena
     curl
     clipmenu # Clipboard Manager
+    (pkgs.callPackage ./pkgs/darling.nix {}) # macOS Translation Layer
     dos2unix
     direnv
     (discord.override { withVencord = true; })
