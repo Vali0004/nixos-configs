@@ -5,6 +5,9 @@ let
     ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
     ${pkgs.curl}/bin/curl -H "authorization: MTc0NTgwNjM3OTI1NA==.NTc3N2U3Yzc0NDBhMWExY2JhYWMyZWUwZGY2ZjEzOWIuM2I2MmQ0OTgwMzA0ZTIyNTFhYzZmNTcwN2ZhM2FjZjhjYzcyODgyYjIzZTIyZTEyOWZkN2VmNWMwMmViN2FlNTkxMjc3MzQ3MWQ2YjgyMWVhYzM0OGJiZTE2MTQyMDM4Mjg4Zjk5MGFkYzBjZDNmYWI3ODM1MjM2Y2MzYTU3OGE3ODZkYzExYTA3OTU2OWYzNGRlMGM0ZWJhNTZmYzEwZQ==" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
   '';
+  fastfetch_simple = pkgs.writeScriptBin "fastfetch_simple" ''
+    ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
+  '';
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
@@ -58,6 +61,7 @@ in {
     easyeffects # Noise suppression
     evtest
     fastfetch # Flexing
+    fastfetch_simple
     flameshot # Screenshot tool
     flameshot_fuckk_lol # Screenshot tool with my uploader secret
     feh # Wallpaper

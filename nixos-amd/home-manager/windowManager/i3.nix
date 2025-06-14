@@ -4,7 +4,7 @@ let
   i3Config = import ./../../i3config.nix;
 in {
   home = {
-    file."wallpaper.png".source = ./../wallpaper.png;
+    file."wallpaper.gif".source = ./../wallpaper.gif;
   };
   xsession.windowManager.i3 = {
     enable = true;
@@ -182,7 +182,7 @@ in {
         # Better layouts
         { command = "i3-auto-layout"; always = true; notification = false; }
         # Autostart Discord
-        { workspace = "4"; command = "discord; sleep 15"; notification = true; }
+        { workspace = "4"; command = "discord; sleep 30;"; notification = true; }
         # Autostart Cider
         { workspace = "5"; command = "Cider"; notification = true; }
       ];
@@ -190,6 +190,7 @@ in {
       window = {
         hideEdgeBorders = "both";
         commands = [
+          { command = "floating enable, focus disable"; criteria.class = "xwinwrap"; }
           { command = "border pixel 0"; criteria.class = "^.*"; }
         ];
       };

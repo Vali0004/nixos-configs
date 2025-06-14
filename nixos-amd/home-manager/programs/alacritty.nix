@@ -18,7 +18,7 @@
       ];
       selection.save_to_clipboard = true;
       window = {
-        opacity = 1;
+        opacity = 0.95;
         blur = true;
       };
     };

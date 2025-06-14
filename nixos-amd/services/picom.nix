@@ -2,11 +2,11 @@
 
 {
   services.picom = {
-    activeOpacity = 1;
+    activeOpacity = 0.95;
     backend = "glx";
     enable = true;
     fade = true;
-    inactiveOpacity = 0.8;
+    inactiveOpacity = 0.85;
     settings = {
       blur = {
         background = true;

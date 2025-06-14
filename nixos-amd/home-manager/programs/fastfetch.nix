@@ -1,6 +1,9 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
+  home = {
+    file.".config/fastfetch/simple.jsonc".source = ./fastfetch-simple.jsonc;
+  };
   programs.fastfetch = {
     enable = true;
     settings = {
@@ -9,7 +12,7 @@
       };
       display = {
         constants = [
-          "─────────────────"
+          "─────────────"
         ];
         key = {
           type = "icon";
