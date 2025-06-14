@@ -45,6 +45,17 @@ in {
         };
       };
     };
+    # Sonarr
+    "sonarr.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+      locations = {
+        "/" = {
+          proxyPass = "http://127.0.0.1:8989";
+          proxyWebsockets = true;
+        };
+      };
+    };
     # Cors anywhere
     "r34.fuckk.lol" = {
       enableACME = true;

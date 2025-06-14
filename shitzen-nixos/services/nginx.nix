@@ -40,32 +40,24 @@
             alias = "/data/web/";
             index = "index.html";
           };
-          "/private/anime" = {
-            alias = "/data/private/anime";
+          "/private/" = {
+            alias = "/data/private/images/";
             index = "index.htm";
             extraConfig = ''
               autoindex on;
               autoindex_exact_size off;
             '';
           };
-          "/private/games" = {
-            alias = "/data/private/games";
+          "/private/downloads/" = {
+            alias = "/data/private/downloads/";
             index = "index.htm";
             extraConfig = ''
               autoindex on;
               autoindex_exact_size off;
             '';
           };
-          "/private/movies" = {
-            alias = "/data/private/movies";
-            index = "index.htm";
-            extraConfig = ''
-              autoindex on;
-              autoindex_exact_size off;
-            '';
-          };
-          "/private/images" = {
-            alias = "/data/private/images";
+          "/private/images/" = {
+            alias = "/data/private/images/";
             index = "index.htm";
             extraConfig = ''
               autoindex on;
