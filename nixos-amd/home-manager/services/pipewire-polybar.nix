@@ -27,6 +27,19 @@ SOURCE_NAME=$(getDefaultSource)
 SINK_DESCRIPTION=$(getSinkDescription "$SINK_NAME")
 SOURCE_DESCRIPTION=$(getSourceDescription "$SOURCE_NAME")
 
+# Trim descriptions with ellipsis if needed
+if [ ''${#SINK_DESCRIPTION} -gt 14 ]; then
+  SINK_DESCRIPTION_SHORT="''${SINK_DESCRIPTION:0:11}..."
+else
+  SINK_DESCRIPTION_SHORT="$SINK_DESCRIPTION"
+fi
+
+if [ ''${#SOURCE_DESCRIPTION} -gt 14 ]; then
+  SOURCE_DESCRIPTION_SHORT="''${SOURCE_DESCRIPTION:0:11}..."
+else
+  SOURCE_DESCRIPTION_SHORT="$SOURCE_DESCRIPTION"
+fi
+
 VOLUME=$(pactl list sinks | awk -v sink="$SINK_NAME" '
   $0 ~ "Name: "sink {found=1}
   found && /Volume:/ {
@@ -46,9 +59,9 @@ case $1 in
     ;;
   "output")
     if [ "$IS_MUTED" = "yes" ]; then
-      echo "%{F${i3Config.barPrimary}}󰝟%{F-} %{F${i3Config.barSecondary}}''${VOLUME}%%{F-} ''${SINK_DESCRIPTION}"
+      echo "%{F${i3Config.barPrimary}}󰝟%{F-} %{F${i3Config.barSecondary}}''${VOLUME}%%{F-}"
     else
-      echo "%{F${i3Config.barPrimary}}%{F-} %{F${i3Config.barSecondary}}''${VOLUME}%%{F-} ''${SINK_DESCRIPTION}"
+      echo "%{F${i3Config.barPrimary}}%{F-} %{F${i3Config.barSecondary}}''${VOLUME}%%{F-}"
     fi
     ;;
   *)
