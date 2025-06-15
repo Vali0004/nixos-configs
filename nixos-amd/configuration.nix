@@ -69,6 +69,7 @@ in {
     fzf
     git
     glib
+    gnused
     gnome-software
     google-chrome # Browser
     iperf

@@ -1,7 +1,7 @@
-{ lib, playerctl, writeShellScript }:
+{ gnused, lib, playerctl, writeShellScript }:
 
 writeShellScript "pipewire.sh" ''
-PATH=${lib.makeBinPath [ playerctl ]}
+PATH=${lib.makeBinPath [ playerctl gnused ]}
 
 player_status=$(playerctl status 2> /dev/null)
 
@@ -13,11 +13,13 @@ else
     output="No Source"
 fi
 
+# Trim and truncate trailing space
 if [ ''${#output} -gt 30 ]; then
-  output_trimmed="''${output:0:27}..."
+  output_trimmed="''${output:0:27}"
+  output_trimmed="$(echo "$output_trimmed" | sed 's/[[:space:]]*$//')..."
 else
   output_trimmed="$output"
 fi
-# Trim to 30 characters max
+
 echo "''${output_trimmed}"
 ''
