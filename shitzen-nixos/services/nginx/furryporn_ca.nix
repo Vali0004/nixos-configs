@@ -25,19 +25,5 @@ in {
         };
       };
     };
-    # Unison ptero
-    "unison.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
-      locations = {
-        "/" = {
-          alias = "/data/private/";
-          index = "index.htm";
-          extraConfig = ''
-            return 404;
-          '';
-        };
-      };
-    };
   };
 }

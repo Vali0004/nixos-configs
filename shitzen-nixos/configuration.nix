@@ -100,9 +100,7 @@ in {
   security = {
     acme = {
       acceptTerms = true;
-      defaults = {
-        email = "diorcheats.vali@gmail.com";
-      };
+      defaults.email = "diorcheats.vali@gmail.com";
     };
   };
 
@@ -156,4 +154,3 @@ in {
 
   system.stateVersion = "25.05";
 }
-

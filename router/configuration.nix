@@ -75,8 +75,8 @@ in {
   networking = {
     defaultGateway = "31.59.128.1";
     firewall = {
-      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 9000 ];
-      allowedUDPPorts = [ 4100 4101 4301 4302 ];
+      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 8096 9000 ];
+      allowedUDPPorts = [ 4100 4101 4301 4302 4303 4304 4305 ];
     };
     hostName = "router";
     interfaces.ens3 = {
@@ -142,8 +142,25 @@ in {
     forwardUDP4303 = mkForwardUDP 4303 "10.0.127.3";
     forwardUDP4304 = mkForwardUDP 4304 "10.0.127.3";
     forwardUDP4305 = mkForwardUDP 4305 "10.0.127.3";
-    forwardUDP8096 = mkForwardUDP 8096 "10.0.127.3";
   };
 
   system.stateVersion = "25.05";
+  
+  #virtualisation = {
+  #  docker.enable = true;
+  #  podman.enable = true;
+  #  oci-containers.containers = {
+  #    dockge = {
+  #      autoStart = true;
+  #      image = "louislam/dockge:1";
+  #      ports = [ "6002:5001" ];
+  #      volumes = [
+  #        "/var/run/docker.sock:/var/run/docker.sock"
+  #        "/var/lib/dockge/data:/app/data:Z"
+  #        "/var/lib/stacks:/data/stacks"
+  #      ];
+  #      environment.DOCKGE_STACKS_DIR = "/var/lib/stacks";
+  #    };
+  #  };
+  #};
 }

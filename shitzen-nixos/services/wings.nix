@@ -5,8 +5,8 @@
     enable = true;
     tokenFile = config.age.secrets.pterodactyl.path;
     config = {
-      uuid = "7493f305-63fb-4047-b8e4-136435e6180a";
-      token_id = "5oz7AoZJENydrkoX";
+      uuid = "1e742838-97d6-438a-8d43-df3060fe9c6c";
+      token_id = "VeLiTm6TTJPSzSfe";
       remote = "https://panel.fuckk.lol";
       api = {
         host = "0.0.0.0";
@@ -24,9 +24,7 @@
         data = "/data/pterodactyl/data/volumes";
         archive_directory = "/data/pterodactyl/data/archives";
         backup_directory = "/data/pterodactyl/data/backups";
-        sftp = {
-          bind_port = 2022;
-        };
+        sftp.bind_port = 2022;
       };
     };
   };
