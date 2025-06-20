@@ -84,8 +84,8 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 4100 4101 4301 4302 5001 5201 6379 8080 9000 ];
-      allowedUDPPorts = [ 111 2049 4100 4101 4301 4302 ];
+      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 4100 4101 4301 4302 5001 5201 6379 8080 9000 20048 ];
+      allowedUDPPorts = [ 111 2049 4100 4101 4301 4302 20048 ];
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
@@ -113,7 +113,7 @@ in {
       server = {
         enable = true;
         exports = ''
-          /data 0.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
+          /data 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
         '';
       };
     };
