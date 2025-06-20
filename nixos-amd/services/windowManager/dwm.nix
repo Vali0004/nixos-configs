@@ -33,6 +33,9 @@ let
 
     printf "%s\n" "$\{PIDs[@]}" > $PIDFILE
   '';
+  dmenu_wrapper = pkgs.writeScriptBin "dmenu" ''
+    ${pkgs.rofi}/bin/rofi -dmenu
+  '';
 in {
   environment.systemPackages = with pkgs; [
     (polybar.override {
@@ -52,6 +55,7 @@ in {
       };
     }))
     polybar-pulseaudio-control
+    dmenu_wrapper
   ];
   services.xserver.windowManager.dwm = {
     enable = true;

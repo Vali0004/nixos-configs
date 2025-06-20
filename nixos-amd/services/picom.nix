@@ -2,7 +2,7 @@
 
 {
   services.picom = {
-    activeOpacity = 0.95;
+    activeOpacity = 1;
     backend = "glx";
     enable = true;
     fade = true;
@@ -30,6 +30,7 @@
       fade-delta = 0;
       opacity-rule = [
         "85:class_g = 'Code'"
+        "95:class_g = 'Alacritty'"
         "100:class_g = 'steam_app_727'"
         "100:class_g = 'Google-chrome'"
       ];
