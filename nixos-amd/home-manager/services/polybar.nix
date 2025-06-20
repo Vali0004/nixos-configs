@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  i3Config = import ./../../i3config.nix;
+  barConfig = import ./../../barconfig.nix;
 in {
   home.file.".config/polybar/pipewire.sh" = {
     source = pkgs.callPackage ./pipewire-polybar.nix {
-      i3Config = import ./../../i3config.nix;
+      barConfig = import ./../../barconfig.nix;
     };
     executable = true;
   };
@@ -18,16 +18,16 @@ in {
     script = "polybar bar &";
     settings = {
       "colors" = {
-        background = i3Config.barBackground;
-        background-alt = i3Config.barBackgroundAlt;
-        foreground = i3Config.barForeground;
-        primary = i3Config.barPrimary;
-        secondary = i3Config.barSecondary;
-        alert = i3Config.barAlert;
-        disabled = i3Config.barDisabled;
+        background = barConfig.barBackground;
+        background-alt = barConfig.barBackgroundAlt;
+        foreground = barConfig.barForeground;
+        primary = barConfig.barPrimary;
+        secondary = barConfig.barSecondary;
+        alert = barConfig.barAlert;
+        disabled = barConfig.barDisabled;
       };
       "bar/bar" = {
-        background = i3Config.barBackground;
+        background = barConfig.barBackground;
         border = {
           size = "4pt";
           color = "#00000000";
@@ -41,7 +41,7 @@ in {
           "DejaVuSansM Nerd Font:size=10;2"
           "DejaVuSansM Nerd Font:size=12;2"
         ];
-        foreground = i3Config.barForeground;
+        foreground = barConfig.barForeground;
         line-size = "4pt";
         module-margin = 1;
         modules = {
@@ -56,7 +56,7 @@ in {
         height = "24pt";
         radius = 8;
         separator = {
-          foreground = i3Config.barSecondary;
+          foreground = barConfig.barSecondary;
           text = "|";
         };
         width = "100%";
@@ -64,7 +64,7 @@ in {
       };
       "module/cpu" = {
         format.prefix = {
-          foreground = i3Config.barPrimary;
+          foreground = barConfig.barPrimary;
           padding = 1;
           text = " ";
         };
@@ -77,7 +77,7 @@ in {
         interval = 1;
         label = {
           text = "%time%";
-          foreground = i3Config.barPrimary;
+          foreground = barConfig.barPrimary;
         };
         time = "%H:%M:%S";
         type = "internal/date";
@@ -85,18 +85,18 @@ in {
       "module/eth" = {
         "inherit" = "network-base";
         interface.type = "wired";
-        label.connected = "%{F${i3Config.barPrimary}}󰈀%{F-} %local_ip%";
-        label.disconnected = "%{F${i3Config.barPrimary}}󰈀%{F${i3Config.barDisabled}} disconnected";
+        label.connected = "%{F${barConfig.barPrimary}}󰈀%{F-} %local_ip%";
+        label.disconnected = "%{F${barConfig.barPrimary}}󰈀%{F${barConfig.barDisabled}} disconnected";
       };
       "module/filesystem" = {
         interval = 25;
         label = {
           mounted = {
-            text = "%{F${i3Config.barPrimary}}󰋊%{F-} %free%";
+            text = "%{F${barConfig.barPrimary}}󰋊%{F-} %free%";
           };
           unmounted = {
             text = "%mountpoint% not mounted";
-            foreground = i3Config.barDisabled;
+            foreground = barConfig.barDisabled;
           };
         };
         mount = [ "/" ];
@@ -133,29 +133,29 @@ in {
         exec = "~/.config/polybar/playerctl.sh";
         interval = 1;
         label = {
-          text = "%{F${i3Config.barPrimary}}%{F-} %{F${i3Config.barSecondary}}%output%%{F-}";
+          text = "%{F${barConfig.barPrimary}}%{F-} %{F${barConfig.barSecondary}}%output%%{F-}";
         };
         type = "custom/script";
       };
       "module/ram" = {
         format.prefix = {
           text = "  ";
-          foreground = i3Config.barPrimary;
+          foreground = barConfig.barPrimary;
         };
         interval = 1;
         label = {
-          text = "%gb_used% (%{F${i3Config.barPrimary}}%percentage_used%%%{F-})";
+          text = "%gb_used% (%{F${barConfig.barPrimary}}%percentage_used%%%{F-})";
         };
         type = "internal/memory";
       };
       "module/swap" = {
         format.prefix = {
           text = " ";
-          foreground = i3Config.barPrimary;
+          foreground = barConfig.barPrimary;
         };
         interval = 3;
         label = {
-          text = "%gb_swap_used% (%{F${i3Config.barPrimary}}%percentage_swap_used%%%{F-})";
+          text = "%gb_swap_used% (%{F${barConfig.barPrimary}}%percentage_swap_used%%%{F-})";
         };
         type = "internal/memory";
       };
@@ -167,13 +167,13 @@ in {
       "module/xkeyboard" = {
         blacklist = [ "num lock" ];
         format = {
-          text = "%{F${i3Config.barPrimary}}󰌌%{F-} <label-layout> <label-indicator>";
+          text = "%{F${barConfig.barPrimary}}󰌌%{F-} <label-layout> <label-indicator>";
         };
         label = {
           font = 1;
           indicator = {
-            background = i3Config.barSecondary;
-            foreground = i3Config.barBackground;
+            background = barConfig.barSecondary;
+            foreground = barConfig.barBackground;
             margin = 1;
             padding = 2;
           };
@@ -186,8 +186,8 @@ in {
         label = {
           active = {
             text = "%name%";
-            background = i3Config.barBackgroundAlt;
-            underline = i3Config.barPrimary;
+            background = barConfig.barBackgroundAlt;
+            underline = barConfig.barPrimary;
             padding = 1;
           };
           occupied = {
@@ -196,12 +196,12 @@ in {
           };
           urgent = {
             text = "%name%";
-            background = i3Config.barAlert;
+            background = barConfig.barAlert;
             padding = 1;
           };
           empty = {
             text = "%name%";
-            foreground = i3Config.barDisabled;
+            foreground = barConfig.barDisabled;
             padding = 1;
           };
         };
@@ -215,7 +215,7 @@ in {
           connected.text = "<label-connected>";
           disconnected.text = "<label-disconnected>";
         };
-        label.disconnected = "%{F${i3Config.barPrimary}}%ifname%%{F${i3Config.barDisabled}} disconnected";
+        label.disconnected = "%{F${barConfig.barPrimary}}%ifname%%{F${barConfig.barDisabled}} disconnected";
         type = "internal/network";
       };
       "settings" = {

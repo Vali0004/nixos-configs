@@ -3,9 +3,6 @@
 let
   i3Config = import ./../../i3config.nix;
 in {
-  home = {
-    file."wallpaper.gif".source = ./../wallpaper.gif;
-  };
   xsession.windowManager.i3 = {
     enable = true;
     config = {

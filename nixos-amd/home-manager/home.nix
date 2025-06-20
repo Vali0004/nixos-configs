@@ -18,11 +18,14 @@ in {
       services/clipmenu.nix
       services/dunst.nix
       services/polybar.nix
-      windowManager/i3.nix
+      #windowManager/i3.nix
       #windowManager/hypr.nix
     ];
 
-    home.stateVersion = "25.05";
+    home = {
+      file."wallpaper.gif".source = ./wallpaper.gif;
+      stateVersion = "25.05";
+    };
 
     gtk = {
       enable = true;
@@ -35,14 +38,8 @@ in {
     nixpkgs.config.allowUnfree = true;
 
     xdg.mimeApps = {
-      associations = {
-        added = {
-          "x-scheme-handler/osu" = "osu.desktop";
-        };
-      };
-      defaultApplications = {
-        "x-scheme-handler/osu" = [ "osu.desktop" ];
-      };
+      associations.added."x-scheme-handler/osu" = "osu.desktop";
+      defaultApplications."x-scheme-handler/osu" = [ "osu.desktop" ];
       enable = true;
     };
   };

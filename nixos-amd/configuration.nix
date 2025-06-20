@@ -25,7 +25,8 @@ in {
     services/pipewire.nix
     services/toxvpn.nix
     services/virtualisation.nix
-    services/windowManager/i3.nix
+    #services/windowManager/i3.nix
+    services/windowManager/dwm.nix
   ];
 
   console = {

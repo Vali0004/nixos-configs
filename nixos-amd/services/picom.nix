@@ -18,7 +18,8 @@
       };
       blur-background-exclude = [
         "class_g = 'discord'"
-        "class_g = 'Chrome'"
+        "class_g = 'Google-chrome'"
+        "class_g = 'steam_app_727'"
       ];
       corner-radius = 10.0;
       detect-rounded-corners = true;
@@ -29,6 +30,8 @@
       fade-delta = 0;
       opacity-rule = [
         "85:class_g = 'Code'"
+        "100:class_g = 'steam_app_727'"
+        "100:class_g = 'Google-chrome'"
       ];
       round-borders = 10;
       shadow-exclude = [
