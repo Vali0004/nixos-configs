@@ -18,6 +18,7 @@ in {
       services/clipmenu.nix
       services/dunst.nix
       services/polybar.nix
+      windowManager/dwm.nix
       #windowManager/i3.nix
       #windowManager/hypr.nix
     ];

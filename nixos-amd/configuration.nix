@@ -50,8 +50,10 @@ in {
     cachix
     colmena
     curl
-    clipmenu # Clipboard Manager
-    (pkgs.callPackage ./pkgs/darling.nix {}) # macOS Translation Layer
+    # Clipboard Manager
+    clipmenu
+    # macOS Translation Layer
+    (pkgs.callPackage ./pkgs/darling.nix {})
     dos2unix
     direnv
     (discord.override { withVencord = true; })
@@ -60,41 +62,56 @@ in {
     edid-decode
     envsubst
     eog
-    easyeffects # Noise suppression
+    # Noise suppression
+    easyeffects
     evtest
-    fastfetch # Flexing
+    # Flexing
+    fastfetch
     fastfetch_simple
-    flameshot # Screenshot tool
-    flameshot_fuckk_lol # Screenshot tool with my uploader secret
-    feh # Wallpaper
+    # Screenshot tool
+    flameshot
+    # Screenshot tool with my uploader secret
+    flameshot_fuckk_lol
+    feh
     fzf
     git
     glib
     gnused
     gnome-software
-    google-chrome # Browser
+    # Browser
+    google-chrome
     iperf
     jq
     magic-wormhole
-    morph # Deploy system
-    mpv # Video Player
-    nemo-with-extensions # File browser
+    morph
+    # Video Player
+    mpv
+    # File browser
+    nemo-with-extensions
     nodejs_24
     obs-studio
     openssl
-    opentabletdriver # Tablet Driver
-    p7zip-rar # WinRAR
-    pamixer # Different audio control
-    pavucontrol # Audio control
+    # Tablet Driver
+    opentabletdriver
+    p7zip-rar
+    # Different audio control
+    pamixer
+    # Audio control
+    pavucontrol
     pciutils
-    picom # Compositer
+    # Compositer
+    picom
     playerctl
-    plex-desktop
-    pulseaudio # Audio server
+    # Minecraft launcher
+    prismlauncher
+    # Audio server
+    pulseaudio
     qemu_kvm
-    rofi # Dmenu replacement
+    # dmenu replacement
+    rofi
     socat
-    spicetify-cli # Spotify mods
+    # Spotify mods
+    spicetify-cli
     steamcmd
     syncplay
     sysstat
