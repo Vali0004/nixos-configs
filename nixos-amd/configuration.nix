@@ -52,6 +52,7 @@ in {
     curl
     # Clipboard Manager
     clipmenu
+    corectrl
     # macOS Translation Layer
     (pkgs.callPackage ./pkgs/darling.nix {})
     dos2unix
@@ -74,6 +75,7 @@ in {
     flameshot_fuckk_lol
     feh
     fzf
+    gdb
     git
     glib
     gnused
