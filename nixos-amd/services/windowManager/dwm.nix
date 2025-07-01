@@ -65,12 +65,13 @@ in {
     '';
     package = pkgs.dwm.overrideAttrs {
       buildInputs = (pkgs.dwm.buildInputs or []) ++ [ pkgs.yajl ];
-      src = pkgs.fetchFromGitHub {
-        owner = "Vali0004";
-        repo = "dwm-fork";
-        rev = "755c8d500d635e67c3e2550f66770c43b2fd4cc9";
-        hash = "sha256-PpwlqDbMy96v5kzDkm43+ldVTV9WysPiEYzlacmoonQ=";
-      };
+      src = ./../../../../dwm;
+      #pkgs.fetchFromGitHub {
+      #  owner = "Vali0004";
+      #  repo = "dwm-fork";
+      #  rev = "755c8d500d635e67c3e2550f66770c43b2fd4cc9";
+      #  hash = "sha256-PpwlqDbMy96v5kzDkm43+ldVTV9WysPiEYzlacmoonQ=";
+      #};
     };
   };
 }

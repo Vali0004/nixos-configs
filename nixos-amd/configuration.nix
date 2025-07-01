@@ -83,6 +83,8 @@ in {
     # Browser
     google-chrome
     iperf
+    # Media Player
+    jellyfin-media-player
     jq
     magic-wormhole
     morph

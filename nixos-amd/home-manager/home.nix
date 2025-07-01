@@ -17,7 +17,7 @@ in {
       programs/zsh.nix
       services/clipmenu.nix
       services/dunst.nix
-      services/polybar.nix
+      #services/polybar.nix
       windowManager/dwm.nix
       #windowManager/i3.nix
       #windowManager/hypr.nix
