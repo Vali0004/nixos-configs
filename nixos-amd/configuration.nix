@@ -25,8 +25,8 @@ in {
     services/pipewire.nix
     services/toxvpn.nix
     services/virtualisation.nix
-    #services/windowManager/i3.nix
-    services/windowManager/dwm.nix
+    services/windowManager/i3.nix
+    #services/windowManager/dwm.nix
   ];
 
   console = {
@@ -52,7 +52,6 @@ in {
     curl
     # Clipboard Manager
     clipmenu
-    corectrl
     # macOS Translation Layer
     (pkgs.callPackage ./pkgs/darling.nix {})
     dos2unix
@@ -86,6 +85,8 @@ in {
     # Media Player
     jellyfin-media-player
     jq
+    # MS Paint
+    kdePackages.kolourpaint
     magic-wormhole
     morph
     # Video Player
@@ -207,7 +208,10 @@ in {
     };
   };
 
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "en_US.UTF-8";
+    supportedLocales = [ "en_US.UTF-8/UTF-8" ];
+  };
 
   networking = {
     hostName = "nixos-amd";
@@ -234,12 +238,13 @@ in {
   };
 
   programs = {
+    corectrl.enable = true;
+    command-not-found.enable = true;
+    dconf.enable = true;
     envision = {
       enable = true;
       openFirewall = true;
     };
-    command-not-found.enable = true;
-    dconf.enable = true;
     git = {
       enable = true;
       lfs.enable = true;
@@ -292,6 +297,7 @@ in {
     users.vali = {
       isNormalUser = true;
       extraGroups = [
+        "corectrl"
         "qemu-libvirtd"
         "render"
         "tty"

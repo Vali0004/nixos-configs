@@ -25,8 +25,8 @@ in
   };
   environment.systemPackages = [ sddm-theme ];
   services.displayManager = {
-    #defaultSession = "none+i3";
-    defaultSession = "none+dwm";
+    defaultSession = "none+i3";
+    #defaultSession = "none+dwm";
     sddm = {
       enable = true;
       extraPackages = with pkgs.kdePackages; [

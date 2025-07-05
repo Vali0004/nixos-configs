@@ -145,7 +145,7 @@ in {
   };
 
   system.stateVersion = "25.05";
-  
+
   #virtualisation = {
   #  docker.enable = true;
   #  podman.enable = true;

@@ -17,9 +17,9 @@ in {
       programs/zsh.nix
       services/clipmenu.nix
       services/dunst.nix
-      #services/polybar.nix
-      windowManager/dwm.nix
-      #windowManager/i3.nix
+      services/polybar.nix
+      #windowManager/dwm.nix
+      windowManager/i3.nix
       #windowManager/hypr.nix
     ];
 
@@ -30,6 +30,7 @@ in {
 
     gtk = {
       enable = true;
+      gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
       theme = {
         name = "Adwaita-dark";
         package = pkgs.gnome-themes-extra;
