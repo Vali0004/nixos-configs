@@ -6,6 +6,7 @@
     "vali"
   ];
   virtualisation = {
+    podman.enable = true;
     libvirtd = {
       enable = true;
       onBoot = "ignore";

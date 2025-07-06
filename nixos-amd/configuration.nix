@@ -87,7 +87,11 @@ in {
     jq
     # MS Paint
     kdePackages.kolourpaint
+    # Lutris
+    lutris
+    # Wormhole
     magic-wormhole
+    # 360-deploy
     morph
     # Video Player
     mpv
@@ -127,6 +131,9 @@ in {
     vesktop
     vim
     virt-viewer
+    # VRChat Friendship Management
+    vrcx
+    # Editor
     vscode
     vscode-extensions.mkhl.direnv
     vscode-extensions.bbenoist.nix
@@ -137,6 +144,8 @@ in {
     vulkan-validation-layers
     wget
     wireshark
+    wineWowPackages.stable
+    winetricks
     (writeShellScriptBin "qemu-system-x86_64-uefi" ''
       qemu-system-x86_64 \
         -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
@@ -177,11 +186,13 @@ in {
     "/mnt/d" = {
       device = "/dev/disk/by-uuid/F696F03D96F00043";
       fsType = "ntfs";
+      options = [ "x-systemd.automount" ];
     };
     # Mount X:\
     "/mnt/x" = {
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";
       fsType = "ntfs";
+      options = [ "x-systemd.automount" ];
     };
     # Mount the NFS
     "/mnt/data" = {
@@ -197,6 +208,11 @@ in {
 
   # Set hardware to support 32-bit graphics for Wine and Proton
   hardware = {
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluez;
+      powerOnBoot = true;
+    };
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
     graphics = {
       enable = true;
@@ -241,10 +257,6 @@ in {
     corectrl.enable = true;
     command-not-found.enable = true;
     dconf.enable = true;
-    envision = {
-      enable = true;
-      openFirewall = true;
-    };
     git = {
       enable = true;
       lfs.enable = true;
@@ -258,14 +270,22 @@ in {
     style = "adwaita-dark";
   };
 
-  security.sudo.enable = true;
+  security = {
+    rtkit.enable = true;
+    sudo.enable = true;
+  };
 
   services = {
+    # Bluebooth
+    avahi.enable = true;
+    blueman.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
-      # VR
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de|8089", ATTRS{idProduct}=="0bb4|2c87", GROUP="wheel|video"
+      # HTC
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel"
+      # Steam
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
     '';
     xserver = {
       enable = true;

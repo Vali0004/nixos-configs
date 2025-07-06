@@ -17,6 +17,7 @@ in {
       programs/zsh.nix
       services/clipmenu.nix
       services/dunst.nix
+      services/monado.nix
       services/polybar.nix
       #windowManager/dwm.nix
       windowManager/i3.nix
@@ -25,6 +26,7 @@ in {
 
     home = {
       file."wallpaper.gif".source = ./wallpaper.gif;
+      file.".config/syncplay.ini".source = ./syncplay.ini;
       stateVersion = "25.05";
     };
 
