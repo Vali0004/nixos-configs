@@ -20,8 +20,9 @@ let
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    modules/agenix.nix
     modules/cors-anywhere/service.nix
+    modules/convoy/convoy.nix
+    modules/agenix.nix
     modules/docker.nix
     modules/boot.nix
     modules/zfs.nix
@@ -84,7 +85,7 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 4100 4101 4301 4302 5001 5201 6379 8080 9000 20048 ];
+      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 4100 4101 4301 4302 5001 5201 6379 8080 9000 9080 20048 ];
       allowedUDPPorts = [ 111 2049 4100 4101 4301 4302 20048 ];
     };
     hostId = "0626c0ac";
@@ -121,6 +122,10 @@ in {
       enable = true;
       settings.port = 5432;
     };
+    proxmox-ve = {
+      enable = true;
+      ipAddress = "10.0.0.244";
+    };
     toxvpn = {
       auto_add_peers = [
         "8b59f8e352f19169f46f9152c31f7275286df14a40c9680a43e64984ab11d573cd21ebd0c760" # router
@@ -133,6 +138,13 @@ in {
     device = "/var/lib/swap1";
     size = 8192;
   }];
+
+  systemd.tmpfiles.rules = [
+    # Make proxmox-pve happy
+    "d /run/pve 0755 root root -"
+    # Make zfs-zed happy
+    "d /run/zfs 0755 root root -"
+  ];
 
   systemd.services = {
     forward4300 = mkForwardTCP 4300;

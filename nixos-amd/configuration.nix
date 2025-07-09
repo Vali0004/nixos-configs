@@ -241,10 +241,18 @@ in {
       "nix-command"
       "flakes"
     ];
+    substituters = [
+      "https://cache.saumon.network/proxmox-nixos"
+      "https://cache.nixos.org/"
+    ];
     trusted-users = [
       "root"
       "vali"
       "@wheel"
+    ];
+    trusted-public-keys = [
+      "proxmox-nixos:D9RYSWpQQC/msZUWphOY2I5RLH5Dd6yQcaHIuug7dWM="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
 
@@ -286,6 +294,8 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel"
       # Steam
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
+      # RedOctane
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel"
     '';
     xserver = {
       enable = true;
