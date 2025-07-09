@@ -1,18 +1,20 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";
+    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
-  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, proxmox-nixos, self }:
   {
     colmena = {
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = [
+            proxmox-nixos.overlays.x86_64-linux
             (self: super: {
               agenix = agenix.packages.x86_64-linux.default;
             })
@@ -41,14 +43,14 @@
           ];
         };
       };
-      router = {
-        deployment.targetHost = "31.59.128.8";
-        deployment.targetUser = "root";
-        imports = [
-          ./core.nix
-          ./router/configuration.nix
-        ];
-      };
+      #router = {
+      #  deployment.targetHost = "31.59.128.8";
+      #  deployment.targetUser = "root";
+      #  imports = [
+      #    ./core.nix
+      #    ./router/configuration.nix
+      #  ];
+      #};
       shitzen-nixos = {
         deployment.targetHost = "10.0.0.244";
         deployment.targetUser = "root";
@@ -58,6 +60,7 @@
           nix-minecraft.nixosModules.minecraft-servers
           pterodactyl-wings-nix.nixosModules.pterodactyl-wings
           nixos-mailserver.nixosModule
+          proxmox-nixos.nixosModules.proxmox-ve
           ./shitzen-nixos/configuration.nix
         ];
       };
