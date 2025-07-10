@@ -19,7 +19,7 @@ in {
     programs/steam.nix
     programs/zsh.nix
     services/windowManager/i3.nix
-    services/bluebooth.nix
+    services/bluetooth.nix
     services/displayManager.nix
     services/easyEffects.nix
     services/monado.nix
