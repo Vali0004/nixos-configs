@@ -18,6 +18,8 @@ in {
     programs/ssh.nix
     programs/steam.nix
     programs/zsh.nix
+    services/windowManager/i3.nix
+    services/bluebooth.nix
     services/displayManager.nix
     services/easyEffects.nix
     services/monado.nix
@@ -25,8 +27,6 @@ in {
     services/pipewire.nix
     services/toxvpn.nix
     services/virtualisation.nix
-    services/windowManager/i3.nix
-    #services/windowManager/dwm.nix
   ];
 
   console = {
@@ -87,8 +87,6 @@ in {
     jq
     # MS Paint
     kdePackages.kolourpaint
-    # Lutris
-    lutris
     # Wormhole
     magic-wormhole
     # 360-deploy
@@ -113,6 +111,7 @@ in {
     playerctl
     # Minecraft launcher
     prismlauncher
+    protontricks
     # Audio server
     pulseaudio
     qemu_kvm
@@ -208,11 +207,6 @@ in {
 
   # Set hardware to support 32-bit graphics for Wine and Proton
   hardware = {
-    bluetooth = {
-      enable = true;
-      package = pkgs.bluez;
-      powerOnBoot = true;
-    };
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
     graphics = {
       enable = true;
@@ -284,9 +278,6 @@ in {
   };
 
   services = {
-    # Bluebooth
-    avahi.enable = true;
-    blueman.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"

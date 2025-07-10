@@ -60,8 +60,9 @@ in {
     #  ${pkgs.feh}/bin/feh --bg-center /home/vali/wallpaper.png
     extraSessionCommands = ''
       ${pkgs.pulseaudio}/bin/pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"
-      ${xwinwrap_gif}/bin/xwinwrap_gif /home/vali/wallpaper.gif
+      ${xwinwrap_gif}/bin/xwinwrap_gif /home/vali/.config/xwinwrap/wallpaper.gif
     '';
     package = pkgs.i3;
   };
+  services.displayManager.defaultSession = "none+i3";
 }
