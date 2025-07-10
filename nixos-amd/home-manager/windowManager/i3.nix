@@ -179,9 +179,7 @@ in {
         # Better layouts
         { command = "i3-auto-layout"; always = true; notification = false; }
         # Autostart Discord
-        { workspace = "4"; command = "discord; sleep 30;"; notification = true; }
-        # Autostart Cider
-        { workspace = "5"; command = "Cider"; notification = true; }
+        { workspace = "4"; command = "discord"; notification = true; }
       ];
       # Window options
       window = {
