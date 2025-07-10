@@ -4,8 +4,7 @@ let
   sddm-theme = pkgs.sddm-astronaut.override {
     embeddedTheme = "pixel_sakura";
   };
-in
-{
+in {
   services.xserver.displayManager = {
     lightdm = {
       enable = false;
@@ -25,8 +24,6 @@ in
   };
   environment.systemPackages = [ sddm-theme ];
   services.displayManager = {
-    defaultSession = "none+i3";
-    #defaultSession = "none+dwm";
     sddm = {
       enable = true;
       extraPackages = with pkgs.kdePackages; [
