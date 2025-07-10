@@ -41,9 +41,8 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    alacritty
+    alacritty-graphics
     alsa-utils
-    alvr
     bridge-utils
     btop
     busybox
@@ -78,7 +77,6 @@ in {
     git
     glib
     gnused
-    gnome-software
     # Browser
     google-chrome
     iperf
@@ -87,14 +85,16 @@ in {
     jq
     # MS Paint
     kdePackages.kolourpaint
+    # File browser
+    kdePackages.ark
+    # cli unrar
+    libarchive
     # Wormhole
     magic-wormhole
     # 360-deploy
     morph
     # Video Player
     mpv
-    # File browser
-    nemo-with-extensions
     nodejs_24
     obs-studio
     openssl
@@ -150,12 +150,10 @@ in {
         -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
         "$@"
     '')
-    xclip
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-launch
     xdg-utils
-    xorg.libxcvt
     zenity
     zip
   ];
@@ -278,6 +276,7 @@ in {
   };
 
   services = {
+    cloudflare-warp.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
