@@ -30,10 +30,10 @@ in {
     services/minecraft.nix
     services/nginx.nix
     services/php.nix
-    services/pterodactyl-panel.nix
+    #services/pterodactyl-panel.nix
     services/redis.nix
     services/samba.nix
-    services/wings.nix
+    #services/wings.nix
     services/zipline.nix
   ];
 
