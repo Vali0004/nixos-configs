@@ -14,6 +14,7 @@ in {
     boot/boot.nix
     home-manager/home.nix
     pkgs/cider.nix
+    pkgs/nordic.nix
     programs/spicetify.nix
     programs/ssh.nix
     programs/steam.nix

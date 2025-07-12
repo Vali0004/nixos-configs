@@ -16,7 +16,7 @@ let
 
       install -m 444 -D ${appimageContents}/${name}.desktop -t $out/share/applications
       substituteInPlace $out/share/applications/${name}.desktop \
-        --replace 'Exec=AppRun' 'Exec=${name}'
+        --replace-warn 'Exec=AppRun' 'Exec=${name}'
       cp -r ${appimageContents}/usr/share/icons $out/share
     '';
 
