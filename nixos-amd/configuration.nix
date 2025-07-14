@@ -13,6 +13,7 @@ in {
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
+    pkgs/adafruit-nrfutil.nix
     pkgs/cider.nix
     pkgs/nordic.nix
     programs/spicetify.nix
@@ -92,6 +93,8 @@ in {
     libarchive
     # Wormhole
     magic-wormhole
+    # COM Reader
+    minicom
     # 360-deploy
     morph
     # Video Player
@@ -287,6 +290,12 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
       # RedOctane
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel"
+      # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for Nordic Semiconductor devices
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
+      # Flag USB CDC ACM devices, handled below
+      # Set USB CDC ACM devnodes as read-write for the wheel group
+      KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915", MODE="0666", ENV{NRF_CDC_ACM}="1"
+      ENV{NRF_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
     xserver = {
       enable = true;
