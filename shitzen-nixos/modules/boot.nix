@@ -4,7 +4,14 @@
   boot = {
     extraModulePackages = [ ];
     initrd = {
-      availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
+      availableKernelModules = [
+        "ahci" # SATA
+        "xhci_pci" # USB
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+        "mpt3sas" "raid_class" "scsi_transport_sas" # SAS
+      ];
       kernelModules = [ ];
     };
     kernelModules = [ "kvm-amd" ];

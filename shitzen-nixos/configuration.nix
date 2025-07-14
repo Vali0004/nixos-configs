@@ -23,8 +23,9 @@ in {
     modules/cors-anywhere/service.nix
     modules/convoy/convoy.nix
     modules/agenix.nix
-    modules/docker.nix
     modules/boot.nix
+    modules/docker.nix
+    modules/tgt_service.nix
     modules/zfs.nix
     services/mailserver.nix
     services/minecraft.nix
@@ -33,6 +34,7 @@ in {
     #services/pterodactyl-panel.nix
     services/redis.nix
     services/samba.nix
+    services/tgtd.nix
     #services/wings.nix
     services/zipline.nix
   ];
