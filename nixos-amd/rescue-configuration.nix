@@ -63,7 +63,6 @@
     firewall.logRefusedConnections = false;
     hostId = "8425e349";
     hostName = "nixos-rescue-cd";
-    useDHCP = true;
     wireless = {
       enable = false;
       userControlled.enable = false;
