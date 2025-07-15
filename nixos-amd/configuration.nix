@@ -166,29 +166,29 @@ in {
   fileSystems = {
     # Mount the Root Partition
     "/" = {
-      device = "/dev/disk/by-uuid/7608c91c-3416-4261-8b87-1c905f0074d2";
       fsType = "ext4";
+      label = "NIXOS_ROOT";
     };
     # Mount the EFI Partition
     "/boot" = {
-      device = "/dev/disk/by-uuid/F80D-25F5";
       fsType = "vfat";
+      label = "NIXOS_BOOT";
       options = [
         "fmask=0022"
         "dmask=0022"
       ];
     };
     # Mount the Windows C:\ drive
-    "/mnt/c" = {
-      device = "/dev/disk/by-uuid/5A40382940380E6F";
-      fsType = "ntfs";
-    };
+#    "/mnt/c" = {
+#      device = "/dev/disk/by-uuid/5A40382940380E6F";
+#      fsType = "ntfs";
+#    };
     # Mount D:\
-    "/mnt/d" = {
-      device = "/dev/disk/by-uuid/F696F03D96F00043";
-      fsType = "ntfs";
-      options = [ "x-systemd.automount" ];
-    };
+#    "/mnt/d" = {
+#      device = "/dev/disk/by-uuid/F696F03D96F00043";
+#      fsType = "ntfs";
+#      options = [ "x-systemd.automount" ];
+#    };
     # Mount X:\
     "/mnt/x" = {
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";

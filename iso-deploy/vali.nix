@@ -12,6 +12,23 @@
     wget
   ];
 
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    substituters = [
+      "https://cache.nixos.org/"
+    ];
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
+    trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
+  };
+
   services.openssh = {
     enable = true;
     settings.PasswordAuthentication = false;
