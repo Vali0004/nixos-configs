@@ -27,26 +27,24 @@ in {
     extraModulePackages = [ ];
     initrd = {
       availableKernelModules = [
+        "ahci" # SATA
         "ata_piix"
-        "uhci_hcd"
+        "virtio_blk"
         "virtio_pci"
+        "virtio_pci_legacy_dev"
+        "virtio_pci_modern_dev"
         "virtio_scsi"
-        "ahci"
+        "uhci_hcd"
         "sd_mod"
         "sr_mod"
-        "virtio_blk"
       ];
       kernelModules = [ ];
     };
-    kernelModules = [ "kvm-intel" ];
-    loader = {
-      efi.canTouchEfiVariables = true;
-      grub = {
-        copyKernels = true;
-        device = "nodev";
-        efiSupport = true;
-        efiInstallAsRemovable = false;
-      };
+    kernelModules = [ "kvm-amd" ];
+    loader.grub = {
+      copyKernels = true;
+      device = "/dev/vda";
+      efiSupport = false;
     };
   };
 
@@ -62,26 +60,26 @@ in {
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/d10bbb51-11c7-4c6e-8d79-345785c31b73";
+      label = "NIXOS_ROOT";
       fsType = "ext4";
     };
     "/boot" = {
-      device = "/dev/disk/by-uuid/B89C-765B";
+      label = "NIXOS_BOOT";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
   };
 
   networking = {
-    defaultGateway = "31.59.128.1";
+    defaultGateway = "74.208.44.1";
     firewall = {
       allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 8096 9000 ];
       allowedUDPPorts = [ 4100 4101 4301 4302 4303 4304 4305 ];
     };
     hostName = "router";
-    interfaces.ens3 = {
+    interfaces.ens6 = {
       ipv4.addresses = [{
-        address = "31.59.128.8";
+        address = "74.208.44.130";
         prefixLength = 24;
       }];
     };
@@ -89,7 +87,7 @@ in {
       "1.1.1.1"
       "1.0.0.1"
     ];
-    useDHCP = false;
+    useDHCP = true;
   };
 
   nixpkgs = {
@@ -103,7 +101,6 @@ in {
         "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" # shitzen
       ];
     };
-    #openssh.openFirewall = false;
   };
 
   swapDevices = [{

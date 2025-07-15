@@ -43,14 +43,14 @@
           ];
         };
       };
-      #router = {
-      #  deployment.targetHost = "31.59.128.8";
-      #  deployment.targetUser = "root";
-      #  imports = [
-      #    ./core.nix
-      #    ./router/configuration.nix
-      #  ];
-      #};
+      router = {
+        deployment.targetHost = "74.208.44.130";
+        deployment.targetUser = "root";
+        imports = [
+          ./core.nix
+          ./router/configuration.nix
+        ];
+      };
       shitzen-nixos = {
         deployment.targetHost = "10.0.0.244";
         deployment.targetUser = "root";
