@@ -65,6 +65,8 @@ in {
 
   systemd.tmpfiles.rules = [
     "d /var/lib/convoy-panel/storage - nginx nginx 0755 - -"
+    "d /var/lib/convoy-panel/storage/framework - nginx nginx 0755 - -"
+    "d /var/lib/convoy-panel/storage/framework/views - nginx nginx 0755 - -"
     "d /var/lib/convoy-panel/bootstrap/cache - nginx nginx 0755 - -"
     "d /run/phpfpm 0755 root root - -"
   ];
