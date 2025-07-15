@@ -14,7 +14,7 @@ in {
     boot/boot.nix
     home-manager/home.nix
     pkgs/adafruit-nrfutil.nix
-    pkgs/cider.nix
+    #pkgs/cider.nix
     pkgs/nordic.nix
     programs/spicetify.nix
     programs/ssh.nix
