@@ -18,7 +18,7 @@
     IdentityFile /home/vali/.ssh/id_rsa
     IdentityFile /home/vali/.ssh/nixos_main
     Host router
-      Hostname 31.59.128.8
+      Hostname 74.208.44.130
       User root
 
     Host shitzen-nixos
