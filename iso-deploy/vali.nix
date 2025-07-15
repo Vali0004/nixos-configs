@@ -17,19 +17,19 @@
   ];
 
   fileSystems = {
-    "/mnt" = {
-      device = "/dev/disk/by-uuid/d57234d2-c964-49d0-be3c-268d200ee66c";
+    "/" = {
+      label = "NIXOS_ROOT";
       fsType = "ext4";
     };
-    "/mnt/boot" = {
-      device = "/dev/disk/by-uuid/EB29-DF01";
+    "/boot" = {
+      label = "NIXOS_BOOT";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
   };
 
   networking = {
-    defaultGateway = "31.59.128.1";
+    defaultGateway = "74.208.44.1";
     firewall = {
       allowedTCPPorts = [ 80 443 4301 5201 8080 ];
       allowedUDPPorts = [ 4301 4302 ];
@@ -37,7 +37,7 @@
     hostName = "router";
     interfaces.ens3 = {
       ipv4.addresses = [{
-        address = "31.59.128.8";
+        address = "74.208.44.130";
         prefixLength = 24;
       }];
     };
