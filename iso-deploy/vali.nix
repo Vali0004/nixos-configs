@@ -1,10 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [
-    (modulesPath + "/profiles/qemu-guest.nix")
-  ];
-
   environment.systemPackages = with pkgs; [
     curl
     dnsutils
@@ -15,38 +11,6 @@
     strace
     wget
   ];
-
-  fileSystems = {
-    "/" = {
-      label = "NIXOS_ROOT";
-      fsType = "ext4";
-    };
-    "/boot" = {
-      label = "NIXOS_BOOT";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
-    };
-  };
-
-  networking = {
-    defaultGateway = "74.208.44.1";
-    firewall = {
-      allowedTCPPorts = [ 80 443 4301 5201 8080 ];
-      allowedUDPPorts = [ 4301 4302 ];
-    };
-    hostName = "router";
-    interfaces.ens3 = {
-      ipv4.addresses = [{
-        address = "74.208.44.130";
-        prefixLength = 24;
-      }];
-    };
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
-    useDHCP = false;
-  };
 
   services.openssh = {
     enable = true;
@@ -79,10 +43,10 @@
     };
     vali = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "ipfs" ]; # Enable 'sudo' for the user.
+      extraGroups = [ "wheel" "ipfs" ];
       openssh.authorizedKeys.keys = common_keys;
     };
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
