@@ -179,16 +179,10 @@ in {
       ];
     };
     # Mount the Windows C:\ drive
-#    "/mnt/c" = {
-#      device = "/dev/disk/by-uuid/5A40382940380E6F";
-#      fsType = "ntfs";
-#    };
-    # Mount D:\
-#    "/mnt/d" = {
-#      device = "/dev/disk/by-uuid/F696F03D96F00043";
-#      fsType = "ntfs";
-#      options = [ "x-systemd.automount" ];
-#    };
+    "/mnt/c" = {
+      device = "/dev/disk/by-uuid/DC9A3DB19A3D88D2";
+      fsType = "ntfs";
+    };
     # Mount X:\
     "/mnt/x" = {
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";
