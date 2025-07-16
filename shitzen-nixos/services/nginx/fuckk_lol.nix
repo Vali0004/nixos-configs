@@ -4,6 +4,37 @@ let
   mkProxy = import ./mkproxy.nix;
 in {
   services.nginx.virtualHosts = {
+    # Webmail ()
+    "webmail.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+      root = "${pkgs.roundcube}";
+      locations."/" = {
+        index = "index.php";
+        priority = 1100;
+      };
+      locations."~ ^/(SQL|bin|config|logs|temp|vendor)/" = {
+        priority = 3110;
+        extraConfig = ''
+          return 404;
+        '';
+      };
+      locations."~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock)" = {
+        priority = 3120;
+        extraConfig = ''
+          return 404;
+        '';
+      };
+      locations."~* \\.php(/|$)" = {
+        priority = 3130;
+        extraConfig = ''
+          fastcgi_pass unix:${fpm.socket};
+          fastcgi_param PATH_INFO $fastcgi_path_info;
+          fastcgi_split_path_info ^(.+\.php)(/.+)$;
+          include ${config.services.nginx.package}/conf/fastcgi.conf;
+        '';
+      };
+    };
     # smtp
     "smtp.fuckk.lol" = {
       enableACME = true;
