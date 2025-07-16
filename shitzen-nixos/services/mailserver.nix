@@ -18,4 +18,14 @@
 
     certificateScheme = "acme-nginx";
   };
+
+  services.roundcube = {
+     enable = true;
+     hostName = "webmail.fuckk.lol";
+     extraConfig = ''
+       $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
+       $config['smtp_user'] = "%u";
+       $config['smtp_pass'] = "%p";
+     '';
+  };
 }

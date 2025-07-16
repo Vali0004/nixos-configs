@@ -31,6 +31,7 @@ in {
     services/minecraft.nix
     services/nginx.nix
     services/php.nix
+    services/proxmox.nix
     services/pterodactyl-panel.nix
     services/redis.nix
     services/samba.nix
@@ -140,13 +141,6 @@ in {
     device = "/var/lib/swap1";
     size = 8192;
   }];
-
-  systemd.tmpfiles.rules = [
-    # Make proxmox-pve happy
-    "d /run/pve 0755 root root -"
-    # Make zfs-zed happy
-    "d /run/zfs 0755 root root -"
-  ];
 
   systemd.services = {
     forward4300 = mkForwardTCP 4300;

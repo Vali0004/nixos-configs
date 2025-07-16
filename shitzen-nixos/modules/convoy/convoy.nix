@@ -12,7 +12,7 @@ let
     APP_ENV=local
     APP_KEY=base64:KOE84mCJuY35SyW43jXLqH0vwlixA0JUeAV15it9QiU=
     APP_DEBUG=true
-    APP_URL=http://localhost
+    APP_URL=https://fuckk.lol
 
     LOG_CHANNEL=stack
     LOG_LEVEL=debug
