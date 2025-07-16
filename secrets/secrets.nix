@@ -4,8 +4,10 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1"
   ];
   ssh_keys = [
-    # Desktop (Windows WSL)
+    # Desktop (Windows WSL old)
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCx1m4IonXyWTFas/gMwez2lT1hLxhE97JfcW9KWQrM6FsLlYGoZydj/C+J35Pbc1CFoBfzXUvbeglLoy7+ycpgXub0UOBh7Lk0p+jNzbSKec4gQL9SNu0vZY/pONZ0yAhEM+wEgtcjYuWRjMDUBfeiO7FOdGtbCdTT//tA3GwQ0wHWdSCPWELoaeIia3uW0w/l7a5zczLpisncvSmXnTG3qwcwbHYpYnfTkyneTTjbEZGtEWIYFub4IBuQsQqEtaDoBVGbbuB+Bm5ulksd8+FbBXKUHoswwABGb4czTUZFIZ4OeXe79hRG/hPeO5AzFLOlhDg8t1/MCqOio4gzYjC7Bz1WJND8zg1Q7vfAJp0Sq0sMS9WvlTmVM0egECdEXhLP/p0a0GBES1T/005HG8yE9sKQi8R0ZaFMhxL5IY3jlc/BOt3jdmeAHUaJBgZqbLN0QJMGkhikgzVTzGjkRHSQgbrH7RKfDQ+CAwVRL+RiDmL9ZorbgdxW/Cr17YJ2jrMXtq/OPC33Jk+rF6UTo5cgb0HuwX4j0gqWFhiQzxoJzQNpgcFaUMFQVrvS2lOOVxFdZKDuI2hDqeD59DQq5HljdHnOb1n+5+V6kNdMTm+5JXVrSUOEdlgx/CB0BjpXeAQVdLH6p7b6kmBiJox3I05W8Go7JhNPj3Pkj15Csqujsw== vali@DESKTOP-MQBIMLL"
+    # Desktop (Windows WSL)
+    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDpEvBoj/nWqn//23RfneIeV5yfedtLNv2GeVMB7VPqODsqr++dOG6gwUhh0I6D0YXpKQ818DyN3gx1i6zzzg5q/wxDeAgPKOIdwYI+6ryNqSpUwPvMXsGygpcFFXEY2731PxjUtSBu1Yv9hxmZom9yAmRegG/mi7l9DWw5CxFul/U/GPL4JIK9Iah5g8983nyr2u9NHsWA8RviKywFesmc5vig8BjVaN0Pt947EiuM2lpFyQCzgvUMVagwzVRQn71Y2sE68xDMbdXz3HBSLzJYR4Idi+7s+JHcypXS3zgCKesoh4wgR01qDJseMx0+FfsRq7QzwytkhiOLV0hxYXQlRLdUfsV2jQ9mLYKQysd2ZHXNWGncu4XthhPAPcRKtMG3oANlRQES7j6lfjrexyuNbPGm7qtiBc5lUrDfAWcFYCDSC4fup5tJDuKQ+W68Qn+a2f7icvVoWg2nbsqp6KJLUYsPPo/tra5/nGVEVe6JAOQol+Q3m44H3iPFvI7LE/1DYAz2lK8XVooNJSIHFFjLV/0oKPdRzfBTvhJb/KzJs3UjAOcUOuo2eJQlBj5QsVvFa8OszbFHyILIVDuj6gQdLX24GCKwk1Whf5E1Srn9PZLY8B/gF5A5a+XmdvVz3Z5+5GtjHyyaCFhDVJV88YOiRlK3WovCvXwLA8pkeXud4Q== vali@DESKTOP-2MGGJK8"
     # Desktop (NixOS)
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJR3qDc8r2kbg6Q+A0dk7E6fC/wdlySBKb8X+8XgRGJg6huXaCTPZbAyvzt1IvxY69IdBymExjUie7YuFOLOKi5wisfw6d1yVjrhaoZWvXTz6eyF0ssAzM1BbqJsHU2dahQnNo7ThUguR365woBaw1UrZHEjlAiX16NxDVEyaXNImDjlQKBiAyDaa/pOCe1GUYwPgXHJMwF+6JbY+pGYAm6AvvsnjhLO0kyzwv1hSOd4qlzSobkDE9FQMbJD7uV+D1cXAv2ERdf/h9/L5dUcOEUscES+wg8ezLOhaBmq8TT9K3gmhMa47zNQU1WUAg39n+2+/Dwix0j7GNsNZdbp6B vali@nixos-amd"
     # Laptop (Windows WSL)
@@ -13,5 +15,6 @@ let
   ];
 in {
   "pterodactyl.age".publicKeys = machines ++ ssh_keys;
+  "roundcube.age".publicKeys = machines ++ ssh_keys;
   "zipline.age".publicKeys = machines ++ ssh_keys;
 }

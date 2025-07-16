@@ -1,4 +1,5 @@
 { port ? 80, config ? "", webSockets ? false }:
+
 {
   proxyPass = "http://127.0.0.1:${toString port}";
   proxyWebsockets = webSockets;

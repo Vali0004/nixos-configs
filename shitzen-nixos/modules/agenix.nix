@@ -15,5 +15,10 @@
       owner = "zipline";
       group = "zipline";
     };
+    roundcube = {
+      file = ./../../secrets/roundcube.age;
+      owner = "roundcube";
+      group = "roundcube";
+    };
   };
 }

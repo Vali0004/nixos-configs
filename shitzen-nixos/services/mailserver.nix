@@ -21,6 +21,7 @@
 
   services.roundcube = {
      enable = true;
+     configureNginx = false;
      hostName = "webmail.fuckk.lol";
      extraConfig = ''
        $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
