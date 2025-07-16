@@ -36,4 +36,9 @@ in {
       ZED_SCRUB_AFTER_RESILVER = false;
     };
   };
+
+  systemd.tmpfiles.rules = [
+    # Make proxmox-pve happy
+    "d /run/pve 0755 root root -"
+  ];
 }
