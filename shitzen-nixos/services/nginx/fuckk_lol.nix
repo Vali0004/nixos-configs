@@ -28,7 +28,7 @@ in {
       locations."~* \\.php(/|$)" = {
         priority = 3130;
         extraConfig = ''
-          fastcgi_pass unix:${fpm.socket};
+          fastcgi_pass unix:${config.services.phpfpm.pools.roundcube.socket};
           fastcgi_param PATH_INFO $fastcgi_path_info;
           fastcgi_split_path_info ^(.+\.php)(/.+)$;
           include ${config.services.nginx.package}/conf/fastcgi.conf;
