@@ -20,13 +20,13 @@
   };
 
   services.roundcube = {
-     enable = true;
-     configureNginx = false;
-     hostName = "webmail.fuckk.lol";
-     extraConfig = ''
-       $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
-       $config['smtp_user'] = "%u";
-       $config['smtp_pass'] = "%p";
-     '';
+    enable = true;
+    configureNginx = false;
+    hostName = "webmail.fuckk.lol";
+    extraConfig = ''
+      $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
+      $config['smtp_user'] = "%u";
+      $config['smtp_pass'] = "%p";
+    '';
   };
 }
