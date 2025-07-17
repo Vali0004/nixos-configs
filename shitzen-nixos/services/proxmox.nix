@@ -2,6 +2,7 @@
 
 {
   services.proxmox-ve = {
+    bridges = [ "vmbr0" ];
     enable = true;
     ipAddress = "10.0.0.244";
   };
