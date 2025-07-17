@@ -94,6 +94,7 @@ in {
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
     useDHCP = true;
+    useNetworkd = true;
   };
 
   nixpkgs = {
