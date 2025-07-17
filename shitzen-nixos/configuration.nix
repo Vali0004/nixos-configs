@@ -125,10 +125,6 @@ in {
       enable = true;
       settings.port = 5432;
     };
-    proxmox-ve = {
-      enable = true;
-      ipAddress = "10.0.0.244";
-    };
     toxvpn = {
       auto_add_peers = [
         "12f5850c8664f0ad12047ac2347ef8b1bfb8d26cd37a795c4f7c590cd6b87e7c6b96ca1c9df5" # router
@@ -141,6 +137,31 @@ in {
     device = "/var/lib/swap1";
     size = 8192;
   }];
+
+  systemd.network = {
+    networks = {
+      "10-lan-bridge" = {
+        matchConfig.Name = "vmbr0";
+        networkConfig = {
+          IPv6AcceptRA = true;
+          DHCP = "ipv4";
+        };
+        linkConfig.RequiredForOnline = "routable";
+      };
+      "10-lan" = {
+        matchConfig.Name = [ "ens18" ];
+        networkConfig = {
+          Bridge = "vmbr0";
+        };
+      };
+    };
+    netdevs."vmbr0" = {
+      netdevConfig = {
+        Name = "vmbr0";
+        Kind = "bridge";
+      };
+    };
+  };
 
   systemd.services = {
     forward4300 = mkForwardTCP 4300;
