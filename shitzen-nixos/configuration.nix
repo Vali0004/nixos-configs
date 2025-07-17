@@ -139,28 +139,27 @@ in {
     size = 8192;
   }];
 
+
   systemd.network = {
-    networks = {
-      "10-lan-bridge" = {
-        matchConfig.Name = "vmbr0";
-        networkConfig = {
-          IPv6AcceptRA = true;
-          DHCP = "ipv4";
-        };
-        linkConfig.RequiredForOnline = "routable";
-      };
-      "10-lan" = {
-        matchConfig.Name = [ "ens18" ];
-        networkConfig = {
-          Bridge = "vmbr0";
-        };
-      };
-    };
     netdevs."vmbr0" = {
       netdevConfig = {
-        Name = "vmbr0";
         Kind = "bridge";
+        Name = "vmbr0";
       };
+    };
+    networks."10-enp7s0" = {
+      matchConfig.Name = "enp7s0";
+      networkConfig = {
+        Bridge = "vmbr0";
+      };
+    };
+    networks."10-vmbr0" = {
+      matchConfig.Name = "vmbr0";
+      networkConfig = {
+        IPv6AcceptRA = true;
+        DHCP = "ipv4";
+      };
+      linkConfig.RequiredForOnline = "routable";
     };
   };
 
