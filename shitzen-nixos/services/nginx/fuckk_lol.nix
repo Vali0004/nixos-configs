@@ -4,7 +4,7 @@ let
   mkProxy = import ./mkproxy.nix;
 in {
   services.nginx.virtualHosts = {
-    # Webmail ()
+    # Webmail (Roundcube)
     "webmail.fuckk.lol" = {
       enableACME = true;
       forceSSL = true;
@@ -82,6 +82,9 @@ in {
       locations."/" = {
         proxyPass = "https://127.0.0.1:8006";
         proxyWebsockets = true;
+        extraConfig = ''
+          proxy_ssl_verify off;
+        '';
       };
     };
     # Cors anywhere

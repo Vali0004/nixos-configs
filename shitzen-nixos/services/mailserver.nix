@@ -10,7 +10,7 @@
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
       "vali@fuckk.lol" = {
-        hashedPasswordFile = "/var/lib/mail/valiPass";
+        hashedPasswordFile = config.age.secrets.vali-mail-fuckk-lol.path;
         aliases = [ "admin@fuckk.lol" ];
       };
       #"unison@fuckk.lol" = { ... };
@@ -24,9 +24,15 @@
     configureNginx = false;
     hostName = "webmail.fuckk.lol";
     extraConfig = ''
-      $config['smtp_host'] = "tls://${config.mailserver.fqdn}";
+      $config['smtp_host'] = "smtp.fuckk.lol";
+      $config['smtp_port'] = 587;
+      $config['smtp_secure'] = 'tls';
       $config['smtp_user'] = "%u";
       $config['smtp_pass'] = "%p";
+      $config['debug_level'] = 4;
+      $config['smtp_log'] = true;
+      $config['log_driver'] = 'file';
+      $config['log_dir'] = '/tmp';
     '';
   };
 }

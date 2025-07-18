@@ -60,7 +60,6 @@ in {
       "pm.min_spare_servers" = 2;
       "pm.max_spare_servers" = 4;
     };
-    listen = "/run/phpfpm/convoy.sock";
   };
 
   systemd.tmpfiles.rules = [
