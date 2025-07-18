@@ -33,9 +33,9 @@ let
     REDIS_PORT=6380
 
     MAIL_MAILER=smtp
-    MAIL_HOST=mailhog
-    MAIL_PORT=1025
-    MAIL_FROM_ADDRESS="hello@example.com"
+    MAIL_HOST=dovecot
+    MAIL_PORT=465
+    MAIL_FROM_ADDRESS="admin@fuckk.lol"
     MAIL_FROM_NAME="Convoy"
 
     PHP_XDEBUG=false
