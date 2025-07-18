@@ -103,11 +103,9 @@ in {
     hostPlatform = "x86_64-linux";
   };
 
-  security = {
-    acme = {
-      acceptTerms = true;
-      defaults.email = "diorcheats.vali@gmail.com";
-    };
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "diorcheats.vali@gmail.com";
   };
 
   services = {
@@ -115,13 +113,11 @@ in {
       enable = true;
       package = pkgs.mariadb;
     };
-    nfs = {
-      server = {
-        enable = true;
-        exports = ''
-          /data 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
-        '';
-      };
+    nfs.server = {
+      enable = true;
+      exports = ''
+        /data 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
+      '';
     };
     postgresql = {
       enable = true;
@@ -157,8 +153,10 @@ in {
     networks."10-vmbr0" = {
       matchConfig.Name = "vmbr0";
       networkConfig = {
+        Address = [ "10.0.0.244/24" ];
+        Gateway = "10.0.0.1";
+        DNS = [ "75.75.75.75" "75.75.76.76" ];
         IPv6AcceptRA = true;
-        DHCP = "ipv4";
       };
       linkConfig.RequiredForOnline = "routable";
     };
