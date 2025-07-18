@@ -75,6 +75,15 @@ in {
         proxyWebsockets = true;
       };
     };
+    # Prowlarr
+    "prowlarr.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:9696";
+        proxyWebsockets = true;
+      };
+    };
     # Proxmox
     "proxmox.fuckk.lol" = {
       enableACME = true;
