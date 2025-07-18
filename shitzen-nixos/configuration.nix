@@ -30,6 +30,7 @@ in {
     services/mailserver.nix
     services/minecraft.nix
     services/nginx.nix
+    services/oauth2.nix
     services/php.nix
     services/proxmox.nix
     services/pterodactyl-panel.nix
