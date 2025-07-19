@@ -1,2 +1,3 @@
 *.AppImage
 result
+network-secrets-private.nix

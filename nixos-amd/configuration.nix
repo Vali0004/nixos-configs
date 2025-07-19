@@ -8,6 +8,8 @@ let
   fastfetch_simple = pkgs.writeScriptBin "fastfetch_simple" ''
     ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
   '';
+
+  secrets = import secretsPath;
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
@@ -29,6 +31,7 @@ in {
     services/pipewire.nix
     services/toxvpn.nix
     services/virtualisation.nix
+    ./network-secrets.nix
   ];
 
   console = {
@@ -221,8 +224,46 @@ in {
 
   networking = {
     hostName = "nixos-amd";
-    useDHCP = true;
-    wireless.enable = true;
+    networkmanager = {
+      enable = true;
+      connectionProfiles = [
+        {
+          connection.id = "ethernet";
+          connection.type = "ethernet";
+          match.device.mac-address = "10:ff:e0:35:08:fb";
+          ipv4.addresses = [ {
+            address = "10.0.0.201";
+            prefixLength = 24;
+          }];
+          ipv4.gateway = "10.0.0.1";
+          ipv4.dns = [ "75.75.75.75" "75.75.76.76" ];
+          ipv4.method = "manual";
+          ipv4.route-metric = 100;
+          ipv6.method = "auto";
+          ipv6.route-metric = 100;
+        }
+        {
+          connection.id = "wifi";
+          connection.type = "wifi";
+          wifi.mac-address = "94:bb:43:52:13:b8";
+          wifi.ssid = config.wifi.ssid;
+          wifi-sec.key-mgmt = "wpa-psk";
+          wifi-sec.psk = config.wifi.password;
+          ipv4.addresses = [ {
+            address = "10.0.0.201";
+            prefixLength = 24;
+          }];
+          ipv4.gateway = "10.0.0.1";
+          ipv4.dns = [ "75.75.75.75" "75.75.76.76" ];
+          ipv4.method = "manual";
+          ipv4.route-metric = 200;
+          ipv6.method = "auto";
+          ipv6.route-metric = 200;
+        }
+      ];
+    };
+    useDHCP = false;
+    wireless.enable = false;
   };
 
   # Setup NixOS exprimental features and unfree options for Chrome
