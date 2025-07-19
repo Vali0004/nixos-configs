@@ -1,3 +1,5 @@
+{ lib, ... }:
+
 let
   privateFile = ./network-secrets-private.nix;
   secrets = {
@@ -5,9 +7,12 @@ let
       ssid = "DummySSID";
       password = "DummyPassword";
     };
+    zipline = {
+      authorization = "dummy";
+    };
   };
 in
   if builtins.pathExists privateFile then
-    builtins.recursiveUpdate secrets (import privateFile)
+    lib.recursiveUpdate secrets (import privateFile)
   else
     secrets

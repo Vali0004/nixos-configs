@@ -1,15 +1,14 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let
+  secrets = import ./network-secrets.nix { lib = lib; };
   flameshot_fuckk_lol = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
     ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
-    ${pkgs.curl}/bin/curl -H "authorization: MTc0NTgwNjM3OTI1NA==.NTc3N2U3Yzc0NDBhMWExY2JhYWMyZWUwZGY2ZjEzOWIuM2I2MmQ0OTgwMzA0ZTIyNTFhYzZmNTcwN2ZhM2FjZjhjYzcyODgyYjIzZTIyZTEyOWZkN2VmNWMwMmViN2FlNTkxMjc3MzQ3MWQ2YjgyMWVhYzM0OGJiZTE2MTQyMDM4Mjg4Zjk5MGFkYzBjZDNmYWI3ODM1MjM2Y2MzYTU3OGE3ODZkYzExYTA3OTU2OWYzNGRlMGM0ZWJhNTZmYzEwZQ==" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
+    ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
   '';
   fastfetch_simple = pkgs.writeScriptBin "fastfetch_simple" ''
     ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
   '';
-
-  secrets = import secretsPath;
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
@@ -31,7 +30,6 @@ in {
     services/pipewire.nix
     services/toxvpn.nix
     services/virtualisation.nix
-    ./network-secrets.nix
   ];
 
   console = {
@@ -224,46 +222,17 @@ in {
 
   networking = {
     hostName = "nixos-amd";
-    networkmanager = {
-      enable = true;
-      connectionProfiles = [
-        {
-          connection.id = "ethernet";
-          connection.type = "ethernet";
-          match.device.mac-address = "10:ff:e0:35:08:fb";
-          ipv4.addresses = [ {
-            address = "10.0.0.201";
-            prefixLength = 24;
-          }];
-          ipv4.gateway = "10.0.0.1";
-          ipv4.dns = [ "75.75.75.75" "75.75.76.76" ];
-          ipv4.method = "manual";
-          ipv4.route-metric = 100;
-          ipv6.method = "auto";
-          ipv6.route-metric = 100;
-        }
-        {
-          connection.id = "wifi";
-          connection.type = "wifi";
-          wifi.mac-address = "94:bb:43:52:13:b8";
-          wifi.ssid = config.wifi.ssid;
-          wifi-sec.key-mgmt = "wpa-psk";
-          wifi-sec.psk = config.wifi.password;
-          ipv4.addresses = [ {
-            address = "10.0.0.201";
-            prefixLength = 24;
-          }];
-          ipv4.gateway = "10.0.0.1";
-          ipv4.dns = [ "75.75.75.75" "75.75.76.76" ];
-          ipv4.method = "manual";
-          ipv4.route-metric = 200;
-          ipv6.method = "auto";
-          ipv6.route-metric = 200;
-        }
-      ];
-    };
     useDHCP = false;
-    wireless.enable = false;
+    useNetworkd = true;
+    networkmanager.enable = false;
+    wireless = {
+      enable = true;
+      networks = {
+        "${secrets.wifi.ssid}" = {
+          psk = secrets.wifi.password;
+        };
+      };
+    };
   };
 
   # Setup NixOS exprimental features and unfree options for Chrome
@@ -351,6 +320,46 @@ in {
   system = {
     copySystemConfiguration = true;
     stateVersion = "25.11";
+  };
+
+  systemd.network = {
+    enable = true;
+    netdevs = {
+      "10-bond0" = {
+        netdevConfig = {
+          Kind = "bond";
+          Name = "bond0";
+        };
+        bondConfig = {
+          Mode = "active-backup";
+          MIIMonitorSec = "0.100";
+          PrimaryReselectPolicy = "better";
+        };
+      };
+    };
+    networks = {
+      "30-enp10s0" = {
+        matchConfig.Name = "enp10s0";
+        networkConfig.Bond = "bond0";
+        networkConfig.PrimarySlave = true;
+      };
+
+      "30-wlp9s0" = {
+        matchConfig.Name = "wlp9s0";
+        networkConfig.Bond = "bond0";
+      };
+
+      "40-bond0" = {
+        matchConfig.Name = "bond0";
+        linkConfig.RequiredForOnline = "carrier";
+        networkConfig = {
+          Address = [ "10.0.0.201/24" ];
+          Gateway = "10.0.0.1";
+          DNS = [ "75.75.75.75" "75.75.76.76" ];
+          IPv6AcceptRA = true;
+        };
+      };
+    };
   };
 
   systemd.watchdog.rebootTime = "0";
