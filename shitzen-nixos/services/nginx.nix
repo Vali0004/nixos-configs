@@ -37,7 +37,7 @@
         forceSSL = true;
         locations = {
           "/" = {
-            alias = "/data/web/";
+            alias = "/data/services/web/";
             index = "index.html";
           };
           "/private/" = {

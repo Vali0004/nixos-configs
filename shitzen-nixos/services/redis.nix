@@ -6,5 +6,9 @@
       enable = true;
       port = 6379;
     };
+    "convoy" = {
+      enable = true;
+      port = 6380;
+    };
   };
 }

@@ -141,22 +141,4 @@ in {
   };
 
   system.stateVersion = "25.05";
-
-  #virtualisation = {
-  #  docker.enable = true;
-  #  podman.enable = true;
-  #  oci-containers.containers = {
-  #    dockge = {
-  #      autoStart = true;
-  #      image = "louislam/dockge:1";
-  #      ports = [ "6002:5001" ];
-  #      volumes = [
-  #        "/var/run/docker.sock:/var/run/docker.sock"
-  #        "/var/lib/dockge/data:/app/data:Z"
-  #        "/var/lib/stacks:/data/stacks"
-  #      ];
-  #      environment.DOCKGE_STACKS_DIR = "/var/lib/stacks";
-  #    };
-  #  };
-  #};
 }

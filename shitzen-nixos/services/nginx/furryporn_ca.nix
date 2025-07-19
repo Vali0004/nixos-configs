@@ -8,7 +8,7 @@ in {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        alias = "/data/valisfurryporn/";
+        alias = "/data/services/valisfurryporn/";
         index = "index.html";
       };
     };
