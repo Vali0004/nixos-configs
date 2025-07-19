@@ -180,7 +180,7 @@ in {
     };
     # Mount the Windows C:\ drive
     "/mnt/c" = {
-      device = "/dev/disk/by-uuid/DC9A3DB19A3D88D2";
+      device = "/dev/disk/by-uuid/BE68F85A68F812BF";
       fsType = "ntfs";
     };
     # Mount X:\
