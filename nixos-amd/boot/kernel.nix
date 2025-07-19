@@ -14,7 +14,7 @@
     "rd.systemd.show_status=auto"
   ];
   boot.kernelPackages = let
-    version = "6.14.2";
+    version = "6.15.4";
     suffix = "zen1";
   in pkgs.linuxPackagesFor (pkgs.linux_zen.override {
     inherit version suffix;
@@ -26,7 +26,7 @@
     };
   });
   boot.kernelPatches = [{
-    # ALVR has a stroke, as it needs this for asynchronous reprojection
+    # VR has a stroke, as it needs this for asynchronous reprojection
     # However, NixOS runs steam in a bubble-wrapped env simply due to how NixOS works. It emulates a Debian install to make Steam happy
     # This just makes amdgpu say "Fuck it, we'll do it anyways"
     name = "amdgpu-ignore-ctx-privileges";
