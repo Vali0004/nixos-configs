@@ -180,5 +180,5 @@ in {
   vali.mc_prod = false;
   vali.mc_test = false;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

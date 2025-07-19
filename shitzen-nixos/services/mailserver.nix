@@ -2,10 +2,10 @@
 
 {
   mailserver = {
+    certificateScheme = "acme-nginx";
+    domains = [ "fuckk.lol" ];
     enable = true;
     fqdn = "smtp.fuckk.lol";
-    domains = [ "fuckk.lol" ];
-
     # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
@@ -15,8 +15,8 @@
       };
       #"unison@fuckk.lol" = { ... };
     };
-
-    certificateScheme = "acme-nginx";
+    mailDirectory = "/var/vmail";
+    stateVersion = 3;
   };
 
   services.roundcube = {
