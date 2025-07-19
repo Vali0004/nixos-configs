@@ -19,11 +19,11 @@
         upload_limit = 100;
       };
       system = {
-        root_directory = "/data/pterodactyl/data";
-        log_directory = "/data/pterodactyl/logs";
-        data = "/data/pterodactyl/data/volumes";
-        archive_directory = "/data/pterodactyl/data/archives";
-        backup_directory = "/data/pterodactyl/data/backups";
+        root_directory = "/data/services/pterodactyl/data";
+        log_directory = "/data/services/pterodactyl/logs";
+        data = "/data/services/pterodactyl/data/volumes";
+        archive_directory = "/data/services/pterodactyl/data/archives";
+        backup_directory = "/data/services/pterodactyl/data/backups";
         sftp.bind_port = 2022;
       };
     };

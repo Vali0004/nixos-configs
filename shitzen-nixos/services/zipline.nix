@@ -25,11 +25,11 @@ in {
     settings = {
       CORE_HOSTNAME = "0.0.0.0";
       CORE_PORT = 3000;
-      DATASOURCE_LOCAL_DIRECTORY = "/data/zipline/uploads";
+      DATASOURCE_LOCAL_DIRECTORY = "/data/services/zipline/uploads";
       DATASOURCE_TYPE = "local";
     };
   };
   systemd.services.zipline = {
-    serviceConfig.ReadWritePaths = [ "/data/zipline/uploads" ];
+    serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
   };
 }

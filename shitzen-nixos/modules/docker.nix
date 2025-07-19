@@ -11,10 +11,10 @@
         ports = [ "5001:5001" ];
         volumes = [
           "/var/run/docker.sock:/var/run/docker.sock"
-          "/data/dockge/data:/app/data:Z"
-          "/data/stacks:/data/stacks"
+          "/data/services/dockge/data:/app/data:Z"
+          "/data/services/stacks:/data/services/stacks"
         ];
-        environment.DOCKGE_STACKS_DIR = "/data/stacks";
+        environment.DOCKGE_STACKS_DIR = "/data/services/stacks";
       };
     };
   };

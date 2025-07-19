@@ -5,7 +5,15 @@ let
     extensions = ({ enabled, all }: enabled ++ (with all; [ redis ]));
   };
 
+  sqlPkg = pkgs.mariadb;
+
   convoyPanelSrc = ./convoy-panel-offline.tar.gz;
+
+  dbPassword = "dummypassword";
+
+  createDefaultUser = false;
+  defaultUserEmail = "vali@fuckk.lol";
+  defaultUserPassword = "dummypassword";
 
   convoyEnvFile = pkgs.writeText "convoy.env" ''
     APP_NAME=Convoy
@@ -22,7 +30,7 @@ let
     DB_PORT=3306
     DB_DATABASE=convoy
     DB_USERNAME=convoy
-    DB_PASSWORD=dummypassword
+    DB_PASSWORD=${dbPassword}
 
     CACHE_DRIVER=redis
     QUEUE_CONNECTION=redis
@@ -70,11 +78,9 @@ in {
     "d /run/phpfpm 0755 root root - -"
   ];
 
-  services.nginx.virtualHosts."convoy-local" = {
-    enableACME = false;
-    forceSSL = false;
-    listen = [{ addr = "0.0.0.0"; port = 9080; ssl = false; }];
-    serverName = "localhost";
+  services.nginx.virtualHosts."convoy.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
     root = "/var/lib/convoy-panel/public";
     extraConfig = ''
       index index.php;
@@ -116,10 +122,71 @@ in {
     };
   };
 
+  systemd.services.convoy-db-setup = {
+    description = "Ensure Convoy MySQL database and user exist";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "mysql.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = pkgs.writeShellScript "create-convoy-db" ''
+        set -eux
+        ${sqlPkg}/bin/mysql -u root --protocol=socket <<'EOF'
+          CREATE DATABASE IF NOT EXISTS convoy;
+          CREATE USER IF NOT EXISTS 'convoy'@'localhost' IDENTIFIED BY '${dbPassword}';
+          GRANT ALL PRIVILEGES ON convoy.* TO 'convoy'@'localhost';
+          FLUSH PRIVILEGES;
+        EOF
+      '';
+    };
+  };
+
+  systemd.services.convoy-composer-install = {
+    description = "Install PHP dependencies with Composer";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "convoy-panel-install.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      WorkingDirectory = "/var/lib/convoy-panel";
+      User = "nginx";
+      Group = "nginx";
+      Environment = "HOME=/var/lib/convoy-panel";
+      ExecStart = pkgs.writeShellScript "composer-install" ''
+        set -eux
+        ${pkgs.php82Packages.composer}/bin/composer install --no-dev --no-interaction --prefer-dist
+      '';
+    };
+  };
+
+  systemd.services.convoy-migrate = {
+    description = "Run Laravel migrations";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "mysql.service" "convoy-db-setup.service" "convoy-composer-install.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      WorkingDirectory = "/var/lib/convoy-panel";
+      User = "nginx";
+      Group = "nginx";
+      ExecStart = "${phpPkg}/bin/php artisan migrate --force";
+    };
+  };
+
+  systemd.services.convoy-create-admin = lib.mkIf createDefaultUser {
+    description = "Create default Convoy admin user";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "convoy-migrate.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      WorkingDirectory = "/var/lib/convoy-panel";
+      User = "nginx";
+      Group = "nginx";
+      ExecStart = "${phpPkg}/bin/php artisan c:user:make --email=${defaultUserEmail} --password=${defaultUserPassword}";
+    };
+  };
+
   systemd.services.convoy-queue-worker = {
     description = "Laravel Queue Worker";
     wantedBy = [ "multi-user.target" ];
-    after = [ "convoy-artisan-fix.service" "redis.convoy.service" "mysql.service" ];
+    after = [ "convoy-create-admin.service" "redis.convoy.service" ];
     unitConfig = {
       ConditionPathExists = "/var/lib/convoy-panel/.env";
     };
@@ -131,20 +198,5 @@ in {
       Restart = "always";
       RestartSec = "5s";
     };
-  };
-
-  services.redis.servers."convoy" = {
-    enable = true;
-    port = 6380;
-  };
-
-  services.mysql = {
-    enable = true;
-    settings.mysqld.bind-address = "127.0.0.1";
-    initialDatabases = [{ name = "convoy"; }];
-    initialScript = pkgs.writeText "init.sql" ''
-      CREATE USER 'convoy'@'localhost' IDENTIFIED BY 'dummypassword';
-      GRANT ALL PRIVILEGES ON convoy.* TO 'convoy'@'localhost';
-    '';
   };
 }
