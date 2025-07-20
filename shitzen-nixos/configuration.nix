@@ -27,11 +27,11 @@ in {
     modules/docker.nix
     modules/tgt_service.nix
     modules/zfs.nix
+    services/hydra.nix
     services/mailserver.nix
     services/minecraft.nix
     services/nginx.nix
     services/oauth2.nix
-    services/php.nix
     services/proxmox.nix
     services/pterodactyl-panel.nix
     services/redis.nix
@@ -94,8 +94,9 @@ in {
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
-    useDHCP = true;
+    useDHCP = false;
     useNetworkd = true;
+    networkmanager.enable = false;
   };
 
   nixpkgs = {
@@ -138,6 +139,7 @@ in {
 
 
   systemd.network = {
+    enable = true;
     netdevs."vmbr0" = {
       netdevConfig = {
         Kind = "bridge";

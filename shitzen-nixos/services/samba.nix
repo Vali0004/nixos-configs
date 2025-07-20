@@ -9,8 +9,6 @@
         global = {
           "follow symlinks" = "yes";
           "guest account" = "nobody";
-          #"hosts allow" = "10.0.0. 127.0.0.1 localhost";
-          #"hosts deny" = "0.0.0.0/0";
           "inherit permissions" = "yes";
           "log level" = "3";
           "map to guest" = "bad user";
