@@ -3,14 +3,11 @@
 buildNpmPackage (finalAttrs: {
   dontNpmBuild = true;
   name = "cors-anywhere";
-  npmDepsHash = "sha256-awaVLywKQBVvSi8k5bzZvZLdnzOg/EsXdANOYg93ZHE=";
-  postPatch = ''
-    ln -s ${./package-lock.json} package-lock.json
-  '';
+  npmDepsHash = "sha256-S/3o3JyVSiXJTaG9uVHj4tlvPM8/sSb/xFaEK7SbeOQ=";
   src = fetchFromGitHub {
-    owner = "Rob--W";
+    owner = "Vali0004";
     repo = "cors-anywhere";
-    rev = "70aaa22b3f9ad30c8566024bf25484fd1ed9bda9";
-    sha256 = "sha256-Nf6TJPRyTH9/mlVfcnmlmUhNDEVIz3/00I/fWb7Zb34=";
+    rev = "c986587785d2039eccdc87e89d470b9315182b98";
+    sha256 = "sha256-cYe0SX7JMOtUdEfe5FQsq3pFKY9y6+TwPKFdyQg3boE=";
   };
 })

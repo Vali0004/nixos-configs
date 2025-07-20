@@ -4,7 +4,6 @@ let
   cors_anywhere = pkgs.callPackage ./package.nix {};
   mkProxy = import ./../../services/nginx/mkproxy.nix;
 in {
-  # TODO: Setup a auto-deploy script
   environment.systemPackages = with pkgs; [
     nodejs_20
     cors_anywhere
@@ -16,7 +15,10 @@ in {
       Type = "simple";
     };
     serviceConfig = {
-      Environment = "PORT=8099";
+      Environment = [
+        "PORT=8099"
+        "CORSANYWHERE_ALLOWED_TARGETS=api-cdn.rule34.xxx,api.rule34.xxx,rule34.xxx"
+      ];
       ExecStart = "${pkgs.nodejs_20}/bin/node ${cors_anywhere}/lib/node_modules/cors-anywhere/server.js";
     };
     wantedBy = [ "multi-user.target" ];
