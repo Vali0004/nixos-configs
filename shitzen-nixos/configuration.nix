@@ -32,6 +32,7 @@ in {
     services/minecraft.nix
     services/nginx.nix
     services/oauth2.nix
+    services/postgresql.nix
     services/proxmox.nix
     services/pterodactyl-panel.nix
     services/redis.nix
@@ -119,10 +120,6 @@ in {
       exports = ''
         /data 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
       '';
-    };
-    postgresql = {
-      enable = true;
-      settings.port = 5432;
     };
     toxvpn = {
       auto_add_peers = [

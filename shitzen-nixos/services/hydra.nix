@@ -33,11 +33,6 @@ in {
     };
   };
 
-  services.postgresql.identMap = ''
-    hydra-users vali vali
-    hydra-users root root
-  '';
-
   services.hydra = {
     buildMachinesFiles = [];
     enable = true;
@@ -45,6 +40,7 @@ in {
       <git-input>
         timeout = 3600
       </git-input>
+      enableUserAuth = 1
     '';
     hydraURL = "https://hydra.fuckk.lol";
     listenHost = "localhost";
