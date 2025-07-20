@@ -2,6 +2,7 @@
 
 let
   cors_anywhere = pkgs.callPackage ./package.nix {};
+  mkProxy = import ./../../services/nginx/mkproxy.nix;
 in {
   # TODO: Setup a auto-deploy script
   environment.systemPackages = with pkgs; [
@@ -19,5 +20,20 @@ in {
       ExecStart = "${pkgs.nodejs_20}/bin/node ${cors_anywhere}/lib/node_modules/cors-anywhere/server.js";
     };
     wantedBy = [ "multi-user.target" ];
+  };
+
+  services.nginx.virtualHosts."r34.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = mkProxy {
+      port = 8099;
+      webSockets = true;
+      config = ''
+        proxy_ssl_server_name on;
+        proxy_ssl_name $proxy_host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Requested-With XMLHttpRequest;
+      '';
+    };
   };
 }
