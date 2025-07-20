@@ -4,6 +4,14 @@ let
   mkProxy = import ./nginx/mkproxy.nix;
 in {
   nix = {
+    buildMachines = [
+      { hostName = "localhost";
+        protocol = null;
+        system = "x86_64-linux";
+        supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
+        maxJobs = 8;
+      }
+    ];
     extraOptions = ''
       allowed-uris = https://github.com/nixos github:
       experimental-features = nix-command flakes
@@ -31,7 +39,13 @@ in {
   '';
 
   services.hydra = {
+    buildMachinesFiles = [];
     enable = true;
+    extraConfig = ''
+      <git-input>
+        timeout = 3600
+      </git-input>
+    '';
     hydraURL = "https://hydra.fuckk.lol";
     listenHost = "localhost";
     maxServers = 10;
