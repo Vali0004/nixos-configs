@@ -137,13 +137,20 @@ in {
     size = 8192;
   }];
 
-
   systemd.network = {
     enable = true;
     netdevs."vmbr0" = {
       netdevConfig = {
         Kind = "bridge";
         Name = "vmbr0";
+      };
+      bridgeConfig = {
+        ForwardDelaySec = 0;
+        HelloTimeSec = 2;
+        MaxAgeSec = 20;
+        AgeingTimeSec = 300;
+        STP = false;
+        #MulticastSnooping = false;
       };
     };
     networks."10-enp7s0" = {
