@@ -63,6 +63,8 @@ in {
     dmidecode
     dunst
     edid-decode
+    # Matrix client
+    element-desktop
     envsubst
     eog
     # Noise suppression
@@ -84,6 +86,8 @@ in {
     # Browser
     google-chrome
     iperf
+    # IRC Client
+    irssi
     # Media Player
     jellyfin-media-player
     jq
