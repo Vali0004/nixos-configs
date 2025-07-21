@@ -388,15 +388,18 @@ in {
     };
   };
 
-  xdg.mime = {
-    addedAssociations = {
-      "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
+  xdg.mimeApps = let
+    applications = {
       "x-scheme-handler/element" = "element-desktop.desktop";
-    };
-    defaultApplications = {
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
-      "x-scheme-handler/element" = "element-desktop.desktop";
+      "x-scheme-handler/osu" = "osuwinello-url-handler.desktop";
+      "application/x-osu-skin-archive" = "osuwinello-file-extensions-handler.desktop";
+      "application/x-osu-replay" = "osuwinello-file-extensions-handler.desktop";
+      "application/x-osu-beatmap-archive" = "osuwinello-file-extensions-handler.desktop";
     };
+  in {
+    addedAssociations = applications;
+    defaultApplications = applications;
   };
 
   xdg.portal = {
