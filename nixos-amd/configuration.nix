@@ -242,6 +242,7 @@ in {
       "flakes"
     ];
     substituters = [
+      "https://cache.fuckk.lol"
       "https://cache.saumon.network/proxmox-nixos"
       "https://cache.nixos.org/"
     ];
@@ -251,6 +252,7 @@ in {
       "@wheel"
     ];
     trusted-public-keys = [
+      "cache.fuckk.lol:CLzn/YtOOlQGxt4ud48+zaq2WMROFSTBUVV3AtwtKC0="
       "proxmox-nixos:D9RYSWpQQC/msZUWphOY2I5RLH5Dd6yQcaHIuug7dWM="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
