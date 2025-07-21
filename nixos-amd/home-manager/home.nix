@@ -40,20 +40,16 @@ in {
 
     nixpkgs.config.allowUnfree = true;
 
-    xdg.mimeApps = {
-      associations.added = {
-        "x-scheme-handler/osu" = [ "osuwinello-url-handler.desktop" ];
-        "application/x-osu-skin-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
-        "application/x-osu-replay" = [ "osuwinello-file-extensions-handler.desktop" ];
-        "application/x-osu-beatmap-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
+    xdg.mimeApps = let
+      applications = {
+        "x-scheme-handler/osu" = "osuwinello-url-handler.desktop";
+        "application/x-osu-skin-archive" = "osuwinello-file-extensions-handler.desktop";
+        "application/x-osu-replay" = "osuwinello-file-extensions-handler.desktop";
+        "application/x-osu-beatmap-archive" = "osuwinello-file-extensions-handler.desktop";
       };
-
-      defaultApplications = {
-        "x-scheme-handler/osu" = [ "osuwinello-url-handler.desktop" ];
-        "application/x-osu-skin-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
-        "application/x-osu-replay" = [ "osuwinello-file-extensions-handler.desktop" ];
-        "application/x-osu-beatmap-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
-      };
+    in {
+      associations.added = applications;
+      defaultApplications = applications;
       enable = true;
     };
   };
