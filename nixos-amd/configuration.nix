@@ -160,8 +160,6 @@ in {
         -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
         "$@"
     '')
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
     xdg-launch
     xdg-utils
     zenity
@@ -390,10 +388,21 @@ in {
     };
   };
 
+  xdg.mime = {
+    addedAssociations = {
+      "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
+      "x-scheme-handler/element" = "element-desktop.desktop";
+    };
+    defaultApplications = {
+      "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
+      "x-scheme-handler/element" = "element-desktop.desktop";
+    };
+  };
+
   xdg.portal = {
     config.common.default = [ "gtk" ];
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
     xdgOpenUsePortal = true;
   };
 }
