@@ -5,6 +5,7 @@
     extraModulePackages = [ ];
     initrd = {
       availableKernelModules = [
+        "bridge" "br_netfilter" # networkd
         "ahci" # SATA
         "xhci_pci" # USB
         "usb_storage"

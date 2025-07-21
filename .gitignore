@@ -1,3 +1,8 @@
 *.AppImage
+*.deb
+*.rpm
 result
+**/result
+**/**/result
+**/**/**/result
 network-secrets-private.nix

@@ -13,7 +13,14 @@
   boot.extraModulePackages = [ ];
 
   boot.initrd = {
-    availableKernelModules = [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    availableKernelModules = [
+      "ahci" # SATA
+      "bridge" "br_netfilter" # networkd
+      "nvme" # NVME
+      "usbhid" "usb_storage" # USB
+      "xhci_pci" # USB
+      "sd_mod"
+    ];
     kernelModules = [ ];
     systemd.enable = true;
     # Silence Stage 1
