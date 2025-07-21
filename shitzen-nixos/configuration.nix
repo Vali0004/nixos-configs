@@ -27,7 +27,6 @@ in {
     modules/docker.nix
     modules/tgt_service.nix
     modules/zfs.nix
-    services/cache.nix
     services/hydra.nix
     services/mailserver.nix
     services/minecraft.nix
@@ -99,6 +98,12 @@ in {
     useDHCP = false;
     useNetworkd = true;
     networkmanager.enable = false;
+  };
+
+  nix.settings = {
+    cores = 4;
+    max-jobs = 2;
+    max-substitution-jobs = 8;
   };
 
   nixpkgs = {

@@ -5,11 +5,11 @@ let
 in {
   nix = {
     buildMachines = [
-      { hostName = "localhost";
+      { hostName = "shitzen-nixos";
         protocol = null;
-        system = "x86_64-linux";
+        systems = [ "i686-linux" "x86_64-linux" ];
         supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
-        maxJobs = 8;
+        maxJobs = 1;
       }
     ];
     extraOptions = ''
@@ -33,6 +33,17 @@ in {
     };
   };
 
+  systemd.services.hydra-init.preStart = lib.mkAfter ''
+    originalConf=$(readlink -f /var/lib/hydra/hydra.conf)
+
+    cp "$originalConf" /var/lib/hydra/hydra.conf.tmp
+
+    token=$(tr -d '\n' < ${config.age.secrets.hydra-github-token.path})
+    sed -i "s/TOKEN1/$token/g" /var/lib/hydra/hydra.conf.tmp
+
+    ln -sf /var/lib/hydra/hydra.conf.tmp /var/lib/hydra/hydra.conf
+  '';
+
   services.hydra = {
     buildMachinesFiles = [];
     enable = true;
@@ -43,8 +54,8 @@ in {
       max_concurrent_evals = 1
       evaluator_initial_heap_size = ${toString (1024*1024*1024)} # 1gig
       <github_authorization>
-        Vali0004 = @${config.age.secrets.hydra-github-token.path}
-        xenon-emu = @${config.age.secrets.hydra-github-token.path}
+        Vali0004 = TOKEN1
+        xenon-emu = TOKEN1
       </github_authorization>
       <githubstatus>
         jobs = xenon-emu:xenon.*
