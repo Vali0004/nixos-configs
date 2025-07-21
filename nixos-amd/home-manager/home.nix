@@ -41,32 +41,20 @@ in {
     nixpkgs.config.allowUnfree = true;
 
     xdg.mimeApps = {
-      associations.added."x-scheme-handler/osu" = "osu.desktop";
-      defaultApplications."x-scheme-handler/osu" = [ "osu.desktop" ];
-      enable = true;
-    };
+      associations.added = {
+        "x-scheme-handler/osu" = [ "osuwinello-url-handler.desktop" ];
+        "application/x-osu-skin-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
+        "application/x-osu-replay" = [ "osuwinello-file-extensions-handler.desktop" ];
+        "application/x-osu-beatmap-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
+      };
 
-    xdg.desktopEntries = {
-      "dmenu_launch.desktop" = {
-        exec = "dmenu_launch";
-        name = "";
-        noDisplay = true;
+      defaultApplications = {
+        "x-scheme-handler/osu" = [ "osuwinello-url-handler.desktop" ];
+        "application/x-osu-skin-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
+        "application/x-osu-replay" = [ "osuwinello-file-extensions-handler.desktop" ];
+        "application/x-osu-beatmap-archive" = [ "osuwinello-file-extensions-handler.desktop" ];
       };
-      "Steam Linux Runtime 1.0 (scout).desktop" = {
-        exec = "";
-        name = "Steam Linux Runtime 1.0 (scout)";
-        noDisplay = true;
-      };
-      "Steam Linux Runtime 2.0 (soldier).desktop" = {
-        exec = "";
-        name = "Steam Linux Runtime 2.0 (soldier)";
-        noDisplay = true;
-      };
-      "Steam Linux Runtime 3.0 (sniper).desktop" = {
-        exec = "";
-        name = "Steam Linux Runtime 3.0 (sniper)";
-        noDisplay = true;
-      };
+      enable = true;
     };
   };
 }
