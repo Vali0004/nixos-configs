@@ -27,6 +27,7 @@ in {
     modules/docker.nix
     modules/tgt_service.nix
     modules/zfs.nix
+    services/cache.nix
     services/hydra.nix
     services/mailserver.nix
     services/minecraft.nix
