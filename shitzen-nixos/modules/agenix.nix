@@ -5,6 +5,10 @@
     pkgs.agenix
   ];
   age.secrets = {
+    hydra-github-token = {
+      file = ./../../secrets/hydra-github-token.age;
+      owner = "hydra";
+    };
     oauth2 = {
       file = ./../../secrets/oauth2.age;
       owner = "nginx";

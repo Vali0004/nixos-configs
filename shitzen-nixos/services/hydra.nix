@@ -37,10 +37,17 @@ in {
     buildMachinesFiles = [];
     enable = true;
     extraConfig = ''
+      binary_cache_secret_key_file = /var/cache-priv-key.pem
+      store-uri = file:///nix/store?secret-key=/var/cache-priv-key.pem
+      max_output_size = ${toString (1024*1024*1024*3)} # 3gig
+      max_concurrent_evals = 1
+      evaluator_initial_heap_size = ${toString (1024*1024*1024)} # 1gig
+      <github_authorization>
+        Vali0004 = @${config.age.secrets.hydra-github-token.path}
+      </github_authorization>
       <git-input>
         timeout = 3600
       </git-input>
-      enableUserAuth = 1
     '';
     hydraURL = "https://hydra.fuckk.lol";
     listenHost = "localhost";
