@@ -27,9 +27,9 @@ in {
   services.nginx.virtualHosts."hydra.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
-      port = 3001;
-      webSockets = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:3001";
+      proxyWebsockets = false;
     };
   };
 
@@ -44,10 +44,13 @@ in {
       evaluator_initial_heap_size = ${toString (1024*1024*1024)} # 1gig
       <github_authorization>
         Vali0004 = @${config.age.secrets.hydra-github-token.path}
+        xenon-emu = @${config.age.secrets.hydra-github-token.path}
       </github_authorization>
-      <git-input>
-        timeout = 3600
-      </git-input>
+      <githubstatus>
+        jobs = xenon-emu:xenon.*
+        inputs = xenon
+        excludeBuildFromContext = 1
+      </githubstatus>
     '';
     hydraURL = "https://hydra.fuckk.lol";
     listenHost = "localhost";
