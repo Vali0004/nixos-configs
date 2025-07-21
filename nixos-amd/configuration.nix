@@ -388,7 +388,7 @@ in {
     };
   };
 
-  xdg.mimeApps = let
+  xdg.mime = let
     applications = {
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
