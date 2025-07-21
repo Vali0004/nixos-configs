@@ -94,7 +94,7 @@ in {
     # MS Paint
     kdePackages.kolourpaint
     # File browser
-    kdePackages.ark
+    nemo-with-extensions
     # cli unrar
     libarchive
     # Wormhole
@@ -392,12 +392,6 @@ in {
 
   xdg.portal = {
     enable = true;
-    # xdg-desktop-portal 1.17 reworked how portal implementations are loaded, you
-    # should either set `xdg.portal.config` or `xdg.portal.configPackages`
-    # to specify which portal backend to use for the requested interface.
-
-    # https:#github.com/flatpak/xdg-desktop-portal/blob/1.18.1/doc/portals.conf.rst.in
-    config.common.default = "*"; # Just go back to the behaviour before 1.17
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
   };
