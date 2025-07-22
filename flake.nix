@@ -2,7 +2,9 @@
   inputs = {
     # https://github.com/NixOS/nixpkgs/commit/63e999bff1f1b61e29b78a4bf2fd742a9a9d70f5
     # Broke flood
-    nixpkgs.url = "github:NixOS/nixpkgs/a8c9a2aa3e2a3fe0762b4b08b12b0f398b2d57b5";
+    # https://github.com/NixOS/nixpkgs/commit/09a31a6397a080b637a984a2baa81cc83d41f140
+    # Broke zipline, and other pnpm pkgs
+    nixpkgs.url = "github:NixOS/nixpkgs/dd2290ee7f441ab85bb45ac4fd7e6c39c8da3f6f";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
