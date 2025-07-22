@@ -98,7 +98,7 @@ in {
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
-    useDHCP = false;
+    useDHCP = true;
     useNetworkd = true;
     networkmanager.enable = false;
   };
@@ -142,41 +142,6 @@ in {
     device = "/var/lib/swap1";
     size = 8192;
   }];
-
-  systemd.network = {
-    enable = true;
-    netdevs."vmbr0" = {
-      netdevConfig = {
-        Kind = "bridge";
-        Name = "vmbr0";
-      };
-      bridgeConfig = {
-        ForwardDelaySec = 0;
-        HelloTimeSec = 2;
-        MaxAgeSec = 20;
-        AgeingTimeSec = 300;
-        STP = false;
-        #MulticastSnooping = false;
-      };
-    };
-    networks."10-enp7s0" = {
-      matchConfig.Name = "enp7s0";
-      networkConfig = {
-        Bridge = "vmbr0";
-      };
-    };
-    networks."10-vmbr0" = {
-      matchConfig.Name = "vmbr0";
-      networkConfig = {
-        DHCP = "ipv4";
-        #Address = [ "10.0.0.244/24" ];
-        #Gateway = "10.0.0.1";
-        #DNS = [ "75.75.75.75" "75.75.76.76" ];
-        IPv6AcceptRA = true;
-      };
-      linkConfig.RequiredForOnline = "routable";
-    };
-  };
 
   systemd.services = {
     forward4300 = mkForwardTCP 4300;
