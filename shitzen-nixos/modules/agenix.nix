@@ -24,10 +24,10 @@
       owner = "nginx";
       group = "nginx";
     };
-    zipline = {
-      file = ./../../secrets/zipline.age;
-      owner = "zipline";
-      group = "zipline";
-    };
+    #zipline = {
+    #  file = ./../../secrets/zipline.age;
+    #  owner = "zipline";
+    #  group = "zipline";
+    #};
   };
 }

@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
