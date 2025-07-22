@@ -5,9 +5,9 @@ let
   web-port = 3002;
 in {
   services.rtorrent = {
+    downloadDir = "/data/services/downloads/rtorrent";
     enable = true;
     port = peer-port;
-    package = pkgs.jesec-rtorrent;
     openFirewall = true;
   };
 
