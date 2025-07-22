@@ -38,6 +38,7 @@ in {
     services/proxmox.nix
     services/pterodactyl-panel.nix
     services/redis.nix
+    services/rtorrent.nix
     services/samba.nix
     services/tgtd.nix
     services/wings.nix
