@@ -7,6 +7,8 @@
     openFirewall = true;
   };
 
+  systemd.services.prowlarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
+
   services.nginx.virtualHosts."prowlarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
@@ -24,6 +26,8 @@
     user = "vali";
   };
 
+  systemd.services.sonarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
+
   services.nginx.virtualHosts."sonarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
@@ -40,6 +44,7 @@
     openFirewall = true;
     user = "vali";
   };
+  systemd.services.radarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
   services.nginx.virtualHosts."radarr.fuckk.lol" = {
     enableACME = true;
