@@ -26,7 +26,6 @@
     };
     zipline = {
       file = ./../../secrets/zipline.age;
-      owner = "zipline";
       group = "zipline";
     };
   };
