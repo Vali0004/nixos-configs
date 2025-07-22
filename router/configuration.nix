@@ -41,6 +41,7 @@ in {
     };
     kernelModules = [ "kvm-amd" ];
     loader.grub = {
+      configurationLimit = 3;
       copyKernels = true;
       device = "/dev/vda";
       efiSupport = false;

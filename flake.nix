@@ -1,6 +1,8 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # https://github.com/NixOS/nixpkgs/commit/63e999bff1f1b61e29b78a4bf2fd742a9a9d70f5
+    # Broke flood
+    nixpkgs.url = "github:NixOS/nixpkgs/a8c9a2aa3e2a3fe0762b4b08b12b0f398b2d57b5";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
