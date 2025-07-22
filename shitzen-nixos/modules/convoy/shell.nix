@@ -16,7 +16,13 @@ pkgs.mkShell {
 
   shellHook = ''
     echo ""
-    echo "Run: ./make-convoy.sh"
+    echo "Run:"
+    echo "SETUP_DB=true \\"
+    echo "DB_PASSWORD=my-secret-db-pass \\"
+    echo "CREATE_ADMIN=true \\"
+    echo "DEFAULT_ADMIN_EMAIL=admin@example.com \\"
+    echo "DEFAULT_ADMIN_PASSWORD=s3cret123 \\"
+    echo "./make-convoy.sh"
     echo ""
   '';
 }

@@ -19,7 +19,28 @@ composer install --no-dev --prefer-dist --optimize-autoloader
 echo "[*] Cleaning up unnecessary files..."
 rm -rf .git .github tests node_modules resources/js public/js public/css
 
-echo "[*] Archiving for Nix..."
+# Optional DB setup
+if [[ "${SETUP_DB:-false}" == "true" ]]; then
+  echo "[*] Creating MySQL database and user..."
+  mysql -u root --protocol=socket <<EOF
+CREATE DATABASE IF NOT EXISTS convoy;
+CREATE USER IF NOT EXISTS 'convoy'@'localhost' IDENTIFIED BY '${DB_PASSWORD:-changeme}';
+GRANT ALL PRIVILEGES ON convoy.* TO 'convoy'@'localhost';
+FLUSH PRIVILEGES;
+EOF
+fi
+
+# Optional admin user creation
+if [[ "${CREATE_ADMIN:-false}" == "true" ]]; then
+  echo "[*] Creating default admin user..."
+  if [[ -z "${DEFAULT_ADMIN_EMAIL:-}" || -z "${DEFAULT_ADMIN_PASSWORD:-}" ]]; then
+    echo "ERROR: DEFAULT_ADMIN_EMAIL and DEFAULT_ADMIN_PASSWORD must be set"
+    exit 1
+  fi
+  php artisan c:user:make --email="$DEFAULT_ADMIN_EMAIL" --password="$DEFAULT_ADMIN_PASSWORD"
+fi
+
+echo "[*] Archiving..."
 # Ensure deterministic archive
 tar --sort=name \
     --owner=0 --group=0 --numeric-owner \
@@ -28,7 +49,7 @@ tar --sort=name \
 
 cd "$OLDPWD"
 
-echo "[*] Calculating Nix hash..."
+echo "[*] Calculating hash..."
 HASH=$(nix hash file "$OUTFILE")
 
 echo

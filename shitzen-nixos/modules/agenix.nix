@@ -5,6 +5,11 @@
     pkgs.agenix
   ];
   age.secrets = {
+    convoy = {
+      file = ./../../convoy.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     hydra-github-token = {
       file = ./../../secrets/hydra-github-token.age;
       owner = "hydra";
