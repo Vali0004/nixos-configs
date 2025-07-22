@@ -4,7 +4,14 @@ let
   peer-port = 50000;
   web-port = 3002;
 in {
+  environment.systemPackages = [ pkgs.rtorrent ];
   services.rtorrent = {
+    configText = ''
+      method.redirect=load.throw,load.normal
+      method.redirect=load.start_throw,load.start
+      method.insert=d.down.sequential,value|const,0
+      method.insert=d.down.sequential.set,value|const,0
+    '';
     downloadDir = "/data/services/downloads/rtorrent";
     enable = true;
     port = peer-port;
