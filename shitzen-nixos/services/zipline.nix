@@ -3,10 +3,8 @@
 let
   mkProxy = import ./nginx/mkproxy.nix;
 in {
-  environment.systemPackages = [ pkgs.zipline ];
-
   services.zipline = {
-    enable = true;
+    enable = false;
     environmentFiles = [ config.age.secrets.zipline.path ];
     settings = {
       CORE_HOSTNAME = "0.0.0.0";
@@ -16,9 +14,9 @@ in {
     };
   };
 
-  systemd.services.zipline = {
-    serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
-  };
+  #systemd.services.zipline = {
+  #  serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
+  #};
 
   services.nginx.virtualHosts."holy.fuckk.lol" = {
     enableACME = true;
