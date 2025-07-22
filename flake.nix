@@ -56,7 +56,7 @@
         ];
       };
       shitzen-nixos = {
-        deployment.targetHost = "10.0.0.244";
+        deployment.targetHost = "10.0.0.159";
         deployment.targetUser = "root";
         imports = [
           agenix.nixosModules.age

@@ -4,7 +4,7 @@
   services.proxmox-ve = {
     bridges = [ "vmbr0" ];
     enable = true;
-    ipAddress = "10.0.0.244";
+    ipAddress = "10.0.0.159";
   };
 
   systemd.tmpfiles.rules = [
