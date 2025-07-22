@@ -17,7 +17,7 @@
     };
     kernelModules = [ "kvm-amd" ];
     kernelParams = [
-      "netconsole=6665@10.0.0.244/enp7s0,6666@10.0.0.0.201/10:ff:e0:35:08:fb"
+      "netconsole=6665@10.0.0.159/enp7s0,6666@10.0.0.0.201/10:ff:e0:35:08:fb"
     ];
     loader = {
       efi.canTouchEfiVariables = true;

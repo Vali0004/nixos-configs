@@ -168,9 +168,10 @@ in {
     networks."10-vmbr0" = {
       matchConfig.Name = "vmbr0";
       networkConfig = {
-        Address = [ "10.0.0.244/24" ];
-        Gateway = "10.0.0.1";
-        DNS = [ "75.75.75.75" "75.75.76.76" ];
+        DHCP = "ipv4";
+        #Address = [ "10.0.0.244/24" ];
+        #Gateway = "10.0.0.1";
+        #DNS = [ "75.75.75.75" "75.75.76.76" ];
         IPv6AcceptRA = true;
       };
       linkConfig.RequiredForOnline = "routable";

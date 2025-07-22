@@ -195,7 +195,7 @@ in {
     };
     # Mount the NFS
     "/mnt/data" = {
-      device = "10.0.0.244:/data";
+      device = "10.0.0.159:/data";
       fsType = "nfs";
       options = [ "x-systemd.automount" "noauto" "soft" ];
     };
