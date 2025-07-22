@@ -14,6 +14,7 @@ let
     "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDzpuTz2l4ceA6dQWjPPkchi0zE159VTUrgt4+RjsHii0rhDNhjPFPx7NyUE4JXbg62R5sv2kwb7wGWS/s+Hw6Uu0QvHZoCMc5uVwXOnmggKXKhTxeHZ/igCnH8BKQ88O80KTqTpbPNm7ge0TT2fwFguaNGMtp8Ku7Mzrp4CaNPEdQMQe5sN0NyBlg3wx4eWmBbE0vsk6NVPwzWH10mZcuoXD1EWrPZfAVbk5TIbloKPsE0fzqoYYcd2NrxhdDOMGXw0lL8yTFFzjyOqqAAKexYLxRBMqYBdMLupfpOOBr7KZDNzdhPllh2sfcHmchZfIGvaSZW84e4L16/eIDRohqZn43iViKT6HHIavyB5t/wP4+FIp3lvYRrzN4BgSAs7S/tI+fNOGe8p4/zc1wKt1/hvPzvhrCs8mvGJgnxDV9/7iSmVfF55hVgUpwA9qmYesBrh4vV0xY6CYsOVndJ0ks7quQBlSbZXX4MorMy7h1pD6roTOyg3H/jNCnTsRxLQrc= vali@DESKTOP-JC0OJ0Q"
   ];
 in {
+  "convoy.age".publicKeys = machines ++ ssh_keys;
   "hydra-github-token.age".publicKeys = machines ++ ssh_keys;
   "oauth2.age".publicKeys = machines ++ ssh_keys;
   "pterodactyl.age".publicKeys = machines ++ ssh_keys;

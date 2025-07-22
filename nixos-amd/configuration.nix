@@ -9,8 +9,11 @@ let
   fastfetch_simple = pkgs.writeScriptBin "fastfetch_simple" ''
     ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
   '';
+  agenix = builtins.getFlake "github:ryantm/agenix";
+  agenixPkgs = agenix.outputs.packages.x86_64-linux;
 in {
   imports = [
+    agenix.nixosModules.default
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
@@ -45,6 +48,7 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
+    agenixPkgs.agenix
     alacritty-graphics
     alsa-utils
     bridge-utils

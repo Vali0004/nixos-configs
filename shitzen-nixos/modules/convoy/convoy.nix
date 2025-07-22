@@ -2,53 +2,21 @@
 
 let
   phpPkg = pkgs.php82.buildEnv {
-    extensions = ({ enabled, all }: enabled ++ (with all; [ redis ]));
+    extensions = ({ enabled, all }: enabled ++ (with all; [
+      gmp
+      opcache
+      pcntl
+      pdo_mysql
+      redis
+      sodium
+    ]));
   };
 
   sqlPkg = pkgs.mariadb;
 
   convoyPanelSrc = ./convoy-panel-offline.tar.gz;
 
-  dbPassword = "dummypassword";
-
-  createDefaultUser = false;
-  defaultUserEmail = "vali@fuckk.lol";
-  defaultUserPassword = "dummypassword";
-
-  convoyEnvFile = pkgs.writeText "convoy.env" ''
-    APP_NAME=Convoy
-    APP_ENV=local
-    APP_KEY=base64:KOE84mCJuY35SyW43jXLqH0vwlixA0JUeAV15it9QiU=
-    APP_DEBUG=true
-    APP_URL=https://fuckk.lol
-
-    LOG_CHANNEL=stack
-    LOG_LEVEL=debug
-
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=convoy
-    DB_USERNAME=convoy
-    DB_PASSWORD=${dbPassword}
-
-    CACHE_DRIVER=redis
-    QUEUE_CONNECTION=redis
-    SESSION_DRIVER=redis
-    SESSION_LIFETIME=525600
-
-    REDIS_HOST=127.0.0.1
-    REDIS_PORT=6380
-
-    MAIL_MAILER=smtp
-    MAIL_HOST=dovecot
-    MAIL_PORT=465
-    MAIL_FROM_ADDRESS="admin@fuckk.lol"
-    MAIL_FROM_NAME="Convoy"
-
-    PHP_XDEBUG=false
-    PHP_XDEBUG_MODE='debug'
-  '';
+  convoyEnvFile = config.age.secrets.convoy.path;
 in {
   services.phpfpm.pools.convoy = {
     user = "nginx";
@@ -122,71 +90,10 @@ in {
     };
   };
 
-  systemd.services.convoy-db-setup = {
-    description = "Ensure Convoy MySQL database and user exist";
+  systemd.services.convoy-horizon = {
+    description = "Laravel Horizon";
     wantedBy = [ "multi-user.target" ];
-    after = [ "mysql.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = pkgs.writeShellScript "create-convoy-db" ''
-        set -eux
-        ${sqlPkg}/bin/mysql -u root --protocol=socket <<'EOF'
-          CREATE DATABASE IF NOT EXISTS convoy;
-          CREATE USER IF NOT EXISTS 'convoy'@'localhost' IDENTIFIED BY '${dbPassword}';
-          GRANT ALL PRIVILEGES ON convoy.* TO 'convoy'@'localhost';
-          FLUSH PRIVILEGES;
-        EOF
-      '';
-    };
-  };
-
-  systemd.services.convoy-composer-install = {
-    description = "Install PHP dependencies with Composer";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "convoy-panel-install.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      WorkingDirectory = "/var/lib/convoy-panel";
-      User = "nginx";
-      Group = "nginx";
-      Environment = "HOME=/var/lib/convoy-panel";
-      ExecStart = pkgs.writeShellScript "composer-install" ''
-        set -eux
-        ${pkgs.php82Packages.composer}/bin/composer install --no-dev --no-interaction --prefer-dist
-      '';
-    };
-  };
-
-  systemd.services.convoy-migrate = {
-    description = "Run Laravel migrations";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "mysql.service" "convoy-db-setup.service" "convoy-composer-install.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      WorkingDirectory = "/var/lib/convoy-panel";
-      User = "nginx";
-      Group = "nginx";
-      ExecStart = "${phpPkg}/bin/php artisan migrate --force";
-    };
-  };
-
-  systemd.services.convoy-create-admin = lib.mkIf createDefaultUser {
-    description = "Create default Convoy admin user";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "convoy-migrate.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      WorkingDirectory = "/var/lib/convoy-panel";
-      User = "nginx";
-      Group = "nginx";
-      ExecStart = "${phpPkg}/bin/php artisan c:user:make --email=${defaultUserEmail} --password=${defaultUserPassword}";
-    };
-  };
-
-  systemd.services.convoy-queue-worker = {
-    description = "Laravel Queue Worker";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "convoy-create-admin.service" "redis.convoy.service" ];
+    after = [ "convoy-panel-install.service" "redis.convoy.service" ];
     unitConfig = {
       ConditionPathExists = "/var/lib/convoy-panel/.env";
     };
@@ -194,7 +101,24 @@ in {
       User = "nginx";
       Group = "nginx";
       WorkingDirectory = "/var/lib/convoy-panel";
-      ExecStart = "${phpPkg}/bin/php artisan queue:work --queue=high,standard,low --sleep=3 --tries=3";
+      ExecStart = "${phpPkg}/bin/php artisan horizon";
+      Restart = "always";
+      RestartSec = "5s";
+    };
+  };
+
+  systemd.services.convoy-queue-worker = {
+    description = "Laravel Queue Worker";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "convoy-panel-install.service" "redis.convoy.service" ];
+    unitConfig = {
+      ConditionPathExists = "/var/lib/convoy-panel/.env";
+    };
+    serviceConfig = {
+      User = "nginx";
+      Group = "nginx";
+      WorkingDirectory = "/var/lib/convoy-panel";
+      ExecStart = "${phpPkg}/bin/php artisan queue:work --verbose --no-interaction --queue=high,standard,low --sleep=3 --tries=3";
       Restart = "always";
       RestartSec = "5s";
     };
