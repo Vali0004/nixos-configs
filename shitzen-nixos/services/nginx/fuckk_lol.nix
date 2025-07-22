@@ -27,32 +27,5 @@ in {
         '';
       };
     };
-    # Prowlarr
-    "prowlarr.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:9696";
-        proxyWebsockets = true;
-      };
-    };
-    # Radarr
-    "radarr.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:7878";
-        proxyWebsockets = true;
-      };
-    };
-    # Sonarr
-    "sonarr.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:8989";
-        proxyWebsockets = true;
-      };
-    };
   };
 }

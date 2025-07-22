@@ -72,7 +72,7 @@ in {
   networking = {
     defaultGateway = "74.208.44.1";
     firewall = {
-      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 8096 9000 ];
+      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 8096 9000 50000 ];
       allowedUDPPorts = [ 4100 4101 4301 4302 4303 4304 4305 ];
     };
     hostName = "router";
@@ -131,6 +131,7 @@ in {
     forward8080 = mkForward 8080 "10.0.127.3";
     forward8096 = mkForward 8096 "10.0.127.3";
     forward9000 = mkForward 9000 "10.0.127.3";
+    forward50000 = mkForward 50000 "10.0.127.3";
     forwardUDP4100 = mkForwardUDP 4100 "10.0.127.3";
     forwardUDP4101 = mkForwardUDP 4101 "10.0.127.3";
     forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
