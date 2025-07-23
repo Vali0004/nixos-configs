@@ -6,7 +6,7 @@
   ];
   age.secrets = {
     convoy = {
-      file = ./../../convoy.age;
+      file = ./../../secrets/convoy.age;
       owner = "nginx";
       group = "nginx";
     };

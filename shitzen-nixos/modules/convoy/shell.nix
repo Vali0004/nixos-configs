@@ -4,6 +4,7 @@ pkgs.mkShell {
   name = "make-convoy-offline-env";
 
   buildInputs = with pkgs; [
+    mariadb
     php82
     php82Packages.composer
     curl

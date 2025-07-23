@@ -22,10 +22,10 @@ rm -rf .git .github tests node_modules resources/js public/js public/css
 # Optional DB setup
 if [[ "${SETUP_DB:-false}" == "true" ]]; then
   echo "[*] Creating MySQL database and user..."
-  mysql -u root --protocol=socket <<EOF
+  mysql -u convoy -h "${DB_HOST:-127.0.0.1}" -p"${DB_PASSWORD:-changeme}" <<EOF
 CREATE DATABASE IF NOT EXISTS convoy;
-CREATE USER IF NOT EXISTS 'convoy'@'localhost' IDENTIFIED BY '${DB_PASSWORD:-changeme}';
-GRANT ALL PRIVILEGES ON convoy.* TO 'convoy'@'localhost';
+CREATE USER IF NOT EXISTS 'convoy'@'%' IDENTIFIED BY '${DB_PASSWORD:-changeme}';
+GRANT ALL PRIVILEGES ON convoy.* TO 'convoy'@'%';
 FLUSH PRIVILEGES;
 EOF
 fi
