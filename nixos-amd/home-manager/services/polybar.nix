@@ -84,6 +84,7 @@ in {
       };
       "module/eth" = {
         "inherit" = "network-base";
+        interface.text = "bond0";
         interface.type = "wired";
         label.connected = "%{F${barConfig.barPrimary}}󰈀%{F-} %local_ip%";
         label.disconnected = "%{F${barConfig.barPrimary}}󰈀%{F${barConfig.barDisabled}} disconnected";
