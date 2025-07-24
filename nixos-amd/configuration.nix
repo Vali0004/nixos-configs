@@ -296,6 +296,7 @@ in {
 
   services = {
     cloudflare-warp.enable = true;
+    flatpak.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
