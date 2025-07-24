@@ -24,7 +24,8 @@ in {
     programs/ssh.nix
     programs/steam.nix
     programs/zsh.nix
-    services/windowManager/i3.nix
+    services/windowManager/dwm.nix
+    #services/windowManager/i3.nix
     services/bluetooth.nix
     services/displayManager.nix
     services/easyEffects.nix
@@ -36,141 +37,142 @@ in {
     services/virtualisation.nix
   ];
 
-  console = {
-    # Just point it to X11
-    useXkbConfig = true;
+  console.useXkbConfig = true;
+
+  environment = {
+    shellAliases = {
+      l = null;
+      ll = null;
+      lss = "ls --color -lha";
+    };
+
+    systemPackages = with pkgs; [
+      agenixPkgs.agenix
+      alacritty-graphics
+      alsa-utils
+      bridge-utils
+      btop
+      # BeamMP
+      (pkgs.callPackage ./pkgs/beammp-launcher.nix {})
+      cachix
+      colmena
+      curl
+      # Clipboard Manager
+      clipmenu
+      # macOS Translation Layer
+      (pkgs.callPackage ./pkgs/darling.nix {})
+      dos2unix
+      direnv
+      (discord.override { withVencord = true; })
+      dmidecode
+      dunst
+      edid-decode
+      # Matrix client
+      element-desktop
+      envsubst
+      eog
+      # Noise suppression
+      easyeffects
+      evtest
+      # Flexing
+      fastfetch
+      fastfetch_simple
+      # Screenshot tool
+      flameshot
+      # Screenshot tool with my uploader secret
+      flameshot_fuckk_lol
+      feh
+      fzf
+      gdb
+      gnused
+      # Browser
+      google-chrome
+      iperf
+      # IRC Client
+      irssi
+      # Media Player
+      jellyfin-media-player
+      jq
+      # MS Paint
+      kdePackages.kolourpaint
+      # File browser
+      nemo-with-extensions
+      # Fixes BeamNG
+      nss
+      # cli unrar
+      libarchive
+      # Wormhole
+      magic-wormhole
+      # COM Reader
+      minicom
+      # 360-deploy
+      morph
+      # Video Player
+      mpv
+      nodejs_24
+      obs-studio
+      openssl
+      # Tablet Driver
+      opentabletdriver
+      # Different audio control
+      pamixer
+      # Audio control
+      pavucontrol
+      pciutils
+      # Compositer
+      picom
+      playerctl
+      # Minecraft launcher
+      prismlauncher
+      protontricks
+      # Audio server
+      pulseaudio
+      qemu_kvm
+      # GPU Control
+      radeon-profile
+      # dmenu replacement
+      rofi
+      socat
+      # Spotify mods
+      spicetify-cli
+      steamcmd
+      syncplay
+      sysstat
+      tmux
+      tree
+      unzip
+      usbutils
+      vesktop
+      vim
+      virt-viewer
+      # VRChat Friendship Management
+      vrcx
+      # Editor
+      vscode
+      vscode-extensions.mkhl.direnv
+      vscode-extensions.bbenoist.nix
+      vscode-extensions.jnoortheen.nix-ide
+      vscode-extensions.mshr-h.veriloghdl
+      vulkan-extension-layer
+      vulkan-tools
+      vulkan-validation-layers
+      wget
+      wireshark
+      wineWowPackages.stable
+      winetricks
+      (writeShellScriptBin "qemu-system-x86_64-uefi" ''
+        qemu-system-x86_64 \
+          -bios ${OVMF.fd}/FV/OVMF.fd \
+          "$@"
+      '')
+      xdg-launch
+      xdg-utils
+      zenity
+      zip
+    ];
+    variables.CM_LAUNCHER = "rofi";
   };
 
-  environment.shellAliases = {
-    l = null;
-    ll = null;
-    lss = "ls --color -lha";
-  };
-
-  environment.systemPackages = with pkgs; [
-    agenixPkgs.agenix
-    alacritty-graphics
-    alsa-utils
-    bridge-utils
-    btop
-    busybox
-    cachix
-    colmena
-    curl
-    # Clipboard Manager
-    clipmenu
-    # macOS Translation Layer
-    (pkgs.callPackage ./pkgs/darling.nix {})
-    dos2unix
-    direnv
-    (discord.override { withVencord = true; })
-    dmidecode
-    dunst
-    edid-decode
-    # Matrix client
-    element-desktop
-    envsubst
-    eog
-    # Noise suppression
-    easyeffects
-    evtest
-    # Flexing
-    fastfetch
-    fastfetch_simple
-    # Screenshot tool
-    flameshot
-    # Screenshot tool with my uploader secret
-    flameshot_fuckk_lol
-    feh
-    fzf
-    gdb
-    git
-    glib
-    gnused
-    # Browser
-    google-chrome
-    iperf
-    # IRC Client
-    irssi
-    # Media Player
-    jellyfin-media-player
-    jq
-    # MS Paint
-    kdePackages.kolourpaint
-    # File browser
-    nemo-with-extensions
-    # cli unrar
-    libarchive
-    # Wormhole
-    magic-wormhole
-    # COM Reader
-    minicom
-    # 360-deploy
-    morph
-    # Video Player
-    mpv
-    nodejs_24
-    obs-studio
-    openssl
-    # Tablet Driver
-    opentabletdriver
-    p7zip-rar
-    # Different audio control
-    pamixer
-    # Audio control
-    pavucontrol
-    pciutils
-    # Compositer
-    picom
-    playerctl
-    # Minecraft launcher
-    prismlauncher
-    protontricks
-    # Audio server
-    pulseaudio
-    qemu_kvm
-    # dmenu replacement
-    rofi
-    socat
-    # Spotify mods
-    spicetify-cli
-    steamcmd
-    syncplay
-    sysstat
-    tmux
-    tree
-    unzip
-    usbutils
-    vesktop
-    vim
-    virt-viewer
-    # VRChat Friendship Management
-    vrcx
-    # Editor
-    vscode
-    vscode-extensions.mkhl.direnv
-    vscode-extensions.bbenoist.nix
-    vscode-extensions.jnoortheen.nix-ide
-    vscode-extensions.mshr-h.veriloghdl
-    vulkan-extension-layer
-    vulkan-tools
-    vulkan-validation-layers
-    wget
-    wireshark
-    wineWowPackages.stable
-    winetricks
-    (writeShellScriptBin "qemu-system-x86_64-uefi" ''
-      qemu-system-x86_64 \
-        -bios ${pkgs.OVMF.fd}/FV/OVMF.fd \
-        "$@"
-    '')
-    xdg-launch
-    xdg-utils
-    zenity
-    zip
-  ];
-
-  environment.variables.CM_LAUNCHER = "rofi";
   fileSystems = {
     # Mount the Root Partition
     "/" = {
@@ -205,11 +207,8 @@ in {
     };
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.dejavu-sans-mono
-  ];
+  fonts.packages = [ pkgs.nerd-fonts.dejavu-sans-mono ];
 
-  # Set hardware to support 32-bit graphics for Wine and Proton
   hardware = {
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
     graphics = {
@@ -242,7 +241,6 @@ in {
     };
   };
 
-  # Setup NixOS exprimental features and unfree options for Chrome
   nix.settings = {
     experimental-features = [
       "nix-command"
@@ -288,6 +286,10 @@ in {
   };
 
   security = {
+    pki.certificates = [
+      (builtins.readFile ./cloudflare-ecc.pem)
+      (builtins.readFile ./beammp.pem)
+    ];
     rtkit.enable = true;
     sudo.enable = true;
   };

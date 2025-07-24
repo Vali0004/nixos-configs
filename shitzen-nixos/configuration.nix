@@ -105,6 +105,7 @@ in {
 
   nix.settings = {
     cores = 4;
+    keep-derivations = true;
     max-jobs = 2;
     max-substitution-jobs = 8;
   };

@@ -11,10 +11,6 @@
   programs.ssh.extraConfig = ''
     include config.d/*
 
-    Host *
-      ControlPath ~/.ssh/master-%r@%h:%p
-      ControlMaster auto
-
     IdentityFile /home/vali/.ssh/id_rsa
     IdentityFile /home/vali/.ssh/nixos_main
     Host router

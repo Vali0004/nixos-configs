@@ -2,6 +2,9 @@
 
 {
   programs.steam = {
+    package = pkgs.steam.override {
+      extraPkgs = pkgs: [ pkgs.nss pkgs.nspr ];
+    };
     dedicatedServer.openFirewall = true;
     enable = true;
     gamescopeSession.enable = true;
