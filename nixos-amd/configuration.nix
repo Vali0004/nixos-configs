@@ -170,7 +170,10 @@ in {
       zenity
       zip
     ];
-    variables.CM_LAUNCHER = "rofi";
+    variables = {
+      AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
+      CM_LAUNCHER = "rofi";
+    };
   };
 
   fileSystems = {

@@ -1,9 +1,17 @@
 { config, lib, pkgs, modulesPath, ... }:
 
-{
+let
+  mkForward = port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},reuseaddr,fork TCP4:${target}:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
+in {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    ./agenix.nix
   ];
 
   boot = {
@@ -39,8 +47,8 @@
     htop
     iperf
     openssl
+    tcpdump
     wget
-    wireguard-tools
   ];
 
   fileSystems = {
@@ -58,8 +66,13 @@
   networking = {
     defaultGateway = "74.208.44.1";
     firewall = {
-      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 5001 5201 6379 8080 8096 9000 50000 51820 ];
-      allowedUDPPorts = [ 6991 ];
+      allowedTCPPorts = [
+        80 # HTTP
+        443 # HTTPS
+        465 # SMTPS
+        993 # IMAPS
+        995 # SPOP3
+      ];
     };
     hostName = "router";
     interfaces.ens6 = {
@@ -72,31 +85,6 @@
       "1.1.1.1"
       "1.0.0.1"
     ];
-    nat = {
-      enable = true;
-      externalInterface = "ens6";
-      internalInterfaces = [ "wg0" ];
-    };
-    wireguard = {
-      enable = true;
-      interfaces.wg0 = {
-        ips = [ "10.0.127.1/24" ];
-        listenPort = 51820;
-        postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.127.0/24 -o ens6 -j MASQUERADE
-        '';
-        postShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.127.0/24 -o ens6 -j MASQUERADE
-        '';
-        privateKeyFile = config.age.secrets.wireguard-server.path;
-        #peers = [
-        #  {
-        #    publicKey = "";
-        #    allowedIPs = [ "10.0.127.3/32" ];
-        #  }
-        #];
-      };
-    };
     useDHCP = false;
   };
 
@@ -104,10 +92,28 @@
     hostPlatform = "x86_64-linux";
   };
 
+  services = {
+    toxvpn = {
+      localip = "10.0.127.1";
+      auto_add_peers = [
+        "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" # shitzen
+      ];
+    };
+  };
+
   swapDevices = [{
     device = "/var/lib/swap1";
     size = 1024;
   }];
+
+  systemd.services = {
+    forward25 = mkForward 25 "10.0.127.3";
+    forward80 = mkForward 80 "10.0.127.3";
+    forward443 = mkForward 443 "10.0.127.3";
+    forward465 = mkForward 465 "10.0.127.3";
+    forward993 = mkForward 993 "10.0.127.3";
+    forward995 = mkForward 995 "10.0.127.3";
+  };
 
   system.stateVersion = "25.05";
 }

@@ -4,19 +4,12 @@ let
   common_keys = import ./ssh_keys.nix;
   my_keys = import ./ssh_keys_personal.nix;
 in {
-  # Use the GRUB 2 boot loader.
-  boot.loader = {
-    grub = {
-      enable = true;
-    };
-  };
+  boot.loader.grub.enable = true;
 
-  environment = {
-    shellAliases = {
-      l = null;
-      ll = null;
-      lss = "ls --color -lha";
-    };
+  environment.shellAliases = {
+    l = null;
+    ll = null;
+    lss = "ls --color -lha";
   };
 
   time.timeZone = "America/Detroit";
@@ -28,16 +21,15 @@ in {
       enable = true;
       maxretry = 5;
       ignoreIP = [
-        # Whitelist some subnets
-        "10.0.127.0/8" "172.16.0.0/12" "192.168.0.0/16"
-        "8.8.8.8"
+        "10.0.0.0/24"
+        "10.0.127.0/24"
       ];
-      bantime = "24h"; # Ban IPs for one day on the first ban
+      bantime = "24h";
       bantime-increment = {
-        enable = true; # Enable increment of bantime after each violation
+        enable = true;
         formula = "ban.Time * math.exp(float(ban.Count+1)*banFactor)/math.exp(1*banFactor)";
-        maxtime = "168h"; # Do not ban for more than 1 week
-        overalljails = true; # Calculate the bantime based on all the violations
+        maxtime = "168h"; # 1 week
+        overalljails = true;
       };
     };
     openssh = {
