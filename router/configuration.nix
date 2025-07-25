@@ -83,18 +83,18 @@
         ips = [ "10.0.127.1/24" ];
         listenPort = 51820;
         postSetup = ''
-          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.127.0/24 -o ens6 -j MASQUERADE
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.127.0/24 -o ens6 -j MASQUERADE
         '';
         postShutdown = ''
           ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.127.0/24 -o ens6 -j MASQUERADE
         '';
         privateKeyFile = config.age.secrets.wireguard-server.path;
-        peers = [
-          {
-            publicKey = "";
-            allowedIPs = [ "10.0.127.3/32" ];
-          }
-        ];
+        #peers = [
+        #  {
+        #    publicKey = "";
+        #    allowedIPs = [ "10.0.127.3/32" ];
+        #  }
+        #];
       };
     };
     useDHCP = false;
