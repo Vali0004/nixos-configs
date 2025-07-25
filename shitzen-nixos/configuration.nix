@@ -1,18 +1,18 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
 let
-  mkForwardTCP = port: {
+  mkForwardTCP = incoming-port: outgoing-port: {
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},bind=10.0.127.3,fork,reuseaddr TCP4:172.18.0.1:${toString port}";
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString outgoing-port},bind=10.0.127.3,fork,reuseaddr TCP4:127.0.0.1:${toString incoming-port}";
       KillMode = "process";
       Restart = "always";
     };
   };
-  mkForwardUDP = port: {
+  mkForwardUDP = incoming-port: outgoing-port: {
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString port},bind=10.0.127.3,fork,reuseaddr UDP:172.18.0.1:${toString port}";
+      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString outgoing-port},bind=10.0.127.3,fork,reuseaddr UDP:127.0.0.1:${toString incoming-port}";
       KillMode = "process";
       Restart = "always";
     };
@@ -94,8 +94,8 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 4100 4101 4301 4302 5001 5201 6379 8080 9000 9080 20048 ];
-      allowedUDPPorts = [ 111 2049 4100 4101 4301 4302 20048 ];
+      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 5001 5201 6379 8080 9000 9080 20048 ];
+      allowedUDPPorts = [ 111 2049 6991 20048 ];
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
@@ -146,18 +146,7 @@ in {
   }];
 
   systemd.services = {
-    forward4300 = mkForwardTCP 4300;
-    forward4300UDP = mkForwardUDP 4300;
-    forward4301 = mkForwardTCP 4301;
-    forward4301UDP = mkForwardUDP 4301;
-    forward4302 = mkForwardTCP 4302;
-    forward4302UDP = mkForwardUDP 4302;
-    forward4303 = mkForwardTCP 4303;
-    forward4303UDP = mkForwardUDP 4303;
-    forward4304 = mkForwardTCP 4304;
-    forward4304UDP = mkForwardUDP 4304;
-    forward4305 = mkForwardTCP 4305;
-    forward4305UDP = mkForwardUDP 4305;
+    forward6990to6991UDP = mkForwardUDP 6990 6991;
   };
 
   vali.mc_prod = false;

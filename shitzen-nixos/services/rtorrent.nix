@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 let
+  dht-port = 6990;
   peer-port = 50000;
   web-port = 3002;
 in {
@@ -8,7 +9,7 @@ in {
   services.rtorrent = {
     configText = ''
       dht = on
-      dht_port = 6991
+      dht_port = ${toString dht-port}
       encryption = allow_incoming,enable_retry,prefer_plaintext
       method.redirect=load.throw,load.normal
       method.redirect=load.start_throw,load.start
