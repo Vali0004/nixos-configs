@@ -5,7 +5,6 @@ let
   peer-port = 50000;
   web-port = 3002;
 in {
-  environment.systemPackages = [ pkgs.rtorrent ];
   services.rtorrent = {
     configText = ''
       dht = on

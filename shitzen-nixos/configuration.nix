@@ -1,23 +1,6 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
-let
-  mkForwardTCP = incoming-port: outgoing-port: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString outgoing-port},bind=10.0.127.3,fork,reuseaddr TCP4:127.0.0.1:${toString incoming-port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
-  mkForwardUDP = incoming-port: outgoing-port: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString outgoing-port},bind=10.0.127.3,fork,reuseaddr UDP:127.0.0.1:${toString incoming-port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
-in {
+{
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/cors-anywhere/service.nix
@@ -26,7 +9,6 @@ in {
     modules/boot.nix
     modules/docker.nix
     modules/tgt_service.nix
-    modules/wireguard.nix
     modules/zfs.nix
     services/arr-services.nix
     services/hydra.nix
@@ -95,8 +77,13 @@ in {
 
   networking = {
     firewall = {
-      allowedTCPPorts = [ 25 80 110 111 143 443 465 587 993 995 2049 5001 5201 6379 8080 9000 9080 20048 ];
-      allowedUDPPorts = [ 111 2049 6991 20048 ];
+      allowedTCPPorts = [
+        80 # HTTP
+        443 # HTTPS
+        465 # SMTPS
+        993 # IMAPS
+        995 # SPOP3
+      ];
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
@@ -145,10 +132,6 @@ in {
     device = "/var/lib/swap1";
     size = 8192;
   }];
-
-  systemd.services = {
-    forward6990to6991UDP = mkForwardUDP 6990 6991;
-  };
 
   vali.mc_prod = false;
   vali.mc_test = false;
