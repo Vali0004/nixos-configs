@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.agenix
-  ];
+  environment.systemPackages = [ pkgs.agenix ];
   age.secrets = {
     convoy = {
       file = ./../../secrets/convoy.age;
