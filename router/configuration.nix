@@ -133,13 +133,7 @@ in {
     forward8096 = mkForward 8096 "10.0.127.3";
     forward9000 = mkForward 9000 "10.0.127.3";
     forward50000 = mkForward 50000 "10.0.127.3";
-    forwardUDP4100 = mkForwardUDP 4100 "10.0.127.3";
-    forwardUDP4101 = mkForwardUDP 4101 "10.0.127.3";
-    forwardUDP4301 = mkForwardUDP 4301 "10.0.127.3";
-    forwardUDP4302 = mkForwardUDP 4302 "10.0.127.3";
-    forwardUDP4303 = mkForwardUDP 4303 "10.0.127.3";
-    forwardUDP4304 = mkForwardUDP 4304 "10.0.127.3";
-    forwardUDP4305 = mkForwardUDP 4305 "10.0.127.3";
+    forwardUDP6991 = mkForwardUDP 6991 "10.0.127.3";
   };
 
   system.stateVersion = "25.05";
