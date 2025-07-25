@@ -51,6 +51,7 @@
         deployment.targetHost = "74.208.44.130";
         deployment.targetUser = "root";
         imports = [
+          agenix.nixosModules.age
           ./core.nix
           ./router/configuration.nix
         ];

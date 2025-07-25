@@ -26,6 +26,7 @@ in {
     modules/boot.nix
     modules/docker.nix
     modules/tgt_service.nix
+    modules/wireguard.nix
     modules/zfs.nix
     services/arr-services.nix
     services/hydra.nix

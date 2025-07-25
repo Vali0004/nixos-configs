@@ -1,25 +1,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  mkForward = port: target: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},reuseaddr,fork TCP4:${target}:${toString port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
-  mkForwardUDP = port: target: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat UDP-LISTEN:${toString port},reuseaddr,fork UDP:${target}:${toString port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
-in {
+{
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    ./agenix.nix
   ];
 
   boot = {
@@ -56,6 +40,7 @@ in {
     iperf
     openssl
     wget
+    wireguard-tools
   ];
 
   fileSystems = {
@@ -73,8 +58,8 @@ in {
   networking = {
     defaultGateway = "74.208.44.1";
     firewall = {
-      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 4100 4101 4301 5001 5201 6379 8080 8096 9000 50000 ];
-      allowedUDPPorts = [ 4100 4101 4301 4302 4303 4304 4305 ];
+      allowedTCPPorts = [ 25 80 110 143 443 465 587 993 995 2022 5001 5201 6379 8080 8096 9000 50000 51820 ];
+      allowedUDPPorts = [ 6991 ];
     };
     hostName = "router";
     interfaces.ens6 = {
@@ -87,6 +72,31 @@ in {
       "1.1.1.1"
       "1.0.0.1"
     ];
+    nat = {
+      enable = true;
+      externalInterface = "ens6";
+      internalInterfaces = [ "wg0" ];
+    };
+    wireguard = {
+      enable = true;
+      interfaces.wg0 = {
+        ips = [ "10.0.127.1/24" ];
+        listenPort = 51820;
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.127.0/24 -o ens6 -j MASQUERADE
+        '';
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.127.0/24 -o ens6 -j MASQUERADE
+        '';
+        privateKeyFile = config.age.secrets.wireguard-server.path;
+        peers = [
+          {
+            publicKey = "";
+            allowedIPs = [ "10.0.127.3/32" ];
+          }
+        ];
+      };
+    };
     useDHCP = false;
   };
 
@@ -94,47 +104,10 @@ in {
     hostPlatform = "x86_64-linux";
   };
 
-  services = {
-    toxvpn = {
-      localip = "10.0.127.1";
-      auto_add_peers = [
-        "3e24792c18ab55c59974a356e2195f165e0d967726533818e5ac0361b264ea671d1b3a8ec221" # shitzen
-      ];
-    };
-  };
-
   swapDevices = [{
     device = "/var/lib/swap1";
     size = 1024;
   }];
-
-  systemd.services = {
-    forward25 = mkForward 25 "10.0.127.3";
-    forward80 = mkForward 80 "10.0.127.3";
-    forward110 = mkForward 110 "10.0.127.3";
-    forward143 = mkForward 143 "10.0.127.3";
-    forward443 = mkForward 443 "10.0.127.3";
-    forward465 = mkForward 465 "10.0.127.3";
-    forward587 = mkForward 587 "10.0.127.3";
-    forward993 = mkForward 993 "10.0.127.3";
-    forward995 = mkForward 995 "10.0.127.3";
-    forward2022 = mkForward 2022 "10.0.127.3";
-    forward4100 = mkForward 4100 "10.0.127.3";
-    forward4101 = mkForward 4101 "10.0.127.3";
-    forward4301 = mkForward 4301 "10.0.127.3";
-    forward4302 = mkForward 4302 "10.0.127.3";
-    forward4303 = mkForward 4303 "10.0.127.3";
-    forward4304 = mkForward 4304 "10.0.127.3";
-    forward4305 = mkForward 4305 "10.0.127.3";
-    forward5001 = mkForward 5001 "10.0.127.3";
-    forward5201 = mkForward 5201 "10.0.127.3";
-    forward6379 = mkForward 6379 "10.0.127.3";
-    forward8080 = mkForward 8080 "10.0.127.3";
-    forward8096 = mkForward 8096 "10.0.127.3";
-    forward9000 = mkForward 9000 "10.0.127.3";
-    forward50000 = mkForward 50000 "10.0.127.3";
-    forwardUDP6991 = mkForwardUDP 6991 "10.0.127.3";
-  };
 
   system.stateVersion = "25.05";
 }
