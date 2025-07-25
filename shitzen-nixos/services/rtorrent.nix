@@ -7,6 +7,9 @@ in {
   environment.systemPackages = [ pkgs.rtorrent ];
   services.rtorrent = {
     configText = ''
+      dht = on
+      dht_port = 6991
+      encryption = allow_incoming,enable_retry,prefer_plaintext
       method.redirect=load.throw,load.normal
       method.redirect=load.start_throw,load.start
       method.insert=d.down.sequential,value|const,0
