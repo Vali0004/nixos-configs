@@ -35,4 +35,6 @@ in {
   };
 
   systemd.services.flood.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
+  systemd.services.flood.serviceConfig.ReadWritePaths = [ "/data/private/Media" ];
+  systemd.services.rtorrent.serviceConfig.ReadWritePaths = [ "/data/private/Media" ];
 }

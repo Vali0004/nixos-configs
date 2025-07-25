@@ -14,9 +14,7 @@ in {
     };
   };
 
-  systemd.services.zipline = {
-    serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
-  };
+  systemd.services.zipline.serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
 
   services.nginx.virtualHosts."holy.fuckk.lol" = {
     enableACME = true;
