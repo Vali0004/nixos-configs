@@ -2,6 +2,8 @@ let
   machines = [
     # shitzen-nixos
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1"
+    # router
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC4a7HHWzTJQqAl2b6c/Y5gjZE26dRB0FGoPVeG1d+2Z"
   ];
   ssh_keys = [
     # Desktop (Windows WSL old)
@@ -19,7 +21,5 @@ in {
   "oauth2.age".publicKeys = machines ++ ssh_keys;
   "pterodactyl.age".publicKeys = machines ++ ssh_keys;
   "vali-mail-fuckk-lol.age".publicKeys = machines ++ ssh_keys;
-  "wireguard.age".publicKeys = machines ++ ssh_keys;
-  "wireguard-server.age".publicKeys = machines ++ ssh_keys;
   "zipline.age".publicKeys = machines ++ ssh_keys;
 }

@@ -5,8 +5,8 @@
   age.secrets = {
     wireguard-server = {
       file = ./../secrets/wireguard-server.age;
-      owner = "wireguard";
-      group = "wireguard";
+      owner = "root";
+      group = "root";
     };
   };
 }
