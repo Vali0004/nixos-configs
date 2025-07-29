@@ -8,6 +8,11 @@
       owner = "nginx";
       group = "nginx";
     };
+    cleclerc-mail-nanitehosting-com = {
+      file = ./../../cleclerc-mail-nanitehosting-com.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     hydra-github-token = {
       file = ./../../secrets/hydra-github-token.age;
       owner = "hydra";

@@ -33,9 +33,21 @@ let
 
     printf "%s\n" "$\{PIDs[@]}" > $PIDFILE
  '';
+ dwmblocks = ((pkgs.dwmblocks.override {
+    conf = ./dwmblocks-config.h;
+  }).overrideAttrs {
+    src = pkgs.fetchFromGitHub {
+      owner = "nimaaskarian";
+      repo = "dwmblocks-statuscmd-multithread";
+      rev = "6700e322431b99ffc9a74b311610ecc0bc5b460a";
+      hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
+    };
+  });
 in {
   environment.systemPackages = with pkgs; [
+    libnotify
     gifsicle
+    dwmblocks
     (xwinwrap.overrideDerivation (old: {
       version = "v0.9";
       src = pkgs.fetchFromGitHub {
@@ -51,10 +63,11 @@ in {
     extraSessionCommands = ''
       ${pkgs.pulseaudio}/bin/pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"
       ${xwinwrap_gif}/bin/xwinwrap_gif /home/vali/.config/xwinwrap/wallpaper.gif
+      ${dwmblocks}/bin/dwmblocks &
     '';
     package = pkgs.dwm.overrideAttrs {
       buildInputs = (pkgs.dwm.buildInputs or []) ++ [ pkgs.yajl ];
-      src = /home/vali/development/dwm-fork;
+      src = /home/vali/development/dwm;
       #pkgs.fetchFromGitHub {
       #  owner = "Vali0004";
       #  repo = "dwm-fork";

@@ -47,29 +47,48 @@ in {
     };
 
     systemPackages = with pkgs; [
+      # Key system (remote deploy)
       agenixPkgs.agenix
+      # Terminal
       alacritty-graphics
       alsa-utils
+      # XDG debug
+      bustle
       bridge-utils
       btop
       # BeamMP
-      (pkgs.callPackage ./pkgs/beammp-launcher.nix {})
+      (callPackage ./pkgs/beammp-launcher.nix {})
+      # Cache system
       cachix
+      # Remote deploy
       colmena
       curl
       # Clipboard Manager
       clipmenu
       # macOS Translation Layer
-      (pkgs.callPackage ./pkgs/darling.nix {})
+      (callPackage ./pkgs/darling.nix {})
       dos2unix
       direnv
       (discord.override { withVencord = true; })
       dmidecode
+      # App launcher
+      ((dmenu.override {
+        conf = ./dmenu-config.h;
+      }).overrideAttrs (old: {
+        src = /home/vali/development/dmenu;
+        postPatch = ''
+          ${old.postPatch or ""}
+          sed -ri -e 's!\<(dmenu|dmenu_path_desktop|stest)\>!'"$out/bin"'/&!g' dmenu_run_desktop
+          sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
+        '';
+      }))
+      # Notification daemon
       dunst
       edid-decode
       # Matrix client
       element-desktop
       envsubst
+      # Image/pdf viewer
       eog
       # Noise suppression
       easyeffects
@@ -83,7 +102,11 @@ in {
       flameshot_fuckk_lol
       feh
       fzf
+      # Debugger
       gdb
+      # GTK3, used for gtk-launch in dmenu
+      gtk3
+      # sed
       gnused
       # Browser
       google-chrome
@@ -95,6 +118,8 @@ in {
       jq
       # MS Paint
       kdePackages.kolourpaint
+      # CAD software
+      kicad
       # File browser
       nemo-with-extensions
       # Fixes BeamNG
@@ -127,23 +152,36 @@ in {
       protontricks
       # Audio server
       pulseaudio
+      # VM
       qemu_kvm
+      (writeShellScriptBin "qemu-system-x86_64-uefi" ''
+        qemu-system-x86_64 \
+          -bios ${OVMF.fd}/FV/OVMF.fd \
+          "$@"
+      '')
       # GPU Control
       radeon-profile
-      # dmenu replacement
-      rofi
+      # socat - listener
       socat
       # Spotify mods
       spicetify-cli
+      # Steam CMD
       steamcmd
+      # Syncplay, allows for syncing video streams with others via mpv
       syncplay
       sysstat
       tmux
+      # Tree, helps create file structures in text form
       tree
+      # Unzip
       unzip
+      # USB Utils
       usbutils
+      # Alternative Discord client
       vesktop
+      # vi
       vim
+      # VM helper
       virt-viewer
       # VRChat Friendship Management
       vrcx
@@ -153,23 +191,25 @@ in {
       vscode-extensions.bbenoist.nix
       vscode-extensions.jnoortheen.nix-ide
       vscode-extensions.mshr-h.veriloghdl
+      vscode-extensions.ms-vscode.cpptools-extension-pack
+      vscode-extensions.ms-vscode.cmake-tools
+      # Vulkan
       vulkan-extension-layer
       vulkan-tools
       vulkan-validation-layers
+      # wget
       wget
+      # Packet sniffer
       wireshark
+      # Wine
       wineWowPackages.stable
       winetricks
-      (writeShellScriptBin "qemu-system-x86_64-uefi" ''
-        qemu-system-x86_64 \
-          -bios ${OVMF.fd}/FV/OVMF.fd \
-          "$@"
-      '')
+      # Electron hell
       xdg-launch
       xdg-utils
-      zenity
       zip
     ];
+  
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
       CM_LAUNCHER = "rofi";
@@ -400,6 +440,7 @@ in {
 
   xdg.mime = let
     applications = {
+      "inode/directory" = "nemo.desktop";
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
       "x-scheme-handler/osu" = "osuwinello-url-handler.desktop";
