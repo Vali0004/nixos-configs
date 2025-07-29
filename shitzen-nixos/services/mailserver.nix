@@ -3,10 +3,6 @@
 {
   mailserver = {
     certificateScheme = "acme-nginx";
-    certificateDomains = [
-      "smtp.fuckk.lol"
-      "mail.nanitehosting.com"
-    ];
     domains = [
       "fuckk.lol"
       "nanitehosting.com"
@@ -14,7 +10,7 @@
     enable = true;
     enableImap = false;
     enableImapSsl = true;
-    enableSubmission = false;
+    enableSubmission = true;
     enableSubmissionSsl = true;
     enablePop3Ssl = true;
     fqdn = "smtp.fuckk.lol";
@@ -72,35 +68,16 @@
     };
   };
 
-  services.nginx.virtualHosts."webmail.nanitehosting.com" = {
+  services.nginx.virtualHosts."smtp.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    root = "${pkgs.roundcube}";
-    locations."/" = {
-      index = "index.php";
-      priority = 1100;
-    };
-    locations."~ ^/(SQL|bin|config|logs|temp|vendor)/" = {
-      priority = 3110;
-      extraConfig = ''
-        return 404;
-      '';
-    };
-    locations."~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock)" = {
-      priority = 3120;
-      extraConfig = ''
-        return 404;
-      '';
-    };
-    locations."~* \\.php(/|$)" = {
-      priority = 3130;
-      extraConfig = ''
-        fastcgi_pass unix:${config.services.phpfpm.pools.roundcube.socket};
-        fastcgi_param PATH_INFO $fastcgi_path_info;
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        include ${config.services.nginx.package}/conf/fastcgi.conf;
-      '';
-    };
+    locations."/".extraConfig = "return 404;";
+  };
+
+  services.nginx.virtualHosts."mail.nanitehosting.com" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/".extraConfig = "return 404;";
   };
 
   services.roundcube = {
@@ -108,6 +85,8 @@
     configureNginx = false;
     hostName = "webmail.fuckk.lol";
     extraConfig = ''
+      $config['default_host'] = 'ssl://10.0.127.1';
+      $config['default_port'] = 993;
       $config['smtp_host'] = "smtp.fuckk.lol";
       $config['smtp_port'] = 587;
       $config['smtp_secure'] = 'tls';
@@ -117,6 +96,13 @@
       $config['smtp_log'] = true;
       $config['log_driver'] = 'file';
       $config['log_dir'] = '/tmp';
+      $config['imap_conn_options'] = [
+        'ssl' => [
+          'verify_peer'       => false,
+          'verify_peer_name'  => false,
+          'allow_self_signed' => true,
+        ],
+      ];
     '';
   };
 }
