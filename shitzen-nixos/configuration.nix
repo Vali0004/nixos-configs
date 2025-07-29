@@ -77,6 +77,7 @@
 
   networking = {
     firewall = {
+      # SSH is also open, and so is rtorrent
       allowedTCPPorts = [
         80 # HTTP
         443 # HTTPS

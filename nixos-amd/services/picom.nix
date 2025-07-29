@@ -17,6 +17,7 @@
         strength = 30;
       };
       blur-background-exclude = [
+        "_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "class_g = 'Google-chrome'"
         "class_g = 'discord'"
         "class_g = 'flameshot'"
@@ -26,6 +27,7 @@
       detect-rounded-corners = true;
       refresh-rate = 240;
       rounded-corners-exclude = [
+        "_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "class_g = 'dwm'"
       ];
       fading = true;
@@ -33,6 +35,7 @@
       fade-out-step = 0.08;
       fade-delta = 0;
       opacity-rule = [
+        "100:_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "85:class_g = 'Code'"
         "95:class_g = 'Alacritty'"
         "100:class_g = 'Google-chrome'"

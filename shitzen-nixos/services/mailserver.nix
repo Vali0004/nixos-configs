@@ -3,20 +3,42 @@
 {
   mailserver = {
     certificateScheme = "acme-nginx";
-    domains = [ "fuckk.lol" ];
+    certificateDomains = [
+      "smtp.fuckk.lol"
+      "mail.nanitehosting.com"
+    ];
+    domains = [
+      "fuckk.lol"
+      "nanitehosting.com"
+    ];
     enable = true;
+    enableImap = false;
+    enableImapSsl = true;
+    enableSubmission = false;
+    enableSubmissionSsl = true;
+    enablePop3Ssl = true;
     fqdn = "smtp.fuckk.lol";
-    # A list of all login accounts. To create the password hashes, use
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
       "vali@fuckk.lol" = {
         hashedPasswordFile = config.age.secrets.vali-mail-fuckk-lol.path;
-        aliases = [ "admin@fuckk.lol" ];
+        aliases = [
+          "abuse@fuckk.lol"
+          "admin@fuckk.lol"
+          "postmaster@fuckk.lol"
+          "abuse@nanitehosting.com"
+          "admin@nanitehosting.com"
+          "postmaster@nanitehosting.com"
+        ];
       };
-      #"unison@fuckk.lol" = { ... };
+      "cleclerc@nanitehosting.com" = {
+        hashedPasswordFile = config.age.secrets.cleclerc-mail-nanitehosting-com.path;
+      };
     };
     mailDirectory = "/var/vmail";
     stateVersion = 3;
+    systemDomain = "fuckk.lol";
+    systemName = "nixos-mailserver";
   };
 
   services.nginx.virtualHosts."webmail.fuckk.lol" = {
@@ -50,12 +72,35 @@
     };
   };
 
-  services.nginx.virtualHosts."smtp.fuckk.lol" = {
+  services.nginx.virtualHosts."webmail.nanitehosting.com" = {
     enableACME = true;
     forceSSL = true;
-    locations."/".extraConfig = ''
-      return 404;
-    '';
+    root = "${pkgs.roundcube}";
+    locations."/" = {
+      index = "index.php";
+      priority = 1100;
+    };
+    locations."~ ^/(SQL|bin|config|logs|temp|vendor)/" = {
+      priority = 3110;
+      extraConfig = ''
+        return 404;
+      '';
+    };
+    locations."~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock)" = {
+      priority = 3120;
+      extraConfig = ''
+        return 404;
+      '';
+    };
+    locations."~* \\.php(/|$)" = {
+      priority = 3130;
+      extraConfig = ''
+        fastcgi_pass unix:${config.services.phpfpm.pools.roundcube.socket};
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include ${config.services.nginx.package}/conf/fastcgi.conf;
+      '';
+    };
   };
 
   services.roundcube = {
