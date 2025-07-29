@@ -212,7 +212,7 @@ in {
   
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
-      CM_LAUNCHER = "rofi";
+      CM_LAUNCHER = "dmenu";
     };
   };
 

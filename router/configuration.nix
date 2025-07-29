@@ -67,9 +67,11 @@ in {
     defaultGateway = "74.208.44.1";
     firewall = {
       allowedTCPPorts = [
+        25 # SMTP
         80 # HTTP
         443 # HTTPS
         465 # SMTPS
+        587 # SMTP (with STARTTLS)
         993 # IMAPS
         995 # SPOP3
       ];
@@ -111,6 +113,7 @@ in {
     forward80 = mkForward 80 "10.0.127.3";
     forward443 = mkForward 443 "10.0.127.3";
     forward465 = mkForward 465 "10.0.127.3";
+    forward587 = mkForward 587 "10.0.127.3";
     forward993 = mkForward 993 "10.0.127.3";
     forward995 = mkForward 995 "10.0.127.3";
   };

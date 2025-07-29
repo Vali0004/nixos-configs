@@ -9,7 +9,7 @@
       group = "nginx";
     };
     cleclerc-mail-nanitehosting-com = {
-      file = ./../../cleclerc-mail-nanitehosting-com.age;
+      file = ./../../secrets/cleclerc-mail-nanitehosting-com.age;
       owner = "nginx";
       group = "nginx";
     };

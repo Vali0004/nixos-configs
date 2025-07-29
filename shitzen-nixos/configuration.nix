@@ -79,9 +79,11 @@
     firewall = {
       # SSH is also open, and so is rtorrent
       allowedTCPPorts = [
+        25 # SMTP
         80 # HTTP
         443 # HTTPS
         465 # SMTPS
+        587 # SMTP (with STARTTLS)
         993 # IMAPS
         995 # SPOP3
       ];
