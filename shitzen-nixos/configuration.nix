@@ -11,7 +11,9 @@
     modules/dockge.nix
     modules/wireguard.nix
     modules/zfs.nix
-    services/arr-services.nix
+    services/arr/prowlarr.nix
+    services/arr/radarr.nix
+    services/arr/sonarr.nix
     services/hydra.nix
     services/jellyfin.nix
     services/mailserver.nix
