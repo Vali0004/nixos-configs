@@ -20,6 +20,8 @@ in {
     zfs.forceImportRoot = false;
   };
 
+  services.zfs.autoSnapshot.enable = true;
+
   services.zfs.zed = {
     enableMail = false;
     settings = {
