@@ -23,7 +23,6 @@
     services/redis.nix
     services/rtorrent.nix
     services/samba.nix
-    services/tgtd.nix
     services/wings.nix
     services/zipline.nix
   ];

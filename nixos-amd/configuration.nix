@@ -122,6 +122,8 @@ in {
       jellyfin-media-player
       # JSON parser
       jq
+      # Archive tool
+      kdePackages.ark
       # MS Paint
       kdePackages.kolourpaint
       # CAD software
@@ -448,6 +450,8 @@ in {
 
   xdg.mime = let
     applications = {
+      "application/zip" = "org.kde.ark.desktop";
+      "text/plain" = "code.desktop";
       "inode/directory" = "nemo.desktop";
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
