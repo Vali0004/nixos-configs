@@ -2,6 +2,7 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  manage-startup-applications = pkgs.callPackage ./manage-startup-applications.nix {};
 in {
   imports = [
     (import "${home-manager}/nixos")
@@ -9,6 +10,7 @@ in {
   home-manager.users.vali = {
     imports = [
       programs/alacritty.nix
+      programs/dconf.nix
       programs/fastfetch.nix
       programs/git.nix
       #programs/rofi.nix
@@ -26,12 +28,17 @@ in {
     home = {
       file.".config/xwinwrap/wallpaper.gif".source = ./wallpaper.gif;
       file.".config/syncplay.ini".source = ./syncplay.ini;
+      file.".local/share/dwm/autostart.sh".source = "${manage-startup-applications}/bin/manage-startup-applications";
       stateVersion = "25.05";
     };
 
     gtk = {
       enable = true;
       gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
       theme = {
         name = "Adwaita-dark";
         package = pkgs.gnome-themes-extra;

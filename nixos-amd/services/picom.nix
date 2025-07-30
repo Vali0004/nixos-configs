@@ -10,8 +10,8 @@
     settings = {
       blur = {
         background = true;
-        background-fixed = true;
-        background-frame = true;
+        background-fixed = false;
+        background-frame = false;
         direction = 30;
         method = "gaussian";
         strength = 30;
@@ -29,6 +29,7 @@
       rounded-corners-exclude = [
         "_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "class_g = 'dwm'"
+        "class_g = 'dmenu'"
       ];
       fading = true;
       fade-in-step = 0.08;
@@ -50,7 +51,7 @@
       use-damage = true;
     };
     shadow = false;
-    vSync = false;
+    vSync = true;
     wintypes = {
       dnd.shadow = false;
       dock.clip-shadow-above = true;
