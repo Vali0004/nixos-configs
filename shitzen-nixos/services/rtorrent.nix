@@ -2,7 +2,7 @@
 
 let
   dht-port = 6990;
-  peer-port = 50000;
+  peer-port = 3701;
   web-port = 3700;
 in {
   services.rtorrent = {
