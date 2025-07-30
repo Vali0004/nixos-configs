@@ -201,6 +201,7 @@ in {
       vscode-extensions.mshr-h.veriloghdl
       vscode-extensions.ms-vscode.cpptools-extension-pack
       vscode-extensions.ms-vscode.cmake-tools
+      vscode-extensions.shardulm94.trailing-spaces
       # Vulkan
       vulkan-extension-layer
       vulkan-tools
