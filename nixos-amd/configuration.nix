@@ -75,6 +75,7 @@ in {
       ((dmenu.override {
         conf = ./dmenu-config.h;
       }).overrideAttrs (old: {
+        buildInputs = (old.buildInputs or []) ++ [ libspng ];
         src = /home/vali/development/dmenu;
         postPatch = ''
           ${old.postPatch or ""}
@@ -104,10 +105,14 @@ in {
       fzf
       # Debugger
       gdb
-      # GTK3, used for gtk-launch in dmenu
-      gtk3
+      # Binary hacking
+      ghidra
+      # Calculator
+      gnome-calculator
       # sed
       gnused
+      # GTK3, used for gtk-launch in dmenu
+      gtk3
       # Browser
       google-chrome
       iperf
@@ -115,6 +120,7 @@ in {
       irssi
       # Media Player
       jellyfin-media-player
+      # JSON parser
       jq
       # MS Paint
       kdePackages.kolourpaint
@@ -207,6 +213,8 @@ in {
       # Electron hell
       xdg-launch
       xdg-utils
+      # X11 helper
+      xdotool
       zip
     ];
   
@@ -444,6 +452,8 @@ in {
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
       "x-scheme-handler/osu" = "osuwinello-url-handler.desktop";
+      "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
+      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
       "application/x-osu-skin-archive" = "osuwinello-file-extensions-handler.desktop";
       "application/x-osu-replay" = "osuwinello-file-extensions-handler.desktop";
       "application/x-osu-beatmap-archive" = "osuwinello-file-extensions-handler.desktop";

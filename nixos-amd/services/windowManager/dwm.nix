@@ -43,6 +43,17 @@ let
       hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
     };
   });
+  dwm = with pkgs; pkgs.dwm.overrideAttrs(old: {
+    buildInputs = old.buildInputs ++ [ yajl ];
+    src = /home/vali/development/dwm;
+    #pkgs.fetchFromGitHub {
+    #  owner = "Vali0004";
+    #  repo = "dwm-fork";
+    #  rev = "4cf2d04feade6e1a139b4fbe2ea16fa6d9f7290a";
+    #  hash = "sha256-DjSz01jwFCXfxVxz0ITDn8vEuxE1rAjTiAvdcVGtMyc=";
+    #};
+  });
+  manage-gnome-calculator = pkgs.callPackage ./manage-gnome-calculator.nix { dwm = dwm; };
 in {
   environment.systemPackages = with pkgs; [
     libnotify
@@ -62,19 +73,11 @@ in {
     enable = true;
     extraSessionCommands = ''
       ${pkgs.pulseaudio}/bin/pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"
-      ${xwinwrap_gif}/bin/xwinwrap_gif /home/vali/.config/xwinwrap/wallpaper.gif
+      ${xwinwrap_gif}/bin/xwinwrap_gif /home/vali/.config/xwinwrap/wallpaper.gif &
       ${dwmblocks}/bin/dwmblocks &
+      ${manage-gnome-calculator}/bin/manage-gnome-calculator &
     '';
-    package = pkgs.dwm.overrideAttrs {
-      buildInputs = (pkgs.dwm.buildInputs or []) ++ [ pkgs.yajl ];
-      src = /home/vali/development/dwm;
-      #pkgs.fetchFromGitHub {
-      #  owner = "Vali0004";
-      #  repo = "dwm-fork";
-      #  rev = "4cf2d04feade6e1a139b4fbe2ea16fa6d9f7290a";
-      #  hash = "sha256-DjSz01jwFCXfxVxz0ITDn8vEuxE1rAjTiAvdcVGtMyc=";
-      #};
-    };
+    package = dwm;
   };
   services.displayManager.defaultSession = "none+dwm";
 }
