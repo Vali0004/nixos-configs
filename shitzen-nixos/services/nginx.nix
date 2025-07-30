@@ -23,11 +23,19 @@
       # Prevent injection of code in other mime types (XSS Attacks)
       add_header X-Content-Type-Options nosniff;
     '';
+
     enable = true;
+    enableReload = true;
+
+    proxyTimeout = "900s";
+
+    recommendedBrotliSettings = true;
     recommendedGzipSettings = true;
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
+    recommendedZstdSettings = true;
+
     virtualHosts = {
       "fuckk.lol" = {
         enableACME = true;
@@ -38,7 +46,14 @@
             index = "index.html";
           };
           "/private/" = {
-            alias = "/data/private/images/";
+            alias = "/data/private/";
+            index = "index.htm";
+            extraConfig = ''
+              return 404;
+            '';
+          };
+          "/private/anime/" = {
+            alias = "/data/private/anime/";
             index = "index.htm";
             extraConfig = ''
               autoindex on;
@@ -59,29 +74,6 @@
             extraConfig = ''
               autoindex on;
               autoindex_exact_size off;
-            '';
-          };
-          "/private/nands/" = {
-            alias = "/data/private/nands/";
-            index = "index.htm";
-            extraConfig = ''
-              return 404;
-            }
-            location = "/private/nands/Clever Corona 16mb.zip" {
-              alias "/data/private/nands/Clever Corona 16mb.zip";
-            }
-            location = "/private/nands/White R2D2 Corona 16mb.zip" {
-              alias "/data/private/nands/White R2D2 Corona 16mb.zip";
-            }
-            location = "/private/nands/White Falcon Corona 16mb.zip" {
-              alias "/data/private/nands/White Falcon Corona 16mb.zip";
-            '';
-          };
-          "/private/secret/" = {
-            alias = "/data/private/secret/";
-            index = "index.htm";
-            extraConfig = ''
-              return 404;
             '';
           };
         };

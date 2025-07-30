@@ -36,5 +36,10 @@
       file = ./../../secrets/zipline.age;
       group = "zipline";
     };
+    wireguard = {
+      file = ./../../secrets/wireguard.age;
+      owner = "root";
+      group = "root";
+    };
   };
 }

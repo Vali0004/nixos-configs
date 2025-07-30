@@ -12,6 +12,7 @@ let
 in {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    ./agenix.nix
   ];
 
   boot = {
@@ -49,6 +50,7 @@ in {
     openssl
     tcpdump
     wget
+    wireguard-tools
   ];
 
   fileSystems = {
@@ -75,6 +77,9 @@ in {
         993 # IMAPS
         995 # SPOP3
       ];
+      allowedUDPPorts = [
+        51820 # Wireguard
+      ];
     };
     hostName = "router";
     interfaces.ens6 = {
@@ -87,7 +92,30 @@ in {
       "1.1.1.1"
       "1.0.0.1"
     ];
+    nat = {
+      enable = true;
+      externalInterface = "ens6";
+      internalInterfaces = [ "wg0" ];
+    };
     useDHCP = false;
+    wireguard = {
+      enable = true;
+      interfaces.wg0 = {
+        ips = [ "10.127.0.1/24" ];
+        listenPort = 51820;
+        postSetup = ''
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.127.0.0/24 -o ens6 -j MASQUERADE
+        '';
+        postShutdown = ''
+          ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.127.0.0/24 -o ens6 -j MASQUERADE
+        '';
+        privateKeyFile = config.age.secrets.wireguard-server.path;
+        peers = [{
+          publicKey = "TekfTYyHo+PsZRFLHopuw3/aBFe6/H3+ZaTLIg4mg24=";
+          allowedIPs = [ "10.127.0.3/32" ];
+        }];
+      };
+    };
   };
 
   nixpkgs = {

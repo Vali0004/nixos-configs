@@ -1,13 +1,14 @@
 { config, pkgs, ... }:
 
 let
+  mkProxy = import ./../mkproxy.nix;
   cors_anywhere = pkgs.callPackage ./package.nix {};
-  mkProxy = import ./../../services/nginx/mkproxy.nix;
 in {
-  environment.systemPackages = with pkgs; [
-    nodejs_20
+  environment.systemPackages = [
+    pkgs.nodejs_20
     cors_anywhere
   ];
+
   systemd.services.cors-anywhere = {
     enable = true;
     description = "Proxy to strip CORS from a request";

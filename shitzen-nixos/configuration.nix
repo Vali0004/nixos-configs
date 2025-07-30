@@ -8,14 +8,16 @@
     modules/pnp-loader/service.nix
     modules/agenix.nix
     modules/boot.nix
-    modules/docker.nix
-    modules/tgt_service.nix
+    modules/dockge.nix
+    modules/wireguard.nix
     modules/zfs.nix
     services/arr-services.nix
     services/hydra.nix
     services/jellyfin.nix
     services/mailserver.nix
     services/minecraft.nix
+    services/mysql.nix
+    services/nfs.nix
     services/nginx.nix
     services/oauth2.nix
     services/postgresql.nix
@@ -75,6 +77,8 @@
 
   hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
 
+  minecraft.prod = false;
+  
   networking = {
     firewall = {
       # SSH is also open, and so is rtorrent
@@ -112,32 +116,17 @@
     defaults.email = "diorcheats.vali@gmail.com";
   };
 
-  services = {
-    mysql = {
-      enable = true;
-      package = pkgs.mariadb;
-    };
-    nfs.server = {
-      enable = true;
-      exports = ''
-        /data 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.202(rw,sync,no_subtree_check,no_root_squash) 10.0.0.190(rw,sync,no_subtree_check,no_root_squash)
-      '';
-    };
-    toxvpn = {
-      auto_add_peers = [
-        "12f5850c8664f0ad12047ac2347ef8b1bfb8d26cd37a795c4f7c590cd6b87e7c6b96ca1c9df5" # router
-      ];
-      localip = "10.0.127.3";
-    };
+  services.toxvpn = {
+    auto_add_peers = [
+      "12f5850c8664f0ad12047ac2347ef8b1bfb8d26cd37a795c4f7c590cd6b87e7c6b96ca1c9df5" # router
+    ];
+    localip = "10.0.127.3";
   };
 
   swapDevices = [{
     device = "/var/lib/swap1";
     size = 8192;
   }];
-
-  vali.mc_prod = false;
-  vali.mc_test = false;
 
   system.stateVersion = "25.11";
 }
