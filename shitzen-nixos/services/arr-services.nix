@@ -21,9 +21,7 @@
   services.sonarr = {
     dataDir = "/data/services/sonarr/data";
     enable = true;
-    group = "users";
     openFirewall = true;
-    user = "vali";
   };
 
   systemd.services.sonarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
@@ -40,9 +38,7 @@
   services.radarr = {
     dataDir = "/data/services/radarr/data";
     enable = true;
-    group = "users";
     openFirewall = true;
-    user = "vali";
   };
 
   systemd.services.radarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];

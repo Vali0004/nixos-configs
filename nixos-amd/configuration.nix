@@ -223,6 +223,7 @@ in {
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
       CM_LAUNCHER = "dmenu";
+      CM_SYNC_PRIMARY_TO_CLIPBOARD = 1;
     };
   };
 
