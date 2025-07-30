@@ -16,14 +16,11 @@ let
   in lib.listToAttrs (map f (lib.attrsToList modData));
 in {
   options = {
-    vali.mc_prod = lib.mkOption {
-      type = lib.types.bool;
-    };
-    vali.mc_test = lib.mkOption {
+    minecraft.prod = lib.mkOption {
       type = lib.types.bool;
     };
   };
-  config = lib.mkIf (config.vali.mc_prod || config.vali.mc_test) {
+  config = lib.mkIf (config.minecraft.prod) {
     services = {
       minecraft-servers = {
         dataDir = "/var/lib/minecraft";
@@ -34,52 +31,7 @@ in {
           tmux.enable = false;
         };
         servers = {
-          test = lib.mkIf config.vali.mc_test {
-            autoStart = true;
-            enable = true;
-            #symlinks = {
-              #"mods" = "${modpack}/mods";
-            #};
-            files = fetchMods ./minecraft/test.nix;
-            whitelist = {
-              FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
-              HY9X = "7d0e5df7-7df2-457d-84e4-132230eed497";
-              kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
-              ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
-            };
-            jvmOpts = "-Xms13G -Xmx13G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch";
-            package = pkgs.forgeServers.forge-1_16_5-36_2_39;
-            serverProperties = {
-              admin-slot = true;
-              allow-cheats = false;
-              difficulty = "hard";
-              enable-command-block = false;
-              enable-rcon = false;
-              enforce-whitelist = true;
-              entity-broadcast-range-percentage = 40;
-              force-gamemode = false;
-              gamemode = "survival";
-              hardcore = false;
-              max-threads = 0;
-              max-tick-time = 60000;
-              motd = "Hello!";
-              network-compression-threshold = 512;
-              query-port = 4100;
-              server-ip = "0.0.0.0";
-              server-name = "InertiaCraft";
-              server-port = 4100;
-              simulation-distance = 4;
-              sync-chunk-writes = true;
-              texturepack-required = true;
-              #require-resource-pack = true;
-              #resource-pack = "https://fuckk.lol/minecraft/resource-pack-test.zip";
-              tick-distance = 12;
-              use-alternate-keepalive = true;
-              view-distance = 32;
-              white-list = true;
-            };
-          };
-          prod = lib.mkIf config.vali.mc_prod {
+          prod = lib.mkIf config.minecraft.prod {
             autoStart = true;
             enable = true;
             files = import ./minecraft/prod.nix { inherit pkgs; };

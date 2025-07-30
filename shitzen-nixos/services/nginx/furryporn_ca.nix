@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkProxy = import ./mkproxy.nix;
+  mkProxy = import ./../../modules/mkproxy.nix;
 in {
   services.nginx.virtualHosts = {
     "valis.furryporn.ca" = {

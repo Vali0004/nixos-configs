@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkProxy = import ./nginx/mkproxy.nix;
+  mkProxy = import ./../modules/mkproxy.nix;
 in {
   services.zipline = {
     enable = true;

@@ -3,7 +3,7 @@
 let
   dht-port = 6990;
   peer-port = 50000;
-  web-port = 3002;
+  web-port = 3700;
 in {
   services.rtorrent = {
     configText = ''
@@ -32,7 +32,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = {
-      proxyPass = "http://127.0.0.1:3002";
+      proxyPass = "http://127.0.0.1:${toString web-port}";
       proxyWebsockets = true;
     };
   };

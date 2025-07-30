@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkProxy = import ./nginx/mkproxy.nix;
+  mkProxy = import ./../modules/mkproxy.nix;
 in {
   nix = {
     buildMachines = [
@@ -24,12 +24,60 @@ in {
     settings.auto-optimise-store = true;
   };
 
-  services.nginx.virtualHosts."hydra.fuckk.lol" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3001";
-      proxyWebsockets = false;
+  services.anubis = {
+    instances."hydra-server" = {
+      settings = {
+        TARGET = "http://127.0.0.1:3001";
+        BIND = ":3002";
+        BIND_NETWORK = "tcp";
+        METRICS_BIND = ":9001";
+        METRICS_BIND_NETWORK = "tcp";
+      };
+    };
+  };
+
+  services.nginx = {
+    appendHttpConfig = ''
+      map $http_x_from $upstream {
+        default "anubis";
+        nix.dev-Uogho3gi "hydra-server";
+      }
+
+      limit_req_zone $binary_remote_addr zone=hydra-server:8m rate=2r/s;
+      limit_req_status 429;
+    '';
+
+    upstreams = {
+      anubis.servers."127.0.0.1:3002" = { };
+      hydra-server.servers."127.0.0.1:3001" = { };
+    };
+
+    virtualHosts."hydra.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+
+      # Ask robots not to scrape hydra, it has various expensive endpoints
+      locations."=/robots.txt".alias = pkgs.writeText "hydra.fuckk.lol-robots.txt" ''
+        User-agent: *
+        Disallow: /
+        Allow: /$
+      '';
+
+      locations."/" = {
+        proxyPass = "http://$upstream";
+        extraConfig = ''
+          limit_req zone=hydra-server burst=5;
+        '';
+        proxyWebsockets = false;
+      };
+
+      locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = {
+        proxyPass = "http://hydra-server";
+      };
+
+      locations."/static/" = {
+        alias = "${config.services.hydra.package}/libexec/hydra/root/static/";
+      };
     };
   };
 
