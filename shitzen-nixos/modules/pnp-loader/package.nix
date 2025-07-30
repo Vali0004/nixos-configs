@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
-  mkProxy = import ./../../services/nginx/mkproxy.nix;
+  express = pkgs.nodePackages.express;
   pnp-loader = pkgs.writeText "server.js" ''
     const express = require('express');
     const path = require('path');
@@ -129,31 +129,9 @@ let
       console.log(? CDN/API server running at http://0.0.0.0:''${PORT});
     });
   '';
-in {
-  systemd.services.pnp-loader = {
-    enable = true;
-    description = "PnP-Loader";
-    unitConfig = {
-      Type = "simple";
-    };
-    serviceConfig = {
-      ExecStart = "${pkgs.nodejs_20}/bin/node ${pnp-loader}/server.js";
-    };
-    wantedBy = [ "multi-user.target" ];
-  };
-
-  #services.nginx.virtualHosts."test.fuckk.lol" = {
-  #  enableACME = true;
-  #  forceSSL = true;
-  #  locations."/" = mkProxy {
-  #    port = 3200;
-  #    webSockets = true;
-  #    config = ''
-  #      proxy_ssl_server_name on;
-  #      proxy_ssl_name $proxy_host;gi
-  #      proxy_cache_bypass $http_upgrade;
-  #      proxy_set_header X-Requested-With XMLHttpRequest;
-  #    '';
-  #  };
-  #};
+in pkgs.buildNpmPackage {
+  dontNpmBuild = true;
+  name = "pnp-loader";
+  npmDepsHash = "sha256-IvfEO+WfBwsCTo1KEHbCYVd+HK6cjL9EdjqvSIcMui0=";
+  src = ./src;
 }

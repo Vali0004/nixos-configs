@@ -5,6 +5,7 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/cors-anywhere/service.nix
     modules/convoy/convoy.nix
+    modules/pnp-loader/service.nix
     modules/agenix.nix
     modules/boot.nix
     modules/docker.nix

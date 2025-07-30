@@ -13,7 +13,7 @@
     enableSubmission = true;
     enableSubmissionSsl = true;
     enablePop3Ssl = true;
-    fqdn = "smtp.fuckk.lol";
+    fqdn = "mail.fuckk.lol";
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
       "vali@fuckk.lol" = {
@@ -68,7 +68,7 @@
     };
   };
 
-  services.nginx.virtualHosts."smtp.fuckk.lol" = {
+  services.nginx.virtualHosts."mail.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
     locations."/".extraConfig = "return 404;";
@@ -87,7 +87,7 @@
     extraConfig = ''
       $config['default_host'] = 'ssl://10.0.127.1';
       $config['default_port'] = 993;
-      $config['smtp_host'] = "smtp.fuckk.lol";
+      $config['smtp_host'] = "mail.fuckk.lol";
       $config['smtp_port'] = 587;
       $config['smtp_secure'] = 'tls';
       $config['smtp_user'] = "%u";
