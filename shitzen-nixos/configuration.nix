@@ -6,29 +6,39 @@
     modules/cors-anywhere/service.nix
     modules/convoy/convoy.nix
     modules/pnp-loader/service.nix
+
     modules/agenix.nix
+
     modules/boot.nix
     modules/dockge.nix
     modules/wireguard.nix
     modules/zfs.nix
+
     services/arr/prowlarr.nix
     services/arr/radarr.nix
     services/arr/sonarr.nix
+    services/minecraft/package.nix
+
     services/hydra.nix
     services/jellyfin.nix
     services/mailserver.nix
-    services/minecraft.nix
+
     services/mysql.nix
     services/nfs.nix
     services/nginx.nix
     services/oauth2.nix
+
     services/postgresql.nix
     services/proxmox.nix
-    services/pterodactyl-panel.nix
+    #services/pterodactyl-panel.nix
+
     services/redis.nix
+
     services/rtorrent.nix
     services/samba.nix
-    services/wings.nix
+
+    #services/wings.nix
+
     services/zipline.nix
   ];
 
