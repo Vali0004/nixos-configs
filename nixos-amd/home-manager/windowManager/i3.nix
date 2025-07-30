@@ -17,6 +17,7 @@ in {
       }];
       # Colors
       colors = {
+        background = "#0F0F0F";
         focused = {
           border = "#0F0F0F";
           background = "#0F0F0F";
@@ -38,7 +39,6 @@ in {
           indicator = "#3B3B3B";
           childBorder = "#000000";
         };
-        background = "#0F0F0F";
       };
       # Theme
       fonts = {
