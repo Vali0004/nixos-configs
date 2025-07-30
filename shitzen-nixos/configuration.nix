@@ -37,7 +37,7 @@
     services/rtorrent.nix
     services/samba.nix
 
-    #services/wings.nix
+    services/wings.nix
 
     services/zipline.nix
   ];

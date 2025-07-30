@@ -1,11 +1,6 @@
 { config, inputs, lib, pkgs, ... }:
 
 {
-  imports = [
-    nginx/fuckk_lol.nix
-    nginx/furryporn_ca.nix
-  ];
-
   services.nginx = {
     appendHttpConfig = ''
       # Add HSTS header with preloading to HTTPS requests

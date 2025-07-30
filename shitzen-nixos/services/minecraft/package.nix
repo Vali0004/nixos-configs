@@ -17,7 +17,7 @@
       servers.prod = lib.mkIf config.minecraft.prod {
         autoStart = true;
         enable = true;
-        files = import ./prod.nix { fetchurl = pkgs.fetchurl };
+        files = import ./prod.nix { fetchurl = pkgs.fetchurl; };
 
         whitelist = {
           FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
