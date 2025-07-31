@@ -48,6 +48,7 @@ in {
     htop
     iperf
     openssl
+    screen
     tcpdump
     wget
     wireguard-tools
@@ -94,6 +95,7 @@ in {
     ];
     nat = {
       enable = true;
+      enableIPv6 = true;
       externalInterface = "ens6";
       internalInterfaces = [ "wg0" ];
     };
@@ -136,15 +138,15 @@ in {
     size = 1024;
   }];
 
-  systemd.services = {
-    forward25 = mkForward 25 "10.0.127.3";
-    forward80 = mkForward 80 "10.0.127.3";
-    forward443 = mkForward 443 "10.0.127.3";
-    forward465 = mkForward 465 "10.0.127.3";
-    forward587 = mkForward 587 "10.0.127.3";
-    forward993 = mkForward 993 "10.0.127.3";
-    forward995 = mkForward 995 "10.0.127.3";
-  };
+  #systemd.services = {
+  #  forward25 = mkForward 25 "10.0.127.3";
+  #  forward80 = mkForward 80 "10.0.127.3";
+  #  forward443 = mkForward 443 "10.0.127.3";
+  #  forward465 = mkForward 465 "10.0.127.3";
+  #  forward587 = mkForward 587 "10.0.127.3";
+  #  forward993 = mkForward 993 "10.0.127.3";
+  #  forward995 = mkForward 995 "10.0.127.3";
+  #};
 
   system.stateVersion = "25.05";
 }

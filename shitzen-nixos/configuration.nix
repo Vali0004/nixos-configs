@@ -3,8 +3,8 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+    #modules/convoy/convoy.nix
     modules/cors-anywhere/service.nix
-    modules/convoy/convoy.nix
     modules/pnp-loader/service.nix
 
     modules/agenix.nix
@@ -37,7 +37,7 @@
     services/rtorrent.nix
     services/samba.nix
 
-    services/wings.nix
+    #services/wings.nix
 
     services/zipline.nix
   ];

@@ -12,9 +12,6 @@ in {
   systemd.services.cors-anywhere = {
     enable = true;
     description = "Proxy to strip CORS from a request";
-    unitConfig = {
-      Type = "simple";
-    };
     serviceConfig = {
       Environment = [
         "PORT=8099"

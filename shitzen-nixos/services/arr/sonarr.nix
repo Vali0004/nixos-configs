@@ -2,12 +2,18 @@
 
 {
   services.sonarr = {
-    dataDir = "/data/services/sonarr/data";
+    dataDir = "/data/services/sonarr";
     enable = true;
+    group = config.services.rtorrent.group;
     openFirewall = true;
+    settings = {
+      update.mechanism = "builtIn";
+      server = {
+        port = 8989;
+        bindaddress = "*";
+      };
+    };
   };
-
-  systemd.services.sonarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
   services.nginx.virtualHosts."sonarr.fuckk.lol" = {
     enableACME = true;
