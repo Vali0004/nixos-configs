@@ -2,9 +2,16 @@
 
 {
   services.prowlarr = {
-    dataDir = "/data/services/prowlarr/data";
+    dataDir = "/data/services/prowlarr";
     enable = true;
     openFirewall = true;
+    settings = {
+      update.mechanism = "builtIn";
+      server = {
+        port = 9696;
+        bindaddress = "*";
+      };
+    };
   };
 
   systemd.services.prowlarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
