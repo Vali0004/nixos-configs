@@ -16,10 +16,10 @@ in {
       privateKeyFile = config.age.secrets.wireguard.path;
       peers = [
         {
-          publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";
           allowedIPs = [ "0.0.0.0/0" ];
           endpoint = "74.208.44.130:51820";
-          persistentKeepalive = 25;
+          persistentKeepalive = 5;
+          publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";
         }
       ];
     };
