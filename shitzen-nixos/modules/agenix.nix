@@ -22,6 +22,11 @@
       owner = "nginx";
       group = "nginx";
     };
+    pnp-loader = {
+      file = ./../../secrets/pnp-loader.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     #pterodactyl = {
     #  file = ./../../secrets/pterodactyl.age;
     #  owner = "pterodactyl";
