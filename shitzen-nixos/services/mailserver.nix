@@ -85,7 +85,7 @@
     configureNginx = false;
     hostName = "webmail.fuckk.lol";
     extraConfig = ''
-      $config['default_host'] = 'ssl://10.127.0.1';
+      $config['default_host'] = 'ssl://10.127.0.3';
       $config['default_port'] = 993;
       $config['smtp_host'] = "mail.fuckk.lol";
       $config['smtp_port'] = 587;
