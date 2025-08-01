@@ -9,10 +9,11 @@ const app = express();
 const PORT = 3200;
 
 // Configuration paths
-const packsDir = '/data/services/pnp-loader/games2/packs';
-const gamesDir = '/data/services/pnp-loader/games';
-const dllDir = '/data/services/pnp-loader/DLL';
-const versionFile = '/data/services/pnp-loader/version/version.txt';
+const rootDir = '/data/services/pnp-loader';
+const gamesDir = rootDir + '/games';
+const packsDir = gamesDir + '/packs';
+const dllDir = rootDir + '/DLL';
+const versionFile = rootDir + '/version/version.txt';
 const API_KEY = process.env.API_KEY;
 const KNOWN_TOKEN = process.env.KNOWN_TOKEN;
 
@@ -53,7 +54,7 @@ app.get('/games/:file', (req, res) => {
   const headerKey = req.headers['x-api-key'];
 
   if (
-    file === 'games2.json' &&
+    file === 'games.json' &&
     queryKey !== API_KEY &&
     headerKey !== API_KEY
   ) {
