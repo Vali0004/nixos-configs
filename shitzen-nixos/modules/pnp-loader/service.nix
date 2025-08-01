@@ -2,12 +2,15 @@
 
 let
   pnp-loader = pkgs.callPackage ./package.nix {};
+  mkProxy = import ./../mkproxy.nix;
 in {
   systemd.services.pnp-loader = {
     enable = true;
     description = "PnP-Loader";
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_20}/bin/node ${pnp-loader}/lib/node_modules/pnp-loader/server.js";
+      EnvironmentFile = config.age.secrets.pnp-loader.path;
+      Restart = "always";
     };
     wantedBy = [ "multi-user.target" ];
   };
@@ -15,9 +18,9 @@ in {
   services.nginx.virtualHosts."s1-luna.pnploader.ru" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3200";
-      proxyWebsockets = true;
+    locations."/" = mkProxy {
+      port = 3200;
+      webSockets = true;
     };
   };
 }

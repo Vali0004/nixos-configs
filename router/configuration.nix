@@ -32,6 +32,7 @@ in {
       ];
       kernelModules = [ ];
     };
+    kernel.sysctl."net.ipv4.ip_forward" = true;
     kernelModules = [ "kvm-amd" ];
     loader.grub = {
       configurationLimit = 3;

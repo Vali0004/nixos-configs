@@ -1,3 +1,6 @@
+// Use .env files, easier to create a encrypted file
+require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -10,12 +13,12 @@ const packsDir = '/data/services/pnp-loader/games2/packs';
 const gamesDir = '/data/services/pnp-loader/games';
 const dllDir = '/data/services/pnp-loader/DLL';
 const versionFile = '/data/services/pnp-loader/version/version.txt';
-const API_KEY = 'NAHa7TURr4MM4sp7Ejt1bSQscDoE5m';
+const API_KEY = process.env.API_KEY;
+const KNOWN_TOKEN = process.env.KNOWN_TOKEN;
 
 // Trust proxy (Cloudflare or NGINX)
 app.set('trust proxy', true);
 
-// Serve ZIP downloads
 app.get('/api/download/:appid', (req, res) => {
   const appid = req.params.appid;
   const zipPath = path.join(packsDir, appid + '.zip');
@@ -30,13 +33,11 @@ app.get('/api/download/:appid', (req, res) => {
   });
 });
 
-// List available ZIPs
 app.get('/api/list', (req, res) => {
   const files = fs.readdirSync(packsDir).filter(f => f.endsWith('.zip'));
   res.json({ available: files });
 });
 
-// ? Serve version string
 app.get('/api/version', (req, res) => {
   if (!fs.existsSync(versionFile)) {
     return res.status(404).json({ error: 'Version file not found' });
@@ -46,7 +47,6 @@ app.get('/api/version', (req, res) => {
   res.type('text/plain').send(version);
 });
 
-// Serve individual game JSON files
 app.get('/games/:file', (req, res) => {
   const file = req.params.file;
   const queryKey = req.query.key;
@@ -83,10 +83,9 @@ app.get('/games', (req, res) => {
 app.get('/heartbeat/:token', (req, res) => {
   const token = req.params.token;
 
-  const knownToken = '290f21c9f7f0f5ff1eae1ddd0459ea35365198a81990c0cba35322683d51f3c0';
   const dllPath = path.join(dllDir, 'hid.dll');
 
-  if (token !== knownToken) {
+  if (token !== KNOWN_TOKEN) {
     return res.status(403).json({ error: 'Invalid or missing token' });
   }
 
@@ -116,7 +115,7 @@ app.get('/download/beta', (req, res) => {
 
 // Catch-all for undefined routes
 app.use((req, res) => {
-  res.status(404).send('why you looking here smh');
+  res.status(404).send('404 Not Found');
 });
 
 // Start server

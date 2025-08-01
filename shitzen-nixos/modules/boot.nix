@@ -19,6 +19,7 @@
     kernelParams = [
       "netconsole=6665@10.0.0.159/enp7s0,6666@10.0.0.0.201/10:ff:e0:35:08:fb"
     ];
+    kernel.sysctl."net.ipv4.ip_forward" = true;
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
