@@ -25,9 +25,37 @@ in {
     };
   };
 
+  networking.nftables = {
+    enable = true;
+    ruleset = ''
+      table inet mangle {
+        chain output {
+          type route hook output priority mangle; policy accept;
+
+          meta skuid 981 meta l4proto udp mark set 1
+        }
+      }
+
+      table ip nat {
+        chain postrouting {
+          type nat hook postrouting priority srcnat; policy accept;
+
+          oifname "wg0" masquerade
+        }
+      }
+    '';
+  };
+
   systemd.network.networks."30-wg0" = {
     matchConfig.Name = "wg0";
     address = [ "10.127.0.3/24" ];
+    routes = [{
+      routeConfig = {
+        Gateway = "10.127.0.1";
+        Destination = "0.0.0.0/0";
+        Table = 100;
+      };
+    }];
     routingPolicyRules = [{
       routingPolicyRuleConfig = {
         FirewallMark = 1;
