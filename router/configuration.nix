@@ -146,8 +146,9 @@ in {
         '';
         privateKeyFile = config.age.secrets.wireguard-server.path;
         peers = [{
-          publicKey = "TekfTYyHo+PsZRFLHopuw3/aBFe6/H3+ZaTLIg4mg24=";
           allowedIPs = [ "10.127.0.3/32" ];
+          persistentKeepalive = 5;
+          publicKey = "TekfTYyHo+PsZRFLHopuw3/aBFe6/H3+ZaTLIg4mg24=";
         }];
       };
     };
