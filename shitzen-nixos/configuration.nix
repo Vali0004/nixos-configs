@@ -3,7 +3,6 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    #modules/convoy/convoy.nix
     modules/cors-anywhere/service.nix
     modules/pnp-loader/service.nix
 
@@ -29,14 +28,9 @@
     services/oauth2.nix
 
     services/postgresql.nix
-    #services/pterodactyl-panel.nix
-
-    services/redis.nix
 
     services/rtorrent.nix
     services/samba.nix
-
-    #services/wings.nix
 
     services/zipline.nix
   ];
@@ -92,6 +86,7 @@
   minecraft.prod = false;
   
   networking = {
+    defaultGateway = "10.0.0.1";
     firewall = {
       # SSH is also open, and so is rtorrent
       allowedTCPPorts = [
@@ -106,7 +101,35 @@
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
-    useDHCP = true;
+    interfaces.enp7s0 = {
+      ipv4.addresses = [{
+        address = "10.0.0.244";
+        prefixLength = 24;
+      }];
+      ipv6.addresses = [
+        {
+          address = "2601:406:8401:5310::31d";
+          prefixLength = 128;
+        }
+        {
+          address = "2601:406:8401:5310:dd29:e01c:f563:9898";
+          prefixLength = 64;
+        }
+        {
+          address = "2601:406:8401:5310:62cf:84ff:fe5e:82bb";
+          prefixLength = 64;
+        }
+        {
+          address = "fe80::62cf:84ff:fe5e:82bb";
+          prefixLength = 64;
+        }
+      ];
+    };
+    nameservers = [
+      "75.75.75.75"
+      "75.75.76.76"
+    ];
+    useDHCP = false;
   };
 
   nix.settings = {
