@@ -18,12 +18,13 @@ stdenv.mkDerivation {
   name = "beammp-launcher";
   version = "2.5.1";
 
-  src = fetchFromGitHub {
-    owner = "Vali0004";
-    repo = "BeamMP-Launcher";
-    rev = "9c6f97fc46022240caa421afafc9a39c67f628b3";
-    hash = "sha256-VMNVa5wFIdYWRG1ljAR8FDCn/a7mHQRYHNLgKxnAuZg=";
-  };
+  src = /home/vali/BeamMP-Launcher;
+  #fetchFromGitHub {
+  #  owner = "Vali0004";
+  #  repo = "BeamMP-Launcher";
+  #  rev = "9c6f97fc46022240caa421afafc9a39c67f628b3";
+  #  hash = "sha256-VMNVa5wFIdYWRG1ljAR8FDCn/a7mHQRYHNLgKxnAuZg=";
+  #};
 
   nativeBuildInputs = [
     cmake

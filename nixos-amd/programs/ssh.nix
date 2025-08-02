@@ -18,7 +18,7 @@
       User root
 
     Host shitzen-nixos
-      Hostname 10.0.0.159
+      Hostname 10.0.0.244
       User root
 
     Host chromeshit
