@@ -29,7 +29,6 @@
     services/oauth2.nix
 
     services/postgresql.nix
-    services/proxmox.nix
     #services/pterodactyl-panel.nix
 
     services/redis.nix
@@ -51,6 +50,7 @@
     hdparm
     iperf
     jdk
+    lsof
     lsscsi
     magic-wormhole
     mysql84
@@ -107,8 +107,6 @@
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
     useDHCP = true;
-    useNetworkd = true;
-    networkmanager.enable = false;
   };
 
   nix.settings = {

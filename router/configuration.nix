@@ -1,15 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }:
 
-let
-  mkForward = port: target: {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},reuseaddr,fork TCP4:${target}:${toString port}";
-      KillMode = "process";
-      Restart = "always";
-    };
-  };
-in {
+{
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     ./agenix.nix
@@ -109,6 +100,8 @@ in {
         postSetup = ''
           ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.127.0.0/24 -o ens6 -j MASQUERADE
 
+          ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.127.0.0/24 -o ens6 -p udp -j MASQUERADE
+
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 25 -j DNAT --to-destination 10.127.0.3:25
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 80 -j DNAT --to-destination 10.127.0.3:80
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 443 -j DNAT --to-destination 10.127.0.3:443
@@ -116,14 +109,13 @@ in {
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 587 -j DNAT --to-destination 10.127.0.3:587
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 993 -j DNAT --to-destination 10.127.0.3:993
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 995 -j DNAT --to-destination 10.127.0.3:995
+          ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
 
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 25 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 80 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 443 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 465 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 587 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 993 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -A FORWARD -p tcp -d 10.127.0.3 --dport 995 -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -A FORWARD -s 10.127.0.0/24 -p udp -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -A FORWARD -d 10.127.0.0/24 -p udp -j ACCEPT
+
+          ${pkgs.iptables}/bin/iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -A FORWARD -s 10.127.0.0/24 -j ACCEPT
         '';
         postShutdown = ''
           ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.127.0.0/24 -o ens6 -j MASQUERADE
@@ -135,14 +127,13 @@ in {
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 587 -j DNAT --to-destination 10.127.0.3:587
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 993 -j DNAT --to-destination 10.127.0.3:993
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 995 -j DNAT --to-destination 10.127.0.3:995
+          ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
 
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 25 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 80 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 443 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 465 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 587 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 993 -j ACCEPT
-          ${pkgs.iptables}/bin/iptables -D FORWARD -p tcp -d 10.127.0.3 --dport 995 -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -D FORWARD -s 10.127.0.0/24 -p udp -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -D FORWARD -d 10.127.0.0/24 -p udp -j ACCEPT
+
+          ${pkgs.iptables}/bin/iptables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -D FORWARD -s 10.127.0.0/24 -j ACCEPT
         '';
         privateKeyFile = config.age.secrets.wireguard-server.path;
         peers = [{
@@ -170,16 +161,6 @@ in {
     device = "/var/lib/swap1";
     size = 1024;
   }];
-
-  #systemd.services = {
-  #  forward25 = mkForward 25 "10.0.127.3";
-  #  forward80 = mkForward 80 "10.0.127.3";
-  #  forward443 = mkForward 443 "10.0.127.3";
-  #  forward465 = mkForward 465 "10.0.127.3";
-  #  forward587 = mkForward 587 "10.0.127.3";
-  #  forward993 = mkForward 993 "10.0.127.3";
-  #  forward995 = mkForward 995 "10.0.127.3";
-  #};
 
   system.stateVersion = "25.05";
 }

@@ -15,6 +15,8 @@
     };
   };
 
+  systemd.services.radarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
+
   services.nginx.virtualHosts."radarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;

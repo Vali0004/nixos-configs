@@ -9,16 +9,14 @@
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";
-    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
   };
-  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, proxmox-nixos, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, self }:
   {
     colmena = {
       meta = {
         nixpkgs = import nixpkgs {
           system = "x86_64-linux";
           overlays = [
-            proxmox-nixos.overlays.x86_64-linux
             (self: super: {
               agenix = agenix.packages.x86_64-linux.default;
             })
@@ -57,7 +55,7 @@
         ];
       };
       shitzen-nixos = {
-        deployment.targetHost = "10.0.0.159";
+        deployment.targetHost = "10.0.0.244";
         deployment.targetUser = "root";
         imports = [
           agenix.nixosModules.age
@@ -65,7 +63,6 @@
           nix-minecraft.nixosModules.minecraft-servers
           pterodactyl-wings-nix.nixosModules.pterodactyl-wings
           nixos-mailserver.nixosModule
-          proxmox-nixos.nixosModules.proxmox-ve
           ./shitzen-nixos/configuration.nix
         ];
       };
