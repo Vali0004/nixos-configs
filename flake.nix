@@ -6,11 +6,10 @@
     # Broke zipline
     nixpkgs.url = "github:NixOS/nixpkgs/547e53c32fa333cadf3291571946181084d3877a";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
-    pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";
   };
-  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, pterodactyl-wings-nix, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, self }:
   {
     colmena = {
       meta = {
@@ -26,9 +25,6 @@
             })
             (self: super: {
               mailserver = nixos-mailserver.x86_64-linux.default;
-            })
-            (self: super: {
-              wings = pterodactyl-wings-nix.packages.x86_64-linux.pterodactyl-wings;
             })
             (self: super: {
               forgeServers = {
@@ -61,7 +57,6 @@
           agenix.nixosModules.age
           ./core.nix
           nix-minecraft.nixosModules.minecraft-servers
-          pterodactyl-wings-nix.nixosModules.pterodactyl-wings
           nixos-mailserver.nixosModule
           ./shitzen-nixos/configuration.nix
         ];
