@@ -2,7 +2,6 @@
 
 {
   services.prowlarr = {
-    dataDir = "/data/services/prowlarr";
     enable = true;
     openFirewall = true;
     settings = {
