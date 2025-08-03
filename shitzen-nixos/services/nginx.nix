@@ -55,8 +55,16 @@
           autoindex_exact_size off;
         '';
       };
+      "/private/movies/" = {
+        alias = "/data/private/movies/";
+        index = "index.htm";
+        extraConfig = ''
+          autoindex on;
+          autoindex_exact_size off;
+        '';
+      };
       "/private/downloads/" = {
-        alias = "/data/services/downloads/rtorrent/";
+        alias = "/data/private/downloads";
         index = "index.htm";
         extraConfig = ''
           autoindex on;
