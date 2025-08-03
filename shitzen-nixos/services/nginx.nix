@@ -56,7 +56,7 @@
         '';
       };
       "/private/downloads/" = {
-        alias = "/data/private/downloads/";
+        alias = "/data/services/downloads/rtorrents/";
         index = "index.htm";
         extraConfig = ''
           autoindex on;
