@@ -46,7 +46,7 @@ in {
       throttle.max_peers.seed.set = 80
       trackers.numwant.set = 80
 
-      download_rate = 6000
+      download_rate = 10000
       upload_rate = 500
 
       protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
