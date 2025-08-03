@@ -64,7 +64,7 @@
         '';
       };
       "/private/downloads/" = {
-        alias = "/data/private/downloads";
+        alias = "/data/private/downloads/";
         index = "index.htm";
         extraConfig = ''
           autoindex on;
