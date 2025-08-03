@@ -86,7 +86,7 @@
   hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
 
   minecraft.prod = false;
-  
+
   networking = {
     defaultGateway = "10.0.0.1";
     firewall = {
