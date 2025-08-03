@@ -220,7 +220,7 @@ in {
       xdotool
       zip
     ];
-  
+
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
       CM_LAUNCHER = "dmenu";

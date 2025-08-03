@@ -25,7 +25,7 @@ writeShellScript "network" ''
       printf "^d^ ^c#f38ba8^No IP^d^\n"
       exit 0
   fi
-  
+
   rx1=$(cat /sys/class/net/$iface/statistics/rx_bytes)
   tx1=$(cat /sys/class/net/$iface/statistics/tx_bytes)
   sleep 1
