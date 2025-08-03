@@ -48,6 +48,7 @@
     lsof
     lsscsi
     magic-wormhole
+    mediainfo
     mysql84
     node2nix
     openssl
