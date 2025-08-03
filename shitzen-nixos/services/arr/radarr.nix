@@ -2,7 +2,6 @@
 
 {
   services.radarr = {
-    dataDir = "/data/services/radarr";
     enable = true;
     group = config.services.rtorrent.group;
     openFirewall = true;

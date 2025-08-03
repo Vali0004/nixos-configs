@@ -1,0 +1,152 @@
+structuredAttrs is enabled
+Running phase: unpackPhase
+@nix { "action": "setPhase", "phase": "unpackPhase" }
+unpacking source archive /nix/store/df2h7052ifkqskjdl5ayildwns40hal6-source
+source root is source
+Running phase: patchPhase
+@nix { "action": "setPhase", "phase": "patchPhase" }
+Running phase: configureNuget
+@nix { "action": "setPhase", "phase": "configureNuget" }
+The template "NuGet Config" was created successfully.
+
+Processing post-creation actions...
+
+
+Running phase: updateAutotoolsGnuConfigScriptsPhase
+@nix { "action": "setPhase", "phase": "updateAutotoolsGnuConfigScriptsPhase" }
+Running phase: configurePhase
+@nix { "action": "setPhase", "phase": "configurePhase" }
+Executing dotnetConfigureHook
+  Determining projects to restore...
+/build/source/src/NzbDrone.Common/Sonarr.Common.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.RuntimePatches/Sonarr.RuntimePatches.csproj : error NU1102: Unable to find package Lib.Harmony with version (>= 2.3.5) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.RuntimePatches/Sonarr.RuntimePatches.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.3.3 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Http/Sonarr.Http.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package Swashbuckle.AspNetCore.Annotations with version (>= 8.0.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 6.6.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package Swashbuckle.AspNetCore.SwaggerGen with version (>= 8.0.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 6.6.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Swashbuckle.AspNetCore.SwaggerGen with version (>= 8.0.0) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 6.6.2 ] [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Core/Sonarr.Core.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.RuntimePatches/Sonarr.RuntimePatches.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Lib.Harmony with version (>= 2.3.5) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.3.3 ] [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1101: Unable to find package StyleCop.Analyzers.Unstable. No packages exist with this id in source(s): _nix [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package Swashbuckle.AspNetCore.Annotations with version (>= 8.0.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 6.6.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package Dapper with version (>= 2.1.66) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.35 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102: Unable to find package Swashbuckle.AspNetCore.Annotations with version (>= 8.0.0) [TargetFramework=net8.0]
+/build/source/src/NzbDrone.Console/Sonarr.Console.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 6.6.2 ] [TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package MailKit with version (>= 4.10.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 4.9.0 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package Microsoft.Data.SqlClient with version (>= 6.0.1) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package Polly with version (>= 8.5.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 8.5.1 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package SixLabors.ImageSharp with version (>= 3.1.11) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 3.1.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package MonoTorrent with version (>= 3.0.2) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 2.0.7 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102: Unable to find package Swashbuckle.AspNetCore.Annotations with version (>= 8.0.0) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/NzbDrone.Host/Sonarr.Host.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 6.6.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102: Unable to find package Npgsql with version (>= 9.0.3) [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+/build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj : error NU1102:   - Found 1 version(s) in _nix [ Nearest version: 9.0.2 ] [/build/source/src/NzbDrone.Console/Sonarr.Console.csproj::TargetFramework=net8.0]
+  Failed to restore /build/source/src/Sonarr.RuntimePatches/Sonarr.RuntimePatches.csproj (in 122 ms).
+  Failed to restore /build/source/src/NzbDrone.Common/Sonarr.Common.csproj (in 234 ms).
+  Failed to restore /build/source/src/Sonarr.Api.V3/Sonarr.Api.V3.csproj (in 243 ms).
+  Failed to restore /build/source/src/Sonarr.Http/Sonarr.Http.csproj (in 246 ms).
+  Failed to restore /build/source/src/Sonarr.Api.V5/Sonarr.Api.V5.csproj (in 244 ms).
+  Failed to restore /build/source/src/NzbDrone.Core/Sonarr.Core.csproj (in 246 ms).
+  Failed to restore /build/source/src/NzbDrone.Host/Sonarr.Host.csproj (in 244 ms).
+  Failed to restore /build/source/src/NzbDrone.Console/Sonarr.Console.csproj (in 248 ms).
+  Failed to restore /build/source/src/NzbDrone.SignalR/Sonarr.SignalR.csproj (in 252 ms).

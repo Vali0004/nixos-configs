@@ -46,6 +46,9 @@ in {
       throttle.max_peers.seed.set = 80
       trackers.numwant.set = 80
 
+      download_rate = 6000
+      upload_rate = 500
+
       protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
       # Limits for file handle resources, this is optimized for
@@ -133,5 +136,5 @@ in {
 
   systemd.services.flood.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
   systemd.services.flood.serviceConfig.ReadWritePaths = [ "/data/private/Media" "/data/services/downloads/rtorrent" ];
-  systemd.services.rtorrent.serviceConfig.ReadWritePaths = [ "/data/private/Media" "/data/services/downloads/rtorrent" ];
+  systemd.services.rtorrent.serviceConfig.SystemCallFilter = "@system-service fchownat";
 }

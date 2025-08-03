@@ -69,8 +69,11 @@
         587 # SMTP (with STARTTLS)
         993 # IMAPS
         995 # SPOP3
+        3700 # Peer port
       ];
       allowedUDPPorts = [
+        3700 # Peer port
+        6990 # DHT
         51820 # Wireguard
       ];
     };
@@ -109,7 +112,12 @@
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 587 -j DNAT --to-destination 10.127.0.3:587
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 993 -j DNAT --to-destination 10.127.0.3:993
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 995 -j DNAT --to-destination 10.127.0.3:995
+          ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
+          ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
           ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
+
+          ${pkgs.iptables}/bin/iptables -A FORWARD -s 10.127.0.0/24 -p tcp -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -A FORWARD -d 10.127.0.0/24 -p tcp -j ACCEPT
 
           ${pkgs.iptables}/bin/iptables -A FORWARD -s 10.127.0.0/24 -p udp -j ACCEPT
           ${pkgs.iptables}/bin/iptables -A FORWARD -d 10.127.0.0/24 -p udp -j ACCEPT
@@ -127,7 +135,12 @@
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 587 -j DNAT --to-destination 10.127.0.3:587
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 993 -j DNAT --to-destination 10.127.0.3:993
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 995 -j DNAT --to-destination 10.127.0.3:995
+          ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
+          ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
           ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
+
+          ${pkgs.iptables}/bin/iptables -D FORWARD -s 10.127.0.0/24 -p tcp -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -D FORWARD -d 10.127.0.0/24 -p tcp -j ACCEPT
 
           ${pkgs.iptables}/bin/iptables -D FORWARD -s 10.127.0.0/24 -p udp -j ACCEPT
           ${pkgs.iptables}/bin/iptables -D FORWARD -d 10.127.0.0/24 -p udp -j ACCEPT
