@@ -41,5 +41,5 @@ writeShellScript "cpu" ''
     TEMP_C="?"
   fi
 
-  printf "^d^ %s (%s °C)" "$DIFF_USAGE" "$TEMP_C"
+  printf "^d^ %s%% (%s °C)" "$DIFF_USAGE" "$TEMP_C"
 ''
