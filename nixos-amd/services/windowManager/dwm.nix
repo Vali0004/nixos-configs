@@ -54,11 +54,21 @@ let
     #};
   });
   manage-gnome-calculator = pkgs.callPackage ./manage-gnome-calculator.nix { dwm = dwm; };
+  dwmblocks-cpu = pkgs.callPackage ./dwmblocks-cpu.nix {};
+  dwmblocks-memory = pkgs.callPackage ./dwmblocks-memory.nix {};
+  dwmblocks-network = pkgs.callPackage ./dwmblocks-network.nix {};
+  dwmblocks-playerctl = pkgs.callPackage ./dwmblocks-playerctl.nix {};
 in {
+  environment.etc = {
+    "dwm/blocks/scripts/cpu".source = dwmblocks-cpu;
+    "dwm/blocks/scripts/memory".source = dwmblocks-memory;
+    "dwm/blocks/scripts/network".source = dwmblocks-network;
+    "dwm/blocks/scripts/playerctl".source = dwmblocks-playerctl;
+  };
   environment.systemPackages = with pkgs; [
-    libnotify
-    gifsicle
-    dwmblocks
+    gifsicle # Needed for wallpaper
+    dwmblocks # dwm status
+    libnotify # dwm ipc
     (xwinwrap.overrideDerivation (old: {
       version = "v0.9";
       src = pkgs.fetchFromGitHub {
