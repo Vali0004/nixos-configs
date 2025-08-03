@@ -42,12 +42,16 @@ in {
 
       throttle.min_peers.normal.set = 20
       throttle.max_peers.normal.set = 60
-      throttle.min_peers.seed.set = 30
-      throttle.max_peers.seed.set = 80
-      trackers.numwant.set = 80
+      throttle.min_peers.seed.set = -1
+      throttle.max_peers.seed.set = -1
+      trackers.numwant.set = 60
 
-      download_rate = 10000
-      upload_rate = 500
+      # Verify hash on completion
+      pieces.hash.on_completion.set = yes
+
+      # Ratelimit to 10MB/s on down, 500KB/s on up
+      throttle.global_down.max_rate.set_kb = 10000
+      throttle.global_up.max_rate.set_kb = 500
 
       protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
