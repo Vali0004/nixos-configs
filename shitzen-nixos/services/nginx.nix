@@ -82,4 +82,6 @@
       index = "index.html";
     };
   };
+
+  systemd.services.nginx.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 }

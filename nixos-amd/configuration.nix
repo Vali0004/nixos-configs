@@ -302,7 +302,7 @@ in {
       "flakes"
     ];
     substituters = [
-      #"https://hydra.fuckk.lol"
+      "https://hydra.fuckk.lol"
       "https://cache.saumon.network/proxmox-nixos"
       "https://cache.nixos.org/"
     ];
@@ -312,7 +312,7 @@ in {
       "@wheel"
     ];
     trusted-public-keys = [
-      #"hydra.fuckk.lol:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
+      "hydra.fuckk.lol:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
       "proxmox-nixos:D9RYSWpQQC/msZUWphOY2I5RLH5Dd6yQcaHIuug7dWM="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
