@@ -2,7 +2,6 @@
 
 {
   services.sonarr = {
-    dataDir = "/data/services/sonarr";
     enable = true;
     group = config.services.rtorrent.group;
     openFirewall = true;

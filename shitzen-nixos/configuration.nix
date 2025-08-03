@@ -37,6 +37,7 @@
 
   environment.systemPackages = with pkgs; [
     btop
+    dig
     docker-compose
     fastfetch
     ffmpeg_6-headless
@@ -97,6 +98,10 @@
         587 # SMTP (with STARTTLS)
         993 # IMAPS
         995 # SPOP3
+        5201 # iperf
+      ];
+      allowedUDPPorts = [
+        5201 # iperf
       ];
     };
     hostId = "0626c0ac";
@@ -126,9 +131,11 @@
       ];
     };
     nameservers = [
-      "75.75.75.75"
-      "75.75.76.76"
+      "1.1.1.1"
+      "1.0.0.1"
     ];
+    networkmanager.dns = "none";
+    resolvconf.useLocalResolver = false;
     useDHCP = false;
   };
 
