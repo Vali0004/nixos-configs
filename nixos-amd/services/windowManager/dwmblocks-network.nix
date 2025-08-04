@@ -24,13 +24,5 @@ writeShellScript "network" ''
     exit 0
   fi
 
-  rx1=$(cat /sys/class/net/$iface/statistics/rx_bytes)
-  sleep 1
-  rx2=$(cat /sys/class/net/$iface/statistics/rx_bytes)
-
-  rx_rate=$(echo "scale=1; ($rx2 - $rx1) * 8 / 1000000" | bc)
-
-  rx_fmt=$(printf "%4.1f" "$rx_rate")
-
-  printf "^d^ ↓%s Mbit/s ^c#7f849c^%s^d^" "$rx_fmt" "$ip"
+  printf "^d^ ^c#7f849c^%s^d^" "$ip"
 ''
