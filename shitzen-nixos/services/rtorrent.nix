@@ -48,8 +48,8 @@ in {
       # Verify hash on completion
       pieces.hash.on_completion.set = yes
 
-      # Ratelimit to 10MB/s on down, 500KB/s on up
-      throttle.global_down.max_rate.set_kb = 10000
+      # Ratelimit to ~15MB/s (conversion) on down, 500KB/s on up
+      throttle.global_down.max_rate.set_kb = 15330
       throttle.global_up.max_rate.set_kb = 500
 
       protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
