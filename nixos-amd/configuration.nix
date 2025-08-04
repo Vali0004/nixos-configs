@@ -71,6 +71,8 @@ in {
       direnv
       (discord.override { withVencord = true; })
       dmidecode
+      # PS1 Emulator
+      duckstation
       # App launcher
       ((dmenu.override {
         conf = ./dmenu-config.h;
