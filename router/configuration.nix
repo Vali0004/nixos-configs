@@ -24,6 +24,8 @@
       kernelModules = [ ];
     };
     kernel.sysctl."net.ipv4.ip_forward" = true;
+    kernel.sysctl."net.ipv4.tcp_syncookies" = true;
+    kernel.sysctl."net.netfilter.nf_conntrack_max" = 21594;
     kernelModules = [ "kvm-amd" ];
     loader.grub = {
       configurationLimit = 3;
@@ -34,6 +36,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    conntrack-tools
     fastfetch
     ffmpeg_6-headless
     git
@@ -76,6 +79,29 @@
         6990 # DHT
         51820 # Wireguard
       ];
+      extraCommands = ''
+        # Drop invalid connection states
+        ${pkgs.iptables}/bin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
+
+        # Allow existing/related connections
+        ${pkgs.iptables}/bin/iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+
+        # Rate-limit new TCP SYN connections
+        ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --syn -m limit --limit 10/second --limit-burst 50 -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --syn -m connlimit --connlimit-above 20 -j DROP
+
+        # UDP: allow limited rate
+        ${pkgs.iptables}/bin/iptables -A INPUT -p udp -m limit --limit 10/second --limit-burst 10 -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -A INPUT -p udp -j DROP
+      '';
+      extraStopCommands = ''
+        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -j DROP
+        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -m limit --limit 10/second --limit-burst 10 -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m connlimit --connlimit-above 20 -j DROP
+        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m limit --limit 10/second --limit-burst 50 -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate INVALID -j DROP
+      '';
     };
     hostName = "router";
     interfaces.ens6 = {
