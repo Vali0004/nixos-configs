@@ -138,6 +138,10 @@ in {
       nss
       # cli unrar
       libarchive
+      # LLM
+      llama-cpp
+      # LLM Studio, frontend wrapper around llama-cpp
+      lmstudio
       # Wormhole
       magic-wormhole
       # COM Reader
@@ -185,6 +189,8 @@ in {
       tmux
       # Tree, helps create file structures in text form
       tree
+      # Unity
+      unityhub
       # Unzip
       unzip
       # USB Utils
@@ -324,6 +330,8 @@ in {
 
   nixpkgs = {
     config.allowUnfree = true;
+    config.cudaSupport = false;
+    config.rocmSupport = true;
     hostPlatform = "x86_64-linux";
   };
 

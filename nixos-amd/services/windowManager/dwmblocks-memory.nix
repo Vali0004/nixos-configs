@@ -12,5 +12,5 @@ writeShellScript "memory" ''
   used_gib=$(echo "scale=2; $mem_used / 1073741824" | bc)
   percent=$(printf "%.0f" $(echo "$mem_used / $mem_total * 100" | bc -l))
 
-  printf "^d^ %sGiB (%s%%)^d^\n" "$used_gib" "$percent"
+  printf "^d^ %sGiB (%s%%)^d^" "$used_gib" "$percent"
 ''
