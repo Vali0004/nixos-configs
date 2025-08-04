@@ -1,6 +1,7 @@
 *.AppImage
 *.deb
 *.rpm
+output.txt
 result
 **/result
 **/**/result
