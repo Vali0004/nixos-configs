@@ -18,4 +18,6 @@
       proxyWebsockets = true;
     };
   };
+
+  systemd.services.jellyfin.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 }

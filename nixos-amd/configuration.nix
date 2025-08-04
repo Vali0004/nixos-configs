@@ -99,11 +99,13 @@ in {
       # Flexing
       fastfetch
       fastfetch_simple
+      feh
       # Screenshot tool
       flameshot
       # Screenshot tool with my uploader secret
       flameshot_fuckk_lol
-      feh
+      # Tool used to check file types
+      file
       fzf
       # Debugger
       gdb
