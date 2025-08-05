@@ -9,7 +9,7 @@
     dataDir = "/var/lib/minecraft";
     enable = true;
     eula = true;
-  
+
     managementSystem.systemd-socket.enable = true;
     managementSystem.tmux.enable = false;
 

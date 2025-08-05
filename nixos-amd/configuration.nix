@@ -475,6 +475,12 @@ in {
       "application/x-osu-skin-archive" = "osuwinello-file-extensions-handler.desktop";
       "application/x-osu-replay" = "osuwinello-file-extensions-handler.desktop";
       "application/x-osu-beatmap-archive" = "osuwinello-file-extensions-handler.desktop";
+      "application/xhtml+xml" = "com.google.Chrome.desktop";
+      "text/html" = "com.google.Chrome.desktop";
+      "text/xml" = "com.google.Chrome.desktop";
+      "x-scheme-handler/ftp" = "com.google.Chrome.desktop";
+      "x-scheme-handler/http" = "com.google.Chrome.desktop";
+      "x-scheme-handler/https" = "com.google.Chrome.desktop";
     };
   in {
     addedAssociations = applications;

@@ -10,7 +10,7 @@
   "mods/cloth-config.jar" = fetchurl rec {
     hash = "sha256-H9oMSonU8HXlGz61VwpJEocGVtJS2AbqMJHSu8Bngeo=";
     pname = "cloth-config";
-    url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar"; 
+    url = "https://cdn.modrinth.com/data/9s6osm5g/versions/TJ6o2sr4/${pname}-${version}.jar";
     version = "17.0.144-fabric";
   };
   "mods/ferritecore.jar" = fetchurl rec {
