@@ -9,6 +9,9 @@ let
 
     PIDFILE="/var/run/user/$UID/bg.pid"
 
+    # Ensure directory exists
+    mkdir -p "$(dirname "$PIDFILE")"
+
     declare -a PIDs
 
     screen() {
@@ -20,19 +23,20 @@ let
       PIDs+=($!)
     }
 
-    while read p; do
-      [[ $(ps -p "$p" -o comm=) == "xwinwrap" ]] && kill -9 "$p";
-    done < $PIDFILE
+    if [ -f "$PIDFILE" ]; then
+      while read -r p; do
+        [[ $(ps -p "$p" -o comm=) == "xwinwrap" ]] && kill -9 "$p"
+      done < "$PIDFILE"
+    fi
 
     sleep 0.5
 
-    for i in $( xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+')
-    do
+    for i in $(xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+'); do
       screen "$i" "$1"
     done
 
-    printf "%s\n" "$\{PIDs[@]}" > $PIDFILE
- '';
+    printf "%s\n" "''${PIDs[@]}" > "$PIDFILE"
+  '';
  dwmblocks = ((pkgs.dwmblocks.override {
     conf = ./dwmblocks-config.h;
   }).overrideAttrs {
@@ -85,7 +89,7 @@ in {
       ${pkgs.pulseaudio}/bin/pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"
       ${xwinwrap_gif}/bin/xwinwrap_gif /home/vali/.config/xwinwrap/wallpaper.gif &
       ${dwmblocks}/bin/dwmblocks &
-      ${manage-gnome-calculator}/bin/manage-gnome-calculator &
+      ${manage-gnome-calculator} &
     '';
     package = dwm;
   };

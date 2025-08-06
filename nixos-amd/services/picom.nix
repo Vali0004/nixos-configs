@@ -27,16 +27,14 @@
       detect-rounded-corners = true;
       refresh-rate = 240;
       rounded-corners-exclude = [
-        "_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "class_g = 'dwm'"
         "class_g = 'dmenu'"
       ];
       fading = true;
-      fade-in-step = 0.08;
-      fade-out-step = 0.08;
+      fade-in-step = 1.0;
+      fade-out-step = 1.0;
       fade-delta = 0;
       opacity-rule = [
-        "100:_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "85:class_g = 'Code'"
         "95:class_g = 'Alacritty'"
         "100:class_g = 'Google-chrome'"
@@ -50,8 +48,8 @@
       ];
       use-damage = true;
     };
-    shadow = false;
-    vSync = true;
+    shadow = true;
+    vSync = false;
     wintypes = {
       dnd.shadow = false;
       dock.clip-shadow-above = true;
