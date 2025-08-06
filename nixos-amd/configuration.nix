@@ -11,8 +11,11 @@ let
   '';
   agenix = builtins.getFlake "github:ryantm/agenix";
   agenixPkgs = agenix.outputs.packages.x86_64-linux;
+  xlibre-overlay = builtins.getFlake "git+https://codeberg.org/takagemacoed/xlibre-overlay";
 in {
   imports = [
+    xlibre-overlay.nixosModules.overlay-xlibre-xserver
+    xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
     agenix.nixosModules.default
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
