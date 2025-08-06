@@ -13,7 +13,5 @@ writeShellScript "clipmenud" ''
     echo "XAUTHORITY could not be found" >&2
     exit 1
   fi
-  ps -eH x > /tmp/pseh-log
-  env > /tmp/env-log
   clipmenud &
 ''

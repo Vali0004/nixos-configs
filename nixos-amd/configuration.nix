@@ -1,16 +1,33 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let
-  secrets = import ./network-secrets.nix { lib = lib; };
+  secrets = import ./network-secrets.nix { inherit lib; };
+
   flameshot_fuckk_lol = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
     ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
     ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
   '';
+
   fastfetch_simple = pkgs.writeScriptBin "fastfetch_simple" ''
     ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
   '';
+
+  dmenu = ((pkgs.dmenu.override {
+    conf = ./dmenu-config.h;
+  }).overrideAttrs (old: {
+    buildInputs = (old.buildInputs or []) ++ [ pkgs.libspng ];
+    src = /home/vali/development/dmenu;
+    postPatch = ''
+      ${old.postPatch or ""}
+      sed -ri -e 's!\<(dmenu|dmenu_path_desktop|stest)\>!'"$out/bin"'/&!g' dmenu_run_desktop
+      sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
+    '';
+  }));
+  clipmenu-paste = pkgs.callPackage ./clipmenu-paste.nix { inherit dmenu; };
+
   agenix = builtins.getFlake "github:ryantm/agenix";
   agenixPkgs = agenix.outputs.packages.x86_64-linux;
+
   xlibre-overlay = builtins.getFlake "git+https://codeberg.org/takagemacoed/xlibre-overlay";
 in {
   imports = [
@@ -68,6 +85,7 @@ in {
       curl
       # Clipboard Manager
       clipmenu
+      clipmenu-paste
       # macOS Translation Layer
       (callPackage ./pkgs/darling.nix {})
       dos2unix
@@ -77,17 +95,7 @@ in {
       # PS1 Emulator
       duckstation
       # App launcher
-      ((dmenu.override {
-        conf = ./dmenu-config.h;
-      }).overrideAttrs (old: {
-        buildInputs = (old.buildInputs or []) ++ [ libspng ];
-        src = /home/vali/development/dmenu;
-        postPatch = ''
-          ${old.postPatch or ""}
-          sed -ri -e 's!\<(dmenu|dmenu_path_desktop|stest)\>!'"$out/bin"'/&!g' dmenu_run_desktop
-          sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
-        '';
-      }))
+      dmenu
       # Notification daemon
       dunst
       edid-decode
@@ -239,7 +247,6 @@ in {
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
       CM_LAUNCHER = "dmenu";
-      CM_SYNC_PRIMARY_TO_CLIPBOARD = 1;
     };
   };
 
