@@ -7,6 +7,15 @@
 
 writeShellScript "manage-gnome-calculator" ''
   PATH=${lib.makeBinPath [ xdotool dwm coreutils ]}
+  LOCKFILE="/tmp/manage-gnome-calculator.pid"
+
+  if [ -e "$LOCKFILE" ] && kill -0 "$(cat "$LOCKFILE")" 2>/dev/null; then
+    echo "Already running (PID: $(cat "$LOCKFILE"))"
+    exit 0
+  fi
+
+  echo $$ > "$LOCKFILE"
+  trap 'rm -f "$LOCKFILE"' EXIT
 
   declare -A handled_windows
 

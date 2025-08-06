@@ -30,7 +30,6 @@ in {
     services/windowManager/dwm.nix
     #services/windowManager/i3.nix
     services/bluetooth.nix
-    services/clipmenu.nix
     services/displayManager.nix
     services/easyEffects.nix
     services/monado.nix
@@ -142,6 +141,8 @@ in {
       nss
       # cli unrar
       libarchive
+      # X CVT
+      libxcvt
       # LLM
       llama-cpp
       # LLM Studio, frontend wrapper around llama-cpp
@@ -237,6 +238,8 @@ in {
 
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
+      CM_LAUNCHER = "dmenu";
+      CM_SYNC_PRIMARY_TO_CLIPBOARD = 1;
     };
   };
 
