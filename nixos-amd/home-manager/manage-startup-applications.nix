@@ -18,7 +18,7 @@ writeScriptBin "manage-startup-applications" ''
       discord_id=$(echo "$clients" | jq -r '
         .clients[]
         | select(
-            (.title | test("Discord$")) and 
+            (.title | test("Discord$")) and
             (.title | contains("Updater") | not)
           )
         | .client_window_id' | head -n 1)

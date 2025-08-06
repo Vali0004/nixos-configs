@@ -17,7 +17,6 @@
         strength = 30;
       };
       blur-background-exclude = [
-        "_NET_WM_WINDOW_TYPE@:32a *= '_NET_WM_WINDOW_TYPE_DOCK'"
         "class_g = 'Google-chrome'"
         "class_g = 'discord'"
         "class_g = 'flameshot'"
@@ -25,15 +24,13 @@
       ];
       corner-radius = 10.0;
       detect-rounded-corners = true;
-      refresh-rate = 240;
       rounded-corners-exclude = [
         "class_g = 'dwm'"
         "class_g = 'dmenu'"
       ];
       fading = true;
-      fade-in-step = 1.0;
-      fade-out-step = 1.0;
-      fade-delta = 0;
+      fade-in-step = 1;
+      fade-out-step = 1;
       opacity-rule = [
         "85:class_g = 'Code'"
         "95:class_g = 'Alacritty'"

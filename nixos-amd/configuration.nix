@@ -30,6 +30,7 @@ in {
     services/windowManager/dwm.nix
     #services/windowManager/i3.nix
     services/bluetooth.nix
+    services/clipmenu.nix
     services/displayManager.nix
     services/easyEffects.nix
     services/monado.nix
@@ -236,8 +237,6 @@ in {
 
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
-      CM_LAUNCHER = "dmenu";
-      CM_SYNC_PRIMARY_TO_CLIPBOARD = 1;
     };
   };
 

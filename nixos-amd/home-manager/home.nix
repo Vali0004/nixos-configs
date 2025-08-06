@@ -17,7 +17,6 @@ in {
       programs/vscode.nix
       #programs/waybar.nix
       programs/zsh.nix
-      services/clipmenu.nix
       services/dunst.nix
       services/monado.nix
       #services/polybar.nix

@@ -25,7 +25,12 @@ let
 
     if [ -f "$PIDFILE" ]; then
       while read -r p; do
-        [[ $(ps -p "$p" -o comm=) == "xwinwrap" ]] && kill -9 "$p"
+        if [[ "$p" =~ ^[0-9]+$ ]]; then
+          comm=$(ps -p "$p" -o comm= 2>/dev/null)
+          if [[ "$comm" == "xwinwrap" ]]; then
+            kill -9 "$p"
+          fi
+        fi
       done < "$PIDFILE"
     fi
 
@@ -35,7 +40,11 @@ let
       screen "$i" "$1"
     done
 
-    printf "%s\n" "''${PIDs[@]}" > "$PIDFILE"
+    if [ "''${#PIDs[@]}" -gt 0 ]; then
+      printf "%s\n" "''${PIDs[@]}" > "$PIDFILE"
+    else
+      > "$PIDFILE"
+    fi
   '';
  dwmblocks = ((pkgs.dwmblocks.override {
     conf = ./dwmblocks-config.h;
