@@ -21,7 +21,7 @@ let
     #  hash = "sha256-DjSz01jwFCXfxVxz0ITDn8vEuxE1rAjTiAvdcVGtMyc=";
     #};
   });
-  clipmenu = pkgs.callPackage ./../clipmenu.nix {};
+  clipmenud = pkgs.callPackage ./../clipmenud.nix {};
   dwmblocks-cpu = pkgs.callPackage ./dwmblocks-cpu.nix {};
   dwmblocks-memory = pkgs.callPackage ./dwmblocks-memory.nix {};
   dwmblocks-network = pkgs.callPackage ./dwmblocks-network.nix {};
@@ -57,7 +57,7 @@ in {
       ${xwinwrap_gif} /home/vali/.config/xwinwrap/wallpaper.gif &
       ${dwmblocks}/bin/dwmblocks &
       ${manage-gnome-calculator} &
-      ${clipmenu}
+      ${clipmenud}
     '';
     package = dwm;
   };

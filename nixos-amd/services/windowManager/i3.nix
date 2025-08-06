@@ -11,7 +11,7 @@ let
     };
   });
   xwinwrap_gif = pkgs.callPackage ./../xwinwrap.nix { inherit xwinwrap; };
-  clipmenud = pkgs.callPackage ./../clipmenu.nix {};
+  clipmenud = pkgs.callPackage ./../clipmenud.nix {};
 in {
   services.xserver.windowManager.i3 = {
     enable = true;
