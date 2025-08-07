@@ -15,6 +15,11 @@
         }];
       };
     };
+    nat = {
+      enable = true;
+      externalInterface = "wg0";
+      internalInterfaces = [ "wg1" ];
+    };
     interfaces.wg0.useDHCP = false;
     interfaces.wg1.useDHCP = false;
   };
@@ -36,7 +41,7 @@
         listenPort = 51821;
         privateKeyFile = config.age.secrets.wireguard-down.path;
         peers = [{
-          allowedIPs = [ "10.100.0.2/24" ];
+          allowedIPs = [ "10.100.0.2/32" ];
           publicKey = "JlHHaH807y8/qcHlgm0RBzrd1/NLkgzvQJCiqTlK6mU=";
         }];
       };
