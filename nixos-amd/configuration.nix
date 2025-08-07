@@ -28,11 +28,11 @@ let
   agenix = builtins.getFlake "github:ryantm/agenix";
   agenixPkgs = agenix.outputs.packages.x86_64-linux;
 
-  xlibre-overlay = builtins.getFlake "git+https://codeberg.org/takagemacoed/xlibre-overlay";
+  #xlibre-overlay = builtins.getFlake "git+https://codeberg.org/takagemacoed/xlibre-overlay";
 in {
   imports = [
-    xlibre-overlay.nixosModules.overlay-xlibre-xserver
-    xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
+    #xlibre-overlay.nixosModules.overlay-xlibre-xserver
+    #xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
     agenix.nixosModules.default
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
@@ -168,6 +168,8 @@ in {
       openssl
       # Tablet Driver
       opentabletdriver
+      # osu! handler, allows for entering into the wine prefix
+      (callPackage /home/vali/development/osu-wine/osu-handler-wine/osu-handler-wine.nix {})
       # Different audio control
       pamixer
       # Audio control
@@ -241,6 +243,8 @@ in {
       xdg-utils
       # X11 helper
       xdotool
+      # Fallback XDG file manager
+      zenity
       zip
     ];
 
