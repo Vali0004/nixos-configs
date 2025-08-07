@@ -40,6 +40,6 @@
           publicKey = "JlHHaH807y8/qcHlgm0RBzrd1/NLkgzvQJCiqTlK6mU=";
         }];
       };
-    }
+    };
   };
 }
