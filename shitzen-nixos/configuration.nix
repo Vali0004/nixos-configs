@@ -144,7 +144,7 @@
     cores = 1;
     keep-derivations = true;
     max-jobs = 1;
-    max-substitution-jobs = 8;
+    max-substitution-jobs = 1;
   };
 
   nixpkgs = {
