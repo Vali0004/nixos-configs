@@ -141,9 +141,9 @@
   };
 
   nix.settings = {
-    cores = 4;
+    cores = 1;
     keep-derivations = true;
-    max-jobs = 2;
+    max-jobs = 1;
     max-substitution-jobs = 8;
   };
 
