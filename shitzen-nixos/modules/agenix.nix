@@ -46,5 +46,10 @@
       owner = "root";
       group = "root";
     };
+    wireguard-down = {
+      file = ./../../secrets/wireguard-down.age;
+      owner = "root";
+      group = "root";
+    };
   };
 }

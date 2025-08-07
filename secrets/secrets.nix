@@ -25,5 +25,6 @@ in {
   "vali-mail-fuckk-lol.age".publicKeys = machines ++ ssh_keys;
   "zipline.age".publicKeys = machines ++ ssh_keys;
   "wireguard.age".publicKeys = machines ++ ssh_keys;
+  "wireguard-down.age".publicKeys = machines ++ ssh_keys;
   "wireguard-server.age".publicKeys = machines ++ ssh_keys;
 }
