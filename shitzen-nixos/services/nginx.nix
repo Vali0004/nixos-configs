@@ -40,6 +40,14 @@
         alias = "/data/services/web/";
         index = "index.html";
       };
+      "/repo/" = {
+        alias = "/data/services/web/repo/";
+        index = "index.htm";
+        extraConfig = ''
+          autoindex on;
+          autoindex_exact_size off;
+        '';
+      };
       "/private/" = {
         alias = "/data/private/";
         index = "index.htm";
