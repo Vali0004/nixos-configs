@@ -57,6 +57,10 @@ in {
     services/virtualisation.nix
   ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "libxml2-2.13.8"
+  ];
+
   console.useXkbConfig = true;
 
   environment = {
@@ -92,8 +96,6 @@ in {
       direnv
       (discord.override { withVencord = true; })
       dmidecode
-      # PS1 Emulator
-      duckstation
       # App launcher
       dmenu
       # Notification daemon
@@ -457,7 +459,7 @@ in {
     };
   };
 
-  systemd.watchdog.rebootTime = "0";
+  systemd.settings.Manager.RebootWatchdogSec = "0";
 
   time.timeZone = "America/Detroit";
 
