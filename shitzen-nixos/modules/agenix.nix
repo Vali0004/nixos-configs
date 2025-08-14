@@ -22,6 +22,11 @@
       owner = "nginx";
       group = "nginx";
     };
+    pnp-api = {
+      file = ./../../secrets/pnp-api.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     pnp-loader = {
       file = ./../../secrets/pnp-loader.age;
       owner = "nginx";

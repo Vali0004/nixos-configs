@@ -20,6 +20,7 @@ in {
   "cleclerc-mail-nanitehosting-com.age".publicKeys = machines ++ ssh_keys;
   "hydra-github-token.age".publicKeys = machines ++ ssh_keys;
   "oauth2.age".publicKeys = machines ++ ssh_keys;
+  "pnp-api.age".publicKeys = machines ++ ssh_keys;
   "pnp-loader.age".publicKeys = machines ++ ssh_keys;
   "pterodactyl.age".publicKeys = machines ++ ssh_keys;
   "vali-mail-fuckk-lol.age".publicKeys = machines ++ ssh_keys;
