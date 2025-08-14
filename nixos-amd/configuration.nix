@@ -149,6 +149,8 @@ in {
       nemo-with-extensions
       # Fixes BeamNG
       nss
+      # Linux GPU Configuration And Monitoring Tool
+      lact
       # cli unrar
       libarchive
       # X CVT
@@ -293,6 +295,7 @@ in {
   fonts.packages = [ pkgs.nerd-fonts.dejavu-sans-mono ];
 
   hardware = {
+    amdgpu.overdrive.enable = true;
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
     graphics = {
       enable = true;
@@ -382,6 +385,7 @@ in {
   services = {
     cloudflare-warp.enable = true;
     flatpak.enable = true;
+    lact.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
