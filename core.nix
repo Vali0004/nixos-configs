@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  common_keys = import ./ssh_keys.nix;
-  my_keys = import ./ssh_keys_personal.nix;
-in {
+{
   boot.loader.grub.enable = true;
 
   environment.shellAliases = {
@@ -48,18 +45,21 @@ in {
     vnstat.enable = true;
   };
 
-  systemd.services.toxvpn.serviceConfig.TimeoutStartSec = "infinity";
+  systemd.services = {
+    nix-daemon.serviceConfig.OOMScoreAdjust = "350";
+    toxvpn.serviceConfig.TimeoutStartSec = "infinity";
+  };
 
-  users.users = with common_keys; with my_keys; {
+  users.users = let
+    common_keys = import ./ssh_keys.nix;
+    my_keys = import ./ssh_keys_personal.nix;
+  in {
     root = {
       openssh.authorizedKeys.keys = my_keys ++ common_keys;
     };
     vali = {
       isNormalUser = true;
-      extraGroups = [
-        "wheel"
-        "ipfs"
-      ];
+      extraGroups = [ "wheel" ];
       openssh.authorizedKeys.keys = my_keys ++ common_keys;
     };
   };

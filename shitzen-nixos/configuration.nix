@@ -168,7 +168,7 @@
 
   swapDevices = [{
     device = "/var/lib/swap1";
-    size = 8192;
+    size = 2048;
   }];
 
   system.stateVersion = "25.11";

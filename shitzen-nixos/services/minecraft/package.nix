@@ -5,6 +5,10 @@
     type = lib.types.bool;
   };
 
+  config.networking.firewall.allowedTCPPorts = [
+    4100
+  ];
+
   config.services.minecraft-servers = {
     dataDir = "/var/lib/minecraft";
     enable = true;
@@ -16,7 +20,7 @@
     servers.prod = lib.mkIf config.minecraft.prod {
       autoStart = true;
       enable = true;
-      files = import ./prod.nix { fetchurl = pkgs.fetchurl; };
+      files = import ./prod.nix { fetchurl = pkgs.fetchurl; writeText = pkgs.writeText; };
 
       whitelist = {
         FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
@@ -50,7 +54,7 @@
         server-name = "InertiaCraft";
         server-port = 4100;
         simulation-distance = 4;
-        sync-chunk-writes = false; 
+        sync-chunk-writes = false;
         texturepack-required = true;
         require-resource-pack = true;
         resource-pack = "https://fuckk.lol/minecraft/resource-pack.zip";
