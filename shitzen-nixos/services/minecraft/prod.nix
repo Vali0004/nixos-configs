@@ -1,4 +1,5 @@
-{ fetchurl }:
+{ fetchurl
+, writeText }:
 
 {
   "mods/fabric-api.jar" = fetchurl rec {
@@ -190,7 +191,7 @@
     url = "https://cdn.modrinth.com/data/16vhQOQN/versions/FheuITlu/${pname}-${version}.jar";
     version = "fabric-mc1.21.4-2.1.5";
   };
-  "config/MiniMOTD/main.conf" = pkgs.writeText "to_include.hocon" ''
+  "config/MiniMOTD/main.conf" = writeText "to_include.hocon" ''
     icon-enabled=true
     motd-enabled=true
     motds=[
@@ -219,7 +220,7 @@
   };
   # We can mostly leave it to our jar to do it for us, as Nix will just overlay it when using yml anyways :)
   "config/tab/config.yml" = builtins.toFile "yml" (builtins.toJSON {
-    
+
   });
   "mods/styled-chat.jar" = fetchurl rec {
     hash = "sha256-XgYWDovpVLGu7Exj60jF3O0JrEVSGLFCGmh/yu1XFPg=";

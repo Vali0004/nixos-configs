@@ -5,6 +5,7 @@
     enable = true;
     profiles.default = {
       userSettings = {
+        "editor.wordWrap" = "on";
         "explorer.confirmDelete" = false;
         "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
