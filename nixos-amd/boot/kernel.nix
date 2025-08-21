@@ -16,7 +16,7 @@
     "rd.systemd.show_status=auto"
   ];
   boot.kernelPackages = let
-    version = "6.15.7";
+    version = "6.16.1";
     suffix = "zen1";
   in pkgs.linuxPackagesFor (pkgs.linux_zen.override {
     inherit version suffix;
