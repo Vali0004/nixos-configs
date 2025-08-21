@@ -12,6 +12,22 @@
     wget
   ];
 
+  networking = {
+    defaultGateway = "10.0.0.1";
+    hostName = "nixos-recovery";
+    interfaces.enp7s0 = {
+      ipv4.addresses = [{
+        address = "10.0.0.244";
+        prefixLength = 24;
+      }];
+    };
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
+    useDHCP = false;
+  };
+
   nix.settings = {
     experimental-features = [
       "nix-command"

@@ -44,7 +44,8 @@
     };
     zipline = {
       file = ./../../secrets/zipline.age;
-      group = "zipline";
+      owner = "root";
+      group = "root";
     };
     wireguard = {
       file = ./../../secrets/wireguard.age;

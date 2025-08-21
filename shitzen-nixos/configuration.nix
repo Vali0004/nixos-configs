@@ -47,6 +47,10 @@
     hdparm
     iperf
     jdk
+    # HW Acceleration
+    libva
+    libva-utils
+    libva-vdpau-driver
     lsof
     lsscsi
     magic-wormhole
@@ -65,6 +69,7 @@
     wget
     wings
     zip
+    mesa
   ];
 
   fileSystems = {
@@ -81,11 +86,18 @@
     "/data" = {
       device = "zpool/data";
       fsType = "zfs";
-      options = [ "zfsutil" ];
+      options = [ "zfsutil" "nofail" ];
     };
   };
 
-  hardware.cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+  hardware = {
+    cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
+    enableRedistributableFirmware = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+  };
 
   minecraft.prod = false;
 
@@ -172,4 +184,6 @@
   }];
 
   system.stateVersion = "25.11";
+
+  users.users.vali.extraGroups = [ "video" "render" ];
 }
