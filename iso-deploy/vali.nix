@@ -1,5 +1,7 @@
 { config, lib, pkgs, modulesPath, ... }:
 
+# Building:
+# nix-build '<nixpkgs/nixos/release.nix>' --arg configuration ./vali.nix -A iso_minimal.x86_64-linux
 {
   environment.systemPackages = with pkgs; [
     curl
