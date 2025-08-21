@@ -17,7 +17,9 @@ in {
   boot = {
     kernelPackages = latestKernelPackage;
     supportedFilesystems = [ "zfs" ];
+    # Do not hang my fucking system, please?
     zfs.forceImportRoot = false;
+    zfs.forceImportAll = false;
   };
 
   services.zfs.autoSnapshot.enable = true;

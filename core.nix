@@ -1,7 +1,19 @@
 { config, pkgs, ... }:
 
-{
-  boot.loader.grub.enable = true;
+let
+  my_keys = import ./ssh_keys_personal.nix;
+in {
+  boot = {
+    loader.grub.enable = true;
+    # My root password is very fucking long, and uh, when it kabooms, recovering fucking SUCKS
+    # So enable ssh and networking long before anything else, for my sanity
+    initrd.network = {
+      enable = true;
+      ssh.enable = true;
+      ssh.hostKeys = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      ssh.authorizedKeys = my_keys;
+    };
+  };
 
   environment.shellAliases = {
     l = null;
@@ -52,7 +64,6 @@
 
   users.users = let
     common_keys = import ./ssh_keys.nix;
-    my_keys = import ./ssh_keys_personal.nix;
   in {
     root = {
       openssh.authorizedKeys.keys = my_keys ++ common_keys;

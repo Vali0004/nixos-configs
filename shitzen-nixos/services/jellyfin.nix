@@ -1,6 +1,11 @@
 { config, inputs, lib, pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    jellyfin-ffmpeg
+    libva-utils
+  ];
+
   services.jellyfin = {
     configDir = "/data/services/jellyfin/config";
     dataDir = "/data/services/jellyfin/data";
@@ -19,5 +24,9 @@
     };
   };
 
-  systemd.services.jellyfin.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
+  systemd.services.jellyfin.serviceConfig.SupplementaryGroups = [
+    config.services.rtorrent.group
+    "video"
+    "render"
+  ];
 }
