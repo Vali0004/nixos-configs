@@ -132,11 +132,7 @@
           prefixLength = 128;
         }
         {
-          address = "2601:406:8401:5310:dd29:e01c:f563:9898";
-          prefixLength = 64;
-        }
-        {
-          address = "2601:406:8401:5310:62cf:84ff:fe5e:82bb";
+          address = "2601:406:8401:5310:6d99:9295:f86a:98eb";
           prefixLength = 64;
         }
         {
