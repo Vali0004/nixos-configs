@@ -100,6 +100,7 @@
       postSetup = ''
         # Route table 101 for wg1
         ${pkgs.iproute2}/bin/ip route add 142.167.46.223 via 10.0.0.1 dev enp7s0 table 101
+        ${pkgs.iproute2}/bin/ip route add 50.4.81.89 via 10.0.0.1 dev enp7s0 table 101
         ${pkgs.iproute2}/bin/ip rule add fwmark 0xca7f table 101
         ${pkgs.iproute2}/bin/ip route add default dev wg0 table 101
 
@@ -117,6 +118,7 @@
       '';
       postShutdown = ''
         ${pkgs.iproute2}/bin/ip route del 142.167.46.223 via 10.0.0.1 dev enp7s0 table 101 || true
+        ${pkgs.iproute2}/bin/ip route del 50.4.81.89 via 10.0.0.1 dev enp7s0 table 101 || true
         ${pkgs.iproute2}/bin/ip rule del fwmark 0xca7f table 101 || true
         ${pkgs.iproute2}/bin/ip route flush table 101 || true
 

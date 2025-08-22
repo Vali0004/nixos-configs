@@ -33,6 +33,8 @@
 
     services/postgresql.nix
 
+    services/prometheus.nix
+
     services/rtorrent.nix
     services/samba.nix
 
