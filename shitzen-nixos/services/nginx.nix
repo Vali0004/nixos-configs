@@ -2,23 +2,6 @@
 
 {
   services.nginx = {
-    appendHttpConfig = ''
-      # Add HSTS header with preloading to HTTPS requests
-      map $scheme $hsts_header {
-          https   "max-age=31536000; includeSubdomains; preload";
-      }
-      add_header Strict-Transport-Security $hsts_header;
-
-      # Enable CSP
-      #add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
-
-      # Minimize information leaked to other domains
-      add_header 'Referrer-Policy' 'origin-when-cross-origin';
-
-      # Prevent injection of code in other mime types (XSS Attacks)
-      add_header X-Content-Type-Options nosniff;
-    '';
-
     enable = true;
     enableReload = true;
 

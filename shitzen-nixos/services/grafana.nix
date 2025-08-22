@@ -2,6 +2,18 @@
 
 let
   port = 3003;
+  oauthProxyConfig = ''
+    auth_request /oauth2/auth;
+    error_page 401 = /oauth2/sign_in;
+
+    auth_request_set $user $upstream_http_x_auth_request_user;
+    auth_request_set $email $upstream_http_x_auth_request_email;
+    proxy_set_header X-User $user;
+    proxy_set_header X-Email $email;
+
+    auth_request_set $auth_cookie $upstream_http_set_cookie;
+    add_header Set-Cookie $auth_cookie;
+  '';
 in {
   services.grafana = {
     enable = true;
@@ -41,11 +53,13 @@ in {
       forceSSL = true;
       locations = {
         "/grafana/" = {
+          extraConfig = oauthProxyConfig;
           proxyPass = "http://127.0.0.1:${toString port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
         "/prometheus/" = {
+          extraConfig = oauthProxyConfig;
           proxyPass = "http://127.0.0.1:3400";
           proxyWebsockets = true;
           recommendedProxySettings = true;

@@ -22,6 +22,11 @@
       owner = "nginx";
       group = "nginx";
     };
+    oauth2-proxy = {
+      file = ./../../secrets/oauth2-proxy.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     pnp-api = {
       file = ./../../secrets/pnp-api.age;
       owner = "nginx";
@@ -32,11 +37,6 @@
       owner = "nginx";
       group = "nginx";
     };
-    #pterodactyl = {
-    #  file = ./../../secrets/pterodactyl.age;
-    #  owner = "pterodactyl";
-    #  group = "pterodactyl";
-    #};
     vali-mail-fuckk-lol = {
       file = ./../../secrets/vali-mail-fuckk-lol.age;
       owner = "nginx";

@@ -1,0 +1,884 @@
+[context]	INFO	Can't find variable 'upstream'
+[context]	INFO	Can't find variable 'upstream'
+[context]	INFO	Can't find variable 'user'
+[context]	INFO	Can't find variable 'email'
+[context]	INFO	Can't find variable 'auth_cookie'
+
+[95m==================== Results ===================[0m
+
+[93m>> Problem: [add_header_redefinition] Nested "add_header" drops parent headers.[0m
+Description: "add_header" replaces ALL parent headers. See documentation: http://nginx.org/en/docs/http/ngx_http_headers_module.html#add_header
+Additional info: https://github.com/yandex/gixy/blob/master/docs/en/plugins/addheaderredefinition.md
+Reason: Parent headers "x-content-type-options" was dropped in current level
+Pseudo config:
+
+server {
+	server_name monitoring.earthtools.ca;
+
+	location / {
+		add_header Set-Cookie $auth_cookie;
+	}
+}
+
+server {
+	server_name monitoring.fuckk.lol;
+
+	location /grafana/ {
+		add_header Set-Cookie $auth_cookie;
+	}
+
+	location /prometheus/ {
+		add_header Set-Cookie $auth_cookie;
+	}
+}
+add_header Strict-Transport-Security $hsts_header always;
+add_header Referrer-Policy origin-when-cross-origin always;
+add_header X-Content-Type-Options nosniff always;
+
+[95m==================== Summary ===================[0m
+Total issues:
+    Unspecified: 0
+    Low: 0
+    Medium: 3
+    High: 0
+
+\n\nThis can be caused by combining multiple incompatible services on the same hostname.\n\nFull merged config:\n\n
+pid /run/nginx/nginx.pid;
+error_log stderr;
+daemon off;
+events {
+}
+http {
+	# Load mime types and configure maximum size of the types hash tables.
+	include /nix/store/4xr56x3h8i56sxxz0wm4w69qpdq0yarx-mailcap-2.1.54/etc/nginx/mime.types;
+	types_hash_max_size 2688;
+	include /nix/store/fva4vlf5kkjkqk7afany64gb38q47vvg-nginx-1.28.0/conf/fastcgi.conf;
+	include /nix/store/fva4vlf5kkjkqk7afany64gb38q47vvg-nginx-1.28.0/conf/uwsgi_params;
+	default_type application/octet-stream;
+	upstream anubis {
+		server 127.0.0.1:3002 ;
+	}
+	upstream hydra-server {
+		server 127.0.0.1:3001 ;
+	}
+	# optimisation
+	sendfile on;
+	tcp_nopush on;
+	tcp_nodelay on;
+	keepalive_timeout 65;
+	ssl_protocols TLSv1.2 TLSv1.3;
+	ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305;
+	# Keep in sync with https://ssl-config.mozilla.org/#server=nginx&config=intermediate
+	ssl_session_timeout 1d;
+	ssl_session_cache shared:SSL:10m;
+	# Breaks forward secrecy: https://github.com/mozilla/server-side-tls/issues/135
+	ssl_session_tickets off;
+	# We don't enable insecure ciphers by default, so this allows
+	# clients to pick the most performant, per https://github.com/mozilla/server-side-tls/issues/260
+	ssl_prefer_server_ciphers off;
+	# OCSP stapling
+	ssl_stapling on;
+	ssl_stapling_verify on;
+	brotli on;
+	brotli_static on;
+	brotli_comp_level 5;
+	brotli_window 512k;
+	brotli_min_length 256;
+	brotli_types application/atom+xml application/geo+json application/javascript application/json application/ld+json application/manifest+json application/rdf+xml application/vnd.ms-fontobject application/wasm application/x-rss+xml application/x-web-app-manifest+json application/xhtml+xml application/xliff+xml application/xml font/collection font/otf font/ttf image/bmp image/svg+xml image/vnd.microsoft.icon text/cache-manifest text/calendar text/css text/csv text/javascript text/markdown text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/xml;
+	gzip on;
+	gzip_static on;
+	gzip_vary on;
+	gzip_comp_level 5;
+	gzip_min_length 256;
+	gzip_proxied expired no-cache no-store private auth;
+	gzip_types application/atom+xml application/geo+json application/javascript application/json application/ld+json application/manifest+json application/rdf+xml application/vnd.ms-fontobject application/wasm application/x-rss+xml application/x-web-app-manifest+json application/xhtml+xml application/xliff+xml application/xml font/collection font/otf font/ttf image/bmp image/svg+xml image/vnd.microsoft.icon text/cache-manifest text/calendar text/css text/csv text/javascript text/markdown text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/xml;
+	zstd on;
+	zstd_comp_level 9;
+	zstd_min_length 256;
+	zstd_static on;
+	zstd_types application/atom+xml application/geo+json application/javascript application/json application/ld+json application/manifest+json application/rdf+xml application/vnd.ms-fontobject application/wasm application/x-rss+xml application/x-web-app-manifest+json application/xhtml+xml application/xliff+xml application/xml font/collection font/otf font/ttf image/bmp image/svg+xml image/vnd.microsoft.icon text/cache-manifest text/calendar text/css text/csv text/javascript text/markdown text/plain text/vcard text/vnd.rim.location.xloc text/vtt text/x-component text/xml;
+	proxy_redirect          off;
+	proxy_connect_timeout   900s;
+	proxy_send_timeout      900s;
+	proxy_read_timeout      900s;
+	proxy_http_version      1.1;
+	# don't let clients close the keep-alive connection to upstream. See the nginx blog for details:
+	# https://www.nginx.com/blog/avoiding-top-10-nginx-configuration-mistakes/#no-keepalives
+	proxy_set_header        "Connection" "";
+	include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+	# $connection_upgrade is used for websocket proxying
+	map $http_upgrade $connection_upgrade {
+		default upgrade;
+		''      close;
+	}
+	client_max_body_size 10m;
+	server_tokens off;
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name api.pnploader.ru ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name api.pnploader.ru ;
+		http2 on;
+		ssl_certificate /var/lib/acme/api.pnploader.ru/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/api.pnploader.ru/key.pem;
+		ssl_trusted_certificate /var/lib/acme/api.pnploader.ru/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:3201;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-Proto "http";
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name dockge.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name dockge.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/dockge.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/dockge.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/dockge.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:5001;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-Proto "http";
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name flood.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name flood.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/flood.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/flood.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/flood.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:3701;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			index index.html;
+			alias /data/services/web/;
+		}
+		location /private/ {
+			index index.htm;
+			alias /data/private/;
+			return 404;
+		}
+		location /private/anime/ {
+			index index.htm;
+			alias /data/private/anime/;
+			autoindex on;
+			autoindex_exact_size off;
+		}
+		location /private/downloads/ {
+			index index.htm;
+			alias /data/private/downloads/;
+			autoindex on;
+			autoindex_exact_size off;
+		}
+		location /private/images/ {
+			index index.htm;
+			alias /data/private/images/;
+			autoindex on;
+			autoindex_exact_size off;
+		}
+		location /private/movies/ {
+			index index.htm;
+			alias /data/private/movies/;
+			autoindex on;
+			autoindex_exact_size off;
+		}
+		location /repo/ {
+			index index.htm;
+			alias /data/services/web/repo/;
+			autoindex on;
+			autoindex_exact_size off;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name holy.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name holy.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/holy.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/holy.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/holy.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:3000;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-Proto "http";
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name hydra.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name hydra.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/hydra.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/hydra.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/hydra.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://$upstream;
+			limit_req zone=hydra-server burst=5;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+		location /static/ {
+			alias /nix/store/d6w5yh262xsnlq2a8dgg87x9vxas1gkx-hydra-0-unstable-2025-06-15/libexec/hydra/root/static/;
+		}
+		location =/robots.txt {
+			alias /nix/store/yb4y2knbxkxqximz2406vy037n09w42s-hydra.fuckk.lol-robots.txt;
+		}
+		location ~ ^(/build/\d+/download/|/.*\.narinfo$|/nar/.*) {
+			proxy_pass http://hydra-server;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name mail.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name mail.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/mail.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/mail.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/mail.fuckk.lol/chain.pem;
+		root /nix/store/czw0vdrkqpcqm8kyxrg7a7f39s5px7kk-roundcube-1.6.11;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			index index.php;
+		}
+		location ~ ^/(SQL|bin|config|logs|temp|vendor)/ {
+			return 404;
+		}
+		location ~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock) {
+			return 404;
+		}
+		location ~* \.php(/|$) {
+			fastcgi_pass unix:/run/phpfpm/roundcube.sock;
+			fastcgi_param PATH_INFO $fastcgi_path_info;
+			fastcgi_split_path_info ^(.+\.php)(/.+)$;
+			include /nix/store/fva4vlf5kkjkqk7afany64gb38q47vvg-nginx-1.28.0/conf/fastcgi.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name mail.nanitehosting.com ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name mail.nanitehosting.com ;
+		http2 on;
+		ssl_certificate /var/lib/acme/mail.nanitehosting.com/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/mail.nanitehosting.com/key.pem;
+		ssl_trusted_certificate /var/lib/acme/mail.nanitehosting.com/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			return 404;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name manage.pnploader.ru ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name manage.pnploader.ru ;
+		http2 on;
+		ssl_certificate /var/lib/acme/manage.pnploader.ru/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/manage.pnploader.ru/key.pem;
+		ssl_trusted_certificate /var/lib/acme/manage.pnploader.ru/chain.pem;
+		root /var/lib/pnp-dashboard;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			index index.html;
+		}
+		location ~* .(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|svg)$ {
+			root /var/lib/pnp-dashboard;
+			expires 6M;
+			access_log off;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name monitoring.earthtools.ca ;
+		location / {
+			# pass information via X-User and X-Email headers to backend, requires running with --set-xauthrequest flag
+			proxy_set_header X-User  $user;
+			proxy_set_header X-Email $email;
+			# if you enabled --cookie-refresh, this is needed for it to work with auth_request
+			add_header Set-Cookie $auth_cookie;
+		}
+		location /oauth2/ {
+			proxy_pass http://127.0.0.1:4180;
+			auth_request off;
+			proxy_set_header X-Scheme                $scheme;
+			proxy_set_header X-Auth-Request-Redirect $scheme://$host$request_uri;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+		location = /oauth2/auth {
+			proxy_pass http://127.0.0.1:4180/oauth2/auth?allowed_email_domains=fuckk.lol&allowed_emails=diorcheats.vali%40gmail.com;
+			auth_request off;
+			proxy_set_header X-Scheme         $scheme;
+			# nginx auth_request includes headers but not body
+			proxy_set_header Content-Length   "";
+			proxy_pass_request_body           off;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+		location @redirectToAuth2ProxyLogin {
+			return 307 https://monitoring.earthtools.ca/oauth2/start?rd=$scheme://$host$request_uri;
+			auth_request off;
+		}
+		auth_request /oauth2/auth;
+		error_page 401 = @redirectToAuth2ProxyLogin;
+		# set variables being used in locations."/".extraConfig
+		auth_request_set $user   $upstream_http_x_auth_request_user;
+		auth_request_set $email  $upstream_http_x_auth_request_email;
+		auth_request_set $auth_cookie $upstream_http_set_cookie;
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name monitoring.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name monitoring.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/monitoring.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/monitoring.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/monitoring.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location /grafana/ {
+			proxy_pass http://127.0.0.1:3003;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			auth_request /oauth2/auth;
+			error_page 401 = /oauth2/sign_in;
+			auth_request_set $user $upstream_http_x_auth_request_user;
+			auth_request_set $email $upstream_http_x_auth_request_email;
+			proxy_set_header X-User $user;
+			proxy_set_header X-Email $email;
+			auth_request_set $auth_cookie $upstream_http_set_cookie;
+			add_header Set-Cookie $auth_cookie;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+		location /prometheus/ {
+			proxy_pass http://127.0.0.1:3400;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			auth_request /oauth2/auth;
+			error_page 401 = /oauth2/sign_in;
+			auth_request_set $user $upstream_http_x_auth_request_user;
+			auth_request_set $email $upstream_http_x_auth_request_email;
+			proxy_set_header X-User $user;
+			proxy_set_header X-Email $email;
+			auth_request_set $auth_cookie $upstream_http_set_cookie;
+			add_header Set-Cookie $auth_cookie;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name ohh.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name ohh.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/ohh.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/ohh.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/ohh.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:8096;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name prowlarr.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name prowlarr.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/prowlarr.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/prowlarr.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/prowlarr.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:9696;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name r34.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name r34.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/r34.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/r34.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/r34.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:8099;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-Proto "http";
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_ssl_server_name on;
+			proxy_ssl_name $proxy_host;
+			proxy_cache_bypass $http_upgrade;
+			proxy_set_header X-Requested-With XMLHttpRequest;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name radarr.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name radarr.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/radarr.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/radarr.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/radarr.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:7878;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name s1-luna.pnploader.ru ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name s1-luna.pnploader.ru ;
+		http2 on;
+		ssl_certificate /var/lib/acme/s1-luna.pnploader.ru/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/s1-luna.pnploader.ru/key.pem;
+		ssl_trusted_certificate /var/lib/acme/s1-luna.pnploader.ru/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:3200;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-Proto "http";
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_ssl_server_name on;
+			proxy_ssl_name $proxy_host;
+			proxy_cache_bypass $http_upgrade;
+			proxy_set_header X-Requested-With XMLHttpRequest;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name s1-luna2.pnploader.ru ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name s1-luna2.pnploader.ru ;
+		http2 on;
+		ssl_certificate /var/lib/acme/s1-luna2.pnploader.ru/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/s1-luna2.pnploader.ru/key.pem;
+		ssl_trusted_certificate /var/lib/acme/s1-luna2.pnploader.ru/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:3200;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			proxy_set_header Host $host;
+			proxy_set_header X-Forwarded-Proto "http";
+			proxy_set_header X-Real-IP $remote_addr;
+			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			proxy_ssl_server_name on;
+			proxy_ssl_name $proxy_host;
+			proxy_cache_bypass $http_upgrade;
+			proxy_set_header X-Requested-With XMLHttpRequest;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name sonarr.fuckk.lol ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name sonarr.fuckk.lol ;
+		http2 on;
+		ssl_certificate /var/lib/acme/sonarr.fuckk.lol/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/sonarr.fuckk.lol/key.pem;
+		ssl_trusted_certificate /var/lib/acme/sonarr.fuckk.lol/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			proxy_pass http://127.0.0.1:8989;
+			proxy_http_version 1.1;
+			proxy_set_header Upgrade $http_upgrade;
+			proxy_set_header Connection $connection_upgrade;
+			include /nix/store/lkgggx25pm16hi8afx2yv2p4zy95js9f-nginx-recommended-proxy_set_header-headers.conf;
+		}
+	}
+	server {
+		listen 0.0.0.0:80 ;
+		listen [::0]:80 ;
+		server_name valis.furryporn.ca ;
+		location / {
+			return 301 https://$host$request_uri;
+		}
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+	}
+	server {
+		listen 0.0.0.0:443 ssl ;
+		listen [::0]:443 ssl ;
+		server_name valis.furryporn.ca ;
+		http2 on;
+		ssl_certificate /var/lib/acme/valis.furryporn.ca/fullchain.pem;
+		ssl_certificate_key /var/lib/acme/valis.furryporn.ca/key.pem;
+		ssl_trusted_certificate /var/lib/acme/valis.furryporn.ca/chain.pem;
+		location ^~ /.well-known/acme-challenge/ {
+			root /var/lib/acme/acme-challenge;
+			auth_basic off;
+			auth_request off;
+		}
+		location / {
+			index index.html;
+			alias /data/services/valisfurryporn/;
+		}
+	}
+	# Add HSTS header with preloading to HTTPS requests
+	map $scheme $hsts_header {
+		https "max-age=31536000; includeSubdomains; preload";
+	}
+	add_header Strict-Transport-Security $hsts_header always;
+	# Minimize information leaked to other domains
+	add_header 'Referrer-Policy' 'origin-when-cross-origin' always;
+	# Prevent injection of code in other mime types (XSS Attacks)
+	add_header X-Content-Type-Options nosniff always;
+	map $http_x_from $upstream {
+		default "anubis";
+		nix.dev-Uogho3gi "hydra-server";
+	}
+	limit_req_zone $binary_remote_addr zone=hydra-server:8m rate=2r/s;
+	limit_req_status 429;
+}

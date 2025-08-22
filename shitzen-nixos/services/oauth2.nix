@@ -6,10 +6,22 @@
       secure = true;
       refresh = "1h";
     };
-    keyFile = config.age.secrets.oauth2.path;
+    keyFile = config.age.secrets.oauth2-proxy.path;
     email.domains = [ "fuckk.lol" ];
     enable = true;
-    redirectURL = "https://oauth.fuckk.lol/oauth2/callback";
+    nginx = {
+      domain = "monitoring.fuckk.lol";
+      virtualHosts = {
+        "monitoring.fuckk.lol" = {
+          allowed_emails = [
+            "diorcheats.vali@gmail.com"
+          ];
+          allowed_email_domains = [
+            "fuckk.lol"
+          ];
+        };
+      };
+    };
     provider = "google";
     setXauthrequest = true;
   };
