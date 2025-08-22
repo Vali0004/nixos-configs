@@ -12,6 +12,7 @@ in {
   "cleclerc-mail-nanitehosting-com.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
   "oauth2.age".publicKeys = keys;
+  "oauth2-proxy.age".publicKeys = keys;
   "pnp-api.age".publicKeys = keys;
   "pnp-loader.age".publicKeys = keys;
   "pterodactyl.age".publicKeys = keys;
