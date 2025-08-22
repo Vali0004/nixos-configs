@@ -25,11 +25,9 @@
     nat = {
       enable = true;
       externalInterface = "enp7s0";
-      internalInterfaces = [ "wg0" "wg1" ];
+      internalInterfaces = [ "wg0" ];
       forwardPorts = [
         { proto = "udp"; sourcePort = 51820; destination = "10.0.0.244"; }
-        { proto = "udp"; sourcePort = 51821; destination = "10.0.0.244"; }
-        { proto = "udp"; sourcePort = 51822; destination = "10.0.0.244"; }
       ];
     };
     interfaces.wg0.useDHCP = false;
@@ -44,50 +42,47 @@
       listenPort = 51820;
       postSetup = ''
         # Setup route
-        ${pkgs.iproute2}/bin/ip route add 74.208.44.130 via 10.0.0.1 dev enp7s0
-        # Restore mark for wg0
+        ${pkgs.iproute2}/bin/ip route add 74.208.44.130 via 10.0.0.1 dev enp7s0 table 100
+        # Route table 100 for wg0
+        ${pkgs.iproute2}/bin/ip rule add fwmark 0xca6c table 100
+        ${pkgs.iproute2}/bin/ip route add default dev wg0 table 100
+
+        # Save/restore connmark for wg0
         ${pkgs.iptables}/bin/iptables -t mangle -A PREROUTING \
-          -p udp \
+          -i wg0 -p udp \
           -m comment --comment "wg0 restore mark" \
           -j CONNMARK --restore-mark --nfmask 0xffffffff --ctmask 0xffffffff
-
-        # Save mark for wg0
         ${pkgs.iptables}/bin/iptables -t mangle -A POSTROUTING \
-          -p udp \
+          -o enp7s0 \
           -m mark --mark 0xca6c \
           -m comment --comment "wg0 save mark" \
           -j CONNMARK --save-mark --nfmask 0xffffffff --ctmask 0xffffffff
 
-        # Block non-wg0 access to 10.127.0.0
-        ${pkgs.iptables}/bin/iptables -t raw -A PREROUTING \
-          -d 10.127.0.0/24 \
-          ! -i wg0 \
-          -m addrtype ! --src-type LOCAL \
+        # Restrict access to wg0 subnet
+        ${pkgs.iptables}/bin/iptables -t raw -A PREROUTING -d 10.127.0.0/24 \
+          ! -i wg0 -m addrtype ! --src-type LOCAL \
           -m comment --comment "block non-wg0 access to 10.127.0.0/24" \
           -j DROP
       '';
       postShutdown = ''
-        # Cleanup route
-        ${pkgs.iproute2}/bin/ip route del 74.208.44.130 via 10.0.0.1 dev enp7s0 || true
-        # Restore mark for wg0
+        # Cleanup routes
+        ${pkgs.iproute2}/bin/ip route del 74.208.44.130 via 10.0.0.1 dev enp7s0 table 100 || true
+        ${pkgs.iproute2}/bin/ip rule del fwmark 0xca6c table 100 || true
+        ${pkgs.iproute2}/bin/ip route flush table 100 || true
+
         ${pkgs.iptables}/bin/iptables -t mangle -D PREROUTING \
-          -p udp \
+          -i wg0 -p udp \
           -m comment --comment "wg0 restore mark" \
           -j CONNMARK --restore-mark --nfmask 0xffffffff --ctmask 0xffffffff || true
-
-        # Save mark for wg0
         ${pkgs.iptables}/bin/iptables -t mangle -D POSTROUTING \
-          -p udp \
+          -o enp7s0 \
           -m mark --mark 0xca6c \
           -m comment --comment "wg0 save mark" \
           -j CONNMARK --save-mark --nfmask 0xffffffff --ctmask 0xffffffff || true
 
-        # Block non-wg0 access to 10.127.0.0
-        ${pkgs.iptables}/bin/iptables -t raw -D PREROUTING \
-          -d 10.127.0.0/24 \
-          ! -i wg0 \
-          -m addrtype ! --src-type LOCAL \
-          -m comment --comment "block non-wg0/wg1 access to 10.127.0.0/24" \
+        ${pkgs.iptables}/bin/iptables -t raw -D PREROUTING -d 10.127.0.0/24 \
+          ! -i wg0 -m addrtype ! --src-type LOCAL \
+          -m comment --comment "block non-wg0 access to 10.127.0.0/24" \
           -j DROP || true
       '';
       peers = [{
@@ -103,24 +98,38 @@
       ips = [ "10.100.0.1/24" ];
       listenPort = 51821;
       postSetup = ''
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i enp7s0 -o wg0 -p udp --dport 51821 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -o enp7s0 -p udp --sport 51820 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -o enp7s0 -p udp --sport 51821 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg0 -o enp7s0 -p udp --sport 51822 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i enp7s0 -o wg1 -p udp --dport 51821 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg1 -o enp7s0 -p udp --sport 51820 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg1 -o enp7s0 -p udp --sport 51821 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg1 -o enp7s0 -p udp --sport 51822 -j ACCEPT
+        # Route table 101 for wg1
+        ${pkgs.iproute2}/bin/ip route add 142.167.46.223 via 10.0.0.1 dev enp7s0 table 101
+        ${pkgs.iproute2}/bin/ip rule add fwmark 0xca7f table 101
+        ${pkgs.iproute2}/bin/ip route add default dev wg0 table 101
+
+        # Save/restore connmark for wg1
+        ${pkgs.iptables}/bin/iptables -t mangle -A PREROUTING \
+          -i wg1 -p udp \
+          -m comment --comment "wg1 restore mark" \
+          -j CONNMARK --restore-mark || true
+        ${pkgs.iptables}/bin/iptables -t mangle -A POSTROUTING \
+          -o enp7s0 -m mark --mark 0xca7f \
+          -m comment --comment "wg1 save mark" \
+          -j CONNMARK --save-mark || true
+
+        ${pkgs.iptables}/bin/iptables -A FORWARD -i wg1 -o enp7s0 -j ACCEPT
       '';
       postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i enp7s0 -o wg0 -p udp --dport 51821 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -o enp7s0 -p udp --sport 51820 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -o enp7s0 -p udp --sport 51821 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg0 -o enp7s0g -p udp --sport 51822 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i enp7s0 -o wg1 -p udp --dport 51821 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg1 -o enp7s0 -p udp --sport 51820 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg1 -o enp7s0 -p udp --sport 51821 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg1 -o enp7s0 -p udp --sport 51822 -j ACCEPT || true
+        ${pkgs.iproute2}/bin/ip route del 142.167.46.223 via 10.0.0.1 dev enp7s0 table 101 || true
+        ${pkgs.iproute2}/bin/ip rule del fwmark 0xca7f table 101 || true
+        ${pkgs.iproute2}/bin/ip route flush table 101 || true
+
+        ${pkgs.iptables}/bin/iptables -t mangle -D PREROUTING \
+          -i wg1 -p udp \
+          -m comment --comment "wg1 restore mark" \
+          -j CONNMARK --restore-mark || true
+        ${pkgs.iptables}/bin/iptables -t mangle -D POSTROUTING \
+          -o enp7s0 -m mark --mark 0xca7f \
+          -m comment --comment "wg1 save mark" \
+          -j CONNMARK --save-mark || true
+
+        ${pkgs.iptables}/bin/iptables -D FORWARD -i wg1 -o enp7s0 -j ACCEPT || true
       '';
       peers = [
         {
@@ -130,6 +139,10 @@
         {
           allowedIPs = [ "10.100.0.3/32" ];
           publicKey = "M+2/DTWFGyoG3xRymv/UasKTXJCsxJUddURwnh1MfAI=";
+        }
+        {
+          allowedIPs = [ "10.100.0.4/32" ];
+          publicKey = "GqdlynLTZTbYkYKP5cBMmRrAWLdHVSYEBPrZf6A+SXQ=";
         }
       ];
       privateKeyFile = config.age.secrets.wireguard-down.path;

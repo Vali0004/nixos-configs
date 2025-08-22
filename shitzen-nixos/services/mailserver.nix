@@ -37,7 +37,7 @@
     systemName = "nixos-mailserver";
   };
 
-  services.nginx.virtualHosts."webmail.fuckk.lol" = {
+  services.nginx.virtualHosts."mail.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
     root = "${pkgs.roundcube}";
@@ -68,12 +68,6 @@
     };
   };
 
-  services.nginx.virtualHosts."mail.fuckk.lol" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/".extraConfig = "return 404;";
-  };
-
   services.nginx.virtualHosts."mail.nanitehosting.com" = {
     enableACME = true;
     forceSSL = true;
@@ -83,7 +77,7 @@
   services.roundcube = {
     enable = true;
     configureNginx = false;
-    hostName = "webmail.fuckk.lol";
+    hostName = "mail.fuckk.lol";
     extraConfig = ''
       $config['default_host'] = 'ssl://10.127.0.3';
       $config['default_port'] = 993;
