@@ -13,16 +13,29 @@
       domain = "monitoring.fuckk.lol";
       virtualHosts = {
         "monitoring.fuckk.lol" = {
-          allowed_emails = [
-            "diorcheats.vali@gmail.com"
-          ];
           allowed_email_domains = [
             "fuckk.lol"
+            "nanitehosting.com"
           ];
         };
       };
     };
     provider = "google";
+    redirectURL = "https://monitoring.fuckk.lol/oauth2/callback";
     setXauthrequest = true;
+  };
+
+  services.nginx = {
+    virtualHosts."monitoring.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+      locations = {
+        "/oauth2/" = {
+          proxyPass = "http://127.0.0.1:4180";
+          proxyWebsockets = true;
+          recommendedProxySettings = true;
+        };
+      };
+    };
   };
 }

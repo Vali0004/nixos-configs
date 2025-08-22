@@ -4,7 +4,7 @@ let
   port = 3003;
   oauthProxyConfig = ''
     auth_request /oauth2/auth;
-    error_page 401 = /oauth2/sign_in;
+    error_page 401 = /oauth2/sign_in?rd=$request_uri;
 
     auth_request_set $user $upstream_http_x_auth_request_user;
     auth_request_set $email $upstream_http_x_auth_request_email;
