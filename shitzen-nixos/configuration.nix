@@ -20,6 +20,8 @@
     services/arr/sonarr.nix
     services/minecraft/package.nix
 
+    services/anubis.nix
+    services/grafana.nix
     services/hydra.nix
     services/jellyfin.nix
     services/mailserver.nix
