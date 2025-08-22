@@ -17,9 +17,6 @@
 
       # Prevent injection of code in other mime types (XSS Attacks)
       add_header X-Content-Type-Options nosniff;
-
-      # Ensure mime types are setup
-      include ${pkgs.nginx}/conf/mime.types;
     '';
 
     enable = true;
