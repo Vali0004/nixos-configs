@@ -2,6 +2,10 @@
 
 let
   my_keys = import ./ssh_keys_personal.nix;
+  cfg = pkgs.writeText "configuration.nix" ''
+    assert builtins.trace "Hey dumbass, wrong machine." false;
+    {}
+  '';
 in {
   boot = {
     loader.grub.enable = true;
@@ -21,9 +25,12 @@ in {
     lss = "ls --color -lha";
   };
 
-  time.timeZone = "America/Detroit";
-
   i18n.defaultLocale = "en_US.UTF-8";
+
+  nix.nixPath = [
+    "nixos-config=${cfg}"
+    "nixpkgs=/run/current-system/nixpkgs"
+  ];
 
   services = {
     fail2ban = {
@@ -50,8 +57,6 @@ in {
       auto_add_peers = [
         "e0f6bcec21be59c77cf338e3946a766cd17a8e9c40a2b7fe036e7996f3a59554b4ecafdc2df6" # chromeshit
         "dd51f5f444b63c9c6d58ecf0637ce4c161fe776c86dc717b2e209bc686e56a5d2227dfee1338" # clever
-        "6ebba680e6e85e5c5a29209d30be6403bb1bfcf623d8c71da719c6a7c1ce8e52740d1668b1e9" # unison
-        "332d4d3dd80e8442ce95b59c31492c8d7acbbf08d0105619aadd54c9328628108d964fec21a3" # unison laptop
       ];
     };
     vnstat.enable = true;
@@ -61,6 +66,12 @@ in {
     nix-daemon.serviceConfig.OOMScoreAdjust = "350";
     toxvpn.serviceConfig.TimeoutStartSec = "infinity";
   };
+
+  system.extraSystemBuilderCmds = ''
+    ln -sv ${pkgs.path} $out/nixpkgs
+  '';
+
+  time.timeZone = "America/Detroit";
 
   users.users = let
     common_keys = import ./ssh_keys.nix;
