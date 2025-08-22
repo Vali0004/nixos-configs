@@ -132,6 +132,8 @@ in {
       gtk3
       # Browser
       google-chrome
+      # Ping tool, used to ping a specific port
+      hping
       iperf
       # IRC Client
       irssi
