@@ -3,13 +3,10 @@
 {
   environment.systemPackages = with pkgs; [
     jellyfin-ffmpeg
-    libva-utils
   ];
 
   services.jellyfin = {
-    configDir = "/data/services/jellyfin/config";
-    dataDir = "/data/services/jellyfin/data";
-    logDir = "/data/services/jellyfin/log";
+    dataDir = "/data/services/jellyfin";
     enable = true;
     openFirewall = true;
     user = "vali";
