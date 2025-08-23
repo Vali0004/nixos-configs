@@ -12,6 +12,7 @@
 
     modules/boot.nix
     modules/dockge.nix
+    modules/nvidia.nix
     modules/wireguard.nix
     modules/zfs.nix
 
@@ -44,10 +45,8 @@
   environment.systemPackages = with pkgs; [
     btop
     dig
-    docker-compose
     efibootmgr
     fastfetch
-    ffmpeg_6-headless
     git
     hdparm
     iperf
@@ -56,12 +55,11 @@
     libva
     libva-utils
     libva-vdpau-driver
+    lshw
     lsof
     lsscsi
     magic-wormhole
     mediainfo
-    mysql84
-    node2nix
     openssl
     pciutils
     redis
@@ -72,7 +70,6 @@
     tshark
     unzip
     wget
-    wings
     zip
     mesa
   ];
@@ -98,10 +95,6 @@
   hardware = {
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
     enableRedistributableFirmware = true;
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
   };
 
   minecraft.prod = false;
