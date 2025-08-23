@@ -51,10 +51,6 @@
     hdparm
     iperf
     jdk
-    # HW Acceleration
-    libva
-    libva-utils
-    libva-vdpau-driver
     lshw
     lsof
     lsscsi
