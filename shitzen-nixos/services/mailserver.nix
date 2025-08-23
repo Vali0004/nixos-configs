@@ -30,6 +30,9 @@
       "cleclerc@nanitehosting.com" = {
         hashedPasswordFile = config.age.secrets.cleclerc-mail-nanitehosting-com.path;
       };
+      "maddy@fuckk.lol" = {
+        hashedPasswordFile = config.age.secrets.maddy-mail-fuckk-lol.path;
+      };
     };
     mailDirectory = "/var/vmail";
     stateVersion = 3;
@@ -71,7 +74,32 @@
   services.nginx.virtualHosts."mail.nanitehosting.com" = {
     enableACME = true;
     forceSSL = true;
-    locations."/".extraConfig = "return 404;";
+    root = "${pkgs.roundcube}";
+    locations."/" = {
+      index = "index.php";
+      priority = 1100;
+    };
+    locations."~ ^/(SQL|bin|config|logs|temp|vendor)/" = {
+      priority = 3110;
+      extraConfig = ''
+        return 404;
+      '';
+    };
+    locations."~ ^/(CHANGELOG.md|INSTALL|LICENSE|README.md|SECURITY.md|UPGRADING|composer.json|composer.lock)" = {
+      priority = 3120;
+      extraConfig = ''
+        return 404;
+      '';
+    };
+    locations."~* \\.php(/|$)" = {
+      priority = 3130;
+      extraConfig = ''
+        fastcgi_pass unix:${config.services.phpfpm.pools.roundcube.socket};
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include ${config.services.nginx.package}/conf/fastcgi.conf;
+      '';
+    };
   };
 
   services.roundcube = {
