@@ -56,6 +56,7 @@
     lsscsi
     magic-wormhole
     mediainfo
+    ncdu
     openssl
     pciutils
     redis
