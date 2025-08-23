@@ -12,7 +12,7 @@ in {
   scrape_interval = interval;
   inherit metrics_path;
   static_configs = [{
-    targets = [ "127.0.0.1:${toString port}" ];
+    targets = [ "localhost:${toString port}" ];
     labels.alias = label;
   }];
 }

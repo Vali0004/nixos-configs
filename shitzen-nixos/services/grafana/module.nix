@@ -3,6 +3,12 @@
 let
   port = 3003;
   oauthProxyConfig = ''
+    # Bypass OAuth2 if request comes from localhost
+    satisfy any;
+
+    allow 0.0.0.0;
+    deny all;
+
     auth_request /oauth2/auth;
     error_page 401 = /oauth2/sign_in?rd=$request_uri;
 
@@ -19,11 +25,19 @@ in {
     enable = true;
     provision = {
       enable = true;
+      dashboards.settings.providers = [{
+        name = "generic";
+        disableDeletion = true;
+        options = {
+          path = ./dashboards/generic;
+          foldersFromFilesStructure = true;
+        };
+      }];
       datasources.settings.datasources = [
         {
-          name = "Prometheus";
+          name = "prometheus";
           type = "prometheus";
-          url = "https://monitoring.fuckk.lol/prometheus";
+          url = "http://localhost:3400/prometheus";
           isDefault = true;
           editable = false;
         }

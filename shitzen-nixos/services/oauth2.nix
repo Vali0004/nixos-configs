@@ -23,6 +23,9 @@
     provider = "google";
     redirectURL = "https://monitoring.fuckk.lol/oauth2/callback";
     setXauthrequest = true;
+    skipAuthRegexes = [
+      "^/prometheus(/.*)?$"
+    ];
   };
 
   services.nginx = {

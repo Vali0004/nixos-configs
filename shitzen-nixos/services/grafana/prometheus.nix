@@ -1,10 +1,11 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkJob = import ./../modules/mkprometheus.nix;
+  mkJob = import ./../../modules/mkprometheus.nix;
 in {
   services.prometheus = {
     enable = true;
+    enableReload = true;
     scrapeConfigs = [
       (mkJob {
         appendNameToMetrics = true;
@@ -15,6 +16,10 @@ in {
         appendNameToMetrics = true;
         name = "prometheus";
         port = 3400;
+      })
+      (mkJob {
+        name = "node";
+        port = 9100;
       })
       (mkJob {
         name = "smartctl";

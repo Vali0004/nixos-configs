@@ -19,7 +19,7 @@
     kernelParams = [
       "boot.shell_on_fail"
       "memtest=1"
-      "netconsole=6665@10.0.0.244/enp7s0,6666@10.0.0.201/6a:4e:25:d2:60:55"
+      "netconsole=6665@10.0.0.244/eth0,6666@10.0.0.201/6a:4e:25:d2:60:55"
     ];
     kernel.sysctl."net.ipv4.ip_forward" = true;
     loader = {

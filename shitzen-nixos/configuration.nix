@@ -15,13 +15,15 @@
     modules/wireguard.nix
     modules/zfs.nix
 
+    services/grafana/module.nix
+    services/grafana/prometheus.nix
+
     services/arr/prowlarr.nix
     services/arr/radarr.nix
     services/arr/sonarr.nix
     services/minecraft/package.nix
 
     services/anubis.nix
-    services/grafana.nix
     services/hydra.nix
     services/jellyfin.nix
     services/mailserver.nix
@@ -33,8 +35,6 @@
 
     services/postgresql.nix
 
-    services/prometheus.nix
-
     services/rtorrent.nix
     services/samba.nix
 
@@ -45,6 +45,7 @@
     btop
     dig
     docker-compose
+    efibootmgr
     fastfetch
     ffmpeg_6-headless
     git
@@ -125,7 +126,7 @@
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
-    interfaces.enp7s0 = {
+    interfaces.eth0 = {
       ipv4.addresses = [{
         address = "10.0.0.244";
         prefixLength = 24;
@@ -152,6 +153,7 @@
     networkmanager.dns = "none";
     resolvconf.useLocalResolver = false;
     useDHCP = false;
+    usePredictableInterfaceNames = false;
   };
 
   nix.settings = {
