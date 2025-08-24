@@ -9,7 +9,7 @@
     ];
     firewall = {
       allowPing = true;
-      allowedUDPPorts = [ 51820 51821 ];
+      allowedUDPPorts = [ 51820 ];
       checkReversePath = false;
       interfaces.wg0 = {
         allowedTCPPortRanges = [{
