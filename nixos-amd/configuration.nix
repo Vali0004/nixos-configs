@@ -28,12 +28,14 @@ let
   agenix = builtins.getFlake "github:ryantm/agenix";
   agenixPkgs = agenix.outputs.packages.x86_64-linux;
 
-  #xlibre-overlay = builtins.getFlake "git+https://codeberg.org/takagemacoed/xlibre-overlay";
+  nixGaming = builtins.getFlake "github:fufexan/nix-gaming";
+  nixGamingPkgs = nixGaming.outputs.packages.x86_64-linux;
 in {
   imports = [
-    #xlibre-overlay.nixosModules.overlay-xlibre-xserver
-    #xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
     agenix.nixosModules.default
+    nixGaming.nixosModules.pipewireLowLatency
+    nixGaming.nixosModules.platformOptimizations
+    nixGaming.nixosModules.wine
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
@@ -170,6 +172,9 @@ in {
       # Video Player
       mpv
       nodejs_24
+      # nix-gaming
+      (nixGamingPkgs.osu-stable.override { useGameMode = false; })
+      nixGamingPkgs.wine-discord-ipc-bridge
       obs-studio
       openssl
       # Tablet Driver
@@ -493,12 +498,8 @@ in {
       "inode/directory" = "nemo.desktop";
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
-      "x-scheme-handler/osu" = "osuwinello-url-handler.desktop";
       "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
       "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
-      "application/x-osu-skin-archive" = "osuwinello-file-extensions-handler.desktop";
-      "application/x-osu-replay" = "osuwinello-file-extensions-handler.desktop";
-      "application/x-osu-beatmap-archive" = "osuwinello-file-extensions-handler.desktop";
       "application/xhtml+xml" = "com.google.Chrome.desktop";
       "text/html" = "com.google.Chrome.desktop";
       "text/xml" = "com.google.Chrome.desktop";
