@@ -1,10 +1,5 @@
 {
   inputs = {
-    # https://github.com/NixOS/nixpkgs/commit/63e999bff1f1b61e29b78a4bf2fd742a9a9d70f5
-    # Broke flood
-    # https://github.com/NixOS/nixpkgs/commit/858c3ec499964bb3d3114ef1320d081061e3bb94
-    # Broke zipline
-    #nixpkgs.url = "github:NixOS/nixpkgs/547e53c32fa333cadf3291571946181084d3877a";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
