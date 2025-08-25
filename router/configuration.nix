@@ -38,12 +38,10 @@
   environment.systemPackages = with pkgs; [
     conntrack-tools
     fastfetch
-    ffmpeg_6-headless
     git
     htop
     iperf
     openssl
-    screen
     tcpdump
     wget
     wireguard-tools

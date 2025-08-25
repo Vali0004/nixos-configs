@@ -4,7 +4,8 @@
     # Broke flood
     # https://github.com/NixOS/nixpkgs/commit/858c3ec499964bb3d3114ef1320d081061e3bb94
     # Broke zipline
-    nixpkgs.url = "github:NixOS/nixpkgs/547e53c32fa333cadf3291571946181084d3877a";
+    #nixpkgs.url = "github:NixOS/nixpkgs/547e53c32fa333cadf3291571946181084d3877a";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";

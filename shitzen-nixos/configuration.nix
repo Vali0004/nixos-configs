@@ -39,6 +39,7 @@
     services/rtorrent.nix
     services/samba.nix
 
+    services/toxvpn.nix
     services/zipline.nix
   ];
 

@@ -4,6 +4,7 @@
   services.prowlarr = {
     enable = true;
     openFirewall = true;
+    package = pkgs.callPackage ./prowlarr-package {};
     settings = {
       update.mechanism = "builtIn";
       server = {
