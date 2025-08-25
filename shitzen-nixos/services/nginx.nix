@@ -12,7 +12,6 @@
     recommendedOptimisation = true;
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
-    recommendedZstdSettings = true;
   };
 
   services.nginx.virtualHosts."fuckk.lol" = {
