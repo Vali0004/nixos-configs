@@ -34,8 +34,6 @@ in {
   imports = [
     agenix.nixosModules.default
     nixGaming.nixosModules.pipewireLowLatency
-    nixGaming.nixosModules.platformOptimizations
-    nixGaming.nixosModules.wine
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
@@ -96,7 +94,12 @@ in {
       (callPackage ./pkgs/darling.nix {})
       dos2unix
       direnv
-      (discord.override { withVencord = true; })
+      ((discord.override { withVencord = true; }).overrideAttrs {
+        src = fetchurl {
+          url = "https://stable.dl2.discordapp.net/apps/linux/0.0.106/discord-0.0.106.tar.gz";
+          hash = "sha256-FqY2O7EaEjV0O8//jIW1K4tTSPLApLxAbHmw4402ees=";
+        };
+      })
       dmidecode
       # App launcher
       dmenu
@@ -179,8 +182,6 @@ in {
       openssl
       # Tablet Driver
       opentabletdriver
-      # osu! handler, allows for entering into the wine prefix
-      (callPackage /home/vali/development/osu-wine/osu-handler-wine/osu-handler-wine.nix {})
       # Different audio control
       pamixer
       # Audio control
