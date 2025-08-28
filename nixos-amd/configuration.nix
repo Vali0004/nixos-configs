@@ -481,11 +481,12 @@ in {
       isNormalUser = true;
       extraGroups = [
         "corectrl"
-        "qemu-libvirtd"
+        "input"
         "render"
         "tty"
         "wheel"
         "video"
+        "qemu-libvirtd"
       ];
       useDefaultShell = false;
       shell = pkgs.zsh;
