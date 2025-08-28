@@ -10,7 +10,7 @@
     modesetting.enable = true;
     nvidiaSettings = true;
     open = false;
-    package = hconfig.boot.kernelPackages.nvidiaPackages_570;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
     powerManagement = {
       enable = false;
       finegrained = false;
