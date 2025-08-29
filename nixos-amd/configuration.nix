@@ -493,29 +493,30 @@ in {
     };
   };
 
-  xdg.mime = let
-    applications = {
-      "application/zip" = "org.kde.ark.desktop";
-      "text/plain" = "code.desktop";
+  xdg.mime = {
+    addedAssociations = {
       "inode/directory" = "nemo.desktop";
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
       "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
       "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
       "application/xhtml+xml" = "com.google.Chrome.desktop";
-      "text/html" = "com.google.Chrome.desktop";
-      "text/xml" = "com.google.Chrome.desktop";
       "x-scheme-handler/ftp" = "com.google.Chrome.desktop";
       "x-scheme-handler/http" = "com.google.Chrome.desktop";
       "x-scheme-handler/https" = "com.google.Chrome.desktop";
     };
-  in {
-    addedAssociations = applications;
-    defaultApplications = applications;
+    defaultApplications = {
+      "application/zip" = "org.kde.ark.desktop";
+      "text/plain" = "code.desktop";
+      "text/html" = "com.google.Chrome.desktop";
+      "text/xml" = "com.google.Chrome.desktop";
+    };
   };
 
   xdg.portal = {
-    config.common.default = [ "gtk" ];
+    config = {
+      common.default = [ "gtk" ];
+    };
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
     xdgOpenUsePortal = true;
