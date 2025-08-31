@@ -176,10 +176,13 @@ in {
       morph
       # Video Player
       mpv
-      nodejs_24
+      # Directory info
+      ncdu
       # nix-gaming
       (nixGamingPkgs.osu-stable.override { useGameMode = false; })
       nixGamingPkgs.wine-discord-ipc-bridge
+      # Node.js
+      nodejs_24
       obs-studio
       openssl
       # Tablet Driver
