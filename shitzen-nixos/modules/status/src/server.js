@@ -1,0 +1,152 @@
+const AbortController = require("abort-controller");
+const express = require("express");
+const fetch = require("node-fetch").default;
+const cron = require("node-cron");
+const app = express();
+
+const port = process.env.PORT || 3003;
+const secret = process.env.SECRET || "dummy";
+
+app.use(express.json());
+
+let statusTypes = {
+  good: { online: true, message: "good" },
+  down: { online: false, message: "down" },
+  maintenance: { online: false, message: "maintenance" },
+};
+
+let services = {
+  main: { type: "good", url: "https://fuckk.lol/", responding: false },
+  grafana: { type: "good", url: "http://127.0.0.1:3400/prometheus/targets", responding: false },
+  jellyfin: { type: "good", url: "http://127.0.0.1:8096/web", responding: false },
+  zipline: { type: "good", url: "http://127.0.0.1:3000/", responding: false },
+  flood: { type: "good", url: "http://127.0.0.1:3701/", responding: false },
+  prowlarr: { type: "good", url: "http://127.0.0.1:9696/", responding: false },
+  radarr: { type: "good", url: "http://127.0.0.1:7878/", responding: false },
+  sonarr: { type: "good", url: "http://127.0.0.1:8989/", responding: false },
+  r34: { type: "good", url: "http://127.0.0.1:8099/", responding: false }
+};
+
+async function checkService(name, svc) {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), 3000);
+
+  try {
+    const res = await fetch(svc.url, {
+      method: "GET",
+      signal: controller.signal,
+      headers: { "User-Agent": "Mozilla/5.0 StatusBot" },
+      redirect: "follow",
+    });
+
+    svc.responding = res.ok;
+    svc.statusCode = res.status;
+
+    console.log(`Checked ${svc.url} -> ${res.status}`);
+  } catch (err) {
+    svc.responding = false;
+    svc.statusCode = null;
+    console.log(`Checked ${svc.url} -> ERROR: ${err.type || err.message}`);
+  } finally {
+    clearTimeout(id);
+  }
+
+  if (!svc.responding && svc.type !== "maintenance") {
+    svc.type = "down";
+  }
+}
+
+// Schedule job every minute
+cron.schedule("*/30 * * * * *", async () => {
+  console.log("Running service checks...");
+  for (const [name, svc] of Object.entries(services)) {
+    await checkService(name, svc);
+  }
+});
+
+app.get("/api", async (req, res) => {
+  const results = {};
+  for (const [name, svc] of Object.entries(services)) {
+    results[name] = {
+      ...statusTypes[svc.type],
+      assignedType: svc.type,
+      responding: svc.responding,
+    };
+  }
+  res.json(results);
+});
+
+app.get("/api/:service", (req, res) => {
+  const service = req.params.service;
+  if (!services[service]) {
+    return res.status(404).json({ error: "Service not found" });
+  }
+  const svc = services[service];
+  res.json({
+    ...statusTypes[svc.type],
+    assignedType: svc.type,
+    responding: svc.responding,
+  });
+});
+
+app.post("/api/:service", (req, res) => {
+  const auth = req.headers["x-status-secret"] || req.body.secret;
+  if (auth !== secret) {
+    return res.status(403).json({ error: "Forbidden: invalid secret" });
+  }
+
+  const service = req.params.service;
+  const { type, url } = req.body;
+
+  if (type && !statusTypes[type]) {
+    return res.status(400).json({ error: "Invalid status type" });
+  }
+
+  if (!services[service]) {
+    services[service] = { type: "down", url: "", responding: false };
+  }
+
+  if (type) services[service].type = type;
+  if (url) services[service].url = url;
+
+  res.json({ updated: true, service: services[service] });
+});
+
+app.post("/api", (req, res) => {
+  const auth = req.headers["x-status-secret"] || req.body.secret;
+  if (auth !== secret) {
+    return res.status(403).json({ error: "Forbidden: invalid secret" });
+  }
+
+  const { type } = req.body;
+
+  if (!statusTypes[type]) {
+    return res.status(400).json({ error: "Invalid status type" });
+  }
+
+  for (const svc of Object.values(services)) {
+    svc.type = type;
+  }
+
+  res.json({ updated: true, services });
+});
+
+app.post("/refresh", async (req, res) => {
+  const auth = req.headers["x-status-secret"] || req.body.secret;
+  if (auth !== secret) {
+    return res.status(403).json({ error: "Forbidden: invalid secret" });
+  }
+
+  for (const [name, svc] of Object.entries(services)) {
+    await checkService(name, svc);
+  }
+  res.json({ refreshed: true, services });
+});
+
+app.get("/", (req, res) => {
+  res.type("text/plain").send("Nothing to see here yet!");
+});
+
+app.listen(port, () => {
+  console.log(`Status running at http://127.0.0.1:${port}`);
+});
