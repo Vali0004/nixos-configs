@@ -92,8 +92,10 @@ in {
       clipmenu-paste
       # macOS Translation Layer
       (callPackage ./pkgs/darling.nix {})
-      dos2unix
+      # XDG Mime/Desktop utils
+      desktop-file-utils
       direnv
+      dos2unix
       ((discord.override { withVencord = true; }).overrideAttrs {
         src = fetchurl {
           url = "https://stable.dl2.discordapp.net/apps/linux/0.0.106/discord-0.0.106.tar.gz";
@@ -219,7 +221,11 @@ in {
       # Tree, helps create file structures in text form
       tree
       # Unity
-      unityhub
+      (unityhub.overrideAttrs (old: {
+        postInstall = (old.postInstall or "") + ''
+          ${desktop-file-utils}/bin/update-desktop-database $out/share/applications
+        '';
+      }))
       # Unzip
       unzip
       # USB Utils
@@ -495,21 +501,22 @@ in {
 
   xdg.mime = {
     addedAssociations = {
-      "inode/directory" = "nemo.desktop";
       "x-scheme-handler/element" = "element-desktop.desktop";
       "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
-      "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
-      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
-      "application/xhtml+xml" = "com.google.Chrome.desktop";
       "x-scheme-handler/ftp" = "com.google.Chrome.desktop";
       "x-scheme-handler/http" = "com.google.Chrome.desktop";
       "x-scheme-handler/https" = "com.google.Chrome.desktop";
+      "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
+      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
+      "x-scheme-handler/unityhub" = "unityhub.desktop";
     };
     defaultApplications = {
       "application/zip" = "org.kde.ark.desktop";
+      "application/xhtml+xml" = "com.google.Chrome.desktop";
       "text/plain" = "code.desktop";
       "text/html" = "com.google.Chrome.desktop";
       "text/xml" = "com.google.Chrome.desktop";
+      "inode/directory" = "nemo.desktop";
     };
   };
 
