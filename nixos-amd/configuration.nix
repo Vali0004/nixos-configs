@@ -274,6 +274,7 @@ in {
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
       CM_LAUNCHER = "dmenu";
+      G_MESSAGES_DEBUG = "all";
     };
   };
 
@@ -482,6 +483,9 @@ in {
 
   systemd.settings.Manager.RebootWatchdogSec = "0";
 
+  systemd.user.services."xdg-desktop-portal".after = [ "graphical-session.target" ];
+  systemd.user.services."xdg-desktop-portal-gtk".after = [ "graphical-session.target" ];
+
   time.timeZone = "America/Detroit";
 
   users = {
@@ -522,6 +526,8 @@ in {
       "inode/directory" = "nemo.desktop";
     };
   };
+
+  xdg.icons.enable = true;
 
   xdg.portal = {
     config = {
