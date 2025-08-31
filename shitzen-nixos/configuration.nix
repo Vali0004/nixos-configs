@@ -14,7 +14,7 @@
     modules/agenix.nix
 
     modules/boot.nix
-    modules/dockge.nix
+    #modules/dockge.nix
     modules/nvidia.nix
     modules/wireguard.nix
     modules/zfs.nix

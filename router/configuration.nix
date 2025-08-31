@@ -40,8 +40,13 @@
     fastfetch
     git
     htop
+    inetutils
     iperf
+    ncdu
+    ndisc6
+    net-tools
     openssl
+    screen
     tcpdump
     wget
     wireguard-tools
@@ -61,6 +66,10 @@
 
   networking = {
     defaultGateway = "74.208.44.1";
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "ens6";
+    };
     firewall = {
       allowedTCPPorts = [
         25 # SMTP
@@ -106,6 +115,10 @@
       ipv4.addresses = [{
         address = "74.208.44.130";
         prefixLength = 24;
+      }];
+      ipv6.addresses = [{
+        address = "2607:f1c0:f088:e200::1";
+        prefixLength = 80;
       }];
     };
     nameservers = [
@@ -179,6 +192,10 @@
         }];
       };
     };
+  };
+
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
   };
 
   nixpkgs = {
