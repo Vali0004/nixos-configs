@@ -30,6 +30,17 @@ let
 
   nixGaming = builtins.getFlake "github:fufexan/nix-gaming";
   nixGamingPkgs = nixGaming.outputs.packages.x86_64-linux;
+  osu-base = pkgs.callPackage ./pkgs/osu {
+    osu-mime = nixGamingPkgs.osu-mime;
+    wine-discord-ipc-bridge = nixGamingPkgs.wine-discord-ipc-bridge;
+    proton-osu-bin = nixGamingPkgs.proton-osu-bin;
+  };
+  osu-stable = osu-base;
+  osu-gatari = (osu-base.override {
+    desktopName = "osu!gatari";
+    pname = "osu-gatari";
+    launchArgs = "-devserver gatari.pw";
+  });
 in {
   imports = [
     agenix.nixosModules.default
@@ -178,13 +189,13 @@ in {
       mpv
       # Directory info
       ncdu
-      # nix-gaming
-      (nixGamingPkgs.osu-stable.override { useGameMode = false; })
-      nixGamingPkgs.wine-discord-ipc-bridge
       # Node.js
       nodejs_24
       obs-studio
       openssl
+      # nix-gaming pkg, slightly modified
+      osu-gatari
+      osu-stable
       # Tablet Driver
       opentabletdriver
       # Different audio control
