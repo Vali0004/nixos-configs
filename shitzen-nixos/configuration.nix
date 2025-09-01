@@ -63,6 +63,7 @@
     ncdu
     openssl
     pciutils
+    powerjoular
     redis
     screen
     sg3_utils
