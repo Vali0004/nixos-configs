@@ -79,6 +79,7 @@ in {
       l = null;
       ll = null;
       lss = "ls --color -lha";
+      dienow = "shutdown -h now";
     };
 
     systemPackages = with pkgs; [
