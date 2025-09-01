@@ -29,6 +29,7 @@
 
     services/anubis.nix
     services/hydra.nix
+    services/irc.nix
     services/jellyfin.nix
     services/mailserver.nix
 
