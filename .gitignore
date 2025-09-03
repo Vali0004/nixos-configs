@@ -1,6 +1,7 @@
 *.AppImage
 *.deb
 *.rpm
+nixos-amd/pkgs/ida-pro/libida.tar.gz
 output.txt
 result
 **/result
