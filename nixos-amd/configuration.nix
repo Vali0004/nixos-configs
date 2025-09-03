@@ -423,6 +423,9 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
       # HTC
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel"
+      # Oculus
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2833", GROUP="wheel"
+      SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
       # Steam
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
       # RedOctane
