@@ -153,6 +153,8 @@ in {
       google-chrome
       # Ping tool, used to ping a specific port
       hping
+      # Hex-Rays IDA Pro 9.0 Beta
+      (callPackage ./pkgs/ida-pro {})
       iperf
       # IRC Client
       irssi

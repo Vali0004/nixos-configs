@@ -33,6 +33,7 @@
     services/jellyfin.nix
     services/mailserver.nix
 
+    services/matrix.nix
     services/mysql.nix
     services/nfs.nix
     services/nginx.nix

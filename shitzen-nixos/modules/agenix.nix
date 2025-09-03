@@ -22,6 +22,11 @@
       owner = "nginx";
       group = "nginx";
     };
+    matrix = {
+      file = ./../../secrets/matrix.age;
+      owner = "matrix-synapse";
+      group = "matrix-synapse";
+    };
     oauth2 = {
       file = ./../../secrets/oauth2.age;
       owner = "nginx";
