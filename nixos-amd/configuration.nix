@@ -124,6 +124,8 @@ in {
       dmidecode
       # App launcher
       dmenu
+      # .NET Disassembler
+      (callPackage ./pkgs/dnspy {})
       # Notification daemon
       dunst
       # Extended Display Id Data Decode
