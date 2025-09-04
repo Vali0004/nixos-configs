@@ -39,7 +39,7 @@ in {
         package = pkgs.papirus-icon-theme;
       };
       theme = {
-        name = "Adwaita-Dark";
+        name = "Adwaita-dark";
         package = pkgs.gnome-themes-extra;
       };
     };

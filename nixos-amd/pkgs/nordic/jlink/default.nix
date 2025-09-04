@@ -1,28 +1,43 @@
-{ pkgs, lib, ... }:
+{ stdenv
+, lib
+, autoPatchelfHook
+, dpkg
+, fontconfig
+, freetype
+, libICE
+, libSM
+, libusb1
+, libX11
+, libXcursor
+, libXfixes
+, libXrandr
+, libXrender
+, zlib }:
 
-pkgs.stdenv.mkDerivation {
+stdenv.mkDerivation {
   pname = "jlink";
   version = "V818";
+
   src = ./JLink_Linux_V818_x86_64.deb;
 
   nativeBuildInputs = [
-    pkgs.dpkg
-    pkgs.autoPatchelfHook
+    dpkg
+    autoPatchelfHook
   ];
 
-  buildInputs = with pkgs; [
-    zlib
-    libusb1
-    xorg.libX11
-    xorg.libXrender
-    xorg.libXrandr
-    xorg.libXfixes
-    xorg.libXcursor
-    xorg.libSM
-    xorg.libICE
+  buildInputs = [
     fontconfig
     freetype
-    stdenv.cc.cc.lib # provides libstdc++.so.6 and libgcc_s.so.1
+    libICE
+    libSM
+    libusb1
+    libX11
+    libXcursor
+    libXfixes
+    libXrandr
+    libXrender
+    zlib
+    stdenv.cc.cc.lib
   ];
 
   unpackPhase = ''
