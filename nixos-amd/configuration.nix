@@ -202,6 +202,8 @@ in {
       ncdu
       # nRF Studio
       (callPackage ./pkgs/nordic {})
+      # SEGGER JLink
+      (callPackage ./pkgs/nordic/jlink {})
       # Adafurit nRF Util
       (callPackage ./pkgs/nordic/nrfutil {})
       # Node.js
