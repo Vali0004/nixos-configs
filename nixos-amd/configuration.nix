@@ -48,9 +48,6 @@ in {
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
-    pkgs/adafruit-nrfutil.nix
-    pkgs/cider.nix
-    pkgs/nordic.nix
     programs/spicetify.nix
     programs/ssh.nix
     programs/steam.nix
@@ -91,34 +88,45 @@ in {
       # XDG debug
       bustle
       bridge-utils
+      # Better TOP
       btop
       # BeamMP
-      (callPackage ./pkgs/beammp-launcher.nix {})
+      (callPackage ./pkgs/beammp-launcher {})
       # Cache system
       cachix
       # Remote deploy
       colmena
-      curl
+      # Cider - Alternative Apple Music Client
+      cider-2
       # Clipboard Manager
       clipmenu
       clipmenu-paste
+      # cURL
+      curl
       # macOS Translation Layer
-      (callPackage ./pkgs/darling.nix {})
+      (callPackage ./pkgs/darling {})
       # XDG Mime/Desktop utils
       desktop-file-utils
+      # Binary utility, desined to identify what a binary is (including the compiler)
+      detect-it-easy
+      # Directory envorinment
       direnv
+      # dos2unix tool
       dos2unix
+      # Discord
       ((discord.override { withVencord = true; }).overrideAttrs {
         src = fetchurl {
           url = "https://stable.dl2.discordapp.net/apps/linux/0.0.106/discord-0.0.106.tar.gz";
           hash = "sha256-FqY2O7EaEjV0O8//jIW1K4tTSPLApLxAbHmw4402ees=";
         };
       })
+      # SMBIOS
       dmidecode
       # App launcher
       dmenu
       # Notification daemon
       dunst
+      # Extended Display Id Data Decode
       edid-decode
       # Matrix client
       element-desktop
@@ -192,6 +200,10 @@ in {
       mpv
       # Directory info
       ncdu
+      # nRF Studio
+      (callPackage ./pkgs/nordic {})
+      # Adafurit nRF Util
+      (callPackage ./pkgs/nordic/nrfutil {})
       # Node.js
       nodejs_24
       obs-studio

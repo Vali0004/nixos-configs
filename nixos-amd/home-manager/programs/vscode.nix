@@ -10,6 +10,7 @@
         "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
         "files.autoSaveDelay" = 1000;
+        "files.externalFileExplorer" = "nemo";
         "terminal.integrated.defaultProfile.linux" = "zsh";
         "security.workspace.trust.untrustedFiles" = "open";
         "C_Cpp.default.compilerPath" = "";
