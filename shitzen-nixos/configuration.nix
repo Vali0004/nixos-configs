@@ -22,6 +22,7 @@
     services/grafana/module.nix
     services/grafana/prometheus.nix
 
+    services/arr/flaresolverr.nix
     services/arr/prowlarr.nix
     services/arr/radarr.nix
     services/arr/sonarr.nix
