@@ -12,9 +12,9 @@ buildNpmPackage {
   npmDepsHash = "sha256-T8sBF2Sr9YX3GZTdHjjV3UQdj7bNM29+xOjA6FB4t7c=";
 
   src = requireFile {
-    name = "pnp-panel.tar.xz";
-    url = "file:///home/vali/pnp-panel.tar.xz";
-    sha256 = "sha256-IWh/x0i1VwFAY7TgEbAYR/Y0Ry9ORkluQHBu2VZEr78=";
+    name = "pnp-panel.tar.gz";
+    url = "file:///home/vali/pnp-panel.tar.gz";
+    sha256 = "sha256-jS40fLyhpyau+dx1Kc8/woYOnqXJJmKj5ZBwIkOwqCA=";
   };
 
   installPhase = ''
