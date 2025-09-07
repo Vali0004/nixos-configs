@@ -113,7 +113,7 @@ in {
       method.insert=d.down.sequential,value|const,0
       method.insert=d.down.sequential.set,value|const,0
     '';
-    downloadDir = "/data/services/downloads/rtorrent";
+    downloadDir = "/data/services/downloads";
     enable = true;
     port = peer-port;
     openFirewall = true;
@@ -138,6 +138,6 @@ in {
   };
 
   systemd.services.flood.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
-  systemd.services.flood.serviceConfig.ReadWritePaths = [ "/data/private/Media" "/data/services/downloads/rtorrent" ];
+  systemd.services.flood.serviceConfig.ReadWritePaths = [ "/data/private/Media" "/data/services/downloads" ];
   systemd.services.rtorrent.serviceConfig.SystemCallFilter = "@system-service fchownat";
 }
