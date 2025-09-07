@@ -70,6 +70,7 @@
     redis
     screen
     sg3_utils
+    sqlite-interactive
     smartmontools
     tmux
     tshark
