@@ -1,12 +1,18 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  modpack = pkgs.callPackage ./modpack {};
+in {
   options.minecraft.prod = lib.mkOption {
     type = lib.types.bool;
   };
 
   config.networking.firewall.allowedTCPPorts = [
     4100
+  ];
+
+  config.networking.firewall.allowedUDPPorts = [
+    4101
   ];
 
   config.services.minecraft-servers = {
@@ -20,7 +26,14 @@
     servers.prod = lib.mkIf config.minecraft.prod {
       autoStart = true;
       enable = true;
-      files = import ./prod.nix { fetchurl = pkgs.fetchurl; writeText = pkgs.writeText; };
+      files = {
+        "config" = "${modpack}/config";
+        "configureddefaults" = "${modpack}/configureddefaults";
+        "mods" = "${modpack}/mods";
+        "resourcepacks" = "${modpack}/resourcepacks";
+        "shaderpacks" = "${modpack}/shaderpacks";
+        "options.txt" = "${modpack}/options.txt";
+      };
 
       whitelist = {
         FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
@@ -30,8 +43,8 @@
         ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
       };
 
-      jvmOpts = "-Xms4G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true";
-      package = pkgs.fabricServers.fabric-1_21_4;
+      jvmOpts = "-Xms4G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1";
+      package = pkgs.fabricServers.fabric-1_20_1;
 
       serverProperties = {
         admin-slot = true;
@@ -42,7 +55,7 @@
         enable-command-block = true;
         enable-rcon = false;
         enforce-whitelist = true;
-        entity-broadcast-range-percentage = 40;
+        entity-broadcast-range-percentage = 60;
         force-gamemode = false;
         gamemode = "survival";
         hardcore = false;
@@ -53,16 +66,26 @@
         server-ip = "0.0.0.0";
         server-name = "InertiaCraft";
         server-port = 4100;
-        simulation-distance = 4;
-        sync-chunk-writes = false;
+        simulation-distance = 8;
+        sync-chunk-writes = true;
         texturepack-required = true;
-        require-resource-pack = true;
+        require-resource-pack = false;
         resource-pack = "https://fuckk.lol/minecraft/resource-pack.zip";
         tick-distance = 12;
         use-alternate-keepalive = true;
         view-distance = 32;
         white-list = true;
       };
+    };
+  };
+
+  config.services.nginx.virtualHosts."mc.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      extraConfig = ''
+        return 404;
+      '';
     };
   };
 }
