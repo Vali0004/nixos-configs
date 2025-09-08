@@ -2,6 +2,7 @@
 *.deb
 *.rpm
 nixos-amd/pkgs/ida-pro/libida.tar.gz
+shitzen-nixos/services/minecraft/modpack/better-mc.tar.gz
 output.txt
 result
 **/result
