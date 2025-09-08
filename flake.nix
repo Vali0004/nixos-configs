@@ -5,7 +5,7 @@
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";
   };
-  outputs = { nixpkgs, agenix, nix-minecraft, toxvpn, nixos-mailserver, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, self }:
   {
     colmena = {
       meta = {
@@ -17,7 +17,7 @@
             })
             nix-minecraft.overlay
             (self: super: {
-              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/b4fe8242afe79b4e5c0fbc126f1379e0b574894b").packages.x86_64-linux.default;
+              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de").packages.x86_64-linux.default;
             })
             (self: super: {
               mailserver = nixos-mailserver.x86_64-linux.default;

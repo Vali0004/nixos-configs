@@ -16,9 +16,9 @@
 
 stdenv.mkDerivation {
   pname = "jlink";
-  version = "V818";
+  version = "V866";
 
-  src = ./JLink_Linux_V818_x86_64.deb;
+  src = ./JLink_Linux_V866_x86_64.deb;
 
   nativeBuildInputs = [
     dpkg
@@ -46,7 +46,7 @@ stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -r opt/SEGGER/JLink_V818 $out/JLink
+    cp -r opt/SEGGER/JLink_V866 $out/JLink
 
     # Symlink all executables
     for f in $out/JLink/*; do
