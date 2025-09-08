@@ -17,14 +17,16 @@ let statusTypes = {
 
 let services = {
   main: { type: "good", url: "https://fuckk.lol/", responding: false },
-  grafana: { type: "good", url: "http://127.0.0.1:3400/prometheus/targets", responding: false },
-  jellyfin: { type: "good", url: "http://127.0.0.1:8096/web", responding: false },
-  zipline: { type: "good", url: "http://127.0.0.1:3000/", responding: false },
-  flood: { type: "good", url: "http://127.0.0.1:3701/", responding: false },
-  prowlarr: { type: "good", url: "http://127.0.0.1:9696/", responding: false },
-  radarr: { type: "good", url: "http://127.0.0.1:7878/", responding: false },
-  sonarr: { type: "good", url: "http://127.0.0.1:8989/", responding: false },
-  r34: { type: "good", url: "http://127.0.0.1:8099/", responding: false }
+  grafana: { type: "good", url: "https://monitoring.fuckk.lol/grafana/login", responding: false },
+  prometheus: { type: "good", url: "http://monitoring.fuckk.lol/prometheus/targets", responding: false },
+  jellyfin: { type: "good", url: "https://ohh.fuckk.lol/web", responding: false },
+  zipline: { type: "good", url: "https://holy.fuckk.lol/dashboard", responding: false },
+  flood: { type: "good", url: "https://flood.fuckk.lol/", responding: false },
+  prowlarr: { type: "good", url: "https://prowlarr.fuckk.lol/", responding: false },
+  radarr: { type: "good", url: "https://radarr.fuckk.lol/", responding: false },
+  sonarr: { type: "good", url: "https://sonarr.fuckk.lol/", responding: false }
+  //,
+  //r34: { type: "good", url: "http://r34.fuckk.lol/", responding: false }
 };
 
 async function checkService(name, svc) {
@@ -42,7 +44,6 @@ async function checkService(name, svc) {
     svc.responding = res.ok;
     svc.statusCode = res.status;
 
-    console.log(`Checked ${svc.url} -> ${res.status}`);
   } catch (err) {
     svc.responding = false;
     svc.statusCode = null;
@@ -54,9 +55,13 @@ async function checkService(name, svc) {
   if (!svc.responding && svc.type !== "maintenance") {
     svc.type = "down";
   }
+
+  if (svc.responding && svc.type !== "maintenance") {
+    svc.type = "good";
+  }
 }
 
-// Schedule job every minute
+// Schedule job every 30s
 cron.schedule("*/30 * * * * *", async () => {
   console.log("Running service checks...");
   for (const [name, svc] of Object.entries(services)) {

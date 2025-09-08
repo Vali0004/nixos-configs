@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
+  toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/b4fe8242afe79b4e5c0fbc126f1379e0b574894b").packages.x86_64-linux.default;
 in {
   systemd.services.toxvpn.serviceConfig.TimeoutStartSec = "infinity";
   services.toxvpn = {
