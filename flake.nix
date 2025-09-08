@@ -5,7 +5,7 @@
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";
   };
-  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, toxvpn, nixos-mailserver, self }:
   {
     colmena = {
       meta = {
@@ -17,21 +17,21 @@
             })
             nix-minecraft.overlay
             (self: super: {
-              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/1830f9b8c12b4c5ef36b1f60f7e600cd1ecf4ccf").packages.x86_64-linux.default;
+              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/b4fe8242afe79b4e5c0fbc126f1379e0b574894b").packages.x86_64-linux.default;
             })
             (self: super: {
               mailserver = nixos-mailserver.x86_64-linux.default;
             })
             (self: super: {
               forgeServers = {
-                forge-1_7_10-10_13_4 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.7.10-10.13.4.16"; };
-                forge-1_16_5-36_2_26 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.16.5-36.2.26"; };
-                forge-1_16_5-36_2_39 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.16.5-36.2.39"; };
-                forge-1_16_5-36_2_42 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.16.5-36.2.42"; };
-                forge-1_18_2-40_3_0 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.18.2-40.3.0"; };
-                forge-1_20_1-47_2_17 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.20.1-47.2.17"; };
-                forge-1_20_1-47_3_0 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.20.1-47.3.0"; };
-                forge-1_20_1-47_4_0 = self.callPackage ./pkgs/nix-minecraft/forge/forge.nix { version = "1.20.1-47.4.0"; };
+                forge-1_7_10-10_13_4 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
+                forge-1_16_5-36_2_26 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };
+                forge-1_16_5-36_2_39 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.16.5-36.2.39"; };
+                forge-1_16_5-36_2_42 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.16.5-36.2.42"; };
+                forge-1_18_2-40_3_0 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.18.2-40.3.0"; };
+                forge-1_20_1-47_2_17 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.20.1-47.2.17"; };
+                forge-1_20_1-47_3_0 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.20.1-47.3.0"; };
+                forge-1_20_1-47_4_0 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.20.1-47.4.0"; };
               };
             })
           ];

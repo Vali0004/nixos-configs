@@ -9,8 +9,6 @@
     modules/pnp-loader/backend/service.nix
     modules/pnp-loader/dashboard/service.nix
 
-    modules/status/service.nix
-
     modules/agenix.nix
 
     modules/boot.nix
@@ -170,13 +168,6 @@
   security.acme = {
     acceptTerms = true;
     defaults.email = "diorcheats.vali@gmail.com";
-  };
-
-  services.toxvpn = {
-    auto_add_peers = [
-      "12f5850c8664f0ad12047ac2347ef8b1bfb8d26cd37a795c4f7c590cd6b87e7c6b96ca1c9df5" # router
-    ];
-    localip = "10.0.127.3";
   };
 
   swapDevices = [{

@@ -188,10 +188,6 @@ in {
       libarchive
       # X CVT
       libxcvt
-      # LLM
-      llama-cpp
-      # LLM Studio, frontend wrapper around llama-cpp
-      lmstudio
       # Wormhole
       magic-wormhole
       # COM Reader
@@ -247,9 +243,13 @@ in {
       steamcmd
       # Syncplay, allows for syncing video streams with others via mpv
       syncplay
+      # System stats
       sysstat
+      # TeamSpeak
+      teamspeak3
+      # tmux, screen replacement
       tmux
-      # Remote shell service
+      # Remote shell service over tmux
       tmate
       # Tree, helps create file structures in text form
       tree
@@ -328,8 +328,8 @@ in {
       device = "/dev/disk/by-uuid/BE68F85A68F812BF";
       fsType = "ntfs";
     };
-    # Mount X:\
-    "/mnt/x" = {
+    # Mount D:\
+    "/mnt/d" = {
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";
       fsType = "ntfs";
       options = [ "x-systemd.automount" ];
@@ -397,12 +397,13 @@ in {
     ];
   };
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    config.cudaSupport = false;
-    config.rocmSupport = true;
-    hostPlatform = "x86_64-linux";
+  nixpkgs.config = {
+    allowUnfree = true;
+    cudaSupport = false;
+    rocmSupport = false;
   };
+
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   programs = {
     corectrl.enable = true;
