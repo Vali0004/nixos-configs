@@ -91,7 +91,7 @@
       '';
     };
     hostName = "router";
-    interfaces.ens6 = {
+    interfaces.eth0 = {
       ipv4.addresses = [{
         address = "74.208.44.130";
         prefixLength = 24;
@@ -106,6 +106,7 @@
       "1.0.0.1"
     ];
     useDHCP = false;
+    usePredictableInterfaceNames = false;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
