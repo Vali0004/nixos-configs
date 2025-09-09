@@ -44,7 +44,7 @@
     defaultGateway = "74.208.44.1";
     defaultGateway6 = {
       address = "fe80::1";
-      interface = "ens6";
+      interface = "eth0";
     };
     firewall = {
       allowedTCPPorts = [

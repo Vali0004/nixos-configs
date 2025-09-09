@@ -24,9 +24,8 @@ let services = {
   flood: { type: "good", url: "https://flood.fuckk.lol/", responding: false },
   prowlarr: { type: "good", url: "https://prowlarr.fuckk.lol/", responding: false },
   radarr: { type: "good", url: "https://radarr.fuckk.lol/", responding: false },
-  sonarr: { type: "good", url: "https://sonarr.fuckk.lol/", responding: false }
-  //,
-  //r34: { type: "good", url: "http://r34.fuckk.lol/", responding: false }
+  sonarr: { type: "good", url: "https://sonarr.fuckk.lol/", responding: false },
+  r34: { type: "good", url: "https://r34.fuckk.lol/", responding: false },
 };
 
 async function checkService(name, svc) {
@@ -63,7 +62,6 @@ async function checkService(name, svc) {
 
 // Schedule job every 30s
 cron.schedule("*/30 * * * * *", async () => {
-  console.log("Running service checks...");
   for (const [name, svc] of Object.entries(services)) {
     await checkService(name, svc);
   }
@@ -76,8 +74,10 @@ app.get("/api", async (req, res) => {
       ...statusTypes[svc.type],
       assignedType: svc.type,
       responding: svc.responding,
+    url: svc.url,
     };
   }
+
   res.json(results);
 });
 
@@ -86,11 +86,13 @@ app.get("/api/:service", (req, res) => {
   if (!services[service]) {
     return res.status(404).json({ error: "Service not found" });
   }
+
   const svc = services[service];
   res.json({
     ...statusTypes[svc.type],
     assignedType: svc.type,
     responding: svc.responding,
+    url: svc.url,
   });
 });
 
@@ -111,8 +113,10 @@ app.post("/api/:service", (req, res) => {
     services[service] = { type: "down", url: "", responding: false };
   }
 
-  if (type) services[service].type = type;
-  if (url) services[service].url = url;
+  if (type)
+    services[service].type = type;
+  if (url)
+    services[service].url = url;
 
   res.json({ updated: true, service: services[service] });
 });
@@ -145,11 +149,12 @@ app.post("/refresh", async (req, res) => {
   for (const [name, svc] of Object.entries(services)) {
     await checkService(name, svc);
   }
+
   res.json({ refreshed: true, services });
 });
 
 app.get("/", (req, res) => {
-  res.type("text/plain").send("Nothing to see here yet!");
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.listen(port, () => {
