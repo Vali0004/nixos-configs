@@ -182,8 +182,6 @@ in {
       nemo-with-extensions
       # Fixes BeamNG
       nss
-      # Linux GPU Configuration And Monitoring Tool
-      lact
       # cli unrar
       libarchive
       # X CVT
@@ -434,6 +432,7 @@ in {
   services = {
     cloudflare-warp.enable = true;
     flatpak.enable = true;
+    # Linux GPU Configuration And Monitoring Tool
     lact.enable = true;
     udev.extraRules = ''
       # Keyboard

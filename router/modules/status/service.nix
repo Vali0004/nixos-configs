@@ -17,15 +17,8 @@ in {
     enableACME = true;
     forceSSL = true;
     listen = [
-      {
-        addr = "127.0.0.1";
-        port = 80;
-      }
-      {
-        addr = "127.0.0.1";
-        port = 443;
-        ssl = true;
-      }
+      { addr = "127.0.0.1"; port = 80; }
+      { addr = "127.0.0.1"; port = 443; ssl = true; }
     ];
     locations."/" = {
       proxyPass = "http://127.0.0.1:3000";

@@ -20,9 +20,6 @@
       ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.127.0.0/24 -o ens6 -p udp -j MASQUERADE
 
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 25 -j DNAT --to-destination 10.127.0.3:25
-      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 80 -j DNAT --to-destination 10.127.0.3:80
-      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 443 -j DNAT --to-destination 10.127.0.3:443
-
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 465 -j DNAT --to-destination 10.127.0.3:465
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 587 -j DNAT --to-destination 10.127.0.3:587
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p tcp --dport 993 -j DNAT --to-destination 10.127.0.3:993
@@ -34,9 +31,6 @@
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 4101 -j DNAT --to-destination 10.127.0.3:4101
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i ens6 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
-
-      ${pkgs.iptables}/bin/iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j RETURN
-      ${pkgs.iptables}/bin/iptables -t nat -I OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j RETURN
 
       ${pkgs.iptables}/bin/iptables -A FORWARD -s 10.127.0.0/24 -p tcp -j ACCEPT
       ${pkgs.iptables}/bin/iptables -A FORWARD -d 10.127.0.0/24 -p tcp -j ACCEPT
@@ -51,8 +45,6 @@
       ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.127.0.0/24 -o ens6 -j MASQUERADE
 
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 25 -j DNAT --to-destination 10.127.0.3:25
-      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 80 -j DNAT --to-destination 10.127.0.3:80
-      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 443 -j DNAT --to-destination 10.127.0.3:443
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 465 -j DNAT --to-destination 10.127.0.3:465
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 587 -j DNAT --to-destination 10.127.0.3:587
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p tcp --dport 993 -j DNAT --to-destination 10.127.0.3:993
@@ -64,9 +56,6 @@
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 4101 -j DNAT --to-destination 10.127.0.3:4101
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i ens6 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
-
-      ${pkgs.iptables}/bin/iptables -t nat -D OUTPUT -p tcp -d 127.0.0.1 --dport 80 -j RETURN
-      ${pkgs.iptables}/bin/iptables -t nat -D OUTPUT -p tcp -d 127.0.0.1 --dport 443 -j RETURN
 
       ${pkgs.iptables}/bin/iptables -D FORWARD -s 10.127.0.0/24 -p tcp -j ACCEPT
       ${pkgs.iptables}/bin/iptables -D FORWARD -d 10.127.0.0/24 -p tcp -j ACCEPT
