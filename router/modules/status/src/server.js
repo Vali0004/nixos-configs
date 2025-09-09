@@ -2,6 +2,8 @@ const AbortController = require("abort-controller");
 const express = require("express");
 const fetch = require("node-fetch").default;
 const cron = require("node-cron");
+const fs = require("fs");
+const path = require("path");
 const app = express();
 
 const port = process.env.PORT || 3003;
@@ -10,7 +12,7 @@ const secret = process.env.SECRET || "dummy";
 app.use(express.json());
 
 let statusTypes = {
-  good: { online: true, message: "good" },
+  good: { online: true, message: "online" },
   down: { online: false, message: "down" },
   maintenance: { online: false, message: "maintenance" },
 };
@@ -60,6 +62,14 @@ async function checkService(name, svc) {
   }
 }
 
+function getStatusSummary() {
+  const total = Object.keys(services).length;
+  const online = Object.values(services).filter(
+    s => statusTypes[s.type].online
+  ).length;
+  return { online, total };
+}
+
 // Schedule job every 30s
 cron.schedule("*/30 * * * * *", async () => {
   for (const [name, svc] of Object.entries(services)) {
@@ -74,11 +84,14 @@ app.get("/api", async (req, res) => {
       ...statusTypes[svc.type],
       assignedType: svc.type,
       responding: svc.responding,
-    url: svc.url,
+      url: svc.url,
     };
   }
 
-  res.json(results);
+  res.json({
+    services: results,
+    summary: getStatusSummary()
+  });
 });
 
 app.get("/api/:service", (req, res) => {
@@ -153,8 +166,21 @@ app.post("/refresh", async (req, res) => {
   res.json({ refreshed: true, services });
 });
 
+const indexHtml = fs.readFileSync(path.join(__dirname, "index.html"), "utf8");
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
+  const { online, total } = getStatusSummary();
+  let desc;
+  if (online === total) {
+    desc = "All services online";
+  } else {
+    desc = `${online}/${total} services online`;
+  }
+  const rendered = indexHtml.replace(
+    /<meta property="og:description" content="[^"]*">/,
+    `<meta property="og:description" content="Current uptime and system metrics. ${desc}">`
+  );
+
+  res.send(rendered);
 });
 
 app.listen(port, () => {

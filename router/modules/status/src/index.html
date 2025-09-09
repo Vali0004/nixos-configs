@@ -76,6 +76,7 @@
 <body>
   <div class="container">
     <h1>fuckk.lol</h1>
+    <h2 id="summary"></h2>
     <table id="statusTable">
       <thead>
         <tr>
@@ -98,7 +99,15 @@
         const data = await res.json();
         const tbody = document.querySelector("#statusTable tbody");
         tbody.innerHTML = "";
-        for (const [name, svc] of Object.entries(data)) {
+
+        const summary = document.getElementById("summary");
+        if (data.summary.online === data.summary.total) {
+          summary.textContent = `All services online`;
+        } else {
+          summary.textContent = `${data.summary.online}/${data.summary.total} services online`;
+        }
+
+        for (const [name, svc] of Object.entries(data.services)) {
           const tr = document.createElement("tr");
           const statusClass = svc.assignedType;
           tr.innerHTML = `
