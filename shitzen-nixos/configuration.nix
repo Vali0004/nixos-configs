@@ -68,7 +68,6 @@
     redis
     screen
     sg3_utils
-    sqlite-interactive
     smartmontools
     tmux
     tshark
@@ -101,7 +100,7 @@
     enableRedistributableFirmware = true;
   };
 
-  minecraft.prod = true;
+  minecraft.prod = false;
 
   networking = {
     defaultGateway = "10.0.0.1";

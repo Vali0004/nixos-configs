@@ -3,6 +3,10 @@
 let
   mkJob = import ./../../modules/mkprometheus.nix;
 in {
+  networking.firewall.allowedTCPPorts = [
+    9100 # Node Exporter
+  ];
+
   services.prometheus = {
     enable = true;
     enableReload = true;
@@ -47,6 +51,7 @@ in {
         enabledCollectors = [
           "cpu"
           "filesystem"
+          "interrupts"
           "loadavg"
           "meminfo"
           "netstat"
