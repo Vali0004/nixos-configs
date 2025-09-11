@@ -8,7 +8,7 @@
   services.jellyfin = {
     enable = true;
     openFirewall = true;
-    user = "vali";
+    group = "rtorrent";
   };
 
   services.nginx.virtualHosts."ohh.fuckk.lol" = {

@@ -9,6 +9,7 @@
     modules/wireguard.nix
 
     services/nginx.nix
+    services/prometheus.nix
     services/toxvpn.nix
   ];
 
@@ -59,6 +60,7 @@
         4100 # MC Server
         6667 # IRC
         6697 # IRCS
+        9100 # Node Exporter
       ];
       allowedUDPPorts = [
         3700 # Peer port
