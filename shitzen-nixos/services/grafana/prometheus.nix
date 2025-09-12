@@ -42,6 +42,10 @@ in {
         port = 9710;
       })
       (mkJob {
+        name = "rtorrent";
+        port = 9135;
+      })
+      (mkJob {
         name = "smartctl";
         port = 9633;
       })

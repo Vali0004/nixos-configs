@@ -1,0 +1,37 @@
+{ config, pkgs, ... }:
+
+let
+  rtorrent-exporter = pkgs.callPackage ./package.nix {};
+  addr = "0.0.0.0";
+  port = 9135;
+  timeout = "10s";
+in {
+  systemd.services.rtorrent-exporter = {
+    enable = true;
+    description = "RuTorrent Prometheus Exporter";
+    serviceConfig = {
+      ExecStart = "${rtorrent-exporter}/bin/rtorrent-exporter --logtostderr=true --rtorrent.addr http://127.0.0.1:90/RPC2 --telemetry.addr ${addr}:${toString port} --telemetry.timeout ${timeout} --config /var/lib/rtorrent/.rtorrent-exporter.yaml";
+      Restart = "always";
+      SupplementaryGroups = [ config.services.rtorrent.group ];
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
+  # Cursed hack to allow for rtorrent-exporter to connect to the socket
+  services.nginx = {
+    enable = true;
+    virtualHosts."rtorrent.local" = {
+      enableACME = false;
+      forceSSL = false;
+      listen = [{ addr = "127.0.0.1"; port = 90; }];
+      locations."/RPC2".extraConfig = ''
+        include ${config.services.nginx.package}/conf/scgi_params;
+        scgi_pass unix:${config.services.rtorrent.rpcSocket};
+      '';
+    };
+  };
+
+  # This is needed for nginx to be able to read other processes
+  # directories in `/run`. Else it will fail with (13: Permission denied)
+  systemd.services.nginx.serviceConfig.ProtectHome = false;
+}
