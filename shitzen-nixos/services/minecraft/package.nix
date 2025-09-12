@@ -2,90 +2,131 @@
 
 let
   modpack = pkgs.callPackage ./modpack {};
+
+  mcPort = 4100;
+  mcUdpPort = 4101;
+
+  whitelist = {
+    FaintLove     = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
+    Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
+    SOLOZ01       = "a02466ff-a71b-4540-8838-1b850cd4f659";
+    kashikoi22    = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
+    ICYPhoenix7   = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
+  };
+
+  jvmOpts = lib.concatStringsSep " " [
+    # JVM Heap Allocation
+    "-Xms1G"
+    "-Xmx6G"
+    # Base JVM Options
+    "-XX:+UnlockExperimentalVMOptions"
+    "-XX:+UnlockDiagnosticVMOptions"
+    "-XX:+AlwaysActAsServerClassMachine"
+    "-XX:+AlwaysPreTouch"
+    "-XX:+DisableExplicitGC"
+    "-XX:NmethodSweepActivity=1"
+    "-XX:ReservedCodeCacheSize=400M"
+    "-XX:NonNMethodCodeHeapSize=12M"
+    "-XX:ProfiledCodeHeapSize=194M"
+    "-XX:NonProfiledCodeHeapSize=194M"
+    "-XX:-DontCompileHugeMethods"
+    "-XX:MaxNodeLimit=240000"
+    "-XX:NodeLimitFudgeFactor=8000"
+    "-XX:+UseVectorCmov"
+    "-XX:+PerfDisableSharedMem"
+    "-XX:+UseFastUnorderedTimeStamps"
+    "-XX:+UseCriticalJavaThreadPriority"
+    "-XX:ThreadPriorityPolicy=1"
+    # G1GC Options
+    "-XX:+UseG1GC"
+    "-XX:MaxGCPauseMillis=130"
+    "-XX:G1NewSizePercent=28"
+    "-XX:G1HeapRegionSize=16M"
+    "-XX:G1ReservePercent=20"
+    "-XX:G1MixedGCCountTarget=3"
+    "-XX:InitiatingHeapOccupancyPercent=10"
+    "-XX:G1MixedGCLiveThresholdPercent=90"
+    "-XX:G1RSetUpdatingPauseTimePercent=0"
+    "-XX:SurvivorRatio=32"
+    "-XX:MaxTenuringThreshold=1"
+    "-XX:G1SATBBufferEnqueueingThresholdPercent=30"
+    "-XX:G1ConcMarkStepDurationMillis=5.0"
+    "-XX:AllocatePrefetchStyle=3"
+  ];
 in {
   options.minecraft.prod = lib.mkOption {
     type = lib.types.bool;
+    default = false;
+    description = "Enable the production Minecraft server.";
   };
 
-  config.networking.firewall.allowedTCPPorts = [
-    4100
+  config = lib.mkMerge [
+    {
+      networking.firewall.allowedTCPPorts = [ mcPort ];
+      networking.firewall.allowedUDPPorts = [ mcUdpPort ];
+
+      services.minecraft-servers = {
+        enable = true;
+        dataDir = "/var/lib/minecraft";
+        eula = true;
+
+        managementSystem.systemd-socket.enable = true;
+        managementSystem.tmux.enable = false;
+      };
+
+      nixpkgs.overlays = [
+        (self: super: {
+          jre_headless = pkgs.graalvmPackages.graalvm-ce;
+        })
+      ];
+
+      services.nginx.virtualHosts."mc.fuckk.lol" = {
+        enableACME = true;
+        forceSSL = true;
+        locations."/" = {
+          extraConfig = "return 404;";
+        };
+      };
+    }
+
+    (lib.mkIf config.minecraft.prod {
+      services.minecraft-servers.servers.prod = {
+        enable = true;
+        autoStart = true;
+
+        files = {
+          config = "${modpack}/config";
+          defaultconfigs = "${modpack}/defaultconfigs";
+          modernfix = "${modpack}/modernfix";
+          mods = "${modpack}/mods";
+        };
+
+        inherit whitelist jvmOpts;
+        package = pkgs.fabricServers.fabric-1_20_1;
+
+        serverProperties = {
+          admin-slot = true;
+          allow-cheats = true;
+          difficulty = "hard";
+          enable-command-block = true;
+          enforce-whitelist = true;
+          entity-broadcast-range-percentage = 60;
+          gamemode = "survival";
+          max-tick-time = 60000;
+          query-port = mcPort;
+          server-ip = "0.0.0.0";
+          server-name = "InertiaCraft";
+          server-port = mcPort;
+          simulation-distance = 6;
+          sync-chunk-writes = false;
+          texturepack-required = true;
+          require-resource-pack = false;
+          tick-distance = 8;
+          use-alternate-keepalive = true;
+          view-distance = 24;
+          white-list = true;
+        };
+      };
+    })
   ];
-
-  config.networking.firewall.allowedUDPPorts = [
-    4101
-  ];
-
-  config.services.minecraft-servers = {
-    dataDir = "/var/lib/minecraft";
-    enable = true;
-    eula = true;
-
-    managementSystem.systemd-socket.enable = true;
-    managementSystem.tmux.enable = false;
-
-    servers.prod = lib.mkIf config.minecraft.prod {
-      autoStart = true;
-      enable = true;
-      files = {
-        "config" = "${modpack}/config";
-        "configureddefaults" = "${modpack}/configureddefaults";
-        "mods" = "${modpack}/mods";
-        "resourcepacks" = "${modpack}/resourcepacks";
-        "shaderpacks" = "${modpack}/shaderpacks";
-        "options.txt" = "${modpack}/options.txt";
-      };
-
-      whitelist = {
-        FaintLove = "992e0e99-b817-4f58-96d9-96d4ec8c7d54";
-        Killer4563782 = "f159afef-984e-4343-bd7b-d94cfff96c63";
-        SOLOZ01 = "a02466ff-a71b-4540-8838-1b850cd4f659";
-        kashikoi22 = "ab33a905-7f5f-4bfa-b0b3-852b8b0ac2e3";
-        ICYPhoenix7 = "eb738909-f0a3-46ca-abdc-1d6669d97d34";
-      };
-
-      jvmOpts = "-Xms4G -Xmx4G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1";
-      package = pkgs.fabricServers.fabric-1_20_1;
-
-      serverProperties = {
-        admin-slot = true;
-        allow-cheats = true;
-        compression-algorithm = "snappy";
-        compression-threshold = 0;
-        difficulty = "hard";
-        enable-command-block = true;
-        enable-rcon = false;
-        enforce-whitelist = true;
-        entity-broadcast-range-percentage = 60;
-        force-gamemode = false;
-        gamemode = "survival";
-        hardcore = false;
-        max-threads = 0;
-        max-tick-time = 60000;
-        network-compression-threshold = 512;
-        query-port = 4100;
-        server-ip = "0.0.0.0";
-        server-name = "InertiaCraft";
-        server-port = 4100;
-        simulation-distance = 8;
-        sync-chunk-writes = true;
-        texturepack-required = true;
-        require-resource-pack = false;
-        resource-pack = "https://fuckk.lol/minecraft/resource-pack.zip";
-        tick-distance = 12;
-        use-alternate-keepalive = true;
-        view-distance = 32;
-        white-list = true;
-      };
-    };
-  };
-
-  config.services.nginx.virtualHosts."mc.fuckk.lol" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      extraConfig = ''
-        return 404;
-      '';
-    };
-  };
 }
