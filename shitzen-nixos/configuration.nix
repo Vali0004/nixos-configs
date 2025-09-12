@@ -25,7 +25,10 @@
     services/arr/prowlarr.nix
     services/arr/radarr.nix
     services/arr/sonarr.nix
+
     services/minecraft/package.nix
+
+    services/rtorrent-exporter/service.nix
 
     services/anubis.nix
     services/hydra.nix
