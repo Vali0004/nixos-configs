@@ -4,7 +4,7 @@ let
   rtorrent-exporter = pkgs.callPackage ./package.nix {};
   addr = "0.0.0.0";
   port = 9135;
-  timeout = "10s";
+  timeout = "60s";
 in {
   systemd.services.rtorrent-exporter = {
     enable = true;
