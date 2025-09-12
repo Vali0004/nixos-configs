@@ -12691,8 +12691,8 @@
       {
         "current": {
           "tags": [],
-          "text": "monitoring",
-          "value": "monitoring"
+          "text": "localhost",
+          "value": "localhost"
         },
         "datasource": "prometheus",
         "definition": "",

@@ -62,12 +62,14 @@
     magic-wormhole
     mediainfo
     ncdu
+    net-tools
     openssl
     pciutils
     powerjoular
     redis
     screen
     sg3_utils
+    sqlite-interactive
     smartmontools
     tmux
     tshark
@@ -104,6 +106,10 @@
 
   networking = {
     defaultGateway = "10.0.0.1";
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "eth0";
+    };
     firewall = {
       # SSH is also open, and so is rtorrent
       allowedTCPPorts = [
@@ -143,8 +149,8 @@
       ];
     };
     nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
+      "75.75.75.75"
+      "75.75.76.76"
     ];
     networkmanager.dns = "none";
     resolvconf.useLocalResolver = false;
@@ -171,7 +177,7 @@
 
   swapDevices = [{
     device = "/var/lib/swap1";
-    size = 2048;
+    size = 8196;
   }];
 
   system.stateVersion = "25.11";

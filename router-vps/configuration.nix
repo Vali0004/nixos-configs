@@ -60,7 +60,7 @@
         4100 # MC Server
         6667 # IRC
         6697 # IRCS
-        9100 # Node Exporter
+        9101 # Node Exporter
       ];
       allowedUDPPorts = [
         3700 # Peer port
@@ -97,10 +97,6 @@
       ipv4.addresses = [{
         address = "74.208.44.130";
         prefixLength = 24;
-      }];
-      ipv6.addresses = [{
-        address = "2607:f1c0:f088:e200::1";
-        prefixLength = 80;
       }];
     };
     nameservers = [

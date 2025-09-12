@@ -26,28 +26,29 @@ in {
     provision = {
       enable = true;
       dashboards.settings.providers = [{
-        name = "generic";
+        name = "default";
         disableDeletion = true;
         options = {
-          path = ./dashboards/generic;
+          path = ./dashboards/default;
           foldersFromFilesStructure = true;
         };
       }];
-      datasources.settings.datasources = [
-        {
-          name = "prometheus";
-          type = "prometheus";
-          url = "http://localhost:3400/prometheus";
-          isDefault = true;
-          editable = false;
-        }
-      ];
+      datasources.settings.datasources = [{
+        name = "prometheus";
+        type = "prometheus";
+        url = "http://localhost:3400/prometheus";
+        isDefault = true;
+        editable = false;
+      }];
     };
     settings = {
-      analytics.reporting_enabled = false;
+      analytics = {
+        reporting_enabled = false;
+        feedback_links_enabled = false;
+      };
       smtp = {
         enabled = true;
-        from_address = "vali@fuckk.lol";
+        from_address = "admin@fuckk.lol";
       };
       server = {
         http_addr = "127.0.0.1";
