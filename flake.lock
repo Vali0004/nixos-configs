@@ -305,7 +305,8 @@
         "agenix": "agenix",
         "nix-minecraft": "nix-minecraft",
         "nixos-mailserver": "nixos-mailserver",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_4",
+        "zfs-utils": "zfs-utils"
       }
     },
     "systems": {
@@ -335,6 +336,42 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "utils": {
+      "locked": {
+        "lastModified": 1667077288,
+        "narHash": "sha256-bdC8sFNDpT0HK74u9fUkpbf1MEzVYJ+ka7NXCdgBoaA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "6ee9ebb6b1ee695d2cacc4faa053a7b9baa76817",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "zfs-utils": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1749567009,
+        "narHash": "sha256-0/ZJzayg+mmwznOLz+iX9lQlIK68IwCkKIy8jJFaeCQ=",
+        "owner": "cleverca22",
+        "repo": "zfs-utils",
+        "rev": "a29d1b8c6dd64a7a58555abc6810e7f9ee6d185a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cleverca22",
+        "repo": "zfs-utils",
         "type": "github"
       }
     }
