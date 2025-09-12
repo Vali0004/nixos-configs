@@ -14,14 +14,18 @@ in {
       (mkJob {
         appendNameToMetrics = true;
         name = "grafana";
-        port = 3003;
+        port = config.services.grafana.settings.server.http_port;
       })
       (mkJob {
         appendNameToMetrics = true;
         name = "prometheus";
-        port = 3400;
+        port = config.services.prometheus.port;
       })
       (mkJob {
+        targets = [
+          "shitzen-nixos"
+          "router-vps"
+        ];
         name = "node";
         port = 9100;
       })
@@ -33,12 +37,10 @@ in {
         name = "wireguard";
         interval = "1s";
         port = 9586;
-        label = "";
       })
       (mkJob {
         name = "zfs";
         port = 9134;
-        label = "";
       })
     ];
     exporters = {
@@ -73,7 +75,7 @@ in {
       };
       zfs.enable = true;
     };
-    listenAddress = "127.0.0.1";
+    listenAddress = "${config.networking.hostName}";
     port = 3400;
     webExternalUrl = "https://monitoring.fuckk.lol/prometheus/";
   };

@@ -12691,8 +12691,8 @@
       {
         "current": {
           "tags": [],
-          "text": "localhost",
-          "value": "localhost"
+          "text": "shitzen-nixos",
+          "value": "shitzen-nixos"
         },
         "datasource": "prometheus",
         "definition": "",

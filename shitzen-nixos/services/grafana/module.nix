@@ -1,7 +1,6 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  port = 3003;
   oauthProxyConfig = ''
     # Bypass OAuth2 if request comes from localhost
     satisfy any;
@@ -36,7 +35,7 @@ in {
       datasources.settings.datasources = [{
         name = "prometheus";
         type = "prometheus";
-        url = "http://localhost:3400/prometheus";
+        url = "http://${config.networking.hostName}:3400/prometheus";
         isDefault = true;
         editable = false;
       }];
@@ -51,8 +50,8 @@ in {
         from_address = "admin@fuckk.lol";
       };
       server = {
-        http_addr = "127.0.0.1";
-        http_port = port;
+        http_addr = "0.0.0.0";
+        http_port = 3003;
         domain = "monitoring.fuckk.lol";
         root_url = "https://monitoring.fuckk.lol/grafana/";
         serve_from_sub_path = true;
@@ -69,13 +68,13 @@ in {
       locations = {
         "/grafana/" = {
           extraConfig = oauthProxyConfig;
-          proxyPass = "http://127.0.0.1:${toString port}";
+          proxyPass = "http://${config.networking.hostName}:${toString config.services.grafana.settings.server.http_port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
         "/prometheus/" = {
           extraConfig = oauthProxyConfig;
-          proxyPass = "http://127.0.0.1:3400";
+          proxyPass = "http://${config.networking.hostName}:${toString config.services.prometheus.port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
