@@ -92,7 +92,7 @@
         ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate INVALID -j DROP
       '';
     };
-    hostName = "router";
+    hostName = "router-vps";
     interfaces.eth0 = {
       ipv4.addresses = [{
         address = "74.208.44.130";

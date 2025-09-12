@@ -28,7 +28,8 @@
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 4100 -j DNAT --to-destination 10.127.0.3:4100
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 6667 -j DNAT --to-destination 10.127.0.3:6667
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 6697 -j DNAT --to-destination 10.127.0.3:6697
-      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9100 -j DNAT --to-destination 10.127.0.3:9100
+      # Forward node exporter for shitzen as 9101 (comes from 9100)
+      ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9101 -j DNAT --to-destination 10.127.0.3:9100
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p udp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p udp --dport 4101 -j DNAT --to-destination 10.127.0.3:4101
       ${pkgs.iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990
@@ -54,7 +55,7 @@
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 4100 -j DNAT --to-destination 10.127.0.3:4100
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 6667 -j DNAT --to-destination 10.127.0.3:6667
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 6697 -j DNAT --to-destination 10.127.0.3:6697
-      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 9100 -j DNAT --to-destination 10.127.0.3:9100
+      ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 9101 -j DNAT --to-destination 10.127.0.3:9100
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p udp --dport 3700 -j DNAT --to-destination 10.127.0.3:3700
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p udp --dport 4101 -j DNAT --to-destination 10.127.0.3:4101
       ${pkgs.iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p udp --dport 6990 -j DNAT --to-destination 10.127.0.3:6990

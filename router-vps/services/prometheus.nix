@@ -1,10 +1,10 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkJob = import ./../../modules/mkprometheus.nix;
+  mkJob = import ./../modules/mkprometheus.nix;
 in {
   networking.firewall.allowedTCPPorts = [
-    9101 # Node Exporter
+    9100 # Node Exporter
   ];
 
   services.prometheus = {
@@ -18,7 +18,7 @@ in {
       })
       (mkJob {
         name = "node";
-        port = 9101;
+        port = 9100;
       })
     ];
     exporters.node = {
@@ -32,7 +32,7 @@ in {
         "netstat"
         "systemd"
       ];
-      port = 9101;
+      port = 9100;
     };
     listenAddress = "127.0.0.1";
     port = 3400;
