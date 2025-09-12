@@ -88,6 +88,7 @@ in {
           "meminfo"
           "netstat"
           "systemd"
+          "systemd.enable-start-time-metrics"
           "zfs"
         ];
       };
