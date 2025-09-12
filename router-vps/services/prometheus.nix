@@ -15,6 +15,7 @@
       "meminfo"
       "netstat"
       "systemd"
+      "systemd.enable-start-time-metrics"
     ];
     port = 9100;
   };
