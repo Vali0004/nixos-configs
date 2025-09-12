@@ -107,7 +107,7 @@
     enableRedistributableFirmware = true;
   };
 
-  minecraft.prod = false;
+  minecraft.prod = true;
 
   networking = {
     defaultGateway = "10.0.0.1";

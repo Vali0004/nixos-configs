@@ -25,14 +25,12 @@ stdenv.mkDerivation {
   src = requireFile {
     name = "better-mc.tar.gz";
     url = "file:///better-mc.tar.gz";
-    sha256 = "sha256-47CrbT6jDQ+kLVqa9pQuyVSiX4QW8Ukw2FoTBAfHZ5Q=";
+    sha256 = "sha256-dme1k0cTO+AHevZLZj8Rx77uPEOd3fUefBe171ZfrXI=";
   };
 
   installPhase = ''
     mkdir -p $out
-    cp -r config configureddefaults mods resourcepacks shaderpacks $out
-    cp options.txt $out
-
+    cp -r config defaultconfigs modernfix mods $out
     cp -r ${overridesTree}/* $out/
   '';
 

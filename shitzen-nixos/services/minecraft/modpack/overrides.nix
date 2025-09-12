@@ -2,56 +2,56 @@
 , writeText }:
 
 {
-  ## Admin mods
-  #"mods/better-fabric-console.jar" = fetchurl rec {
-  #  hash = "sha256-Fl+bKhUwBk7Q/P3Z43g6vP51b4SyCt9QYRn631J1IOc=";
-  #  pname = "better-fabric-console";
-  #  url = "https://cdn.modrinth.com/data/Y8o1j1Sf/versions/8YUqYot0/${pname}-${version}.jar";
-  #  version = "mc1.20.1-1.1.6";
-  #};
-  #"mods/minimotd.jar" = fetchurl rec {
-  #  hash = "sha256-Uup1gNeM4/5OhDqkH0f5JGs7gI65w98zOvfIoqCiKZ8=";
-  #  pname = "minimotd";
-  #  url = "https://cdn.modrinth.com/data/16vhQOQN/versions/SxaMhttu/${pname}-${version}.jar";
-  #  version = "fabric-mc1.20.1-2.0.13";
-  #};
-  #"config/MiniMOTD/main.conf" = writeText "to_include.hocon" ''
-  #  icon-enabled=true
-  #  motd-enabled=true
-  #  motds=[
-  #      {
-  #          icon="image"
-  #          line1="<dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</#dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray> <i><b><gradient:#6600CB:#67A7FC>Iner</gradient><gradient:#67A7FC:#AB31BA>tiaC</#gradient><gradient:#AB31BA:#9143D9>raft</gradient></b></i> <dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</#gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray>"
-  #          line2="<gray>fuckk</gray><dark_gray>.</dark_gray><gray>lol</gray>               Welcome!          <dark_gray>.gg/</dark_gray><gray>d9ccwK2TNk</gray>"
-  #      }
-  #  ]
-  #  player-count-settings {
-  #      disable-player-list-hover=false
-  #      hide-player-count=false
-  #      max-players-enabled=true
-  #      max-players=20
-  #  }
-  #'';
-  #"config/MiniMOTD/icons/image.png" = fetchurl rec {
-  #  hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
-  #  url = "https://fuckk.lol/minecraft/image.png";
-  #};
-  #"mods/TAB.jar" = fetchurl rec {
-  #  hash = "sha256-NQW7jJ6pxbuALgPu0WxPHYNLOe2byw38hRQgMTeKY9E=";
-  #  pname = "TAB";
-  #  url = "https://cdn.modrinth.com/data/gG7VFbG0/versions/Jo9YGxAl/${pname}%20${version}.jar";
-  #  version = "v5.0.7";
-  #};
+  # Admin mods
+  "mods/better-fabric-console.jar" = fetchurl rec {
+    hash = "sha256-Fl+bKhUwBk7Q/P3Z43g6vP51b4SyCt9QYRn631J1IOc=";
+    pname = "better-fabric-console";
+    url = "https://cdn.modrinth.com/data/Y8o1j1Sf/versions/8YUqYot0/${pname}-${version}.jar";
+    version = "mc1.20.1-1.1.6";
+  };
+  "mods/minimotd.jar" = fetchurl rec {
+    hash = "sha256-Uup1gNeM4/5OhDqkH0f5JGs7gI65w98zOvfIoqCiKZ8=";
+    pname = "minimotd";
+    url = "https://cdn.modrinth.com/data/16vhQOQN/versions/SxaMhttu/${pname}-${version}.jar";
+    version = "fabric-mc1.20.1-2.0.13";
+  };
+  "config/MiniMOTD/main.conf" = writeText "to_include.hocon" ''
+    icon-enabled=true
+    motd-enabled=true
+    motds=[
+        {
+            icon="image"
+            line1="<dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray> <i><b><gradient:#6600CB:#67A7FC>Iner</gradient><gradient:#67A7FC:#AB31BA>tiaC</gradient><gradient:#AB31BA:#9143D9>raft</gradient></b></i> <dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray><gray>*</gray><dark_gray>-</dark_gray>"
+            line2="<gray>fuckk</gray><dark_gray>.</dark_gray><gray>lol</gray>               Welcome!          <dark_gray>.gg/</dark_gray><gray>d9ccwK2TNk</gray>"
+        }
+    ]
+    player-count-settings {
+        disable-player-list-hover=false
+        hide-player-count=false
+        max-players-enabled=true
+        max-players=20
+    }
+  '';
+  "config/MiniMOTD/icons/image.png" = fetchurl rec {
+    hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
+    url = "https://fuckk.lol/minecraft/image.png";
+  };
+  "mods/TAB.jar" = fetchurl rec {
+    hash = "sha256-mBasPD/mFrAMB4OT05waaDReLkU9ufkANJr2AhIZlAs=";
+    pname = "TAB";
+    url = "https://cdn.modrinth.com/data/gG7VFbG0/versions/Jo9YGxAl/${pname}%20${version}.jar";
+    version = "v5.0.7";
+  };
   ## We can mostly leave it to our jar to do it for us, as Nix will just overlay it when using yml anyways :)
-  #"config/tab/config.yml" = builtins.toFile "yml" (builtins.toJSON {
-#
-  #});
-  #"mods/styled-chat.jar" = fetchurl rec {
-  #  hash = "sha256-wwHy+JVqDR9tRqcyS1eNde3O3ULdrotDBk33QdAM9Bg=";
-  #  pname = "styled-chat";
-  #  url = "https://cdn.modrinth.com/data/doqSKB0e/versions/pwr7uYCH/${pname}-${version}.jar";
-  #  version = "2.2.4%2B1.20.1";
-  #};
+  "config/tab/config.yml" = builtins.toFile "yml" (builtins.toJSON {
+
+  });
+  "mods/styled-chat.jar" = fetchurl rec {
+    hash = "sha256-wwHy+JVqDR9tRqcyS1eNde3O3ULdrotDBk33QdAM9Bg=";
+    pname = "styled-chat";
+    url = "https://cdn.modrinth.com/data/doqSKB0e/versions/pwr7uYCH/${pname}-${version}.jar";
+    version = "2.2.4%2B1.20.1";
+  };
   "config/styled-chat.json" = builtins.toFile "json" (builtins.toJSON {
       CONFIG_VERSION_DONT_TOUCH_THIS = 3;
       text_formatting = {
@@ -175,50 +175,50 @@
         }
       ];
   });
-  #"mods/player-roles.jar" = fetchurl rec {
-  #  hash = "sha256-6ddXVpg4TQZ6z0gyDi7R0CuIaTxkZsu7ZIj0yIXHVUM=";
-  #  pname = "player-roles";
-  #  url = "https://cdn.modrinth.com/data/Rt1mrUHm/versions/Y5EAJzwR/${pname}-${version}.jar";
-  #  version = "1.6.6";
-  #};
-  #"config/roles.json" = builtins.toFile "json" (builtins.toJSON {
-  #  admin = {
-  #    level = 100;
-  #    overrides = {
-  #      command_feedback = true;
-  #      commands = {
-  #        ".*" = "allow";
-  #      };
-  #      name_decoration = {
-  #        style = ["red" "bold"];
-  #        suffix = {
-  #          text = "*";
-  #        };
-  #      };
-  #      permission_level = 4;
-  #    };
-  #  };
-  #  spectator = {
-  #    level = 10;
-  #    overrides = {
-  #      commands = {
-  #        "gamemode (spectator|adventure)" = "allow";
-  #      };
-  #    };
-  #  };
-  #  mute = {
-  #    level = 1;
-  #    overrides = {
-  #      mute = true;
-  #    };
-  #  };
-  #  everyone = {
-  #    overrides = {
-  #      commands = {
-  #        ".*" = "deny";
-  #        help = "allow";
-  #      };
-  #    };
-  #  };
-  #});
+  "mods/player-roles.jar" = fetchurl rec {
+    hash = "sha256-6ddXVpg4TQZ6z0gyDi7R0CuIaTxkZsu7ZIj0yIXHVUM=";
+    pname = "player-roles";
+    url = "https://cdn.modrinth.com/data/Rt1mrUHm/versions/ulkivKzy/${pname}-${version}.jar";
+    version = "1.6.6";
+  };
+  "config/roles.json" = builtins.toFile "json" (builtins.toJSON {
+    admin = {
+      level = 100;
+      overrides = {
+        command_feedback = true;
+        commands = {
+          ".*" = "allow";
+        };
+        name_decoration = {
+          style = ["red" "bold"];
+          suffix = {
+            text = "*";
+          };
+        };
+        permission_level = 4;
+      };
+    };
+    spectator = {
+      level = 10;
+      overrides = {
+        commands = {
+          "gamemode (spectator|adventure)" = "allow";
+        };
+      };
+    };
+    mute = {
+      level = 1;
+      overrides = {
+        mute = true;
+      };
+    };
+    everyone = {
+      overrides = {
+        commands = {
+          ".*" = "deny";
+          help = "allow";
+        };
+      };
+    };
+  });
 }
