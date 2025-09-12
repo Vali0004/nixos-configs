@@ -361,6 +361,12 @@ in {
   };
 
   networking = {
+    extraHosts = ''
+      10.0.0.124 chromeshit
+      10.0.0.201 nixos-amd
+      10.0.0.244 shitzen-nixos
+      74.208.44.130 router-vps
+    '';
     hostName = "nixos-amd";
     useDHCP = false;
     useNetworkd = true;
@@ -381,7 +387,7 @@ in {
       "flakes"
     ];
     substituters = [
-      #"https://hydra.fuckk.lol"
+      "https://hydra.fuckk.lol"
       "https://cache.nixos.org/"
     ];
     trusted-users = [
@@ -390,7 +396,7 @@ in {
       "@wheel"
     ];
     trusted-public-keys = [
-      #"hydra.fuckk.lol:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
+      "hydra.fuckk.lol:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
