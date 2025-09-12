@@ -4,8 +4,12 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
     agenix.url = "github:ryantm/agenix";
+    zfs-utils = {
+      url = "github:cleverca22/zfs-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, self }:
+  outputs = { nixpkgs, agenix, nix-minecraft, nixos-mailserver, zfs-utils, self }:
   {
     colmena = {
       meta = {
@@ -14,6 +18,9 @@
           overlays = [
             (self: super: {
               agenix = agenix.packages.x86_64-linux.default;
+            })
+            (self: super: {
+              zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
             })
             nix-minecraft.overlay
             (self: super: {

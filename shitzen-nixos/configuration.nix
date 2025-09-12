@@ -15,6 +15,7 @@
     #modules/dockge.nix
     modules/nvidia.nix
     modules/wireguard.nix
+    modules/zfs-patch.nix
     modules/zfs.nix
 
     services/grafana/module.nix
@@ -44,6 +45,7 @@
     services/samba.nix
 
     services/toxvpn.nix
+    services/zdb.nix
     services/zipline.nix
   ];
 

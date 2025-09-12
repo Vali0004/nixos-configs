@@ -12,6 +12,10 @@ in {
     enableReload = true;
     scrapeConfigs = [
       (mkJob {
+        name = "fragmentation";
+        port = 9103;
+      })
+      (mkJob {
         appendNameToMetrics = true;
         name = "grafana";
         port = config.services.grafana.settings.server.http_port;
@@ -22,6 +26,10 @@ in {
         port = config.services.prometheus.port;
       })
       (mkJob {
+        name = "prowlarr";
+        port = 9708;
+      })
+      (mkJob {
         targets = [
           "shitzen-nixos"
           "router-vps"
@@ -30,8 +38,16 @@ in {
         port = 9100;
       })
       (mkJob {
+        name = "radarr";
+        port = 9710;
+      })
+      (mkJob {
         name = "smartctl";
         port = 9633;
+      })
+      (mkJob {
+        name = "sonarr";
+        port = 9709;
       })
       (mkJob {
         name = "wireguard";
@@ -44,10 +60,24 @@ in {
       })
     ];
     exporters = {
-      # TODO: Needs API keys in a file
-      #exportarr-sonarr.enable = true;
-      #exportarr-radarr.enable = true;
-      #exportarr-prowlarr.enable = true;
+      exportarr-prowlarr = {
+        apiKeyFile = config.age.secrets.prowlarr-api.path;
+        enable = true;
+        port = 9708;
+        url = "https://prowlarr.fuckk.lol";
+      };
+      exportarr-sonarr = {
+        apiKeyFile = config.age.secrets.sonarr-api.path;
+        enable = true;
+        port = 9709;
+        url = "https://sonarr.fuckk.lol";
+      };
+      exportarr-radarr = {
+        apiKeyFile = config.age.secrets.radarr-api.path;
+        enable = true;
+        port = 9710;
+        url = "https://radarr.fuckk.lol";
+      };
       node = {
         enable = true;
         enabledCollectors = [
@@ -58,6 +88,7 @@ in {
           "meminfo"
           "netstat"
           "systemd"
+          "zfs"
         ];
       };
       smartctl = {

@@ -17,7 +17,10 @@ in {
   "oauth2-proxy.age".publicKeys = keys;
   "pnp-api.age".publicKeys = keys;
   "pnp-loader.age".publicKeys = keys;
+  "prowlarr-api.age".publicKeys = keys;
   "pterodactyl.age".publicKeys = keys;
+  "radarr-api.age".publicKeys = keys;
+  "sonarr-api.age".publicKeys = keys;
   "vali-mail-fuckk-lol.age".publicKeys = keys;
   "zipline.age".publicKeys = keys;
   "wireguard.age".publicKeys = keys;
