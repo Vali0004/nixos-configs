@@ -47,6 +47,21 @@
       owner = "nginx";
       group = "nginx";
     };
+    prowlarr-api = {
+      file = ./../../secrets/prowlarr-api.age;
+      owner = "root";
+      group = "root";
+    };
+    radarr-api = {
+      file = ./../../secrets/radarr-api.age;
+      owner = "root";
+      group = "root";
+    };
+    sonarr-api = {
+      file = ./../../secrets/sonarr-api.age;
+      owner = "root";
+      group = "root";
+    };
     vali-mail-fuckk-lol = {
       file = ./../../secrets/vali-mail-fuckk-lol.age;
       owner = "nginx";
