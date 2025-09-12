@@ -18,18 +18,6 @@
           overlays = [
             (self: super: {
               agenix = agenix.packages.x86_64-linux.default;
-            })
-            (self: super: {
-              zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
-            })
-            nix-minecraft.overlay
-            (self: super: {
-              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de").packages.x86_64-linux.default;
-            })
-            (self: super: {
-              mailserver = nixos-mailserver.x86_64-linux.default;
-            })
-            (self: super: {
               forgeServers = {
                 forge-1_7_10-10_13_4 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
                 forge-1_16_5-36_2_26 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };
@@ -40,7 +28,11 @@
                 forge-1_20_1-47_3_0 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.20.1-47.3.0"; };
                 forge-1_20_1-47_4_0 = self.callPackage ./pkgs/nix-minecraft/forge { version = "1.20.1-47.4.0"; };
               };
+              mailserver = nixos-mailserver.x86_64-linux.default;
+              toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de").packages.x86_64-linux.default;
+              zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
             })
+            nix-minecraft.overlay
           ];
         };
       };
