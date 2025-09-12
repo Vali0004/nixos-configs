@@ -89,15 +89,15 @@ in {
       #   Groups = connection_* dht_* peer_* rpc_* storage_* thread_* tracker_* torrent_*
       print = (cat, "Logging to ", (cfg.logfile))
       log.open_file = "log", (cfg.logfile)
-      ## All the logging
+      ## Basic logging
       log.add_output = "info", "log"
-      log.add_output = "debug", "log"
+      #log.add_output = "debug", "log"
       log.add_output = "error", "log"
-      log.add_output = "dht_debug", "log"
+      #log.add_output = "dht_debug", "log"
       log.add_output = "dht_manager", "log"
       log.add_output = "dht_router", "log"
-      log.add_output = "peer_debug", "log"
-      log.add_output = "tracker_debug", "log"
+      #log.add_output = "peer_debug", "log"
+      #log.add_output = "tracker_debug", "log"
 
       # XMLRPC
       scgi_local = (cfg.rpcsock)
