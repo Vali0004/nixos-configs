@@ -19,15 +19,17 @@ let statusTypes = {
 
 let services = {
   main: { type: "good", url: "https://fuckk.lol/", responding: false },
-  grafana: { type: "good", url: "https://monitoring.fuckk.lol/grafana/login", responding: false },
-  prometheus: { type: "good", url: "http://monitoring.fuckk.lol/prometheus/targets", responding: false },
-  jellyfin: { type: "good", url: "https://ohh.fuckk.lol/web", responding: false },
-  zipline: { type: "good", url: "https://holy.fuckk.lol/dashboard", responding: false },
   flood: { type: "good", url: "https://flood.fuckk.lol/", responding: false },
+  grafana: { type: "good", url: "https://monitoring.fuckk.lol/grafana/login", responding: false },
+  hydra: { type: "good", url: "https://hydra.fuckk.lol/", responding: false },
+  jellyfin: { type: "good", url: "https://ohh.fuckk.lol/web", responding: false },
+  mail: { type: "good", url: "https://mail.fuckk.lol/", responding: false },
+  prometheus: { type: "good", url: "https://monitoring.fuckk.lol/prometheus/targets", responding: false },
   prowlarr: { type: "good", url: "https://prowlarr.fuckk.lol/", responding: false },
   radarr: { type: "good", url: "https://radarr.fuckk.lol/", responding: false },
   sonarr: { type: "good", url: "https://sonarr.fuckk.lol/", responding: false },
-  r34: { type: "good", url: "https://r34.fuckk.lol/", responding: false },
+  zipline: { type: "good", url: "https://holy.fuckk.lol/dashboard", responding: false },
+  xenon: { type: "good", url: "https://xenonemu.dev/", responding: false },
 };
 
 async function checkService(name, svc) {

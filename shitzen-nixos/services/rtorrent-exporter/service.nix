@@ -10,7 +10,7 @@ in {
     enable = true;
     description = "RuTorrent Prometheus Exporter";
     serviceConfig = {
-      ExecStart = "${rtorrent-exporter}/bin/rtorrent-exporter --logtostderr=true --rtorrent.addr http://127.0.0.1:90/RPC2 --telemetry.addr ${addr}:${toString port} --telemetry.timeout ${timeout} --config /var/lib/rtorrent/.rtorrent-exporter.yaml";
+      ExecStart = "${rtorrent-exporter}/bin/rtorrent-exporter --logtostderr=true --rtorrent.addr http://192.168.100.2:90/RPC2 --telemetry.addr ${addr}:${toString port} --telemetry.timeout ${timeout} --config /var/lib/rtorrent/.rtorrent-exporter.yaml";
       Restart = "always";
       SupplementaryGroups = [ config.services.rtorrent.group ];
     };
@@ -23,7 +23,7 @@ in {
     virtualHosts."rtorrent.local" = {
       enableACME = false;
       forceSSL = false;
-      listen = [{ addr = "127.0.0.1"; port = 90; }];
+      listen = [{ addr = "192.168.100.2"; port = 90; }];
       locations."/RPC2".extraConfig = ''
         include ${config.services.nginx.package}/conf/scgi_params;
         scgi_pass unix:${config.services.rtorrent.rpcSocket};

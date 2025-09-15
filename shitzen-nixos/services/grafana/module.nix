@@ -68,13 +68,13 @@ in {
       locations = {
         "/grafana/" = {
           extraConfig = oauthProxyConfig;
-          proxyPass = "http://${config.networking.hostName}:${toString config.services.grafana.settings.server.http_port}";
+          proxyPass = "http://192.168.100.1:${toString config.services.grafana.settings.server.http_port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };
         "/prometheus/" = {
           extraConfig = oauthProxyConfig;
-          proxyPass = "http://${config.networking.hostName}:${toString config.services.prometheus.port}";
+          proxyPass = "http://192.168.100.1:${toString config.services.prometheus.port}";
           proxyWebsockets = true;
           recommendedProxySettings = true;
         };

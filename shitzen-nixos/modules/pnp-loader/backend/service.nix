@@ -19,6 +19,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = mkProxy {
+      ip = "192.168.100.1";
       port = 3200;
       webSockets = true;
       config = ''
@@ -34,6 +35,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = mkProxy {
+      ip = "192.168.100.1";
       port = 3200;
       webSockets = true;
       config = ''

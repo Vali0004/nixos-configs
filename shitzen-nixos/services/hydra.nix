@@ -36,8 +36,8 @@ in {
     '';
 
     upstreams = {
-      anubis.servers."127.0.0.1:3002" = { };
-      hydra-server.servers."127.0.0.1:3001" = { };
+      anubis.servers."192.168.100.1:3002" = { };
+      hydra-server.servers."192.168.100.1:3001" = { };
     };
 
     virtualHosts."hydra.fuckk.lol" = {
@@ -100,7 +100,7 @@ in {
       </githubstatus>
     '';
     hydraURL = "https://hydra.fuckk.lol";
-    listenHost = "localhost";
+    listenHost = "0.0.0.0";
     maxServers = 10;
     maxSpareServers = 2;
     minSpareServers = 1;
