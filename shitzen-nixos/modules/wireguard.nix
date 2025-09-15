@@ -18,18 +18,13 @@
         }];
       };
     };
-    nat = {
-      enable = false;
-      externalInterface = "eth0";
-      internalInterfaces = [ "wg0" ];
-    };
-    interfaces.wg0.useDHCP = false;
   };
 
   networking.wg-quick = {
     interfaces = {
       wg0 = {
-        address = [ "10.127.0.3/32" ];
+        address = [ "10.127.0.3/24" ];
+        mtu = 1380;
         privateKeyFile = config.age.secrets.wireguard.path;
         peers = [{
           allowedIPs = [ "0.0.0.0/0" ];

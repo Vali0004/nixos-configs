@@ -81,5 +81,14 @@
     };
   };
 
+  services.nginx.virtualHosts."xenonemu.dev" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      alias = "/data/services/xenonemu/";
+      index = "index.html";
+    };
+  };
+
   systemd.services.nginx.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 }

@@ -16,8 +16,8 @@ let
 
   jvmOpts = lib.concatStringsSep " " [
     # JVM Heap Allocation
-    "-Xms1G"
-    "-Xmx6G"
+    "-Xms4G"
+    "-Xmx4G"
     # Base JVM Options
     "-XX:+UnlockExperimentalVMOptions"
     "-XX:+UnlockDiagnosticVMOptions"

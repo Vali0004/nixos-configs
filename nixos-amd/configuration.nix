@@ -376,6 +376,10 @@ in {
       networks = {
         "${secrets.wifi.ssid}" = {
           psk = secrets.wifi.password;
+          extraConfig = ''
+            freq_list=5180 5200 5220 5240
+            bssid=6e:7f:f0:19:82:70
+          '';
         };
       };
     };
@@ -513,7 +517,10 @@ in {
         networkConfig = {
           Address = [ "10.0.0.201/24" ];
           Gateway = "10.0.0.1";
-          DNS = [ "75.75.75.75" "75.75.76.76" ];
+          DNS = [
+            "75.75.75.75"
+            "75.75.76.76"
+          ];
           IPv6AcceptRA = true;
         };
       };
