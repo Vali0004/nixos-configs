@@ -111,7 +111,7 @@ in {
       };
       zfs.enable = true;
     };
-    listenAddress = "${config.networking.hostName}";
+    listenAddress = "0.0.0.0";
     port = 3400;
     webExternalUrl = "https://monitoring.fuckk.lol/prometheus/";
   };

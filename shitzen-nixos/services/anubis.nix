@@ -4,7 +4,7 @@
   services.anubis = {
     instances."hydra-server" = {
       settings = {
-        TARGET = "http://127.0.0.1:3001";
+        TARGET = "http://192.168.100.1:3001";
         BIND = ":3002";
         BIND_NETWORK = "tcp";
         METRICS_BIND = ":9001";

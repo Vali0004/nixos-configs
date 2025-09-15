@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, modulesPath, ... }:
 
-{
+let
+  mkNamespace = import ./modules/mknamespace.nix;
+in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/cors-anywhere/service.nix
@@ -51,6 +53,20 @@
     services/zdb.nix
     services/zipline.nix
   ];
+
+  systemd.services.dovecot.serviceConfig = mkNamespace {};
+
+  systemd.services.inspircd.serviceConfig = mkNamespace {};
+
+  systemd.services.matrix-synapse.serviceConfig = mkNamespace {};
+
+  systemd.services.nginx.serviceConfig = mkNamespace {};
+  systemd.services.oauth2-proxy.serviceConfig = mkNamespace {};
+
+  systemd.services.postfix.serviceConfig = mkNamespace {};
+  systemd.services.rspamd.serviceConfig = mkNamespace {};
+
+  systemd.services.rtorrent.serviceConfig = mkNamespace {};
 
   environment.systemPackages = with pkgs; [
     btop
@@ -116,15 +132,16 @@
       interface = "eth0";
     };
     firewall = {
-      # SSH is also open, and so is rtorrent
+      # SMTP is open
+      # SMTPS is open
+      # SMTP (with STARTTLS) is open
+      # IMAPS is open
+      # SPOP3 is open
+      # SSH is open
+      # rtorrent is open
       allowedTCPPorts = [
-        25 # SMTP
         80 # HTTP
         443 # HTTPS
-        465 # SMTPS
-        587 # SMTP (with STARTTLS)
-        993 # IMAPS
-        995 # SPOP3
         5201 # iperf
       ];
       allowedUDPPorts = [
@@ -140,11 +157,11 @@
       }];
       ipv6.addresses = [
         {
-          address = "2601:406:8401:5310::31d";
+          address = "2601:406:8400:42A3::31d";
           prefixLength = 128;
         }
         {
-          address = "2601:406:8401:5310:6d99:9295:f86a:98eb";
+          address = "2601:406:8400:42A3:6d99:9295:f86a:98eb";
           prefixLength = 64;
         }
         {

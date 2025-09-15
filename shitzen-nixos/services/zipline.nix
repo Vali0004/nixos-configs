@@ -20,6 +20,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = mkProxy {
+      ip = "192.168.100.1";
       port = 3000;
       webSockets = true;
     };

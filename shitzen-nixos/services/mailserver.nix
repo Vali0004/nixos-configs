@@ -35,6 +35,7 @@
       };
     };
     mailDirectory = "/var/vmail";
+    openFirewall = true;
     stateVersion = 3;
     systemDomain = "fuckk.lol";
     systemName = "nixos-mailserver";
@@ -107,7 +108,7 @@
     configureNginx = false;
     hostName = "mail.fuckk.lol";
     extraConfig = ''
-      $config['default_host'] = 'ssl://10.127.0.3';
+      $config['default_host'] = 'ssl://192.168.100.2';
       $config['default_port'] = 993;
       $config['smtp_host'] = "mail.fuckk.lol";
       $config['smtp_port'] = 587;

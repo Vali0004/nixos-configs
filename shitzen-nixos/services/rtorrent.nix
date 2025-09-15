@@ -121,6 +121,7 @@ in {
 
   services.flood = {
     enable = true;
+    host = "0.0.0.0";
     port = web-port;
     openFirewall = true;
     extraArgs = [
@@ -132,12 +133,23 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = {
-      proxyPass = "http://127.0.0.1:${toString web-port}";
+      proxyPass = "http://192.168.100.1:${toString web-port}";
       proxyWebsockets = true;
     };
   };
 
-  systemd.services.flood.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
-  systemd.services.flood.serviceConfig.ReadWritePaths = [ "/data/private/Media" "/data/services/downloads" ];
+  systemd.services.flood.serviceConfig = {
+    Environment = "HOME=/var/lib/flood";
+    Group = "rtorrent";
+    ReadWritePaths = [
+      "/var/lib/flood"
+      "/data/private/Media"
+      "/data/services/downloads"
+    ];
+    SupplementaryGroups = [
+      config.services.rtorrent.group
+    ];
+    User = "rtorrent";
+  };
   systemd.services.rtorrent.serviceConfig.SystemCallFilter = "@system-service fchownat";
 }
