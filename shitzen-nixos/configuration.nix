@@ -60,6 +60,8 @@ in {
 
   systemd.services.matrix-synapse.serviceConfig = mkNamespace {};
 
+  systemd.services.minecraft-server-prod.serviceConfig = mkNamespace {};
+
   systemd.services.nginx.serviceConfig = mkNamespace {};
   systemd.services.oauth2-proxy.serviceConfig = mkNamespace {};
 
