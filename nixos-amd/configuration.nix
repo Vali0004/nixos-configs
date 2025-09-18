@@ -206,6 +206,8 @@ in {
       nodejs_24
       obs-studio
       openssl
+      # Hex Editor
+      okteta
       # nix-gaming pkg, slightly modified
       osu-gatari
       osu-stable
