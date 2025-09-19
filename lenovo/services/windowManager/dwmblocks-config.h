@@ -7,7 +7,7 @@ static const Block blocks[] = {
 	{ "^c#94e2d5^", "/etc/dwm/blocks/scripts/playerctl", 5,  4 },
 	{ "^c#f38ba8^", "printf '^d^ %s%%' \"$(pamixer --get-volume)\"", 0,  5 },
 	{ "^c#94e2d5^", "/etc/dwm/blocks/scripts/battery", 5,  6 },
-	{ "^c#cdd6f4^", "date '^c#cdd6f4^+%b %d (%a) %I:%M:%S %p^d^'", 1,  7 },
+	{ "^c#cdd6f4^", "date '+%b %d (%a) %I:%M:%S %p'", 1,  7 },
 };
 
 //sets delimiter between status commands. NULL character ('\0') means no delimiter.
