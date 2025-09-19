@@ -13,14 +13,14 @@ let
   });
   dwm = with pkgs; pkgs.dwm.overrideAttrs(old: {
     buildInputs = old.buildInputs ++ [ yajl ];
-    src = /home/vali/development/dwm;
-    #pkgs.fetchFromGitHub {
-    #  owner = "Vali0004";
-    #  repo = "dwm-fork";
-    #  rev = "4cf2d04feade6e1a139b4fbe2ea16fa6d9f7290a";
-    #  hash = "sha256-DjSz01jwFCXfxVxz0ITDn8vEuxE1rAjTiAvdcVGtMyc=";
-    #};
+    src = pkgs.fetchFromGitHub {
+      owner = "Vali0004";
+      repo = "dwm-fork";
+      rev = "75b7d975af7c306fb67259adf6b2085f5c51e887";
+      hash = lib.fakeHash;
+    };
   });
+  dwmblocks-battery = pkgs.callPackage ./dwmblocks-battery.nix {};
   dwmblocks-cpu = pkgs.callPackage ./dwmblocks-cpu.nix {};
   dwmblocks-memory = pkgs.callPackage ./dwmblocks-memory.nix {};
   dwmblocks-network = pkgs.callPackage ./dwmblocks-network.nix {};
@@ -38,6 +38,7 @@ let
   xwinwrap_gif = pkgs.callPackage ./../xwinwrap.nix { inherit xwinwrap; };
 in {
   environment.etc = {
+    "dwm/blocks/scripts/battery".source = dwmblocks-battery;
     "dwm/blocks/scripts/cpu".source = dwmblocks-cpu;
     "dwm/blocks/scripts/memory".source = dwmblocks-memory;
     "dwm/blocks/scripts/network".source = dwmblocks-network;

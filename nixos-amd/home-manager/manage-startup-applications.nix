@@ -5,7 +5,7 @@
 writeScriptBin "manage-startup-applications" ''
   # Launch apps
   discord &
-  Cider &
+  cider-2 &
 
   discord_done=0
   cider_done=0
