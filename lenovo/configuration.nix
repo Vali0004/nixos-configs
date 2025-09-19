@@ -3,19 +3,6 @@
 let
   secrets = import ./network-secrets.nix { inherit lib; };
 
-  dmenu = ((pkgs.dmenu.override {
-    conf = ./dmenu-config.h;
-  }).overrideAttrs (old: {
-    buildInputs = (old.buildInputs or []) ++ [ pkgs.libspng ];
-    src = /home/vali/development/dmenu;
-    postPatch = ''
-      ${old.postPatch or ""}
-      sed -ri -e 's!\<(dmenu|dmenu_path_desktop|stest)\>!'"$out/bin"'/&!g' dmenu_run_desktop
-      sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
-    '';
-  }));
-  clipmenu-paste = pkgs.callPackage ./clipmenu-paste.nix { inherit dmenu; };
-
   agenix = builtins.getFlake "github:ryantm/agenix";
   agenixPkgs = agenix.outputs.packages.x86_64-linux;
 in {
@@ -54,15 +41,10 @@ in {
       alsa-utils
       # Better TOP
       btop
-      # Cache system
-      cachix
       # Remote deploy
       colmena
-      # Cider - Alternative Apple Music Client
-      cider-2
       # Clipboard Manager
       clipmenu
-      clipmenu-paste
       # cURL
       curl
       # XDG Mime/Desktop utils
@@ -108,8 +90,6 @@ in {
       kdePackages.ark
       # MS Paint
       kdePackages.kolourpaint
-      # CAD software
-      kicad
       # File browser
       nemo-with-extensions
       # cli unrar
