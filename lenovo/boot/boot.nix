@@ -5,6 +5,7 @@
     ./kernel.nix
     ./loader.nix
     ./rescue.nix
+    ./zfs-patch.nix
     ./zfs.nix
   ];
 
