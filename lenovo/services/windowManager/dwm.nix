@@ -13,12 +13,13 @@ let
   });
   dwm = with pkgs; pkgs.dwm.overrideAttrs(old: {
     buildInputs = old.buildInputs ++ [ yajl ];
-    src = pkgs.fetchFromGitHub {
-      owner = "Vali0004";
-      repo = "dwm-fork";
-      rev = "75b7d975af7c306fb67259adf6b2085f5c51e887";
-      hash = "sha256-GrxFLc/2l2J0d9bZsuNtWyTD23YV8Bfuvn2mtSTLOnM=";
-    };
+    src = /home/vali/dwm-fork;
+    #pkgs.fetchFromGitHub {
+    #  owner = "Vali0004";
+    #  repo = "dwm-fork";
+    #  rev = "75b7d975af7c306fb67259adf6b2085f5c51e887";
+    #  hash = "sha256-GrxFLc/2l2J0d9bZsuNtWyTD23YV8Bfuvn2mtSTLOnM=";
+    #};
   });
   dwmblocks-battery = pkgs.callPackage ./dwmblocks-battery.nix {};
   dwmblocks-cpu = pkgs.callPackage ./dwmblocks-cpu.nix {};
