@@ -48,6 +48,8 @@ in {
       colmena
       # Clipboard Manager
       clipmenu
+      # CPU Power Saving Settings
+      cpupower-gui
       # cURL
       curl
       # XDG Mime/Desktop utils
@@ -135,6 +137,8 @@ in {
       tree
       # Unzip
       unzip
+      # Battery status
+      upower
       # USB Utils
       usbutils
       # Editor
@@ -296,6 +300,8 @@ in {
   };
 
   services = {
+    # CPU Power Saving Settings (daemon)
+    cpupower-gui.enable = true;
     # Linux GPU Configuration And Monitoring Tool
     lact.enable = true;
     udev.extraRules = ''
@@ -304,6 +310,8 @@ in {
       # RedOctane
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel"
     '';
+    # upower daemon
+    upower.enable = true;
     xserver = {
       enable = true;
       # Disable XTerm
