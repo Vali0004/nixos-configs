@@ -3,6 +3,8 @@
 {
   networking.firewall.allowedTCPPorts = [
     9100 # Node Exporter
+    9134 # ZFS Exporter
+    9633 # SmartCTL Exporter
   ];
 
   services.prometheus.exporters = {

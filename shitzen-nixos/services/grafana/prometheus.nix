@@ -33,6 +33,7 @@ in {
         targets = [
           "shitzen-nixos"
           "router-vps"
+          "lenovo"
         ];
         name = "node";
         port = 9100;
@@ -46,6 +47,10 @@ in {
         port = 9135;
       })
       (mkJob {
+        targets = [
+          "shitzen-nixos"
+          "lenovo"
+        ];
         name = "smartctl";
         port = 9633;
       })
@@ -59,6 +64,10 @@ in {
         port = 9586;
       })
       (mkJob {
+        targets = [
+          "shitzen-nixos"
+          "lenovo"
+        ];
         name = "zfs";
         port = 9134;
       })

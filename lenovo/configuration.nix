@@ -173,7 +173,6 @@ in {
 
     variables = {
       CM_LAUNCHER = "rofi";
-      G_MESSAGES_DEBUG = "all";
     };
   };
 
