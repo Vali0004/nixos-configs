@@ -34,7 +34,7 @@ writeShellScript "battery-status" ''
       icon=""
     fi
 
-    output="^c#94e2d5^$icon"^d^ $percent%"
+    output="^c#94e2d5^$icon^d^ $percent%"
   fi
 
   # Trim and truncate trailing space
