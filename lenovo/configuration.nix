@@ -344,7 +344,7 @@ in {
   time.timeZone = "America/Detroit";
 
   users = let
-    my_keys = ./../ssh_keys_personal.nix;
+    my_keys = import ./../ssh_keys_personal.nix;
   in {
     defaultUserShell = pkgs.zsh;
     users.root.openssh.authorizedKeys.keys = my_keys;
