@@ -5,7 +5,7 @@
     ./kernel.nix
     ./loader.nix
     ./rescue.nix
-    #./zfs-patch.nix
+    ./zfs-patch.nix
     ./zfs.nix
   ];
 
@@ -26,7 +26,7 @@
     kernelModules = [ ];
     systemd.enable = true;
     # Silence Stage 1
-    verbose = false;
+    verbose = true;
   };
 
   boot.tmp.useTmpfs = false;

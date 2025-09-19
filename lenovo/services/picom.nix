@@ -20,13 +20,11 @@
         "class_g = 'Google-chrome'"
         "class_g = 'discord'"
         "class_g = 'flameshot'"
-        "class_g = 'steam_app_727'"
       ];
       corner-radius = 10.0;
       detect-rounded-corners = true;
       rounded-corners-exclude = [
         "class_g = 'dwm'"
-        "class_g = 'dmenu'"
       ];
       fading = true;
       fade-in-step = 1;
