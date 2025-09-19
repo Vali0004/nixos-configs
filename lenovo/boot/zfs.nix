@@ -2,12 +2,8 @@
 
 {
   environment.systemPackages = [ pkgs.zfs ];
-  boot = {
-    supportedFilesystems = [ "zfs" ];
-    # Do not hang my fucking system, please?
-    zfs.forceImportRoot = false;
-    zfs.forceImportAll = false;
-  };
+
+  boot.supportedFilesystems = [ "zfs" ];
 
   services.zfs.autoSnapshot.enable = true;
 

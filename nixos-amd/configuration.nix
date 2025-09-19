@@ -583,6 +583,6 @@ in {
     };
     enable = true;
     extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
-    xdgOpenUsePortal = true;
+    xdgOpenUsePortal = false;
   };
 }
