@@ -23,7 +23,6 @@ in {
     services/picom.nix
     services/pipewire.nix
     services/prometheus.nix
-    services/zdb.nix
   ];
 
   console.useXkbConfig = true;
