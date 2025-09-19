@@ -19,10 +19,11 @@ in {
     services/bluetooth.nix
     services/displayManager.nix
     services/easyEffects.nix
+    services/openssh.nix
     services/picom.nix
     services/pipewire.nix
     services/prometheus.nix
-    #services/zdb.nix
+    services/zdb.nix
   ];
 
   console.useXkbConfig = true;
@@ -177,17 +178,14 @@ in {
     "/" = {
       device = "zpool/root";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
     "/home" = {
       device = "zpool/home";
       fsType = "zfs";
-      options = [ "zfsutil" "nofail" ];
     };
     "/nix" = {
       device = "zpool/nix";
       fsType = "zfs";
-      options = [ "zfsutil" ];
     };
     # Mount the EFI Partition
     "/boot" = {
@@ -316,12 +314,6 @@ in {
     };
   };
 
-  # 8GiB Swap
-  swapDevices = [{
-    device = "/var/lib/swap1";
-    size = 8192;
-  }];
-
   systemd.network = {
     enable = true;
     networks."30-wlan0" = {
@@ -351,8 +343,11 @@ in {
 
   time.timeZone = "America/Detroit";
 
-  users = {
+  users = let
+    my_keys = ./../ssh_keys_personal.nix;
+  in {
     defaultUserShell = pkgs.zsh;
+    users.root.openssh.authorizedKeys.keys = my_keys;
     users.vali = {
       isNormalUser = true;
       extraGroups = [
@@ -363,8 +358,9 @@ in {
         "wheel"
         "video"
       ];
-      useDefaultShell = false;
+      openssh.authorizedKeys.keys = my_keys;
       shell = pkgs.zsh;
+      useDefaultShell = false;
     };
   };
 

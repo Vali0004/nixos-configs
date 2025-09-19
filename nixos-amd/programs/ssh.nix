@@ -24,5 +24,9 @@
     Host chromeshit
       Hostname chromeshit
       User root
+
+    Host lenovo
+      Hostname lenovo
+      User root
   '';
 }
