@@ -2,12 +2,13 @@
 , writeShellScript
 , upower
 , coreutils
+, gawk
 , gnugrep
 , gnused
 }:
 
 writeShellScript "battery-status" ''
-  PATH=${lib.makeBinPath [ upower coreutils gnugrep gnused ]}
+  PATH=${lib.makeBinPath [ upower coreutils gawk gnugrep gnused ]}
 
   # Get battery device (first BAT* found by upower)
   battery=$(upower -e | grep 'BAT' | head -n1)
@@ -33,7 +34,7 @@ writeShellScript "battery-status" ''
       icon=""
     fi
 
-    output="$percent% $icon"
+    output="^c#94e2d5^$icon"^d^ $percent%"
   fi
 
   # Trim and truncate trailing space
@@ -44,5 +45,5 @@ writeShellScript "battery-status" ''
     output_trimmed="$output"
   fi
 
-  printf "^d^ %s" "$output_trimmed"
+  printf "%s" "$output_trimmed"
 ''
