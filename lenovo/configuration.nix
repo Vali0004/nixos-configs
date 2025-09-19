@@ -294,8 +294,6 @@ in {
   };
 
   services = {
-    cloudflare-warp.enable = true;
-    flatpak.enable = true;
     # Linux GPU Configuration And Monitoring Tool
     lact.enable = true;
     udev.extraRules = ''
