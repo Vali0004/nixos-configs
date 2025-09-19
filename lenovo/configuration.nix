@@ -224,6 +224,7 @@ in {
 
   networking = {
     extraHosts = ''
+      10.0.0.31 lenovo
       10.0.0.124 chromeshit
       10.0.0.201 nixos-amd
       10.0.0.244 shitzen-nixos
@@ -231,9 +232,10 @@ in {
     '';
     hostId = "2632ac4c";
     hostName = "lenovo";
+    networkmanager.enable = false;
     useDHCP = false;
     useNetworkd = true;
-    networkmanager.enable = false;
+    usePredictableInterfaceNames = false;
     wireless = {
       enable = true;
       networks = {
