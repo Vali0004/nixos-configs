@@ -8,4 +8,5 @@ result
 **/result
 **/**/result
 **/**/**/result
+**/network-secrets-private.nix
 network-secrets-private.nix

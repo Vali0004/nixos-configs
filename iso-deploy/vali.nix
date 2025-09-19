@@ -2,7 +2,19 @@
 
 # Building:
 # nix-build '<nixpkgs/nixos/release.nix>' --arg configuration ./vali.nix -A iso_minimal.x86_64-linux
-{
+let
+  zfsCompatibleKernelPackages = lib.filterAttrs (
+    name: kernelPackages:
+    (builtins.match "linux_[0-9]+_[0-9]+" name) != null
+    && (builtins.tryEval kernelPackages).success
+    && (!kernelPackages.${config.boot.zfs.package.kernelModuleAttribute}.meta.broken)
+  ) pkgs.linuxKernel.packages;
+  latestKernelPackage = lib.last (
+    lib.sort (a: b: (lib.versionOlder a.kernel.version b.kernel.version)) (
+      builtins.attrValues zfsCompatibleKernelPackages
+    )
+  );
+in {
   environment.systemPackages = with pkgs; [
     curl
     dnsutils
@@ -12,22 +24,33 @@
     openssl
     strace
     wget
+    zfs
   ];
 
+  specialisation.latest_kernel.configuration.boot.supportedFilesystems.zfs = lib.mkForce true;
+
+  boot.kernelPackages = lib.mkForce latestKernelPackage;
+
+  boot.supportedFilesystems = [ "zfs" ];
+
   networking = {
-    defaultGateway = "10.0.0.1";
     hostName = "nixos-recovery";
-    interfaces.eth0 = {
-      ipv4.addresses = [{
-        address = "10.0.0.244";
-        prefixLength = 24;
-      }];
-    };
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
+    hostId = "2632ac4c";
     useDHCP = false;
+    useNetworkd = true;
+    networkmanager.enable = lib.mkForce false;
+    wireless = {
+      enable = true;
+      networks = {
+        "Fera_mac" = {
+          psk = "M072181c";
+          extraConfig = ''
+            freq_list=5180 5200 5220 5240
+            bssid=6e:7f:f0:19:82:70
+          '';
+        };
+      };
+    };
     usePredictableInterfaceNames = false;
   };
 
@@ -57,6 +80,23 @@
     device = "/var/lib/swap1";
     size = 1024; # in mb
   }];
+
+  systemd.network = {
+    enable = true;
+    networks."30-wlan0" = {
+      matchConfig.Name = "wlan0";
+      linkConfig.RequiredForOnline = "carrier";
+      networkConfig = {
+        Address = [ "10.0.0.31/24" ];
+        Gateway = "10.0.0.1";
+        DNS = [
+          "75.75.75.75"
+          "75.75.76.76"
+        ];
+        IPv6AcceptRA = true;
+      };
+    };
+  };
 
   users.users = let
     common_keys = [
