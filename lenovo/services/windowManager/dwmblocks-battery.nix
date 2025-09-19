@@ -2,11 +2,12 @@
 , writeShellScript
 , upower
 , coreutils
+, gnugrep
 , gnused
 }:
 
 writeShellScript "battery-status" ''
-  PATH=${lib.makeBinPath [ upower coreutils gnused ]}
+  PATH=${lib.makeBinPath [ upower coreutils gnugrep gnused ]}
 
   # Get battery device (first BAT* found by upower)
   battery=$(upower -e | grep 'BAT' | head -n1)
