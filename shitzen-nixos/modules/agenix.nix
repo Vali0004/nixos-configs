@@ -52,6 +52,11 @@
       owner = "root";
       group = "root";
     };
+    proxy-mail-fuckk-lol = {
+      file = ./../../secrets/proxy-mail-fuckk-lol.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     radarr-api = {
       file = ./../../secrets/radarr-api.age;
       owner = "root";

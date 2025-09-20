@@ -19,6 +19,7 @@ in {
   "pnp-loader.age".publicKeys = keys;
   "prowlarr-api.age".publicKeys = keys;
   "pterodactyl.age".publicKeys = keys;
+  "proxy-mail-fuckk-lol.age".publicKeys = keys;
   "radarr-api.age".publicKeys = keys;
   "sonarr-api.age".publicKeys = keys;
   "vali-mail-fuckk-lol.age".publicKeys = keys;

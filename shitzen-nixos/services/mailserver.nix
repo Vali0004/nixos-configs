@@ -33,6 +33,9 @@
       "maddy@fuckk.lol" = {
         hashedPasswordFile = config.age.secrets.maddy-mail-fuckk-lol.path;
       };
+      "proxy@fuckk.lol" = {
+        hashedPasswordFile = config.age.secrets.proxy-mail-fuckk-lol.path;
+      };
     };
     mailDirectory = "/var/vmail";
     openFirewall = true;

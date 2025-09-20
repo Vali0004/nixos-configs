@@ -34,6 +34,13 @@ in {
           "shitzen-nixos"
           "router-vps"
           "lenovo"
+          "LA-1"
+          "UK-1"
+          "Sweden-1"
+          "Amsterdam-1"
+          "Japan-1"
+          "France-1"
+          "Toronto-1"
         ];
         name = "node";
         port = 9100;
