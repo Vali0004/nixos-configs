@@ -17,8 +17,8 @@ let
     #pkgs.fetchFromGitHub {
     #  owner = "Vali0004";
     #  repo = "dwm-fork";
-    #  rev = "75b7d975af7c306fb67259adf6b2085f5c51e887";
-    #  hash = "sha256-GrxFLc/2l2J0d9bZsuNtWyTD23YV8Bfuvn2mtSTLOnM=";
+    #  rev = "cd7c67e75dd782c46c38dee38722ea64abe6d463";
+    #  hash = "sha256-Ij52wdZznFQSaCA2UoqZxLVn2BkBLqtoNS1EKEcQphg=";
     #};
   });
   dwmblocks-battery = pkgs.callPackage ./dwmblocks-battery.nix {};
