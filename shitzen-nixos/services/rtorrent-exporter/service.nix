@@ -20,7 +20,7 @@ in {
   # Cursed hack to allow for rtorrent-exporter to connect to the socket
   services.nginx = {
     enable = true;
-    virtualHosts."rtorrent.local" = {
+    virtualHosts."rtorrent.localnet" = {
       enableACME = false;
       forceSSL = false;
       listen = [{ addr = "192.168.100.2"; port = 90; }];

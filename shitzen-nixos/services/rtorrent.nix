@@ -133,7 +133,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = {
-      proxyPass = "http://192.168.100.1:${toString web-port}";
+      proxyPass = "http://192.168.100.2:${toString web-port}";
       proxyWebsockets = true;
     };
   };

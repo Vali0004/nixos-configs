@@ -178,6 +178,8 @@ in {
       kdePackages.kolourpaint
       # CAD software
       kicad
+      # Killall (psmisc)
+      killall
       # File browser
       nemo-with-extensions
       # Fixes BeamNG
@@ -523,8 +525,8 @@ in {
           Address = [ "10.0.0.201/24" ];
           Gateway = "10.0.0.1";
           DNS = [
+            "10.0.0.244"
             "75.75.75.75"
-            "75.75.76.76"
           ];
           IPv6AcceptRA = true;
         };
