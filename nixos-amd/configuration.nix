@@ -233,6 +233,8 @@ in {
           -bios ${OVMF.fd}/FV/OVMF.fd \
           "$@"
       '')
+      # Thunderstore (Mod Manager)
+      r2modman
       # GPU Control
       radeon-profile
       # socat - listener

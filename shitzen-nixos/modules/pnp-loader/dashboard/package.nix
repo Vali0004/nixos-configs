@@ -14,7 +14,7 @@ buildNpmPackage {
   src = requireFile {
     name = "pnp-panel.tar.gz";
     url = "file:///home/vali/pnp-panel.tar.gz";
-    sha256 = "sha256-jS40fLyhpyau+dx1Kc8/woYOnqXJJmKj5ZBwIkOwqCA=";
+    sha256 = "sha256-f2We3l0S2+FH56E4cxRKjhCCBjSaDo5E3FXqyg2/g3A=";
   };
 
   installPhase = ''
