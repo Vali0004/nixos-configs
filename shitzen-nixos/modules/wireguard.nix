@@ -6,8 +6,15 @@ let
   vethNSIP = "192.168.100.2";
   vethName = "veth0"; # host side
   hostIF = "eth0";
-in
-{
+  mkForward = port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString port},reuseaddr,fork TCP4:${target}:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
+in {
   environment.systemPackages = [ pkgs.wireguard-tools ];
 
   networking = {
@@ -63,6 +70,9 @@ in
     };
   };
 
+  systemd.services.forward80 = mkForward 80 "192.168.100.2";
+  systemd.services.forward443 = mkForward 443 "192.168.100.2";
+  systemd.services.forward3701 = mkForward 3701 "192.168.100.2";
   systemd.services."wireguard-wg0".serviceConfig.Requires = [ "veth@${netnsName}.service" ];
   systemd.services."wireguard-wg0".serviceConfig.After = [ "veth@${netnsName}.service" ];
 

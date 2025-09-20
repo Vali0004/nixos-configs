@@ -20,6 +20,8 @@ in {
   };
 
   networking.extraHosts = ''
+    10.0.0.244 jellyfin.localnet jellyfin
+    10.0.0.244 pihole.localnet pihole
     10.0.0.31 lenovo
     10.0.0.124 chromeshit
     10.0.0.201 nixos-amd

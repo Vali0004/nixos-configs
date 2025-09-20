@@ -43,6 +43,7 @@ in {
     services/nfs.nix
     services/nginx.nix
     services/oauth2.nix
+    services/pihole.nix
 
     services/postgresql.nix
 
@@ -69,6 +70,7 @@ in {
   systemd.services.rspamd.serviceConfig = mkNamespace {};
 
   systemd.services.rtorrent.serviceConfig = mkNamespace {};
+  systemd.services.flood.serviceConfig = mkNamespace {};
 
   environment.systemPackages = with pkgs; [
     btop
@@ -82,6 +84,7 @@ in {
     lshw
     lsof
     lsscsi
+    killall
     magic-wormhole
     mediainfo
     ncdu
@@ -173,8 +176,8 @@ in {
       ];
     };
     nameservers = [
+      "10.0.0.244"
       "75.75.75.75"
-      "75.75.76.76"
     ];
     networkmanager.dns = "none";
     resolvconf.useLocalResolver = false;
