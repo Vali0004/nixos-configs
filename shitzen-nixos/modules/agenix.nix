@@ -17,6 +17,11 @@
       file = ./../../secrets/hydra-github-token.age;
       owner = "hydra";
     };
+    kavita = {
+      file = ./../../secrets/kavita.age;
+      owner = "kavita";
+      group = "kavita";
+    };
     maddy-mail-fuckk-lol = {
       file = ./../../secrets/maddy-mail-fuckk-lol.age;
       owner = "nginx";

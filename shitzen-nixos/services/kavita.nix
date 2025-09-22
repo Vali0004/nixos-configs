@@ -4,6 +4,7 @@
   services.kavita = {
     enable = true;
     settings.Port = 8788;
+    tokenKeyFile = config.age.secrets.kavita.path;
   };
 
   services.nginx.virtualHosts."manga.fuckk.lol" = {

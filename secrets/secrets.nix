@@ -11,6 +11,7 @@ in {
   "convoy.age".publicKeys = keys;
   "cleclerc-mail-nanitehosting-com.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
+  "kavita.age".publicKeys = keys;
   "maddy-mail-fuckk-lol.age".publicKeys = keys;
   "matrix.age".publicKeys = keys;
   "oauth2.age".publicKeys = keys;
