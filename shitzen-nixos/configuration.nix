@@ -37,8 +37,8 @@ in {
     services/hydra.nix
     services/irc.nix
     services/jellyfin.nix
+    services/kavita.nix
     services/mailserver.nix
-    serivces/kavita.nix
 
     services/matrix.nix
     services/mysql.nix
