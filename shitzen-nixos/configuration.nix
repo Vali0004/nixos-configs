@@ -26,6 +26,7 @@ in {
     services/arr/flaresolverr.nix
     services/arr/prowlarr.nix
     services/arr/radarr.nix
+    services/arr/readarr.nix
     services/arr/sonarr.nix
 
     services/minecraft/package.nix
@@ -37,6 +38,7 @@ in {
     services/irc.nix
     services/jellyfin.nix
     services/mailserver.nix
+    serivces/kavita.nix
 
     services/matrix.nix
     services/mysql.nix
@@ -51,6 +53,7 @@ in {
     services/samba.nix
 
     services/toxvpn.nix
+    services/ttyd.nix
     services/zdb.nix
     services/zipline.nix
   ];
