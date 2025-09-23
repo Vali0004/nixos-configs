@@ -5,6 +5,7 @@
     enable = true;
     group = config.services.rtorrent.group;
     openFirewall = true;
+    package = pkgs.callPackage ./readarr-package {};
     settings = {
       update.mechanism = "builtIn";
       server = {
