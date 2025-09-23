@@ -465,6 +465,11 @@ in {
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel"
       # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for Nordic Semiconductor devices
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
+      # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for WCH-CN devices
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="1d6b", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
       # Flag USB CDC ACM devices, handled below
       # Set USB CDC ACM devnodes as read-write for the wheel group
       KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915", MODE="0666", ENV{NRF_CDC_ACM}="1"
@@ -548,11 +553,12 @@ in {
       extraGroups = [
         "corectrl"
         "input"
+        "plugdev"
+        "qemu-libvirtd"
         "render"
         "tty"
-        "wheel"
         "video"
-        "qemu-libvirtd"
+        "wheel"
       ];
       useDefaultShell = false;
       shell = pkgs.zsh;

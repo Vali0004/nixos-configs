@@ -15,7 +15,7 @@ in {
     serviceConfig = {
       Environment = [
         "PORT=8099"
-        "CORSANYWHERE_WHITELISTED_TARGETS=api-cdn.rule34.xxx,api.rule34.xxx,rule34.xxx"
+        "CORSANYWHERE_WHITELISTED_TARGETS=static1.e621.net,e621.net"
       ];
       ExecStart = "${pkgs.nodejs_20}/bin/node ${cors_anywhere}/lib/node_modules/cors-anywhere/server.js";
     };

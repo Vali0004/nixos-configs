@@ -40,7 +40,7 @@ in {
         "${hyprConfig.modifier}, mouse:273, resizewindow"
       ];
       monitor = [
-        "DP-3, 2560x1440@240, 0x0, 1"
+        "DP-2, 2560x1440@240, 0x0, 1"
         "HDMI-A-1, 1920x1080, 2560x488, 1"
       ];
     };
