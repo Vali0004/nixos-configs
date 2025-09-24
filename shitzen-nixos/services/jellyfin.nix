@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  mkProxy = import ./../modules/mkproxy.nix;
+in {
   environment.systemPackages = with pkgs; [
     jellyfin-ffmpeg
   ];
@@ -14,9 +16,8 @@
   services.nginx.virtualHosts."ohh.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://192.168.100.1:8096";
-      proxyWebsockets = true;
+    locations."/" = mkProxy {
+      port = 8096;
     };
   };
 

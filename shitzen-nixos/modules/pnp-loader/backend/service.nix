@@ -19,9 +19,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = mkProxy {
-      ip = "192.168.100.1";
       port = 3200;
-      webSockets = true;
       config = ''
         proxy_ssl_server_name on;
         proxy_ssl_name $proxy_host;
@@ -35,9 +33,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations."/" = mkProxy {
-      ip = "192.168.100.1";
       port = 3200;
-      webSockets = true;
       config = ''
         proxy_ssl_server_name on;
         proxy_ssl_name $proxy_host;

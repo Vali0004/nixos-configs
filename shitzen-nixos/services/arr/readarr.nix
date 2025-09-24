@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  mkProxy = import ./../../modules/mkproxy.nix;
+in {
   services.readarr = {
     enable = true;
     group = config.services.rtorrent.group;
@@ -20,9 +22,8 @@
   services.nginx.virtualHosts."readarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://192.168.100.1:8787";
-      proxyWebsockets = true;
+    locations."/" = mkProxy {
+      port = config.services.readarr.settings.server.port;
     };
   };
 }

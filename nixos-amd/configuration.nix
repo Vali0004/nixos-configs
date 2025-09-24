@@ -2,52 +2,14 @@
 
 let
   secrets = import ./network-secrets.nix { inherit lib; };
-
-  flameshot_fuckk_lol = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
-    ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
-    ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
-  '';
-
-  fastfetch_simple = pkgs.writeScriptBin "fastfetch_simple" ''
-    ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
-  '';
-
-  dmenu = ((pkgs.dmenu.override {
-    conf = ./dmenu-config.h;
-  }).overrideAttrs (old: {
-    buildInputs = (old.buildInputs or []) ++ [ pkgs.libspng ];
-    src = /home/vali/development/dmenu;
-    postPatch = ''
-      ${old.postPatch or ""}
-      sed -ri -e 's!\<(dmenu|dmenu_path_desktop|stest)\>!'"$out/bin"'/&!g' dmenu_run_desktop
-      sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
-    '';
-  }));
-  clipmenu-paste = pkgs.callPackage ./clipmenu-paste.nix { inherit dmenu; };
-
-  agenix = builtins.getFlake "github:ryantm/agenix";
-  agenixPkgs = agenix.outputs.packages.x86_64-linux;
-
-  nixGaming = builtins.getFlake "github:fufexan/nix-gaming";
-  nixGamingPkgs = nixGaming.outputs.packages.x86_64-linux;
-  osu-base = pkgs.callPackage ./pkgs/osu {
-    osu-mime = nixGamingPkgs.osu-mime;
-    wine-discord-ipc-bridge = nixGamingPkgs.wine-discord-ipc-bridge;
-    proton-osu-bin = nixGamingPkgs.proton-osu-bin;
-  };
-  osu-stable = osu-base;
-  osu-gatari = (osu-base.override {
-    desktopName = "osu!gatari";
-    pname = "osu-gatari";
-    launchArgs = "-devserver gatari.pw";
-  });
 in {
+  # TODO: Use nixpkgs overlay, instead of the mess that is agenix & nixGaming
+  # due to a non-flake based config
   imports = [
-    agenix.nixosModules.default
-    nixGaming.nixosModules.pipewireLowLatency
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
+    pkgs/module.nix
     programs/spicetify.nix
     programs/ssh.nix
     programs/steam.nix
@@ -63,10 +25,7 @@ in {
     services/syslog.nix
     services/toxvpn.nix
     services/virtualisation.nix
-  ];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "libxml2-2.13.8"
+    ./xdg.nix
   ];
 
   console.useXkbConfig = true;
@@ -76,238 +35,10 @@ in {
       l = null;
       ll = null;
       lss = "ls --color -lha";
-      dienow = "shutdown -h now";
     };
-
-    systemPackages = with pkgs; [
-      # Key system (remote deploy)
-      agenixPkgs.agenix
-      # Terminal
-      alacritty-graphics
-      alsa-utils
-      # XDG debug
-      bustle
-      bridge-utils
-      # Better TOP
-      btop
-      # BeamMP
-      (callPackage ./pkgs/beammp-launcher {})
-      # Cache system
-      cachix
-      # Remote deploy
-      colmena
-      # Cider - Alternative Apple Music Client
-      cider-2
-      # Clipboard Manager
-      clipmenu
-      clipmenu-paste
-      # cURL
-      curl
-      # macOS Translation Layer
-      (callPackage ./pkgs/darling {})
-      # XDG Mime/Desktop utils
-      desktop-file-utils
-      # Binary utility, desined to identify what a binary is (including the compiler)
-      detect-it-easy
-      # Directory envorinment
-      direnv
-      # dos2unix tool
-      dos2unix
-      # Discord
-      ((discord.override { withVencord = true; }).overrideAttrs {
-        src = fetchurl {
-          url = "https://stable.dl2.discordapp.net/apps/linux/0.0.106/discord-0.0.106.tar.gz";
-          hash = "sha256-FqY2O7EaEjV0O8//jIW1K4tTSPLApLxAbHmw4402ees=";
-        };
-      })
-      # SMBIOS
-      dmidecode
-      # App launcher
-      dmenu
-      # .NET Disassembler
-      (callPackage ./pkgs/dnspy {})
-      # Notification daemon
-      dunst
-      # Extended Display Id Data Decode
-      edid-decode
-      # Matrix client
-      element-desktop
-      envsubst
-      # Image/pdf viewer
-      eog
-      # Noise suppression
-      easyeffects
-      evtest
-      # Flexing
-      fastfetch
-      fastfetch_simple
-      feh
-      # Screenshot tool
-      flameshot
-      # Screenshot tool with my uploader secret
-      flameshot_fuckk_lol
-      # Tool used to check file types
-      file
-      fzf
-      # Debugger
-      gdb
-      # Binary hacking
-      ghidra
-      # Calculator
-      gnome-calculator
-      # sed
-      gnused
-      # GTK3, used for gtk-launch in dmenu
-      gtk3
-      # Browser
-      google-chrome
-      # Ping tool, used to ping a specific port
-      hping
-      # Hex-Rays IDA Pro 9.0 Beta
-      (callPackage ./pkgs/ida-pro {})
-      iperf
-      # IRC Client
-      irssi
-      # Media Player
-      jellyfin-media-player
-      # JSON parser
-      jq
-      # Archive tool
-      kdePackages.ark
-      # MS Paint
-      kdePackages.kolourpaint
-      # CAD software
-      kicad
-      # Killall (psmisc)
-      killall
-      # File browser
-      nemo-with-extensions
-      # Fixes BeamNG
-      nss
-      # cli unrar
-      libarchive
-      # X CVT
-      libxcvt
-      # Wormhole
-      magic-wormhole
-      # COM Reader
-      minicom
-      # 360-deploy
-      morph
-      # Video Player
-      mpv
-      # Directory info
-      ncdu
-      # nRF Studio
-      (callPackage ./pkgs/nordic {})
-      # SEGGER JLink
-      (callPackage ./pkgs/nordic/jlink {})
-      # Adafurit nRF Util
-      (callPackage ./pkgs/nordic/nrfutil {})
-      # Node.js
-      nodejs_24
-      obs-studio
-      openssl
-      # Hex Editor
-      okteta
-      # nix-gaming pkg, slightly modified
-      osu-gatari
-      osu-stable
-      # Tablet Driver
-      opentabletdriver
-      # Different audio control
-      pamixer
-      # Audio control
-      pavucontrol
-      pciutils
-      # Compositer
-      picom
-      playerctl
-      # Minecraft launcher
-      prismlauncher
-      protontricks
-      # Audio server
-      pulseaudio
-      # VM
-      qemu_kvm
-      (writeShellScriptBin "qemu-system-x86_64-uefi" ''
-        qemu-system-x86_64 \
-          -bios ${OVMF.fd}/FV/OVMF.fd \
-          "$@"
-      '')
-      # Thunderstore (Mod Manager)
-      r2modman
-      # GPU Control
-      radeon-profile
-      # socat - listener
-      socat
-      # Spotify mods
-      spicetify-cli
-      # Steam CMD
-      steamcmd
-      # Syncplay, allows for syncing video streams with others via mpv
-      syncplay
-      # System stats
-      sysstat
-      # TeamSpeak
-      teamspeak3
-      # tmux, screen replacement
-      tmux
-      # Remote shell service over tmux
-      tmate
-      # Tree, helps create file structures in text form
-      tree
-      # Unity
-      (unityhub.overrideAttrs (old: {
-        postInstall = (old.postInstall or "") + ''
-          ${desktop-file-utils}/bin/update-desktop-database $out/share/applications
-        '';
-      }))
-      # Unzip
-      unzip
-      # USB Utils
-      usbutils
-      # Alternative Discord client
-      vesktop
-      # vi
-      vim
-      # VM helper
-      virt-viewer
-      # VRChat Friendship Management
-      vrcx
-      # Editor
-      vscode
-      vscode-extensions.mkhl.direnv
-      vscode-extensions.bbenoist.nix
-      vscode-extensions.jnoortheen.nix-ide
-      vscode-extensions.mshr-h.veriloghdl
-      vscode-extensions.ms-vscode.cpptools-extension-pack
-      vscode-extensions.ms-vscode.cmake-tools
-      vscode-extensions.shardulm94.trailing-spaces
-      # Vulkan
-      vulkan-extension-layer
-      vulkan-tools
-      vulkan-validation-layers
-      # wget
-      wget
-      # Packet sniffer
-      wireshark
-      # Wine
-      wineWowPackages.stable
-      winetricks
-      # Electron hell
-      xdg-launch
-      xdg-utils
-      # X11 helper
-      xdotool
-      # Fallback XDG file manager
-      zenity
-      zip
-    ];
-
     variables = {
       AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
-      CM_LAUNCHER = "dmenu";
+      CM_LAUNCHER = "rofi";
       G_MESSAGES_DEBUG = "all";
     };
   };
@@ -361,12 +92,31 @@ in {
     };
   };
 
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" ];
-  };
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
 
   networking = {
+    defaultGateway = {
+      address = "10.0.0.1";
+      interface = "bond0";
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "bond0";
+    };
+    bonds = {
+      bond0 = {
+        driverOptions = {
+          miimon = "100";
+          mode = "active-backup";
+          primary_reselect = "better";
+        };
+        interfaces = [
+          "eth0"
+          "wlan0"
+        ];
+      };
+    };
     extraHosts = ''
       10.0.0.31 lenovo
       10.0.0.124 chromeshit
@@ -375,21 +125,44 @@ in {
       74.208.44.130 router-vps
     '';
     hostName = "nixos-amd";
+    interfaces = {
+      bond0 = {
+        ipv4.addresses = [{
+          address = "10.0.0.201";
+          prefixLength = 24;
+        }];
+        ipv6.addresses = [
+          {
+            address = "2601:406:8101:b1ae:1017:2bff:fed6:5519";
+            prefixLength = 64;
+          }
+          {
+            address = "fe80::1017:2bff:fed6:5519";
+            prefixLength = 64;
+          }
+        ];
+      };
+    };
+    nameservers = [
+      "2601:406:8101:b1ae:9e6b:ff:fea4:1340"
+      "2001:558:feed::1"
+      "10.0.0.244"
+      "75.75.75.75"
+    ];
     useDHCP = false;
-    useNetworkd = true;
-    networkmanager.enable = false;
     wireless = {
       enable = true;
       networks = {
         "${secrets.wifi.ssid}" = {
           psk = secrets.wifi.password;
           extraConfig = ''
-            freq_list=5180 5200 5220 5240
-            bssid=6e:7f:f0:19:82:70
+            freq_list=5885 5805 5180 5200 5220 5240
           '';
         };
       };
+      userControlled.enable = true;
     };
+    usePredictableInterfaceNames = false;
   };
 
   nix.settings = {
@@ -412,13 +185,10 @@ in {
     ];
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    cudaSupport = false;
-    rocmSupport = false;
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = "x86_64-linux";
   };
-
-  nixpkgs.hostPlatform = "x86_64-linux";
 
   programs = {
     corectrl.enable = true;
@@ -496,53 +266,7 @@ in {
     stateVersion = "25.11";
   };
 
-  systemd.network = {
-    enable = true;
-    netdevs = {
-      "10-bond0" = {
-        netdevConfig = {
-          Kind = "bond";
-          Name = "bond0";
-        };
-        bondConfig = {
-          Mode = "active-backup";
-          MIIMonitorSec = "0.100";
-          PrimaryReselectPolicy = "better";
-        };
-      };
-    };
-    networks = {
-      "30-enp10s0" = {
-        matchConfig.Name = "enp10s0";
-        networkConfig.Bond = "bond0";
-        networkConfig.PrimarySlave = true;
-      };
-
-      "30-wlp9s0" = {
-        matchConfig.Name = "wlp9s0";
-        networkConfig.Bond = "bond0";
-      };
-
-      "40-bond0" = {
-        matchConfig.Name = "bond0";
-        linkConfig.RequiredForOnline = "carrier";
-        networkConfig = {
-          Address = [ "10.0.0.201/24" ];
-          Gateway = "10.0.0.1";
-          DNS = [
-            "10.0.0.244"
-            "75.75.75.75"
-          ];
-          IPv6AcceptRA = true;
-        };
-      };
-    };
-  };
-
   systemd.settings.Manager.RebootWatchdogSec = "0";
-
-  systemd.user.services."xdg-desktop-portal".after = [ "graphical-session.target" ];
-  systemd.user.services."xdg-desktop-portal-gtk".after = [ "graphical-session.target" ];
 
   time.timeZone = "America/Detroit";
 
@@ -563,37 +287,5 @@ in {
       useDefaultShell = false;
       shell = pkgs.zsh;
     };
-  };
-
-  xdg.mime = {
-    addedAssociations = {
-      "x-scheme-handler/element" = "element-desktop.desktop";
-      "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
-      "x-scheme-handler/ftp" = "com.google.Chrome.desktop";
-      "x-scheme-handler/http" = "com.google.Chrome.desktop";
-      "x-scheme-handler/https" = "com.google.Chrome.desktop";
-      "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
-      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
-      "x-scheme-handler/unityhub" = "unityhub.desktop";
-    };
-    defaultApplications = {
-      "application/zip" = "org.kde.ark.desktop";
-      "application/xhtml+xml" = "com.google.Chrome.desktop";
-      "text/plain" = "code.desktop";
-      "text/html" = "com.google.Chrome.desktop";
-      "text/xml" = "com.google.Chrome.desktop";
-      "inode/directory" = "nemo.desktop";
-    };
-  };
-
-  xdg.icons.enable = true;
-
-  xdg.portal = {
-    config = {
-      common.default = [ "gtk" ];
-    };
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
-    xdgOpenUsePortal = false;
   };
 }

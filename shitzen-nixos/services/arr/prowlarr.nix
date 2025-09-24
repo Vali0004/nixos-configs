@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  mkProxy = import ./../../modules/mkproxy.nix;
+in {
   services.prowlarr = {
     enable = true;
     openFirewall = true;
@@ -19,9 +21,8 @@
   services.nginx.virtualHosts."prowlarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://192.168.100.1:9696";
-      proxyWebsockets = true;
+    locations."/" = mkProxy {
+      port = config.services.prowlarr.settings.server.port;
     };
   };
 }

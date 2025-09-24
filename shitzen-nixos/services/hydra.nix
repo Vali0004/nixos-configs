@@ -51,16 +51,17 @@ in {
         Allow: /$
       '';
 
-      locations."/" = {
-        proxyPass = "http://$upstream";
-        extraConfig = ''
+      locations."/" = mkProxy {
+        ip = "$upstream";
+        hasPort = false;
+        config = ''
           limit_req zone=hydra-server burst=5;
         '';
-        proxyWebsockets = false;
       };
 
-      locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = {
-        proxyPass = "http://hydra-server";
+      locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = mkProxy {
+        ip = "hydra-server";
+        hasPort = false;
       };
 
       locations."/static/" = {

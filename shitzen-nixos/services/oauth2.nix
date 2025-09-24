@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  mkProxy = import ./../modules/mkproxy.nix;
+in {
   services.oauth2-proxy = {
     cookie = {
       secure = true;
@@ -28,16 +30,13 @@
     ];
   };
 
-  services.nginx = {
-    virtualHosts."monitoring.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
-      locations = {
-        "/oauth2/" = {
-          proxyPass = "http://127.0.0.1:4180";
-          proxyWebsockets = true;
-          recommendedProxySettings = true;
-        };
+  services.nginx.virtualHosts."monitoring.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
+    locations = {
+      "/oauth2/" = mkProxy {
+        ip = "127.0.0.1";
+        port = 4180;
       };
     };
   };

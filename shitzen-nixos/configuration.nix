@@ -165,21 +165,18 @@ in {
       }];
       ipv6.addresses = [
         {
-          address = "2601:406:8400:42A3::31d";
-          prefixLength = 128;
-        }
-        {
-          address = "2601:406:8400:42A3:6d99:9295:f86a:98eb";
+          address = "2601:406:8101:b1ae:9e6b:ff:fea4:1340";
           prefixLength = 64;
         }
         {
-          address = "fe80::62cf:84ff:fe5e:82bb";
+          address = "fe80::9e6b:ff:fea4:1340";
           prefixLength = 64;
         }
       ];
     };
     nameservers = [
-      "10.0.0.244"
+      # Why don't I use 10.0.0.244 here? Well, network namespace is why!
+      "192.168.100.1"
       "75.75.75.75"
     ];
     networkmanager.dns = "none";
@@ -204,11 +201,6 @@ in {
     acceptTerms = true;
     defaults.email = "diorcheats.vali@gmail.com";
   };
-
-  swapDevices = [{
-    device = "/var/lib/swap1";
-    size = 1024;
-  }];
 
   system.stateVersion = "25.11";
 
