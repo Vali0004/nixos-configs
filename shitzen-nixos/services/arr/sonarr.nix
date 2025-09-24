@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  mkProxy = import ./../../modules/mkproxy.nix;
+in {
   services.sonarr = {
     enable = true;
     group = config.services.rtorrent.group;
@@ -19,9 +21,8 @@
   services.nginx.virtualHosts."sonarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://192.168.100.1:8989";
-      proxyWebsockets = true;
+    locations."/" = mkProxy {
+      port = config.services.sonarr.settings.server.port;
     };
   };
 }

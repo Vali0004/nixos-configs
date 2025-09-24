@@ -1,6 +1,8 @@
 { config, inputs, lib, pkgs, ... }:
 
-{
+let
+  mkProxy = import ./../modules/mkproxy.nix;
+in {
   services.pihole-ftl = {
     enable = true;
     openFirewallDNS = true;
@@ -39,9 +41,8 @@
       forceSSL = false;
       sslCertificate = "/var/lib/localnet/pihole.pem";
       sslCertificateKey = "/var/lib/localnet/pihole.key";
-      locations."/" = {
-        proxyPass = "http://192.168.100.1:9810";
-        proxyWebsockets = true;
+      locations."/" = mkProxy {
+        port = 9810;
       };
     };
   };

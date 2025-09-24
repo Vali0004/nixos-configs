@@ -47,7 +47,7 @@
   services.nginx.virtualHosts."mail.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    root = "${pkgs.roundcube}";
+    root = pkgs.roundcube;
     locations."/" = {
       index = "index.php";
       priority = 1100;
@@ -78,7 +78,7 @@
   services.nginx.virtualHosts."mail.nanitehosting.com" = {
     enableACME = true;
     forceSSL = true;
-    root = "${pkgs.roundcube}";
+    root = pkgs.roundcube;
     locations."/" = {
       index = "index.php";
       priority = 1100;

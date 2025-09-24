@@ -4,6 +4,7 @@ let
   dht-port = 6990;
   peer-port = 3700;
   web-port = 3701;
+  mkProxy = import ./../modules/mkproxy.nix;
 in {
   networking.firewall.allowedUDPPorts = [ dht-port ];
 
@@ -132,9 +133,8 @@ in {
   services.nginx.virtualHosts."flood.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://192.168.100.2:${toString web-port}";
-      proxyWebsockets = true;
+    locations."/" = mkProxy {
+      port = web-port;
     };
   };
 
