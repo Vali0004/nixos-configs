@@ -242,10 +242,6 @@ in {
       networks = {
         "${secrets.wifi.ssid}" = {
           psk = secrets.wifi.password;
-          extraConfig = ''
-            freq_list=5180 5200 5220 5240
-            bssid=6e:7f:f0:19:82:70
-          '';
         };
       };
     };
