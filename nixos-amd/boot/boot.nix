@@ -2,9 +2,9 @@
 
 {
   imports = [
+    ./../../modules/boot/rescue/module.nix
+    ./../../modules/boot/grub-efi.nix
     ./kernel.nix
-    ./loader.nix
-    ./rescue.nix
   ];
 
   boot.consoleLogLevel = 0;

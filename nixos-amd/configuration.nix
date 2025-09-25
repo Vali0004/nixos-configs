@@ -1,31 +1,28 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let
-  secrets = import ./network-secrets.nix { inherit lib; };
+  secrets = import ./../modules/network-secrets.nix { inherit lib; };
 in {
-  # TODO: Use nixpkgs overlay, instead of the mess that is agenix & nixGaming
-  # due to a non-flake based config
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
-    pkgs/module.nix
     programs/spicetify.nix
     programs/ssh.nix
     programs/steam.nix
     programs/zsh.nix
     services/windowManager/dwm.nix
     #services/windowManager/i3.nix
-    services/bluetooth.nix
     services/displayManager.nix
-    services/easyEffects.nix
     services/monado.nix
     services/picom.nix
-    services/pipewire.nix
     services/syslog.nix
     services/toxvpn.nix
     services/virtualisation.nix
-    ./xdg.nix
+    ./../modules/audio/module.nix
+    ./../modules/certificates/module.nix
+    ./../modules/xdg.nix
+    ./pkgs.nix
   ];
 
   console.useXkbConfig = true;
@@ -204,14 +201,8 @@ in {
     style = "adwaita-dark";
   };
 
-  security = {
-    pki.certificates = [
-      (builtins.readFile ./cloudflare-ecc.pem)
-      (builtins.readFile ./beammp.pem)
-    ];
-    rtkit.enable = true;
-    sudo.enable = true;
-  };
+  security.rtkit.enable = true;
+  security.sudo.enable = true;
 
   services = {
     cloudflare-warp.enable = true;
