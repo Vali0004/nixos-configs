@@ -7,7 +7,7 @@
 
   nixpkgs.overlays = [
     (self: super: {
-      dwmblocks = pkgs.dwmblocks.override {
+      dwmblocks = super.dwmblocks.override {
         conf = ./dwmblocks-config.h;
       };
     })
