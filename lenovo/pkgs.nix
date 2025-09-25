@@ -74,11 +74,6 @@
     openssl
     # Hex Editor
     okteta
-    # nix-gaming
-    osu-gatari
-    osu-stable
-    # Tablet Driver
-    opentabletdriver
     # Different audio control
     pamixer
     # Audio control

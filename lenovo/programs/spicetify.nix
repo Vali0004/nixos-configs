@@ -1,22 +1,16 @@
 { config, lib, pkgs, ... }:
 
-let
-  spice = builtins.getFlake "github:Gerg-L/spicetify-nix";
-  spicePkgs = spice.outputs.legacyPackages.x86_64-linux;
-in {
-  imports = [
-    spice.nixosModules.default
-  ];
+{
   programs.spicetify = {
     enable = true;
-    enabledExtensions = with spicePkgs.extensions; [
+    enabledExtensions = with pkgs.spicetifyExtensions; [
       adblock
       autoSkipVideo
       beautifulLyrics
       hidePodcasts
       shuffle
     ];
-    theme = spicePkgs.themes.sleek;
+    theme = pkgs.spicetifyThemes.sleek;
     colorScheme = "Elementary";
   };
 }
