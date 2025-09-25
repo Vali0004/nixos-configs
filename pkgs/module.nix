@@ -4,6 +4,7 @@ let
   secrets = import ./../modules/network-secrets.nix { inherit lib; };
   nixGamingFlake = builtins.getFlake "github:fufexan/nix-gaming";
   agenixFlake = builtins.getFlake "github:ryantm/agenix";
+  spicetifyFlake = builtins.getFlake "github:Gerg-L/spicetify-nix";
 in {
   options.hasNixGaming = lib.mkOption {
     type = lib.types.bool;
@@ -14,6 +15,7 @@ in {
   imports = [
     agenixFlake.nixosModules.default
     nixGamingFlake.nixosModules.pipewireLowLatency
+    spicetifyFlake.nixosModules.default
   ];
 
   config = {
@@ -26,6 +28,8 @@ in {
       # Flake overrides
       (self: super: {
         agenix = agenixFlake.outputs.packages.x86_64-linux.agenix;
+        spicetifyThemes = spicetifyFlake.outputs.legacyPackages.x86_64-linux.themes;
+        spicetifyExtensions = spicetifyFlake.outputs.legacyPackages.x86_64-linux.extensions;
       })
       # Existing pkgs
       (self: super: {
