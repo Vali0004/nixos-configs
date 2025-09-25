@@ -1,12 +1,16 @@
 { config, lib, pkgs, ... }:
 
-let
-  dwmblocks = pkgs.dwmblocks.override {
-    conf = ./dwmblocks-config.h;
-  };
-in {
+{
   imports = [
     ./../../../modules/dwmblocks.nix
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      dwmblocks = pkgs.dwmblocks.override {
+        conf = ./dwmblocks-config.h;
+      };
+    })
   ];
 
   environment.systemPackages = with pkgs; [
