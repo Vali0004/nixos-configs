@@ -2,10 +2,9 @@
 
 {
   imports = [
+    ./../../modules/boot/rescue/module.nix
+    ./../../modules/boot/grub-efi.nix
     ./kernel.nix
-    ./loader.nix
-    ./rescue.nix
-    #./zfs-patch.nix
     ./zfs.nix
   ];
 
