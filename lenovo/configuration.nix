@@ -2,12 +2,8 @@
 
 let
   secrets = import ./network-secrets.nix { inherit lib; };
-
-  agenix = builtins.getFlake "github:ryantm/agenix";
-  agenixPkgs = agenix.outputs.packages.x86_64-linux;
 in {
   imports = [
-    agenix.nixosModules.default
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
     home-manager/home.nix
@@ -26,6 +22,9 @@ in {
     #services/zdb.nix
     ./../modules/audio/module.nix
     ./../modules/certificates/module.nix
+    ./../modules/hosts.nix
+    ./../modules/nix-settings.nix
+    ./../modules/qt.nix
     ./../modules/xdg.nix
     ./pkgs.nix
   ];
@@ -92,13 +91,6 @@ in {
   };
 
   networking = {
-    extraHosts = ''
-      10.0.0.31 lenovo
-      10.0.0.124 chromeshit
-      10.0.0.201 nixos-amd
-      10.0.0.244 shitzen-nixos
-      74.208.44.130 router-vps
-    '';
     hostId = "2632ac4c";
     hostName = "lenovo";
     useDHCP = true;
@@ -114,32 +106,6 @@ in {
     };
   };
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    substituters = [
-      "https://hydra.fuckk.lol"
-      "https://cache.nixos.org/"
-    ];
-    trusted-users = [
-      "root"
-      "vali"
-      "@wheel"
-    ];
-    trusted-public-keys = [
-      "hydra.fuckk.lol:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-  };
-
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
-  nixpkgs.hostPlatform = "x86_64-linux";
-
   programs = {
     corectrl.enable = true;
     command-not-found.enable = true;
@@ -150,16 +116,8 @@ in {
     };
   };
 
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
-
-  security = {
-    rtkit.enable = true;
-    sudo.enable = true;
-  };
+  security.rtkit.enable = true;
+  security.sudo.enable = true;
 
   services = {
     # CPU Power Saving Settings (daemon)
