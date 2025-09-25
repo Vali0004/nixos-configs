@@ -155,9 +155,6 @@ in {
       networks = {
         "${secrets.wifi.ssid}" = {
           psk = secrets.wifi.password;
-          extraConfig = ''
-            freq_list=5885 5805 5180 5200 5220 5240
-          '';
         };
       };
       userControlled.enable = true;

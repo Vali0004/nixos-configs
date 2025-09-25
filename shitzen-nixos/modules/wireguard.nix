@@ -89,29 +89,6 @@ in {
           persistentKeepalive = 25;
           publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";
         }];
-        preSetup = ''
-          # connmark restore/save
-          ${pkgs.iptables}/bin/iptables -t mangle -A PREROUTING -p udp -m comment --comment "wg-quick(8) rule for wg0" \
-            -j CONNMARK --restore-mark --nfmask 0xffffffff --ctmask 0xffffffff
-          ${pkgs.iptables}/bin/iptables -t mangle -A POSTROUTING -p udp -m mark --mark 0xca6c -m comment --comment "wg-quick(8) rule for wg0" \
-            -j CONNMARK --save-mark --nfmask 0xffffffff --ctmask 0xffffffff
-
-          # kill switch
-          ${pkgs.iptables}/bin/iptables -t raw -A PREROUTING -d 10.127.0.3/32 ! -i wg0 -m addrtype ! --src-type LOCAL \
-            -m comment --comment "wg-quick(8) rule for wg0" -j DROP
-
-          # allow wg0 traffic through nixos-fw
-          ${pkgs.iptables}/bin/iptables -A nixos-fw -i wg0 -p tcp -j nixos-fw-accept
-        '';
-        preShutdown = ''
-          ${pkgs.iptables}/bin/iptables -t mangle -D PREROUTING -p udp -m comment --comment "wg-quick(8) rule for wg0" \
-            -j CONNMARK --restore-mark --nfmask 0xffffffff --ctmask 0xffffffff
-          ${pkgs.iptables}/bin/iptables -t mangle -D POSTROUTING -p udp -m mark --mark 0xca6c -m comment --comment "wg-quick(8) rule for wg0" \
-            -j CONNMARK --save-mark --nfmask 0xffffffff --ctmask 0xffffffff
-          ${pkgs.iptables}/bin/iptables -t raw -D PREROUTING -d 10.127.0.3/32 ! -i wg0 -m addrtype ! --src-type LOCAL \
-            -m comment --comment "wg-quick(8) rule for wg0" -j DROP
-          ${pkgs.iptables}/bin/iptables -D nixos-fw -i wg0 -p tcp -j nixos-fw-accept
-        '';
       };
     };
   };
