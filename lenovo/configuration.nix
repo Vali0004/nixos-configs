@@ -1,7 +1,7 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let
-  secrets = import ./network-secrets.nix { inherit lib; };
+  secrets = import ./../modules/network-secrets.nix { inherit lib; };
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"

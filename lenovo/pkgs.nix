@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./../pkgs/overrides.nix
+    ./../pkgs/module.nix
   ];
 
   hasNixGaming = false;

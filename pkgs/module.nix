@@ -87,6 +87,19 @@ in {
         manage-gnome-calculator = pkgs.callPackage ./manage-gnome-calculator {};
         nrf-studio = pkgs.callPackage ./nordic {};
         nrf-util = pkgs.callPackage ./nordic/nrfutil {};
+        fastfetch-simple = pkgs.writeScriptBin "fastfetch-simple" ''
+          ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
+        '';
+        flameshot-upload = pkgs.writeScriptBin "flameshot-upload" ''
+          ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
+          ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
+        '';
+        xwinwrap-gif = pkgs.callPackage ./xwinwrap {};
+      })
+    ] ++ lib.optionals config.hasNixGaming [
+      (self: super: {
+        nixGaming = nixGamingFlake.outputs.packages.x86_64-linux;
+
         osu-base = pkgs.callPackage ./osu {
           osu-mime = self.nixGaming.osu-mime;
           wine-discord-ipc-bridge = self.nixGaming.wine-discord-ipc-bridge;
@@ -98,17 +111,7 @@ in {
           pname = "osu-gatari";
           launchArgs = "-devserver gatari.pw";
         };
-        fastfetch-simple = pkgs.writeScriptBin "fastfetch-simple" ''
-          ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
-        '';
-        flameshot-upload = pkgs.writeScriptBin "flameshot-upload" ''
-          ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
-          ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
-        '';
-        xwinwrap-gif = pkgs.callPackage ./xwinwrap {};
       })
-    ] ++ lib.optional config.hasNixGaming (self: super: {
-      nixGaming = nixGamingFlake.outputs.packages.x86_64-linux;
-    });
+    ];
   };
 }
