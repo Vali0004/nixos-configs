@@ -12,12 +12,9 @@ in {
     programs/steam.nix
     programs/zsh.nix
     services/windowManager/dwm.nix
-    services/bluetooth.nix
     services/displayManager.nix
-    services/easyEffects.nix
     services/openssh.nix
     services/picom.nix
-    services/pipewire.nix
     services/prometheus.nix
     #services/zdb.nix
     ./../modules/audio/module.nix
