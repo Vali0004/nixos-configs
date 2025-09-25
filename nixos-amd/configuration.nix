@@ -12,7 +12,6 @@ in {
     programs/steam.nix
     programs/zsh.nix
     services/windowManager/dwm.nix
-    #services/windowManager/i3.nix
     services/displayManager.nix
     services/monado.nix
     services/picom.nix
@@ -21,6 +20,7 @@ in {
     services/virtualisation.nix
     ./../modules/audio/module.nix
     ./../modules/certificates/module.nix
+    ./../modules/bluetooth.nix
     ./../modules/hosts.nix
     ./../modules/nix-settings.nix
     ./../modules/qt.nix
@@ -235,6 +235,7 @@ in {
         "tty"
         "video"
         "wheel"
+        "wireshark"
       ];
       useDefaultShell = false;
       shell = pkgs.zsh;

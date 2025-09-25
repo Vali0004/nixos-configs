@@ -19,6 +19,7 @@ in {
     #services/zdb.nix
     ./../modules/audio/module.nix
     ./../modules/certificates/module.nix
+    ./../modules/bluetooth.nix
     ./../modules/hosts.nix
     ./../modules/nix-settings.nix
     ./../modules/qt.nix
