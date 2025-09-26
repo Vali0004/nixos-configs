@@ -44,7 +44,7 @@ in {
 
   systemd.services."veth@${netnsName}" = {
     description = "veth pair for ${netnsName}";
-    after = [ "netns@${netnsName}.service" ];
+    after = [ "wireguard-wg0.service" ];
     wantedBy = [ "multi-user.target" ];
     preStart = ''
       ${pkgs.iproute2}/bin/ip link add ${vethName} type veth peer name veth1 netns ${netnsName}
@@ -74,7 +74,7 @@ in {
   systemd.services.forward443 = mkForward 443 "192.168.100.2";
   systemd.services.forward3701 = mkForward 3701 "192.168.100.2";
   systemd.services."wireguard-wg0".serviceConfig.Requires = [ "veth@${netnsName}.service" ];
-  systemd.services."wireguard-wg0".serviceConfig.After = [ "veth@${netnsName}.service" ];
+  systemd.services."wireguard-wg0".serviceConfig.After = [ "netns@${netnsName}.service" ];
 
   networking.wireguard = {
     interfaces = {

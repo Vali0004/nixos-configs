@@ -94,7 +94,7 @@ in {
         fastfetch-simple = pkgs.writeScriptBin "fastfetch-simple" ''
           ${pkgs.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
         '';
-        flameshot-upload = pkgs.writeScriptBin "flameshot-upload" ''
+        flameshot-upload = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
           ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
           ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
         '';
