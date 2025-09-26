@@ -95,14 +95,6 @@ in {
   i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" ];
 
   networking = {
-    defaultGateway = {
-      address = "10.0.0.1";
-      interface = "bond0";
-    };
-    defaultGateway6 = {
-      address = "fe80::1";
-      interface = "bond0";
-    };
     bonds = {
       bond0 = {
         driverOptions = {
@@ -115,6 +107,19 @@ in {
           "wlan0"
         ];
       };
+    };
+    defaultGateway = {
+      address = "10.0.0.1";
+      interface = "bond0";
+    };
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "bond0";
+    };
+    firewall = {
+      allowedUDPPorts = [
+        5055
+      ];
     };
     hostName = "nixos-amd";
     interfaces = {
@@ -163,6 +168,11 @@ in {
       lfs.enable = true;
     };
     java.enable = true;
+    wireshark = {
+      dumpcap.enable = true;
+      enable = true;
+      usbmon.enable = true;
+    };
   };
 
   security.rtkit.enable = true;
@@ -236,6 +246,7 @@ in {
         "video"
         "wheel"
         "wireshark"
+        "usbmon"
       ];
       useDefaultShell = false;
       shell = pkgs.zsh;
