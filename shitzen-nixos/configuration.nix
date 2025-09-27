@@ -21,7 +21,6 @@ in {
     modules/zfs.nix
 
     services/grafana/module.nix
-    services/grafana/prometheus.nix
 
     services/arr/flaresolverr.nix
     services/arr/prowlarr.nix
@@ -35,6 +34,7 @@ in {
 
     services/anubis.nix
     services/hydra.nix
+    services/ist.nix
     services/irc.nix
     services/jellyfin.nix
     services/kavita.nix
@@ -48,6 +48,7 @@ in {
     services/pihole.nix
 
     services/postgresql.nix
+    services/prometheus.nix
 
     services/rtorrent.nix
     services/samba.nix
