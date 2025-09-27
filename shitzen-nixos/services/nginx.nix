@@ -89,9 +89,9 @@ in {
   services.nginx.virtualHosts."fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
+    root = "/data/services/web/fuckk-lol/";
     locations = {
       "/" = {
-        alias = "/data/services/web/";
         index = "index.html";
       };
       "/repo/" = {
@@ -147,8 +147,8 @@ in {
   services.nginx.virtualHosts."valis.furryporn.ca" = {
     enableACME = true;
     forceSSL = true;
+    root = "/data/services/web/valisfurryporn/";
     locations."/" = {
-      alias = "/data/services/valisfurryporn/";
       index = "index.html";
     };
   };
@@ -156,8 +156,8 @@ in {
   services.nginx.virtualHosts."xenonemu.dev" = {
     enableACME = true;
     forceSSL = true;
+    root = "/data/services/web/xenonemu/";
     locations."/" = {
-      alias = "/data/services/xenonemu/";
       index = "index.html";
     };
   };

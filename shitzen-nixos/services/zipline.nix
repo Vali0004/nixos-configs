@@ -16,6 +16,15 @@ in {
 
   systemd.services.zipline.serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
 
+  services.nginx.virtualHosts."cdn.nanite.gg" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = mkProxy {
+      port = 3000;
+      webSockets = true;
+    };
+  };
+
   services.nginx.virtualHosts."holy.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
