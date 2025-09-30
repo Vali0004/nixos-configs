@@ -30,23 +30,11 @@ in {
     };
   };
 
-  systemd.services."netns@${netnsName}" = {
-    description = "Network namespace ${netnsName}";
-    after = [ "network.target" ];
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = "${pkgs.iproute2}/bin/ip netns add ${netnsName}";
-      ExecStop = "${pkgs.iproute2}/bin/ip netns del ${netnsName}";
-    };
-  };
-
   systemd.services."veth@${netnsName}" = {
     description = "veth pair for ${netnsName}";
-    after = [ "wireguard-wg0.service" ];
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [ "network.target" ];
     preStart = ''
+      ${pkgs.iproute2}/bin/ip netns add ${netnsName}
       ${pkgs.iproute2}/bin/ip link add ${vethName} type veth peer name veth1 netns ${netnsName}
 
       ${pkgs.iproute2}/bin/ip addr add ${vethHostIP}/24 dev ${vethName}
@@ -60,6 +48,7 @@ in {
       ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${vethNSIP}/24 -o ${hostIF} -j MASQUERADE
     '';
     preStop = ''
+      ${pkgs.iproute2}/bin/ip netns del ${netnsName}
       ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s ${vethNSIP}/24 -o ${hostIF} -j MASQUERADE
       ${pkgs.iproute2}/bin/ip link delete ${vethName} || true
       ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip link delete veth0 || true
@@ -73,8 +62,7 @@ in {
   systemd.services.forward80 = mkForward 80 "192.168.100.2";
   systemd.services.forward443 = mkForward 443 "192.168.100.2";
   systemd.services.forward3701 = mkForward 3701 "192.168.100.2";
-  systemd.services."wireguard-wg0".serviceConfig.Requires = [ "veth@${netnsName}.service" ];
-  systemd.services."wireguard-wg0".serviceConfig.After = [ "netns@${netnsName}.service" ];
+  systemd.services."wireguard-wg0".serviceConfig.After = [ "veth@${netnsName}.service" ];
 
   networking.wireguard = {
     interfaces = {
@@ -84,7 +72,7 @@ in {
         mtu = 1380;
         privateKeyFile = config.age.secrets.wireguard.path;
         peers = [{
-          allowedIPs = [ "0.0.0.0/0" ];
+          allowedIPs = [ "0.0.0.0/0" "::/0" ];
           endpoint = "74.208.44.130:51820";
           persistentKeepalive = 25;
           publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";

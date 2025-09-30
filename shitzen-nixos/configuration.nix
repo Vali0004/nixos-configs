@@ -53,7 +53,7 @@ in {
     services/rtorrent.nix
     services/samba.nix
 
-    services/toxvpn.nix
+    #services/toxvpn.nix
     services/ttyd.nix
     services/zdb.nix
     services/zipline.nix
@@ -177,8 +177,8 @@ in {
     };
     nameservers = [
       # Why don't I use 10.0.0.244 here? Well, network namespace is why!
-      "192.168.100.1"
       "75.75.75.75"
+      "75.75.76.76"
     ];
     networkmanager.dns = "none";
     resolvconf.useLocalResolver = false;

@@ -1,8 +1,6 @@
 { config, lib, modulesPath, pkgs, ... }:
 
-let
-  secrets = import ./../modules/network-secrets.nix { inherit lib; };
-in {
+{
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
@@ -21,6 +19,7 @@ in {
     ./../modules/certificates/module.nix
     ./../modules/bluetooth.nix
     ./../modules/hosts.nix
+    ./../modules/network-secrets.nix
     ./../modules/nix-settings.nix
     ./../modules/qt.nix
     ./../modules/xdg.nix
@@ -96,8 +95,8 @@ in {
     wireless = {
       enable = true;
       networks = {
-        "${secrets.wifi.ssid}" = {
-          psk = secrets.wifi.password;
+        "${config.secrets.wifi.ssid}" = {
+          psk = config.secrets.wifi.password;
         };
       };
       userControlled.enable = true;

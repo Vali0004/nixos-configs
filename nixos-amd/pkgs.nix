@@ -20,8 +20,6 @@
     btop
     # BeamMP Launcher
     beammp-launcher
-    # Cache system
-    cachix
     # Remote deploy
     colmena
     # Cider - Alternative Apple Music Client
@@ -32,8 +30,6 @@
     clipmenu-paste
     # cURL
     curl
-    # macOS Translation Layer
-    darling
     # XDG Mime/Desktop utils
     desktop-file-utils
     # Binary utility, desined to identify what a binary is (including the compiler)
@@ -88,8 +84,6 @@
     gtk3
     # Browser
     google-chrome
-    # Ping tool, used to ping a specific port
-    hping
     # Hex-Rays IDA Pro 9.0 Beta
     ida-pro
     # Internet performance tool
@@ -114,8 +108,6 @@
     nss
     # cli unrar
     libarchive
-    # X CVT
-    libxcvt
     # Wormhole, file sender
     magic-wormhole
     # COM Reader
@@ -136,8 +128,6 @@
     obs-studio
     # SSL Client
     openssl
-    # Hex Editor
-    okteta
     # nix-gaming
     osu-gatari
     osu-stable
@@ -157,13 +147,11 @@
     prismlauncher
     # Steam Proton Tricks (winetricks for Proton)
     protontricks
-    # Audio server
-    pulseaudio
     # VM
     qemu_kvm
     (writeShellScriptBin "qemu-system-x86_64-uefi" ''
       qemu-system-x86_64 \
-        -bios ${OVMF.fd}/FV/OVMF.fd \
+        -bios ${OVMFFull.fd}/FV/OVMF.fd \
         "$@"
     '')
     # Thunderstore (Mod Manager)

@@ -49,9 +49,9 @@ in {
       # Verify hash on completion
       pieces.hash.on_completion.set = yes
 
-      # Ratelimit to 20MiB/s on down, 4MiB/s on up
-      throttle.global_down.max_rate.set_kb = 20480
-      throttle.global_up.max_rate.set_kb = 4096
+      # Ratelimit to 10MiB/s on down, 1MiB/s on up
+      throttle.global_down.max_rate.set_kb = 10240
+      throttle.global_up.max_rate.set_kb = 1024
 
       protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
@@ -92,11 +92,10 @@ in {
       log.open_file = "log", (cfg.logfile)
       ## Basic logging
       log.add_output = "info", "log"
-      #log.add_output = "debug", "log"
       log.add_output = "error", "log"
-      #log.add_output = "dht_debug", "log"
-      log.add_output = "dht_manager", "log"
       log.add_output = "dht_router", "log"
+      #log.add_output = "debug", "log"
+      #log.add_output = "dht_debug", "log"
       #log.add_output = "peer_debug", "log"
       #log.add_output = "tracker_debug", "log"
 

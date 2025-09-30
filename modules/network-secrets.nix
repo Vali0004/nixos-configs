@@ -2,7 +2,8 @@
 
 let
   privateFile = ./network-secrets-private.nix;
-  secrets = {
+
+  defaultSecrets = {
     wifi = {
       ssid = "DummySSID";
       password = "DummyPassword";
@@ -11,8 +12,16 @@ let
       authorization = "dummy";
     };
   };
-in
-  if builtins.pathExists privateFile then
-    lib.recursiveUpdate secrets (import privateFile)
-  else
-    secrets
+
+  privateSecrets =
+    if builtins.pathExists privateFile then import privateFile else { };
+
+  mergedSecrets = lib.recursiveUpdate defaultSecrets privateSecrets;
+in {
+  options.secrets = lib.mkOption {
+    type = lib.types.attrs;
+    description = "System secrets (for config options)";
+    default = mergedSecrets;
+    readOnly = true;
+  };
+}

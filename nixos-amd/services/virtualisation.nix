@@ -2,11 +2,12 @@
 
 {
   programs.virt-manager.enable = true;
+
   users.groups.libvirtd.members = [
     "vali"
   ];
+
   virtualisation = {
-    podman.enable = true;
     libvirtd = {
       enable = true;
       onBoot = "ignore";

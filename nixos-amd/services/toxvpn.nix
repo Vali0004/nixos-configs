@@ -1,13 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  nixpkgs.overlays = [
-    (self: super: {
-      toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de").packages.x86_64-linux.default;
-    })
-  ];
-
   systemd.services.toxvpn.serviceConfig.TimeoutStartSec = "infinity";
+
   services.toxvpn = {
     enable = true;
     auto_add_peers = [

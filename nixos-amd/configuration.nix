@@ -1,8 +1,6 @@
 { config, lib, modulesPath, pkgs, ... }:
 
-let
-  secrets = import ./../modules/network-secrets.nix { inherit lib; };
-in {
+{
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
@@ -16,12 +14,13 @@ in {
     services/monado.nix
     services/picom.nix
     services/syslog.nix
-    services/toxvpn.nix
+    #services/toxvpn.nix
     services/virtualisation.nix
     ./../modules/audio/module.nix
     ./../modules/certificates/module.nix
     ./../modules/bluetooth.nix
     ./../modules/hosts.nix
+    ./../modules/network-secrets.nix
     ./../modules/nix-settings.nix
     ./../modules/qt.nix
     ./../modules/xdg.nix
@@ -150,8 +149,8 @@ in {
     wireless = {
       enable = true;
       networks = {
-        "${secrets.wifi.ssid}" = {
-          psk = secrets.wifi.password;
+        "${config.secrets.wifi.ssid}" = {
+          psk = config.secrets.wifi.password;
         };
       };
       userControlled.enable = true;

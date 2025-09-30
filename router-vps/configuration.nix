@@ -10,7 +10,7 @@
 
     services/nginx.nix
     services/prometheus.nix
-    services/toxvpn.nix
+    #services/toxvpn.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -98,6 +98,16 @@
         address = "74.208.44.130";
         prefixLength = 24;
       }];
+      ipv6.addresses = [
+        {
+          address = "2607:f1c0:f088:e200::1";
+          prefixLength = 80;
+        }
+        {
+          address = "fe80::1:bff:feb3:e037";
+          prefixLength = 64;
+        }
+      ];
     };
     nameservers = [
       "1.1.1.1"
