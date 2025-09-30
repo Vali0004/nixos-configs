@@ -1,10 +1,10 @@
 { config, lib, pkgs, ... }:
 
 let
-  secrets = import ./../modules/network-secrets.nix { inherit lib; };
   nixGamingFlake = builtins.getFlake "github:fufexan/nix-gaming";
   agenixFlake = builtins.getFlake "github:ryantm/agenix";
   spicetifyFlake = builtins.getFlake "github:Gerg-L/spicetify-nix";
+  toxvpnFlake = builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de";
 in {
   options.hasNixGaming = lib.mkOption {
     type = lib.types.bool;
@@ -22,6 +22,7 @@ in {
     # Required for agenix
     nixpkgs.config.permittedInsecurePackages = [
       "libxml2-2.13.8"
+      "qtwebengine-5.15.19"
     ];
 
     nixpkgs.overlays = [
@@ -30,15 +31,10 @@ in {
         agenix = agenixFlake.outputs.packages.x86_64-linux.agenix;
         spicetifyThemes = spicetifyFlake.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetifyFlake.outputs.legacyPackages.x86_64-linux.extensions;
+        toxvpn = toxvpnFlake.packages.x86_64-linux.default;
       })
       # Existing pkgs
       (self: super: {
-        discord = super.discord.overrideAttrs (old: {
-          src = super.fetchurl {
-            url = "https://stable.dl2.discordapp.net/apps/linux/0.0.106/discord-0.0.106.tar.gz";
-            hash = "sha256-FqY2O7EaEjV0O8//jIW1K4tTSPLApLxAbHmw4402ees=";
-          };
-        });
         dmenu = super.dmenu.overrideAttrs (old: {
           buildInputs = (old.buildInputs or []) ++ [ pkgs.libspng ];
           src = /home/vali/development/dmenu;
@@ -48,7 +44,7 @@ in {
             sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
           '';
         });
-        dwm = super.dwm.overrideAttrs(old: {
+        dwm = super.dwm.overrideAttrs (old: {
           buildInputs = old.buildInputs ++ [ super.yajl ];
           src = super.fetchFromGitHub {
             owner = "Vali0004";
@@ -57,7 +53,7 @@ in {
             hash = "sha256-Ij52wdZznFQSaCA2UoqZxLVn2BkBLqtoNS1EKEcQphg=";
           };
         });
-        dwmblocks = super.dwmblocks.overrideAttrs(old: {
+        dwmblocks = super.dwmblocks.overrideAttrs (old: {
           src = super.fetchFromGitHub {
             owner = "nimaaskarian";
             repo = "dwmblocks-statuscmd-multithread";
@@ -96,7 +92,7 @@ in {
         '';
         flameshot-upload = pkgs.writeScriptBin "flameshot_fuckk_lol" ''
           ${pkgs.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
-          ${pkgs.curl}/bin/curl -H "authorization: ${secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
+          ${pkgs.curl}/bin/curl -H "authorization: ${config.secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${pkgs.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${pkgs.xclip}/bin/xclip -selection clipboard
         '';
         xwinwrap-gif = pkgs.callPackage ./xwinwrap {};
       })

@@ -10,7 +10,6 @@
 
   boot.consoleLogLevel = 0;
 
-  boot.extraModprobeConfig = "options vfio-pci ids=1002:7340,1002:ab38";
   boot.extraModulePackages = [ ];
 
   boot.initrd = {

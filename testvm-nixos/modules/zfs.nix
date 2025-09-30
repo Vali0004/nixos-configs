@@ -2,10 +2,9 @@
 
 {
   boot = {
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_16;
     supportedFilesystems = [ "zfs" ];
-    # Do not hang my fucking system, please?
-    zfs.forceImportRoot = false;
-    zfs.forceImportAll = false;
+    zfs.devNodes = "/dev/disk/by-partuuid";
   };
 
   environment.systemPackages = [ pkgs.zfs ];

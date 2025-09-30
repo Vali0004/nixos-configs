@@ -20,6 +20,7 @@ let statusTypes = {
 let services = {
   main: { type: "good", url: "https://fuckk.lol/", responding: false },
   flood: { type: "good", url: "https://flood.fuckk.lol/", responding: false },
+  furryporn: { type: "good", url: "https://valis.furryporn.ca/", responding: false },
   grafana: { type: "good", url: "https://monitoring.fuckk.lol/grafana/login", responding: false },
   hydra: { type: "good", url: "https://hydra.fuckk.lol/", responding: false },
   jellyfin: { type: "good", url: "https://ohh.fuckk.lol/web", responding: false },
@@ -29,6 +30,7 @@ let services = {
   radarr: { type: "good", url: "https://radarr.fuckk.lol/", responding: false },
   sonarr: { type: "good", url: "https://sonarr.fuckk.lol/", responding: false },
   zipline: { type: "good", url: "https://holy.fuckk.lol/dashboard", responding: false },
+  zipline_nanite: { type: "good", url: "https://cdn.nanite.gg/dashboard", responding: false },
   xenon: { type: "good", url: "https://xenonemu.dev/", responding: false },
 };
 
@@ -72,8 +74,8 @@ function getStatusSummary() {
   return { online, total };
 }
 
-// Schedule job every 30s
-cron.schedule("*/30 * * * * *", async () => {
+// Schedule job every 120s
+cron.schedule("*/120 * * * * *", async () => {
   for (const [name, svc] of Object.entries(services)) {
     await checkService(name, svc);
   }

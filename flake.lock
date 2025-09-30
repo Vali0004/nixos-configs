@@ -178,6 +178,21 @@
         "type": "github"
       }
     },
+    "impermanence": {
+      "locked": {
+        "lastModified": 1737831083,
+        "narHash": "sha256-LJggUHbpyeDvNagTUrdhe/pRVp4pnS6wVKALS782gRI=",
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "rev": "4b3e914cdf97a5b536a889e939fb2fd2b043a170",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "impermanence",
+        "type": "github"
+      }
+    },
     "nix-minecraft": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -303,9 +318,11 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "impermanence": "impermanence",
         "nix-minecraft": "nix-minecraft",
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_4",
+        "toxvpn": "toxvpn",
         "zfs-utils": "zfs-utils"
       }
     },
@@ -336,6 +353,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "toxvpn": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757371973,
+        "narHash": "sha256-efwgTQAVof+zN8rGXmS1sG0+EiMcl8Bf7F6HdUUuW3g=",
+        "owner": "cleverca22",
+        "repo": "toxvpn",
+        "rev": "403586be0181a0b20dfc0802580f7f919aaa83de",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cleverca22",
+        "repo": "toxvpn",
+        "rev": "403586be0181a0b20dfc0802580f7f919aaa83de",
         "type": "github"
       }
     },

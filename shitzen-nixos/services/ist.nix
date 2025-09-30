@@ -56,4 +56,6 @@ in {
     home = dataDir;
     group = "nginx";
   };
+
+  users.groups.ist = {};
 }
