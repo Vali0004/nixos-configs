@@ -6,6 +6,7 @@
     ./../../modules/boot/grub-efi.nix
     ./kernel.nix
     ./zfs.nix
+    ./zfs-patch.nix
   ];
 
   boot.consoleLogLevel = 0;
