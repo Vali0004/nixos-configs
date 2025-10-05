@@ -57,10 +57,10 @@
     length=100
     size=32
     iconSize=22
-    plugins=mainmenu,quicklaunch,taskbar,systemtray,statusnotifier,volume,clock,showdesktop
+    plugins=mainmenu,quicklaunch,taskbar,tray,statusnotifier,volume,worldclock
 
     [quicklaunch]
-    apps\1\desktop=/run/current-system/sw/share/applications/lxqt-config.desktop
+    apps\1\desktop=/run/current-system/sw/share/applications/com.google.Chrome.desktop
     apps\2\desktop=/run/current-system/sw/share/applications/nemo.desktop
     apps\3\desktop=/run/current-system/sw/share/applications/Alacritty.desktop
     apps\size=3
@@ -76,9 +76,9 @@
     showOnlyCurrentDesktop=false
     type=taskbar
 
-    [systemtray]
+    [tray]
     alignment=Right
-    type=systemtray
+    type=tray
 
     [statusnotifier]
     alignment=Right
@@ -88,17 +88,13 @@
     alignment=Right
     type=volume
 
-    [clock]
+    [worldclock]
     alignment=Right
     timeFormat=%R
     dateFormat=%x
     showDate=true
     fontColor=#ffffff
-    type=clock
-
-    [showdesktop]
-    alignment=Right
-    type=showdesktop
+    type=worldclock
   '';
 
   # Link some extra directories in /run/current-system/software/share
