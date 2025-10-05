@@ -14,9 +14,7 @@
       onShutdown = "shutdown";
       qemu = {
         ovmf.enable = true;
-        ovmf.packages = with pkgs; [
-          OVMFFull.fd
-        ];
+        ovmf.packages = [ pkgs.OVMFFull.fd ];
         package = pkgs.qemu_kvm;
         runAsRoot = false;
       };

@@ -2,7 +2,7 @@
 
 let
   pnp-loader = pkgs.callPackage ./package.nix {};
-  mkProxy = import ./../../mkproxy.nix;
+  mkProxy = import ../../mkproxy.nix;
 in {
   systemd.services.pnp-loader = {
     enable = true;

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  hyprConfig = import ./../../hyprconfig.nix;
+  hyprConfig = import ../../hyprconfig.nix;
 in {
   programs.waybar = {
     enable = true;

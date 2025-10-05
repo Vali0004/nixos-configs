@@ -28,7 +28,7 @@ in {
       file.".config/xwinwrap/wallpaper.gif".source = ./wallpaper.gif;
       file.".config/syncplay.ini".source = ./syncplay.ini;
       file.".local/share/dwm/autostart.sh".source = "${manage-startup-applications}/bin/manage-startup-applications";
-      stateVersion = "25.05";
+      stateVersion = "25.11";
     };
 
     gtk = {

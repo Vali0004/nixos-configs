@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./../../../modules/dwmblocks.nix
+    ../.../modules/dwmblocks.nix
   ];
 
   nixpkgs.overlays = [
@@ -14,10 +14,16 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    gifsicle # Needed for wallpaper
-    dwmblocks # dwm status
-    libnotify # dwm ipc
-    xwinwrap # X11 Windows Wrap
+    # dwm status
+    dwmblocks
+    # Gifsicle, used to split & optimize GIFS
+    gifsicle
+    # dwm ipc
+    libnotify
+    # Audio control
+    pavucontrol
+    # X Window Wrap
+    xwinwrap
   ];
 
   services.xserver.windowManager.dwm = {

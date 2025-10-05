@@ -2,7 +2,7 @@
 
 let
   pnp-api = pkgs.callPackage ./package.nix {};
-  mkProxy = import ./../../mkproxy.nix;
+  mkProxy = import ../../mkproxy.nix;
 in {
   systemd.services.pnp-api = {
     enable = true;

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  mkProxy = import ./../mkproxy.nix;
+  mkProxy = import ../mkproxy.nix;
   cors_anywhere = pkgs.callPackage ./package.nix {};
 in {
   environment.systemPackages = [

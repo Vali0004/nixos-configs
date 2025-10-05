@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkProxy = import ./../modules/mkproxy.nix;
+  mkProxy = import ../modules/mkproxy.nix;
 in {
   environment.systemPackages = with pkgs; [
     jellyfin-ffmpeg

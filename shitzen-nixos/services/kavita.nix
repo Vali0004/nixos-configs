@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  mkProxy = import ./../modules/mkproxy.nix;
+  mkProxy = import ../modules/mkproxy.nix;
 in {
   services.kavita = {
     enable = true;

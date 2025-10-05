@@ -4,91 +4,91 @@
   environment.systemPackages = [ pkgs.agenix ];
   age.secrets = {
     convoy = {
-      file = ./../../secrets/convoy.age;
+      file = ../../secrets/convoy.age;
       owner = "nginx";
       group = "nginx";
     };
     cleclerc-mail-nanitehosting-com = {
-      file = ./../../secrets/cleclerc-mail-nanitehosting-com.age;
+      file = ../../secrets/cleclerc-mail-nanitehosting-com.age;
       owner = "nginx";
       group = "nginx";
     };
     hydra-github-token = {
-      file = ./../../secrets/hydra-github-token.age;
+      file = ../../secrets/hydra-github-token.age;
       owner = "hydra";
     };
     kavita = {
-      file = ./../../secrets/kavita.age;
+      file = ../../secrets/kavita.age;
       owner = "kavita";
       group = "kavita";
     };
     maddy-mail-fuckk-lol = {
-      file = ./../../secrets/maddy-mail-fuckk-lol.age;
+      file = ../../secrets/maddy-mail-fuckk-lol.age;
       owner = "nginx";
       group = "nginx";
     };
     matrix = {
-      file = ./../../secrets/matrix.age;
+      file = ../../secrets/matrix.age;
       owner = "matrix-synapse";
       group = "matrix-synapse";
     };
     oauth2 = {
-      file = ./../../secrets/oauth2.age;
+      file = ../../secrets/oauth2.age;
       owner = "nginx";
       group = "nginx";
     };
     oauth2-proxy = {
-      file = ./../../secrets/oauth2-proxy.age;
+      file = ../../secrets/oauth2-proxy.age;
       owner = "nginx";
       group = "nginx";
     };
     pnp-api = {
-      file = ./../../secrets/pnp-api.age;
+      file = ../../secrets/pnp-api.age;
       owner = "nginx";
       group = "nginx";
     };
     pnp-loader = {
-      file = ./../../secrets/pnp-loader.age;
+      file = ../../secrets/pnp-loader.age;
       owner = "nginx";
       group = "nginx";
     };
     prowlarr-api = {
-      file = ./../../secrets/prowlarr-api.age;
+      file = ../../secrets/prowlarr-api.age;
       owner = "root";
       group = "root";
     };
     proxy-mail-fuckk-lol = {
-      file = ./../../secrets/proxy-mail-fuckk-lol.age;
+      file = ../../secrets/proxy-mail-fuckk-lol.age;
       owner = "nginx";
       group = "nginx";
     };
     radarr-api = {
-      file = ./../../secrets/radarr-api.age;
+      file = ../../secrets/radarr-api.age;
       owner = "root";
       group = "root";
     };
     sonarr-api = {
-      file = ./../../secrets/sonarr-api.age;
+      file = ../../secrets/sonarr-api.age;
       owner = "root";
       group = "root";
     };
     vali-mail-fuckk-lol = {
-      file = ./../../secrets/vali-mail-fuckk-lol.age;
+      file = ../../secrets/vali-mail-fuckk-lol.age;
       owner = "nginx";
       group = "nginx";
     };
     zipline = {
-      file = ./../../secrets/zipline.age;
+      file = ../../secrets/zipline.age;
       owner = "root";
       group = "root";
     };
     wireguard = {
-      file = ./../../secrets/wireguard.age;
+      file = ../../secrets/wireguard.age;
       owner = "root";
       group = "root";
     };
     wireguard-down = {
-      file = ./../../secrets/wireguard-down.age;
+      file = ../../secrets/wireguard-down.age;
       owner = "root";
       group = "root";
     };
