@@ -6,7 +6,8 @@ let
     hash = "sha256-X4PO6uf/ppEedR6ZAoWmrDRfHXxv2LuBThekRZOwmoA=";
   };
   nixpkgs = builtins.getFlake "github:NixOS/nixpkgs/59e69648d345d6e8fef86158c555730fa12af9de";
-  pkgsOverride = (nixpkgs.legacyPackages.x86_64-linux.override {
+  pkgsOverride = import nixpkgs {
+    system = "x86_64-linux";
     config = {
       allowUnfree = true;
       hostPlatform = "x86_64-linux";
@@ -15,9 +16,10 @@ let
         "qtwebengine-5.15.19"
       ];
     };
-  });
+  };
 in {
   nixpkgs.pkgs = pkgsOverride;
+
   nixpkgs.overlays = [
     (self: super: {
       zfs = super.zfs.overrideAttrs (old: {
