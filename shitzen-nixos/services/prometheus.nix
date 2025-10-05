@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkJob = import ./../modules/mkprometheus.nix;
+  mkJob = import ../modules/mkprometheus.nix;
 in {
   networking.firewall.allowedTCPPorts = [
     9100 # Node Exporter

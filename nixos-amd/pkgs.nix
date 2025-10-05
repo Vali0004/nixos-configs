@@ -2,14 +2,14 @@
 
 {
   imports = [
-    ./../pkgs/module.nix
+    ../pkgs/module.nix
   ];
 
   environment.systemPackages = with pkgs; [
-    # Key system (remote deploy)
-    agenix
     # Terminal
     alacritty-graphics
+    # Key system (remote deploy)
+    agenix
     # ALSA (PipeWire/Audio Subsystem)
     alsa-utils
     # XDG GUI Debug Utility
@@ -26,18 +26,12 @@
     colmena
     # Cider - Alternative Apple Music Client
     cider-2
-    # Clipboard Manager
-    clipmenu
-    # Clipboard Manager (auto-paste)
-    clipmenu-paste
     # cURL
     curl
     # XDG Mime/Desktop utils
     desktop-file-utils
     # Binary utility, desined to identify what a binary is (including the compiler)
     detect-it-easy
-    # Directory envorinment
-    direnv
     # DNS & IP Tool
     dig
     # dos2unix tool
@@ -46,26 +40,18 @@
     (discord.override { withVencord = true; })
     # SMBIOS
     dmidecode
-    # App launcher
-    dmenu
     # .NET Disassembler
     dnspy
-    # Notification daemon
-    dunst
     # Extended Display Id Data Decode
     edid-decode
     # Matrix client
     element-desktop
     # Image/PDF viewer
     eog
-    # Noise suppression
-    easyeffects
     # Modern Neofetch
     fastfetch
     # Simpler Fastfetch Config
     fastfetch-simple
-    # Simple Image Viewer
-    feh
     # Screenshot Tool
     flameshot
     # Screenshot Tool (Upload to fuckk.lol)
@@ -98,16 +84,12 @@
     jellyfin-media-player
     # JSON parser
     jq
-    # Archive tool
-    kdePackages.ark
     # MS Paint
     kdePackages.kolourpaint
     # CAD software
     kicad
     # Killall (psmisc)
     killall
-    # Media Player
-    kodi
     # File browser
     nemo-with-extensions
     # Network Security Services
@@ -130,36 +112,21 @@
     jlink
     # Adafurit nRF Util
     nrf-util
-    # Node.js
-    nodejs_24
     # Video capture tool
     obs-studio
-    # SSL Client
-    openssl
     # nix-gaming
     osu-gatari
     osu-stable
-    # Tablet Driver
-    opentabletdriver
-    # Audio mixer
-    pamixer
-    # Audio control
-    pavucontrol
     # PCI Utilities
     pciutils
-    # Compositer
-    picom
     # Audio Player Control
     playerctl
     # Minecraft launcher
     prismlauncher
-    # Steam Proton Tricks (winetricks for Proton)
-    protontricks
     # VM
-    qemu_kvm
     (writeShellScriptBin "qemu-system-x86_64-uefi" ''
-      qemu-system-x86_64 \
-        -bios ${OVMFFull.fd}/FV/OVMF.fd \
+      ${pkgs.qemu_kvm}/bin/qemu-system-x86_64 \
+        -bios ${pkgs.OVMFFull.fd}/FV/OVMF.fd \
         "$@"
     '')
     # Thunderstore (Mod Manager)
@@ -170,22 +137,12 @@
     renderdoc
     # Socket Output Concat
     socat
-    # Spotify mods
-    spicetify-cli
-    # Steam CMD
-    steamcmd
     # Syncplay, allows for syncing video streams with others via mpv
     syncplay
     # System stats
     sysstat
     # TCP Dump
     tcpdump
-    # TeamSpeak
-    teamspeak3
-    # tmux, screen replacement
-    tmux
-    # Tree, helps create file structures in text form
-    tree
     # Unity
     unityhub
     # ZIP Archive Undo
@@ -194,18 +151,14 @@
     usbutils
     # Alternative Discord client
     vesktop
-    # vi
-    vim
     # VM helper
     virt-viewer
     # VRChat Friendship Management
     vrcx
     # Editor
     vscode
-    vscode-extensions.mkhl.direnv
     vscode-extensions.bbenoist.nix
     vscode-extensions.jnoortheen.nix-ide
-    vscode-extensions.mshr-h.veriloghdl
     vscode-extensions.ms-vscode.cpptools-extension-pack
     vscode-extensions.ms-vscode.cmake-tools
     vscode-extensions.shardulm94.trailing-spaces
@@ -223,10 +176,6 @@
     # XDG
     xdg-launch
     xdg-utils
-    # X11 Do Tool
-    xdotool
-    # Fallback XDG file manager
-    zenity
     # ZIP Archive Utility
     zip
   ];

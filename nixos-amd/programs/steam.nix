@@ -2,20 +2,30 @@
 
 {
   programs.steam = {
-    package = pkgs.steam.override {
-      extraPkgs = pkgs: [ pkgs.nss pkgs.nspr ];
-    };
     dedicatedServer.openFirewall = true;
     enable = true;
-    #gamescopeSession.enable = true;
+    gamescopeSession.enable = true;
     localNetworkGameTransfers.openFirewall = true;
+    package = pkgs.steam.override {
+      extraPkgs = pkgs: with pkgs; [ nss nspr ];
+    };
     remotePlay.openFirewall = true;
   };
+
   programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
+    # Wine/Proton Manager/Wrapper
     lutris
+    # Vk and OGL overlay for montioring FPS
     mangohud
+    # Proton GE GUI Manager
     protonup-qt
+    # Steam Proton Tricks (winetricks for Proton)
+    protontricks
+    # Steam CMD
+    steamcmd
+    # UMU Launcher
     umu-launcher
   ];
 }

@@ -1,6 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
+  environment.systemPackages = [ pkgs.easyeffects ];
+
   systemd.user.services.easyeffects = {
     enable = true;
     after = [ "graphical-session-pre.target" ];

@@ -8,10 +8,10 @@
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     boot/boot.nix
-    ./../modules/hosts.nix
-    ./../modules/network-secrets.nix
-    ./../modules/nix-settings.nix
-    ./../modules/shell-aliases.nix
+    ../modules/hosts.nix
+    ../modules/network-secrets.nix
+    ../modules/nix-settings.nix
+    ../modules/shell-aliases.nix
     ./pkgs.nix
   ];
 
@@ -33,8 +33,8 @@
   };
 
   users.users = let
-    my_keys = import ./../ssh_keys_personal.nix;
-    common_keys = import ./../ssh_keys.nix;
+    my_keys = import ../ssh_keys_personal.nix;
+    common_keys = import ../ssh_keys.nix;
   in {
     root.openssh.authorizedKeys.keys = my_keys ++ common_keys;
     vali = {

@@ -7,13 +7,14 @@ in {
   imports = [
     (import "${home-manager}/nixos")
   ];
+
   home-manager.users.vali = {
     imports = [
       programs/alacritty.nix
       programs/dconf.nix
       programs/fastfetch.nix
       programs/git.nix
-      programs/rofi.nix
+      #programs/rofi.nix
       programs/vscode.nix
       programs/zsh.nix
       services/dunst.nix

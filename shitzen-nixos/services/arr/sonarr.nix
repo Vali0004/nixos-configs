@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  mkProxy = import ./../../modules/mkproxy.nix;
+  mkProxy = import ../../modules/mkproxy.nix;
 in {
   services.sonarr = {
     enable = true;

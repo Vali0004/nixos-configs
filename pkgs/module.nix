@@ -5,6 +5,7 @@ let
   agenixFlake = builtins.getFlake "github:ryantm/agenix";
   spicetifyFlake = builtins.getFlake "github:Gerg-L/spicetify-nix";
   toxvpnFlake = builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de";
+  openhmdFlake = builtins.getFlake "github:Vali0004/OpenHMD/c56529c22618325dfc31e7c44f17e804cb7e7edf";
 in {
   options.hasNixGaming = lib.mkOption {
     type = lib.types.bool;
@@ -28,6 +29,7 @@ in {
     nixpkgs.overlays = [
       # Flake overrides
       (self: super: {
+        openhmd = openhmdFlake.outputs.packages.x86_64-linux.openhmd;
         agenix = agenixFlake.outputs.packages.x86_64-linux.agenix;
         spicetifyThemes = spicetifyFlake.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetifyFlake.outputs.legacyPackages.x86_64-linux.extensions;

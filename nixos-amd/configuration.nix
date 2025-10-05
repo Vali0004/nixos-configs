@@ -16,15 +16,15 @@
     services/syslog.nix
     #services/toxvpn.nix
     services/virtualisation.nix
-    ./../modules/audio/module.nix
-    ./../modules/certificates/module.nix
-    ./../modules/bluetooth.nix
-    ./../modules/hosts.nix
-    ./../modules/network-secrets.nix
-    ./../modules/nix-settings.nix
-    ./../modules/qt.nix
-    ./../modules/shell-aliases.nix
-    ./../modules/xdg.nix
+    ../modules/audio/module.nix
+    ../modules/certificates/module.nix
+    ../modules/bluetooth.nix
+    ../modules/hosts.nix
+    ../modules/network-secrets.nix
+    ../modules/nix-settings.nix
+    ../modules/qt.nix
+    ../modules/shell-aliases.nix
+    ../modules/xdg.nix
     ./pkgs.nix
   ];
 

@@ -1,11 +1,11 @@
 { config, lib, pkgs, ... }:
 
 let
-  barConfig = import ./../../barconfig.nix;
+  barConfig = import ../../barconfig.nix;
 in {
   home.file.".config/polybar/pipewire.sh" = {
     source = pkgs.callPackage ./pipewire-polybar.nix {
-      barConfig = import ./../../barconfig.nix;
+      barConfig = import ../../barconfig.nix;
     };
     executable = true;
   };

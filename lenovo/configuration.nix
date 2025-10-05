@@ -12,21 +12,21 @@ in {
     programs/steam.nix
     programs/zsh.nix
     #services/windowManager/dwm.nix
-    services/windowManager/cosmic.nix
+    services/windowManager/lxqt-sway.nix
     services/displayManager.nix
     services/openssh.nix
-    services/picom.nix
+    #services/picom.nix
     services/prometheus.nix
     services/zdb.nix
-    ./../modules/audio/module.nix
-    ./../modules/certificates/module.nix
-    ./../modules/bluetooth.nix
-    ./../modules/hosts.nix
-    ./../modules/network-secrets.nix
-    ./../modules/nix-settings.nix
-    ./../modules/qt.nix
-    ./../modules/shell-aliases.nix
-    ./../modules/xdg.nix
+    ../modules/audio/module.nix
+    ../modules/certificates/module.nix
+    ../modules/bluetooth.nix
+    ../modules/hosts.nix
+    ../modules/network-secrets.nix
+    ../modules/nix-settings.nix
+    ../modules/qt.nix
+    ../modules/shell-aliases.nix
+    ../modules/xdg.nix
     ./pkgs.nix
   ];
 
@@ -36,7 +36,7 @@ in {
     })
   ];
 
-  console.useXkbConfig = true;
+  console.keyMap = "us";
 
   fileSystems = {
     # Mount the Root Partition
@@ -130,8 +130,6 @@ in {
       # Disable XTerm
       excludePackages = [ pkgs.xterm ];
       desktopManager.xterm.enable = false;
-      # Set our X11 Keyboard layout
-      xkb.layout = "us";
     };
   };
 
@@ -143,7 +141,7 @@ in {
   time.timeZone = "America/Detroit";
 
   users = let
-    my_keys = import ./../ssh_keys_personal.nix;
+    my_keys = import ../ssh_keys_personal.nix;
   in {
     defaultUserShell = pkgs.zsh;
     users.root.openssh.authorizedKeys.keys = my_keys;
