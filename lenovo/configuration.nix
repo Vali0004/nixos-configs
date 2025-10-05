@@ -80,6 +80,8 @@
   networking = {
     hostId = "2632ac4c";
     hostName = "lenovo";
+    # We use wpa_cli, no need for NM
+    networkmanager.enable = lib.mkForce false;
     useDHCP = true;
     usePredictableInterfaceNames = false;
     wireless = {
