@@ -34,11 +34,57 @@
     lock_command_wayland=swaylock
   '';
 
+  environment.etc."lxqt/panel.conf".text = ''
+    [General]
+    __userfile__=true
+    iconTheme=oxygen
+    panelSize=32
+    fontColor=#000000
+    panelTransparency=0
+    alignment=Center
+    length=100
+    position=Bottom
+    hidable=false
+    animationDuration=0
+    autoHide=false
+    showDelay=0
+    hideDelay=0
+    panels=panel1
+
+    [panel1]
+    alignment=Center
+    position=Top
+    length=100
+    size=32
+    iconSize=22
+    plugins=mainmenu,quicklaunch,taskbar,systemtray,statusnotifier,volume,clock,showdesktop
+
+    [panel1/quicklaunch]
+    apps\1\desktop=/run/current-system/sw/share/applications/lxqt-config.desktop
+    apps\2\desktop=/run/current-system/sw/share/applications/nemo.desktop
+    apps\3\desktop=/run/current-system/sw/share/applications/Alacritty.desktop
+    apps\size=3
+
+    [panel1/mainmenu]
+    buttonIcon=lxqt-logo
+
+    [panel1/taskbar]
+    groupTasks=true
+    showOnlyCurrentDesktop=false
+
+    [panel1/clock]
+    timeFormat=%R
+    dateFormat=%x
+    showDate=true
+    fontColor=#ffffff
+  '';
+
   # Link some extra directories in /run/current-system/software/share
   environment.pathsToLink = [ "/share" "${pkgs.lxqt.lxqt-wayland-session}/share" ];
 
   systemd.tmpfiles.rules = [
     "L+ /home/vali/.config/lxqt/session.conf             - - - - /etc/lxqt/session.conf"
+    "L+ /home/vali/.config/lxqt/panel.conf               - - - - /etc/lxqt/panel.conf"
     "L+ /home/vali/.config/lxqt/wayland/lxqt-sway.config - - - - /home/vali/.config/sway/config"
   ];
 
