@@ -86,6 +86,8 @@
     radeon-profile
     # App launcher
     rofi
+    # Skylander's Portal Tool
+    skylanders-nfs-reader
     # socat - listener
     socat
     # Spotify mods
