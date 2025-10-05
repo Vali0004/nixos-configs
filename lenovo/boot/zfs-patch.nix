@@ -5,6 +5,8 @@ let
     url = "https://github.com/openzfs/zfs/archive/pull/14013/head.tar.gz";
     hash = "sha256-X4PO6uf/ppEedR6ZAoWmrDRfHXxv2LuBThekRZOwmoA=";
   };
+  nixpkgsFlake = builtins.getFlake "github:NixOS/nixpkgs/nixos-unstable/59e69648d345d6e8fef86158c555730fa12af9de";
+  nixpkgsPkgs = nixpkgsFlake.outputs.packages.x86_64-linux;
 in {
   nixpkgs.overlays = [
     (self: super: {
@@ -14,7 +16,7 @@ in {
     })
   ];
 
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_16.extend (self: super: {
+  boot.kernelPackages = nixpkgsPkgs.linuxKernel.packages.linux_6_16.extend (self: super: {
     zfs_2_3 = super.zfs_2_3.overrideAttrs (old: {
       src = zfs-src;
     });
