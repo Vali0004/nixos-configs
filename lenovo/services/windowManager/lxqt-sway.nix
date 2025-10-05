@@ -2,6 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
+    lxqt.lxqt-wayland-session
     # LXQt uses this for it's terminal in some cases, and this is as a fallback.
     # It will be forced out at some point
     xterm
