@@ -34,6 +34,21 @@
     lock_command_wayland=swaylock
   '';
 
+  environment.etc."lxqt/lxqt.conf".text = ''
+    [General]
+    theme=Arch-Colors
+    icon_theme=breeze
+    single_click_activate=false
+    tool_button_style=ToolButtonTextBesideIcon
+    palette_override=true
+
+    [Qt]
+    font="Sans,11,-1,5,50,0,0,0,0,0"
+    doubleClickInterval=400
+    style=Fusion
+    wheelScrollLines=3
+  '';
+
   environment.etc."lxqt/panel.conf".text = ''
     [General]
     __userfile__=true
@@ -72,7 +87,7 @@
     apps\2\desktop=/run/current-system/sw/share/applications/discord.desktop
     apps\4\desktop=/run/current-system/sw/share/applications/code.desktop
     apps\5\desktop=/run/current-system/sw/share/applications/nemo.desktop
-    apps\size=5
+    apps\size=3
     type=quicklaunch
 
     [taskbar]
@@ -108,6 +123,7 @@
     "L+ /home/vali/.config/lxqt/session.conf             - - - - /etc/lxqt/session.conf"
     "L+ /home/vali/.config/lxqt/panel.conf               - - - - /etc/lxqt/panel.conf"
     "L+ /home/vali/.config/lxqt/power.conf               - - - - /run/current-system/sw/share/lxqt/power.conf"
+    "L+ /home/vali/.config/lxqt/lxqt.conf                - - - - /etc/lxqt/lxqt.conf"
     "L+ /home/vali/.config/lxqt/graphics                 - - - - /run/current-system/sw/share/lxqt/graphics"
     "L+ /home/vali/.config/lxqt/icons                    - - - - /run/current-system/sw/share/lxqt/icons"
     "L+ /home/vali/.config/lxqt/translations             - - - - /run/current-system/sw/share/lxqt/translations"
