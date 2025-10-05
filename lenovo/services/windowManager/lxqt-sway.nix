@@ -108,7 +108,6 @@
     "L+ /home/vali/.config/lxqt/session.conf             - - - - /etc/lxqt/session.conf"
     "L+ /home/vali/.config/lxqt/panel.conf               - - - - /etc/lxqt/panel.conf"
     "L+ /home/vali/.config/lxqt/power.conf               - - - - /run/current-system/sw/share/lxqt/power.conf"
-    "L+ /home/vali/.config/lxqt/lxqt.conf                - - - - /run/current-system/sw/share/lxqt/lxqt.conf"
     "L+ /home/vali/.config/lxqt/graphics                 - - - - /run/current-system/sw/share/lxqt/graphics"
     "L+ /home/vali/.config/lxqt/icons                    - - - - /run/current-system/sw/share/lxqt/icons"
     "L+ /home/vali/.config/lxqt/translations             - - - - /run/current-system/sw/share/lxqt/translations"
