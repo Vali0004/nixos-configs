@@ -17,5 +17,5 @@
     lightdm.enable = false;
   };
 
-  services.displayManager.defaultSession = "COSMIC";
+  services.displayManager.defaultSession = "cosmic";
 }
