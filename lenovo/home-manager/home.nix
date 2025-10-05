@@ -18,7 +18,7 @@ in {
       programs/vscode.nix
       programs/zsh.nix
       services/dunst.nix
-      windowManager/sway.nix
+      windowManager/lxqt-sway.nix
     ];
 
     home = {

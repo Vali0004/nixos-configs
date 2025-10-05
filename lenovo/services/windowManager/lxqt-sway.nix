@@ -120,8 +120,9 @@
   environment.pathsToLink = [ "/share" "${pkgs.lxqt.lxqt-wayland-session}/share" ];
 
   systemd.tmpfiles.rules = [
-    "L+ /home/vali/.config/lxqt/session.conf - - - - /etc/lxqt/session.conf"
-    "L+ /home/vali/.config/lxqt/panel.conf - - - - /etc/lxqt/panel.conf"
+    "L+ /home/vali/.config/lxqt/session.conf             - - - - /etc/lxqt/session.conf"
+    "L+ /home/vali/.config/lxqt/panel.conf               - - - - /etc/lxqt/panel.conf"
+    "L+ /home/vali/.config/lxqt/wayland/lxqt-sway.config - - - - /home/vali/.config/sway/config"
   ];
 
   programs = {

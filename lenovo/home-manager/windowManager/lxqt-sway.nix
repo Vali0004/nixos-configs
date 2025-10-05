@@ -67,6 +67,14 @@ in {
         "${swayConfig.modifier}+v" = "exec ${swayConfig.wmClipboardManager}";
         # Kill focused window
         "${swayConfig.modifier}+q" = "kill";
+        # LXQt Binds
+        "alt+space" = "exec lxqt-runner";
+        "alt+F2" = "exec lxqt-runner";
+        "${swayConfig.modifier}+p" = "exec nemo";
+        "${swayConfig.modifier}+${swayConfig.smodifier}+escape" = "exec lxqt-leave --lockscreen";
+        "XF86PowerOff" = "exec lxqt-leave";
+        "XF86MonBrightnessDown" = "exec lxqt-config-brightness -d";
+        "XF86MonBrightnessUp" = "exec lxqt-config-brightness -i";
         # Pipewire-pulse
         "XF86AudioMute" = "exec pactl set-sink-mute 0 toggle";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume 0 -5%";
@@ -173,14 +181,26 @@ in {
       };
       # Modifer keys
       modifier = "${swayConfig.modifier}";
+      startup = [
+        # LXQt panel
+        { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY"; always = true; }
+        { command = "lxqt-session && sway exit"; always = true; }
+        { command = "lxqt-panel"; always = true; }
+      ];
       # Window options
       window = {
         hideEdgeBorders = "both";
         commands = [
           { command = "floating enable, focus disable"; criteria.class = "xwinwrap"; }
           { command = "border pixel 0"; criteria.class = "^.*"; }
+          { command = "floating enable"; criteria.class = "^lxqt-.*$"; }
+          { command = "floating enable"; criteria.class = "cmst"; }
+          { command = "floating enable"; criteria.class = "kvantummanager"; }
         ];
       };
     };
+    extraConfig = ''
+      focus_on_window_activation focus
+    '';
   };
 }
