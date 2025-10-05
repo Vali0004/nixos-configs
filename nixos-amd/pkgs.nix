@@ -20,6 +20,8 @@
     btop
     # BeamMP Launcher
     beammp-launcher
+    # 3D Modeling
+    blender
     # Remote deploy
     colmena
     # Cider - Alternative Apple Music Client
@@ -86,6 +88,8 @@
     google-chrome
     # Hex-Rays IDA Pro 9.0 Beta
     ida-pro
+    # Internet utilities (ping6, etc.)
+    inetutils
     # Internet performance tool
     iperf
     # IRC Client
@@ -102,6 +106,8 @@
     kicad
     # Killall (psmisc)
     killall
+    # Media Player
+    kodi
     # File browser
     nemo-with-extensions
     # Network Security Services
@@ -116,6 +122,8 @@
     mpv
     # Directory info
     ncdu
+    # Network tools
+    net-tools
     # nRF Studio
     nrf-studio
     # SEGGER JLink
@@ -170,6 +178,8 @@
     syncplay
     # System stats
     sysstat
+    # TCP Dump
+    tcpdump
     # TeamSpeak
     teamspeak3
     # tmux, screen replacement
