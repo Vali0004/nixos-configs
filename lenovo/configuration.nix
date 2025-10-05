@@ -1,6 +1,8 @@
 { config, lib, modulesPath, pkgs, ... }:
 
-{
+let
+  skylandersFlake = builtins.getFlake /home/vali/skylanders-nfc-reader;
+in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     boot/boot.nix
@@ -26,6 +28,12 @@
     ./../modules/shell-aliases.nix
     ./../modules/xdg.nix
     ./pkgs.nix
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      skylanders-nfs-reader = skylandersFlake.outputs.packages.x86_64-linux.skylanders-nfs-reader ;
+    })
   ];
 
   console.useXkbConfig = true;
