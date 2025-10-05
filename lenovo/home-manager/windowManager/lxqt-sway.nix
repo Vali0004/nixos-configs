@@ -15,31 +15,6 @@ in {
           status_command = ""
         '';
       }];
-      # Colors
-      colors = {
-        background = "#0F0F0F";
-        focused = {
-          border = "#0F0F0F";
-          background = "#0F0F0F";
-          text = "#FFFFFF";
-          indicator = "#0F0F0F";
-          childBorder = "#000000";
-        };
-        focusedInactive = {
-          border = "#0F0F0F";
-          background = "#0F0F0F";
-          text = "#FFFFFF";
-          indicator = "#0F0F0F";
-          childBorder = "#000000";
-        };
-        unfocused = {
-          border = "#3B3B3B";
-          background = "#3B3B3B";
-          text = "#FFFFFF";
-          indicator = "#3B3B3B";
-          childBorder = "#000000";
-        };
-      };
       # Theme
       fonts = {
         names = [ "DejaVu Sans Mono 11" "FontAwesome5Free" ];
@@ -182,10 +157,10 @@ in {
       # Modifer keys
       modifier = "${swayConfig.modifier}";
       startup = [
+        # For some unknown fucking reason, sway on NixOS (and NixOS only) defaults to ws10
+        { command = "workspace 1"; always = false; }
         # LXQt panel
-        { command = "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY"; always = true; }
-        { command = "lxqt-session && sway exit"; always = true; }
-        { command = "lxqt-panel"; always = true; }
+        { command = "lxqt-panel"; always = false; }
       ];
       # Window options
       window = {
