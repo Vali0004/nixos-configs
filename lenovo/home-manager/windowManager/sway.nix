@@ -173,16 +173,6 @@ in {
       };
       # Modifer keys
       modifier = "${swayConfig.modifier}";
-      startup = [
-        # For some unknown fucking reason, sway on NixOS (and NixOS only) defaults to ws10
-        { workspace = "1"; command = "workspace 1"; notification = true; }
-        # Better layouts
-        { command = "sway-auto-layout"; always = true; notification = false; }
-        # Autostart Discord
-        { workspace = "4"; command = "discord"; notification = true; }
-        # LXQt panel
-        { command = "lxqt-panel"; always = true; notification = false; }
-      ];
       # Window options
       window = {
         hideEdgeBorders = "both";
