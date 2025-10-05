@@ -64,19 +64,41 @@
     apps\2\desktop=/run/current-system/sw/share/applications/nemo.desktop
     apps\3\desktop=/run/current-system/sw/share/applications/Alacritty.desktop
     apps\size=3
+    type=quicklaunch
 
     [mainmenu]
+    alignment=Left
     buttonIcon=lxqt-logo
+    type=mainmenu
 
     [taskbar]
     groupTasks=true
     showOnlyCurrentDesktop=false
+    type=taskbar
+
+    [systemtray]
+    alignment=Right
+    type=systemtray
+
+    [statusnotifier]
+    alignment=Right
+    type=statusnotifier
+
+    [volume]
+    alignment=Right
+    type=volume
 
     [clock]
+    alignment=Right
     timeFormat=%R
     dateFormat=%x
     showDate=true
     fontColor=#ffffff
+    type=clock
+
+    [showdesktop]
+    alignment=Right
+    type=showdesktop
   '';
 
   # Link some extra directories in /run/current-system/software/share
