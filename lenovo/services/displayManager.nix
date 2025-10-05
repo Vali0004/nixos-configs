@@ -21,7 +21,7 @@ in {
       ];
       package = pkgs.kdePackages.sddm;
       theme = "sddm-astronaut-theme";
-      wayland.enable = false;
+      wayland.enable = true;
     };
   };
 }

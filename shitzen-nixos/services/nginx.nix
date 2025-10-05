@@ -35,6 +35,7 @@ let
     "text/x-component"
     "text/xml"
   ];
+  mkProxy = import ../modules/mkproxy.nix;
 in {
   services.nginx = {
     additionalModules = [ pkgs.nginxModules.brotli ];
@@ -159,6 +160,16 @@ in {
     root = "/data/services/web/xenonemu/";
     locations."/" = {
       index = "index.html";
+    };
+  };
+
+  services.nginx.virtualHosts."monitoring.ajaxvpn.org" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = mkProxy {
+      ip = "176.9.37.144";
+      port = 3000;
+      webSockets = true;
     };
   };
 

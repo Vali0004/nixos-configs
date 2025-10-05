@@ -12,6 +12,10 @@ in {
     enableReload = true;
     scrapeConfigs = [
       (mkJob {
+        targets = [
+          "shitzen-nixos"
+          "France-1"
+        ];
         name = "fragmentation";
         port = 9103;
       })
@@ -24,6 +28,13 @@ in {
         appendNameToMetrics = true;
         name = "prometheus";
         port = config.services.prometheus.port;
+      })
+      (mkJob {
+        targets = [
+          "France-1"
+        ];
+        name = "openvpn";
+        port = 9176;
       })
       (mkJob {
         name = "prowlarr";
@@ -57,6 +68,7 @@ in {
         targets = [
           "shitzen-nixos"
           "lenovo"
+          "France-1"
         ];
         name = "smartctl";
         port = 9633;
@@ -74,6 +86,7 @@ in {
         targets = [
           "shitzen-nixos"
           "lenovo"
+          "France-1"
         ];
         name = "zfs";
         port = 9134;

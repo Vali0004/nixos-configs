@@ -22,6 +22,8 @@
       "rd.systemd.show_status=auto"
       "splash"
     ];
+    kernel.sysctl."net.ipv4.ip_forward" = true;
+    kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {

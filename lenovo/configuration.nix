@@ -9,12 +9,13 @@
     programs/ssh.nix
     programs/steam.nix
     programs/zsh.nix
-    services/windowManager/dwm.nix
+    #services/windowManager/dwm.nix
+    services/windowManager/cosmic.nix
     services/displayManager.nix
     services/openssh.nix
     services/picom.nix
     services/prometheus.nix
-    #services/zdb.nix
+    services/zdb.nix
     ./../modules/audio/module.nix
     ./../modules/certificates/module.nix
     ./../modules/bluetooth.nix
@@ -22,23 +23,12 @@
     ./../modules/network-secrets.nix
     ./../modules/nix-settings.nix
     ./../modules/qt.nix
+    ./../modules/shell-aliases.nix
     ./../modules/xdg.nix
     ./pkgs.nix
   ];
 
   console.useXkbConfig = true;
-
-  environment = {
-    shellAliases = {
-      l = null;
-      ll = null;
-      lss = "ls --color -lha";
-    };
-
-    variables = {
-      CM_LAUNCHER = "rofi";
-    };
-  };
 
   fileSystems = {
     # Mount the Root Partition

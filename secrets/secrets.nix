@@ -25,6 +25,7 @@ in {
   "proxy-mail-fuckk-lol.age".publicKeys = keys;
   "radarr-api.age".publicKeys = keys;
   "sonarr-api.age".publicKeys = keys;
+  "shadowsocks.age".publicKeys = keys;
   "vali-mail-fuckk-lol.age".publicKeys = keys;
   "zipline.age".publicKeys = keys;
   "wireguard.age".publicKeys = keys;

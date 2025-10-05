@@ -25,4 +25,6 @@
     config.allowUnfree = true;
     hostPlatform = "x86_64-linux";
   };
+
+  systemd.services.nix-daemon.serviceConfig.OOMScoreAdjust = "350";
 }

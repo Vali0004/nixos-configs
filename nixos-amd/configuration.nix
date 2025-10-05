@@ -23,22 +23,16 @@
     ./../modules/network-secrets.nix
     ./../modules/nix-settings.nix
     ./../modules/qt.nix
+    ./../modules/shell-aliases.nix
     ./../modules/xdg.nix
     ./pkgs.nix
   ];
 
   console.useXkbConfig = true;
 
-  environment = {
-    shellAliases = {
-      l = null;
-      ll = null;
-      lss = "ls --color -lha";
-    };
-    variables = {
-      AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
-      CM_LAUNCHER = "rofi";
-    };
+  environment.variables = {
+    AGE_IDENTITIES = "/home/vali/.ssh/nixos_main";
+    CM_LAUNCHER = "rofi";
   };
 
   fileSystems = {
