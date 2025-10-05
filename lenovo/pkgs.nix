@@ -10,8 +10,6 @@
   environment.systemPackages = with pkgs; [
     # Key system (remote deploy)
     agenix
-    # Terminal
-    alacritty
     # ALSA (PipeWire/Audio Subsystem)
     alsa-utils
     # Better TOP

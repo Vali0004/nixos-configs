@@ -17,7 +17,5 @@
     lightdm.enable = false;
   };
 
-  services.displayManager.cosmic-greeter.enable = true;
-
   services.displayManager.defaultSession = "COSMIC";
 }
