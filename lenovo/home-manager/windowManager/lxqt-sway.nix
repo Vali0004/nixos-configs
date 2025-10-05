@@ -150,7 +150,7 @@ in {
         # Restart sway inplace (preserves your layout/session, can be used to upgrade sway)
         "${swayConfig.modifier}+${swayConfig.smodifier}+r" = "restart";
         # Exit sway (logs you out of your X session)
-        "${swayConfig.modifier}+${swayConfig.smodifier}+e" = "exec \"sway-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -B 'Yes, exit sway' 'sway-msg exit'\"";
+        "${swayConfig.modifier}+${swayConfig.smodifier}+e" = "exec \"swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'\"";
         # Resize window (You can also use the mouse)
         "${swayConfig.modifier}+r" = "mode resize";
         # Flameshot keybind
