@@ -10,8 +10,8 @@
     programs/steam.nix
     programs/zsh.nix
     #services/windowManager/dwm.nix
-    services/windowManager/cosmic.nix
-    services/displayManager.nix
+    services/cosmic.nix
+    #services/displayManager.nix
     services/openssh.nix
     services/picom.nix
     services/prometheus.nix
