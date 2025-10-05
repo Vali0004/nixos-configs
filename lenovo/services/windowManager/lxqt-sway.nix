@@ -43,7 +43,7 @@
     panelTransparency=0
     alignment=Center
     length=100
-    position=Bottom
+    position=Top
     hidable=false
     animationDuration=0
     autoHide=false
@@ -57,19 +57,23 @@
     length=100
     size=32
     iconSize=22
-    plugins=mainmenu,quicklaunch,taskbar,tray,statusnotifier,volume,worldclock
+    plugins=fancymenu,quicklaunch,taskbar,tray,statusnotifier,volume,worldclock
+
+    [fancymenu]
+    type=fancymenu
+    alignment=Left
+    filterClear=true
+    autoSel=true
+    autoSelDelay=150
 
     [quicklaunch]
     apps\1\desktop=/run/current-system/sw/share/applications/com.google.Chrome.desktop
-    apps\2\desktop=/run/current-system/sw/share/applications/nemo.desktop
-    apps\3\desktop=/run/current-system/sw/share/applications/Alacritty.desktop
-    apps\size=3
+    apps\42desktop=/run/current-system/sw/share/applications/Alacritty.desktop
+    apps\2\desktop=/run/current-system/sw/share/applications/discord.desktop
+    apps\4\desktop=/run/current-system/sw/share/applications/code.desktop
+    apps\5\desktop=/run/current-system/sw/share/applications/nemo.desktop
+    apps\size=5
     type=quicklaunch
-
-    [mainmenu]
-    alignment=Left
-    buttonIcon=lxqt-logo
-    type=mainmenu
 
     [taskbar]
     groupTasks=true
@@ -103,6 +107,13 @@
   systemd.tmpfiles.rules = [
     "L+ /home/vali/.config/lxqt/session.conf             - - - - /etc/lxqt/session.conf"
     "L+ /home/vali/.config/lxqt/panel.conf               - - - - /etc/lxqt/panel.conf"
+    "L+ /home/vali/.config/lxqt/power.conf               - - - - /run/current-system/sw/share/lxqt/power.conf"
+    "L+ /home/vali/.config/lxqt/lxqt.conf                - - - - /run/current-system/sw/share/lxqt/lxqt.conf"
+    "L+ /home/vali/.config/lxqt/graphics                 - - - - /run/current-system/sw/share/lxqt/graphics"
+    "L+ /home/vali/.config/lxqt/icons                    - - - - /run/current-system/sw/share/lxqt/icons"
+    "L+ /home/vali/.config/lxqt/translations             - - - - /run/current-system/sw/share/lxqt/translations"
+    "L+ /home/vali/.config/lxqt/themes                   - - - - /run/current-system/sw/share/lxqt/themes"
+    "L+ /home/vali/.config/lxqt/wallpapers               - - - - /run/current-system/sw/share/lxqt/wallpapers"
     "L+ /home/vali/.config/lxqt/wayland/lxqt-sway.config - - - - /home/vali/.config/sway/config"
   ];
 
