@@ -87,7 +87,7 @@
     # App launcher
     rofi
     # Skylander's Portal Tool
-    skylanders-nfs-reader
+    skylanders
     # socat - listener
     socat
     # Spotify mods
