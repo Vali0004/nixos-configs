@@ -59,20 +59,20 @@
     iconSize=22
     plugins=mainmenu,quicklaunch,taskbar,systemtray,statusnotifier,volume,clock,showdesktop
 
-    [panel1/quicklaunch]
+    [quicklaunch]
     apps\1\desktop=/run/current-system/sw/share/applications/lxqt-config.desktop
     apps\2\desktop=/run/current-system/sw/share/applications/nemo.desktop
     apps\3\desktop=/run/current-system/sw/share/applications/Alacritty.desktop
     apps\size=3
 
-    [panel1/mainmenu]
+    [mainmenu]
     buttonIcon=lxqt-logo
 
-    [panel1/taskbar]
+    [taskbar]
     groupTasks=true
     showOnlyCurrentDesktop=false
 
-    [panel1/clock]
+    [clock]
     timeFormat=%R
     dateFormat=%x
     showDate=true
