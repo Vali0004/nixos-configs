@@ -10,8 +10,8 @@
     programs/steam.nix
     programs/zsh.nix
     #services/windowManager/dwm.nix
-    services/cosmic.nix
-    #services/displayManager.nix
+    services/windowManager/cosmic.nix
+    services/displayManager.nix
     services/openssh.nix
     services/picom.nix
     services/prometheus.nix
@@ -109,8 +109,6 @@
   security.sudo.enable = true;
 
   services = {
-    # CPU Power Saving Settings (daemon)
-    cpupower-gui.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
@@ -120,7 +118,7 @@
     # upower daemon
     upower.enable = true;
     xserver = {
-      enable = true;
+      enable = false;
       # Disable XTerm
       excludePackages = [ pkgs.xterm ];
       desktopManager.xterm.enable = false;
