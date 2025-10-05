@@ -11,7 +11,7 @@
     # Key system (remote deploy)
     agenix
     # Terminal
-    alacritty-graphics
+    alacritty
     # ALSA (PipeWire/Audio Subsystem)
     alsa-utils
     # Better TOP

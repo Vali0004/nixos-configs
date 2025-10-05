@@ -111,8 +111,6 @@
   services = {
     # CPU Power Saving Settings (daemon)
     cpupower-gui.enable = true;
-    # Linux GPU Configuration And Monitoring Tool
-    lact.enable = true;
     udev.extraRules = ''
       # Keyboard
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
@@ -133,10 +131,8 @@
 
   system = {
     copySystemConfiguration = true;
-    stateVersion = "25.11";
+    stateVersion = "25.05";
   };
-
-  systemd.settings.Manager.RebootWatchdogSec = "0";
 
   time.timeZone = "America/Detroit";
 

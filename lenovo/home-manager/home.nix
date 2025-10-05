@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
   manage-startup-applications = pkgs.callPackage ./manage-startup-applications.nix {};
 in {
   imports = [
@@ -21,7 +21,7 @@ in {
 
     home = {
       file.".config/xwinwrap/wallpaper.gif".source = ./wallpaper.gif;
-      stateVersion = "25.11";
+      stateVersion = "25.05";
     };
 
     gtk = {
