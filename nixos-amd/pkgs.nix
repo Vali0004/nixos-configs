@@ -135,6 +135,9 @@
     radeon-profile
     # Single-frame Graphics Debugging
     renderdoc
+    # SlimeVR Trackers (VRC)
+    slimevr
+    slimevr-server
     # Socket Output Concat
     socat
     # Syncplay, allows for syncing video streams with others via mpv

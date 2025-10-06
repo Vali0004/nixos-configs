@@ -163,13 +163,18 @@ in {
     };
   };
 
-  services.nginx.virtualHosts."monitoring.ajaxvpn.org" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = mkProxy {
-      ip = "176.9.37.144";
-      port = 3000;
-      webSockets = true;
+  services.nginx = {
+    virtualHosts."monitoring.ajaxvpn.org" = {
+      enableACME = true;
+      forceSSL = true;
+      locations = {
+        "/grafana/" = mkProxy {
+          port = 3200;
+        };
+        "/prometheus/" = mkProxy {
+          port = 3201;
+        };
+      };
     };
   };
 

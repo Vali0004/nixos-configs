@@ -8,6 +8,7 @@ let
   '';
 in {
   imports = [
+    modules/hosts.nix
     modules/shell-aliases.nix
   ];
 

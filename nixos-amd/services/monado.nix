@@ -7,7 +7,7 @@
   ];
 
   services.monado = {
-    package = pkgs.monado.override;
+    package = pkgs.monado;
     defaultRuntime = true;
     enable = true;
     highPriority = true;
