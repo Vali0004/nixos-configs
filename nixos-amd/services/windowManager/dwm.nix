@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../.../modules/dwmblocks.nix
+    ../../../modules/dwmblocks.nix
   ];
 
   nixpkgs.overlays = [

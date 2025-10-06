@@ -5,8 +5,9 @@ let
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    modules/cors-anywhere/service.nix
+    ajax-container/module.nix
 
+    modules/cors-anywhere/service.nix
     modules/pnp-loader/api/service.nix
     modules/pnp-loader/backend/service.nix
     modules/pnp-loader/dashboard/service.nix
