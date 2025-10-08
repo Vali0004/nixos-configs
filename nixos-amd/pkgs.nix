@@ -106,6 +106,8 @@
     ncdu
     # Network tools
     net-tools
+    # Node.js - JavaScript Engine
+    nodejs_24
     # nRF Studio
     nrf-studio
     # SEGGER JLink

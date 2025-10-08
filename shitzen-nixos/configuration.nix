@@ -72,6 +72,7 @@ in {
   systemd.services.oauth2-proxy.serviceConfig = mkNamespace {};
 
   systemd.services.postfix.serviceConfig = mkNamespace {};
+  systemd.services.postfix-setup.serviceConfig = mkNamespace {};
   systemd.services.rspamd.serviceConfig = mkNamespace {};
 
   systemd.services.rtorrent.serviceConfig = mkNamespace {};
@@ -136,11 +137,6 @@ in {
   minecraft.prod = true;
 
   networking = {
-    defaultGateway = "10.0.0.1";
-    defaultGateway6 = {
-      address = "fe80::1";
-      interface = "eth0";
-    };
     firewall = {
       # SMTP is open
       # SMTPS is open
@@ -160,30 +156,9 @@ in {
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
-    interfaces.eth0 = {
-      ipv4.addresses = [{
-        address = "10.0.0.244";
-        prefixLength = 24;
-      }];
-      ipv6.addresses = [
-        {
-          address = "2601:406:8101:b1ae:9e6b:ff:fea4:1340";
-          prefixLength = 64;
-        }
-        {
-          address = "fe80::9e6b:ff:fea4:1340";
-          prefixLength = 64;
-        }
-      ];
-    };
-    nameservers = [
-      # Why don't I use 10.0.0.244 here? Well, network namespace is why!
-      "75.75.75.75"
-      "75.75.76.76"
-    ];
     networkmanager.dns = "none";
     resolvconf.useLocalResolver = false;
-    useDHCP = false;
+    useDHCP = true;
     usePredictableInterfaceNames = false;
   };
 
