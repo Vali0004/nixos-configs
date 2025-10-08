@@ -176,6 +176,17 @@ in {
         };
       };
     };
+    virtualHosts."speedtest.ajaxvpn.org" = {
+      enableACME = true;
+      forceSSL = true;
+      locations = {
+        "/" = mkProxy {
+          https = true;
+          hasPort = false;
+          ip = "ajaxvpn.speedtestcustom.com";
+        };
+      };
+    };
   };
 
   systemd.services.nginx.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];

@@ -27,13 +27,13 @@ in {
     scrapeConfigs = [
       (mkJob {
         targets = [
-          "LA-01-OVPN"
-          "UK-01-OVPN"
-          "Sweden-01-OVPN"
           "Amsterdam-01-OVPN"
-          "Japan-01-OVPN"
           "France-01-OVPN"
+          "Japan-01-OVPN"
+          "LA-01-OVPN"
+          "Sweden-01-OVPN"
           "Toronto-01-OVPN"
+          "UK-01-OVPN"
         ];
         name = "fragmentation";
         port = 9103;
@@ -50,13 +50,13 @@ in {
       })
       (mkJob {
         targets = [
-          "LA-01-OVPN"
-          "UK-01-OVPN"
-          "Sweden-01-OVPN"
           "Amsterdam-01-OVPN"
-          "Japan-01-OVPN"
           "France-01-OVPN"
+          "Japan-01-OVPN"
+          "LA-01-OVPN"
+          "Sweden-01-OVPN"
           "Toronto-01-OVPN"
+          "UK-01-OVPN"
         ];
         name = "openvpn";
         port = 9176;
@@ -73,39 +73,53 @@ in {
       (mkJob {
         targets = [
           "shitzen-container"
-          "LA-01-OVPN"
-          "UK-01-OVPN"
-          "Sweden-01-OVPN"
           "Amsterdam-01-OVPN"
-          "Japan-01-OVPN"
           "France-01-OVPN"
+          "Japan-01-OVPN"
+          "LA-01-OVPN"
+          "Sweden-01-OVPN"
           "Toronto-01-OVPN"
+          "UK-01-OVPN"
         ];
         name = "node";
         port = 9100;
       })
       (mkJob {
         targets = [
-          "LA-01-OVPN"
-          "UK-01-OVPN"
-          "Sweden-01-OVPN"
           "Amsterdam-01-OVPN"
-          "Japan-01-OVPN"
           "France-01-OVPN"
+          "Japan-01-OVPN"
+          "LA-01-OVPN"
+          "Sweden-01-OVPN"
           "Toronto-01-OVPN"
+          "UK-01-OVPN"
         ];
         name = "smartctl";
         port = 9633;
       })
       (mkJob {
         targets = [
-          "LA-01-OVPN"
-          "UK-01-OVPN"
-          "Sweden-01-OVPN"
           "Amsterdam-01-OVPN"
-          "Japan-01-OVPN"
           "France-01-OVPN"
+          "Japan-01-OVPN"
+          "LA-01-OVPN"
+          "Sweden-01-OVPN"
           "Toronto-01-OVPN"
+          "UK-01-OVPN"
+        ];
+        interval = "5s";
+        name = "wireguard";
+        port = 9586;
+      })
+      (mkJob {
+        targets = [
+          "Amsterdam-01-OVPN"
+          "France-01-OVPN"
+          "Japan-01-OVPN"
+          "LA-01-OVPN"
+          "Sweden-01-OVPN"
+          "Toronto-01-OVPN"
+          "UK-01-OVPN"
         ];
         name = "zfs";
         port = 9134;

@@ -62,14 +62,6 @@
           ./shitzen-nixos/configuration.nix
         ];
       };
-      testvm-nixos = {
-        deployment.targetHost = "192.168.122.242";
-        deployment.targetUser = "root";
-        imports = coreImports ++ [
-          impermanence.nixosModules.impermanence
-          ./testvm-nixos/configuration.nix
-        ];
-      };
     };
 
     packages.${system}.isoVali = (nixpkgs.lib.nixosSystem {

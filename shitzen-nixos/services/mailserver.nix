@@ -111,21 +111,20 @@
     configureNginx = false;
     hostName = "mail.fuckk.lol";
     extraConfig = ''
-      $config['default_host'] = 'ssl://192.168.100.2';
+      $config['default_host'] = 'ssl://mail.fuckk.lol';
       $config['default_port'] = 993;
-      $config['smtp_host'] = "mail.fuckk.lol";
+      $config['smtp_host'] = 'tls://mail.fuckk.lol';
       $config['smtp_port'] = 587;
       $config['smtp_secure'] = 'tls';
       $config['smtp_user'] = "%u";
       $config['smtp_pass'] = "%p";
-      $config['debug_level'] = 4;
       $config['smtp_log'] = true;
       $config['log_driver'] = 'file';
       $config['log_dir'] = '/tmp';
       $config['imap_conn_options'] = [
         'ssl' => [
-          'verify_peer'       => false,
-          'verify_peer_name'  => false,
+          'verify_peer'       => true,
+          'verify_peer_name'  => true,
           'allow_self_signed' => true,
         ],
       ];
