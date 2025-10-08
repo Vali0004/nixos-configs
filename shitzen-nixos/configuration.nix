@@ -137,6 +137,10 @@ in {
   minecraft.prod = true;
 
   networking = {
+    extraHosts = ''
+      10.0.0.244 jellyfin.localnet jellyfin
+      10.0.0.244 pihole.localnet pihole
+    '';
     firewall = {
       # SMTP is open
       # SMTPS is open
@@ -159,6 +163,11 @@ in {
     networkmanager.dns = "none";
     resolvconf.useLocalResolver = false;
     useDHCP = true;
+    nameservers = [
+      "8.8.8.8"
+      "1.1.1.1"
+      "1.0.0.1"
+    ];
     usePredictableInterfaceNames = false;
   };
 
