@@ -66,6 +66,8 @@
     radeon-profile
     # Skylander's Portal Tool
     skylanders
+    # Syncplay, allows for syncing video streams with others via mpv
+    syncplay
     # System stats
     sysstat
     # Unzip
