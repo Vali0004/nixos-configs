@@ -19,7 +19,7 @@ in {
     lockdPort = lockd-port;
     mountdPort = mountd-port;
     exports = ''
-      /data 10.0.0.33(rw,sync,no_subtree_check,no_root_squash) 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.134(rw,sync,no_subtree_check,no_root_squash)
+      /data 10.0.0.31(rw,sync,no_subtree_check,no_root_squash) 10.0.0.201(rw,sync,no_subtree_check,no_root_squash) 10.0.0.134(rw,sync,no_subtree_check,no_root_squash)
     '';
   };
 }

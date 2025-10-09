@@ -7,10 +7,13 @@
     modules/agenix.nix
     modules/boot.nix
     modules/wireguard.nix
+    modules/zfs-patch.nix
+    modules/zfs.nix
 
     services/nginx.nix
     services/prometheus.nix
     #services/toxvpn.nix
+    services/zdb.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -31,22 +34,26 @@
 
   fileSystems = {
     "/" = {
-      label = "NIXOS_ROOT";
-      fsType = "ext4";
+      device = "zpool/root";
+      fsType = "zfs";
+    };
+    "/home" = {
+      device = "zpool/home";
+      neededForBoot = true;
+      fsType = "zfs";
+    };
+    "/nix" = {
+      device = "zpool/nix";
+      neededForBoot = true;
+      fsType = "zfs";
     };
     "/boot" = {
       label = "NIXOS_BOOT";
-      fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      fsType = "ext4";
     };
   };
 
   networking = {
-    defaultGateway = "74.208.44.1";
-    defaultGateway6 = {
-      address = "fe80::1";
-      interface = "eth0";
-    };
     firewall = {
       allowedTCPPorts = [
         25 # SMTP
@@ -66,7 +73,6 @@
         3700 # Peer port
         4101 # MC Server
         6990 # DHT
-        51820 # Wireguard
       ];
       extraCommands = ''
         # Drop invalid connection states
@@ -84,36 +90,17 @@
         ${pkgs.iptables}/bin/iptables -A INPUT -p udp -j DROP
       '';
       extraStopCommands = ''
-        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -j DROP
-        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -m limit --limit 10/second --limit-burst 10 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m connlimit --connlimit-above 20 -j DROP
-        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m limit --limit 10/second --limit-burst 50 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate INVALID -j DROP
+        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -j DROP || true
+        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -m limit --limit 10/second --limit-burst 10 -j ACCEPT || true
+        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m connlimit --connlimit-above 20 -j DROP || true
+        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m limit --limit 10/second --limit-burst 50 -j ACCEPT || true
+        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT || true
+        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate INVALID -j DROP || true
       '';
     };
+    hostId = "eca03077";
     hostName = "router-vps";
-    interfaces.eth0 = {
-      ipv4.addresses = [{
-        address = "74.208.44.130";
-        prefixLength = 24;
-      }];
-      ipv6.addresses = [
-        {
-          address = "2607:f1c0:f088:e200::1";
-          prefixLength = 80;
-        }
-        {
-          address = "fe80::1:bff:feb3:e037";
-          prefixLength = 64;
-        }
-      ];
-    };
-    nameservers = [
-      "1.1.1.1"
-      "1.0.0.1"
-    ];
-    useDHCP = false;
+    useDHCP = true;
     usePredictableInterfaceNames = false;
   };
 
@@ -127,8 +114,8 @@
   };
 
   swapDevices = [{
-    device = "/var/lib/swap1";
-    size = 1024;
+    device = "/dev/disk/by-label/NIXOS_SWAP";
+    size = 512;
   }];
 
   system.stateVersion = "25.11";

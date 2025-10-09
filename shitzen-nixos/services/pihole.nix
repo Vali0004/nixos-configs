@@ -22,6 +22,7 @@ in {
         "local=/localnet/"
         "domain=localnet"
         "expand-hosts"
+        "addn-hosts=/etc/hosts"
       ];
       webserver = {
         domain = "0.0.0.0";
