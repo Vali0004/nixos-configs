@@ -13,8 +13,9 @@
       url = "github:cleverca22/zfs-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ajax-xdp.url = "/home/vali/development/ajax-xdp";
   };
-  outputs = { self, nixpkgs, agenix, impermanence, nix-minecraft, nixos-mailserver, toxvpn, zfs-utils }:
+  outputs = { self, nixpkgs, agenix, impermanence, nix-minecraft, nixos-mailserver, toxvpn, zfs-utils, ajax-xdp }:
   let
     system = "x86_64-linux";
     coreImports = [
@@ -39,6 +40,7 @@
           mailserver = nixos-mailserver.x86_64-linux.default;
           toxvpn = toxvpn.packages.x86_64-linux.default;
           zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
+          ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
         })
         nix-minecraft.overlay
       ];
@@ -60,6 +62,14 @@
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
           ./shitzen-nixos/configuration.nix
+        ];
+      };
+      testvm-nixos = {
+        deployment.targetHost = "192.168.122.242";
+        deployment.targetUser = "root";
+        imports = coreImports ++ [
+          impermanence.nixosModules.impermanence
+          ./testvm-nixos/configuration.nix
         ];
       };
     };
