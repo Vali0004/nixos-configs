@@ -19,6 +19,7 @@
       kernelModules = [ ];
     };
     kernel.sysctl."net.ipv4.ip_forward" = true;
+    kernel.sysctl."net.ipv6.conf.all.forwarding" = true;
     kernel.sysctl."net.ipv4.tcp_syncookies" = true;
     kernel.sysctl."net.netfilter.nf_conntrack_max" = 25594;
     kernelModules = [ "kvm-amd" ];

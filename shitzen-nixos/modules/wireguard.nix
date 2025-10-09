@@ -85,12 +85,13 @@ in {
   networking.wireguard.interfaces.wg0 = {
     interfaceNamespace = netnsName;
     ips = [
+      "fd00:127::3/128"
       "10.127.0.3/24"
     ];
     mtu = 1380;
     privateKeyFile = config.age.secrets.wireguard.path;
     peers = [{
-      allowedIPs = [ "0.0.0.0/0" ];
+      allowedIPs = [ "0.0.0.0/0" "::/0" ];
       endpoint = "74.208.44.130:51820";
       persistentKeepalive = 25;
       publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";

@@ -13,6 +13,10 @@ in {
   ];
 
   boot = {
+    kernelParams = [
+      "boot.shell_on_fail"
+      "panic=30" "boot.panic_on_fail" # reboot the machine upon fatal boot issues
+    ];
     loader.grub.enable = true;
     # My root password is very fucking long, and uh, when it kabooms, recovering fucking SUCKS
     # So enable ssh and networking long before anything else, for my sanity
@@ -25,7 +29,7 @@ in {
   };
 
   environment.shellAliases = {
-    l = null;
+    l = null;#
     ll = null;
     lss = "ls --color -lha";
   };

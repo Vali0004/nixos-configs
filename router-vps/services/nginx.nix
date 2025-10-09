@@ -1,7 +1,7 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
-  address = builtins.elemAt config.networking.interfaces.eth0.ipv4.addresses 0;
+  #address = builtins.elemAt config.networking.interfaces.eth0.ipv4.addresses 0;
 in {
   services.nginx = {
     enable = true;
@@ -17,7 +17,7 @@ in {
         }
 
         server {
-          listen ${address.address}:443;
+          listen 74.208.44.130:443;
           proxy_pass $backend;
           ssl_preread on;
         }
