@@ -10,7 +10,7 @@
     boot/boot.nix
     ../modules/hosts.nix
     ../modules/network-secrets.nix
-    ../modules/nix-settings.nix
+    ../modules/nix/settings.nix
     ../modules/shell-aliases.nix
     ./pkgs.nix
   ];

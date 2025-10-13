@@ -1,12 +1,12 @@
 *.AppImage
 *.deb
 *.rpm
-nixos-amd/pkgs/ida-pro/libida.tar.gz
-shitzen-nixos/services/minecraft/modpack/better-mc.tar.gz
+machines/nixos-amd/pkgs/ida-pro/libida.tar.gz
+machines/shitzen-nixos/services/minecraft/modpack/better-mc.tar.gz
 output.txt
 result
 **/result
 **/**/result
 **/**/**/result
-**/network-secrets-private.nix
-network-secrets-private.nix
+**/secrets-private.nix
+-secrets-private.nix
