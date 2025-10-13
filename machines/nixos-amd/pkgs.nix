@@ -100,6 +100,8 @@
     nrf-util
     # Video capture tool
     obs-studio
+    # Razer Software Daemon
+    openrazer-daemon
     # nix-gaming
     osu-gatari
     osu-stable
@@ -107,6 +109,8 @@
     pciutils
     # Audio Player Control
     playerctl
+    # Razer Daemon Frontend
+    polychromatic
     # Minecraft launcher
     prismlauncher
     # VM
