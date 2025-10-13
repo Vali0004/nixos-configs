@@ -72,6 +72,7 @@
       enable = true;
       daemon.enable = true;
     };
+    openrazer.enable = true;
     virtualisation.enable = true;
   };
 
@@ -208,6 +209,7 @@
     extraGroups = [
       "corectrl"
       "input"
+      "openrazer"
       "plugdev"
       "qemu-libvirtd"
       "render"
