@@ -170,6 +170,8 @@
       SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
       # Steam
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
+      # Razer
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", GROUP="wheel"
       # RedOctane
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel"
       # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for Nordic Semiconductor devices

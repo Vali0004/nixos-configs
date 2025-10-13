@@ -15,6 +15,9 @@
       "xhci_pci" # USB
       "sd_mod"
     ];
+    kernelModules = [
+      "razerkbd"
+    ];
   };
 
   boot.grub = {
