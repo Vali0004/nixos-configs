@@ -7,12 +7,9 @@
     modules/agenix.nix
     modules/boot.nix
     modules/wireguard.nix
-    modules/zfs-patch.nix
-    modules/zfs.nix
 
     services/nginx.nix
     services/prometheus.nix
-    services/zdb.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -103,10 +100,6 @@
     useDHCP = true;
     usePredictableInterfaceNames = false;
   };
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  nixpkgs.hostPlatform = "x86_64-linux";
 
   security.acme = {
     acceptTerms = true;

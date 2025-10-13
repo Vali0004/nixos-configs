@@ -1,8 +1,7 @@
-{ ... }:
+{ config, lib, ... }:
 
 {
-  qt = {
-    enable = true;
+  qt = lib.mkIf config.qt.enable {
     platformTheme = "gnome";
     style = "adwaita-dark";
   };

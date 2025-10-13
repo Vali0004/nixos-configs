@@ -126,6 +126,7 @@
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
           spicetify.nixosModules.default
+          modules/programs/spicetify.nix
           modules/imports.nix
           machines/nixos-amd/configuration.nix
           ({ ... }: {
@@ -139,6 +140,7 @@
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
           spicetify.nixosModules.default
+          modules/programs/spicetify.nix
           modules/imports.nix
           machines/lenovo/configuration.nix
           ({ ... }: {

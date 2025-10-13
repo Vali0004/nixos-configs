@@ -1,7 +1,7 @@
 { config, lib, modulesPath, pkgs, ... }:
 
 let
-  #skylandersFlake = builtins.getFlake "home/vali/skylanders-nfc-reader";
+  skylandersFlake = builtins.getFlake "home/vali/skylanders-nfc-reader";
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
@@ -15,11 +15,11 @@ in {
     ./pkgs.nix
   ];
 
-  #nixpkgs.overlays = [
-  #  (self: super: {
-  #    skylanders = skylandersFlake.outputs.packages.x86_64-linux.skylanders;
-  #  })
-  #];
+  nixpkgs.overlays = [
+    (self: super: {
+      skylanders = skylandersFlake.outputs.packages.x86_64-linux.skylanders;
+    })
+  ];
 
   console.keyMap = "us";
 
@@ -59,11 +59,17 @@ in {
   gtk.enable = true;
 
   hardware = {
+    amd = {
+      enable = true;
+      enableIommu = true;
+    };
     amdgpu = {
       enable = true;
       allowOverclocking = true;
     };
+    audio.pipewire.enable = true;
     bluetooth.enable = true;
+    enableKvm = true;
   };
 
   i18n = {
@@ -88,9 +94,12 @@ in {
     };
     google-chrome.enable = true;
     nemo.enable = true;
+    spicetify.enable = true;
     steam.enable = true;
     vscode.enable = true;
   };
+
+  qt.enable = true;
 
   security = {
     rtkit.enable = true;
@@ -138,4 +147,13 @@ in {
   };
 
   xdg.enable = true;
+
+  zfs = {
+    fragmentation = {
+      enable = true;
+      openFirewall = true;
+    };
+    enable = true;
+    autoSnapshot = true;
+  };
 }

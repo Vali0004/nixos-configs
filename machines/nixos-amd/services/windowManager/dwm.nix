@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ../../../../modules/environment/dwmblocks.nix
+  ];
+
   nixpkgs.overlays = [
     (self: super: {
       dwmblocks = super.dwmblocks.override {

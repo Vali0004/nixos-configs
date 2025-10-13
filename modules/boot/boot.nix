@@ -43,8 +43,8 @@
         "panic=30"
         # Reboot the machine upon fatal boot issues
         "boot.panic_on_fail"
-      ] ++ lib.optionals config.hardware.amd.enable [
-        (lib.strings.optionalString config.hardware.amd.enableIommu "amd_iommu=on")
+      ] ++ lib.optionals config.hardware.amd.enableIommu [
+        "amd_iommu=on"
       ];
       tmp.useTmpfs = false;
     };
