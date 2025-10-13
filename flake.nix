@@ -94,11 +94,6 @@
           };
           patches = [];
         });
-        qemu_kvm = super.qemu_kvm.overrideAttrs (old: {
-          patches = old.patches ++ [
-            pkgs/qemu-hypervisor.patch
-          ];
-        });
       })
     ];
 
