@@ -37,7 +37,7 @@ in {
   };
 
   imports = [
-    /home/vali/nixos-configs/modules/networking/secrets-private.nix
+    ./secrets-private.nix
   ];
 
   config.secrets = lib.mkDefault {

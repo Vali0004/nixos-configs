@@ -1,10 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  home = {
-    # Fixes Zsh plugin for SSH Hostnames
-    file.".ssh/config".text = builtins.readFile "/etc/ssh/ssh_config";
-  };
   programs.zsh = {
     enable = true;
     plugins = [
