@@ -14,6 +14,7 @@
     hardware/virtualisation.nix
     hardware/wifi.nix
     nix/settings.nix
+    #networking/secrets-private.nix
     networking/hosts.nix
     programs/element-desktop.nix
     programs/google-chrome.nix

@@ -2,8 +2,8 @@
 
 {
   boot.kernelPackages = let
-    version = "6.16.8";
-    suffix = "zen3";
+    version = "6.17.1";
+    suffix = "zen1";
   in pkgs.linuxPackagesFor (pkgs.linux_zen.override {
     inherit version suffix;
     modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
