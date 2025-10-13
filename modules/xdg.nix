@@ -1,35 +1,40 @@
 { config, lib, pkgs, ... }:
 
 {
-  xdg.mime = {
-    addedAssociations = {
-      "x-scheme-handler/element" = "element-desktop.desktop";
-      "x-scheme-handler/io.element.desktop" = "element-desktop.desktop";
-      "x-scheme-handler/ftp" = "com.google.Chrome.desktop";
-      "x-scheme-handler/http" = "com.google.Chrome.desktop";
-      "x-scheme-handler/https" = "com.google.Chrome.desktop";
-      "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
-      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
-      "x-scheme-handler/unityhub" = "unityhub.desktop";
-    };
-    defaultApplications = {
-      "application/zip" = "org.kde.ark.desktop";
-      "application/xhtml+xml" = "com.google.Chrome.desktop";
-      "text/plain" = "code.desktop";
-      "text/html" = "com.google.Chrome.desktop";
-      "text/xml" = "com.google.Chrome.desktop";
-      "inode/directory" = "nemo.desktop";
+  options.xdg = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Whether to XDG Support.";
     };
   };
 
-  xdg.icons.enable = true;
+  config = lib.mkIf config.xdg.enable {
+    environment.systemPackages = with pkgs; [
+      # XDG GUI Debug Utility
+      bustle
+      # XDG Debug Utility
+      bridge-utils
+      # XDG Mime/Desktop utils
+      desktop-file-utils
+      # XDG
+      xdg-launch
+      xdg-utils
+    ];
 
-  xdg.portal = {
-    config = {
-      common.default = [ "gtk" ];
+    xdg.mime.addedAssociations = {
+      "x-scheme-handler/roblox" = "org.vinegarhq.Sober.desktop";
+      "x-scheme-handler/roblox-player" = "org.vinegarhq.Sober.desktop";
     };
-    enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal xdg-desktop-portal-gtk ];
-    xdgOpenUsePortal = false;
+
+    xdg.icons.enable = true;
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [
+        pkgs.xdg-desktop-portal
+      ];
+      xdgOpenUsePortal = false;
+    };
   };
 }

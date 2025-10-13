@@ -1,5 +1,6 @@
 { stdenv
 , lib
+, requireFile
 , autoPatchelfHook
 , dpkg
 , fontconfig
@@ -18,7 +19,11 @@ stdenv.mkDerivation {
   pname = "jlink";
   version = "V866";
 
-  src = ./JLink_Linux_V866_x86_64.deb;
+  src = requireFile {
+    name = "JLink_Linux_V866_x86_64.deb";
+    url = "https://www.segger.com/downloads/jlink";
+    hash = "sha256-vL+GAZdJEUzR5jNglqcZE4tmeQLCSMb/Wk8uOYIAgCg=";
+  };
 
   nativeBuildInputs = [
     dpkg
