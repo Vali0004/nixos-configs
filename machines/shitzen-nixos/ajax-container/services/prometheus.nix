@@ -35,6 +35,11 @@ in {
           "Toronto-01-OVPN"
           "UK-01-OVPN"
           "PRV-Germany-01"
+          "AU-Syndey-01-OVH-WG"
+          "BHS-02-OVH-WG"
+          "LZ-AMS-02-OVH-WG"
+          "RBX-01-OVH-WG"
+          "UK-London-02-OVH-WG"
         ];
         name = "fragmentation";
         port = 9103;
@@ -81,6 +86,11 @@ in {
           "Toronto-01-OVPN"
           "UK-01-OVPN"
           "PRV-Germany-01"
+          "AU-Syndey-01-OVH-WG"
+          "BHS-02-OVH-WG"
+          "LZ-AMS-02-OVH-WG"
+          "RBX-01-OVH-WG"
+          "UK-London-02-OVH-WG"
         ];
         name = "node";
         port = 9100;
@@ -95,6 +105,11 @@ in {
           "Toronto-01-OVPN"
           "UK-01-OVPN"
           "PRV-Germany-01"
+          "AU-Syndey-01-OVH-WG"
+          "BHS-02-OVH-WG"
+          "LZ-AMS-02-OVH-WG"
+          "RBX-01-OVH-WG"
+          "UK-London-02-OVH-WG"
         ];
         name = "smartctl";
         port = 9633;
@@ -109,6 +124,11 @@ in {
           "Toronto-01-OVPN"
           "UK-01-OVPN"
           "PRV-Germany-01"
+          "AU-Syndey-01-OVH-WG"
+          "BHS-02-OVH-WG"
+          "LZ-AMS-02-OVH-WG"
+          "RBX-01-OVH-WG"
+          "UK-London-02-OVH-WG"
         ];
         interval = "5s";
         name = "wireguard";
@@ -124,6 +144,11 @@ in {
           "Toronto-01-OVPN"
           "UK-01-OVPN"
           "PRV-Germany-01"
+          "AU-Syndey-01-OVH-WG"
+          "BHS-02-OVH-WG"
+          "LZ-AMS-02-OVH-WG"
+          "RBX-01-OVH-WG"
+          "UK-London-02-OVH-WG"
         ];
         name = "zfs";
         port = 9134;

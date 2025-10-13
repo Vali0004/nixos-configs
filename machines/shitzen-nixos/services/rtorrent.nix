@@ -31,10 +31,8 @@ in {
       trackers.use_udp.set = yes
 
       # Add bootstrap nodes for DHT
-      schedule2 = dht_node_1, 15, 0, "dht.add_node=router.utorrent.com:6881"
+      schedule2 = dht_node_1, 15, 0, "dht.add_node=dht.libtorrent.org:25401"
       schedule2 = dht_node_2, 15, 0, "dht.add_node=dht.transmissionbt.com:6881"
-      schedule2 = dht_node_3, 15, 0, "dht.add_node=router.bitcomet.com:6881"
-      schedule2 = dht_node_4, 15, 0, "dht.add_node=dht.aelitis.com:6881"
 
       # Peer settings
       throttle.max_uploads.set = 100

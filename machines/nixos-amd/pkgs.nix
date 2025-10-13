@@ -117,8 +117,6 @@
     '')
     # Thunderstore (Mod Manager)
     r2modman
-    # Single-frame Graphics Debugging
-    renderdoc
     # SlimeVR Trackers (VRC)
     slimevr
     slimevr-server
