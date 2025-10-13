@@ -2,25 +2,23 @@
 
 {
   imports = [
-    audio/easyEffects.nix
-    audio/server.nix
     boot/boot.nix
     boot/grub.nix
     certificates/module.nix
-    environment/dwmblocks.nix
     environment/locale.nix
     environment/shell-aliases.nix
+    hardware/audio/easyEffects.nix
+    hardware/audio/server.nix
     hardware/amdgpu.nix
     hardware/bluetooth.nix
-    hardware/wifi.nix
     hardware/virtualisation.nix
+    hardware/wifi.nix
     nix/settings.nix
     networking/hosts.nix
     programs/element-desktop.nix
     programs/google-chrome.nix
     programs/kde-ark.nix
     programs/nemo.nix
-    programs/spicetify.nix
     programs/steam.nix
     programs/unityhub.nix
     programs/vscode.nix

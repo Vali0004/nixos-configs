@@ -58,10 +58,15 @@
   gtk.enable = true;
 
   hardware = {
+    amd = {
+      enable = true;
+      enableIommu = true;
+    };
     amdgpu = {
       enable = true;
       allowOverclocking = true;
     };
+    audio.pipewire.enable = true;
     bluetooth.enable = true;
     opentabletdriver = {
       enable = true;
@@ -131,6 +136,7 @@
     java.enable = true;
     kde-ark.enable = true;
     nemo.enable = true;
+    spicetify.enable = true;
     steam.enable = true;
     unityhub.enable = true;
     vscode.enable = true;
@@ -140,6 +146,8 @@
       usbmon.enable = true;
     };
   };
+
+  qt.enable = true;
 
   security = {
     rtkit.enable = true;

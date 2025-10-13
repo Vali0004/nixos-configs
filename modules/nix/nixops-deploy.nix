@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = pkgs.writeText "configuration.nix" ''

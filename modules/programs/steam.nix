@@ -5,7 +5,7 @@
     enableGamescope = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Whether to Visual Studo Code.";
+      description = "Whether to Gamescope or not.";
     };
   };
 

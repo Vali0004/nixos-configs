@@ -18,8 +18,6 @@ in {
     #modules/dockge.nix
     modules/nvidia.nix
     modules/wireguard.nix
-    modules/zfs-patch.nix
-    modules/zfs.nix
 
     services/grafana/module.nix
 
@@ -194,4 +192,6 @@ in {
   system.stateVersion = "25.11";
 
   users.users.vali.extraGroups = [ "video" "render" ];
+
+  zfs.autoSnapshot.enable = true;
 }

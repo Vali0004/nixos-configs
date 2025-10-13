@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.audio = {
+  options.hardware.audio = {
     support32Bit = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -10,7 +10,7 @@
     pipewire = {
       enable = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = false;
         description = "Whether to enable Audio.";
       };
       enablePulse = lib.mkOption {
@@ -30,12 +30,12 @@
 
   config = {
     services.pipewire = {
-      enable = config.audio.pipewire.enable;
+      enable = config.hardware.audio.pipewire.enable;
       alsa = {
         enable = true;
-        support32Bit = config.audio.support32Bit;
+        support32Bit = config.hardware.audio.support32Bit;
       };
-      pulse.enable = config.audio.pipewire.enablePulse;
+      pulse.enable = config.hardware.audio.pipewire.enablePulse;
       wireplumber = lib.mkIf config.hardware.bluetooth.enable {
         configPackages = [
           (pkgs.writeTextDir "share/wireplumber/wireplumber.conf.d/10-bluez.conf" ''
@@ -51,13 +51,13 @@
       };
     };
 
-    environment.systemPackages = lib.optionals config.audio.pipewire.enable [
+    environment.systemPackages = lib.optionals config.hardware.audio.pipewire.enable [
       pkgs.alsa-utils
     ];
 
     services.pulseaudio = {
-      enable = config.audio.pulseaudio.enable;
-      support32Bit = config.audio.support32Bit;
+      enable = config.hardware.audio.pulseaudio.enable;
+      support32Bit = config.hardware.audio.support32Bit;
       extraConfig = lib.strings.optionalString config.hardware.bluetooth.enable ''
         load-module module-bluetooth-policy
         load-module module-bluetooth-discover

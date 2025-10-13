@@ -1,8 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-  agenix = builtins.getFlake "github:ryantm/agenix";
-in {
+{
   networking = {
     nat = {
       enable = true;
@@ -38,8 +36,6 @@ in {
     privateNetwork = true;
     config = { config, pkgs, lib, ... }: {
       imports = [
-        agenix.nixosModules.age
-        modules/agenix.nix
         services/grafana/module.nix
         services/prometheus.nix
         ./hosts.nix

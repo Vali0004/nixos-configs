@@ -17,6 +17,11 @@ in {
     ssh.authorizedKeys = my_keys;
   };
 
+  hardware = {
+    amd.enable = true;
+    enableKvm = true;
+  };
+
   services.vnstat.enable = true;
 
   users.users = let
@@ -30,5 +35,13 @@ in {
       extraGroups = [ "wheel" ];
       openssh.authorizedKeys.keys = my_keys ++ common_keys;
     };
+  };
+
+  zfs = {
+    fragmentation = {
+      enable = true;
+      openFirewall = true;
+    };
+    enable = true;
   };
 }
