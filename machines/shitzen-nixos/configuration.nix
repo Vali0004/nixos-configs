@@ -189,6 +189,11 @@ in {
     defaults.email = "diorcheats.vali@gmail.com";
   };
 
+  swapDevices = [{
+    device = "/var/lib/swap";
+    size = 16384;
+  }];
+
   system.stateVersion = "25.11";
 
   users.users.vali.extraGroups = [ "video" "render" ];
