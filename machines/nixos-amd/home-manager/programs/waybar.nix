@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 let
   hyprConfig = import ../../hyprconfig.nix;

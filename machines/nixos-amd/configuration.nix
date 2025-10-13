@@ -95,7 +95,6 @@
       address = "fe80::1";
       interface = "bond0";
     };
-    firewall.allowedUDPPorts = [ 5055 ];
     hostName = "nixos-amd";
     interfaces.bond0 = {
       ipv4.addresses = [{

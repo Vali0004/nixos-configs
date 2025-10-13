@@ -2,6 +2,7 @@
 
 let
   livecd = import (pkgs.path + "/nixos/lib/eval-config.nix") {
+    system = "x86_64-linux";
     modules = [
       (pkgs.path + "/nixos/modules/installer/netboot/netboot-minimal.nix")
       rescue/configuration.nix
@@ -65,7 +66,7 @@ in {
       device = if config.boot.grub.efi.enable then "nodev" else config.boot.grub.device;
       efiSupport = config.boot.grub.efi.enable;
       efiInstallAsRemovable = config.boot.grub.efi.removable;
-      extraEntries = lib.optionalString config.boot.grub.enableRescue ''
+      extraEntries = lib.strings.optionalString config.boot.grub.enableRescue ''
         menuentry "NixOS Recuse" {
           linux ($drive1)/rescue-kernel init=${livecd.config.system.build.toplevel}/init ${toString livecd.config.boot.kernelParams}
           initrd ($drive1)/rescue-initrd

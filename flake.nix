@@ -49,7 +49,12 @@
       (self: super: {
         dmenu = super.dmenu.overrideAttrs (old: {
           buildInputs = (old.buildInputs or []) ++ [ self.libspng ];
-          src = /home/vali/development/dmenu;
+          src = super.fetchFromGitHub {
+            owner = "Vali0004";
+            repo = "dmenu-fork";
+            rev = "f196431df570102b325ae9f3ec91f18dac98b357";
+            hash = "sha256-c+RjBl4NxA5EkGyaUc8me6vtFcvG7Vu5NZpJ/sBKOuY=";
+          };
           postPatch = ''
             ${old.postPatch or ""}
             sed -ri -e 's!\<(dmenu|dmenu_path_desktop|stest)\>!'"$out/bin"'/&!g' dmenu_run_desktop
