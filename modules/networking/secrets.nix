@@ -36,10 +36,6 @@ in {
     };
   };
 
-  imports = [
-    ./secrets-private.nix
-  ];
-
   config.secrets = lib.mkDefault {
     wifi = {
       networks = [

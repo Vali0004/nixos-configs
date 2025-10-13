@@ -2,7 +2,7 @@
 
 {
   qt = lib.mkIf config.qt.enable {
-    platformTheme = "gnome";
+    platformTheme = "lxqt";
     style = "adwaita-dark";
   };
 }
