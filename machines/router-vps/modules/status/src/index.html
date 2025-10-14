@@ -1,446 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8">
   <meta property="og:title" content="fuckk.lol's status">
   <meta property="og:description" content="Current uptime and system metrics.">
   <meta property="og:image" content="https://fuckk.lol/logo.png">
   <meta property="og:url" content="https://status.fuckk.lol/">
   <meta charset="utf-8" />
   <title>Status | fuckk.lol</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#12121a" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root{
-      --bg: #0f1116;
-      --panel: #141824;
-      --panel-2:#0f1420;
-      --text: #e8e8ef;
-      --muted:#9aa3b2;
-      --card:#151a25;
-      --good:#22c55e;
-      --down:#ef4444;
-      --maint:#f59e0b;
-      --unknown:#6b7280;
-      --link:#7c8cff;
-      --ring:#3b82f6;
-      --accent-1:#6b21a8; /* purple */
-      --accent-2:#0ea5e9; /* cyan */
-      --chip-bg: rgba(255,255,255,.06);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 16px;
+    body {
+      font-family: sans-serif;
+      background-color: #141414;
+      color: #eee;
+      margin: 0;
+      padding: 2em;
+      display: flex;
+      justify-content: center;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font: 14px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(107,33,168,.25), transparent 60%),
-        radial-gradient(1000px 500px at 110% 10%, rgba(14,165,233,.18), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      display:flex;
-      align-items:stretch;
-      justify-content:center;
-      padding:28px;
+    .container {
+      max-width: 800px;
+      width: 100%;
     }
-
-    .container{
-      width: min(1100px, 100%);
-      display:flex; flex-direction:column; gap:20px;
+    h1 {
+      text-align: center;
+      margin-bottom: 1em;
+      color: #b9b9b9;
     }
-
-    /* Header / Banner */
-    .hero{
-      background: linear-gradient(135deg, rgba(107,33,168,.22), rgba(14,165,233,.14));
-      border:1px solid rgba(124,140,255,.25);
-      border-radius: var(--radius);
-      padding: 18px 18px;
-      box-shadow: var(--shadow);
-      display:grid;
-      gap:14px;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
     }
-    .hero-top{
-      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+    th, td {
+      padding: 0.75em;
+      border-bottom: 1px solid #333;
+      text-align: left;
     }
-    .brand{
-      display:flex; align-items:center; gap:12px;
+    th {
+      color: #aaa;
+      font-weight: normal;
     }
-    .logo{
-      width:36px; height:36px; border-radius:10px;
-      background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
-      box-shadow: 0 8px 24px rgba(124,140,255,.35), inset 0 0 40px rgba(255,255,255,.12);
+    .status {
+      font-weight: bold;
+      padding: 0.25em 0.5em;
+      border-radius: 4px;
     }
-    .title{
-      font-size: clamp(18px, 2.6vw, 22px);
-      font-weight:700;
-      letter-spacing:.2px;
+    .good { background: #3ac057; color: #eceaea; }
+    .down { background: #d63030; color: #eceaea; }
+    .maintenance { background: #d49029; color: #eceaea; }
+    a {
+      color: #3399ff;
+      text-decoration: none;
     }
-    .overall{
-      display:flex; align-items:center; gap:8px; font-weight:600;
-      padding:6px 10px; border-radius:999px; background: var(--chip-bg); border:1px solid rgba(255,255,255,.08);
+    a:hover {
+      text-decoration: underline;
     }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      box-shadow: 0 0 16px currentColor;
+    .footer {
+      margin-top: 2em;
+      font-size: 0.9em;
+      text-align: center;
+      color: #777;
     }
-    .dot.good{ color: var(--good); background: currentColor; }
-    .dot.down{ color: var(--down); background: currentColor; }
-    .dot.maintenance{ color: var(--maint); background: currentColor; }
-    .dot.unknown{ color: var(--unknown); background: currentColor; }
-    .sub{
-      color:var(--muted); font-size:13px;
-    }
-
-    /* Controls */
-    .controls{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
-    .input, .btn{
-      background: var(--panel);
-      border:1px solid rgba(255,255,255,.08);
-      color:var(--text);
-      border-radius:12px;
-      padding:10px 12px;
-      outline: none;
-    }
-    .input{
-      min-width: 230px;
-      flex:1 1 260px;
-    }
-    .btn{
-      cursor:pointer; font-weight:600;
-      transition: transform .05s ease;
-    }
-    .btn:hover{ border-color: rgba(124,140,255,.35) }
-    .btn:active{ transform: translateY(1px); }
-
-    .refresh-note{
-      color:var(--muted); font-size:12px; margin-left:auto;
-    }
-
-    /* Grid */
-    .grid{
-      display:grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap:14px;
-    }
-    .card{
-      background: linear-gradient(180deg, var(--card), var(--panel-2));
-      border:1px solid rgba(255,255,255,.06);
-      border-radius: 14px;
-      padding:14px;
-      box-shadow: var(--shadow);
-      display:flex; flex-direction:column; gap:10px;
-      transition: border-color .15s ease, transform .15s ease;
-    }
-    .card:hover{ border-color: rgba(124,140,255,.28); transform: translateY(-1px); }
-
-    .row{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
-    .svc{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      font-weight:650;
-      font-size: 13px;
-      padding:6px 8px; border-radius:8px;
-      background: var(--chip-bg);
-      border:1px solid rgba(255,255,255,.08);
-      max-width: 100%;
-      overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-    }
-
-    .chip{
-      font-weight:700; font-size:12px; letter-spacing:.3px;
-      padding:6px 9px; border-radius:999px; border:1px solid rgba(255,255,255,.08);
-      display:inline-flex; align-items:center; gap:6px;
-      background: var(--chip-bg);
-    }
-    .chip .dot{ width:8px; height:8px; }
-
-    .msg{ color:var(--muted); font-size: 13px; min-height: 1.3em; }
-    .link{
-      color: var(--link); text-decoration:none; font-weight:600; font-size:13px;
-      word-break: break-all;
-    }
-    .link:hover{ text-decoration:underline; }
-
-    .meta{ display:flex; gap:10px; flex-wrap:wrap; color: var(--muted); font-size:12px; }
-    .k{ color:#c9d1ff }
-    .legend{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap; color:var(--muted); font-size:12px;
-    }
-    .legend .chip{ background:transparent }
-
-    /* Skeleton */
-    .skeleton{
-      background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.12), rgba(255,255,255,.06));
-      background-size: 200% 100%;
-      animation: shimmer 1.1s infinite;
-      border-radius: 8px;
-    }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-
-    /* Footer */
-    .footer{
-      color: var(--muted);
-      font-size:12px; text-align:center; padding-top:4px;
-    }
-
-    /* Small tweaks */
-    ::selection{ background: rgba(124,140,255,.35) }
-    @media (max-width:520px){ .refresh-note{ width:100%; order:3; margin:0 } }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- HERO / SUMMARY -->
-    <section class="hero" id="hero">
-      <div class="hero-top">
-        <div class="brand">
-          <div class="logo" aria-hidden="true"></div>
-          <div>
-            <div class="title">fuckk.lol — Status</div>
-            <div class="sub" id="summarySub">Live service health across your stack.</div>
-          </div>
-        </div>
-        <div class="overall" id="overall">
-          <span class="dot unknown"></span>
-          <span id="overallText">Checking…</span>
-        </div>
-      </div>
-
-      <div class="controls">
-        <input class="input" id="search" placeholder="Filter services… (e.g. api, auth, cdn)" />
-        <button class="btn" id="sortBtn" title="Toggle sort: Issues first / A–Z">Sort: Issues first</button>
-        <button class="btn" id="refreshBtn" title="Refresh now">Refresh</button>
-        <div class="refresh-note" id="refreshNote">Auto refresh in <b><span id="countdown">15</span>s</b> • <span id="lastUpdated">—</span></div>
-      </div>
-    </section>
-
-    <!-- GRID -->
-    <section class="grid" id="grid" aria-live="polite" aria-busy="true">
-      <!-- Skeleton cards (shown before first fetch) -->
-      <article class="card">
-        <div class="row"><div class="svc skeleton" style="width:55%">&nbsp;</div><div class="chip"><span class="dot unknown"></span>Loading</div></div>
-        <div class="msg skeleton" style="height:14px;width:80%"></div>
-        <div class="meta"><span class="skeleton" style="height:12px;width:120px">&nbsp;</span></div>
-      </article>
-      <article class="card">
-        <div class="row"><div class="svc skeleton" style="width:40%">&nbsp;</div><div class="chip"><span class="dot unknown"></span>Loading</div></div>
-        <div class="msg skeleton" style="height:14px;width:60%"></div>
-        <div class="meta"><span class="skeleton" style="height:12px;width:110px">&nbsp;</span></div>
-      </article>
-      <article class="card">
-        <div class="row"><div class="svc skeleton" style="width:50%">&nbsp;</div><div class="chip"><span class="dot unknown"></span>Loading</div></div>
-        <div class="msg skeleton" style="height:14px;width:70%"></div>
-        <div class="meta"><span class="skeleton" style="height:12px;width:100px">&nbsp;</span></div>
-      </article>
-    </section>
-
-    <!-- LEGEND -->
-    <section class="legend">
-      <span class="chip"><span class="dot good"></span> Operational</span>
-      <span class="chip"><span class="dot maintenance"></span> Maintenance</span>
-      <span class="chip"><span class="dot down"></span> Outage</span>
-      <span class="chip"><span class="dot unknown"></span> Unknown</span>
-    </section>
-
-    <div class="footer">Built for clarity. No frameworks, just HTML/CSS/JS.</div>
+    <h1>fuckk.lol</h1>
+    <table id="statusTable">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Status</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="footer">
+      Updated <span id="lastUpdated">just now</span>
+    </div>
   </div>
 
   <script>
-    const API_URL = "/api";
-    const REFRESH_SEC = 15;
-
-    const state = {
-      sortIssuesFirst: true,
-      timer: null,
-      countdown: REFRESH_SEC,
-      lastData: null
-    };
-
-    const el = {
-      grid: document.getElementById("grid"),
-      search: document.getElementById("search"),
-      sortBtn: document.getElementById("sortBtn"),
-      refreshBtn: document.getElementById("refreshBtn"),
-      overall: document.getElementById("overall"),
-      overallText: document.getElementById("overallText"),
-      lastUpdated: document.getElementById("lastUpdated"),
-      countdown: document.getElementById("countdown"),
-      hero: document.getElementById("hero"),
-      summarySub: document.getElementById("summarySub"),
-      refreshNote: document.getElementById("refreshNote"),
-    };
-
-    function statusRank(s) {
-      switch ((s||"").toLowerCase()) {
-        case "down": return 0;
-        case "maintenance": return 1;
-        case "good": return 2;
-        default: return 3;
-      }
-    }
-
-    function rankToLabel(r) {
-      return ["Outage","Maintenance","Operational","Unknown"][Math.min(r,3)];
-    }
-
-    function dotClass(s ){
-      s = (s || "").toLowerCase();
-      return ["good","down","maintenance"].includes(s) ? s : "unknown";
-    }
-
-    function summarize(items) {
-      const counts = {good:0, down:0, maintenance:0, unknown:0};
-      items.forEach(i => counts[dotClass(i.assignedType)]++);
-      let overall = "good";
-      if (counts.down>0) overall = "down";
-      else if (counts.maintenance>0) overall = "maintenance";
-      else if (items.length===0) overall = "unknown";
-      const text = overall === "good"
-        ? `All systems operational (${items.length})`
-        : overall === "down"
-          ? `Outage detected · ${counts.down} down, ${counts.maintenance} maintenance`
-          : `Maintenance in progress · ${counts.maintenance} affected`;
-      return {overall, text};
-    }
-
-    function render(data, latencyMs) {
-      el.grid.setAttribute("aria-busy","false");
-      el.grid.innerHTML = "";
-      const search = (el.search.value || "").trim().toLowerCase();
-
-      // normalize -> array
-      const items = Object.entries(data).map(([name, svc])=>({
-        name,
-        message: svc.message || "",
-        url: svc.url || "",
-        assignedType: svc.assignedType || "unknown"
-      }));
-
-      // sort
-      items.sort((a,b)=>{
-        const r = statusRank(a.assignedType) - statusRank(b.assignedType);
-        if (state.sortIssuesFirst){
-          if (r !== 0) return r;
-        }
-        if (!state.sortIssuesFirst){
-          return a.name.localeCompare(b.name);
-        }
-        // within same rank, A–Z
-        return a.name.localeCompare(b.name);
-      });
-
-      // filter
-      const filtered = items.filter(i =>
-        !search || i.name.toLowerCase().includes(search) ||
-        i.message.toLowerCase().includes(search)
-      );
-
-      // overall banner
-      const {overall, text} = summarize(items);
-      el.overall.className = "overall";
-      const dot = document.createElement("span");
-      dot.className = `dot ${dotClass(overall)}`;
-      const label = document.createElement("span");
-      label.textContent = text;
-      el.overall.innerHTML = "";
-      el.overall.appendChild(dot);
-      el.overall.appendChild(label);
-      el.summarySub.textContent = `Latency ${latencyMs} ms • Showing ${filtered.length}/${items.length} services`;
-
-      // cards
-      if (filtered.length === 0){
-        const empty = document.createElement("div");
-        empty.className = "footer";
-        empty.textContent = "No services match your filter.";
-        el.grid.appendChild(empty);
-      } else {
-        for (const svc of filtered) {
-          const card = document.createElement("article");
-          card.className = "card";
-          const chip = `<span class="chip"><span class="dot ${dotClass(svc.assignedType)}"></span>${(svc.message||"").toUpperCase()}</span>`;
-          const url = svc.url ? `<a class="link" href="${svc.url}" target="_blank" rel="noopener">↗ ${svc.url}</a>` : `<span class="link" style="opacity:.6">—</span>`;
-          card.innerHTML = `
-            <div class="row">
-              <div class="svc" title="${svc.name}">${svc.name}</div>
-              ${chip}
-            </div>
-            <div class="msg">${svc.message || "&nbsp;"}</div>
-            <div class="meta">
-              <span><span class="k">Latency:</span> ~${latencyMs} ms</span>
-              <span>•</span>
-              <span><span class="k">Link:</span> ${url}</span>
-            </div>
-          `;
-          el.grid.appendChild(card);
-        }
-      }
-    }
-
     async function fetchStatus() {
-      const t0 = performance.now();
-      try{
-        const res = await fetch(API_URL, {cache:"no-store"});
+      const tbody = document.querySelector("#statusTable tbody");
+      try {
+        const res = await fetch("https://status.fuckk.lol/api", { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        const t1 = performance.now();
-        const latency = Math.max(1, Math.round(t1 - t0));
-        state.lastData = data;
-        render(data["services"], latency);
-        el.lastUpdated.textContent = "Updated " + new Date().toLocaleTimeString();
-      } catch(err) {
-        console.error("Failed to fetch status:", err);
-        // Keep old data if any; else show an error card
-        if (state.lastData) {
-          render(state.lastData, 999);
-          el.summarySub.textContent = "API unreachable • showing cached data";
-        } else {
-          el.grid.innerHTML = `
-            <article class="card">
-              <div class="row"><div class="svc">status API</div><span class="chip"><span class="dot down"></span>DOWN</span></div>
-              <div class="msg">Unable to reach <code>${API_URL}</code>. Check network or CORS.</div>
-              <div class="meta"><span><span class="k">Latency:</span> —</span></div>
-            </article>`;
-          const dot = document.createElement("span"); dot.className = "dot down";
-          el.overall.innerHTML = ""; el.overall.appendChild(dot);
-          const lab = document.createElement("span"); lab.textContent = "Status API unreachable";
-          el.overall.appendChild(lab);
-          el.summarySub.textContent = "No data loaded";
+
+        const services = data.services || {};
+        tbody.innerHTML = "";
+
+        for (const [name, svc] of Object.entries(services)) {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><code>${name}</code></td>
+            <td><span class="status ${svc.assignedType}">${svc.message}</span></td>
+            <td>${svc.url ? `<a href="${svc.url}" target="_blank">${svc.url}</a>` : "-"}</td>
+          `;
+          tbody.appendChild(tr);
         }
-        el.lastUpdated.textContent = "Update failed at " + new Date().toLocaleTimeString();
+
+        document.getElementById("lastUpdated").textContent =
+          new Date().toLocaleTimeString();
+      } catch (err) {
+        console.error("Failed to fetch status:", err);
+        tbody.innerHTML = `
+          <tr><td colspan="3" style="color:#d63030;text-align:center">
+            Failed to fetch status data.
+          </td></tr>`;
       }
     }
 
-    // Controls
-    el.sortBtn.addEventListener("click", () => {
-      state.sortIssuesFirst = !state.sortIssuesFirst;
-      el.sortBtn.textContent = state.sortIssuesFirst ? "Sort: Issues first" : "Sort: A-Z";
-      if (state.lastData)
-        render(state.lastData, 0);
-    });
-    el.refreshBtn.addEventListener("click", () => {
-      state.countdown = REFRESH_SEC;
-      fetchStatus();
-    });
-    el.search.addEventListener("input", () => {
-      if (state.lastData)
-        render(state.lastData, 0);
-    });
-
-    // countdown + auto refresh
-    function tick() {
-      state.countdown--;
-      if (state.countdown <= 0) {
-        state.countdown = REFRESH_SEC;
-        fetchStatus();
-      }
-      el.countdown.textContent = state.countdown.toString();
-    }
-
-    // Init
     fetchStatus();
-    state.timer = setInterval(tick, 1000);
+    setInterval(fetchStatus, 15000);
   </script>
 </body>
 </html>

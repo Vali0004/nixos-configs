@@ -1,15 +1,16 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     # Used in wlx-overlay
-    pkgs.kdePackages.kdialog
-    pkgs.opencomposite
-    pkgs.envision
-    pkgs.wlx-overlay-s
+    kdePackages.kdialog
+    opencomposite
+    envision
+    wlx-overlay-s
+    wayvr-dashboard
     # Used in wlx-overlay
-    pkgs.zenity
-    pkgs.watchman-pairing-assistant
+    zenity
+    watchman-pairing-assistant
   ];
 
   services.monado = {

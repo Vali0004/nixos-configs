@@ -128,6 +128,7 @@
     command-not-found.enable = true;
     dconf.enable = true;
     element-desktop.enable = true;
+    easyeffects.enable = true;
     git = {
       enable = true;
       lfs.enable = true;

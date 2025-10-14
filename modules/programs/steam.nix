@@ -33,6 +33,8 @@
       steamcmd
       # UMU Launcher
       umu-launcher
+      # Wine Tricks (proton)
+      protontricks
     ];
   };
 }
