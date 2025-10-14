@@ -2,12 +2,17 @@
 
 {
   environment.systemPackages = [
+    # Used in wlx-overlay
+    pkgs.kdePackages.kdialog
     pkgs.opencomposite
+    pkgs.envision
     pkgs.wlx-overlay-s
+    # Used in wlx-overlay
+    pkgs.zenity
+    pkgs.watchman-pairing-assistant
   ];
 
   services.monado = {
-    package = pkgs.monado;
     defaultRuntime = true;
     enable = true;
     highPriority = true;
