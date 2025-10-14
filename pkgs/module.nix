@@ -24,7 +24,7 @@
       '';
       flameshot-upload = self.writeScriptBin "flameshot_fuckk_lol" ''
         ${self.flameshot}/bin/flameshot gui --accept-on-select -r > /tmp/screenshot.png
-        ${self.curl}/bin/curl -H "authorization: ${config.secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${self.jq}/bin/jq -r .files[0].url | tr -d'\n' | ${self.xclip}/bin/xclip -selection clipboard
+        ${self.curl}/bin/curl -H "authorization: ${config.secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${self.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${self.xclip}/bin/xclip -selection clipboard
       '';
       ida-pro = self.callPackage ./ida-pro {};
       jlink = self.callPackage ./nordic/jlink {};
