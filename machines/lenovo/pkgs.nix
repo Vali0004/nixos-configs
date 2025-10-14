@@ -36,8 +36,6 @@
     gnused
     # Internet performance tool
     iperf
-    # Media Player
-    jellyfin-media-player
     # JSON parser
     jq
     # Killall (psmisc)
@@ -55,7 +53,7 @@
     # Audio Player Control
     playerctl
     # Skylander's Portal Tool
-    #skylanders
+    skylanders
     # Syncplay, allows for syncing video streams with others via mpv
     syncplay
     # System stats
