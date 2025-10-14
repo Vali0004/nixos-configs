@@ -1,20 +1,27 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-xr = {
+      url = "github:nix-community/nixpkgs-xr";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     agenix.url = "github:ryantm/agenix";
     ajax-xdp.url = "/home/vali/development/ajax-xdp";
     impermanence.url = "github:nix-community/impermanence";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-    openhmd.url = "github:Vali0004/OpenHMD/c56529c22618325dfc31e7c44f17e804cb7e7edf";
     spicetify.url = "github:Gerg-L/spicetify-nix";
+    watchman-pairing-assistant = {
+      url = "github:TayouVR/watchman-pairing-assistant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zfs-utils = {
       url = "github:cleverca22/zfs-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs, agenix, ajax-xdp, impermanence, nix-gaming, nix-minecraft, nixos-mailserver, openhmd, spicetify, zfs-utils }:
+  outputs = { self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, impermanence, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
   let
     system = "x86_64-linux";
     coreImports = [
@@ -26,6 +33,7 @@
       nix-minecraft.overlay
       # Flake overrides
       (self: super: {
+        watchman-pairing-assistant = watchman-pairing-assistant.packages.x86_64-linux.default;
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
         ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
         forgeServers = {
@@ -40,7 +48,6 @@
         };
         mailserver = nixos-mailserver.x86_64-linux.default;
         nixGaming = nix-gaming.outputs.packages.x86_64-linux;
-        openhmd = openhmd.outputs.packages.x86_64-linux.openhmd;
         spicetifyThemes = spicetify.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetify.outputs.legacyPackages.x86_64-linux.extensions;
         zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
@@ -136,7 +143,7 @@
           modules/imports.nix
           machines/nixos-amd/configuration.nix
           ({ ... }: {
-            nixpkgs.overlays = overlays;
+            nixpkgs.overlays = overlays ++ nixpkgs-xr.overlays.default;
           })
         ];
       };
