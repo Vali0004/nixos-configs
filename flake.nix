@@ -136,14 +136,17 @@
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          agenix.nixosModules.age
+          agenix.nixosModules.agenix
           nix-gaming.nixosModules.pipewireLowLatency
+          nixpkgs-xr.nixosModules.nixpkgs-xr
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
           modules/imports.nix
           machines/nixos-amd/configuration.nix
           ({ ... }: {
-            nixpkgs.overlays = overlays ++ nixpkgs-xr.overlays.default;
+            nixpkgs.overlays = overlays ++ [
+              nixpkgs-xr.overlays.default
+            ];
           })
         ];
       };
