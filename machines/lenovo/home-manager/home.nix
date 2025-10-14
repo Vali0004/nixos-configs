@@ -22,6 +22,7 @@ in {
       programs/vscode.nix
       programs/zsh.nix
       services/dunst.nix
+      #windowManager/lxqt-hypr.nix
       windowManager/lxqt-sway.nix
     ];
 
