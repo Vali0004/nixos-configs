@@ -130,7 +130,11 @@ in {
     my_keys = import ../../ssh_keys_personal.nix;
   in {
     defaultUserShell = pkgs.zsh;
-    users.root.openssh.authorizedKeys.keys = my_keys;
+    users.root = {
+      openssh.authorizedKeys.keys = my_keys;
+      useDefaultShell = false;
+      shell = pkgs.zsh;
+    };
     users.vali = {
       isNormalUser = true;
       extraGroups = [

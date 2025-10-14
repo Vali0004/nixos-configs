@@ -33,6 +33,18 @@
       nix-minecraft.overlay
       # Flake overrides
       (self: super: {
+        eepyxr = nixpkgs-xr.packages.x86_64-linux.eepyxr;
+        index_camera_passthrough = nixpkgs-xr.packages.x86_64-linux.index_camera_passthrough;
+        kaon = nixpkgs-xr.packages.x86_64-linux.kaon;
+        opencomposite = nixpkgs-xr.packages.x86_64-linux.opencomposite;
+        opencomposite-vendored = nixpkgs-xr.packages.x86_64-linux.opencomposite-vendored;
+        proton-ge-rtsp-bin = nixpkgs-xr.packages.x86_64-linux.proton-ge-rtsp-bin;
+        vapor = nixpkgs-xr.packages.x86_64-linux.vapor;
+        wayvr-dashboard = nixpkgs-xr.packages.x86_64-linux.wayvr-dashboard;
+        wivrn = nixpkgs-xr.packages.x86_64-linux.wivrn;
+        wlx-overlay-s = nixpkgs-xr.packages.x86_64-linux.wlx-overlay-s;
+        xrizer = nixpkgs-xr.packages.x86_64-linux.xrizer;
+
         watchman-pairing-assistant = watchman-pairing-assistant.packages.x86_64-linux.default;
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
         ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
@@ -83,6 +95,17 @@
             repo = "dwmblocks-statuscmd-multithread";
             rev = "6700e322431b99ffc9a74b311610ecc0bc5b460a";
             hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
+          };
+        });
+        monado = super.monado.overrideAttrs (old: {
+          version = "unstable";
+          patches = [];
+          src = self.fetchFromGitLab {
+            domain = "gitlab.freedesktop.org";
+            owner = "monado";
+            repo = "monado";
+            rev = "1d8b80b735c5541b171e498784c1231a7768c25f";
+            hash = "sha256-Uuee7iH+ioH0/vlvhjoqMVJyfMSbgIHAz2cdj9iO1+Y=";
           };
         });
         xwinwrap = super.xwinwrap.overrideDerivation (old: {
@@ -136,17 +159,15 @@
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          agenix.nixosModules.agenix
+          agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
-          nixpkgs-xr.nixosModules.nixpkgs-xr
+          #nixpkgs-xr.nixosModules.nixpkgs-xr
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
           modules/imports.nix
           machines/nixos-amd/configuration.nix
           ({ ... }: {
-            nixpkgs.overlays = overlays ++ [
-              nixpkgs-xr.overlays.default
-            ];
+            nixpkgs.overlays = overlays;
           })
         ];
       };

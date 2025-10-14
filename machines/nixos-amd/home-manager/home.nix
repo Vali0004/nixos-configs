@@ -11,6 +11,7 @@ in {
   imports = [
     (import "${home-manager}/nixos")
   ];
+
   home-manager.users.vali = {
     imports = [
       programs/alacritty.nix
