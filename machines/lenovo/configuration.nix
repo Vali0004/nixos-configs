@@ -159,6 +159,6 @@ in {
       openFirewall = true;
     };
     enable = true;
-    autoSnapshot = true;
+    autoSnapshot.enable = true;
   };
 }
