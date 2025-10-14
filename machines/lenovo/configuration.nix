@@ -9,6 +9,7 @@ in {
     boot/boot.nix
     home-manager/home.nix
     programs/ssh.nix
+    #services/windowManager/lxqt-hypr.nix
     services/windowManager/lxqt-sway.nix
     services/displayManager.nix
     services/prometheus.nix
