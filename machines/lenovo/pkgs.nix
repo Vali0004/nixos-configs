@@ -53,14 +53,13 @@
     # Audio Player Control
     playerctl
     # RetroArch
-    libretro.dolphin
     libretro.mame
     libretro.mgba
     libretro.pcsx2
     libretro.picodrive
     libretro.ppsspp
     libretro.snes9x
-    retroarch-full
+    retroarch
     # Skylander's Portal Tool
     #skylanders
     # Syncplay, allows for syncing video streams with others via mpv
