@@ -52,8 +52,17 @@
     obs-studio
     # Audio Player Control
     playerctl
+    # RetroArch
+    libretro.dolphin
+    libretro.mame
+    libretro.mgba
+    libretro.pcsx2
+    libretro.picodrive
+    libretro.ppsspp
+    libretro.snes9x
+    retroarch-full
     # Skylander's Portal Tool
-    skylanders
+    #skylanders
     # Syncplay, allows for syncing video streams with others via mpv
     syncplay
     # System stats
