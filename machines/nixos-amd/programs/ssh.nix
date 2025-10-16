@@ -61,6 +61,11 @@
       User root
       Port 3952
 
+    Host US-Atlana-GA-01-OVH-WG
+      Hostname US-Atlana-GA-01-OVH-WG
+      User root
+      Port 9409
+
     Host US-Chicago-IL-02-OVH-WG
       Hostname US-Chicago-IL-02-OVH-WG
       User root
