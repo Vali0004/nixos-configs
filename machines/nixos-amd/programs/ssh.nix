@@ -13,6 +13,7 @@
 
     IdentityFile /home/vali/.ssh/id_rsa
     IdentityFile /home/vali/.ssh/nixos_main
+
     Host router
       Hostname router-vps
       User root
@@ -58,5 +59,15 @@
       Hostname UK-London-02-OVH-WG
       User root
       Port 3952
+
+    Host US-Chicago-IL-02-OVH-WG
+      Hostname US-Chicago-IL-02-OVH-WG
+      User root
+      Port 1703
+
+    Host US-Dallas-TX-01-OVH-WG
+      Hostname US-Dallas-TX-01-OVH-WG
+      User root
+      Port 6042
   '';
 }
