@@ -80,6 +80,8 @@
     nss
     # cli unrar
     libarchive
+    # Reduced blanking profiles
+    libxcvt
     # Wormhole, file sender
     magic-wormhole
     # COM Reader
