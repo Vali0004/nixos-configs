@@ -11,6 +11,10 @@
 
   config = lib.mkIf config.programs.steam.enable {
     programs.steam = {
+      extraCompatPackages = [
+        pkgs.proton-ge-rtsp-bin
+        pkgs.proton-ge-bin
+      ];
       gamescopeSession.enable = config.programs.steam.enableGamescope;
       package = pkgs.steam.override {
         extraPkgs = pkgs: [
