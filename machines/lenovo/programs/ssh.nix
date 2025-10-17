@@ -60,6 +60,11 @@
       User root
       Port 1703
 
+    Host US-Chicago-IL-03-OVH-WG
+      Hostname US-Chicago-IL-03-OVH-WG
+      User root
+      Port 6432
+
     Host US-Dallas-TX-01-OVH-WG
       Hostname US-Dallas-TX-01-OVH-WG
       User root

@@ -22,6 +22,7 @@
     57.128.161.248 UK-London-02-OVH-WG
     40.160.238.104 US-Atlana-GA-01-OVH-WG
     40.160.228.217 US-Chicago-IL-02-OVH-WG
+    74.91.113.48 US-Chicago-IL-03-OVH-WG
     40.160.224.58 US-Dallas-TX-01-OVH-WG
     172.232.124.193 India-XDP-01
   '';

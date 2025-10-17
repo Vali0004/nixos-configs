@@ -42,6 +42,7 @@ in {
           "UK-London-02-OVH-WG"
           "US-Atlana-GA-01-OVH-WG"
           "US-Chicago-IL-02-OVH-WG"
+          "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
         ];
         name = "fragmentation";
@@ -96,6 +97,7 @@ in {
           "UK-London-02-OVH-WG"
           "US-Atlana-GA-01-OVH-WG"
           "US-Chicago-IL-02-OVH-WG"
+          "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
         ];
         name = "node";
@@ -118,6 +120,7 @@ in {
           "UK-London-02-OVH-WG"
           "US-Atlana-GA-01-OVH-WG"
           "US-Chicago-IL-02-OVH-WG"
+          "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
         ];
         name = "smartctl";
@@ -140,6 +143,7 @@ in {
           "UK-London-02-OVH-WG"
           "US-Atlana-GA-01-OVH-WG"
           "US-Chicago-IL-02-OVH-WG"
+          "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
         ];
         interval = "5s";
@@ -163,6 +167,7 @@ in {
           "UK-London-02-OVH-WG"
           "US-Atlana-GA-01-OVH-WG"
           "US-Chicago-IL-02-OVH-WG"
+          "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
         ];
         name = "zfs";
