@@ -15,7 +15,6 @@
   ];
 
   environment.variables = {
-    PRIVATE_KEY = "/home/vali/.ssh/nixos_main";
     CM_LAUNCHER = "dmenu";
   };
 

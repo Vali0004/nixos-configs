@@ -43,6 +43,7 @@
       export SSH_CONFIG_FILE="/etc/ssh/ssh_config"
       export XDG_DATA_DIRS="/var/lib/flatpak/exports/share:/home/vali/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
       export PATH=/home/vali/.local/bin:$PATH
+      export PRIVATE_KEY=/home/vali/.ssh/nixos_main
     '';
     syntaxHighlighting.enable = true;
   };
