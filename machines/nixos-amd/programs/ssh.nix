@@ -80,5 +80,25 @@
       Hostname US-Dallas-TX-01-OVH-WG
       User root
       Port 6042
+
+    Host US-LosAngeles-CA-02-OVH-WG
+      Hostname US-LosAngeles-CA-02-OVH-WG
+      User root
+      Port 5903
+
+    Host US-Miami-Florda-01-OVH-WG
+      Hostname US-Miami-Florda-01-OVH-WG
+      User root
+      Port 5903
+
+    Host US-NYC-NY-01-OVH-WG
+      Hostname US-NYC-NY-01-OVH-WG
+      User root
+      Port 5903
+
+    Host US-Phoenix-AZ-01-OVH-WG
+      Hostname US-Phoenix-AZ-01-OVH-WG
+      User root
+      Port 5903
   '';
 }

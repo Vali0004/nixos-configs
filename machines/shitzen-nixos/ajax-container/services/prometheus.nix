@@ -44,6 +44,10 @@ in {
           "US-Chicago-IL-02-OVH-WG"
           "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
+          "US-LosAngeles-CA-02-OVH-WG"
+          "US-Miami-Florda-01-OVH-WG"
+          "US-NYC-NY-01-OVH-WG"
+          "US-Phoenix-AZ-01-OVH-WG"
         ];
         name = "fragmentation";
         port = 9103;
@@ -99,6 +103,10 @@ in {
           "US-Chicago-IL-02-OVH-WG"
           "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
+          "US-LosAngeles-CA-02-OVH-WG"
+          "US-Miami-Florda-01-OVH-WG"
+          "US-NYC-NY-01-OVH-WG"
+          "US-Phoenix-AZ-01-OVH-WG"
         ];
         name = "node";
         port = 9100;
@@ -122,6 +130,10 @@ in {
           "US-Chicago-IL-02-OVH-WG"
           "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
+          "US-LosAngeles-CA-02-OVH-WG"
+          "US-Miami-Florda-01-OVH-WG"
+          "US-NYC-NY-01-OVH-WG"
+          "US-Phoenix-AZ-01-OVH-WG"
         ];
         name = "smartctl";
         port = 9633;
@@ -145,6 +157,10 @@ in {
           "US-Chicago-IL-02-OVH-WG"
           "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
+          "US-LosAngeles-CA-02-OVH-WG"
+          "US-Miami-Florda-01-OVH-WG"
+          "US-NYC-NY-01-OVH-WG"
+          "US-Phoenix-AZ-01-OVH-WG"
         ];
         interval = "5s";
         name = "wireguard";
@@ -169,6 +185,10 @@ in {
           "US-Chicago-IL-02-OVH-WG"
           "US-Chicago-IL-03-OVH-WG"
           "US-Dallas-TX-01-OVH-WG"
+          "US-LosAngeles-CA-02-OVH-WG"
+          "US-Miami-Florda-01-OVH-WG"
+          "US-NYC-NY-01-OVH-WG"
+          "US-Phoenix-AZ-01-OVH-WG"
         ];
         name = "zfs";
         port = 9134;
