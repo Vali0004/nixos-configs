@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
-    ajax-xdp.url = "/home/vali/development/ajax-xdp";
+    ajax-xdp.url = "/home/vali/development/ajax/ajax-xdp";
     impermanence.url = "github:nix-community/impermanence";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";

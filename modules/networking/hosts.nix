@@ -22,12 +22,13 @@
     57.128.161.248 UK-London-02-OVH-WG
     40.160.238.104 US-Atlana-GA-01-OVH-WG
     40.160.228.217 US-Chicago-IL-02-OVH-WG
-    74.91.113.48 US-Chicago-IL-03-OVH-WG
+    74.91.113.48 US-Chicago-IL-03-NFO-WG
     40.160.224.58 US-Dallas-TX-01-OVH-WG
     40.160.226.232 US-LosAngeles-CA-02-OVH-WG
     40.160.232.208 US-Miami-Florda-01-OVH-WG
     40.160.230.141 US-NYC-NY-01-OVH-WG
     40.160.244.51 US-Phoenix-AZ-01-OVH-WG
+    45.45.237.86 US-Chicago-IL-04-Hosturly-WG
     172.232.124.193 India-XDP-01
   '';
 }

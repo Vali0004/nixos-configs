@@ -10,6 +10,7 @@
 
     services/nginx.nix
     services/prometheus.nix
+    services/xdp.nix
   ];
 
   environment.systemPackages = with pkgs; [

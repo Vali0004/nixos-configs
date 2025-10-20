@@ -27,13 +27,13 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1760007333,
-        "narHash": "sha256-SP3rafiblPtgyrxjFNMqFrhdAeuuyL7r+XWrt+mCAew=",
-        "path": "/home/vali/development/ajax-xdp",
+        "lastModified": 1760921480,
+        "narHash": "sha256-o3Omkn6cqgmJqhUZ5OCbAojlwmvuihqL4w3P3sQIMRk=",
+        "path": "/home/vali/development/ajax/ajax-xdp",
         "type": "path"
       },
       "original": {
-        "path": "/home/vali/development/ajax-xdp",
+        "path": "/home/vali/development/ajax/ajax-xdp",
         "type": "path"
       }
     },
