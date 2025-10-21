@@ -6,9 +6,9 @@
     ChallengeResponseAuthentication = false;
     GSSAPIAuthentication = false;
     KbdInteractiveAuthentication = false;
+    PrintMotd = false;
     # I'd still like the last login, even if it adds a small cost
-    PrintMotd = true;
-    PrintLastLog = false;
+    PrintLastLog = true;
     PasswordAuthentication = false;
     TCPKeepAlive = true;
     UseDns = false;

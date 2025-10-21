@@ -42,6 +42,10 @@
       ] ++ lib.optionals config.hardware.amd.enableIommu [
         "amd_iommu=on"
       ];
+      kernel.sysctl = {
+        "net.ipv4.tcp_low_latency" = 1;
+        "net.ipv4.tcp_notsent_lowat" = 1;
+      };
       tmp.useTmpfs = false;
     };
 
