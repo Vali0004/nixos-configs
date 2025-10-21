@@ -81,6 +81,7 @@
       driverOptions = {
         miimon = "100";
         mode = "active-backup";
+        primary = "eth0";
         primary_reselect = "better";
       };
       interfaces = [
