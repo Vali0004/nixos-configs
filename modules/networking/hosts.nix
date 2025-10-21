@@ -5,7 +5,6 @@
     10.0.0.124 chromeshit
     10.0.0.201 nixos-amd
     10.0.0.244 shitzen-nixos
-    10.0.0.245 shitzen-container
     74.208.44.130 router-vps
   '';
 }

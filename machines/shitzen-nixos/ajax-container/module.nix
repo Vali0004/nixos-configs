@@ -36,9 +36,10 @@
     privateNetwork = true;
     config = { config, pkgs, lib, ... }: {
       imports = [
+        ../../../modules/networking/hosts.nix
         services/grafana/module.nix
         services/prometheus.nix
-        ../../../modules/networking/hosts.nix
+        ./hosts.nix
       ];
 
       networking = {
