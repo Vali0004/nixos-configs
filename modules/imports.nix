@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ajax/hosts.nix
+    ajax/ssh.nix
     boot/boot.nix
     boot/grub.nix
     certificates/module.nix
