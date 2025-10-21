@@ -2,10 +2,12 @@
 
 {
   networking.extraHosts = ''
+    142.167.45.55 cleverca22
     10.0.0.31 lenovo
     10.0.0.124 chromeshit
     10.0.0.201 nixos-amd
     10.0.0.244 shitzen-nixos
+    10.0.0.245 shitzen-container
     74.208.44.130 router-vps
     172.236.229.46 LA-01-OVPN
     172.237.102.247 UK-01-OVPN

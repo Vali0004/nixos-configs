@@ -38,7 +38,7 @@
       imports = [
         services/grafana/module.nix
         services/prometheus.nix
-        ./hosts.nix
+        ../../../modules/networking/hosts.nix
       ];
 
       networking = {

@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
+  networking.firewall.allowedUDPPorts = [
+    6665
+    6666
+  ];
+
   services.syslog-ng = {
     enable = true;
     extraConfig = ''

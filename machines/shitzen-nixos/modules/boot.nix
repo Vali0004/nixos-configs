@@ -13,7 +13,7 @@
 
   boot.kernelParams = [
     "memtest=1"
-    "netconsole=6665@10.0.0.244/eth0,6666@10.0.0.201/6a:4e:25:d2:60:55"
+    "netconsole=6665@10.0.0.244/eth0,6666@10.0.0.201/10:ff:e0:35:08:fb"
   ];
 
   boot.kernel.sysctl = {
