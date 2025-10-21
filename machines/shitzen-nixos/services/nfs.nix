@@ -64,10 +64,9 @@ in {
         default = "SYSLOG:NOTICE";
         kdc = "SYSLOG:NOTICE";
       };
-      admin_server = "shitzen-nixos:749";
       realms = {
         "NFS.FUCKK.LOL" = {
-          admin_server = "nfs.fuckk.lol";
+          admin_server = "shitzen-nixos:749";
           kdc = [
             "shitzen-nixos:88"
           ];

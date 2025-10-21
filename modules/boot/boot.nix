@@ -24,7 +24,7 @@
 
   config = {
     boot = {
-      consoleLogLevel = 0;
+      consoleLogLevel = 8;
       initrd = {
         kernelModules = [ ];
         systemd.enable = true;
@@ -33,16 +33,12 @@
         (lib.strings.optionalString config.hardware.amd.enable "kvm-amd")
       ];
       kernelParams = [
-        # Enable high-poll rate
+        # Enable high-poll rate USB Keyboard devices
         "usbhid.kbpoll=1"
         # Boot a shell on failure
         "boot.shell_on_fail"
-        "splash"
+        # Show systemd
         "rd.systemd.show_status=auto"
-        # Panic after 30s
-        "panic=30"
-        # Reboot the machine upon fatal boot issues
-        "boot.panic_on_fail"
       ] ++ lib.optionals config.hardware.amd.enableIommu [
         "amd_iommu=on"
       ];
