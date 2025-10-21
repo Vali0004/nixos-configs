@@ -35,7 +35,6 @@ in {
   services.xserver.displayManager.setupCommands = ''
     sleep 5
     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --mode 2560x1440 --rate 120 --primary --left-of DP-1 --rotate normal
-    sleep 2
     ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --right-of DP-2 --mode 1920x1080 --rate 60 --rotate normal
   '';
 }
