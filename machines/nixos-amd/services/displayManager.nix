@@ -7,17 +7,17 @@ let
 in {
   environment.systemPackages = [ sddm-theme ];
 
-  services.xserver.displayManager.lightdm.enable = false;
-
-  services.xserver.displayManager.setupCommands = ''
-    #${pkgs.xorg.xrandr}/bin/xrandr --newmode "1920x1080_60.00" 138.50 1920 1968 2000 2080 1080 1083 1088 1111 +hsync -vsync
-    ${pkgs.xorg.xrandr}/bin/xrandr --newmode "2560x1440_240.00" 1442.50 2560 2800 3088 3616 1440 1443 1448 1663 -hsync +vsync
-    #${pkgs.xorg.xrandr}/bin/xrandr --addmode DP-1 "1920x1080_60.00"
-    #${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --mode "1920x1080_60.00"
-    ${pkgs.xorg.xrandr}/bin/xrandr --addmode DP-2 "2560x1440_240.00"
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --mode "2560x1440_240.00"
+  # Use amdgpu TearFree & VRR
+  environment.etc."/etc/X11/xorg.conf.d/20-amdgpu.conf".text = ''
+    Section "Device"
+        Identifier "AMD"
+        Driver "amdgpu"
+        Option "TearFree" "true"
+        Option "VariableRefresh" "true"
+    EndSection
   '';
 
+  services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm = {
     enable = true;
     extraPackages = with pkgs.kdePackages; [
@@ -29,6 +29,13 @@ in {
     ];
     package = pkgs.kdePackages.sddm;
     theme = "sddm-astronaut-theme";
-    wayland.enable = true;
+    wayland.enable = false;
   };
+
+  services.xserver.displayManager.setupCommands = ''
+    sleep 5
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --mode 2560x1440 --rate 120 --primary --left-of DP-1 --rotate normal
+    sleep 2
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --right-of DP-2 --mode 1920x1080 --rate 60 --rotate normal
+  '';
 }

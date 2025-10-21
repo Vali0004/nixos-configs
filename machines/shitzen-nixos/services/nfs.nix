@@ -68,7 +68,7 @@ in {
         "NFS.FUCKK.LOL" = {
           admin_server = "shitzen-nixos:749";
           kdc = [
-            "shitzen-nixos:88"
+            "shitzen-nixos:${toString kdc-port}"
           ];
         };
       };

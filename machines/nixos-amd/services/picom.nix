@@ -46,7 +46,7 @@
       use-damage = true;
     };
     shadow = true;
-    vSync = false;
+    vSync = true;
     wintypes = {
       dnd.shadow = false;
       dock.clip-shadow-above = true;
