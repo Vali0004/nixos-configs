@@ -17,6 +17,7 @@
     hardware/wifi.nix
     nix/settings.nix
     networking/hosts.nix
+    networking/ssh.nix
     programs/element-desktop.nix
     programs/google-chrome.nix
     programs/kde-ark.nix
