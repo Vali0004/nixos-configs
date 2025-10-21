@@ -1,34 +1,31 @@
-{ config, lib, pkgs, ... }:
-
 {
-  programs.gnupg.agent = {
-    enable = true;
-    enableBrowserSocket = true;
-    enableExtraSocket = true;
-    enableSSHSupport = true;
-  };
-
   programs.ssh.extraConfig = ''
-    include config.d/*
-
-    IdentityFile /home/vali/.ssh/id_rsa
-    IdentityFile /home/vali/.ssh/nixos_main
-    IdentityFile /home/vali/.ssh/test_ppk
-
-    Host router
-      Hostname router-vps
+    Host LA-01-OVPN
+      Hostname LA-01-OVPN
       User root
 
-    Host shitzen-nixos
-      Hostname shitzen-nixos
+    Host UK-01-OVPN
+      Hostname UK-01-OVPN
       User root
 
-    Host chromeshit
-      Hostname chromeshit
+    Host Sweden-01-OVPN
+      Hostname Sweden-01-OVPN
       User root
 
-    Host lenovo
-      Hostname lenovo
+    Host Amsterdam-01-OVPN
+      Hostname Amsterdam-01-OVPN
+      User root
+
+    Host Japan-01-OVPN
+      Hostname Japan-01-OVPN
+      User root
+
+    Host France-01-OVPN
+      Hostname France-01-OVPN
+      User root
+
+    Host Toronto-01-OVPN
+      Hostname Toronto-01-OVPN
       User root
 
     Host PRV-Germany-01
@@ -98,6 +95,11 @@
 
     Host US-Phoenix-AZ-01-OVH-WG
       Hostname US-Phoenix-AZ-01-OVH-WG
+      User root
+      Port 5903
+
+    Host US-Chicago-IL-04-Hosturly-WG
+      Hostname US-Chicago-IL-04-Hosturly-WG
       User root
       Port 5903
   '';

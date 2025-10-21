@@ -5,12 +5,13 @@ let
 in {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+    ../../modules/networking/secrets-private.nix
     ../../modules/services/openssh.nix
     boot/boot.nix
     home-manager/home.nix
     programs/ssh.nix
-    #services/windowManager/lxqt-hypr.nix
-    services/windowManager/lxqt-sway.nix
+    services/windowManager/lxqt-hypr.nix
+    #services/windowManager/lxqt-sway.nix
     services/displayManager.nix
     services/prometheus.nix
     ./pkgs.nix
