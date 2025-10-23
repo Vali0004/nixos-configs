@@ -4,8 +4,6 @@
   boot.initrd.availableKernelModules = [
     # SATA
     "ahci"
-    # Syslog
-    "netconsole"
     # SAS
     "mpt3sas"
     "raid_class"
@@ -18,14 +16,19 @@
     "xhci_pci"
   ];
 
+  boot.consoleLogLevel = 8;
+
   boot.extraModprobeConfig = ''
     options netconsole netconsole=6665@10.0.0.244/eth0,6666@10.0.0.201/10:ff:e0:35:08:fb
   '';
 
   boot.kernelParams = [
     "memtest=1"
-    "netconsole=6665@10.0.0.244/eth0,6666@10.0.0.201/10:ff:e0:35:08:fb"
   ];
+
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = true;
+  };
 
   boot.grub = {
     copyKernels = true;

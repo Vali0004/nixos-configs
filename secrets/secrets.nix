@@ -5,8 +5,6 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1"
     # router-vps
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Fk+n0k2+ZsQMo6VCiVPIW1RErbLcLMcCuHyE+e3Mc"
-    # testvm-nixos
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAtfR4R8aY5CzY/iu0UcrMIyxfAF6mxz1NjIOH4+eLj7"
   ];
   keys = machines ++ ssh_keys;
 in {

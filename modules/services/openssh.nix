@@ -1,17 +1,8 @@
 {
   services.openssh.enable = true;
-  # We don't need most methods, as we force ssh keys.
-  # Disable expensive modules
   services.openssh.settings = {
-    ChallengeResponseAuthentication = false;
-    GSSAPIAuthentication = false;
+    PermitRootLogin = "prohibit-password";
     KbdInteractiveAuthentication = false;
-    PrintMotd = false;
-    # I'd still like the last login, even if it adds a small cost
-    PrintLastLog = true;
     PasswordAuthentication = false;
-    TCPKeepAlive = true;
-    UseDns = false;
-    UsePAM = false;
   };
 }

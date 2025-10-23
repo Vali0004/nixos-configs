@@ -27,8 +27,8 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1760921480,
-        "narHash": "sha256-o3Omkn6cqgmJqhUZ5OCbAojlwmvuihqL4w3P3sQIMRk=",
+        "lastModified": 1761150105,
+        "narHash": "sha256-SaRVSLVll7pBghoWRCzkIVUgINVoSVrR4pcjp/8YNxc=",
         "path": "/home/vali/development/ajax/ajax-xdp",
         "type": "path"
       },
