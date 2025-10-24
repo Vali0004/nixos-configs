@@ -16,6 +16,7 @@
   environment.systemPackages = with pkgs; [
     conntrack-tools
     fastfetch
+    gdb
     git
     htop
     inetutils
@@ -51,6 +52,11 @@
   };
 
   networking = {
+    defaultGateway = "74.208.44.1";
+    defaultGateway6 = {
+      address = "fe80::1";
+      interface = "eth0";
+    };
     firewall = {
       allowedTCPPorts = [
         25 # SMTP
@@ -66,39 +72,33 @@
         6697 # IRCS
         8080 # TOR
         9101 # Node Exporter
+        9192
       ];
       allowedUDPPorts = [
         3700 # Peer port
         4101 # MC Server
         6990 # DHT
       ];
-      extraCommands = ''
-        # Drop invalid connection states
-        ${pkgs.iptables}/bin/iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
-
-        # Allow existing/related connections
-        ${pkgs.iptables}/bin/iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
-
-        # Rate-limit new TCP SYN connections
-        ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --syn -m limit --limit 10/second --limit-burst 50 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --syn -m connlimit --connlimit-above 20 -j DROP
-
-        # UDP: allow limited rate
-        ${pkgs.iptables}/bin/iptables -A INPUT -p udp -m limit --limit 10/second --limit-burst 10 -j ACCEPT
-        ${pkgs.iptables}/bin/iptables -A INPUT -p udp -j DROP
-      '';
-      extraStopCommands = ''
-        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -j DROP || true
-        ${pkgs.iptables}/bin/iptables -D INPUT -p udp -m limit --limit 10/second --limit-burst 10 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m connlimit --connlimit-above 20 -j DROP || true
-        ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --syn -m limit --limit 10/second --limit-burst 50 -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT || true
-        ${pkgs.iptables}/bin/iptables -D INPUT -m conntrack --ctstate INVALID -j DROP || true
-      '';
     };
     hostId = "eca03077";
     hostName = "router-vps";
-    useDHCP = true;
+    interfaces.eth0 = {
+      ipv4.addresses = [{
+        address = "74.208.44.130";
+        prefixLength = 24;
+      }];
+      ipv6.addresses = [{
+        address = "2607:f1c0:f088:e200::1";
+        prefixLength = 80;
+      }];
+    };
+    nameservers = [
+      "1.1.1.1"
+      "8.8.8.8"
+      "2001:4860:4860::8888"
+      "2606:4700:4700::1111"
+    ];
+    useDHCP = false;
     usePredictableInterfaceNames = false;
   };
 
@@ -109,7 +109,6 @@
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";
-    size = 512;
   }];
 
   system.stateVersion = "25.11";

@@ -75,6 +75,11 @@ in {
           config = oauthProxyConfig;
           port = config.services.prometheus.port;
         };
+        "/xdp/" = mkProxy {
+          config = oauthProxyConfig;
+          ip = "10.127.0.1";
+          port = 9192;
+        };
       };
     };
   };
