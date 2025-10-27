@@ -8,14 +8,14 @@ in {
   environment.systemPackages = [ sddm-theme ];
 
   # Use amdgpu TearFree & VRR
-  environment.etc."/etc/X11/xorg.conf.d/20-amdgpu.conf".text = ''
-    Section "Device"
-        Identifier "AMD"
-        Driver "amdgpu"
-        Option "TearFree" "true"
-        Option "VariableRefresh" "true"
-    EndSection
-  '';
+  #environment.etc."/etc/X11/xorg.conf.d/20-amdgpu.conf".text = ''
+  #  Section "Device"
+  #      Identifier "AMD"
+  #      Driver "amdgpu"
+  #      Option "TearFree" "true"
+  #      Option "VariableRefresh" "true"
+  #  EndSection
+  #'';
 
   services.xserver.displayManager.lightdm.enable = false;
   services.displayManager.sddm = {
@@ -36,7 +36,6 @@ in {
     sleep 5
     ${pkgs.xorg.xrandr}/bin/xrandr --newmode "2560x1440R" 1056.50 2560 2608 2640 2720 1440 1443 1448 1619 +hsync -vsync
     ${pkgs.xorg.xrandr}/bin/xrandr --addmode DP-2 2560x1440R
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --mode 2560x1440R --rate 120 --primary --right-of DP-1 --rotate normal
-    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-1 --left-of DP-2 --rotate normal
+    ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --mode 2560x1440R --rate 240 --primary --right-of DP-1 --rotate normal
   '';
 }
