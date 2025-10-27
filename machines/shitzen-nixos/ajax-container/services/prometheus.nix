@@ -27,13 +27,13 @@ in {
     scrapeConfigs = [
       (mkJob {
         targets = [
-          "Amsterdam-01-OVPN"
-          "France-01-OVPN"
-          "Japan-01-OVPN"
-          "LA-01-OVPN"
-          "Sweden-01-OVPN"
-          "Toronto-01-OVPN"
-          "UK-01-OVPN"
+          "Amsterdam-01-Linode-OVPN"
+          "France-01-Linode-OVPN"
+          "Japan-01-Linode-OVPN"
+          "US-LosAngeles-CA-01-Linode-OVPN"
+          "Sweden-01-Linode-OVPN"
+          "Toronto-01-Linode-OVPN"
+          "UK-London-01-Linode-OVPN"
           "PRV-Germany-01"
           "AU-Syndey-01-OVH-WG"
           "BHS-02-OVH-WG"
@@ -49,6 +49,11 @@ in {
           "US-Miami-Florda-01-OVH-WG"
           "US-NYC-NY-01-OVH-WG"
           "US-Phoenix-AZ-01-OVH-WG"
+          "US-Hillsboro-OR-01-OVH-WG"
+          "CA-Beauharnois-01-100up-WG"
+          "UK-London-01-100up-WG"
+          "US-Hillsboro-OR-01-100up-WG"
+          "US-VintHill-VA-01-100up-WG"
         ];
         name = "fragmentation";
         port = 9103;
@@ -65,13 +70,13 @@ in {
       })
       (mkJob {
         targets = [
-          "Amsterdam-01-OVPN"
-          "France-01-OVPN"
-          "Japan-01-OVPN"
-          "LA-01-OVPN"
-          "Sweden-01-OVPN"
-          "Toronto-01-OVPN"
-          "UK-01-OVPN"
+          "Amsterdam-01-Linode-OVPN"
+          "France-01-Linode-OVPN"
+          "Japan-01-Linode-OVPN"
+          "US-LosAngeles-CA-01-Linode-OVPN"
+          "Sweden-01-Linode-OVPN"
+          "Toronto-01-Linode-OVPN"
+          "UK-London-01-Linode-OVPN"
         ];
         name = "openvpn";
         port = 9176;
@@ -87,13 +92,13 @@ in {
       (mkJob {
         targets = [
           "shitzen-container"
-          "Amsterdam-01-OVPN"
-          "France-01-OVPN"
-          "Japan-01-OVPN"
-          "LA-01-OVPN"
-          "Sweden-01-OVPN"
-          "Toronto-01-OVPN"
-          "UK-01-OVPN"
+          "Amsterdam-01-Linode-OVPN"
+          "France-01-Linode-OVPN"
+          "Japan-01-Linode-OVPN"
+          "US-LosAngeles-CA-01-Linode-OVPN"
+          "Sweden-01-Linode-OVPN"
+          "Toronto-01-Linode-OVPN"
+          "UK-London-01-Linode-OVPN"
           "PRV-Germany-01"
           "AU-Syndey-01-OVH-WG"
           "BHS-02-OVH-WG"
@@ -109,19 +114,24 @@ in {
           "US-Miami-Florda-01-OVH-WG"
           "US-NYC-NY-01-OVH-WG"
           "US-Phoenix-AZ-01-OVH-WG"
+          "US-Hillsboro-OR-01-OVH-WG"
+          "CA-Beauharnois-01-100up-WG"
+          "UK-London-01-100up-WG"
+          "US-Hillsboro-OR-01-100up-WG"
+          "US-VintHill-VA-01-100up-WG"
         ];
         name = "node";
         port = 9100;
       })
       (mkJob {
         targets = [
-          "Amsterdam-01-OVPN"
-          "France-01-OVPN"
-          "Japan-01-OVPN"
-          "LA-01-OVPN"
-          "Sweden-01-OVPN"
-          "Toronto-01-OVPN"
-          "UK-01-OVPN"
+          "Amsterdam-01-Linode-OVPN"
+          "France-01-Linode-OVPN"
+          "Japan-01-Linode-OVPN"
+          "US-LosAngeles-CA-01-Linode-OVPN"
+          "Sweden-01-Linode-OVPN"
+          "Toronto-01-Linode-OVPN"
+          "UK-London-01-Linode-OVPN"
           "PRV-Germany-01"
           "AU-Syndey-01-OVH-WG"
           "BHS-02-OVH-WG"
@@ -137,19 +147,24 @@ in {
           "US-Miami-Florda-01-OVH-WG"
           "US-NYC-NY-01-OVH-WG"
           "US-Phoenix-AZ-01-OVH-WG"
+          "US-Hillsboro-OR-01-OVH-WG"
+          "CA-Beauharnois-01-100up-WG"
+          "UK-London-01-100up-WG"
+          "US-Hillsboro-OR-01-100up-WG"
+          "US-VintHill-VA-01-100up-WG"
         ];
         name = "smartctl";
         port = 9633;
       })
       (mkJob {
         targets = [
-          "Amsterdam-01-OVPN"
-          "France-01-OVPN"
-          "Japan-01-OVPN"
-          "LA-01-OVPN"
-          "Sweden-01-OVPN"
-          "Toronto-01-OVPN"
-          "UK-01-OVPN"
+          "Amsterdam-01-Linode-OVPN"
+          "France-01-Linode-OVPN"
+          "Japan-01-Linode-OVPN"
+          "US-LosAngeles-CA-01-Linode-OVPN"
+          "Sweden-01-Linode-OVPN"
+          "Toronto-01-Linode-OVPN"
+          "UK-01-Linode-OVPN"
           "PRV-Germany-01"
           "AU-Syndey-01-OVH-WG"
           "BHS-02-OVH-WG"
@@ -165,6 +180,11 @@ in {
           "US-Miami-Florda-01-OVH-WG"
           "US-NYC-NY-01-OVH-WG"
           "US-Phoenix-AZ-01-OVH-WG"
+          "US-Hillsboro-OR-01-OVH-WG"
+          "CA-Beauharnois-01-100up-WG"
+          "UK-London-01-100up-WG"
+          "US-Hillsboro-OR-01-100up-WG"
+          "US-VintHill-VA-01-100up-WG"
         ];
         interval = "5s";
         name = "wireguard";
@@ -172,13 +192,13 @@ in {
       })
       (mkJob {
         targets = [
-          "Amsterdam-01-OVPN"
-          "France-01-OVPN"
-          "Japan-01-OVPN"
-          "LA-01-OVPN"
-          "Sweden-01-OVPN"
-          "Toronto-01-OVPN"
-          "UK-01-OVPN"
+          "Amsterdam-01-Linode-OVPN"
+          "France-01-Linode-OVPN"
+          "Japan-01-Linode-OVPN"
+          "US-LosAngeles-CA-01-Linode-OVPN"
+          "Sweden-01-Linode-OVPN"
+          "Toronto-01-Linode-OVPN"
+          "UK-01-Linode-OVPN"
           "PRV-Germany-01"
           "AU-Syndey-01-OVH-WG"
           "BHS-02-OVH-WG"
@@ -194,6 +214,11 @@ in {
           "US-Miami-Florda-01-OVH-WG"
           "US-NYC-NY-01-OVH-WG"
           "US-Phoenix-AZ-01-OVH-WG"
+          "US-Hillsboro-OR-01-OVH-WG"
+          "CA-Beauharnois-01-100up-WG"
+          "UK-London-01-100up-WG"
+          "US-Hillsboro-OR-01-100up-WG"
+          "US-VintHill-VA-01-100up-WG"
         ];
         name = "zfs";
         port = 9134;

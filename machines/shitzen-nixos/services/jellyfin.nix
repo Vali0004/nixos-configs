@@ -21,6 +21,14 @@ in {
     };
   };
 
+  services.nginx.virtualHosts."watch.furryporn.ca" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = mkProxy {
+      port = 8096;
+    };
+  };
+
   systemd.services.jellyfin.serviceConfig.SupplementaryGroups = [
     config.services.rtorrent.group
     "video"

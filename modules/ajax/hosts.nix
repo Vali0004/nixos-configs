@@ -1,13 +1,13 @@
 {
   networking.extraHosts = ''
-    172.235.175.238 Amsterdam-01-OVPN
-    172.232.53.85 France-01-OVPN
-    172.234.95.14 Japan-01-OVPN
-    172.236.229.46 LA-01-OVPN
-    172.232.134.157 Sweden-01-OVPN
-    170.187.181.108 Toronto-01-OVPN
-    172.237.102.247 UK-01-OVPN
-    178.17.50.39 PRV-Germany-01
+    172.235.175.238 Amsterdam-01-Linode-OVPN
+    172.232.53.85 France-01-Linode-OVPN
+    172.234.95.14 Japan-01-Linode-OVPN
+    172.236.229.46 US-LosAngeles-CA-01-Linode-OVPN
+    172.232.134.157 Sweden-01-Linode-OVPN
+    170.187.181.108 Toronto-01-Linode-OVPN
+    172.237.102.247 UK-London-01-Linode-OVPN
+    178.17.50.39 PRV-Germany-Waicore-01
     51.161.173.235 AU-Syndey-01-OVH-WG
     51.79.102.4 BHS-02-OVH-WG
     141.227.130.202 LZ-AMS-02-OVH-WG
@@ -24,7 +24,12 @@
     40.160.230.141 US-NYC-NY-01-OVH-WG
     40.160.244.51 US-Phoenix-AZ-01-OVH-WG
     40.160.6.170 US-Virginia-02-OVH-WG
+    51.81.153.36 US-Hillsboro-OR-01-OVH-WG
     45.45.237.86 US-Chicago-IL-04-Hosturly-WG
+    66.70.198.235 CA-Beauharnois-01-100up-WG
+    51.38.67.90 UK-London-01-100up-WG
+    15.204.12.149 US-Hillsboro-OR-01-100up-WG
+    128.0.118.48 US-VintHill-VA-01-100up-WG
     172.232.124.193 India-XDP-01
   '';
 }
