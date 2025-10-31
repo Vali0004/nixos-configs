@@ -1,7 +1,11 @@
-{ config, lib, pkgs, ... }:
+{ pkgs
+, ... }:
 
 {
-  environment.systemPackages = [ pkgs.agenix ];
+  environment.systemPackages = with pkgs; [
+    agenix
+  ];
+
   age.secrets = {
     wireguard-server = {
       file = ../../../secrets/wireguard-server.age;

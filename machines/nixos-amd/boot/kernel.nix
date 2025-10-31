@@ -1,4 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ lib
+, pkgs
+, ... }:
 
 {
   boot.kernelPackages = let

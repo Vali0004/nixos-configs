@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   boot.initrd.availableKernelModules = [
     "nvme" # NVME

@@ -1,5 +1,3 @@
-{ ... }:
-
 let
   hyprConfig = import ../../hyprconfig.nix;
 in {

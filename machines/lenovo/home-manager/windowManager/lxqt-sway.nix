@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }:
-
 let
   swayConfig = import ../../swayconfig.nix;
 in {

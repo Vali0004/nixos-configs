@@ -84,14 +84,6 @@ in {
       })
       (mkJob {
         targets = [
-          "India-XDP-01"
-        ];
-        interval = "5s";
-        name = "xdp";
-        port = 8080;
-      })
-      (mkJob {
-        targets = [
           "shitzen-container"
           "Amsterdam-01-Linode-OVPN"
           "France-01-Linode-OVPN"

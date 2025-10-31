@@ -31,6 +31,5 @@
     51.38.67.90 UK-London-01-100up-WG
     15.204.12.149 US-Hillsboro-OR-01-100up-WG
     128.0.118.48 US-VintHill-VA-01-100up-WG
-    172.232.124.193 India-XDP-01
   '';
 }

@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, alacritty
+, ... }:
 
 {
   programs.rofi = {
@@ -11,7 +14,7 @@
       window-format = "{w}    {c}   {t}";
     };
     location = "center";
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${alacritty}/bin/alacritty";
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
     in {

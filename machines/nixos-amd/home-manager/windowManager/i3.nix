@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }:
-
 let
   i3Config = import ../../i3config.nix;
 in {

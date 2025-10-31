@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   networking.firewall.allowedUDPPorts = [ 6666 ];
 

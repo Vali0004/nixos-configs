@@ -1,11 +1,13 @@
-{ config, lib, pkgs, ... }:
+{ config
+, papirus-icon-theme
+, gnome-themes-extra
+, ... }:
 
 let
   home-manager = builtins.fetchTarball {
     url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
     sha256 = "0h33b93cr2riwd987ii5xl28mac590fm2041c5pcz0kdad3yll4s";
   };
-  manage-startup-applications = pkgs.callPackage ./manage-startup-applications.nix {};
   ssh_config = config.environment.etc."ssh/ssh_config".text;
 in {
   imports = [
@@ -39,11 +41,11 @@ in {
       gtk3.extraConfig.gtk-application-prefer-dark-theme = 1;
       iconTheme = {
         name = "Papirus-Dark";
-        package = pkgs.papirus-icon-theme;
+        package = papirus-icon-theme;
       };
       theme = {
         name = "Adwaita-dark";
-        package = pkgs.gnome-themes-extra;
+        package = gnome-themes-extra;
       };
     };
 

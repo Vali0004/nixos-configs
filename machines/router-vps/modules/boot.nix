@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
   boot.initrd.availableKernelModules = [
     "ahci" # SATA

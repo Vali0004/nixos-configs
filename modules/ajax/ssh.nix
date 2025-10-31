@@ -1,35 +1,35 @@
 {
   programs.ssh.extraConfig = ''
-    Host LA-01-OVPN
-      Hostname LA-01-OVPN
+    Host US-LosAngeles-CA-01-Linode-OVPN
+      Hostname LA-01-Linode-OVPN
       User root
 
-    Host UK-01-OVPN
-      Hostname UK-01-OVPN
+    Host UK-London-01-Linode-OVPN
+      Hostname UK-London-01-Linode-OVPN
       User root
 
-    Host Sweden-01-OVPN
-      Hostname Sweden-01-OVPN
+    Host Sweden-01-Linode-OVPN
+      Hostname Sweden-01-Linode-OVPN
       User root
 
-    Host Amsterdam-01-OVPN
-      Hostname Amsterdam-01-OVPN
+    Host Amsterdam-01-Linode-OVPN
+      Hostname Amsterdam-01-Linode-OVPN
       User root
 
-    Host Japan-01-OVPN
-      Hostname Japan-01-OVPN
+    Host Japan-01-Linode-OVPN
+      Hostname Japan-01-Linode-OVPN
       User root
 
-    Host France-01-OVPN
-      Hostname France-01-OVPN
+    Host France-01-Linode-OVPN
+      Hostname France-01-Linode-OVPN
       User root
 
-    Host Toronto-01-OVPN
-      Hostname Toronto-01-OVPN
+    Host Toronto-01-Linode-OVPN
+      Hostname Toronto-01-Linode-OVPN
       User root
 
-    Host PRV-Germany-01
-      Hostname PRV-Germany-01
+    Host PRV-Germany-Waicore-01
+      Hostname PRV-Germany-Waicore-01
       User root
       Port 5192
 
@@ -102,5 +102,30 @@
       Hostname US-Chicago-IL-04-Hosturly-WG
       User root
       Port 5903
+
+    Host CA-Beauharnois-01-100up-
+      Hostname CA-Beauharnois-01-100up-WG
+      User root
+      Port 58676
+
+    Host DE-Frankfurt-01-100up-WG
+      Hostname DE-Frankfurt-01-100up-WG
+      User root
+      Port 49952
+
+    Host UK-London-01-100up-WG
+      Hostname UK-London-01-100up-WG
+      User root
+      Port 56739
+
+    Host US-Hillsboro-OR-01-100up-WG
+      Hostname US-Hillsboro-OR-01-100up-WG
+      User root
+      Port 57570
+
+    Host US-VintHill-VA-01-100up-WG
+      Hostname US-VintHill-VA-01-100up-WG
+      User root
+      Port 20214
   '';
 }

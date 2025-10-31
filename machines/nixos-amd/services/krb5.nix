@@ -1,5 +1,3 @@
-{ ... }:
-
 let
   kdc-port = 88;
   kdc-admin-port = 749;

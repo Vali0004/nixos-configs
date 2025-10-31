@@ -1,5 +1,3 @@
-{ config, inputs, lib, pkgs, ... }:
-
 {
   networking.firewall.allowedTCPPorts = [
     9100 # Node Exporter

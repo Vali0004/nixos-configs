@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   home = {
     file.".config/fastfetch/simple.jsonc".source = ./fastfetch-simple.jsonc;

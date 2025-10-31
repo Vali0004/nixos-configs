@@ -1,4 +1,4 @@
-{ config, lib, modulesPath, pkgs, ... }:
+{ modulesPath, pkgs, ... }:
 
 let
   skylandersFlake = builtins.getFlake "home/vali/skylanders-nfc-reader";

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{ pkgs, modulesPath, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
     modules/boot.nix
     modules/wireguard.nix
 
-    services/nginx.nix
+    #services/nginx.nix
     services/prometheus.nix
     services/xdp.nix
   ];
