@@ -88,6 +88,7 @@ in {
       "fd00:127::3/128"
       "10.127.0.3/24"
     ];
+    listenPort = 51820;
     mtu = 1380;
     privateKeyFile = config.age.secrets.wireguard.path;
     peers = [{

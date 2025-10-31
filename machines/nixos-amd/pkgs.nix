@@ -98,6 +98,8 @@
     nrf-studio
     # SEGGER JLink
     jlink
+    # nRF SDK
+    nrf5-sdk
     # Adafurit nRF Util
     nrf-util
     # Video capture tool

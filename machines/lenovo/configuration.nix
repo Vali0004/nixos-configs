@@ -99,6 +99,7 @@ in {
     spicetify.enable = true;
     steam.enable = true;
     vscode.enable = true;
+    zsh.enable = true;
   };
 
   qt.enable = true;

@@ -26,6 +26,15 @@ in {
         port = config.services.prometheus.port;
       })
       (mkJob {
+        appendNameToMetrics = true;
+        name = "xdp";
+        interval = "1s";
+        port = 9192;
+        targets = [
+          "router-vps"
+        ];
+      })
+      (mkJob {
         name = "prowlarr";
         port = 9708;
       })

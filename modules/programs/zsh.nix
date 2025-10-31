@@ -1,13 +1,12 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  environment.shells = [
+  environment.shells = lib.mkIf programs.zsh.enable [
     pkgs.zsh
   ];
 
-  programs.zsh = {
+  programs.zsh = lib.mkIf programs.zsh.enable {
     autosuggestions.enable = false;
-    enable = true;
     enableBashCompletion = true;
     ohMyZsh = {
       enable = true;
@@ -48,5 +47,5 @@
     syntaxHighlighting.enable = true;
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = lib.mkIf programs.zsh.enable pkgs.zsh;
 }

@@ -147,6 +147,7 @@
       enable = true;
       usbmon.enable = true;
     };
+    zsh.enable = true;
   };
 
   qt.enable = true;
