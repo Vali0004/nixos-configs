@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   environment.shells = lib.mkIf programs.zsh.enable [
