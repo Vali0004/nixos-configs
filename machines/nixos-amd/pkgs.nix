@@ -119,6 +119,8 @@
     polychromatic
     # Minecraft launcher
     prismlauncher
+    # proot
+    proot
     # VM
     qemu
     (writeShellScriptBin "qemu-system-x86_64-uefi" ''
