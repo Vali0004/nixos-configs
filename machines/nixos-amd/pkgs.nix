@@ -120,6 +120,7 @@
     # Minecraft launcher
     prismlauncher
     # VM
+    qemu
     (writeShellScriptBin "qemu-system-x86_64-uefi" ''
       ${pkgs.qemu_kvm}/bin/qemu-system-x86_64 \
         -bios ${pkgs.OVMFFull.fd}/FV/OVMF.fd \
