@@ -184,6 +184,7 @@
     nixosConfigurations = {
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
@@ -194,12 +195,12 @@
           machines/nixos-amd/configuration.nix
           ({ ... }: {
             nixpkgs.overlays = overlays;
-            _module.args.inputs = inputs;
           })
         ];
       };
       lenovo = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
@@ -209,12 +210,12 @@
           machines/lenovo/configuration.nix
           ({ ... }: {
             nixpkgs.overlays = overlays;
-            _module.args.inputs = inputs;
           })
         ];
       };
       nixos-vm = nixpkgs.lib.nixosSystem {
         inherit system;
+        specialArgs = { inherit inputs overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
@@ -225,7 +226,6 @@
           machines/testing-vm/configuration.nix
           ({ ... }: {
             nixpkgs.overlays = overlays;
-            _module.args.inputs = inputs;
           })
         ];
       };

@@ -4,6 +4,7 @@
   ];
 
   boot = {
+    binfmt.emulatedSystems = [ "powerpc64-linux" ];
     extraModprobeConfig = "options vfio-pci ids=1002:7340,1002:ab38";
     initrd.availableKernelModules = [
       "ahci" # SATA
@@ -14,6 +15,7 @@
       "sd_mod"
     ];
     kernelModules = [
+      "binfmt_misc"
       "razerkbd"
     ];
   };
