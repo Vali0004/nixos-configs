@@ -95,14 +95,6 @@
         "wlan0"
       ];
     };
-    defaultGateway = {
-      address = "10.0.0.1";
-      interface = "bond0";
-    };
-    defaultGateway6 = {
-      address = "fe80::1";
-      interface = "bond0";
-    };
     hostName = "nixos-amd";
     useDHCP = true;
     usePredictableInterfaceNames = false;
