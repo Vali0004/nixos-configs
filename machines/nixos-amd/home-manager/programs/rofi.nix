@@ -1,6 +1,5 @@
 { config
-, lib
-, alacritty
+, pkgs
 , ... }:
 
 {
@@ -14,7 +13,7 @@
       window-format = "{w}    {c}   {t}";
     };
     location = "center";
-    terminal = "${alacritty}/bin/alacritty";
+    terminal = "${pkgs.alacritty}/bin/alacritty";
     theme = let
       inherit (config.lib.formats.rasi) mkLiteral;
     in {

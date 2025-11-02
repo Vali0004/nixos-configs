@@ -1,17 +1,14 @@
 { config
+, inputs
 , pkgs
 , ... }:
 
 let
-  home-manager = builtins.fetchTarball {
-    url = "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-    sha256 = "0h33b93cr2riwd987ii5xl28mac590fm2041c5pcz0kdad3yll4s";
-  };
   manage-startup-applications = pkgs.callPackage ./manage-startup-applications.nix {};
   ssh_config = config.environment.etc."ssh/ssh_config".text;
 in {
   imports = [
-    (import "${home-manager}/nixos")
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   home-manager.users.vali = {

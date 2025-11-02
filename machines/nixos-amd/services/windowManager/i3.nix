@@ -34,7 +34,7 @@
       xwinwrap
     ];
     extraSessionCommands = ''
-      ${pkgs.pulseaudio}/bin/pactl set-default-sink "alsa_output.usb-SteelSeries_SteelSeries_Arctis_1_Wireless-00.analog-stereo"
+      ${pkgs.pipewire}/bin/pw-metadata -n settings 0 default.audio.sink alsa_output.usb-Sony_INZONE_H9_II-00.analog-stereo
       ${pkgs.xwinwrap-gif} /home/vali/.config/xwinwrap/wallpaper.gif &
     '';
   };

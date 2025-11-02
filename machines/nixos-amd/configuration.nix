@@ -163,15 +163,17 @@
     # Linux GPU Configuration And Monitoring Tool
     lact.enable = true;
     udev.extraRules = ''
-      # Keyboard
+      # Aula, SayoDevice O3C
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
       # HTC
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel"
-      # SlimeVR
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", GROUP="wheel"
       # Oculus
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="2833", GROUP="wheel"
       SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
+      # SlimeVR
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", GROUP="wheel"
+      # Sony - 054c:0fa8
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", GROUP="wheel"
       # Steam
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
       # Razer
@@ -185,7 +187,6 @@
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1d6b", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
-      # Flag USB CDC ACM devices, handled below
       # Set USB CDC ACM devnodes as read-write for the wheel group
       KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915", MODE="0666", ENV{NRF_CDC_ACM}="1"
       ENV{NRF_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"

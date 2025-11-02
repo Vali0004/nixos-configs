@@ -16,6 +16,8 @@
     beammp-launcher
     # 3D Modeling
     blender
+    # Binary Tools
+    bintools
     # Remote deploy
     colmena
     # Cider - Alternative Apple Music Client

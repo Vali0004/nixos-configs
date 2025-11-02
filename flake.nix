@@ -7,6 +7,10 @@
     };
     agenix.url = "github:ryantm/agenix";
     ajax-xdp.url = "/home/vali/development/ajax/ajax-xdp";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     impermanence.url = "github:nix-community/impermanence";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
@@ -20,8 +24,12 @@
       url = "github:cleverca22/zfs-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, impermanence, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
   let
     system = "x86_64-linux";
     coreImports = [
@@ -186,6 +194,7 @@
           machines/nixos-amd/configuration.nix
           ({ ... }: {
             nixpkgs.overlays = overlays;
+            _module.args.inputs = inputs;
           })
         ];
       };
@@ -200,6 +209,23 @@
           machines/lenovo/configuration.nix
           ({ ... }: {
             nixpkgs.overlays = overlays;
+            _module.args.inputs = inputs;
+          })
+        ];
+      };
+      nixos-vm = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          agenix.nixosModules.age
+          nix-gaming.nixosModules.pipewireLowLatency
+          spicetify.nixosModules.default
+          mangowc.nixosModules.mango
+          modules/programs/spicetify.nix
+          modules/imports.nix
+          machines/testing-vm/configuration.nix
+          ({ ... }: {
+            nixpkgs.overlays = overlays;
+            _module.args.inputs = inputs;
           })
         ];
       };

@@ -51,10 +51,20 @@
       };
     };
 
-    environment.systemPackages = lib.optionals config.hardware.audio.pipewire.enable [
-      pkgs.alsa-utils
-      # Used in several scripts for audio control
-      pkgs.pamixer
+    environment.systemPackages = with pkgs; lib.optionals config.hardware.audio.pipewire.enable [
+      # PipeWire Volume Control
+      pwvucontrol
+      # PipeWire/ALSA patchbay
+      helvum
+      # ALSA Utilities
+      alsa-utils
+      # PulseAudio Mixer - Used in several scripts for audio control
+      pamixer
+    ] ++ lib.optionals config.hardware.audio.pulseaudio.enable [
+      # PulseAudio Volume Control
+      pavucontrol
+      # PulseAudio Mixer
+      pamixer
     ];
 
     services.pulseaudio = {
