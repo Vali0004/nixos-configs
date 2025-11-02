@@ -1,4 +1,7 @@
-{ config, inputs, lib, pkgs, modulesPath, ... }:
+{ config
+, pkgs
+, modulesPath
+, ... }:
 
 let
   mkNamespace = import ./modules/mknamespace.nix;
@@ -96,6 +99,9 @@ in {
     mkp224o
     ncdu
     net-tools
+    # ndisc - used for RAs
+    ndisc6
+    nmap
     openssl
     pciutils
     powerjoular
@@ -140,12 +146,12 @@ in {
   networking = {
     defaultGateway = "10.0.0.1";
     defaultGateway6 = {
-      address = "fe80::1";
+      address = "fe80::6a7f:f0ff:fe19:826e";
       interface = "eth0";
     };
     extraHosts = ''
-      10.0.0.244 jellyfin.localnet jellyfin
-      10.0.0.244 pihole.localnet pihole
+      ${(builtins.elemAt config.networking.interfaces.eth0.ipv4.addresses 0).address} jellyfin.localnet jellyfin
+      ${(builtins.elemAt config.networking.interfaces.eth0.ipv4.addresses 0).address} pihole.localnet pihole
     '';
     firewall = {
       # SMTP is open
@@ -173,12 +179,22 @@ in {
       }];
       ipv6.addresses = [
         {
-          address = "2601:406:8101:b1ae:9e6b:ff:fea4:1340";
+          address = "2601:406:8100:91d8:9e6b:ff:fea4:1340";
           prefixLength = 64;
         }
         {
           address = "fe80::9e6b:ff:fea4:1340";
           prefixLength = 64;
+        }
+      ];
+      ipv6.routes = [
+        {
+          address = "fe80::";
+          prefixLength = 64;
+        }
+        {
+          address = "fe80::6a7f:f0ff:fe19:826e";
+          prefixLength = 128;
         }
       ];
     };
