@@ -82,6 +82,7 @@
   };
 
   networking = {
+    dhcpcd.IPv6rs = true;
     bonds.bond0 = {
       driverOptions = {
         miimon = "100";
