@@ -103,29 +103,7 @@
       interface = "bond0";
     };
     hostName = "nixos-amd";
-    interfaces.bond0 = {
-      ipv4.addresses = [{
-        address = "10.0.0.201";
-        prefixLength = 24;
-      }];
-      ipv6.addresses = [
-        {
-          address = "2601:406:8101:b1ae:1017:2bff:fed6:5519";
-          prefixLength = 64;
-        }
-        {
-          address = "fe80::1017:2bff:fed6:5519";
-          prefixLength = 64;
-        }
-      ];
-    };
-    nameservers = [
-      "2601:406:8101:b1ae:9e6b:ff:fea4:1340"
-      "2001:558:feed::1"
-      "10.0.0.244"
-      "75.75.75.75"
-    ];
-    useDHCP = false;
+    useDHCP = true;
     usePredictableInterfaceNames = false;
   };
 
