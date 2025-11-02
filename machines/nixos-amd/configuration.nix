@@ -96,7 +96,8 @@
       ];
     };
     hostName = "nixos-amd";
-    useDHCP = true;
+    interfaces.bond0.useDHCP = true;
+    useDHCP = false;
     usePredictableInterfaceNames = false;
   };
 

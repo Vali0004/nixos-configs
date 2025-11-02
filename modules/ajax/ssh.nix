@@ -127,5 +127,10 @@
       Hostname US-VintHill-VA-01-100up-WG
       User root
       Port 20214
+
+    Host PRV-US-Dallas-TX-01-OVH-WG
+      Hostname PRV-US-Dallas-TX-01-OVH-WG
+      User root
+      Port 1493
   '';
 }

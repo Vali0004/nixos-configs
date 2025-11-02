@@ -25,6 +25,7 @@
     40.160.244.51 US-Phoenix-AZ-01-OVH-WG
     40.160.6.170 US-Virginia-02-OVH-WG
     51.81.153.36 US-Hillsboro-OR-01-OVH-WG
+    40.160.224.199 PRV-US-Dallas-TX-01-OVH-WG
     45.45.237.86 US-Chicago-IL-04-Hosturly-WG
     66.70.198.235 CA-Beauharnois-01-100up-WG
     144.172.73.43 DE-Frankfurt-01-100up-WG
