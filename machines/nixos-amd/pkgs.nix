@@ -104,6 +104,10 @@
     nrf5-sdk
     # Adafurit nRF Util
     nrf-util
+    # ndisc - used for RAs
+    ndisc6
+    # Network Map
+    nmap
     # Video capture tool
     obs-studio
     # Razer Software Daemon
