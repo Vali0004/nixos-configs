@@ -140,24 +140,24 @@
     lact.enable = true;
     udev.extraRules = ''
       # Aula, SayoDevice O3C
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel", MODE="0666"
       # HTC
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel", MODE="0666"
       # Oculus
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2833", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
       SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
       # SlimeVR
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", GROUP="wheel", MODE="0666"
       # Sony - 054c:0fa8
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", GROUP="wheel", MODE="0666"
       # Steam
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel", MODE="0666"
       # Razer
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", GROUP="wheel", MODE="0666"
       # RedOctane
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel", MODE="0666"
       # Espressif
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", GROUP="wheel"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", GROUP="wheel", MODE="0666"
       # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for Nordic Semiconductor devices
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
       # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for WCH-CN devices
@@ -168,8 +168,9 @@
       # Set USB CDC ACM devnodes as read-write for the wheel group
       KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915", MODE="0666", ENV{NRF_CDC_ACM}="1"
       # Set USB CDC ACM devnodes as read-write for the wheel group
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", MODE="0666", ENV{NRF_CDC_ACM}="1"
+      KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", MODE="0666", ENV{ESP_CDC_ACM}="1"
       ENV{NRF_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
+      ENV{ESP_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
     xserver = {
       enable = true;
