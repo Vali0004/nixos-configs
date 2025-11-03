@@ -80,6 +80,10 @@ in {
           ip = "10.127.0.1";
           port = 9192;
         };
+        "/kvm/" = mkProxy {
+          config = oauthProxyConfig;
+          ip = "10.0.0.233";
+        };
       };
     };
   };

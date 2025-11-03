@@ -18,7 +18,15 @@ let
       Restart = "always";
     };
   };
-
+  mkForwardDst = port: dst_port: target: {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      # Listen on both IPv4 and IPv6
+      ExecStart = "${pkgs.socat}/bin/socat TCP-LISTEN:${toString dst_port},reuseaddr,fork TCP:${target}:${toString port}";
+      KillMode = "process";
+      Restart = "always";
+    };
+  };
 in {
   environment.systemPackages = [ pkgs.wireguard-tools ];
 
@@ -76,6 +84,7 @@ in {
   };
 
   # Forward services
+  systemd.services.forward8080 = mkForwardDst 80 8080 "10.57.208.1";
   systemd.services.forward80 = mkForward 80 vethNSIP4;
   systemd.services.forward443 = mkForward 443 vethNSIP4;
   systemd.services.forward3701 = mkForward 3701 vethNSIP4;

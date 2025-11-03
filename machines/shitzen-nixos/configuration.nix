@@ -172,31 +172,37 @@ in {
     };
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
-    interfaces.eth0 = {
-      ipv4.addresses = [{
-        address = "10.0.0.244";
+    interfaces = {
+      eth0 = {
+        ipv4.addresses = [{
+          address = "10.0.0.244";
+          prefixLength = 24;
+        }];
+        ipv6.addresses = [
+          {
+            address = "2601:406:8100:91d8:9e6b:ff:fea4:1340";
+            prefixLength = 64;
+          }
+          {
+            address = "fe80::9e6b:ff:fea4:1340";
+            prefixLength = 64;
+          }
+        ];
+        ipv6.routes = [
+          {
+            address = "fe80::";
+            prefixLength = 64;
+          }
+          {
+            address = "fe80::6a7f:f0ff:fe19:826e";
+            prefixLength = 128;
+          }
+        ];
+      };
+      usb0.ipv4.addresses = [{
+        address = "10.57.208.1";
         prefixLength = 24;
       }];
-      ipv6.addresses = [
-        {
-          address = "2601:406:8100:91d8:9e6b:ff:fea4:1340";
-          prefixLength = 64;
-        }
-        {
-          address = "fe80::9e6b:ff:fea4:1340";
-          prefixLength = 64;
-        }
-      ];
-      ipv6.routes = [
-        {
-          address = "fe80::";
-          prefixLength = 64;
-        }
-        {
-          address = "fe80::6a7f:f0ff:fe19:826e";
-          prefixLength = 128;
-        }
-      ];
     };
     nameservers = [
       "8.8.8.8"
