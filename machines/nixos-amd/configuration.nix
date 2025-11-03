@@ -196,6 +196,7 @@
     isNormalUser = true;
     extraGroups = [
       "corectrl"
+      "dialout"
       "input"
       "openrazer"
       "plugdev"
