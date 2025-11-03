@@ -87,11 +87,10 @@
       driverOptions = {
         miimon = "100";
         mode = "active-backup";
-        primary = "eth0";
+        primary = "wlan0";
         primary_reselect = "better";
       };
       interfaces = [
-        "eth0"
         "wlan0"
       ];
     };
