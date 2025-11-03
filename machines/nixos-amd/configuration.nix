@@ -83,19 +83,19 @@
 
   networking = {
     dhcpcd.IPv6rs = true;
-    bonds.bond0 = {
-      driverOptions = {
-        miimon = "100";
-        mode = "active-backup";
-        primary = "wlan0";
-        primary_reselect = "better";
-      };
-      interfaces = [
-        "wlan0"
-      ];
-    };
+    #bonds.bond0 = {
+    #  driverOptions = {
+    #    miimon = "100";
+    #    mode = "active-backup";
+    #    primary = "wlan0";
+    #    primary_reselect = "better";
+    #  };
+    #  interfaces = [
+    #    "wlan0"
+    #  ];
+    #};
     hostName = "nixos-amd";
-    interfaces.bond0.useDHCP = true;
+    interfaces.wlan0.useDHCP = true;
     useDHCP = false;
     usePredictableInterfaceNames = false;
   };
