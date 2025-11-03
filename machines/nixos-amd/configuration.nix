@@ -11,6 +11,7 @@
     ../../modules/networking/secrets-private.nix
     boot/boot.nix
     home-manager/home.nix
+    programs/ssh.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
     services/krb5.nix

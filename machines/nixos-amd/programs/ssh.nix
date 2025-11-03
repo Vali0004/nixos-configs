@@ -11,17 +11,5 @@
 
     IdentityFile /home/vali/.ssh/nixos_main
     IdentityFile /home/vali/.ssh/test_ppk
-
-    Host router
-      Hostname router-vps
-      User root
-
-    Host shitzen-nixos
-      Hostname shitzen-nixos
-      User root
-
-    Host chromeshit
-      Hostname chromeshit
-      User root
   '';
 }

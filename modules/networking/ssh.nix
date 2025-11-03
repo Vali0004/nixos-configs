@@ -1,3 +1,5 @@
+{ config, ... }:
+
 {
   programs.gnupg.agent = {
     enable = true;
@@ -7,8 +9,6 @@
   };
 
   programs.ssh.extraConfig = ''
-    include config.d/*
-
     Host 10.0.0.*
       IPQoS none
       Ciphers aes128-gcm@openssh.com
