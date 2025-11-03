@@ -10,6 +10,8 @@
     alacritty-graphics
     # Key system (remote deploy)
     agenix
+    # Arduino IDE
+    arduino
     # Better TOP
     btop
     # BeamMP Launcher
