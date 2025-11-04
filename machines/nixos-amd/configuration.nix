@@ -94,13 +94,23 @@
       # and killing networking?
       # Dumbest thing ever.
       extraConfig = ''
+        nodhcpv6
         # Stop dhcpcd from ever requesting vendor class or FQDN
+        nohook resolv.conf
         nooption rapid_commit
-        nooption vendorclass
+        nooption vendorclassid
         nooption fqdn
+        nooption 24
+        nooption 25
       '';
       IPv6rs = true;
     };
+    nameservers = [
+      "10.0.0.244"
+      "75.75.75.75"
+      "2601:406:8100:91d8:9504:1cf3:185b:1fa4"
+      "2001:558:FEED::1"
+    ];
     hostName = "nixos-amd";
     interfaces.wlan0.useDHCP = true;
     useDHCP = false;

@@ -160,7 +160,7 @@ in {
       # Why is my router vomitting malformed DHCPv6 packets,
       # and killing networking?
       # Dumbest thing ever.
-      extraConfig = ''g
+      extraConfig = ''
         # Stop dhcpcd from ever requesting vendor class or FQDN
         nooption rapid_commit
         nooption vendorclass
