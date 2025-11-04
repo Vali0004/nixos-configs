@@ -168,11 +168,8 @@
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", MODE="0666"
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
       # Set USB CDC ACM devnodes as read-write for the plugdev group
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEMS=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915", MODE="0666", ENV{NRF_CDC_ACM}="1"
-      # Set USB CDC ACM devnodes as read-write for the plugdev group
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEMS=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", MODE="0666", ENV{ESP_CDC_ACM}="1"
-      ENV{NRF_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
-      ENV{ESP_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
+      KERNEL=="ttyACM[0-9]*", SUBSYSTEMS=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{NRF_CDC_ACM}="1", ENV{ESP_CDC_ACM}="1"
+      ENV{ESP_CDC_ACM}=="1", ENV{NRF_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
     xserver = {
       enable = true;
