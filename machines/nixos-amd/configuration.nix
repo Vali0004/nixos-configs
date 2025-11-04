@@ -94,16 +94,16 @@
       # and killing networking?
       # Dumbest thing ever.
       extraConfig = ''
-        nodhcpv6
-        # Stop dhcpcd from ever requesting vendor class or FQDN
         nohook resolv.conf
+        # Stop dhcpcd from ever requesting vendor class or FQDN
         nooption rapid_commit
         nooption vendorclassid
         nooption fqdn
         nooption 24
         nooption 25
       '';
-      IPv6rs = true;
+      # Don't use RAs
+      IPv6rs = false;
     };
     nameservers = [
       "10.0.0.244"
