@@ -167,8 +167,8 @@
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1d6b", MODE="0666"
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", MODE="0666"
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
-      # Set USB CDC ACM devnodes as read-write for the plugdev group
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEMS=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{EDC_ACM}="1"
+      # USB CDC ACM for Nordic + Espressif
+      KERNEL=="ttyACM[0-9]*", SUBSYSTEMS=="usb|tty", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{CDC_ACM}="1"
       ENV{CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
     xserver = {
