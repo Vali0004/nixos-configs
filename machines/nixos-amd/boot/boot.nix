@@ -16,6 +16,7 @@
     ];
     kernelModules = [
       "binfmt_misc"
+      "usbmon"
       "razerkbd"
     ];
   };
