@@ -19,7 +19,7 @@ in {
     modules/agenix.nix
 
     modules/boot.nix
-    #modules/dockge.nix
+    modules/dockge.nix
     modules/nvidia.nix
     modules/wireguard.nix
 
