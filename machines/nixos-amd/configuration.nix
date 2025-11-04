@@ -168,7 +168,7 @@
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
       # USB CDC ACM for Nordic + Espressif
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEMS=="usb|tty", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{CDC_ACM}="1"
+      KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="usb", SUBSYSTEM=="tty", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{CDC_ACM}="1"
       ENV{CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
     xserver = {
