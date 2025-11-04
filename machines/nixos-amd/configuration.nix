@@ -83,18 +83,24 @@
   };
 
   networking = {
-    dhcpcd.IPv6rs = true;
-    #bonds.bond0 = {
-    #  driverOptions = {
-    #    miimon = "100";
-    #    mode = "active-backup";
-    #    primary = "wlan0";
-    #    primary_reselect = "better";
-    #  };
-    #  interfaces = [
-    #    "wlan0"
-    #  ];
-    #};
+    dhcpcd = {
+      # TP-Link is stupid...
+      #
+      # eth0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      # eth0: dhcp_envoption 24.0/3: malformed embedded option
+      # eth0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      #
+      # Why is my router vomitting malformed DHCPv6 packets,
+      # and killing networking?
+      # Dumbest thing ever.
+      extraConfig = ''g
+        # Stop dhcpcd from ever requesting vendor class or FQDN
+        nooption rapid_commit
+        nooption vendorclass
+        nooption fqdn
+      '';
+      IPv6rs = true;
+    };
     hostName = "nixos-amd";
     interfaces.wlan0.useDHCP = true;
     useDHCP = false;
