@@ -141,34 +141,35 @@
     lact.enable = true;
     udev.extraRules = ''
       # Aula, SayoDevice O3C
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="plugdev", MODE="0666"
       # HTC
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", GROUP="plugdev", MODE="0666"
       # Oculus
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
-      SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="2833", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="2833", GROUP="plugdev", MODE="0666"
+      SUBSYSTEMS=="hidraw", ATTRS{idVendor}=="2833", GROUP="plugdev", MODE="0666"
       # SlimeVR
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", GROUP="plugdev", MODE="0666"
       # Sony - 054c:0fa8
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="054c", GROUP="plugdev", MODE="0666"
       # Steam
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="28de", GROUP="plugdev", MODE="0666"
       # Razer
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", GROUP="wheel", MODE="0666"
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1532", GROUP="plugdev", MODE="0666"
       # RedOctane
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="1430", GROUP="wheel", MODE="0666"
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1430", TAG+="uaccess", MODE="0660", GROUP="plugdev"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="1430", TAG+="uaccess", MODE="0664", GROUP="plugdev"
       # Espressif
-      SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", GROUP="wheel", MODE="0666"
-      # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for Nordic Semiconductor devices
+      SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", GROUP="plugdev", MODE="0666"
+      # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for Nordic Semiconductor devices
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
-      # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for WCH-CN devices
+      # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for WCH-CN devices
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1d6b", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
-      # Set USB CDC ACM devnodes as read-write for the wheel group
+      # Set USB CDC ACM devnodes as read-write for the plugdev group
       KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="1915", MODE="0666", ENV{NRF_CDC_ACM}="1"
-      # Set USB CDC ACM devnodes as read-write for the wheel group
+      # Set USB CDC ACM devnodes as read-write for the plugdev group
       KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", SUBSYSTEMS=="usb", ATTRS{idVendor}=="303a", MODE="0666", ENV{ESP_CDC_ACM}="1"
       ENV{NRF_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
       ENV{ESP_CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
@@ -178,8 +179,6 @@
       # Disable XTerm
       excludePackages = [ pkgs.xterm ];
       desktopManager.xterm.enable = false;
-      # Set our X11 Keyboard layout
-      xkb.layout = "us";
     };
   };
 
