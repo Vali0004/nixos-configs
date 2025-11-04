@@ -1,4 +1,5 @@
 { config
+, lib
 , pkgs
 , modulesPath
 , ... }:
@@ -166,11 +167,6 @@ in {
         nooption fqdn
       '';
       IPv6rs = true;
-    };
-    defaultGateway = "10.0.0.1";
-    defaultGateway6 = {
-      address = "fe80::6a7f:f0ff:fe19:826e";
-      interface = "eth0";
     };
     extraHosts = ''
       10.0.0.244 jellyfin.localnet jellyfin
