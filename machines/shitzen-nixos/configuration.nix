@@ -67,7 +67,9 @@ in {
 
   systemd.services.matrix-synapse.serviceConfig = mkNamespace {};
 
-  systemd.services.minecraft-server-prod.serviceConfig = mkNamespace {};
+  systemd.services.minecraft-server-prod = lib.mkIf config.minecraft.prod {
+    serviceConfig = mkNamespace {};
+  };
 
   systemd.services.nginx.serviceConfig = mkNamespace {};
   systemd.services.oauth2-proxy.serviceConfig = mkNamespace {};
@@ -85,9 +87,11 @@ in {
     btop
     dig
     efibootmgr
+    ethtool
     fastfetch
     git
     hdparm
+    inetutils
     iperf
     jdk
     lshw
@@ -111,6 +115,7 @@ in {
     sqlite-interactive
     smartmontools
     tmux
+    traceroute
     tshark
     unzip
     wget
@@ -141,17 +146,35 @@ in {
     enableRedistributableFirmware = true;
   };
 
-  minecraft.prod = true;
+  minecraft.prod = false;
 
   networking = {
+    dhcpcd = {
+      # TP-Link is stupid...
+      #
+      # eth0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      # eth0: dhcp_envoption 24.0/3: malformed embedded option
+      # eth0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      #
+      # Why is my router vomitting malformed DHCPv6 packets,
+      # and killing networking?
+      # Dumbest thing ever.
+      extraConfig = ''g
+        # Stop dhcpcd from ever requesting vendor class or FQDN
+        nooption rapid_commit
+        nooption vendorclass
+        nooption fqdn
+      '';
+      IPv6rs = true;
+    };
     defaultGateway = "10.0.0.1";
     defaultGateway6 = {
       address = "fe80::6a7f:f0ff:fe19:826e";
       interface = "eth0";
     };
     extraHosts = ''
-      ${(builtins.elemAt config.networking.interfaces.eth0.ipv4.addresses 0).address} jellyfin.localnet jellyfin
-      ${(builtins.elemAt config.networking.interfaces.eth0.ipv4.addresses 0).address} pihole.localnet pihole
+      10.0.0.244 jellyfin.localnet jellyfin
+      10.0.0.244 pihole.localnet pihole
     '';
     firewall = {
       # SMTP is open
@@ -174,20 +197,11 @@ in {
     hostName = "shitzen-nixos";
     interfaces = {
       eth0 = {
-        ipv4.addresses = [{
-          address = "10.0.0.244";
-          prefixLength = 24;
+        useDHCP = true;
+        ipv6.addresses = [{
+          address = "2601:406:8100:91d8:9e6b:ff:fea4:1340";
+          prefixLength = 64;
         }];
-        ipv6.addresses = [
-          {
-            address = "2601:406:8100:91d8:9e6b:ff:fea4:1340";
-            prefixLength = 64;
-          }
-          {
-            address = "fe80::9e6b:ff:fea4:1340";
-            prefixLength = 64;
-          }
-        ];
         ipv6.routes = [
           {
             address = "fe80::";
@@ -215,7 +229,6 @@ in {
   };
 
   nix.settings = {
-    cores = 1;
     keep-derivations = true;
     max-jobs = 1;
     max-substitution-jobs = 1;
