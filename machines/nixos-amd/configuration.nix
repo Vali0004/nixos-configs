@@ -102,8 +102,7 @@
         nooption 24
         nooption 25
       '';
-      # Don't use RAs
-      IPv6rs = false;
+      IPv6rs = true;
     };
     nameservers = [
       "10.0.0.244"

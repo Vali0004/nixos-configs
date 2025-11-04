@@ -161,10 +161,13 @@ in {
       # and killing networking?
       # Dumbest thing ever.
       extraConfig = ''
+        nohook resolv.conf
         # Stop dhcpcd from ever requesting vendor class or FQDN
         nooption rapid_commit
-        nooption vendorclass
+        nooption vendorclassid
         nooption fqdn
+        nooption 24
+        nooption 25
       '';
       IPv6rs = true;
     };
