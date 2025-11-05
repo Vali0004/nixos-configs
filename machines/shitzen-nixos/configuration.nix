@@ -101,6 +101,7 @@ in {
     killall
     magic-wormhole
     mediainfo
+    minica
     mkp224o
     ncdu
     net-tools

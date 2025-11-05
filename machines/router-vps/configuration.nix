@@ -21,6 +21,7 @@
     htop
     inetutils
     iperf
+    minica
     ncdu
     ndisc6
     net-tools
