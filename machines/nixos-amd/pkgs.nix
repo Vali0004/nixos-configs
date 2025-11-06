@@ -52,6 +52,8 @@
     flameshot-upload
     # Tool used to check file types
     file
+    # Another matrix client
+    fluffychat
     # CLI Fuzzy Finder
     fzf
     # Debugger

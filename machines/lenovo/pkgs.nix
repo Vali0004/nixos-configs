@@ -24,10 +24,10 @@
     (discord.override { withVencord = true; })
     # Flexing
     fastfetch
-    # Screenshot tool
-    flameshot
     # Tool used to check file types
     file
+    # Screenshot tool
+    flameshot
     # CLI Fuzzy Finder
     fzf
     # Debugger
