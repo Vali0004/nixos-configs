@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   imports = [
     ajax/hosts.nix

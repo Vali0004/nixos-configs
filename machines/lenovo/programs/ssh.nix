@@ -10,17 +10,5 @@
     include config.d/*
 
     IdentityFile /home/vali/.ssh/id_rsa
-
-    Host router
-      Hostname router-vps
-      User root
-
-    Host shitzen-nixos
-      Hostname shitzen-nixos
-      User root
-
-    Host chromeshit
-      Hostname chromeshit
-      User root
   '';
 }
