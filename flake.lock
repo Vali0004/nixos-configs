@@ -624,8 +624,8 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1762238066,
-        "narHash": "sha256-CoQWB/H6NA2WVmXb7wEKqq6CkphoGGC1gi9JcvTqVcQ=",
+        "lastModified": 1762394623,
+        "narHash": "sha256-ceGFwGur4qETZ9QsKZkiGhGwclnSXuiaXwuVykIJB9g=",
         "path": "/home/vali/development/skylanders-nfc-reader",
         "type": "path"
       },
