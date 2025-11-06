@@ -8,10 +8,9 @@
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"
     boot/boot.nix
-    ../modules/hosts.nix
-    ../modules/network-secrets.nix
+    ../modules/networking/hosts.nix
     ../modules/nix/settings.nix
-    ../modules/shell-aliases.nix
+    ../modules/environment/shell-aliases.nix
     ./pkgs.nix
   ];
 
