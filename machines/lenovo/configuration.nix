@@ -3,9 +3,7 @@
 , pkgs
 , ... }:
 
-let
-  skylandersFlake = builtins.getFlake "/home/vali/skylanders-nfc-reader";
-in {
+{
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     ../../modules/networking/secrets-private.nix
@@ -18,12 +16,6 @@ in {
     services/displayManager.nix
     services/prometheus.nix
     ./pkgs.nix
-  ];
-
-  nixpkgs.overlays = [
-    (self: super: {
-      skylanders = skylandersFlake.outputs.packages.x86_64-linux.skylanders;
-    })
   ];
 
   console.keyMap = "us";

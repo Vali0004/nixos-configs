@@ -30,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, watchman-pairing-assistant, zfs-utils }:
   let
     system = "x86_64-linux";
     coreImports = [
@@ -53,8 +53,8 @@
         wivrn = nixpkgs-xr.packages.x86_64-linux.wivrn;
         wlx-overlay-s = nixpkgs-xr.packages.x86_64-linux.wlx-overlay-s;
         xrizer = nixpkgs-xr.packages.x86_64-linux.xrizer;
-
         watchman-pairing-assistant = watchman-pairing-assistant.packages.x86_64-linux.default;
+
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
         ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
         forgeServers = {
@@ -69,6 +69,7 @@
         };
         mailserver = nixos-mailserver.x86_64-linux.default;
         nixGaming = nix-gaming.outputs.packages.x86_64-linux;
+        skylanders-nfc-reader = skylanders-nfc-reader.outputs.packages.x86_64-linux.default;
         spicetifyThemes = spicetify.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetify.outputs.legacyPackages.x86_64-linux.extensions;
         zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;

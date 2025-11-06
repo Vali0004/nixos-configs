@@ -61,7 +61,7 @@
     libretro.snes9x
     retroarch
     # Skylander's Portal Tool
-    #skylanders
+    skylanders-nfc-reader
     # Syncplay, allows for syncing video streams with others via mpv
     syncplay
     # System stats
