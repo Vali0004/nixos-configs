@@ -12,6 +12,7 @@ let
     };
   };
 in {
+
   options.secrets = {
     wifi.networks = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {
@@ -35,6 +36,11 @@ in {
       };
     };
   };
+
+  imports = [ ] ++ lib.optionals
+    builtins.pathExists "/etc/nixos/modules/networking/secrets-private.nix" [
+      ./secrets-private.nix
+    ];
 
   config.secrets = lib.mkDefault {
     wifi = {

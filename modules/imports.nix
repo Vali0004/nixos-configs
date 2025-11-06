@@ -18,6 +18,7 @@
     nix/settings.nix
     networking/hosts.nix
     networking/ssh.nix
+    networking/secrets.nix
     programs/element-desktop.nix
     programs/google-chrome.nix
     programs/kde-ark.nix
