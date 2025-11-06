@@ -138,6 +138,8 @@
     '')
     # Thunderstore (Mod Manager)
     r2modman
+    # Skylander's Portal Tool
+    skylanders-nfc-reader
     # SlimeVR Trackers (VRC)
     slimevr
     slimevr-server
