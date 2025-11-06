@@ -550,6 +550,21 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1762214813,
+        "narHash": "sha256-zwaT/GO6gUC/6i0w+g8zYRO/uXIj9zw5G9Pv4f2vmJI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "59eeca222c0009c8fde567be9c9cc87cc5687e03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
         "lastModified": 1760038930,
         "narHash": "sha256-Oncbh0UmHjSlxO7ErQDM3KM0A5/Znfofj2BSzlHLeVw=",
         "owner": "NixOS",
@@ -576,6 +591,7 @@
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-xr": "nixpkgs-xr",
+        "skylanders-nfc-reader": "skylanders-nfc-reader",
         "spicetify": "spicetify",
         "watchman-pairing-assistant": "watchman-pairing-assistant",
         "zfs-utils": "zfs-utils"
@@ -602,10 +618,26 @@
         "type": "github"
       }
     },
-    "spicetify": {
+    "skylanders-nfc-reader": {
       "inputs": {
         "nixpkgs": "nixpkgs_7",
-        "systems": "systems_5"
+        "utils": "utils_2"
+      },
+      "locked": {
+        "lastModified": 1762238066,
+        "narHash": "sha256-CoQWB/H6NA2WVmXb7wEKqq6CkphoGGC1gi9JcvTqVcQ=",
+        "path": "/home/vali/development/skylanders-nfc-reader",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/vali/development/skylanders-nfc-reader",
+        "type": "path"
+      }
+    },
+    "spicetify": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_8",
+        "systems": "systems_6"
       },
       "locked": {
         "lastModified": 1760243311,
@@ -696,6 +728,21 @@
         "type": "github"
       }
     },
+    "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
@@ -736,6 +783,24 @@
       }
     },
     "utils_2": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_3": {
       "locked": {
         "lastModified": 1667077288,
         "narHash": "sha256-bdC8sFNDpT0HK74u9fUkpbf1MEzVYJ+ka7NXCdgBoaA=",
@@ -775,7 +840,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils_2"
+        "utils": "utils_3"
       },
       "locked": {
         "lastModified": 1749567009,
