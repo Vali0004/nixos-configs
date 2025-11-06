@@ -37,10 +37,9 @@ in {
     };
   };
 
-  imports = [ ] ++ lib.optionals
-    builtins.pathExists "/etc/nixos/modules/networking/secrets-private.nix" [
-      ./secrets-private.nix
-    ];
+  imports = [ ] ++ lib.optionals (builtins.pathExists ./secrets-private.nix) [
+    ./secrets-private.nix
+  ];
 
   config.secrets = lib.mkDefault {
     wifi = {
