@@ -52,8 +52,8 @@
     };
 
     environment.systemPackages = with pkgs; lib.optionals config.hardware.audio.pipewire.enable [
-      # PipeWire Volume Control
-      pwvucontrol
+      # PulseAudio Volume Control
+      pavucontrol
       # PipeWire/ALSA patchbay
       helvum
       # ALSA Utilities

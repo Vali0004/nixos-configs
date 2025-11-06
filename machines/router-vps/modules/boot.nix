@@ -3,6 +3,7 @@
     "ahci" # SATA
     "ata_piix"
     "virtio_blk"
+    "virtio_net"
     "virtio_pci"
     "virtio_pci_legacy_dev"
     "virtio_pci_modern_dev"

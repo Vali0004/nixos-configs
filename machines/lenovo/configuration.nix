@@ -93,6 +93,7 @@ in {
     corectrl.enable = true;
     command-not-found.enable = true;
     dconf.enable = true;
+    easyeffects.enable = true;
     git = {
       enable = true;
       lfs.enable = true;
