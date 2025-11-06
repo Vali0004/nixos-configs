@@ -50,5 +50,13 @@
     Host lenovo
       Hostname lenovo
       User root
+      IPQoS none
+      Ciphers aes128-gcm@openssh.com
+      KexAlgorithms curve25519-sha256
+      Compression no
+      TCPKeepAlive yes
+      ControlMaster auto
+      ControlPath ~/.ssh/control-%r@%h:%p
+      ControlPersist 10m
   '';
 }
