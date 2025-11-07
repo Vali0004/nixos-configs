@@ -171,7 +171,7 @@
       };
       shitzen-nixos = {
         deployment = {
-          targetHost = "10.0.0.244";
+          targetHost = "10.0.0.229";
           targetUser = "root";
           targetPort = 22;
         };

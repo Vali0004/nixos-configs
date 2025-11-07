@@ -84,7 +84,6 @@ in {
   };
 
   # Forward services
-  systemd.services.forward8080 = mkForwardDst 80 8080 "10.57.208.1";
   systemd.services.forward80 = mkForward 80 vethNSIP4;
   systemd.services.forward443 = mkForward 443 vethNSIP4;
   systemd.services.forward3701 = mkForward 3701 vethNSIP4;

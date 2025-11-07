@@ -145,7 +145,7 @@
     slimevr-server
     # Socket Output Concat
     socat
-    # Syncplay, allows for syncing video streams with others via mpv
+    # Syncplay, allows for syncing video streams with others via mpvr
     syncplay
     # System stats
     sysstat
