@@ -27,7 +27,7 @@
     51.81.153.36 US-Hillsboro-OR-01-OVH-WG
     40.160.224.199 PRV-US-Dallas-TX-01-OVH-WG
     45.45.237.86 US-Chicago-IL-04-Hosturly-WG
-    66.70.198.235 CA-Beauharnois-01-100up-WG
+    66.70.137.108 CA-Beauharnois-01-100up-WG
     144.172.73.43 DE-Frankfurt-01-100up-WG
     51.38.67.90 UK-London-01-100up-WG
     15.204.12.149 US-Hillsboro-OR-01-100up-WG

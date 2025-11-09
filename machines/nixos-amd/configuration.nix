@@ -145,8 +145,7 @@
   qt.enable = true;
 
   security = {
-    # Fucking realtime priority
-    rtkit.enable = lib.mkForce false;
+    rtkit.enable = true;
     sudo.enable = true;
   };
 
