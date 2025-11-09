@@ -132,5 +132,10 @@
       Hostname PRV-US-Dallas-TX-01-OVH-WG
       User root
       Port 1493
+
+    Host PRV-US-Dallas-TX-01-Linode-WG
+      Hostname PRV-US-Dallas-TX-01-Linode-WG
+      User root
+      Port 7858
   '';
 }

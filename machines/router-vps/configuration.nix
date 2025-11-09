@@ -11,6 +11,7 @@
     services/nginx.nix
     services/prometheus.nix
     services/xdp.nix
+    services/zdb.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -73,7 +74,7 @@
         6697 # IRCS
         8080 # TOR
         9101 # Node Exporter
-        9192
+        9192 # XDP
       ];
       allowedUDPPorts = [
         3700 # Peer port

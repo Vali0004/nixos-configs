@@ -13,6 +13,11 @@ in {
     scrapeConfigs = [
       (mkJob {
         name = "fragmentation";
+        targets = [
+          "shitzen-nixos"
+          "router-vps"
+          "lenovo"
+        ];
         port = 9103;
       })
       (mkJob {
@@ -58,6 +63,7 @@ in {
       (mkJob {
         targets = [
           "shitzen-nixos"
+          "router-vps"
           "lenovo"
         ];
         name = "smartctl";
@@ -76,6 +82,7 @@ in {
         targets = [
           "shitzen-nixos"
           "lenovo"
+          "router-vps"
         ];
         name = "zfs";
         port = 9134;

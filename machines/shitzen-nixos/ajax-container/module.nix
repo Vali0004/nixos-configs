@@ -37,6 +37,8 @@
     config = { config, pkgs, lib, ... }: {
       imports = [
         ../../../modules/networking/hosts.nix
+        ../../../modules/ajax/hosts.nix
+        ../../../modules/ajax/ssh.nix
         services/grafana/module.nix
         services/prometheus.nix
         ./hosts.nix
