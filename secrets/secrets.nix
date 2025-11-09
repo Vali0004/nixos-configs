@@ -10,10 +10,14 @@ let
 in {
   "convoy.age".publicKeys = keys;
   "cleclerc-mail-nanitehosting-com.age".publicKeys = keys;
+  "do-not-reply-fuckk-lol.age".publicKeys = keys;
+  "git-fuckk-lol-db.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
+  "hydra-runner-ajax-github-token.age".publicKeys = keys;
   "kavita.age".publicKeys = keys;
   "maddy-mail-fuckk-lol.age".publicKeys = keys;
   "matrix.age".publicKeys = keys;
+  "nix-netrc.age".publicKeys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1" ] ++ ssh_keys;
   "oauth2.age".publicKeys = keys;
   "oauth2-proxy.age".publicKeys = keys;
   "pnp-api.age".publicKeys = keys;

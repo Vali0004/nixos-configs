@@ -9,11 +9,11 @@ in {
         protocol = null;
         systems = [ "i686-linux" "x86_64-linux" ];
         supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
-        maxJobs = 1;
+        maxJobs = 4;
       }
     ];
     extraOptions = ''
-      allowed-uris = https://github.com/nixos github:
+      allowed-uris = https://github.com https://api.github.com https://codeload.github.com https://raw.githubusercontent.com https://github.com/nixos github:
       experimental-features = nix-command flakes
     '';
     gc = {
@@ -24,49 +24,32 @@ in {
     settings.auto-optimise-store = true;
   };
 
-  services.nginx = {
-    appendHttpConfig = ''
-      map $http_x_from $upstream {
-        default "anubis";
-        nix.dev-Uogho3gi "hydra-server";
-      }
+  services.nginx.virtualHosts."hydra.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
 
-      limit_req_zone $binary_remote_addr zone=hydra-server:8m rate=2r/s;
-      limit_req_status 429;
+    # Ask robots not to scrape hydra, it has various expensive endpoints
+    locations."=/robots.txt".alias = pkgs.writeText "hydra.fuckk.lol-robots.txt" ''
+      User-agent: *
+      Disallow: /
+      Allow: /$
     '';
 
-    upstreams = {
-      anubis.servers."192.168.100.1:3002" = { };
-      hydra-server.servers."192.168.100.1:3001" = { };
+    locations."/" = mkProxy {
+      ip = "$upstream";
+      hasPort = false;
+      config = ''
+        limit_req zone=hydra-server burst=5;
+      '';
     };
 
-    virtualHosts."hydra.fuckk.lol" = {
-      enableACME = true;
-      forceSSL = true;
+    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = mkProxy {
+      ip = "hydra-server";
+      hasPort = false;
+    };
 
-      # Ask robots not to scrape hydra, it has various expensive endpoints
-      locations."=/robots.txt".alias = pkgs.writeText "hydra.fuckk.lol-robots.txt" ''
-        User-agent: *
-        Disallow: /
-        Allow: /$
-      '';
-
-      locations."/" = mkProxy {
-        ip = "$upstream";
-        hasPort = false;
-        config = ''
-          limit_req zone=hydra-server burst=5;
-        '';
-      };
-
-      locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = mkProxy {
-        ip = "hydra-server";
-        hasPort = false;
-      };
-
-      locations."/static/" = {
-        alias = "${config.services.hydra.package}/libexec/hydra/root/static/";
-      };
+    locations."/static/" = {
+      alias = "${config.services.hydra.package}/libexec/hydra/root/static/";
     };
   };
 
@@ -78,8 +61,14 @@ in {
     token=$(tr -d '\n' < ${config.age.secrets.hydra-github-token.path})
     sed -i "s/TOKEN1/$token/g" /var/lib/hydra/hydra.conf.tmp
 
-    ln -sf /var/lib/hydra/hydra.conf.tmp /var/lib/hydra/hydra.conf
+    token2=$(tr -d '\n' < ${config.age.secrets.hydra-runner-ajax-github-token.path})
+    sed -i "s/TOKEN2/$token2/g" /var/lib/hydra/hydra.conf.tmp
   '';
+
+  environment.etc."nix/netrc" = {
+    user = "hydra";
+    source = config.age.secrets.nix-netrc.path;
+  };
 
   services.hydra = {
     buildMachinesFiles = [];
@@ -93,10 +82,16 @@ in {
       <github_authorization>
         Vali0004 = TOKEN1
         xenon-emu = TOKEN1
+        AjaxVPN = TOKEN2
       </github_authorization>
       <githubstatus>
         jobs = xenon-emu:xenon.*
         inputs = xenon
+        excludeBuildFromContext = 1
+      </githubstatus>
+      <githubstatus>
+        jobs = AjaxVPN:AjaxVPN.*
+        inputs = AjaxVPN
         excludeBuildFromContext = 1
       </githubstatus>
     '';

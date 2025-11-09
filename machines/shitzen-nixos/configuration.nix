@@ -37,7 +37,7 @@ in {
 
     services/anubis.nix
     services/hydra.nix
-    services/ist.nix
+    services/gitea.nix
     services/irc.nix
     services/jellyfin.nix
     services/kavita.nix
@@ -210,8 +210,8 @@ in {
 
   nix.settings = {
     keep-derivations = true;
-    max-jobs = 1;
-    max-substitution-jobs = 1;
+    max-jobs = 4;
+    max-substitution-jobs = 4;
   };
 
   nixpkgs = {

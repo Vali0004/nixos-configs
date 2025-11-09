@@ -195,9 +195,7 @@
           modules/programs/spicetify.nix
           modules/imports.nix
           machines/nixos-amd/configuration.nix
-          ({ ... }: {
-            nixpkgs.overlays = overlays;
-          })
+          ({ nixpkgs.overlays = overlays; })
         ];
       };
       lenovo = nixpkgs.lib.nixosSystem {
@@ -210,9 +208,7 @@
           modules/programs/spicetify.nix
           modules/imports.nix
           machines/lenovo/configuration.nix
-          ({ ... }: {
-            nixpkgs.overlays = overlays;
-          })
+          ({ nixpkgs.overlays = overlays; })
         ];
       };
       nixos-vm = nixpkgs.lib.nixosSystem {
@@ -226,9 +222,7 @@
           modules/programs/spicetify.nix
           modules/imports.nix
           machines/testing-vm/configuration.nix
-          ({ ... }: {
-            nixpkgs.overlays = overlays;
-          })
+          ({ nixpkgs.overlays = overlays; })
         ];
       };
     };

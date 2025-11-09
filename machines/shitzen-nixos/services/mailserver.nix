@@ -27,6 +27,9 @@
           "postmaster@nanitehosting.com"
         ];
       };
+      "do-not-reply@fuckk-lol" = {
+        hashedPasswordFile = config.age.secrets.do-not-reply-fuckk-lol.path;
+      };
       "cleclerc@nanitehosting.com" = {
         hashedPasswordFile = config.age.secrets.cleclerc-mail-nanitehosting-com.path;
       };

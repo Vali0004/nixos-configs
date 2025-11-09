@@ -13,8 +13,22 @@
       owner = "nginx";
       group = "nginx";
     };
+    do-not-reply-fuckk-lol = {
+      file = ../../../secrets/do-not-reply-fuckk-lol.age;
+      owner = config.services.gitea.user;
+      group = config.services.gitea.group;
+    };
+    git-fuckk-lol-db = {
+      file = ../../../secrets/git-fuckk-lol-db.age;
+      owner = config.services.gitea.user;
+      group = config.services.gitea.group;
+    };
     hydra-github-token = {
       file = ../../../secrets/hydra-github-token.age;
+      owner = "hydra";
+    };
+    hydra-runner-ajax-github-token = {
+      file = ../../../secrets/hydra-runner-ajax-github-token.age;
       owner = "hydra";
     };
     kavita = {
@@ -31,6 +45,11 @@
       file = ../../../secrets/matrix.age;
       owner = "matrix-synapse";
       group = "matrix-synapse";
+    };
+    nix-netrc = {
+      file = ../../../secrets/nix-netrc.age;
+      owner = "hydra";
+      group = "hydra";
     };
     oauth2 = {
       file = ../../../secrets/oauth2.age;
