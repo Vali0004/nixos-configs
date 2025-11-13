@@ -5,6 +5,7 @@ let
 in {
   services.radarr = {
     enable = true;
+    user = "arr";
     group = config.services.rtorrent.group;
     openFirewall = true;
     settings = {

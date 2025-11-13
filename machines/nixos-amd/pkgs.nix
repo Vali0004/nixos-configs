@@ -10,6 +10,8 @@
     alacritty-graphics
     # Key system (remote deploy)
     agenix
+    # Android tools (ADB)
+    android-tools
     # Arduino IDE
     arduino
     # Better TOP
@@ -125,6 +127,8 @@
     playerctl
     # Razer Daemon Frontend
     polychromatic
+    # Python
+    python3
     # Minecraft launcher
     prismlauncher
     # proot

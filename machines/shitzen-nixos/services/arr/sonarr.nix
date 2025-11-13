@@ -5,6 +5,7 @@ let
 in {
   services.sonarr = {
     enable = true;
+    user = "arr";
     group = config.services.rtorrent.group;
     openFirewall = true;
     settings = {

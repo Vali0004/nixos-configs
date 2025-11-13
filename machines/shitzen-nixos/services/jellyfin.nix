@@ -10,6 +10,12 @@ in {
   services.jellyfin = {
     enable = true;
     openFirewall = true;
+    group = config.services.rtorrent.group;
+    user = "arr";
+  };
+
+  users.users.arr = {
+    isSystemUser = true;
     group = "rtorrent";
   };
 

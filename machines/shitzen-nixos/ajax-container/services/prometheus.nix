@@ -53,7 +53,6 @@ in {
           #"PRV-US-Dallas-TX-01-OVH-WG"
           "CA-Beauharnois-01-100up-WG"
           "UK-London-01-100up-WG"
-          "US-Hillsboro-OR-01-100up-WG"
           "US-VintHill-VA-01-100up-WG"
         ];
         name = "fragmentation";
@@ -111,7 +110,6 @@ in {
           #"PRV-US-Dallas-TX-01-OVH-WG"
           "CA-Beauharnois-01-100up-WG"
           "UK-London-01-100up-WG"
-          "US-Hillsboro-OR-01-100up-WG"
           "US-VintHill-VA-01-100up-WG"
         ];
         name = "node";
@@ -145,7 +143,6 @@ in {
           #"PRV-US-Dallas-TX-01-OVH-WG"
           "CA-Beauharnois-01-100up-WG"
           "UK-London-01-100up-WG"
-          "US-Hillsboro-OR-01-100up-WG"
           "US-VintHill-VA-01-100up-WG"
         ];
         name = "smartctl";
@@ -179,7 +176,6 @@ in {
           #"PRV-US-Dallas-TX-01-OVH-WG"
           "CA-Beauharnois-01-100up-WG"
           "UK-London-01-100up-WG"
-          "US-Hillsboro-OR-01-100up-WG"
           "US-VintHill-VA-01-100up-WG"
         ];
         interval = "5s";
@@ -215,7 +211,6 @@ in {
           "CA-Beauharnois-01-100up-WG"
           "DE-Frankfurt-01-100up-WG"
           "UK-London-01-100up-WG"
-          "US-Hillsboro-OR-01-100up-WG"
           "US-VintHill-VA-01-100up-WG"
         ];
         name = "zfs";
