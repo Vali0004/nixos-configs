@@ -231,7 +231,12 @@ in {
 
   system.stateVersion = "25.11";
 
-  users.users.vali.extraGroups = [ "video" "render" ];
+  users.users = {
+    vali.extraGroups = [ "video" "render" ];
+    root.openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGWxSLK5fZYYfrGT/B0trFhaToJYtoUp+GsAy9a/e2Mo"
+    ];
+  };
 
   zfs.autoSnapshot.enable = true;
 }

@@ -155,6 +155,8 @@
     sysstat
     # TCP Dump
     tcpdump
+    # TMate
+    tmate
     # ZIP Archive Undo
     unzip
     # USB Utils
