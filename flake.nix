@@ -99,8 +99,8 @@
           src = super.fetchFromGitHub {
             owner = "Vali0004";
             repo = "dwm-fork";
-            rev = "cd7c67e75dd782c46c38dee38722ea64abe6d463";
-            hash = "sha256-Ij52wdZznFQSaCA2UoqZxLVn2BkBLqtoNS1EKEcQphg=";
+            rev = "77794708f574abe44689355d8867a5dbca3a8af5";
+            hash = "sha256-5e43idQ7KWS/5B9kCadCre6zB5/fkcAf6mmZLdc7Qz8=";
           };
         });
         dwmblocks = super.dwmblocks.overrideAttrs (old: {
