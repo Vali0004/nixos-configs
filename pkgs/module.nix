@@ -1,4 +1,5 @@
-{ config, pkgs, ... }:
+{ config
+, ... }:
 
 {
   # Required for agenix
@@ -11,14 +12,14 @@
     # Custom pkgs
     (self: super: {
       beammp-launcher = self.callPackage ./beammp-launcher {};
-      clipmenu-paste = self.callPackage ./clipmenu { dmenu = self.dmenu; };
+      clipmenu-paste = self.callPackage ./clipmenu {};
       darling = self.callPackage ./darling {};
       dnspy = self.callPackage ./dnspy {};
-      dwmblocks-battery = self.callPackage ./dwmblocks/battery {};
-      dwmblocks-cpu = self.callPackage ./dwmblocks/cpu {};
-      dwmblocks-memory = self.callPackage ./dwmblocks/memory {};
-      dwmblocks-network = self.callPackage ./dwmblocks/network {};
-      dwmblocks-playerctl = self.callPackage ./dwmblocks/playerctl {};
+      dwmblocks-battery = self.callPackage dwmblocks/battery {};
+      dwmblocks-cpu = self.callPackage dwmblocks/cpu {};
+      dwmblocks-memory = self.callPackage dwmblocks/memory {};
+      dwmblocks-network = self.callPackage dwmblocks/network {};
+      dwmblocks-playerctl = self.callPackage dwmblocks/playerctl {};
       fastfetch-simple = self.writeScriptBin "fastfetch-simple" ''
         ${self.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc
       '';
@@ -27,11 +28,11 @@
         ${self.curl}/bin/curl -H "authorization: ${config.secrets.zipline.authorization}" https://holy.fuckk.lol/api/upload -F file=@/tmp/screenshot.png -H 'content-type: multipart/form-data' | ${self.jq}/bin/jq -r .files[0].url | tr -d '\n' | ${self.xclip}/bin/xclip -selection clipboard
       '';
       ida-pro = self.callPackage ./ida-pro {};
-      jlink = self.callPackage ./nordic/jlink {};
+      jlink = self.callPackage nordic/jlink {};
       manage-gnome-calculator = self.callPackage ./manage-gnome-calculator {};
       nrf-studio = self.callPackage ./nordic {};
-      nrf-util = self.callPackage ./nordic/nrfutil {};
-      osu-base = pkgs.callPackage ./osu {
+      nrf-util = self.callPackage nordic/nrfutil {};
+      osu-base = self.callPackage ./osu {
         osu-mime = self.nixGaming.osu-mime;
         wine-discord-ipc-bridge = self.nixGaming.wine-discord-ipc-bridge;
         proton-osu-bin = self.nixGaming.proton-osu-bin;

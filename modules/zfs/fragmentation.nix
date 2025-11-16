@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   options.zfs.fragmentation = {
@@ -11,6 +14,11 @@
       type = lib.types.bool;
       default = false;
       description = "Whether to open the firewall for port 9103.";
+    };
+    # This cannot be changed yet
+    port = lib.mkOption {
+      type = lib.types.port;
+      default = 9103;
     };
   };
 

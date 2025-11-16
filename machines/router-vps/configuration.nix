@@ -1,9 +1,11 @@
-{ pkgs, modulesPath, ... }:
+{ pkgs
+, modulesPath
+, ... }:
 
 {
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
-    modules/status/service.nix
+    modules/status.nix
     modules/agenix.nix
     modules/boot.nix
     modules/wireguard.nix
@@ -11,7 +13,6 @@
     services/nginx.nix
     services/prometheus.nix
     services/xdp.nix
-    services/zdb.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -104,14 +105,14 @@
     usePredictableInterfaceNames = false;
   };
 
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "diorcheats.vali@gmail.com";
-  };
+  acme.enable = true;
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";
   }];
 
-  system.stateVersion = "25.11";
+  zfs.fragmentation = {
+    enable = true;
+    openFirewall = true;
+  };
 }

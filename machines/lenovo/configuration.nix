@@ -177,8 +177,6 @@
     };
   };
 
-  system.stateVersion = "25.05";
-
   users = let
     my_keys = import ../../ssh_keys_personal.nix;
   in {

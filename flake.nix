@@ -57,6 +57,8 @@
 
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
         ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
+        cors-anywhere = self.callPackage pkgs/cors-anywhere {};
+        fuckk-lol-status = self.callPackage pkgs/fuckk-lol-status {};
         forgeServers = {
           forge-1_7_10-10_13_4 = self.callPackage pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
           forge-1_16_5-36_2_26 = self.callPackage pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };
@@ -68,10 +70,12 @@
           forge-1_20_1-47_4_0  = self.callPackage pkgs/nix-minecraft/forge { version = "1.20.1-47.4.0";  };
         };
         mailserver = nixos-mailserver.x86_64-linux.default;
+        prowlarr = self.callPackage pkgs/prowlarr {};
         nixGaming = nix-gaming.outputs.packages.x86_64-linux;
         skylanders-nfc-reader = skylanders-nfc-reader.outputs.packages.x86_64-linux.default;
         spicetifyThemes = spicetify.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetify.outputs.legacyPackages.x86_64-linux.extensions;
+        rtorrent-exporter = self.callPackage pkgs/rtorrent-exporter {};
         zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
       })
       # Existing pkgs

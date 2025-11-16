@@ -14,6 +14,7 @@
     hardware/virtualisation.nix
     hardware/wifi.nix
     nix/settings.nix
+    networking/acme.nix
     networking/hosts.nix
     networking/ssh.nix
     networking/secrets.nix

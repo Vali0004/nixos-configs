@@ -200,8 +200,6 @@
     size = 8192;
   }];
 
-  system.stateVersion = "25.11";
-
   systemd.settings.Manager.RebootWatchdogSec = "0";
 
   users.users.vali = {

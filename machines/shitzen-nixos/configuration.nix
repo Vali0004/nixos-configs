@@ -11,78 +11,59 @@ in {
     "${modulesPath}/installer/scan/not-detected.nix"
     ajax-container/module.nix
 
-    modules/cors-anywhere/service.nix
-    modules/pnp-loader/api/service.nix
-    modules/pnp-loader/backend/service.nix
-    modules/pnp-loader/dashboard/service.nix
+    boot/boot.nix
 
     modules/agenix.nix
-
-    modules/boot.nix
-    modules/dockge.nix
     modules/nvidia.nix
     modules/wireguard.nix
 
-    services/grafana/module.nix
-
-    services/arr/flaresolverr.nix
-    services/arr/prowlarr.nix
-    services/arr/radarr.nix
-    services/arr/readarr.nix
-    services/arr/sonarr.nix
-
-    services/minecraft/package.nix
-
-    services/rtorrent-exporter/service.nix
-
-    services/anubis.nix
-    services/hydra.nix
-    services/gitea.nix
-    services/irc.nix
-    services/jellyfin.nix
-    services/kavita.nix
-    services/mailserver.nix
-
-    services/matrix.nix
-    services/mysql.nix
-    services/nfs.nix
-    services/nginx.nix
-    services/oauth2.nix
+    services/hydra/hydra.nix
+    services/hydra/nix-options.nix
+    services/filehosting/nfs.nix
+    services/filehosting/samba.nix
+    services/minecraft/default.nix
+    services/monitoring/prometheus.nix
+    services/monitoring/grafana.nix
+    services/sql/mysql.nix
+    services/sql/postgresql.nix
+    services/torrenting/arr/flaresolverr.nix
+    services/torrenting/arr/prowlarr.nix
+    services/torrenting/arr/radarr.nix
+    services/torrenting/arr/readarr.nix
+    services/torrenting/arr/sonarr.nix
+    services/torrenting/flood.nix
+    services/torrenting/rtorrent-exporter.nix
+    services/torrenting/rtorrent.nix
+    services/virtualisation/dockge.nix
+    services/web/chat/matrix.nix
+    services/web/filehosting/media/jellyfin.nix
+    services/web/filehosting/media/kavita.nix
+    services/web/filehosting/gitea.nix
+    services/web/filehosting/zipline.nix
+    services/web/server/anubis.nix
+    services/web/server/nginx.nix
+    services/web/server/oauth2.nix
+    services/web/mailserver.nix
+    services/web/tor.nix
+    services/web/ttyd.nix
     services/pihole.nix
-
-    services/postgresql.nix
-    services/prometheus.nix
-
-    services/rtorrent.nix
-    services/samba.nix
-
-    services/tor.nix
-    services/ttyd.nix
-    services/zdb.nix
-    services/zipline.nix
   ];
 
-  systemd.services.dovecot.serviceConfig = mkNamespace {};
-
-  systemd.services.inspircd.serviceConfig = mkNamespace {};
-
-  systemd.services.matrix-synapse.serviceConfig = mkNamespace {};
-
-  systemd.services.minecraft-server-prod = lib.mkIf config.minecraft.prod {
-    serviceConfig = mkNamespace {};
+  systemd.services = {
+    dovecot.serviceConfig = mkNamespace {};
+    flood.serviceConfig = mkNamespace {};
+    matrix-synapse.serviceConfig = mkNamespace {};
+    minecraft-server-prod = lib.mkIf config.minecraft.prod {
+      serviceConfig = mkNamespace {};
+    };
+    nginx.serviceConfig = mkNamespace {};
+    oauth2-proxy.serviceConfig = mkNamespace {};
+    postfix.serviceConfig = mkNamespace {};
+    postfix-setup.serviceConfig = mkNamespace {};
+    rspamd.serviceConfig = mkNamespace {};
+    rtorrent.serviceConfig = mkNamespace {};
+    tor.serviceConfig = mkNamespace {};
   };
-
-  systemd.services.nginx.serviceConfig = mkNamespace {};
-  systemd.services.oauth2-proxy.serviceConfig = mkNamespace {};
-
-  systemd.services.postfix.serviceConfig = mkNamespace {};
-  systemd.services.postfix-setup.serviceConfig = mkNamespace {};
-  systemd.services.rspamd.serviceConfig = mkNamespace {};
-
-  systemd.services.rtorrent.serviceConfig = mkNamespace {};
-  systemd.services.flood.serviceConfig = mkNamespace {};
-
-  systemd.services.tor.serviceConfig = mkNamespace {};
 
   environment.systemPackages = with pkgs; [
     btop
@@ -148,8 +129,6 @@ in {
     enableRedistributableFirmware = true;
   };
 
-  minecraft.prod = false;
-
   networking = {
     dhcpcd = {
       # TP-Link is stupid...
@@ -208,21 +187,9 @@ in {
     usePredictableInterfaceNames = false;
   };
 
-  nix.settings = {
-    keep-derivations = true;
-    max-jobs = 4;
-    max-substitution-jobs = 4;
-  };
+  nix.settings.keep-derivations = true;
 
-  nixpkgs = {
-    config.allowUnfree = true;
-    hostPlatform = "x86_64-linux";
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "diorcheats.vali@gmail.com";
-  };
+  acme.enable = true;
 
   swapDevices = [{
     device = "/var/lib/swap";
@@ -238,5 +205,11 @@ in {
     ];
   };
 
-  zfs.autoSnapshot.enable = true;
+  zfs = {
+    autoSnapshot.enable = true;
+    fragmentation = {
+      enable = true;
+      openFirewall = true;
+    };
+  };
 }

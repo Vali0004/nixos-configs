@@ -22,7 +22,12 @@
     ];
   };
 
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs = {
+    config.allowUnfree = true;
+    hostPlatform = "x86_64-linux";
+  };
+
+  system.stateVersion = "25.11";
 
   systemd.services.nix-daemon.serviceConfig.OOMScoreAdjust = "350";
 }
