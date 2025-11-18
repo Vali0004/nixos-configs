@@ -51,7 +51,6 @@ in {
 
   systemd.services = {
     dovecot.serviceConfig = mkNamespace {};
-    flood.serviceConfig = mkNamespace {};
     matrix-synapse.serviceConfig = mkNamespace {};
     minecraft-server-prod = lib.mkIf config.minecraft.prod {
       serviceConfig = mkNamespace {};
@@ -205,11 +204,5 @@ in {
     ];
   };
 
-  zfs = {
-    autoSnapshot.enable = true;
-    fragmentation = {
-      enable = true;
-      openFirewall = true;
-    };
-  };
+  zfs.autoSnapshot.enable = true;
 }

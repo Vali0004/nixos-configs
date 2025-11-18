@@ -110,9 +110,4 @@
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";
   }];
-
-  zfs.fragmentation = {
-    enable = true;
-    openFirewall = true;
-  };
 }
