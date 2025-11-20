@@ -27,5 +27,6 @@
     enable = true;
     enableMemtest = true;
     enableRescue = true;
+    enableProber = true;
   };
 }

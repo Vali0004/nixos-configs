@@ -42,6 +42,11 @@ in {
       default = false;
       description = "Whether to add a small rescue environment to the bootloader.";
     };
+    enableProber = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Whether to enable GRUB2's os-prober.";
+    };
     copyKernels = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -76,7 +81,7 @@ in {
         "rescue-kernel" = "${livecd.config.system.build.kernel}/bzImage";
         "rescue-initrd" = "${livecd.config.system.build.netbootRamdisk}/initrd";
       };
-      useOSProber = true;
+      useOSProber = config.boot.grub.enableProber;
       memtest86.enable = config.boot.grub.enableMemtest;
     };
     timeout = 10;

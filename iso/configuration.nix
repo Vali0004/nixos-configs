@@ -17,28 +17,24 @@
   networking = {
     hostName = "nixos-installer";
     hostId = "2632ac4c";
-    networkmanager = {
-      wifi = {
-        backend = "wpa_supplicant";
-        powersave = false;
-        scanRandMacAddress = true;
-      };
-      enable = true;
-      insertNameservers = [
-        "1.1.1.1"
-      ];
-      logLevel = "INFO";
-    };
+    networkmanager.enable = lib.mkForce false;
+    useDHCP = true;
     usePredictableInterfaceNames = false;
   };
 
-  users.users = {
-    nixos.extraGroups = [
-      "networkmanager"
-    ];
-    root.extraGroups = [
-      "networkmanager"
-    ];
+  users.users = let
+    my_keys = import ../ssh_keys_personal.nix;
+    common_keys = import ../ssh_keys.nix;
+  in {
+    root.openssh.authorizedKeys.keys = my_keys ++ common_keys;
+    vali = {
+      extraGroups = [
+        "wheel"
+      ];
+      isNormalUser = true;
+      initialPassword = "hunter2";
+      openssh.authorizedKeys.keys = my_keys ++ common_keys;
+    };
   };
 
   system.stateVersion = "25.11";
