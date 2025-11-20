@@ -13,8 +13,6 @@
     environment.systemPackages = with pkgs; [
       # XDG GUI Debug Utility
       bustle
-      # XDG Debug Utility
-      bridge-utils
       # XDG Mime/Desktop utils
       desktop-file-utils
       # XDG

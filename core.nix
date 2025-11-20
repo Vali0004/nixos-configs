@@ -17,6 +17,10 @@ in {
     ssh.authorizedKeys = my_keys;
   };
 
+  environment.systemPackages = [
+    pkgs.speedtest
+  ];
+
   hardware = {
     amd.enable = true;
     enableKvm = true;

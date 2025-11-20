@@ -57,8 +57,10 @@
 
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
         ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
+        speedtest = self.callPackage pkgs/speedtest {};
         cors-anywhere = self.callPackage pkgs/cors-anywhere {};
         fuckk-lol-status = self.callPackage pkgs/fuckk-lol-status {};
+        patreon-dl-gui = self.callPackage pkgs/patreon-dl-gui {};
         forgeServers = {
           forge-1_7_10-10_13_4 = self.callPackage pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
           forge-1_16_5-36_2_26 = self.callPackage pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };
@@ -173,6 +175,16 @@
           machines/router-vps/configuration.nix
         ];
       };
+      router-vps-v2 = {
+        deployment = {
+          targetHost = "23.143.108.18";
+          targetUser = "root";
+          targetPort = 22;
+        };
+        imports = coreImports ++ [
+          machines/router-vps-v2/configuration.nix
+        ];
+      };
       shitzen-nixos = {
         deployment = {
           targetHost = "10.0.0.229";
@@ -241,9 +253,11 @@
       };
     };
 
-    packages.${system}.deployIso = (nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [ iso/configuration.nix ];
-    }).config.system.build.isoImage;
+    packages.${system} = {
+      deployIso = (nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [ iso/configuration.nix ];
+      }).config.system.build.isoImage;
+    };
   };
 }
