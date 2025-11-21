@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   console.keyMap = "us";
 

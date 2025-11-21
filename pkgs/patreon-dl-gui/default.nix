@@ -37,7 +37,11 @@ stdenv.mkDerivation {
   pname = "patreon-dl-gui";
   version = "2.50.0";
 
-  src = ./patreon-dl-gui.tar.gz;
+  src = fetchurl rec {
+    name = "patreon-dl-gui.tar.gz";
+    url = "https://fuckk.lol/cdn/patreon-dl-gui.tar.gz";
+    sha256 = "sha256-LfB3iCtOVdaFmYxYbEN0MYlhr94gvO+/KtZpyBOGg3I=";
+  };
 
   nativeBuildInputs = [
     autoPatchelfHook
