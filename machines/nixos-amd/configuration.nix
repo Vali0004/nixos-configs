@@ -8,9 +8,9 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    ../../modules/networking/secrets-private.nix
     boot/boot.nix
     home-manager/home.nix
+    programs/agenix.nix
     programs/ssh.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
@@ -84,6 +84,7 @@
 
   networking = {
     dhcpcd = {
+      #
       # TP-Link is stupid...
       #
       # eth0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
@@ -186,7 +187,7 @@
       KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{CDC_ACM}="1"
       ENV{CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
     '';
-    udisk2.enable = true;
+    udisks2.enable = true;
     xserver = {
       enable = true;
       # Disable XTerm

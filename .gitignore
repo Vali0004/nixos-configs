@@ -8,5 +8,3 @@ result
 **/result
 **/**/result
 **/**/**/result
-**/secrets-private.nix
--secrets-private.nix

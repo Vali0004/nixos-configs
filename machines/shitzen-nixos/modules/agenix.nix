@@ -3,11 +3,6 @@
 {
   environment.systemPackages = [ pkgs.agenix ];
   age.secrets = {
-    convoy = {
-      file = ../../../secrets/convoy.age;
-      owner = "nginx";
-      group = "nginx";
-    };
     cleclerc-mail-nanitehosting-com = {
       file = ../../../secrets/cleclerc-mail-nanitehosting-com.age;
       owner = "nginx";
@@ -46,6 +41,11 @@
       owner = "matrix-synapse";
       group = "matrix-synapse";
     };
+    nextcloud-admin-password = {
+      file = ../../../secrets/nextcloud-admin-password.age;
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
     nix-netrc = {
       file = ../../../secrets/nix-netrc.age;
       owner = "hydra";
@@ -58,16 +58,6 @@
     };
     oauth2-proxy = {
       file = ../../../secrets/oauth2-proxy.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-    pnp-api = {
-      file = ../../../secrets/pnp-api.age;
-      owner = "nginx";
-      group = "nginx";
-    };
-    pnp-loader = {
-      file = ../../../secrets/pnp-loader.age;
       owner = "nginx";
       group = "nginx";
     };
@@ -96,18 +86,13 @@
       owner = "nginx";
       group = "nginx";
     };
-    zipline = {
-      file = ../../../secrets/zipline.age;
-      owner = "root";
-      group = "root";
-    };
     wireguard = {
       file = ../../../secrets/wireguard.age;
       owner = "root";
       group = "root";
     };
-    wireguard-down = {
-      file = ../../../secrets/wireguard-down.age;
+    zipline = {
+      file = ../../../secrets/zipline.age;
       owner = "root";
       group = "root";
     };

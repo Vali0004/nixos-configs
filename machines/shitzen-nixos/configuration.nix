@@ -39,6 +39,7 @@ in {
     services/web/filehosting/media/jellyfin.nix
     services/web/filehosting/media/kavita.nix
     services/web/filehosting/gitea.nix
+    services/web/filehosting/nextcloud.nix
     services/web/filehosting/zipline.nix
     services/web/server/anubis.nix
     services/web/server/nginx.nix

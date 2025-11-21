@@ -1,15 +1,10 @@
 { config
-, inputs
 , pkgs
 , ... }:
 
 let
   ssh_config = config.environment.etc."ssh/ssh_config".text;
 in {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
   home-manager.users.vali = {
     imports = [
       programs/alacritty.nix

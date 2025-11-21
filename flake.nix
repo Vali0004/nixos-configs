@@ -216,7 +216,7 @@
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
-          #nixpkgs-xr.nixosModules.nixpkgs-xr
+          home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
           modules/imports.nix
@@ -230,24 +230,11 @@
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
+          home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
           modules/imports.nix
           machines/lenovo/configuration.nix
-          ({ nixpkgs.overlays = overlays; })
-        ];
-      };
-      nixos-vm = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs overlays; };
-        modules = [
-          agenix.nixosModules.age
-          nix-gaming.nixosModules.pipewireLowLatency
-          spicetify.nixosModules.default
-          mangowc.nixosModules.mango
-          modules/programs/spicetify.nix
-          modules/imports.nix
-          machines/testing-vm/configuration.nix
           ({ nixpkgs.overlays = overlays; })
         ];
       };

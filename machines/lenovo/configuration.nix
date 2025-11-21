@@ -7,10 +7,10 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    ../../modules/networking/secrets-private.nix
     ../../modules/services/openssh.nix
     boot/boot.nix
     home-manager/home.nix
+    programs/agenix.nix
     programs/ssh.nix
     services/windowManager/lxqt-hypr.nix
     #services/windowManager/lxqt-sway.nix

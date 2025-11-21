@@ -93,18 +93,21 @@ in {
       exportarr-prowlarr = {
         apiKeyFile = config.age.secrets.prowlarr-api.path;
         enable = true;
+        environment.LOG_LEVEL = "warn";
         port = 9708;
         url = "https://prowlarr.fuckk.lol";
       };
       exportarr-sonarr = {
         apiKeyFile = config.age.secrets.sonarr-api.path;
         enable = true;
+        environment.LOG_LEVEL = "warn";
         port = 9709;
         url = "https://sonarr.fuckk.lol";
       };
       exportarr-radarr = {
         apiKeyFile = config.age.secrets.radarr-api.path;
         enable = true;
+        environment.LOG_LEVEL = "warn";
         port = 9710;
         url = "https://radarr.fuckk.lol";
       };

@@ -12,7 +12,6 @@ To add a new host, you need to deploy the secrets. Only I can decode them, so it
 * Cider (Beta)
 * IDA
 * JLink
-* Private Secrets (network-secrets-private.nix)
 ## Services
 * Anubis
 * Cors Anywhere

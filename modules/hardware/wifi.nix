@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   options.hardware.wifi = {
@@ -10,7 +13,7 @@
   };
 
   imports = [
-    ../networking/secrets.nix
+    ../networking/wifi-networks.nix
   ];
 
   config.networking = lib.mkIf config.hardware.wifi.enable {
@@ -19,9 +22,12 @@
     wireless = {
       enable = true;
       networks = lib.listToAttrs (map (network: {
-        name = network.ssid;
-        value = { psk = network.password; };
-      }) config.secrets.wifi.networks);
+        name = network.name;
+        value = {
+          ssid = network.ssid;
+          pskRaw = "ext:${network.name}";
+        };
+      }) config.wifi.networks);
       userControlled.enable = true;
     };
   };
