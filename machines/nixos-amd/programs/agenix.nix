@@ -3,8 +3,11 @@
 
 {
   age.identityPaths = [
-    "/etc/ssh"
-    "/home/vali/.ssh"
+    "/etc/ssh/ssh_host_rsa_key"
+    "/etc/ssh/ssh_host_ed25519_key"
+    "/etc/ssh/ssh_host_ecdsa_key"
+    "/home/vali/.ssh/id_rsa"
+    "/home/vali/.ssh/nixos_main"
   ];
   age.secrets = {
     nix-netrc.file = ../../../secrets/nix-netrc.age;
