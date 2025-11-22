@@ -11,6 +11,8 @@
     boot/boot.nix
     home-manager/home.nix
     programs/agenix.nix
+    programs/dconf.nix
+    programs/gnupg.nix
     programs/ssh.nix
     services/windowManager/lxqt-hypr.nix
     #services/windowManager/lxqt-sway.nix

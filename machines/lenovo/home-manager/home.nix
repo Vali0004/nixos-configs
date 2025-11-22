@@ -8,7 +8,6 @@ in {
   home-manager.users.vali = {
     imports = [
       programs/alacritty.nix
-      programs/dconf.nix
       programs/fastfetch.nix
       programs/git.nix
       #programs/rofi.nix
