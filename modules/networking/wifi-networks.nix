@@ -1,17 +1,6 @@
 { lib, ... }:
 
-let
-  networkModule = {
-    ssid = lib.mkOption {
-      type = lib.types.str;
-      description = "The Wi-Fi SSID used in `networking`.";
-    };
-    password = lib.mkOption {
-      type = lib.types.str;
-      description = "The Wi-Fi Password used in `networking`.";
-    };
-  };
-in {
+{
 
   options = {
     wifi.networks = lib.mkOption {
