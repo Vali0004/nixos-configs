@@ -17,7 +17,7 @@
           };
         };
       });
-      description = "List of Wi-Fi networks (Name/SSID pairs). Name is used to match against network-secrests";
+      description = "List of Wi-Fi networks (Name/SSID pairs). Name is used to match against network-secrets";
     };
   };
 

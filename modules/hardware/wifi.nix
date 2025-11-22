@@ -28,6 +28,7 @@
           pskRaw = "ext:psk_${network.name}";
         };
       }) config.wifi.networks);
+      secretsFile = config.age.secrets.network-secrets.path;
       userControlled.enable = true;
     };
   };
