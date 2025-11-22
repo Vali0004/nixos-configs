@@ -1,8 +1,10 @@
-{ config, lib, ... }:
+{ config
+, lib
+, ... }:
 
 {
   qt = lib.mkIf config.qt.enable {
-    platformTheme = "lxqt";
+    platformTheme = "qt5ct";
     style = "adwaita-dark";
   };
 }

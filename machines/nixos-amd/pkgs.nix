@@ -168,6 +168,8 @@
     # VRChat Friendship Management
     vrcx
     # Vulkan
+    spirv-cross
+    spirv-tools
     vulkan-extension-layer
     vulkan-tools
     vulkan-validation-layers
