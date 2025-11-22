@@ -2,7 +2,6 @@
 , ... }:
 
 {
-
   options = {
     wifi.networks = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {

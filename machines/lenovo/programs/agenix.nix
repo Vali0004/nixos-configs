@@ -12,7 +12,7 @@
     network-secrets.file = ../../../secrets/network-secrets.age;
     zipline-upload-headers = {
       file = ../../../secrets/zipline-upload-headers.age;
-      owner = "root";
+      owner = "vali";
       group = "wheel";
     };
   };
