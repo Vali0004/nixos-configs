@@ -25,7 +25,7 @@
         name = network.name;
         value = {
           ssid = network.ssid;
-          pskRaw = "ext:${network.name}";
+          pskRaw = "ext:psk_${network.name}";
         };
       }) config.wifi.networks);
       userControlled.enable = true;
