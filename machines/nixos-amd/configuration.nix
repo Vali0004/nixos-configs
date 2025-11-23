@@ -82,6 +82,7 @@
       daemon.enable = true;
     };
     openrazer.enable = true;
+    wifi = true;
     virtualisation.enable = true;
   };
 

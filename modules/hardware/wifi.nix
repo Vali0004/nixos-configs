@@ -7,7 +7,7 @@
   options.hardware.wifi = {
     enable = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
       description = "Whether to enable Wi-Fi.";
     };
   };

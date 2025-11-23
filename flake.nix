@@ -186,16 +186,16 @@
           machines/shitzen-nixos/configuration.nix
         ];
       };
-      #nixos-router = {
-      #  deployment = {
-      #    targetHost = "10.0.0.229";
-      #    targetUser = "root";
-      #    targetPort = 22;
-      #  };
-      #  imports = coreImports ++ [
-      #    machines/nixos-router/configuration.nix
-      #  ];
-      #};
+      nixos-router = {
+        deployment = {
+          targetHost = "192.168.0.192";
+          targetUser = "root";
+          targetPort = 22;
+        };
+        imports = coreImports ++ [
+          machines/nixos-router/configuration.nix
+        ];
+      };
     };
 
     nixosConfigurations = {

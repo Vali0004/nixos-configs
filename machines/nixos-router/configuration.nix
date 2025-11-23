@@ -24,6 +24,7 @@
     ndisc6
     net-tools
     openssl
+    pciutils
     screen
     tcpdump
     wget

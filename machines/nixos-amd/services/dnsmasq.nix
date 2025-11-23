@@ -44,6 +44,7 @@
         67
         68
       ];
+      checkReversePath = false;
       enable = true;
       extraCommands = ''
         ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE

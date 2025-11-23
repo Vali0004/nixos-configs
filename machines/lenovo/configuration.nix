@@ -70,6 +70,7 @@
     audio.pipewire.enable = true;
     bluetooth.enable = true;
     enableKvm = true;
+    wifi = true;
   };
 
   networking = {
