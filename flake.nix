@@ -42,17 +42,6 @@
       nix-minecraft.overlay
       # Flake overrides
       (self: super: {
-        eepyxr = nixpkgs-xr.packages.x86_64-linux.eepyxr;
-        index_camera_passthrough = nixpkgs-xr.packages.x86_64-linux.index_camera_passthrough;
-        kaon = nixpkgs-xr.packages.x86_64-linux.kaon;
-        opencomposite = nixpkgs-xr.packages.x86_64-linux.opencomposite;
-        opencomposite-vendored = nixpkgs-xr.packages.x86_64-linux.opencomposite-vendored;
-        proton-ge-rtsp-bin = nixpkgs-xr.packages.x86_64-linux.proton-ge-rtsp-bin;
-        vapor = nixpkgs-xr.packages.x86_64-linux.vapor;
-        wayvr-dashboard = nixpkgs-xr.packages.x86_64-linux.wayvr-dashboard;
-        wivrn = nixpkgs-xr.packages.x86_64-linux.wivrn;
-        wlx-overlay-s = nixpkgs-xr.packages.x86_64-linux.wlx-overlay-s;
-        xrizer = nixpkgs-xr.packages.x86_64-linux.xrizer;
         watchman-pairing-assistant = watchman-pairing-assistant.packages.x86_64-linux.default;
 
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
@@ -216,6 +205,7 @@
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
+          nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
