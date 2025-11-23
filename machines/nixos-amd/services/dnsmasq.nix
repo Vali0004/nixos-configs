@@ -36,9 +36,19 @@
         address = "2001:db8:1::1";
         prefixLength = 64;
       }];
+      useDHCP = false;
     };
-    firewall.extraCommands = ''
-      ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
-    '';
+    firewall = {
+      allowedUDPPorts = [
+        # DHCP
+        67
+        68
+      ];
+      enable = true;
+      extraCommands = ''
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+      '';
+      trustedInterfaces = [ "eth0" ];
+    };
   };
 }
