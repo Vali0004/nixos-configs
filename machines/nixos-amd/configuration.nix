@@ -17,7 +17,7 @@
     services/windowManager/dwm.nix
     services/displayManager.nix
     services/krb5.nix
-    services/monado.nix
+    #services/monado.nix
     services/picom.nix
     services/syslog.nix
     ./pkgs.nix

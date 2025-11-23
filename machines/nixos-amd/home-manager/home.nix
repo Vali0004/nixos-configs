@@ -16,7 +16,7 @@ in {
       #programs/waybar.nix
       programs/zsh.nix
       services/dunst.nix
-      services/monado.nix
+      #services/monado.nix
       #services/polybar.nix
       #windowManager/i3.nix
       #windowManager/hypr.nix
