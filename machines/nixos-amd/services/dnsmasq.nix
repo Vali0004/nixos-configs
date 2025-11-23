@@ -7,10 +7,6 @@
     resolveLocalQueries = false;
     settings = {
       bind-interfaces = true;
-      dhcp-option = [
-        "option6:dns-server,[2001:4860:4860::8888]"
-        "option6:dns-server,[2606:4700:4700::1111]"
-      ];
       dhcp-range = [
         "192.168.0.2,192.168.0.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
@@ -20,7 +16,10 @@
       interface = [
         "eth0"
       ];
+      no-resolv = true;
       server = [
+        "2001:4860:4860::8888"
+        "2606:4700:4700::1111"
         "1.1.1.1"
         "8.8.8.8"
       ];
