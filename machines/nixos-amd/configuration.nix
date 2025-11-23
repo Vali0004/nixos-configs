@@ -16,6 +16,7 @@
     programs/ssh.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
+    services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
     services/picom.nix
