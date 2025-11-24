@@ -29,7 +29,7 @@
         protocol = "tcp";
       }
     ];
-    hostAddress = "10.0.0.244";
+    hostAddress = "10.0.0.6";
     hostAddress6 = "fc00::1";
     localAddress = "10.0.0.245";
     localAddress6 = "fc00::2";

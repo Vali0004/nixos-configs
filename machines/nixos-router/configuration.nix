@@ -8,12 +8,16 @@
     modules/boot.nix
 
     services/prometheus.nix
-    services/xdp.nix
+    services/x11.nix
   ];
 
   environment.systemPackages = with pkgs; [
+    bintools
+    binwalk
     conntrack-tools
+    dmidecode
     fastfetch
+    flashrom
     gdb
     git
     htop
@@ -52,6 +56,14 @@
         "fmask=0022"
         "dmask=0022"
       ];
+    };
+  };
+
+  hardware = {
+    enableAllFirmware = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
     };
   };
 

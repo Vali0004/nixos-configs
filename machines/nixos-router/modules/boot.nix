@@ -1,5 +1,9 @@
 {
   boot = {
+    blacklistedKernelModules = [
+      # Pre-GCN APU, it has a stroke elsewise
+      "amdgpu"
+    ];
     initrd.availableKernelModules = [
       "ahci" # SATA
       "ohci_pci" # USB
@@ -10,12 +14,15 @@
       "binfmt_misc"
       "usbmon"
     ];
+    kernelParams = [
+      "iomem=relaxed"
+    ];
   };
 
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = true;
-    "net.ipv6.conf.all.forwarding" = true;
     "net.ipv4.tcp_syncookies" = true;
+    "net.ipv6.conf.all.forwarding" = true;
   };
 
   # Force my module off

@@ -1,0 +1,7 @@
+{
+  services.xserver = {
+    videoDrivers = [
+      "radeon"
+    ];
+  };
+}

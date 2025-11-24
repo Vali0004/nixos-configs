@@ -48,7 +48,7 @@
     };
     # Mount the NFS
     "/mnt/data" = {
-      device = "10.0.0.229:/data";
+      device = "10.0.0.6:/data";
       fsType = "nfs";
       options = [ "x-systemd.automount" "noauto" "soft" ];
     };
@@ -96,7 +96,7 @@
       IPv6rs = true;
     };
     nameservers = [
-      "10.0.0.229"
+      "10.0.0.6"
       "75.75.75.75"
       "2601:406:8100:91d8:9504:1cf3:185b:1fa4"
       "2001:558:FEED::1"

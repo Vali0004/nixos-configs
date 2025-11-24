@@ -152,8 +152,8 @@ in {
       IPv6rs = true;
     };
     extraHosts = ''
-      10.0.0.229 jellyfin.localnet jellyfin
-      10.0.0.229 pihole.localnet pihole
+      10.0.0.6 jellyfin.localnet jellyfin
+      10.0.0.6 pihole.localnet pihole
     '';
     firewall = {
       # SMTP is open

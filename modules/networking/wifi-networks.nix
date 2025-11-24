@@ -25,6 +25,7 @@
       {
         name = "home";
         ssid = "Fera_mac";
+        bssid = "6a:7f:f0:19:82:72";
       }
     ];
   };
