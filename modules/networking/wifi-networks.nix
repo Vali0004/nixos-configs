@@ -14,6 +14,10 @@
             type = lib.types.str;
             description = "The Wi-Fi SSID used in `networking.wireless`.";
           };
+          bssid = lib.mkOption {
+            type = lib.types.str;
+            description = "The Wi-Fi BSID used in `networking.wireless`.";
+          };
         };
       });
       description = "List of Wi-Fi networks (Name/SSID pairs). Name is used to match against network-secrets";
