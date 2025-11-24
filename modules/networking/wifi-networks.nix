@@ -16,6 +16,7 @@
           };
           bssid = lib.mkOption {
             type = lib.types.str;
+            default = "";
             description = "The Wi-Fi BSID used in `networking.wireless`.";
           };
         };
@@ -29,7 +30,7 @@
       {
         name = "home";
         ssid = "Fera_mac";
-        bssid = "6a:7f:f0:19:82:72";
+        #bssid = "6a:7f:f0:19:82:72";
       }
     ];
   };
