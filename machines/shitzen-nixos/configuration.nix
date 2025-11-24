@@ -166,6 +166,7 @@ in {
       allowedTCPPorts = [
         80 # HTTP
         443 # HTTPS
+        5000 # OnTheSpot
         5201 # iperf
       ];
       allowedUDPPorts = [

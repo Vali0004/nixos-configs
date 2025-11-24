@@ -8,8 +8,9 @@
     modules/status.nix
     modules/agenix.nix
     modules/boot.nix
-    modules/wireguard.nix
+    #modules/wireguard.nix
 
+    services/virtualisation/dockge.nix
     services/nginx.nix
     services/prometheus.nix
   ];
@@ -68,13 +69,13 @@
       allowedTCPPorts = [
         80 # HTTP
         443 # HTTPS
-        3700 # Peer port
+        #3700 # Peer port
         9101 # Node Exporter
         9192 # XDP
       ];
       allowedUDPPorts = [
-        3700 # Peer port
-        6990 # DHT
+        #3700 # Peer port
+        #6990 # DHT
       ];
     };
     hostId = "eca03077";

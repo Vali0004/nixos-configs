@@ -33,6 +33,7 @@
       manage-gnome-calculator = self.callPackage ./manage-gnome-calculator {};
       nrf-studio = self.callPackage ./nordic {};
       nrf-util = self.callPackage nordic/nrfutil {};
+      onthespot = self.callPackage ./onthespot {};
       osu-base = self.callPackage ./osu {
         osu-mime = self.nixGaming.osu-mime;
         wine-discord-ipc-bridge = self.nixGaming.wine-discord-ipc-bridge;
