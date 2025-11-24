@@ -149,6 +149,8 @@
     slimevr-server
     # Socket Output Concat
     socat
+    # Ookla Speedtest
+    speedtest
     # Syncplay, allows for syncing video streams with others via mpvr
     syncplay
     # System stats
