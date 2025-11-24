@@ -25,7 +25,7 @@
         name = network.name;
         value = {
           ssid = network.ssid;
-          bssid = if network.bsid != "" then network.bssid else null;
+          bssid = if network.bssid != "" then network.bssid else null;
           pskRaw = "ext:psk_${network.name}";
         };
       }) config.wifi.networks);
