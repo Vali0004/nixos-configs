@@ -196,6 +196,16 @@
           machines/nixos-router/configuration.nix
         ];
       };
+      ajaxvpn-nixos = {
+        deployment = {
+          targetHost = "45.139.50.22";
+          targetUser = "root";
+          targetPort = 22;
+        };
+        imports = coreImports ++ [
+          machines/ajaxvpn-nixos/configuration.nix
+        ];
+      };
     };
 
     nixosConfigurations = {

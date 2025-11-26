@@ -154,7 +154,8 @@
     lact.enable = true;
     udev.extraRules = ''
       # Aula, SayoDevice O3C
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="plugdev", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"
       # HTC
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0bb4", GROUP="plugdev", MODE="0666"
       # Oculus
