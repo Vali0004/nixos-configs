@@ -25,24 +25,10 @@
     "net.ipv6.conf.all.forwarding" = true;
   };
 
-  # Force my module off
   boot.grub = {
-    enable = false;
-  };
-
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = false;
-      efiSysMountPoint = "/boot";
-    };
-    grub = {
-      enable = true;
-      configurationLimit = 10;
-      copyKernels = true;
-      device = "nodev";
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-    };
-    timeout = 10;
+    enable = true;
+    configurationLimit = 10;
+    copyKernels = true;
+    device = "/dev/sda";
   };
 }

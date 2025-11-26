@@ -61,7 +61,7 @@
   networking = {
     defaultGateway = "45.139.50.1";
     defaultGateway6 = {
-      address = "fe80::3:ff:fe00:0";
+      address = "2a0b:64c0:2::1";
       interface = "eth0";
     };
     hostId = "bade5fb2";
