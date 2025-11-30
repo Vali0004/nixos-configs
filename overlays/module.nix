@@ -10,9 +10,6 @@
   ];
 
   nixpkgs.overlays = [
-    (import lib/mkNamespace.nix)
-    (import lib/mkPrometheusJob.nix)
-    (import lib/mkProxy.nix)
     (import ./customPackages.nix)
     (import ./existingPackages.nix)
     (import ./scripts.nix { inherit config; })
