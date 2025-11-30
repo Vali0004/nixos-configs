@@ -8,7 +8,11 @@
     "/home/vali/.ssh/nixos_main"
   ];
   age.secrets = {
-    nix-netrc.file = ../../../secrets/nix-netrc.age;
+    nix-netrc = {
+      file = ../../../secrets/nix-netrc.age;
+      owner = "vali";
+      group = "root";
+    };
     network-secrets.file = ../../../secrets/network-secrets.age;
     zipline-upload-headers = {
       file = ../../../secrets/zipline-upload-headers.age;
@@ -23,8 +27,8 @@
   # This allows flakes to pull in private repos, otherwise
   # some hacky stuff is needed.
   environment.etc."nix/netrc" = {
-    user = "root";
-    group = "wheel";
+    user = "vali";
+    group = "root";
     source = config.age.secrets.nix-netrc.path;
   };
 }
