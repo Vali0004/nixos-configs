@@ -9,10 +9,10 @@ self: super: {
   dwmblocks-network = self.callPackage pkgs/dwmblocks/network {};
   dwmblocks-playerctl = self.callPackage pkgs/dwmblocks/playerctl {};
   ida-pro = self.callPackage pkgs/ida-pro {};
-  jlink = self.callPackage nordic/jlink {};
+  jlink = self.callPackage pkgs/nordic/jlink {};
   manage-gnome-calculator = self.callPackage pkgs/manage-gnome-calculator {};
   nrf-studio = self.callPackage pkgs/nordic {};
-  nrf-util = self.callPackage nordic/nrfutil {};
+  nrf-util = self.callPackage pkgs/nordic/nrfutil {};
   onthespot = self.callPackage pkgs/onthespot {};
   osu-base = self.callPackage pkgs/osu {
     osu-mime = self.nixGaming.osu-mime;
