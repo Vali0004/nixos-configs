@@ -27,14 +27,17 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1764216347,
-        "narHash": "sha256-DEFF2QIVnE6RK0Dchb0slJbHcMDABY6we1ekjS8zHKQ=",
-        "path": "/home/vali/development/ajax/ajax-xdp",
-        "type": "path"
+        "lastModified": 1764472113,
+        "narHash": "sha256-lq52o3xvH8sGVSaa2LUT41gR0r3n/B86Xa6MDWoQKkc=",
+        "owner": "AjaxVPN",
+        "repo": "ajax-xdp",
+        "rev": "f47a257a61f59f81b33bf5390820ae99f75cb44e",
+        "type": "github"
       },
       "original": {
-        "path": "/home/vali/development/ajax/ajax-xdp",
-        "type": "path"
+        "owner": "AjaxVPN",
+        "repo": "ajax-xdp",
+        "type": "github"
       }
     },
     "blobs": {
