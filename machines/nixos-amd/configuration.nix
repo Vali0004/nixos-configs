@@ -21,6 +21,7 @@
     services/krb5.nix
     #services/monado.nix
     services/picom.nix
+    services/ratbagd.nix
     services/syslog.nix
     services/toxvpn.nix
     ./pkgs.nix

@@ -120,6 +120,8 @@
     osu-stable
     # PCI Utilities
     pciutils
+    # GTK Frontend for ratbagd
+    piper
     # Audio Player Control
     playerctl
     # Razer Daemon Frontend
