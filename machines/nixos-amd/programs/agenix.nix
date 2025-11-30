@@ -24,6 +24,7 @@
   # some hacky stuff is needed.
   environment.etc."nix/netrc" = {
     user = "root";
+    group = "wheel";
     source = config.age.secrets.nix-netrc.path;
   };
 }

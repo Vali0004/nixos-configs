@@ -6,6 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     agenix.url = "github:ryantm/agenix";
+    #ajax-xdp.url = "github:AjaxVPN/ajax-xdp";
     ajax-xdp.url = "/home/vali/development/ajax/ajax-xdp";
     skylanders-nfc-reader.url = "/home/vali/development/skylanders-nfc-reader";
     home-manager = {
