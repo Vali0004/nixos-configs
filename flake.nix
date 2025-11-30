@@ -140,7 +140,7 @@
     nixosConfigurations = {
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs lib overlays; };
+        specialArgs = { inherit inputs overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
@@ -156,7 +156,7 @@
       };
       lenovo = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs lib overlays; };
+        specialArgs = { inherit inputs overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
