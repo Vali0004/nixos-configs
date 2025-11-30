@@ -1,10 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ pkgs
+, ... }:
 
 {
-  imports = [
-    ../../overlays/module.nix
-  ];
-
   environment.systemPackages = with pkgs; [
     # Terminal
     alacritty-graphics

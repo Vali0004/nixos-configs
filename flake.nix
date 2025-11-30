@@ -71,15 +71,14 @@
     ];
 
     pkgs = import nixpkgs { inherit system overlays; };
-    lib = (import overlays/libOverlay.nix {
-      lib = pkgs.lib;
-      inherit pkgs;
-    }).lib;
   in {
     colmena = {
       meta = {
         specialArgs = {
-          inherit lib;
+          lib = (import overlays/libOverlay.nix {
+            lib = pkgs.lib;
+            inherit pkgs;
+          }).lib;
         };
         nixpkgs = pkgs;
       };
