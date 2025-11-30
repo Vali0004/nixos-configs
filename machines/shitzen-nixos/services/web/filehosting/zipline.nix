@@ -1,10 +1,9 @@
 { config
+, lib
 , pkgs
 , ... }:
 
-let
-  mkProxy = import ../../../modules/mkproxy.nix;
-in {
+{
   services.zipline = {
     enable = true;
     environmentFiles = [ config.age.secrets.zipline.path ];
@@ -21,7 +20,7 @@ in {
   services.nginx.virtualHosts."cdn.nanite.gg" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.zipline.settings.CORE_PORT;
       webSockets = true;
     };
@@ -30,7 +29,7 @@ in {
   services.nginx.virtualHosts."holy.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.zipline.settings.CORE_PORT;
       webSockets = true;
     };

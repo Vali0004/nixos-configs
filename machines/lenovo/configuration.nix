@@ -7,6 +7,7 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+    ../../modules/programs/steam.nix
     ../../modules/services/openssh.nix
     boot/boot.nix
     home-manager/home.nix

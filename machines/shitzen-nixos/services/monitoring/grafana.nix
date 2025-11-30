@@ -19,7 +19,6 @@ let
     auth_request_set $auth_cookie $upstream_http_set_cookie;
     add_header Set-Cookie $auth_cookie;
   '';
-  mkProxy = import ../../modules/mkproxy.nix;
 in {
   services.grafana = {
     enable = true;
@@ -67,20 +66,20 @@ in {
       enableACME = true;
       forceSSL = true;
       locations = {
-        "/grafana/" = mkProxy {
+        "/grafana/" = lib.mkProxy {
           config = oauthProxyConfig;
           port = config.services.grafana.settings.server.http_port;
         };
-        "/prometheus/" = mkProxy {
+        "/prometheus/" = lib.mkProxy {
           config = oauthProxyConfig;
           port = config.services.prometheus.port;
         };
-        "/xdp/" = mkProxy {
+        "/xdp/" = lib.mkProxy {
           config = oauthProxyConfig;
           ip = "10.127.0.1";
           port = 9192;
         };
-        "/kvm/" = mkProxy {
+        "/kvm/" = lib.mkProxy {
           config = oauthProxyConfig;
           ip = "10.0.0.233";
         };

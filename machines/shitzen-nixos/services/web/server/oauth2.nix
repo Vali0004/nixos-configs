@@ -1,8 +1,9 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
-let
-  mkProxy = import ../../../modules/mkproxy.nix;
-in {
+{
   services.oauth2-proxy = {
     cookie = {
       secure = true;
@@ -34,7 +35,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations = {
-      "/oauth2/" = mkProxy {
+      "/oauth2/" = lib.mkProxy {
         ip = "127.0.0.1";
         port = 4180;
       };

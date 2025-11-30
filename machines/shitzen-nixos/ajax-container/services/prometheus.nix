@@ -1,4 +1,5 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config
+, lib, ... }:
 
 let
   mkJob = import ../modules/mkprometheus.nix;

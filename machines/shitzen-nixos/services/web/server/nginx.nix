@@ -38,7 +38,6 @@ let
     "text/x-component"
     "text/xml"
   ];
-  mkProxy = import ../../../modules/mkproxy.nix;
 in {
   services.nginx = {
     additionalModules = [ pkgs.nginxModules.brotli ];
@@ -170,10 +169,10 @@ in {
     enableACME = true;
     forceSSL = true;
     locations = {
-      "/grafana/" = mkProxy {
+      "/grafana/" = lib.mkProxy {
         port = 3200;
       };
-      "/prometheus/" = mkProxy {
+      "/prometheus/" = lib.mkProxy {
         port = 3201;
       };
     };

@@ -1,9 +1,8 @@
 { config
+, lib
 , ... }:
 
-let
-  mkProxy = import ../../../modules/mkproxy.nix;
-in {
+{
   services.radarr = {
     enable = true;
     user = "arr";
@@ -23,7 +22,7 @@ in {
   services.nginx.virtualHosts."radarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.radarr.settings.server.port;
     };
   };

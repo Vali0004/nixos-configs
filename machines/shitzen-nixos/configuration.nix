@@ -4,9 +4,7 @@
 , modulesPath
 , ... }:
 
-let
-  mkNamespace = import ./modules/mknamespace.nix;
-in {
+{
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
     ajax-container/module.nix
@@ -19,50 +17,63 @@ in {
 
     services/hydra/hydra.nix
     services/hydra/nix-options.nix
+
     services/filehosting/nfs.nix
     services/filehosting/samba.nix
+
     services/minecraft/default.nix
+
     services/monitoring/prometheus.nix
     services/monitoring/grafana.nix
+
     services/sql/mysql.nix
     services/sql/postgresql.nix
+
     services/torrenting/arr/flaresolverr.nix
     services/torrenting/arr/prowlarr.nix
     services/torrenting/arr/radarr.nix
     services/torrenting/arr/readarr.nix
     services/torrenting/arr/sonarr.nix
+
     services/torrenting/flood.nix
     services/torrenting/rtorrent-exporter.nix
     services/torrenting/rtorrent.nix
+
     services/virtualisation/dockge.nix
+
     services/web/chat/matrix.nix
+
     services/web/filehosting/media/jellyfin.nix
     services/web/filehosting/media/kavita.nix
     services/web/filehosting/gitea.nix
     services/web/filehosting/nextcloud.nix
-    services/web/filehosting/zipline.nix
+    #services/web/filehosting/zipline.nix
+
     services/web/server/anubis.nix
     services/web/server/nginx.nix
     services/web/server/oauth2.nix
+
     services/web/mailserver.nix
     services/web/tor.nix
     services/web/ttyd.nix
+
     services/pihole.nix
+    services/toxvpn.nix
   ];
 
   systemd.services = {
-    dovecot.serviceConfig = mkNamespace {};
-    matrix-synapse.serviceConfig = mkNamespace {};
+    dovecot.serviceConfig = lib.mkNamespace {};
+    matrix-synapse.serviceConfig = lib.mkNamespace {};
     minecraft-server-prod = lib.mkIf config.minecraft.prod {
-      serviceConfig = mkNamespace {};
+      serviceConfig = lib.mkNamespace {};
     };
-    nginx.serviceConfig = mkNamespace {};
-    oauth2-proxy.serviceConfig = mkNamespace {};
-    postfix.serviceConfig = mkNamespace {};
-    postfix-setup.serviceConfig = mkNamespace {};
-    rspamd.serviceConfig = mkNamespace {};
-    rtorrent.serviceConfig = mkNamespace {};
-    tor.serviceConfig = mkNamespace {};
+    nginx.serviceConfig = lib.mkNamespace {};
+    oauth2-proxy.serviceConfig = lib.mkNamespace {};
+    postfix.serviceConfig = lib.mkNamespace {};
+    postfix-setup.serviceConfig = lib.mkNamespace {};
+    rspamd.serviceConfig = lib.mkNamespace {};
+    rtorrent.serviceConfig = lib.mkNamespace {};
+    tor.serviceConfig = lib.mkNamespace {};
   };
 
   environment.systemPackages = with pkgs; [

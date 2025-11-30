@@ -3,9 +3,7 @@
 , pkgs
 , ... }:
 
-let
-  mkProxy = import ../../modules/mkproxy.nix;
-in {
+{
   services.nginx.virtualHosts."hydra.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
@@ -17,7 +15,7 @@ in {
       Allow: /$
     '';
 
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       ip = "$upstream";
       hasPort = false;
       config = ''
@@ -25,7 +23,7 @@ in {
       '';
     };
 
-    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = mkProxy {
+    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
       ip = "hydra-server";
       hasPort = false;
     };

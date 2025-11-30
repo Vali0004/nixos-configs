@@ -2,7 +2,6 @@
 
 let
   pnp-api = pkgs.callPackage ./package.nix {};
-  mkProxy = import ../../mkproxy.nix;
 in {
   systemd.services.pnp-api = {
     enable = true;
@@ -18,7 +17,7 @@ in {
   services.nginx.virtualHosts."api.pnploader.ru" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 3201;
       webSockets = true;
     };

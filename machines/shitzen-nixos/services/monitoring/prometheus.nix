@@ -1,9 +1,8 @@
 { config
+, lib
 , ... }:
 
-let
-  mkJob = import ../../modules/mkprometheus.nix;
-in {
+{
   networking.firewall.allowedTCPPorts = [
     config.services.prometheus.exporters.node.port
   ];
@@ -12,7 +11,7 @@ in {
     enable = true;
     enableReload = true;
     scrapeConfigs = [
-      (mkJob {
+      (lib.mkPrometheusJob {
         name = "fragmentation";
         targets = [
           "shitzen-nixos"
@@ -21,17 +20,17 @@ in {
         ];
         port = 9103;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         appendNameToMetrics = true;
         name = "grafana";
         port = config.services.grafana.settings.server.http_port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         appendNameToMetrics = true;
         name = "prometheus";
         port = config.services.prometheus.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         appendNameToMetrics = true;
         name = "xdp";
         interval = "1s";
@@ -40,11 +39,11 @@ in {
           "router-vps"
         ];
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         name = "prowlarr";
         port = config.services.prometheus.exporters.exportarr-prowlarr.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         targets = [
           "shitzen-nixos"
           "router-vps"
@@ -53,15 +52,15 @@ in {
         name = "node";
         port = config.services.prometheus.exporters.node.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         name = "radarr";
         port = config.services.prometheus.exporters.exportarr-radarr.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         name = "rtorrent";
         port = config.services.prometheus.exporters.smartctl.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         targets = [
           "shitzen-nixos"
           "router-vps"
@@ -70,16 +69,16 @@ in {
         name = "smartctl";
         port = config.services.prometheus.exporters.smartctl.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         name = "sonarr";
         port = config.services.prometheus.exporters.exportarr-sonarr.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         name = "wireguard";
         interval = "1s";
         port = config.services.prometheus.exporters.wireguard.port;
       })
-      (mkJob {
+      (lib.mkPrometheusJob {
         targets = [
           "shitzen-nixos"
           "lenovo"

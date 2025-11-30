@@ -1,4 +1,7 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   services.pihole-ftl = {
@@ -24,7 +27,7 @@
         "addn-hosts=/etc/hosts"
       ];
       webserver = {
-        domain = "0.0.0.0";
+        domain = config.router.piholePrimaryIP;
         port = "9810";
         paths.webroot = "${pkgs.pihole-web}/share/";
         paths.webhome = "/";
@@ -42,6 +45,7 @@
       sslCertificate = "/var/lib/localnet/pihole.pem";
       sslCertificateKey = "/var/lib/localnet/pihole.key";
       locations."/" = lib.mkProxy {
+        ip = config.router.piholePrimaryIP;
         port = 9810;
       };
     };

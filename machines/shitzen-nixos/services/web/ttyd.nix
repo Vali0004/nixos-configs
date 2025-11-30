@@ -1,4 +1,5 @@
 { config
+, lib
 , pkgs
 , ... }:
 
@@ -21,7 +22,6 @@ let
     auth_request_set $auth_cookie $upstream_http_set_cookie;
     add_header Set-Cookie $auth_cookie;
   '';
-  mkProxy = import ../../modules/mkproxy.nix;
 in {
   networking.firewall.allowedTCPPorts = [ 7681 ];
 
@@ -37,7 +37,7 @@ in {
     enableACME = true;
     forceSSL = true;
     locations = {
-      "/" = mkProxy {
+      "/" = lib.mkProxy {
         config = oauthProxyConfig;
         port = config.services.ttyd.port;
       };

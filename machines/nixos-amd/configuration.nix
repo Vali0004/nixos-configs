@@ -8,6 +8,7 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+    ../../modules/programs/steam.nix
     boot/boot.nix
     home-manager/home.nix
     programs/agenix.nix
@@ -21,6 +22,7 @@
     #services/monado.nix
     services/picom.nix
     services/syslog.nix
+    services/toxvpn.nix
     ./pkgs.nix
   ];
 

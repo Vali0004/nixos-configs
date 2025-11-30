@@ -12,6 +12,7 @@
 
     services/nginx.nix
     services/prometheus.nix
+    services/toxvpn.nix
     services/xdp.nix
   ];
 

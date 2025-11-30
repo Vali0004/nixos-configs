@@ -1,13 +1,10 @@
 { config
+, lib
 , pkgs
 , ... }:
 
-let
-  mkProxy = import ../../../../modules/mkproxy.nix;
-in {
-  environment.systemPackages = with pkgs; [
-    jellyfin-ffmpeg
-  ];
+{
+  environment.systemPackages = [ pkgs.jellyfin-ffmpeg ];
 
   services.jellyfin = {
     enable = true;
@@ -24,7 +21,7 @@ in {
   services.nginx.virtualHosts."ohh.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 8096;
     };
   };
@@ -32,7 +29,7 @@ in {
   services.nginx.virtualHosts."watch.furryporn.ca" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 8096;
     };
   };

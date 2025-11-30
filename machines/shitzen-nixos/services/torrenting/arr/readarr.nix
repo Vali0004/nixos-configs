@@ -1,9 +1,8 @@
 { config
+, lib
 , ... }:
 
-let
-  mkProxy = import ../../../modules/mkproxy.nix;
-in {
+{
   services.readarr = {
     enable = true;
     user = "arr";
@@ -23,7 +22,7 @@ in {
   services.nginx.virtualHosts."readarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.readarr.settings.server.port;
     };
   };

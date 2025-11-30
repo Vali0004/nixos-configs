@@ -6,7 +6,6 @@
 let
   dht-port = 6990;
   peer-port = 3700;
-  mkProxy = import ../../modules/mkproxy.nix;
 in {
   networking.firewall.allowedUDPPorts = [ dht-port ];
 

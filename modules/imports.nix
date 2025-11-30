@@ -21,7 +21,7 @@
     programs/google-chrome.nix
     programs/kde-ark.nix
     programs/nemo.nix
-    programs/steam.nix
+    #programs/steam.nix
     programs/unityhub.nix
     programs/vscode.nix
     programs/zsh.nix

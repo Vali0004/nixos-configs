@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  mkProxy = import ../mkproxy.nix;
-  cors_anywhere = pkgs.callPackage ./package.nix {};
-in {
+{
   environment.systemPackages = [
     pkgs.nodejs_20
     cors_anywhere
@@ -25,7 +22,7 @@ in {
   services.nginx.virtualHosts."r34.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 8099;
       config = ''
         proxy_ssl_server_name on;

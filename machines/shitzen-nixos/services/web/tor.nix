@@ -1,6 +1,4 @@
-let
-  mkProxy = import ../../modules/mkproxy.nix {};
-in {
+{
   networking.firewall.allowedTCPPorts = [
     9001
     8080

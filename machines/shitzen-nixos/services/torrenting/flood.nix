@@ -3,9 +3,7 @@
 , lib
 , ... }:
 
-let
-  mkProxy = import ../../modules/mkproxy.nix;
-in {
+{
   services.flood = {
     enable = true;
     host = "0.0.0.0";
@@ -19,7 +17,7 @@ in {
   services.nginx.virtualHosts."flood.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.flood.port;
     };
   };

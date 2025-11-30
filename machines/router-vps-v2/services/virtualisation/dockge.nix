@@ -1,6 +1,7 @@
-let
-  mkProxy = import ../../modules/mkproxy.nix;
-in {
+{ lib
+, ... }:
+
+{
   virtualisation = {
     docker.enable = true;
     podman.enable = true;
@@ -22,7 +23,7 @@ in {
   services.nginx.virtualHosts."dockge-vps.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 5001;
       webSockets = true;
     };

@@ -2,7 +2,6 @@
 
 let
   pnp-loader = pkgs.callPackage ./package.nix {};
-  mkProxy = import ../../mkproxy.nix;
 in {
   systemd.services.pnp-loader = {
     enable = true;
@@ -18,7 +17,7 @@ in {
   services.nginx.virtualHosts."s1-luna2.pnploader.ru" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 3200;
       config = ''
         proxy_ssl_server_name on;
@@ -32,7 +31,7 @@ in {
   services.nginx.virtualHosts."s1-luna.pnploader.ru" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = 3200;
       config = ''
         proxy_ssl_server_name on;

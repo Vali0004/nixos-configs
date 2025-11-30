@@ -1,9 +1,8 @@
 { config
+, lib
 , ... }:
 
-let
-  mkProxy = import ../../../../modules/mkproxy.nix;
-in {
+{
   services.kavita = {
     enable = true;
     settings.Port = 8788;
@@ -13,7 +12,7 @@ in {
   services.nginx.virtualHosts."manga.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.kavita.settings.Port;
     };
   };

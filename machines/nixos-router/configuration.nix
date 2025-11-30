@@ -1,36 +1,65 @@
-{ pkgs
+{ config
+, pkgs
 , modulesPath
 , ... }:
 
 {
   imports = [
-    "${modulesPath}/profiles/qemu-guest.nix"
+    "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
+    networking/router/default.nix
+    networking/dhcp.nix
+    networking/nat.nix
+    networking/sysctl.nix
+
+    #services/pihole.nix
     services/prometheus.nix
-    services/x11.nix
   ];
 
+  router = {
+    wanInterface = "enp1s0";
+    lanInterfaces = [
+      
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
+    # Binary Tools
     bintools
+    # Binary Walk
     binwalk
+    # Better TOP
+    btop
+    # Connection tracking tools
     conntrack-tools
+    # cURL
+    curl
+    # Display Mode Info Decode
     dmidecode
-    fastfetch
-    flashrom
-    gdb
+    # Version Tracking
     git
-    htop
+    # Internet Utilities
     inetutils
+    # Internet performance monitoring
     iperf
+    # Mini Certificate Authority
     minica
+    # NCurses Disk usage
     ncdu
+    # IPv6 Neighbor Discovery
     ndisc6
+    # Network Tools
     net-tools
+    # Open SSL
     openssl
+    # PCI Utilies
     pciutils
+    # Screen
     screen
+    # TCP Dump
     tcpdump
+    # Web Get
     wget
   ];
 
@@ -60,27 +89,19 @@
   };
 
   hardware = {
-    enableAllFirmware = true;
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-    };
+    # Yucky Intel CPU.
+    cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
+    enableRedistributableFirmware = true;
+    # We have graphics support, might as well enable it; although, we don't need 32-bit support
+    graphics.enable = true;
   };
 
   networking = {
     hostId = "bade5fb2";
     hostName = "nixos-router";
-    interfaces = {
-      enp4s0.useDHCP = true;
-    };
-    nameservers = [
-      "8.8.8.8"
-      "1.1.1.1"
-      "2001:4860:4860::8888"
-      "2606:4700:4700::1111"
-    ];
+    # Disable global DHCP, as we do it per-interface instead
     useDHCP = false;
-    # We actually have 2 PHYs, so this is needed :/
+    # We actually have multiple PHYs, so this is needed.
     usePredictableInterfaceNames = true;
   };
 
@@ -92,11 +113,10 @@
 
   users.users = {
     vali.extraGroups = [ "video" "render" ];
-    root.openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGWxSLK5fZYYfrGT/B0trFhaToJYtoUp+GsAy9a/e2Mo"
-    ];
   };
 
+  # modules/zfs/module.nix
+  # modules/zfs/fragmentation.nix
   zfs = {
     autoSnapshot.enable = true;
     fragmentation = {

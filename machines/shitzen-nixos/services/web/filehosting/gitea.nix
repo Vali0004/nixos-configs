@@ -1,10 +1,9 @@
 { config
+, lib
 , pkgs
 , ... }:
 
-let
-  mkProxy = import ../../../modules/mkproxy.nix;
-in {
+{
   services.gitea = {
     appName = "fuckk.lol: Git";
     captcha.enable = true;
@@ -63,7 +62,7 @@ in {
       Allow: /$
     '';
 
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       ip = "$upstream";
       hasPort = false;
       config = ''
@@ -71,7 +70,7 @@ in {
       '';
     };
 
-    locations."~ ^(/build/\\d+/download/|/.*\\.git$)" = mkProxy {
+    locations."~ ^(/build/\\d+/download/|/.*\\.git$)" = lib.mkProxy {
       ip = "git-server";
       hasPort = false;
     };

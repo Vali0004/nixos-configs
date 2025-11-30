@@ -1,9 +1,8 @@
 { config
+, lib
 , ... }:
 
-let
-  mkProxy = import ../../../modules/mkproxy.nix;
-in {
+{
   services.prowlarr = {
     enable = true;
     openFirewall = true;
@@ -21,7 +20,7 @@ in {
   services.nginx.virtualHosts."prowlarr.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;
-    locations."/" = mkProxy {
+    locations."/" = lib.mkProxy {
       port = config.services.prowlarr.settings.server.port;
     };
   };
