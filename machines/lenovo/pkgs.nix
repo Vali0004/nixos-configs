@@ -3,7 +3,7 @@
 
 {
   imports = [
-    ../../overlay/module.nix
+    ../../overlays/module.nix
   ];
 
   environment.systemPackages = with pkgs; [
