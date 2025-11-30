@@ -71,17 +71,16 @@
     ];
 
     pkgs = import nixpkgs { inherit system overlays; };
-
-    specialArgs = {
-      lib = (import overlays/libOverlay.nix {
-        lib = pkgs.lib;
-        inherit pkgs;
-      }).lib;
-    };
+    lib = (import overlays/libOverlay.nix {
+      lib = pkgs.lib;
+      inherit pkgs;
+    }).lib;
   in {
     colmena = {
       meta = {
-        specialArgs = specialArgs;
+        specialArgs = {
+          inherit lib;
+        };
         nixpkgs = pkgs;
       };
       router-vps = {
@@ -141,10 +140,7 @@
     nixosConfigurations = {
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {
-          lib = specialArgs.lib;
-          inherit inputs overlays;
-        };
+        specialArgs = { inherit inputs lib overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
@@ -160,10 +156,7 @@
       };
       lenovo = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {
-          lib = specialArgs.lib;
-          inherit inputs overlays;
-        };
+        specialArgs = { inherit inputs lib overlays; };
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
