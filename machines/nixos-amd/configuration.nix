@@ -24,6 +24,7 @@
     services/ratbagd.nix
     services/syslog.nix
     services/toxvpn.nix
+    virtualisation/docker.nix
     ./pkgs.nix
   ];
 
