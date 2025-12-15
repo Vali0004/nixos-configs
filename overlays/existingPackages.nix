@@ -31,7 +31,6 @@ self: super: {
       hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
     };
   });
-  prowlarr = self.callPackage pkgs/prowlarr {};
   monado = super.monado.overrideAttrs (old: {
     version = "unstable";
     patches = [];
@@ -70,12 +69,5 @@ self: super: {
       rev = "373426eb95ca62dedad3d77833ccf649f98f489b";
       hash = "sha256-przCOyureolbPLqy80DuyQoGeQ7lbGIXeR1z26DvN/E=";
     };
-  });
-  zfs = super.zfs.overrideAttrs (old: {
-    src = self.fetchurl {
-      url = "https://github.com/openzfs/zfs/archive/pull/14013/head.tar.gz";
-      hash = "sha256-X4PO6uf/ppEedR6ZAoWmrDRfHXxv2LuBThekRZOwmoA=";
-    };
-    patches = [];
   });
 }

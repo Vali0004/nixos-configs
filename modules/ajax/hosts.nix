@@ -7,7 +7,6 @@
     172.232.134.157 Sweden-01-Linode-OVPN
     170.187.181.108 Toronto-01-Linode-OVPN
     172.237.102.247 UK-London-01-Linode-OVPN
-    178.17.50.39 PRV-Germany-Waicore-01
     51.161.173.235 AU-Syndey-01-OVH-WG
     51.79.102.4 BHS-02-OVH-WG
     141.227.130.202 LZ-AMS-02-OVH-WG
@@ -26,7 +25,6 @@
     51.81.153.36 US-Hillsboro-OR-01-OVH-WG
     40.160.224.199 PRV-US-Dallas-TX-01-OVH-WG
     45.33.0.79 PRV-US-Dallas-TX-01-Linode-WG
-    45.45.237.86 US-Chicago-IL-04-Hosturly-WG
     66.70.137.108 CA-Beauharnois-01-100up-WG
     144.172.73.43 DE-Frankfurt-01-100up-WG
     51.38.67.90 UK-London-01-100up-WG

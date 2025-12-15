@@ -1,52 +1,8 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config
+, pkgs
+, ... }:
 
 {
-  mailserver = {
-    certificateScheme = "acme-nginx";
-    domains = [
-      "fuckk.lol"
-      "nanitehosting.com"
-    ];
-    enable = true;
-    enableImap = false;
-    enableImapSsl = true;
-    enableSubmission = true;
-    enableSubmissionSsl = true;
-    enablePop3Ssl = true;
-    fqdn = "mail.fuckk.lol";
-    # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
-    loginAccounts = {
-      "vali@fuckk.lol" = {
-        hashedPasswordFile = config.age.secrets.vali-mail-fuckk-lol.path;
-        aliases = [
-          "abuse@fuckk.lol"
-          "admin@fuckk.lol"
-          "postmaster@fuckk.lol"
-          "abuse@nanitehosting.com"
-          "admin@nanitehosting.com"
-          "postmaster@nanitehosting.com"
-        ];
-      };
-      "do-not-reply@fuckk-lol" = {
-        hashedPasswordFile = config.age.secrets.do-not-reply-fuckk-lol.path;
-      };
-      "cleclerc@nanitehosting.com" = {
-        hashedPasswordFile = config.age.secrets.cleclerc-mail-nanitehosting-com.path;
-      };
-      "maddy@fuckk.lol" = {
-        hashedPasswordFile = config.age.secrets.maddy-mail-fuckk-lol.path;
-      };
-      "proxy@fuckk.lol" = {
-        hashedPasswordFile = config.age.secrets.proxy-mail-fuckk-lol.path;
-      };
-    };
-    mailDirectory = "/var/vmail";
-    openFirewall = true;
-    stateVersion = 3;
-    systemDomain = "fuckk.lol";
-    systemName = "nixos-mailserver";
-  };
-
   services.nginx.virtualHosts."mail.fuckk.lol" = {
     enableACME = true;
     forceSSL = true;

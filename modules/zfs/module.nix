@@ -40,15 +40,6 @@
     environment.systemPackages = [ pkgs.zfs ];
 
     boot = {
-      kernelPackages = pkgs.linuxKernel.packages.linux_6_16.extend (self: super: {
-        zfs_2_3 = super.zfs_2_3.overrideAttrs (old: {
-          src = pkgs.fetchurl {
-            url = "https://github.com/openzfs/zfs/archive/pull/14013/head.tar.gz";
-            hash = "sha256-X4PO6uf/ppEedR6ZAoWmrDRfHXxv2LuBThekRZOwmoA=";
-          };
-          patches = [];
-        });
-      });
       supportedFilesystems = [ "zfs" ];
       zfs = {
         devNodes = "/dev/disk/by-partuuid";

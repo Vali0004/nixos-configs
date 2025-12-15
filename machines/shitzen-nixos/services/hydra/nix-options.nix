@@ -7,7 +7,7 @@
     buildMachines = [
       # TODO: Make this a module
       {
-        hostName = "shitzen-nixos";
+        hostName = config.networking.hostName;
         protocol = null;
         systems = [ "i686-linux" "x86_64-linux" ];
         supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];

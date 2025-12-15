@@ -67,10 +67,12 @@ in {
       forceSSL = true;
       locations = {
         "/grafana/" = lib.mkProxy {
+          ip = "192.168.100.1";
           config = oauthProxyConfig;
           port = config.services.grafana.settings.server.http_port;
         };
         "/prometheus/" = lib.mkProxy {
+          ip = "192.168.100.1";
           config = oauthProxyConfig;
           port = config.services.prometheus.port;
         };
@@ -81,7 +83,7 @@ in {
         };
         "/kvm/" = lib.mkProxy {
           config = oauthProxyConfig;
-          ip = "10.0.0.233";
+          ip = "10.0.0.7";
         };
       };
     };

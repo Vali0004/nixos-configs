@@ -3,8 +3,8 @@
 {
   environment.systemPackages = [ pkgs.agenix ];
   age.secrets = {
-    cleclerc-mail-nanitehosting-com = {
-      file = ../../../secrets/cleclerc-mail-nanitehosting-com.age;
+    cleclerc-nanitehosting-com = {
+      file = ../../../secrets/cleclerc-nanitehosting-com.age;
       owner = "nginx";
       group = "nginx";
     };
@@ -15,8 +15,9 @@
     };
     git-fuckk-lol-db = {
       file = ../../../secrets/git-fuckk-lol-db.age;
-      owner = config.services.gitea.user;
+      owner = "postgres";
       group = config.services.gitea.group;
+      mode = "0440";
     };
     hydra-github-token = {
       file = ../../../secrets/hydra-github-token.age;
@@ -30,11 +31,6 @@
       file = ../../../secrets/kavita.age;
       owner = "kavita";
       group = "kavita";
-    };
-    maddy-mail-fuckk-lol = {
-      file = ../../../secrets/maddy-mail-fuckk-lol.age;
-      owner = "nginx";
-      group = "nginx";
     };
     matrix = {
       file = ../../../secrets/matrix.age;
@@ -66,23 +62,24 @@
       owner = "root";
       group = "root";
     };
-    proxy-mail-fuckk-lol = {
-      file = ../../../secrets/proxy-mail-fuckk-lol.age;
-      owner = "nginx";
-      group = "nginx";
-    };
     radarr-api = {
       file = ../../../secrets/radarr-api.age;
       owner = "root";
       group = "root";
+    };
+    sogo-db-password = {
+      file = ../../../secrets/sogo-db-password.age;
+      owner = "postgres";
+      group = "sogo";
+      mode = "0444";
     };
     sonarr-api = {
       file = ../../../secrets/sonarr-api.age;
       owner = "root";
       group = "root";
     };
-    vali-mail-fuckk-lol = {
-      file = ../../../secrets/vali-mail-fuckk-lol.age;
+    vali-fuckk-lol = {
+      file = ../../../secrets/vali-fuckk-lol.age;
       owner = "nginx";
       group = "nginx";
     };

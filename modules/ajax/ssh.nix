@@ -28,11 +28,6 @@
       Hostname Toronto-01-Linode-OVPN
       User root
 
-    Host PRV-Germany-Waicore-01
-      Hostname PRV-Germany-Waicore-01
-      User root
-      Port 5192
-
     Host AU-Syndey-01-OVH-WG
       Hostname AU-Syndey-01-OVH-WG
       User root
@@ -95,11 +90,6 @@
 
     Host US-Phoenix-AZ-01-OVH-WG
       Hostname US-Phoenix-AZ-01-OVH-WG
-      User root
-      Port 5903
-
-    Host US-Chicago-IL-04-Hosturly-WG
-      Hostname US-Chicago-IL-04-Hosturly-WG
       User root
       Port 5903
 

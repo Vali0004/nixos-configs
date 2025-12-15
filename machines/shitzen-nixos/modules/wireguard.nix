@@ -65,6 +65,10 @@ in {
       # Enable default routes for IPv6 inside namespace
       ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip -6 route add default via ${vethHostIP6} || true
 
+      # Allow the netns to access itself
+      ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip route add 74.208.44.130 via ${vethHostIP4} dev veth1
+      ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip -6 route add 2607:f1c0:f088:e200::1 via ${vethHostIP6} dev veth1
+
       # NAT for IPv4
       ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${vethNSIP4}/24 -o ${hostIF} -j MASQUERADE
       # NAT for IPv6 (masquerade same way)

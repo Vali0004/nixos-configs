@@ -47,13 +47,17 @@
     services/web/filehosting/media/kavita.nix
     services/web/filehosting/gitea.nix
     services/web/filehosting/nextcloud.nix
-    #services/web/filehosting/zipline.nix
+    services/web/filehosting/zipline.nix
 
     services/web/server/anubis.nix
+    services/web/server/memcached.nix
     services/web/server/nginx.nix
     services/web/server/oauth2.nix
 
-    services/web/mailserver.nix
+    #services/web/mail/roundcube.nix
+    services/web/mail/server.nix
+    services/web/mail/sogo.nix
+
     services/web/tor.nix
     services/web/ttyd.nix
 
@@ -87,12 +91,13 @@
     inetutils
     iperf
     jdk
+    killall
     lshw
     lsof
     lsscsi
-    killall
     magic-wormhole
     mediainfo
+    memtester
     minica
     mkp224o
     ncdu
@@ -188,6 +193,7 @@
     hostName = "shitzen-nixos";
     interfaces = {
       eth0.useDHCP = true;
+      enp4s0.useDHCP = false;
     };
     nameservers = [
       "8.8.8.8"
@@ -196,7 +202,7 @@
       "2606:4700:4700::1111"
     ];
     useDHCP = false;
-    usePredictableInterfaceNames = false;
+    usePredictableInterfaceNames = true;
   };
 
   nix.settings.keep-derivations = true;

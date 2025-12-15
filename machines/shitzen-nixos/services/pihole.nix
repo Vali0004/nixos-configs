@@ -42,6 +42,7 @@
       sslCertificate = "/var/lib/localnet/pihole.pem";
       sslCertificateKey = "/var/lib/localnet/pihole.key";
       locations."/" = lib.mkProxy {
+        ip = "192.168.100.1";
         port = 9810;
       };
     };

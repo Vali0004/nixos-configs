@@ -23,6 +23,7 @@
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {
+      ip = "192.168.100.1";
       port = 8099;
       config = ''
         proxy_ssl_server_name on;

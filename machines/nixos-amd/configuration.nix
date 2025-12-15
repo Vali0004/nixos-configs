@@ -17,7 +17,7 @@
     programs/ssh.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
-    services/dnsmasq.nix
+    #services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
     services/picom.nix
@@ -114,7 +114,13 @@
       IPv6rs = true;
     };
     hostName = "nixos-amd";
-    interfaces.wlan0.useDHCP = true;
+    interfaces.eth0.useDHCP = true;
+    nameservers = [
+      "10.0.0.6"
+      "1.1.1.1"
+      "2601:406:8100:91d8:c2a1:c3ff:fea4:caa"
+      "2606:4700:4700::1111"
+    ];
     useDHCP = false;
     usePredictableInterfaceNames = false;
   };
@@ -160,6 +166,8 @@
       # Aula, SayoDevice O3C
       SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"
+      # Elgato
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", GROUP="wheel", MODE="0677"
       # HTC
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0bb4", GROUP="plugdev", MODE="0666"
       # Oculus

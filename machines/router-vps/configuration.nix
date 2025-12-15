@@ -13,7 +13,7 @@
     services/nginx.nix
     services/prometheus.nix
     services/toxvpn.nix
-    services/xdp.nix
+    #services/xdp.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -65,6 +65,7 @@
       allowedTCPPorts = [
         25 # SMTP
         80 # HTTP
+        143 # IMAP
         443 # HTTPS
         465 # SMTPS
         587 # SMTP (with STARTTLS)

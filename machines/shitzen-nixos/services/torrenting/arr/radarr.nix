@@ -23,6 +23,7 @@
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {
+      ip = "192.168.100.1";
       port = config.services.radarr.settings.server.port;
     };
   };
