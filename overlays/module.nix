@@ -7,6 +7,7 @@
     "libxml2-2.13.8"
     # Required for jellyfin-media-player
     "qtwebengine-5.15.19"
+    "python3.13-ecdsa-0.19.1"
   ];
 
   nixpkgs.overlays = [

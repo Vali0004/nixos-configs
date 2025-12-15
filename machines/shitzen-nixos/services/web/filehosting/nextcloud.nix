@@ -12,6 +12,7 @@
   };
 
   services.nextcloud = {
+    appstoreEnable = true;
     caching.redis = true;
     configureRedis = true;
     config = {
@@ -22,9 +23,7 @@
     };
     database.createLocally = true;
     enable = true;
-    extraApps = {
-      inherit (pkgs.nextcloud32Packages.apps) mail calendar contacts;
-    };
+    extraAppsEnable = false;
     home = "/data/services/nextcloud";
     hostName = "cloud.fuckk.lol";
     https = true;

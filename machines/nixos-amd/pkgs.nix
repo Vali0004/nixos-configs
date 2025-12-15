@@ -64,7 +64,7 @@
     # sed
     gnused
     # Hex-Rays IDA Pro 9.0 Beta
-    ida-pro
+    #ida-pro
     # Internet utilities (ping6, etc.)
     inetutils
     # Internet performance tool
@@ -100,9 +100,9 @@
     # Node.js - JavaScript Engine
     nodejs_24
     # nRF Studio
-    nrf-studio
+    #nrf-studio
     # SEGGER JLink
-    jlink
+    #jlink
     # nRF SDK
     nrf5-sdk
     # Adafurit nRF Util

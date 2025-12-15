@@ -10,11 +10,11 @@
       dhcp-range = [
         "192.168.0.2,192.168.0.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
-        "::,constructor:eth0,ra-stateless,12h"
+        "::,constructor:eth1,ra-stateless,12h"
       ];
       enable-ra = true;
       interface = [
-        "eth0"
+        "eth1"
       ];
       no-resolv = true;
       server = [
@@ -27,7 +27,7 @@
   };
 
   networking = {
-    interfaces.eth0 = {
+    interfaces.eth1 = {
       ipv4.addresses = [{
         address = "192.168.0.1";
         prefixLength = 24;
@@ -47,9 +47,9 @@
       checkReversePath = false;
       enable = true;
       extraCommands = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
       '';
-      trustedInterfaces = [ "eth0" ];
+      trustedInterfaces = [ "eth1" ];
     };
   };
 }
