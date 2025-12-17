@@ -24,13 +24,13 @@
       server = [
         "2601:406:8100:91D8::4"
         "2601:406:8100:91D8::6"
-        "10.0.0.4"
-        "10.0.0.6"
+        "192.168.100.4"
+        "192.168.100.6"
       ];
 
       dhcp-range = [
-        # Comcast/Xfinity has always used 10.0.0.0/24 as a LAN subnet, and I'm just used to it now
-        "10.0.0.10,10.0.0.254,2h"
+        # Comcast/Xfinity has always used 192.168.100.0/24 as a LAN subnet, and I'm just used to it now
+        "192.168.100.10,192.168.100.254,2h"
 
         # TP-Link uses this, and I want a drop-in replacement, soo yeah.
         "2601:406:8100:91D8::10,2601:406:8100:91D8::ffff,64,2h"
@@ -49,7 +49,7 @@
     interfaces = {
       enp1s0 = {
         ipv4.addresses = [{
-          address = "10.0.0.3";
+          address = "192.168.100.3";
           prefixLength = 24;
         }];
         ipv6.addresses = [{
@@ -59,7 +59,7 @@
       };
       enp0s21f0u1u4 = {
         ipv4.addresses = [{
-          address = "10.0.0.2";
+          address = "192.168.100.2";
           prefixLength = 24;
         }];
         ipv6.addresses = [{

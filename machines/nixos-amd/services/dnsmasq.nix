@@ -8,7 +8,7 @@
     settings = {
       bind-interfaces = true;
       dhcp-range = [
-        "192.168.0.2,192.168.0.254"
+        "192.168.100.2,192.168.100.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
         "::,constructor:enp16s0u4,ra-stateless,12h"
       ];
@@ -29,7 +29,7 @@
   networking = {
     interfaces.enp16s0u4 = {
       ipv4.addresses = [{
-        address = "192.168.0.1";
+        address = "192.168.100.1";
         prefixLength = 24;
       }];
       ipv6.addresses = [{

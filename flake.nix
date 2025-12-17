@@ -115,7 +115,7 @@
       };
       nixos-dhcp = {
         deployment = {
-          targetHost = "192.168.0.200";
+          targetHost = "192.168.100.2";
           targetUser = "root";
           targetPort = 22;
         };
