@@ -8,21 +8,11 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
-    networking/router/default.nix
     networking/dhcp.nix
-    networking/nat.nix
-    networking/sysctl.nix
 
     #services/pihole.nix
     services/prometheus.nix
   ];
-
-  router = {
-    wanInterface = "enp1s0";
-    lanInterfaces = [
-      
-    ];
-  };
 
   environment.systemPackages = with pkgs; [
     # Binary Tools
@@ -98,7 +88,7 @@
 
   networking = {
     hostId = "bade5fb2";
-    hostName = "nixos-router";
+    hostName = "nixos-dhcp";
     # Disable global DHCP, as we do it per-interface instead
     useDHCP = false;
     # We actually have multiple PHYs, so this is needed.

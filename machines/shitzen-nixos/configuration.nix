@@ -214,8 +214,6 @@
     size = 16384;
   }];
 
-  system.stateVersion = "25.11";
-
   users.users = {
     vali.extraGroups = [ "video" "render" ];
     root.openssh.authorizedKeys.keys = [

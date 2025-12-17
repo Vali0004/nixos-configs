@@ -114,15 +114,15 @@
       IPv6rs = true;
     };
     hostName = "nixos-amd";
-    interfaces.eth0.useDHCP = true;
+    #interfaces.eth0.useDHCP = true;
     nameservers = [
       "10.0.0.6"
       "1.1.1.1"
       "2601:406:8100:91d8:c2a1:c3ff:fea4:caa"
       "2606:4700:4700::1111"
     ];
-    useDHCP = false;
-    usePredictableInterfaceNames = false;
+    useDHCP = true;
+    usePredictableInterfaceNames = true;
   };
 
   programs = {

@@ -113,14 +113,14 @@
           machines/shitzen-nixos/configuration.nix
         ];
       };
-      nixos-router = {
+      nixos-dhcp = {
         deployment = {
           targetHost = "192.168.0.200";
           targetUser = "root";
           targetPort = 22;
         };
         imports = coreImports ++ [
-          machines/nixos-router/configuration.nix
+          machines/nixos-dhcp/configuration.nix
         ];
       };
     };
