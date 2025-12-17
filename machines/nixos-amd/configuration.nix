@@ -95,9 +95,9 @@
       #
       # TP-Link is stupid...
       #
-      # eth0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
-      # eth0: dhcp_envoption 24.0/3: malformed embedded option
-      # eth0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      # enp10s0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      # enp10s0: dhcp_envoption 24.0/3: malformed embedded option
+      # enp10s0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
       #
       # Why is my router vomitting malformed DHCPv6 packets,
       # and killing networking?
@@ -114,7 +114,7 @@
       IPv6rs = true;
     };
     hostName = "nixos-amd";
-    #interfaces.eth0.useDHCP = true;
+    interfaces.enp10s0.useDHCP = true;
     nameservers = [
       "10.0.0.6"
       "1.1.1.1"
