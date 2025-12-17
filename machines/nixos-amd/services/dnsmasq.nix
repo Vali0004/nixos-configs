@@ -47,8 +47,8 @@
       checkReversePath = false;
       enable = true;
       extraCommands = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o enp10s0 -j MASQUERADE
+        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o enp10s0 -j MASQUERADE
       '';
       trustedInterfaces = [ "enp16s0u4" ];
     };
