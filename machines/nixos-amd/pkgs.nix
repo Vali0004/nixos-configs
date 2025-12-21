@@ -41,6 +41,8 @@
     edid-decode
     # Image/PDF viewer
     eog
+    # Ethernet tool
+    ethtool
     # Modern Neofetch
     fastfetch
     # Simpler Fastfetch Config

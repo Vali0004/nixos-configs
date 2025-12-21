@@ -121,7 +121,7 @@
       "2601:406:8100:91d8:c2a1:c3ff:fea4:caa"
       "2606:4700:4700::1111"
     ];
-    useDHCP = true;
+    useDHCP = false;
     usePredictableInterfaceNames = true;
   };
 

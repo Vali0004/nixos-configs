@@ -108,6 +108,7 @@
     openssl
     pciutils
     powerjoular
+    powertop
     redis
     screen
     sg3_utils
@@ -206,6 +207,9 @@
   };
 
   nix.settings.keep-derivations = true;
+
+  # Setup auto-tune by default
+  powerManagement.powertop.enable = true;
 
   acme.enable = true;
 

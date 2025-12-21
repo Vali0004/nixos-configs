@@ -9,6 +9,7 @@
     modules/boot.nix
 
     networking/dhcp.nix
+    networking/sysctl.nix
 
     #services/pihole.nix
     services/prometheus.nix
