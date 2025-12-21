@@ -4,7 +4,7 @@
   ];
 
   boot = {
-    binfmt.emulatedSystems = [ "powerpc64-linux" "arm-linux-gnueabihf" ];
+    binfmt.emulatedSystems = [ "powerpc64-linux" "armv7l-linux" ];
     extraModprobeConfig = "options vfio-pci ids=1002:7340,1002:ab38";
     initrd.availableKernelModules = [
       "ahci" # SATA
