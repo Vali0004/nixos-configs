@@ -30,7 +30,7 @@ let services = {
   radarr: { type: "good", url: "https://radarr.fuckk.lol/", responding: false },
   sonarr: { type: "good", url: "https://sonarr.fuckk.lol/", responding: false },
   zipline: { type: "good", url: "https://holy.fuckk.lol/dashboard", responding: false },
-  zipline_nanite: { type: "good", url: "https://cdn.nanite.gg/dashboard", responding: false },
+  zipline_nanite: { type: "good", url: "https://cdn.ajaxnetworks.us/dashboard", responding: false },
   xenon: { type: "good", url: "https://xenonemu.dev/", responding: false },
 };
 

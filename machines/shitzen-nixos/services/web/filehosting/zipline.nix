@@ -17,7 +17,7 @@
 
   systemd.services.zipline.serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
 
-  services.nginx.virtualHosts."cdn.nanite.gg" = {
+  services.nginx.virtualHosts."cdn.ajaxnetworks.us" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

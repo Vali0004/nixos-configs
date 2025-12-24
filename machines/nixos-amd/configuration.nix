@@ -186,6 +186,8 @@
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1430", TAG+="uaccess", MODE="0666", GROUP="plugdev"
       # Espressif
       SUBSYSTEM=="usb", ATTRS{idVendor}=="303a", GROUP="plugdev", MODE="0666"
+      # RockChip
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="2207", GROUP="plugdev", MODE="0666"
       # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for Nordic Semiconductor devices
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
       # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for WCH-CN devices
