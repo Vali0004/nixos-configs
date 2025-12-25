@@ -8,6 +8,7 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
+    services/nginx.nix
     services/pihole.nix
     services/prometheus.nix
   ];
@@ -35,6 +36,8 @@
     minica
     # Mini COM
     minicom
+    # Make Certificate
+    mkcert
     # NCurses Disk usage
     ncdu
     # IPv6 Neighbor Discovery
