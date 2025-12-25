@@ -101,6 +101,16 @@
           machines/router-vps-v2/configuration.nix
         ];
       };
+      nixos-shitclient = {
+        deployment = {
+          targetHost = "10.0.0.10";
+          targetUser = "root";
+          targetPort = 22;
+        };
+        imports = coreImports ++ [
+          machines/nixos-shitclient/configuration.nix
+        ];
+      };
       shitzen-nixos = {
         deployment = {
           targetHost = "10.0.0.6";
@@ -108,6 +118,8 @@
           targetPort = 22;
         };
         imports = coreImports ++ [
+          modules/ajax/hosts.nix
+          modules/ajax/ssh.nix
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
           machines/shitzen-nixos/configuration.nix
@@ -115,7 +127,7 @@
       };
       nixos-dhcp = {
         deployment = {
-          targetHost = "192.168.100.129";
+          targetHost = "10.0.0.129";
           targetUser = "root";
           targetPort = 22;
         };
@@ -136,6 +148,8 @@
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
+          modules/ajax/hosts.nix
+          modules/ajax/ssh.nix
           modules/imports.nix
           machines/nixos-amd/configuration.nix
           overlays/module.nix
@@ -151,6 +165,8 @@
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
+          modules/ajax/hosts.nix
+          modules/ajax/ssh.nix
           modules/imports.nix
           machines/lenovo/configuration.nix
           overlays/module.nix

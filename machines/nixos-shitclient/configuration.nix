@@ -8,18 +8,13 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
-    #networking/dhcp.nix
-    networking/sysctl.nix
-
-    #services/pihole.nix
+    services/pihole.nix
     services/prometheus.nix
   ];
 
   environment.systemPackages = with pkgs; [
     # Binary Tools
     bintools
-    # Binary Walk
-    binwalk
     # Better TOP
     btop
     # Connection tracking tools
@@ -98,20 +93,50 @@
   };
 
   networking = {
-    hostId = "bade5fb2";
-    hostName = "nixos-dhcp";
-    useDHCP = false;
-    # We actually have multiple PHYs, so this is needed.
-    usePredictableInterfaceNames = true;
-    interfaces = {
-      enp0s21f0u1u4 = {
-        ipv4.addresses = [{
-          address = "10.0.0.129";
-          prefixLength = 24;
-        }];
-      };
-      enp0s21f0u1u3.useDHCP = true;
+    dhcpcd = {
+      # TP-Link is stupid...
+      #
+      # eth0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      # eth0: dhcp_envoption 24.0/3: malformed embedded option
+      # eth0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
+      #
+      # Why is my router vomitting malformed DHCPv6 packets,
+      # and killing networking?
+      # Dumbest thing ever.
+      extraConfig = ''
+        nohook resolv.conf
+        # Stop dhcpcd from ever requesting vendor class or FQDN
+        nooption rapid_commit
+        nooption vendorclassid
+        nooption fqdn
+        nooption 24
+        nooption 25
+      '';
+      IPv6rs = true;
     };
+    extraHosts = ''
+      10.0.0.6 jellyfin.localnet jellyfin
+      10.0.0.10 pihole.localnet pihole
+    '';
+    firewall = {
+      # DNS is open
+      # SSH is open
+      # Pihole is open
+      allowedTCPPorts = [
+        80 # HTTP
+        443 # HTTPS
+        5201 # iperf
+      ];
+      allowedUDPPorts = [
+        5201 # iperf
+      ];
+    };
+    hostId = "bade5fb2";
+    hostName = "nixos-shitclient";
+    interfaces = {
+      eth0.useDHCP = true;
+    };
+    usePredictableInterfaceNames = false;
   };
 
   swapDevices = [{

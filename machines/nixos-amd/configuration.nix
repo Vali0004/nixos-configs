@@ -116,9 +116,9 @@
     hostName = "nixos-amd";
     interfaces.enp10s0.useDHCP = true;
     nameservers = [
-      "10.0.0.6"
+      "10.0.0.10"
       "1.1.1.1"
-      "2601:406:8100:91d8:c2a1:c3ff:fea4:caa"
+      "2601:406:8100:91d8:8eec:4bff:fe55:b2f1"
       "2606:4700:4700::1111"
     ];
     useDHCP = false;
