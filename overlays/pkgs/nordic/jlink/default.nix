@@ -17,12 +17,12 @@
 
 stdenv.mkDerivation {
   pname = "jlink";
-  version = "V866";
+  version = "V896";
 
   src = requireFile {
-    name = "JLink_Linux_V866_x86_64.deb";
+    name = "JLink_Linux_V896_x86_64.deb";
     url = "https://www.segger.com/downloads/jlink";
-    hash = "sha256-vL+GAZdJEUzR5jNglqcZE4tmeQLCSMb/Wk8uOYIAgCg=";
+    hash = "sha256-ijSqVfO64XNM0jS+1xxK92O5Tv7tiUQYm1rDpK+44Tc=";
   };
 
   nativeBuildInputs = [
