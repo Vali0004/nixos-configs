@@ -57,8 +57,6 @@
     libretro.ppsspp
     libretro.snes9x
     retroarch
-    # Skylander's Portal Tool
-    skylanders-nfc-reader
     # Ookla Speedtest
     speedtest
     # Syncplay, allows for syncing video streams with others via mpv

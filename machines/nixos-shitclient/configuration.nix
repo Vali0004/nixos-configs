@@ -52,6 +52,12 @@
     pciutils
     # Pico COM (sometimes easier than minicom)
     picocom
+    # Power Joular - Monitor power usage
+    powerjoular
+    # Power Top - Tuning power usage
+    powertop
+    # Python - useful for some scripts
+    python3
     # Screen
     screen
     # TCP Dump
@@ -141,6 +147,11 @@
     };
     usePredictableInterfaceNames = false;
   };
+
+  # Setup auto-tune by default
+  powerManagement.powertop.enable = true;
+
+  programs.zsh.enable = true;
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";

@@ -577,7 +577,6 @@
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-xr": "nixpkgs-xr",
-        "skylanders-nfc-reader": "skylanders-nfc-reader",
         "spicetify": "spicetify",
         "watchman-pairing-assistant": "watchman-pairing-assistant",
         "zfs-utils": "zfs-utils"
@@ -602,22 +601,6 @@
         "owner": "wlrfx",
         "repo": "scenefx",
         "type": "github"
-      }
-    },
-    "skylanders-nfc-reader": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_7",
-        "utils": "utils_2"
-      },
-      "locked": {
-        "lastModified": 1762433088,
-        "narHash": "sha256-sz9PChSBfaXYSRkZb+lu6ihMSM2NIyBCRe+BJElQATw=",
-        "path": "/home/vali/development/skylanders-nfc-reader",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/vali/development/skylanders-nfc-reader",
-        "type": "path"
       }
     },
     "spicetify": {

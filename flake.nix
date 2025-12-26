@@ -7,7 +7,6 @@
     };
     agenix.url = "github:ryantm/agenix";
     ajax-xdp.url = "github:AjaxVPN/ajax-xdp";
-    skylanders-nfc-reader.url = "/home/vali/development/skylanders-nfc-reader";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -30,7 +29,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, watchman-pairing-assistant, zfs-utils }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
   let
     system = "x86_64-linux";
 
@@ -52,7 +51,6 @@
         };
         mailserver = nixos-mailserver.x86_64-linux.default;
         nixGaming = nix-gaming.outputs.packages.x86_64-linux;
-        skylanders-nfc-reader = skylanders-nfc-reader.outputs.packages.x86_64-linux.default;
         spicetifyThemes = spicetify.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetify.outputs.legacyPackages.x86_64-linux.extensions;
         zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
