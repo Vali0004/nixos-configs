@@ -15,12 +15,14 @@
 , libXrender
 , zlib }:
 
-stdenv.mkDerivation {
-  pname = "jlink";
+let
   version = "V896";
+in stdenv.mkDerivation {
+  pname = "jlink";
+  inherit version;
 
   src = requireFile {
-    name = "JLink_Linux_V896_x86_64.deb";
+    name = "JLink_Linux_${version}_x86_64.deb";
     url = "https://www.segger.com/downloads/jlink";
     hash = "sha256-ijSqVfO64XNM0jS+1xxK92O5Tv7tiUQYm1rDpK+44Tc=";
   };
@@ -51,7 +53,7 @@ stdenv.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -r opt/SEGGER/JLink_V866 $out/JLink
+    cp -r opt/SEGGER/JLink_${version} $out/JLink
 
     # Symlink all executables
     for f in $out/JLink/*; do
