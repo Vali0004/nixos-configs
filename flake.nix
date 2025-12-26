@@ -160,6 +160,7 @@
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
+          nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/programs/spicetify.nix
