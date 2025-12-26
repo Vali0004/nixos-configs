@@ -97,15 +97,14 @@
       IPv6rs = true;
     };
     nameservers = [
-      "10.0.0.6"
+      "10.0.0.10"
       "75.75.75.75"
-      "2601:406:8100:91d8:9504:1cf3:185b:1fa4"
+      "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
       "2001:558:FEED::1"
     ];
     hostId = "2632ac4c";
     hostName = "lenovo";
-    interfaces.wlan0.useDHCP = true;
-    useDHCP = false;
+    useDHCP = true;
     usePredictableInterfaceNames = false;
   };
 
@@ -140,7 +139,10 @@
     lact.enable = true;
     udev.extraRules = ''
       # Aula, SayoDevice O3C
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c|8089", ATTRS{idProduct}=="c365|0009", GROUP="plugdev", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"
+      # Elgato
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", GROUP="wheel", MODE="0677"
       # HTC
       SUBSYSTEM=="usb", ATTRS{idVendor}=="0bb4", GROUP="plugdev", MODE="0666"
       # Oculus
@@ -159,6 +161,8 @@
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1430", TAG+="uaccess", MODE="0666", GROUP="plugdev"
       # Espressif
       SUBSYSTEM=="usb", ATTRS{idVendor}=="303a", GROUP="plugdev", MODE="0666"
+      # RockChip
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="2207", GROUP="plugdev", MODE="0666"
       # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for Nordic Semiconductor devices
       SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
       # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for WCH-CN devices

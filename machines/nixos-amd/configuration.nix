@@ -117,9 +117,9 @@
     interfaces.enp10s0.useDHCP = true;
     nameservers = [
       "10.0.0.10"
-      "1.1.1.1"
-      "2601:406:8100:91d8:8eec:4bff:fe55:b2f1"
-      "2606:4700:4700::1111"
+      "75.75.75.75"
+      "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
+      "2001:558:FEED::1"
     ];
     useDHCP = false;
     usePredictableInterfaceNames = true;
