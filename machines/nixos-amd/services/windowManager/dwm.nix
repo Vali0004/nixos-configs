@@ -28,6 +28,7 @@
     libnotify
     # X Window Wrap
     xwinwrap
+    xwinwrap-gif
     # X Do Tool
     xdotool
   ];

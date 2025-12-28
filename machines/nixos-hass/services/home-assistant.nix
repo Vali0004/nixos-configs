@@ -47,6 +47,8 @@
       go2rtc-client
       # Needed for MQTT (Zigbee)
       paho-mqtt
+      # Needed for Roku
+      rokuecp
     ];
   };
 }
