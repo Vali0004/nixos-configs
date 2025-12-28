@@ -1,4 +1,4 @@
-{ writeShellScript
+{ writeScriptBin
 , lib
 , coreutils
 , gnugrep
