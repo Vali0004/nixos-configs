@@ -148,8 +148,8 @@
           modules/ajax/hosts.nix
           modules/ajax/ssh.nix
           modules/programs/spicetify.nix
+          modules/programs/steam.nix
           modules/imports.nix
-          modules/steam.nix
           machines/nixos-amd/configuration.nix
           overlays/module.nix
           ({ nixpkgs.overlays = flakeOverlays; })
@@ -167,9 +167,9 @@
           modules/ajax/hosts.nix
           modules/ajax/ssh.nix
           modules/programs/spicetify.nix
+          modules/programs/steam.nix
           modules/services/openssh.nix
           modules/imports.nix
-          modules/steam.nix
           machines/lenovo/configuration.nix
           overlays/module.nix
           ({ nixpkgs.overlays = flakeOverlays; })
