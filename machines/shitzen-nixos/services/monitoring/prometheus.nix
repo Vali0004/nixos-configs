@@ -5,21 +5,24 @@
 {
   networking.firewall.allowedTCPPorts = [
     config.services.prometheus.exporters.node.port
+    config.services.prometheus.port
   ];
 
   services.prometheus = {
     enable = true;
     enableReload = true;
     scrapeConfigs = [
-      (lib.mkPrometheusJob {
-        name = "fragmentation";
-        targets = [
-          "shitzen-nixos"
-          "router-vps"
-          "lenovo"
-        ];
-        port = 9103;
-      })
+      #(lib.mkPrometheusJob {
+      #  name = "fragmentation";
+      #  targets = [
+      #    "nixos-hass"
+      #    "nixos-shitclient"
+      #    "shitzen-nixos"
+      #    "router-vps"
+      #    "lenovo"
+      #  ];
+      #  port = 9103;
+      #})
       (lib.mkPrometheusJob {
         appendNameToMetrics = true;
         name = "grafana";
@@ -31,20 +34,13 @@
         port = config.services.prometheus.port;
       })
       (lib.mkPrometheusJob {
-        appendNameToMetrics = true;
-        name = "xdp";
-        interval = "1s";
-        port = 9192;
-        targets = [
-          "router-vps"
-        ];
-      })
-      (lib.mkPrometheusJob {
         name = "prowlarr";
         port = config.services.prometheus.exporters.exportarr-prowlarr.port;
       })
       (lib.mkPrometheusJob {
         targets = [
+          "nixos-hass"
+          "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
           "lenovo"
@@ -62,6 +58,8 @@
       })
       (lib.mkPrometheusJob {
         targets = [
+          "nixos-hass"
+          "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
           "lenovo"
@@ -80,6 +78,8 @@
       })
       (lib.mkPrometheusJob {
         targets = [
+          "nixos-hass"
+          "nixos-shitclient"
           "shitzen-nixos"
           "lenovo"
           "router-vps"

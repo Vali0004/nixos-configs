@@ -8,7 +8,7 @@
 , xwinwrap
 }:
 
-writeShellScript "xwinwrap_gif" ''
+writeScriptBin "xwinwrap-gif" ''
   PATH=${lib.makeBinPath [ coreutils gnugrep mpv procps xrandr xwinwrap ]}
   if [ $# -ne 1 ]; then
     echo 1>&2 Usage: $0 image.gif

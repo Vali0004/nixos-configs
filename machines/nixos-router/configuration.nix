@@ -89,9 +89,7 @@
   };
 
   hardware = {
-    # Yucky Intel CPU.
-    cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
-    enableRedistributableFirmware = true;
+    intel.enable = true;
     # We have graphics support, might as well enable it; although, we don't need 32-bit support
     graphics.enable = true;
   };
@@ -115,11 +113,5 @@
 
   # modules/zfs/module.nix
   # modules/zfs/fragmentation.nix
-  zfs = {
-    autoSnapshot.enable = true;
-    fragmentation = {
-      enable = true;
-      openFirewall = true;
-    };
-  };
+  zfs.autoSnapshot.enable = true;
 }

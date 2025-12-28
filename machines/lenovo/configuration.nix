@@ -7,8 +7,6 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    ../../modules/programs/steam.nix
-    ../../modules/services/openssh.nix
     boot/boot.nix
     home-manager/home.nix
     programs/agenix.nix
@@ -214,13 +212,14 @@
       shell = pkgs.zsh;
       useDefaultShell = false;
     };
+    groups.plugdev = {};
   };
 
   xdg.enable = true;
 
   zfs = {
     fragmentation = {
-      enable = true;
+      enable = false;
       openFirewall = true;
     };
     enable = true;

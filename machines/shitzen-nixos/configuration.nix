@@ -140,10 +140,7 @@
     };
   };
 
-  hardware = {
-    cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
-    enableRedistributableFirmware = true;
-  };
+  hardware.amd.enable = true;
 
   networking = {
     dhcpcd = {

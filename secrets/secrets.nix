@@ -2,6 +2,7 @@ let
   ssh_keys = import ../ssh_keys_personal.nix;
   ajaxnetworks-nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKPJ20NST8s2UjWLOgkq7xpw3LXaim1r6KoW20TPa5nh";
   nixos-amd = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7r7kh+QoV9s5ePtVZIIQzFlfECt7MgshAhVWGWiwXG";
+  nixos-hass = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgzGChBKyMJx56Qb5Jl+YLs/0p3PzyQsysEDTiDqMQo";
   shitzen-nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1";
   router-vps = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Fk+n0k2+ZsQMo6VCiVPIW1RErbLcLMcCuHyE+e3Mc";
   router-vps-v2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3adP9Ttlij+oey6tIuWExveeu2+MGJNWv6soaG/JOl";
@@ -20,6 +21,7 @@ in {
   "matrix.age".publicKeys = keys;
   "network-secrets.age".publicKeys = ssh_keys ++ [
     nixos-amd
+    nixos-hass
   ];
   "nextcloud-admin-password.age".publicKeys = keys;
   "nix-netrc.age".publicKeys = keys ++ [

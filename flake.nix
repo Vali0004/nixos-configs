@@ -123,14 +123,14 @@
           machines/shitzen-nixos/configuration.nix
         ];
       };
-      nixos-dhcp = {
+      nixos-hass = {
         deployment = {
-          targetHost = "10.0.0.129";
+          targetHost = "10.0.0.11";
           targetUser = "root";
           targetPort = 22;
         };
         imports = coreImports ++ [
-          machines/nixos-dhcp/configuration.nix
+          machines/nixos-hass/configuration.nix
         ];
       };
     };
@@ -145,10 +145,11 @@
           nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
-          modules/programs/spicetify.nix
           modules/ajax/hosts.nix
           modules/ajax/ssh.nix
+          modules/programs/spicetify.nix
           modules/imports.nix
+          modules/steam.nix
           machines/nixos-amd/configuration.nix
           overlays/module.nix
           ({ nixpkgs.overlays = flakeOverlays; })
@@ -163,10 +164,12 @@
           nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
-          modules/programs/spicetify.nix
           modules/ajax/hosts.nix
           modules/ajax/ssh.nix
+          modules/programs/spicetify.nix
+          modules/services/openssh.nix
           modules/imports.nix
+          modules/steam.nix
           machines/lenovo/configuration.nix
           overlays/module.nix
           ({ nixpkgs.overlays = flakeOverlays; })

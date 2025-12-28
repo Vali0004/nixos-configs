@@ -23,7 +23,7 @@ let
     add_header Set-Cookie $auth_cookie;
   '';
 in {
-  networking.firewall.allowedTCPPorts = [ 7681 ];
+  networking.firewall.allowedTCPPorts = [ config.services.ttyd.port ];
 
   services.ttyd = {
     enable = true;

@@ -35,18 +35,11 @@
     };
   };
 
-  services.nginx = {
-    enable = true;
-    virtualHosts."pihole.localnet" = {
-      addSSL = true;
-      enableACME = false;
-      forceSSL = false;
-      sslCertificate = "/var/lib/localnet/pihole.pem";
-      sslCertificateKey = "/var/lib/localnet/pihole.key";
-      locations."/" = lib.mkProxy {
-        ip = "127.0.0.1";
-        port = 9810;
-      };
+  services.nginx.virtualHosts."pihole.localnet" = {
+    forceSSL = false;
+    locations."/" = lib.mkProxy {
+      ip = "127.0.0.1";
+      port = 9810;
     };
   };
 

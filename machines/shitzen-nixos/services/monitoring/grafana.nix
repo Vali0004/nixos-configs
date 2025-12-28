@@ -20,6 +20,10 @@ let
     add_header Set-Cookie $auth_cookie;
   '';
 in {
+  networking.firewall.allowedTCPPorts = [
+    config.services.grafana.settings.server.http_port
+  ];
+
   services.grafana = {
     enable = true;
     provision = {
@@ -80,10 +84,6 @@ in {
           config = oauthProxyConfig;
           ip = "10.127.0.1";
           port = 9192;
-        };
-        "/kvm/" = lib.mkProxy {
-          config = oauthProxyConfig;
-          ip = "10.0.0.7";
         };
       };
     };

@@ -1,7 +1,6 @@
 { config, lib, ... }:
 
 {
-  # I don't own a intel machine, so I won't set it up for now
   options.hardware = {
     amd = {
       enable = lib.mkOption {
@@ -13,6 +12,13 @@
         type = lib.types.bool;
         default = false;
         description = "Whether to enable iommu in the kernel.";
+      };
+    };
+    intel = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Whether to set the CPU as Intel.";
       };
     };
     enableKvm = lib.mkOption {
@@ -31,6 +37,7 @@
       };
       kernelModules = [ ] ++ lib.optionals config.hardware.enableKvm [
         (lib.strings.optionalString config.hardware.amd.enable "kvm-amd")
+        (lib.strings.optionalString config.hardware.intel.enable "kvm-intel")
       ];
       kernelParams = [
         # Enable high-poll rate USB Keyboard devices
@@ -46,5 +53,6 @@
     };
 
     hardware.cpu.amd.updateMicrocode = config.hardware.amd.enable;
+    hardware.cpu.intel.updateMicrocode = config.hardware.intel.enable;
   };
 }

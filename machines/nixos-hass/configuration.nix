@@ -6,15 +6,21 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+
     modules/boot.nix
 
-    services/localnet.nix
-    services/nginx.nix
-    services/pihole.nix
-    services/prometheus.nix
-  ];
+    programs/agenix.nix
 
-  acme.enable = true;
+    services/mqtt/mosquitto.nix
+    services/mqtt/zigbee2mqtt.nix
+
+    services/home-assistant.nix
+
+    services/postgresql.nix
+    services/prometheus.nix
+
+    services/udev.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     # Binary Tools
@@ -27,21 +33,21 @@
     curl
     # Display Mode Info Decode
     dmidecode
-    # Ethernet tool
+    # Ethernet Tool
     ethtool
+    # Quick Stats Tool
+    fastfetch
     # Version Tracking
     git
     # Internet Utilities
     inetutils
-    # Internet performance monitoring
+    # Internet Performance Monitoring
     iperf
+    # Useful for finding who is accessing something
+    lsof
     # Mini Certificate Authority
     minica
-    # Mini COM
-    minicom
-    # Make Certificate
-    mkcert
-    # NCurses Disk usage
+    # NCurses Disk Usage
     ncdu
     # IPv6 Neighbor Discovery
     ndisc6
@@ -49,18 +55,20 @@
     net-tools
     # MBIM Tools
     libmbim
+    # Hardware sensors
+    lm_sensors
     # Open SSL
     openssl
     # PCI Utilies
     pciutils
     # Pico COM (sometimes easier than minicom)
     picocom
-    # Power Joular - Monitor power usage
+    # Power Joular - Monitor Power Usage
     powerjoular
-    # Power Top - Tuning power usage
+    # Power Top - Tuning Power Usage
     powertop
-    # Python - useful for some scripts
-    python3
+    # Powershell Misc
+    psmisc
     # Screen
     screen
     # TCP Dump
@@ -97,12 +105,22 @@
   };
 
   hardware = {
+    # Yucky Intel CPU.
     intel.enable = true;
     # We have graphics support, might as well enable it; although, we don't need 32-bit support
     graphics.enable = true;
+    # Enable Wi-Fi (Yuck, I know)
+    wifi.enable = true;
   };
 
   networking = {
+    bonds.bond0 = {
+      interfaces = [ "eth0" "wlan0" ];
+      driverOptions = {
+        miimon = "100";
+        mode = "active-backup";
+      };
+    };
     dhcpcd = {
       # TP-Link is stupid...
       #
@@ -124,35 +142,18 @@
       '';
       IPv6rs = true;
     };
-    extraHosts = ''
-      10.0.0.6 shitzen.localnet shitzen-nixos
-      10.0.0.7 shitzen-kvm.localnet shitzen-nixos-kvm
-      10.0.0.10 shitclient.localnet ${config.networking.hostName}
-      10.0.0.11 nixos-hass.localnet nixos-hass
-      10.0.0.10 pihole.localnet ${config.networking.hostName}
-      10.0.0.10 monitoring.localnet ${config.networking.hostName}
-      10.0.0.10 kvm.localnet ${config.networking.hostName}
-      10.0.0.10 hass.localnet ${config.networking.hostName}
-      10.0.0.10 zigbee2mqtt.localnet ${config.networking.hostName}
-    '';
-    firewall = {
-      # DNS is open
-      # SSH is open
-      # Pihole is open
-      allowedTCPPorts = [
-        80 # HTTP
-        443 # HTTPS
-        5201 # iperf
-      ];
-      allowedUDPPorts = [
-        5201 # iperf
-      ];
-    };
     hostId = "bade5fb2";
-    hostName = "nixos-shitclient";
+    hostName = "nixos-hass";
     interfaces = {
-      eth0.useDHCP = true;
+      bond0.useDHCP = true;
     };
+    nameservers = [
+      "10.0.0.10"
+      "75.75.75.75"
+      "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
+      "2001:558:FEED::1"
+    ];
+    useDHCP = false;
     usePredictableInterfaceNames = false;
   };
 
@@ -165,9 +166,7 @@
     device = "/dev/disk/by-label/NIXOS_SWAP";
   }];
 
-  users.users = {
-    vali.extraGroups = [ "video" "render" ];
-  };
+  users.users.vali.extraGroups = [ "video" "render" ];
 
   # modules/zfs/module.nix
   # modules/zfs/fragmentation.nix

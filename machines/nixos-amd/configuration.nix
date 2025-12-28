@@ -8,7 +8,6 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    ../../modules/programs/steam.nix
     boot/boot.nix
     home-manager/home.nix
     programs/agenix.nix

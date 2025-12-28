@@ -22,8 +22,8 @@ in {
   ];
 
   hardware = {
-    amd.enable = true;
     enableKvm = true;
+    enableRedistributableFirmware = true;
   };
 
   services.vnstat.enable = true;
@@ -43,7 +43,7 @@ in {
 
   zfs = {
     fragmentation = {
-      enable = true;
+      enable = false;
       openFirewall = true;
     };
     enable = true;

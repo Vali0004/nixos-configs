@@ -7,9 +7,6 @@
       "sdhci_pci" # Storage device host controller PCI
       "sdhci_acpi" # Storage device module
     ];
-    kernelModules = [
-      "kvm-intel"
-    ];
   };
 
   boot.grub = {
