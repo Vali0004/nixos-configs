@@ -49,6 +49,8 @@
       paho-mqtt
       # Needed for Roku
       rokuecp
+      # Needed for Jellyfin
+      jellyfin-apiclient-python
     ];
   };
 }

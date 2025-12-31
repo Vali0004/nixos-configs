@@ -129,10 +129,11 @@
       10.0.0.7 shitzen-kvm.localnet shitzen-nixos-kvm
       10.0.0.10 shitclient.localnet ${config.networking.hostName}
       10.0.0.11 nixos-hass.localnet nixos-hass
-      10.0.0.10 pihole.localnet ${config.networking.hostName}
-      10.0.0.10 monitoring.localnet ${config.networking.hostName}
-      10.0.0.10 kvm.localnet ${config.networking.hostName}
       10.0.0.10 hass.localnet ${config.networking.hostName}
+      10.0.0.10 jellyfin.localnet ${config.networking.hostName}
+      10.0.0.10 kvm.localnet ${config.networking.hostName}
+      10.0.0.10 monitoring.localnet ${config.networking.hostName}
+      10.0.0.10 pihole.localnet ${config.networking.hostName}
       10.0.0.10 zigbee2mqtt.localnet ${config.networking.hostName}
     '';
     firewall = {
