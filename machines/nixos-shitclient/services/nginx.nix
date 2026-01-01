@@ -39,8 +39,9 @@
     };
     "kvm.localnet" = {
       forceSSL = false;
-      locations."/" = lib.mkProxy {
-        ip = "kvm-shitzen";
+      locations."/" = {
+        proxyPass = "http://10.0.0.7";
+        proxyWebsockets = true;
       };
     };
     "monitoring.localnet" = {

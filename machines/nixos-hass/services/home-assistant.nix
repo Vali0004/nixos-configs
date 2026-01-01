@@ -51,6 +51,8 @@
       rokuecp
       # Needed for Jellyfin
       jellyfin-apiclient-python
+      # Needed for Pi-Hole
+      hole
     ];
   };
 }
