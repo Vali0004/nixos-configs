@@ -183,5 +183,7 @@
     winetricks
     # ZIP Archive Utility
     zip
+    # Zoom - Meeting software
+    zoom
   ];
 }

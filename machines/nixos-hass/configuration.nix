@@ -119,6 +119,8 @@
       driverOptions = {
         miimon = "100";
         mode = "active-backup";
+        primary = "eth0";
+        primary_reselect = "always";
       };
     };
     dhcpcd = {
@@ -132,7 +134,6 @@
       # and killing networking?
       # Dumbest thing ever.
       extraConfig = ''
-        nohook resolv.conf
         # Stop dhcpcd from ever requesting vendor class or FQDN
         nooption rapid_commit
         nooption vendorclassid
@@ -147,12 +148,6 @@
     interfaces = {
       bond0.useDHCP = true;
     };
-    nameservers = [
-      "10.0.0.10"
-      "75.75.75.75"
-      "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
-      "2001:558:FEED::1"
-    ];
     useDHCP = false;
     usePredictableInterfaceNames = false;
   };
