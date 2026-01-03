@@ -37,7 +37,10 @@
   };
 
   config = lib.mkIf config.zfs.enable {
-    environment.systemPackages = [ pkgs.zfs ];
+    environment.systemPackages = with pkgs; [
+      zfs
+      txg-watcher
+    ];
 
     boot = {
       supportedFilesystems = [ "zfs" ];

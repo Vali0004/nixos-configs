@@ -32,9 +32,9 @@
     };
     "jellyfin.localnet" = {
       forceSSL = false;
-      locations."/" = lib.mkProxy {
-        ip = "shitzen-nixos";
-        port = 8096;
+      locations."/" = {
+        proxyPass = "http://shitzen-nixos:8096";
+        proxyWebsockets = true;
       };
     };
     "kvm.localnet" = {

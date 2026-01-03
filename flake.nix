@@ -54,6 +54,7 @@
         spicetifyThemes = spicetify.outputs.legacyPackages.x86_64-linux.themes;
         spicetifyExtensions = spicetify.outputs.legacyPackages.x86_64-linux.extensions;
         zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
+        txg-watcher = zfs-utils.packages.x86_64-linux.txg-watcher;
       })
     ];
     overlays = [

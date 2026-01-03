@@ -6,38 +6,57 @@
 , procps
 , xrandr
 , xwinwrap
+, bash
 }:
 
 writeScriptBin "xwinwrap-gif" ''
+  #!${bash}/bin/bash
+  set -euo pipefail
+
   PATH=${lib.makeBinPath [ coreutils gnugrep mpv procps xrandr xwinwrap ]}
+
   if [ $# -ne 1 ]; then
-    echo 1>&2 Usage: $0 image.gif
+    echo "Usage: $0 image.gif" >&2
     exit 1
   fi
 
-  PIDFILE="/var/run/user/$UID/bg.pid"
+  GIF="$1"
+  PIDDIR="${XDG_RUNTIME_DIR:-/run/user/$UID}"
+  PIDFILE="$PIDDIR/xwinwrap-gif.pid"
+  mkdir -p "$PIDDIR"
 
-  declare -a PIDs
+  declare -a PIDs=()
 
   screen() {
-    xwinwrap -ov -ni -g "$1" -- mpv --fullscreen\
+    local geom="$1"
+    xwinwrap -ov -ni -g "$geom" -- \
+      mpv --fullscreen \
         --no-stop-screensaver \
-        --vo=vdpau --hwdec=vdpau \
-        --loop-file --no-audio --no-osc --no-osd-bar -wid %WID --no-input-default-bindings \
-        "$2" &
-    PIDs+=($!)
+        --loop-file=inf \
+        --no-audio --no-osc --no-osd-bar --no-input-default-bindings \
+        --vo=gpu --hwdec=no \
+        -wid %WID \
+        "$GIF" &
+    PIDs+=("$!")
   }
 
-  while read p; do
-    [[ $(ps -p "$p" -o comm=) == "xwinwrap" ]] && kill -9 "$p";
-  done < $PIDFILE
+  # Kill previous xwinwrap instances we started
+  if [[ -f "$PIDFILE" ]]; then
+    while IFS= read -r p; do
+      [[ -z "$p" ]] && continue
+      if ps -p "$p" -o comm= 2>/dev/null | grep -qx "xwinwrap"; then
+        kill "$p" 2>/dev/null || true
+      fi
+    done < "$PIDFILE"
+    rm -f "$PIDFILE"
+  fi
 
-  sleep 0.5
+  sleep 0.2
 
-  for i in $(xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+')
-  do
-    screen "$i" "$1"
-  done
+  # One xwinwrap per connected output geometry
+  while IFS= read -r geom; do
+    screen "$geom"
+  done < <(xrandr -q | grep ' connected' | grep -oP '\d+x\d+\+\d+\+\d+')
 
-  printf "%s\n" "$\{PIDs[@]}" > $PIDFILE
+  printf "%s\n" "''${PIDs[@]}" > "$PIDFILE"
 ''
