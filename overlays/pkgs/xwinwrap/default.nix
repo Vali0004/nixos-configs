@@ -21,7 +21,7 @@ writeScriptBin "xwinwrap-gif" ''
   fi
 
   GIF="$1"
-  PIDDIR="${XDG_RUNTIME_DIR:-/run/user/$UID}"
+  PIDDIR="''${XDG_RUNTIME_DIR:-/run/user/$UID}"
   PIDFILE="$PIDDIR/xwinwrap-gif.pid"
   mkdir -p "$PIDDIR"
 
