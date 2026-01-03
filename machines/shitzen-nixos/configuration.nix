@@ -61,8 +61,9 @@
     services/web/tor.nix
     services/web/ttyd.nix
 
-    services/web/wireguard.nix
+    #services/web/whmcs.nix
 
+    services/wireguard.nix
     services/toxvpn.nix
   ];
 

@@ -122,6 +122,8 @@
     osu-stable
     # PCI Utilities
     pciutils
+    # Super small communications utility
+    picocom
     # GTK Frontend for ratbagd
     piper
     # Audio Player Control

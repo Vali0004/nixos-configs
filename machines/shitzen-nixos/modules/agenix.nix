@@ -83,6 +83,11 @@
       owner = "nginx";
       group = "nginx";
     };
+    whcms-db-pass = {
+      file = ../../../secrets/whcms-db-pass.age;
+      owner = "nginx";
+      group = "nginx";
+    };
     wireguard = {
       file = ../../../secrets/wireguard.age;
       owner = "root";

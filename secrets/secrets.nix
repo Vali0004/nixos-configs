@@ -35,6 +35,7 @@ in {
   "sogo-db-password.age".publicKeys = keys;
   "sonarr-api.age".publicKeys = keys;
   "vali-fuckk-lol.age".publicKeys = keys;
+  "whcms-db-pass.age".publicKeys = keys;
   "wireguard.age".publicKeys = keys;
   "wireguard-server.age".publicKeys = ssh_keys ++ [
     router-vps

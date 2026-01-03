@@ -123,6 +123,5 @@ in {
   systemd.services.rtorrent.serviceConfig = {
     SystemCallFilter = "@system-service fchownat";
     LimitNOFILE = 524288;
-    LimitNOFILESoft = 65536;
   };
 }
