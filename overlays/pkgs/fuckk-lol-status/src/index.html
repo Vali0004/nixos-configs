@@ -1,122 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta property="og:title" content="fuckk.lol's status">
   <meta property="og:description" content="Current uptime and system metrics.">
   <meta property="og:image" content="https://fuckk.lol/logo.png">
   <meta property="og:url" content="https://status.fuckk.lol/">
-  <meta charset="utf-8" />
   <title>Status | fuckk.lol</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
-    body {
-      font-family: sans-serif;
-      background-color: #141414;
-      color: #eee;
+    :root{
+      --bg:#141414;
+      --panel:#1b1b1b;
+      --panel2:#171717;
+      --text:#eee;
+      --muted:#9a9a9a;
+      --border:#2d2d2d;
+      --link:#3399ff;
+
+      --good:#3ac057;
+      --down:#d63030;
+      --maint:#d49029;
+
+      --radius:14px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
       margin: 0;
-      padding: 2em;
-      display: flex;
-      justify-content: center;
+      padding: 16px;
+      display:flex;
+      justify-content:center;
     }
-    .container {
-      max-width: 800px;
-      width: 100%;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 1em;
-      color: #b9b9b9;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-    }
-    th, td {
-      padding: 0.75em;
-      border-bottom: 1px solid #333;
-      text-align: left;
-    }
-    th {
-      color: #aaa;
-      font-weight: normal;
-    }
-    .status {
-      font-weight: bold;
-      padding: 0.25em 0.5em;
-      border-radius: 4px;
-    }
-    .good { background: #3ac057; color: #eceaea; }
-    .down { background: #d63030; color: #eceaea; }
-    .maintenance { background: #d49029; color: #eceaea; }
-    a {
-      color: #3399ff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    .footer {
-      margin-top: 2em;
-      font-size: 0.9em;
-      text-align: center;
-      color: #777;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>fuckk.lol</h1>
-    <table id="statusTable">
-      <thead>
-        <tr>
-          <th>Service</th>
-          <th>Status</th>
-          <th>URL</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-    <div class="footer">
-      Updated <span id="lastUpdated">just now</span>
-    </div>
-  </div>
 
-  <script>
-    async function fetchStatus() {
-      const tbody = document.querySelector("#statusTable tbody");
-      try {
-        const res = await fetch("https://status.fuckk.lol/api", { cache: "no-store" });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+    .container{
+      width:100%;
+      max-width: 1100px;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
 
-        const services = data.services || {};
-        tbody.innerHTML = "";
+    header{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    header h1{
+      margin:0;
+      font-size: 20px;
+      letter-spacing: .2px;
+      color:#d7d7d7;
+    }
+    header .sub{
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
 
-        for (const [name, svc] of Object.entries(services)) {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td><code>${name}</code></td>
-            <td><span class="status ${svc.assignedType}">${svc.message}</span></td>
-            <td>${svc.url ? `<a href="${svc.url}" target="_blank">${svc.url}</a>` : "-"}</td>
-          `;
-          tbody.appendChild(tr);
-        }
+    .badgeRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background:#111;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      color:#dcdcdc;
+      white-space:nowrap;
+    }
 
-        document.getElementById("lastUpdated").textContent =
-          new Date().toLocaleTimeString();
-      } catch (err) {
-        console.error("Failed to fetch status:", err);
-        tbody.innerHTML = `
-          <tr><td colspan="3" style="color:#d63030;text-align:center">
-            Failed to fetch status data.
-          </td></tr>`;
+    a{ color: var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    .controls{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      padding: 10px 12px;
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .select, .btn{
+      background:#111;
+      color:#ddd;
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius: 10px;
+      font-size: 12.5px;
+      outline: none;
+    }
+    .btn{ cursor:pointer; }
+    .btn:active{ transform: translateY(1px); }
+    .muted{ color: var(--muted); }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    @media (max-width: 860px){
+      body{ padding: 12px; }
+      header{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      .badgeRow{ justify-content:flex-start; }
+      .grid{ grid-template-columns: 1fr; }
+    }
+
+    .svcCard{
+      background: linear-gradient(180deg, var(--panel), var(--panel2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 12px 10px 12px;
+      min-width:0;
+    }
+
+    .svcTop{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .svcName{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 13px;
+      color:#e9e9e9;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+      max-width: 60%;
+    }
+
+    .svcMeta{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+      text-align:right;
+    }
+
+    .status{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:700;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      line-height:1;
+      white-space:nowrap;
+    }
+    .dot{
+      width:9px; height:9px; border-radius:50%;
+      background: currentColor;
+      box-shadow: 0 0 0 2px rgba(0,0,0,0.25) inset;
+    }
+    .good{ background: color-mix(in oklab, var(--good) 35%, #121212); color: var(--good); }
+    .down{ background: color-mix(in oklab, var(--down) 35%, #121212); color: var(--down); }
+    .maintenance{ background: color-mix(in oklab, var(--maint) 35%, #121212); color: var(--maint); }
+
+    .uptPct{
+      font-size: 12px;
+      color:#d7d7d7;
+      border:1px solid var(--border);
+      background:#111;
+      padding:6px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+
+    .svcUrl{
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    @media (max-width: 860px){
+      .svcUrl{
+        white-space:normal;
+        overflow:visible;
+        text-overflow:clip;
+        overflow-wrap:anywhere;
       }
     }
 
-    fetchStatus();
-    setInterval(fetchStatus, 15000);
-  </script>
+    .miniChartWrap{
+      background:#101010;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow:hidden;
+      padding: 8px;
+    }
+    .miniChart{
+      width:100%;
+      height: 56px;
+      display:block;
+    }
+    .miniLegend{
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    .footer{
+      font-size: 12px;
+      text-align:center;
+      color: var(--muted);
+      padding: 6px 0 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>fuckk.lol</h1>
+        <div class="sub">Status + per-service uptime timeline</div>
+      </div>
+      <div class="badgeRow">
+        <div class="pill">Last updated: <span id="lastUpdated">-</span></div>
+        <div class="pill">Services: <span id="svcCount">-</span></div>
+        <div class="pill">Down: <span id="downCount">-</span></div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <span class="muted" style="font-size:12px">Window:</span>
+      <select id="windowSelect" class="select">
+        <option value="3600">1h</option>
+        <option value="21600">6h</option>
+        <option value="43200">12h</option>
+        <option value="86400" selected>24h</option>
+        <option value="172800">48h</option>
+      </select>
+
+      <button id="refreshNow" class="btn">Refresh</button>
+
+      <span class="muted" style="font-size:12px;margin-left:auto">
+        Polling every <span id="pollSeconds">15</span>s from <code>/?format=json</code> + <code>/history</code>
+      </span>
+    </div>
+
+    <div id="servicesGrid" class="grid"></div>
+
+    <div class="footer">
+      Updated <span id="footerUpdated">-</span>
+    </div>
+  </div>
+
+<script>
+(() => {
+  const ROOT_JSON = "/?format=json";
+  const HISTORY_API = "/history";
+  const POLL_MS = 15000;
+
+  const pollSecondsEl = document.getElementById("pollSeconds");
+  pollSecondsEl.textContent = Math.round(POLL_MS / 1000);
+
+  const lastUpdatedEl = document.getElementById("lastUpdated");
+  const footerUpdatedEl = document.getElementById("footerUpdated");
+  const svcCountEl = document.getElementById("svcCount");
+  const downCountEl = document.getElementById("downCount");
+
+  const windowSelect = document.getElementById("windowSelect");
+  const refreshNowBtn = document.getElementById("refreshNow");
+  const servicesGrid = document.getElementById("servicesGrid");
+
+  const COLORS = {
+    good: getComputedStyle(document.documentElement).getPropertyValue("--good").trim() || "#3ac057",
+    down: getComputedStyle(document.documentElement).getPropertyValue("--down").trim() || "#d63030",
+    maintenance: getComputedStyle(document.documentElement).getPropertyValue("--maint").trim() || "#d49029"
+  };
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+    }[c]));
+  }
+  function escapeAttr(s) { return escapeHtml(s); }
+
+  function makeStatusClass(type) {
+    return (type === "good" || type === "down" || type === "maintenance") ? type : "down";
+  }
+
+  async function fetchRootStatus() {
+    const res = await fetch(`${ROOT_JSON}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
+  async function fetchHistory(windowSeconds) {
+    const url = `${HISTORY_API}?windowSeconds=${encodeURIComponent(windowSeconds)}&limit=5000`;
+    const res = await fetch(url, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  }
+
+  function fmtTime(ts) {
+    return new Date(ts).toLocaleTimeString();
+  }
+
+  // Compute state at window start (since) using currentState + events inside window, by rewinding.
+  function stateAtSince({ since, now, events }, serviceName, currentState) {
+    const evs = (events || [])
+      .filter(e => e.service === serviceName && e.t >= since && e.t <= now)
+      .slice()
+      .sort((a,b) => a.t - b.t);
+
+    // rewind from "now" using events reversed:
+    let state = currentState;
+    for (let i = evs.length - 1; i >= 0; i--) {
+      const ev = evs[i];
+      // event is "from -> to" at time t, so before that event it was "from"
+      state = ev.from;
+    }
+    return state;
+  }
+
+  function buildSegments(history, serviceName, currentState) {
+    const since = history.since;
+    const now = history.now;
+
+    const evs = (history.events || [])
+      .filter(e => e.service === serviceName && e.t >= since && e.t <= now)
+      .slice()
+      .sort((a,b) => a.t - b.t);
+
+    let state = stateAtSince(history, serviceName, currentState);
+    let cur = since;
+    const segs = [];
+
+    for (const ev of evs) {
+      if (ev.t > cur) segs.push({ start: cur, end: ev.t, type: state });
+      state = ev.to;
+      cur = ev.t;
+    }
+    if (cur < now) segs.push({ start: cur, end: now, type: state });
+
+    return { segs, since, now };
+  }
+
+  function drawMiniTimeline(canvas, history, serviceName, currentState) {
+    const ctx = canvas.getContext("2d");
+
+    // Use CSS size but draw crisp on HiDPI
+    const cssW = canvas.clientWidth || 600;
+    const cssH = canvas.clientHeight || 56;
+    const dpr = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.floor(cssW * dpr);
+    canvas.height = Math.floor(cssH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // background
+    ctx.clearRect(0, 0, cssW, cssH);
+    ctx.fillStyle = "#0f0f0f";
+    ctx.fillRect(0, 0, cssW, cssH);
+
+    const pad = 0;
+    const x0 = pad;
+    const y0 = 10;
+    const w = cssW - pad*2;
+    const h = cssH - 20;
+
+    // border
+    ctx.strokeStyle = "#2a2a2a";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x0 + 0.5, y0 + 0.5, w - 1, h - 1);
+
+    const { segs, since, now } = buildSegments(history, serviceName, currentState);
+    const span = Math.max(1, now - since);
+
+    for (const s of segs) {
+      const sx = x0 + ((s.start - since) / span) * w;
+      const ex = x0 + ((s.end - since) / span) * w;
+      const sw = Math.max(1, ex - sx);
+
+      const col = COLORS[s.type] || COLORS.down;
+      ctx.fillStyle = col;
+      ctx.fillRect(sx, y0, sw, h);
+    }
+  }
+
+  function uptimePctText(history, serviceName) {
+    const u = history?.uptime?.[serviceName];
+    if (!u || typeof u.pct !== "number") return "-";
+    return `${u.pct.toFixed(2)}%`;
+  }
+
+  function renderCards(payload, history) {
+    const services = payload.services || {};
+    const names = Object.keys(services);
+
+    svcCountEl.textContent = String(names.length);
+    const downCount = names.filter(n => services[n].assignedType === "down").length;
+    downCountEl.textContent = String(downCount);
+
+    // stable order: alphabetical
+    names.sort((a,b) => a.localeCompare(b));
+
+    servicesGrid.innerHTML = "";
+
+    for (const name of names) {
+      const svc = services[name];
+      const type = makeStatusClass(svc.assignedType || "down");
+      const msg = svc.message || (svc.online ? "online" : "down");
+      const url = svc.url || "";
+
+      const pctText = uptimePctText(history, name);
+
+      const card = document.createElement("div");
+      card.className = "svcCard";
+      card.innerHTML = `
+        <div class="svcTop">
+          <div class="svcName" title="${escapeAttr(name)}">${escapeHtml(name)}</div>
+          <div class="svcMeta">
+            <span class="status ${type}"><span class="dot"></span>${escapeHtml(msg)}</span>
+            <span class="uptPct" title="Window uptime">${escapeHtml(pctText)}</span>
+          </div>
+        </div>
+
+        <div class="svcUrl">
+          ${url ? `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(url)}</a>` : `<span class="muted">-</span>`}
+        </div>
+
+        <div class="miniChartWrap">
+          <canvas class="miniChart" data-service="${escapeAttr(name)}"></canvas>
+          <div class="miniLegend">
+            <span class="muted">${escapeHtml(fmtTime(history.since))}</span>
+            <span class="muted">${escapeHtml(fmtTime(history.now))}</span>
+          </div>
+        </div>
+      `;
+      servicesGrid.appendChild(card);
+    }
+
+    // Draw canvases after they exist
+    const canvases = servicesGrid.querySelectorAll("canvas.miniChart");
+    for (const c of canvases) {
+      const svcName = c.getAttribute("data-service");
+      const currentState = makeStatusClass(services[svcName]?.assignedType || "down");
+      drawMiniTimeline(c, history, svcName, currentState);
+    }
+  }
+
+  async function refreshAll() {
+    const windowSeconds = Number(windowSelect.value || 86400);
+    try {
+      const [payload, history] = await Promise.all([
+        fetchRootStatus(),
+        fetchHistory(windowSeconds),
+      ]);
+
+      const t = new Date();
+      lastUpdatedEl.textContent = t.toLocaleTimeString();
+      footerUpdatedEl.textContent = t.toLocaleString();
+
+      renderCards(payload, history);
+    } catch (err) {
+      console.error("Refresh failed:", err);
+      servicesGrid.innerHTML = `
+        <div class="svcCard" style="grid-column:1/-1;color:#d63030">
+          Failed to fetch status/history.
+        </div>
+      `;
+    }
+  }
+
+  windowSelect.addEventListener("change", refreshAll);
+  refreshNowBtn.addEventListener("click", refreshAll);
+
+  // repaint charts on resize for crispness
+  let resizeTimer = null;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(refreshAll, 150);
+  });
+
+  refreshAll();
+  setInterval(refreshAll, POLL_MS);
+})();
+</script>
 </body>
 </html>
