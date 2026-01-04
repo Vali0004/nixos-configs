@@ -40,53 +40,38 @@ let
   ];
 in {
   services.nginx = {
-    additionalModules = [ pkgs.nginxModules.brotli ];
-    commonHttpConfig = ''
-      # Optimisation
-      sendfile on;
-      tcp_nopush on;
-      tcp_nodelay on;
-      keepalive_timeout 65;
-
-      # Keep in sync with https://ssl-config.mozilla.org/#server=nginx&config=intermediate
-      ssl_ecdh_curve X25519:prime256v1:secp384r1;
-      ssl_session_timeout 1d;
-      ssl_session_cache shared:SSL:10m;
-      # Breaks forward secrecy: https://github.com/mozilla/server-side-tls/issues/135
-      ssl_session_tickets off;
-      # We don't enable insecure ciphers by default, so this allows
-      # clients to pick the most performant, per https://github.com/mozilla/server-side-tls/issues/260
-      ssl_prefer_server_ciphers off;
-
-      # Enable Brotli
-      brotli on;
-      brotli_static on;
-      brotli_comp_level 5;
-      brotli_window 512k;
-      brotli_min_length 256;
-      brotli_types ${lib.concatStringsSep " " compressMimeTypes};
-
-      # Proxy settings
-      proxy_redirect off;
-      proxy_connect_timeout 120s;
-      proxy_send_timeout 120s;
-      proxy_read_timeout 120s;
-      proxy_http_version 1.1;
-      map $http_upgrade $connection_upgrade {
-          default upgrade;
-          ${"''"}      "";
-      }
-    '';
     enable = true;
     enableReload = true;
+    commonHttpConfig = ''
+      # Proxy settings
+      proxy_headers_hash_max_size 512;
+      proxy_headers_hash_bucket_size 64;
 
-    # We handle these ourselves.
-    recommendedBrotliSettings = lib.mkForce false;
-    recommendedGzipSettings = lib.mkForce false;
-    recommendedOptimisation = lib.mkForce false;
-    recommendedProxySettings = lib.mkForce false;
-    recommendedTlsSettings = lib.mkForce false;
-    experimentalZstdSettings = lib.mkForce false;
+      # Setup Real-IP
+      real_ip_header CF-Connecting-IP;
+      set_real_ip_from 173.245.48.0/20;
+      set_real_ip_from 103.21.244.0/22;
+      set_real_ip_from 103.22.200.0/22;
+      set_real_ip_from 103.31.4.0/22;
+      set_real_ip_from 141.101.64.0/18;
+      set_real_ip_from 108.162.192.0/18;
+      set_real_ip_from 190.93.240.0/20;
+      set_real_ip_from 188.114.96.0/20;
+      set_real_ip_from 197.234.240.0/22;
+      set_real_ip_from 198.41.128.0/17;
+      set_real_ip_from 162.158.0.0/15;
+      set_real_ip_from 104.16.0.0/13;
+      set_real_ip_from 104.24.0.0/14;
+      set_real_ip_from 172.64.0.0/13;
+      set_real_ip_from 131.0.72.0/22;
+    '';
+
+    recommendedBrotliSettings = true;
+    recommendedGzipSettings = true;
+    recommendedOptimisation = true;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    experimentalZstdSettings = true;
   };
 
   services.nginx.virtualHosts."fuckk.lol" = {

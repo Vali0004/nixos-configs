@@ -14,6 +14,10 @@
     config = null;
     lovelaceConfig = null;
     configDir = "/var/lib/home-assistant";
+    # Custom integrations
+    customComponents = with pkgs.home-assistant-custom-components; [
+      sensi
+    ];
     # Specify list of components required by your configuration
     extraComponents = [
       # Components required to complete the onboarding

@@ -50,13 +50,13 @@
         "/" = {
           return = "302 /grafana/";
         };
-        "/grafana/" = lib.mkProxy {
-          ip = "shitzen-nixos";
-          port = 3003;
-        };
         "/prometheus/" = lib.mkProxy {
           ip = "shitzen-nixos";
           port = 3400;
+        };
+        "/grafana/" = {
+          proxyPass = "http://10.0.0.6:3003";
+          proxyWebsockets = true;
         };
       };
     };
