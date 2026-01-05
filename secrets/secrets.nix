@@ -6,6 +6,7 @@ let
   shitzen-nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1";
   router-vps = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Fk+n0k2+ZsQMo6VCiVPIW1RErbLcLMcCuHyE+e3Mc";
   router-vps-v2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3adP9Ttlij+oey6tIuWExveeu2+MGJNWv6soaG/JOl";
+  lenovo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEprfi4ob/fNLFZiYtyXgW0hRGPtrBZIZkNFM74vrJu";
   keys = ssh_keys ++ [
     shitzen-nixos
   ];
@@ -20,12 +21,14 @@ in {
   "kavita.age".publicKeys = keys;
   "matrix.age".publicKeys = keys;
   "network-secrets.age".publicKeys = ssh_keys ++ [
+    lenovo
     nixos-amd
     nixos-hass
   ];
   "nextcloud-admin-password.age".publicKeys = keys;
   "nix-netrc.age".publicKeys = keys ++ [
     ajaxnetworks-nixos
+    lenovo
     nixos-amd
   ];
   "oauth2.age".publicKeys = keys;
@@ -42,6 +45,7 @@ in {
     router-vps-v2
   ];
   "zipline-upload-headers.age".publicKeys = ssh_keys ++ [
+    lenovo
     nixos-amd
   ];
   "zipline.age".publicKeys = keys;

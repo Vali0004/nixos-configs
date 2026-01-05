@@ -84,7 +84,6 @@
       # and killing networking?
       # Dumbest thing ever.
       extraConfig = ''
-        nohook resolv.conf
         # Stop dhcpcd from ever requesting vendor class or FQDN
         nooption rapid_commit
         nooption vendorclassid
@@ -94,12 +93,6 @@
       '';
       IPv6rs = true;
     };
-    nameservers = [
-      "10.0.0.10"
-      "75.75.75.75"
-      "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
-      "2001:558:FEED::1"
-    ];
     hostId = "2632ac4c";
     hostName = "lenovo";
     useDHCP = true;
@@ -125,11 +118,7 @@
 
   qt.enable = true;
 
-  security = {
-    # Fucking realtime priority
-    rtkit.enable = lib.mkForce false;
-    sudo.enable = true;
-  };
+  security.sudo.enable = true;
 
   services = {
     flatpak.enable = true;
@@ -187,6 +176,7 @@
     my_keys = import ../../ssh_keys_personal.nix;
   in {
     defaultUserShell = pkgs.zsh;
+    groups.plugdev = {};
     users.root = {
       openssh.authorizedKeys.keys = my_keys;
       useDefaultShell = false;
@@ -212,7 +202,6 @@
       shell = pkgs.zsh;
       useDefaultShell = false;
     };
-    groups.plugdev = {};
   };
 
   xdg.enable = true;
