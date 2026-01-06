@@ -37,6 +37,8 @@
     curl
     # Display Mode Info Decode
     dmidecode
+    # Modern Neofetch
+    fastfetch
     # Version Tracking
     git
     # Internet Utilities
@@ -102,6 +104,9 @@
     # We actually have multiple PHYs, so this is needed.
     usePredictableInterfaceNames = true;
   };
+
+  # Setup auto-tune by default
+  powerManagement.powertop.enable = true;
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";

@@ -55,7 +55,7 @@
           port = 3400;
         };
         "/grafana/" = {
-          proxyPass = "http://10.0.0.6:3003";
+          proxyPass = "http://10.0.0.4:3003";
           proxyWebsockets = true;
         };
       };

@@ -59,7 +59,7 @@
     };
     # Mount the NFS
     "/mnt/data" = {
-      device = "10.0.0.6:/data";
+      device = "10.0.0.4:/data";
       fsType = "nfs";
       options = [ "x-systemd.automount" "noauto" "soft" ];
     };
@@ -115,7 +115,7 @@
     hostName = "nixos-amd";
     interfaces.enp10s0.useDHCP = true;
     nameservers = [
-      "10.0.0.10"
+      "10.0.0.2"
       "75.75.75.75"
       "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
       "2001:558:FEED::1"

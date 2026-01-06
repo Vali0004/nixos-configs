@@ -102,7 +102,7 @@
       };
       nixos-shitclient = {
         deployment = {
-          targetHost = "10.0.0.10";
+          targetHost = "10.0.0.2";
           targetUser = "root";
           targetPort = 22;
         };
@@ -112,7 +112,7 @@
       };
       shitzen-nixos = {
         deployment = {
-          targetHost = "10.0.0.6";
+          targetHost = "10.0.0.4";
           targetUser = "root";
           targetPort = 22;
         };
@@ -126,7 +126,7 @@
       };
       nixos-hass = {
         deployment = {
-          targetHost = "10.0.0.11";
+          targetHost = "10.0.0.3";
           targetUser = "root";
           targetPort = 22;
         };
@@ -136,7 +136,7 @@
       };
       nixos-router = {
         deployment = {
-          targetHost = "10.0.10.1";
+          targetHost = "10.0.0.1";
           targetUser = "root";
           targetPort = 22;
         };

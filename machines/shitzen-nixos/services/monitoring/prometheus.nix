@@ -39,6 +39,7 @@
       })
       (lib.mkPrometheusJob {
         targets = [
+          "nixos-router"
           "nixos-hass"
           "nixos-shitclient"
           "shitzen-nixos"
@@ -58,6 +59,7 @@
       })
       (lib.mkPrometheusJob {
         targets = [
+          "nixos-router"
           "nixos-hass"
           "nixos-shitclient"
           "shitzen-nixos"
@@ -78,6 +80,7 @@
       })
       (lib.mkPrometheusJob {
         targets = [
+          "nixos-router"
           "nixos-hass"
           "nixos-shitclient"
           "shitzen-nixos"

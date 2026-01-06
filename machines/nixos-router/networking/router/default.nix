@@ -27,7 +27,7 @@ in {
 
     lanSubnet = lib.mkOption {
       type = lib.types.str;
-      default = "10.0.10";
+      default = "10.0.0";
       description = "Primary LAN IPv4 subnet";
     };
 
@@ -43,16 +43,16 @@ in {
       description = "Primary DNS server IP";
     };
 
-    dnsPrimaryIPv6 = lib.mkOption {
-      type = lib.types.str;
-      default = "2001:558:FEED::2";
-      description = "PrimaryDNS server IPv6";
-    };
-
     dnsFallbackIP = lib.mkOption {
       type = lib.types.str;
       default = "75.75.75.75";
       description = "Secondary DNS server IP";
+    };
+
+    dnsPrimaryIPv6 = lib.mkOption {
+      type = lib.types.str;
+      default = "2601:406:8100:91d8:8eec:4bff:fe55:b2f1";
+      description = "PrimaryDNS server IPv6";
     };
 
     dnsFallbackIPv6 = lib.mkOption {

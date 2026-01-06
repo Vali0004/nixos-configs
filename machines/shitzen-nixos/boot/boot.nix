@@ -25,10 +25,10 @@
       "netconsole"
     ];
     extraModprobeConfig = ''
-      options netconsole netconsole=6665@10.0.0.6/f0:12:04:60:f8:9f,6666@10.0.0.189/10:ff:e0:35:08:fb
+      options netconsole netconsole=6665@10.0.0.4/f0:12:04:60:f8:9f,6666@10.0.0.189/10:ff:e0:35:08:fb
     '';
     kernelParams = [
-      "netconsole=6665@10.0.0.6/f0:12:04:60:f8:9f,6666@10.0.0.189/10:ff:e0:35:08:fb"
+      "netconsole=6665@10.0.0.4/f0:12:04:60:f8:9f,6666@10.0.0.189/10:ff:e0:35:08:fb"
       "memmap=1M!0x5285f0000"
       "memtest=1"
     ];

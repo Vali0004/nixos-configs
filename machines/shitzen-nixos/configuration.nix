@@ -157,7 +157,6 @@
       # and killing networking?
       # Dumbest thing ever.
       extraConfig = ''
-        nohook resolv.conf
         # Stop dhcpcd from ever requesting vendor class or FQDN
         nooption rapid_commit
         nooption vendorclassid
@@ -191,12 +190,6 @@
       eth0.useDHCP = true;
       enp4s0.useDHCP = false;
     };
-    nameservers = [
-      "8.8.8.8"
-      "1.1.1.1"
-      "2001:4860:4860::8888"
-      "2606:4700:4700::1111"
-    ];
     useDHCP = false;
     usePredictableInterfaceNames = true;
   };

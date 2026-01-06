@@ -5,7 +5,9 @@
 {
   networking.firewall = {
     allowedUDPPorts = [
+      53 # Local DNS Server
       67 # DHCP Server
+      547 # DHCPv6 Server
     ];
     # This may be needed at some point, who knows.
     #trustedInterfaces = [ config.router.wanInterface ];
@@ -38,7 +40,7 @@
         "78:20:51:DA:33:F6,set:decoMeshXE75,${config.router.lanSubnet}.6,decoMeshXE75,infinite"
         "78:20:51:DA:36:2A,set:deco-XE75,${config.router.lanSubnet}.7,deco-XE75,infinite"
         "78:20:51:DA:36:02,set:deco-XE75,${config.router.lanSubnet}.8,deco-XE75,infinite"
-        "78:20:51:DA:36:F5,set:deco-XE75,${config.router.lanSubnet}.9,deco-XE75,infinite"
+        "78:20:51:DA:33:F5,set:deco-XE75,${config.router.lanSubnet}.9,deco-XE75,infinite"
         "E0:D3:62:D1:34:BE,set:deco-XE70Pro,${config.router.lanSubnet}.10,deco-XE70Pro,infinite"
         "C0:35:32:5F:CC:23,set:lenovo,${config.router.lanSubnet}.31,lenovo,infinite"
         "10:FF:E0:35:08:FB,set:nixos-amd,${config.router.lanSubnet}.189,nixos-amd,infinite"
@@ -49,6 +51,11 @@
         "${config.router.lanSubnet}.2,${config.router.lanSubnet}.254,2h"
         "2601:406:8100:91D8::1,2601:406:8100:91D8::ffff,64,2h"
         "::,constructor:${config.router.bridgeInterface},ra-stateless,2h"
+      ];
+
+      dhcp-option = [
+        "option:dns-server,${config.router.dnsPrimaryIP},${config.router.dnsFallbackIP}"
+        "option6:dns-server,[${config.router.dnsPrimaryIPv6}],[${config.router.dnsFallbackIPv6}]"
       ];
 
       enable-ra = true;
