@@ -33,14 +33,14 @@
     "jellyfin.localnet" = {
       forceSSL = false;
       locations."/" = {
-        proxyPass = "http://shitzen-nixos:8096";
+        proxyPass = "http://10.0.0.4:8096";
         proxyWebsockets = true;
       };
     };
     "kvm.localnet" = {
       forceSSL = false;
       locations."/" = {
-        proxyPass = "http://10.0.0.7";
+        proxyPass = "http://10.0.0.5";
         proxyWebsockets = true;
       };
     };

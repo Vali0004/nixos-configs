@@ -103,30 +103,9 @@
   };
 
   networking = {
-    dhcpcd = {
-      # TP-Link is stupid...
-      #
-      # eth0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
-      # eth0: dhcp_envoption 24.0/3: malformed embedded option
-      # eth0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
-      #
-      # Why is my router vomitting malformed DHCPv6 packets,
-      # and killing networking?
-      # Dumbest thing ever.
-      extraConfig = ''
-        nohook resolv.conf
-        # Stop dhcpcd from ever requesting vendor class or FQDN
-        nooption rapid_commit
-        nooption vendorclassid
-        nooption fqdn
-        nooption 24
-        nooption 25
-      '';
-      IPv6rs = true;
-    };
     extraHosts = ''
       10.0.0.4 shitzen.localnet shitzen-nixos
-      10.0.0.7 shitzen-kvm.localnet shitzen-nixos-kvm
+      10.0.0.5 shitzen-kvm.localnet shitzen-nixos-kvm
       10.0.0.2 shitclient.localnet ${config.networking.hostName}
       10.0.0.3 nixos-hass.localnet nixos-hass
       10.0.0.2 hass.localnet ${config.networking.hostName}

@@ -90,36 +90,8 @@
   };
 
   networking = {
-    dhcpcd = {
-      #
-      # TP-Link is stupid...
-      #
-      # enp10s0: adding route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
-      # enp10s0: dhcp_envoption 24.0/3: malformed embedded option
-      # enp10s0: deleting route to fdb5:8d30:9e81:1::/64 via fe80::1691:38ff:fed0:2729
-      #
-      # Why is my router vomitting malformed DHCPv6 packets,
-      # and killing networking?
-      # Dumbest thing ever.
-      extraConfig = ''
-        nohook resolv.conf
-        # Stop dhcpcd from ever requesting vendor class or FQDN
-        nooption rapid_commit
-        nooption vendorclassid
-        nooption fqdn
-        nooption 24
-        nooption 25
-      '';
-      IPv6rs = true;
-    };
     hostName = "nixos-amd";
     interfaces.enp10s0.useDHCP = true;
-    nameservers = [
-      "10.0.0.2"
-      "75.75.75.75"
-      "2601:406:8100:91D8:8EEC:4BFF:FE55:B2F1"
-      "2001:558:FEED::1"
-    ];
     useDHCP = false;
     usePredictableInterfaceNames = true;
   };
