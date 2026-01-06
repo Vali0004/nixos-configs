@@ -1,5 +1,5 @@
 let
-  nixpkgs = builtins.getFlake "github:nixos/nixpkgs/0b4defa2584313f3b781240b29d61f6f9f7e0df3";
+  nixpkgs = builtins.getFlake "github:nixos/nixpkgs/418468ac9527e799809c900eda37cbff999199b6";
 
   sys = nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";

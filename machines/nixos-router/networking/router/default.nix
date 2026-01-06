@@ -27,38 +27,38 @@ in {
 
     lanSubnet = lib.mkOption {
       type = lib.types.str;
-      default = "10.0.0";
+      default = "10.0.10";
       description = "Primary LAN IPv4 subnet";
     };
 
     lanGateway = lib.mkOption {
       type = lib.types.str;
-      default = "10.0.0.1";
+      default = "${cfg.lanSubnet}.1";
       description = "Router's LAN IP address";
     };
 
-    piholePrimaryIP = lib.mkOption {
+    dnsPrimaryIP = lib.mkOption {
       type = lib.types.str;
-      default = "10.0.0.2";
-      description = "Primary Pi-hole DNS server IP";
+      default = "${cfg.lanSubnet}.2";
+      description = "Primary DNS server IP";
     };
 
-    piholePrimaryIPv6 = lib.mkOption {
+    dnsPrimaryIPv6 = lib.mkOption {
       type = lib.types.str;
-      default = "2601:406:8100:91D8::2";
-      description = "Primary Pi-hole DNS server IPv6";
+      default = "2001:558:FEED::2";
+      description = "PrimaryDNS server IPv6";
     };
 
-    piholeFallbackIP = lib.mkOption {
+    dnsFallbackIP = lib.mkOption {
       type = lib.types.str;
-      default = "10.0.0.3";
-      description = "Secondary Pi-hole DNS server IP";
+      default = "75.75.75.75";
+      description = "Secondary DNS server IP";
     };
 
-    piholeFallbackIPv6 = lib.mkOption {
+    dnsFallbackIPv6 = lib.mkOption {
       type = lib.types.str;
-      default = "2601:406:8100:91D8::3";
-      description = "Secondary Pi-hole DNS server IPv6";
+      default = "2001:558:FEED::1";
+      description = "Secondary DNS server IPv6";
     };
   };
 
@@ -74,6 +74,16 @@ in {
             address = cfg.lanGateway;
             prefixLength = 24;
           }];
+          ipv6.addresses = [
+            {
+              address = "2601:406:8100:91D8::";
+              prefixLength = 64;
+            }
+            {
+              address = "fe80::1";
+              prefixLength = 64;
+            }
+          ];
         };
       };
       # Disable global DHCP, as we do it per-interface instead

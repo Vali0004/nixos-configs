@@ -13,14 +13,14 @@
     networking/nat.nix
     networking/sysctl.nix
 
-    #services/pihole.nix
     services/prometheus.nix
   ];
 
   router = {
-    wanInterface = "enp1s0";
+    wanInterface = "enp1s0f0";
     lanInterfaces = [
-      
+      "enp2s0"
+      "enp1s0f1"
     ];
   };
 

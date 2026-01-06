@@ -134,6 +134,16 @@
           machines/nixos-hass/configuration.nix
         ];
       };
+      nixos-router = {
+        deployment = {
+          targetHost = "10.0.10.1";
+          targetUser = "root";
+          targetPort = 22;
+        };
+        imports = coreImports ++ [
+          machines/nixos-router/configuration.nix
+        ];
+      };
     };
 
     nixosConfigurations = {

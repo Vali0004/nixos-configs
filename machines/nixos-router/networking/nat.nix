@@ -1,17 +1,74 @@
 { config
+, pkgs
 , ... }:
 
-{
+let
+  iptables = pkgs.iptables;
+  lanIf = config.router.bridgeInterface;
+  wanIf = config.router.wanInterface;
+  lanCidr = "${config.router.lanSubnet}.0/24";
+  lanV6Cidr = "2601:406:8100:91D8::/64";
+in {
   networking.nat.forwardPorts = [
+    #{
+    #  # ssh
+    #  destination = "${config.router.lanSubnet}.4:22";
+    #  proto = "tcp";
+    #  sourcePort = 22;
+    #}
     {
-      destination = "10.0.0.6:22";
+      # iperf2
+      destination = "${config.router.lanSubnet}.4:5201";
       proto = "tcp";
-      sourcePort = 22;
+      sourcePort = 5201;
     }
     {
-      destination = "10.0.0.7:80";
+      # WireGuard
+      destination = "${config.router.lanSubnet}.4:51820";
+      proto = "udp";
+      sourcePort = 51820;
+    }
+    {
+      # HTTP
+      destination = "${config.router.lanSubnet}.2:80";
       proto = "tcp";
       sourcePort = 80;
     }
+    {
+      # HTTPS
+      destination = "${config.router.lanSubnet}.2:443";
+      proto = "tcp";
+      sourcePort = 443;
+    }
   ];
+
+  networking.firewall = {
+    extraCommands = ''
+      # Allow LAN -> WAN
+      ${iptables}/bin/iptables -C FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || \
+      ${iptables}/bin/iptables -A FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT
+      ${iptables}/bin/ip6tables -C FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || \
+      ${iptables}/bin/ip6tables -A FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT
+
+      # Allow established/related back WAN -> LAN
+      ${iptables}/bin/iptables -C FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
+      ${iptables}/bin/iptables -A FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+      ${iptables}/bin/ip6tables -C FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
+      ${iptables}/bin/ip6tables -A FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+
+      # If for some reason networking.nat doesn't add masquerade, force it:
+      ${iptables}/bin/iptables -t nat -C POSTROUTING -s ${lanCidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || \
+      ${iptables}/bin/iptables -t nat -A POSTROUTING -s ${lanCidr} -o ${wanIf} -j MASQUERADE
+      ${iptables}/bin/ip6tables -t nat -C POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || \
+      ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE
+    '';
+    extraStopCommands = ''
+      ${iptables}/bin/iptables -D FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || true
+      ${iptables}/bin/ip6tables -D FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || true
+      ${iptables}/bin/iptables -D FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
+      ${iptables}/bin/ip6tables -D FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
+      ${iptables}/bin/iptables -t nat -D POSTROUTING -s ${lanCidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || true
+      ${iptables}/bin/ip6tables -t nat -D POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || true
+    '';
+  };
 }
