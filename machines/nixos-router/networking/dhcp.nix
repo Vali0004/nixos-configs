@@ -33,7 +33,7 @@
       ];
 
       dhcp-host = [
-        "8C:EC:4B:55:B2:F1,set:nixos-hass,${config.router.lanSubnet}.2,nixos-shitclient,infinite"
+        "8C:EC:4B:55:B2:F1,set:nixos-shitclient,${config.router.lanSubnet}.2,nixos-shitclient,infinite"
         "6C:2B:59:75:AA:B7,set:nixos-hass,${config.router.lanSubnet}.3,nixos-hass,infinite"
         "F0:12:04:60:F8:9F,set:nixos-shitzen,${config.router.lanSubnet}.4,nixos-shitzen,infinite"
         "48:DA:35:6F:39:D0,set:kvm-39d0,${config.router.lanSubnet}.5,kvm-39d0,infinite"

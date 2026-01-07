@@ -14,6 +14,7 @@
 
       # Setup Real-IP
       real_ip_header CF-Connecting-IP;
+      real_ip_recursive on;
       set_real_ip_from 173.245.48.0/20;
       set_real_ip_from 103.21.244.0/22;
       set_real_ip_from 103.22.200.0/22;

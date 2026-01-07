@@ -65,6 +65,21 @@ in {
   config = {
     networking = {
       bridges.${cfg.bridgeInterface}.interfaces = cfg.lanInterfaces;
+      dhcpcd = {
+        enable = true;
+        IPv6rs = true;
+        allowInterfaces = [
+          cfg.wanInterface
+        ];
+        denyInterfaces = [
+          cfg.bridgeInterface
+        ];
+        extraConfig = ''
+          interface ${cfg.wanInterface}
+            ia_na 1
+            #ia_pd 2 ${cfg.bridgeInterface}/0
+        '';
+      };
       interfaces = {
         # WAN, ISP uses DHCP, and DHCPv6/SLAAC for IP assignment, so enable it.
         ${cfg.wanInterface}.useDHCP = true;
