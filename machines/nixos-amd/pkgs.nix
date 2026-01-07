@@ -134,6 +134,10 @@
     python3
     # Minecraft launcher
     prismlauncher
+    # Qt-based LA/scope/MSO GUI
+    pulseview
+    sigrok-cli
+    sigrok-firmware-fx2lafw
     # proot
     proot
     # VM
