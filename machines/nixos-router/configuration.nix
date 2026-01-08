@@ -37,6 +37,8 @@
     curl
     # Display Mode Info Decode
     dmidecode
+    # Ethernet Tool
+    ethtool
     # Modern Neofetch
     fastfetch
     # Version Tracking
