@@ -162,8 +162,6 @@
     sysstat
     # TCP Dump
     tcpdump
-    # Microsoft Teams
-    teams
     # TMate
     tmate
     # ZIP Archive Undo
