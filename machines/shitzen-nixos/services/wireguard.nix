@@ -53,12 +53,21 @@ in {
       ${iptables}/bin/ip6tables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
     '';
     privateKeyFile = "/root/wireguard-keys/privatekey";
-    peers = [{
-      allowedIPs = [
-        "10.0.10.2/32"
-        "fd10:0::2/128"
-      ];
-      publicKey = "6RNJSvT1tQ5HalACGgciaxJujQz/3claRHKOunBsDX4=";
-    }];
+    peers = [
+      {
+        allowedIPs = [
+          "10.0.10.2/32"
+          "fd10:0::2/128"
+        ];
+        publicKey = "6RNJSvT1tQ5HalACGgciaxJujQz/3claRHKOunBsDX4=";
+      }
+      {
+        allowedIPs = [
+          "10.0.10.3/32"
+          "fd10:0::3/128"
+        ];
+        publicKey = "y/bR//Gd/goJxWWyeH0N1hOBM4lP/k+FLGeibCUBIhY=";
+      }
+    ];
   };
 }

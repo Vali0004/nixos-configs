@@ -35,7 +35,7 @@ let services = {
 };
 
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, "data");
-const EVENTS_PATH = path.join(DATA_DIR, "events.jsonl");
+const EVENTS_PATH = "/var/lib/fuckk-lol/events.jsonl";
 
 // Keep a small in-memory cache for quick reads (still persists to disk)
 const MAX_EVENTS_IN_MEMORY = 20000;
@@ -56,6 +56,7 @@ function appendEvent(ev) {
 
   // on-disk
   try {
+    console.log("Appending to path: " + EVENTS_PATH);
     fs.appendFileSync(EVENTS_PATH, JSON.stringify(ev) + "\n", "utf8");
   } catch (e) {
     console.error("Failed to append event:", e.message);
@@ -64,10 +65,12 @@ function appendEvent(ev) {
 
 function loadEventsFromDisk() {
   ensureDataDir();
-  if (!fs.existsSync(EVENTS_PATH)) return;
+  if (!fs.existsSync(EVENTS_PATH))
+    return;
   try {
     const raw = fs.readFileSync(EVENTS_PATH, "utf8");
-    if (!raw.trim()) return;
+    if (!raw.trim())
+      return;
     const lines = raw.trim().split("\n");
     const parsed = [];
     for (const line of lines.slice(-MAX_EVENTS_IN_MEMORY)) {
@@ -109,8 +112,10 @@ async function checkService(name, svc) {
 
   // If manually forced maintenance, keep it unless you change it via API
   if (svc.type !== "maintenance") {
-    if (!svc.responding) svc.type = "down";
-    if (svc.responding) svc.type = "good";
+    if (!svc.responding)
+      svc.type = "down";
+    if (svc.responding)
+      svc.type = "good";
   }
 
   // Log state-change event
@@ -155,7 +160,8 @@ function computeUptimeForService(serviceName, sinceMs, nowMs) {
 
   for (let i = all.length - 1; i >= 0; i--) {
     const ev = all[i];
-    if (ev.service !== serviceName) continue;
+    if (ev.service !== serviceName)
+      continue;
 
     if (ev.t <= sinceMs) {
       seed = ev; // last change at/before since
@@ -181,15 +187,18 @@ function computeUptimeForService(serviceName, sinceMs, nowMs) {
   for (const ev of relevant) {
     const segEnd = Math.min(ev.t, nowMs);
     if (segEnd > cur) {
-      if (state === "good") upMs += (segEnd - cur);
+      if (state === "good")
+        upMs += (segEnd - cur);
       cur = segEnd;
     }
     state = ev.to;
-    if (cur >= nowMs) break;
+    if (cur >= nowMs)
+      break;
   }
 
   if (cur < nowMs) {
-    if (state === "good") upMs += (nowMs - cur);
+    if (state === "good")
+      upMs += (nowMs - cur);
   }
 
   const totalMs = Math.max(1, nowMs - sinceMs);
@@ -223,11 +232,10 @@ function buildHistoryPayload({ windowSeconds = 86400, limit = 500 } = {}) {
 }
 
 cron.schedule("0 */2 * * * *", async () => {
-  for (const [name, svc] of Object.entries(services)) {
-    await checkService(name, svc);
-  }
+  await Promise.all(
+    Object.entries(services).map(([name, svc]) => checkService(name, svc))
+  );
 });
-
 
 app.get("/api", async (req, res) => {
   const history = req.query.history === "1"

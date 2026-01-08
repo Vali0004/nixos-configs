@@ -116,20 +116,20 @@
     };
   };
 
-  services.nginx.virtualHosts."monitoring.ajaxvpn.org" = {
-    enableACME = true;
-    forceSSL = true;
-    locations = {
-      "/grafana/" = lib.mkProxy {
-        ip = "192.168.100.1";
-        port = 3200;
-      };
-      "/prometheus/" = lib.mkProxy {
-        ip = "192.168.100.1";
-        port = 3201;
-      };
-    };
-  };
+  #services.nginx.virtualHosts."monitoring.ajaxvpn.org" = {
+  #  enableACME = true;
+  #  forceSSL = true;
+  #  locations = {
+  #    "/grafana/" = lib.mkProxy {
+  #      ip = "192.168.100.1";
+  #      port = 3200;
+  #    };
+  #    "/prometheus/" = lib.mkProxy {
+  #      ip = "192.168.100.1";
+  #      port = 3201;
+  #    };
+  #  };
+  #};
 
   systemd.services.nginx.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 }
