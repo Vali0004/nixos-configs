@@ -8,39 +8,49 @@ let
   wanIf = config.router.wanInterface;
   lanCidr = "${config.router.lanSubnet}.0/24";
   lanV6Cidr = "2601:406:8100:91D8::/64";
+  wanIp = "76.112.236.206";
 in {
-  networking.nat.forwardPorts = [
-    #{
-    #  # ssh
-    #  destination = "${config.router.lanSubnet}.4:22";
-    #  proto = "tcp";
-    #  sourcePort = 22;
-    #}
-    {
-      # iperf2
-      destination = "${config.router.lanSubnet}.4:5201";
-      proto = "tcp";
-      sourcePort = 5201;
-    }
-    {
-      # WireGuard
-      destination = "${config.router.lanSubnet}.4:51820";
-      proto = "udp";
-      sourcePort = 51820;
-    }
-    {
-      # HTTP
-      destination = "${config.router.lanSubnet}.2:80";
-      proto = "tcp";
-      sourcePort = 80;
-    }
-    {
-      # HTTPS
-      destination = "${config.router.lanSubnet}.2:443";
-      proto = "tcp";
-      sourcePort = 443;
-    }
-  ];
+  networking.nat = {
+    enable = true;
+    externalInterface = wanIf;
+    internalInterfaces = [ lanIf ];
+    forwardPorts = [
+      {
+        # ssh
+        destination = "${config.router.lanSubnet}.4:22";
+        proto = "tcp";
+        sourcePort = 2222;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # iperf2
+        destination = "${config.router.lanSubnet}.4:5201";
+        proto = "tcp";
+        sourcePort = 5201;
+      }
+      {
+        # WireGuard
+        destination = "${config.router.lanSubnet}.4:51820";
+        proto = "udp";
+        sourcePort = 51820;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # HTTP
+        destination = "${config.router.lanSubnet}.2:80";
+        proto = "tcp";
+        sourcePort = 80;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # HTTPS
+        destination = "${config.router.lanSubnet}.2:443";
+        proto = "tcp";
+        sourcePort = 443;
+        loopbackIPs = [ wanIp ];
+      }
+    ];
+  };
 
   networking.firewall = {
     extraCommands = ''
@@ -63,12 +73,14 @@ in {
       ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE
     '';
     extraStopCommands = ''
-      ${iptables}/bin/iptables -D FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || true
-      ${iptables}/bin/ip6tables -D FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || true
-      ${iptables}/bin/iptables -D FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
-      ${iptables}/bin/ip6tables -D FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
       ${iptables}/bin/iptables -t nat -D POSTROUTING -s ${lanCidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || true
       ${iptables}/bin/ip6tables -t nat -D POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || true
+
+      ${iptables}/bin/iptables -D FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || true
+      ${iptables}/bin/ip6tables -D FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || true
+
+      ${iptables}/bin/iptables -D FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
+      ${iptables}/bin/ip6tables -D FORWARD -i ${wanIf} -o ${lanIf} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
     '';
   };
 }

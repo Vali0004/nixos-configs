@@ -104,11 +104,5 @@ in {
       # Disable global DHCP, as we do it per-interface instead
       useDHCP = false;
     };
-
-    networking.nat = {
-      enable = true;
-      externalInterface = cfg.wanInterface;
-      internalInterfaces = [ cfg.bridgeInterface ];
-    };
   };
 }
