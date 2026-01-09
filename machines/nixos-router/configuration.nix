@@ -35,6 +35,8 @@
     conntrack-tools
     # cURL
     curl
+    # CPU Power Management
+    linuxKernel.packages.linux_6_12.cpupower
     # Display Mode Info Decode
     dmidecode
     # Ethernet Tool

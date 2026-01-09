@@ -78,8 +78,8 @@ let
       # Build fullchain atomically
       tmp="$(mktemp)"
       cat "$leaf_cert" "$CA_DIR/localnet-rootCA.crt" > "$tmp"
-      if [ ! -f "$fullchain" ] || ! cmp -s "$tmp" "$fullchain"; then
-        install -m 0644 "$tmp" "$fullchain"
+      if [ ! -f "$fullchain" ] || ! ${pkgs.coreutils}/bin/cmp -s "$tmp" "$fullchain"; then
+        ${pkgs.coreutils}/bin/install -m 0644 "$tmp" "$fullchain"
         changed=1
       fi
       rm -f "$tmp"

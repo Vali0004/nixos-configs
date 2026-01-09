@@ -132,9 +132,6 @@
     usePredictableInterfaceNames = false;
   };
 
-  # Setup auto-tune by default
-  powerManagement.powertop.enable = true;
-
   programs.zsh.enable = true;
 
   swapDevices = [{

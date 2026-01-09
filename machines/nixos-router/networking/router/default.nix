@@ -40,6 +40,7 @@ in {
     dnsPrimaryIP = lib.mkOption {
       type = lib.types.str;
       default = "${cfg.lanSubnet}.2";
+      #default = "1.1.1.1";
       description = "Primary DNS server IP";
     };
 
@@ -52,12 +53,14 @@ in {
     dnsPrimaryIPv6 = lib.mkOption {
       type = lib.types.str;
       default = "2601:406:8100:91d8:8eec:4bff:fe55:b2f1";
+      #default = "2001:558:FEED::1";
       description = "PrimaryDNS server IPv6";
     };
 
     dnsFallbackIPv6 = lib.mkOption {
       type = lib.types.str;
       default = "2001:558:FEED::1";
+      #default = "2001:558:FEED::2";
       description = "Secondary DNS server IPv6";
     };
   };
