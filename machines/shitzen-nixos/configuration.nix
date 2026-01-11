@@ -187,11 +187,9 @@
     hostId = "0626c0ac";
     hostName = "shitzen-nixos";
     interfaces = {
-      eth0.useDHCP = true;
-      enp4s0.useDHCP = false;
+      enp3s0.useDHCP = true;
     };
     useDHCP = false;
-    usePredictableInterfaceNames = true;
   };
 
   nix.settings.keep-derivations = true;

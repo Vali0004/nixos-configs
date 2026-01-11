@@ -36,6 +36,13 @@ in {
         loopbackIPs = [ wanIp ];
       }
       {
+        # WireGuard Internal
+        destination = "${config.router.lanSubnet}.4:51821";
+        proto = "udp";
+        sourcePort = 51821;
+        loopbackIPs = [ wanIp ];
+      }
+      {
         # HTTP
         destination = "${config.router.lanSubnet}.2:80";
         proto = "tcp";
