@@ -28,15 +28,16 @@ in {
       "fd00:127::1/64"
     ];
     listenPort = 51820;
+    mtu = 1420;
     postSetup = ''
       ${iptables}/bin/iptables -t nat -A POSTROUTING -s 10.127.0.0/24 -o eth0 -j MASQUERADE
       ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s fd00:127::/64 -o eth0 -j MASQUERADE
 
       for x in 25 80 143 465 587 993 995 3700 4100 6697 8080; do
         ${iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport ''${x} -j DNAT --to-destination 10.127.0.3:''${x} || true
-        ${iptables}/bin/ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport ''${x} -j DNAT --to-destination fd00:127::3:''${x} || true
+        ${iptables}/bin/ip6tables -t nat -A PREROUTING -i eth0 -p tcp --dport ''${x} -j DNAT --to-destination fd00:127::3:''${x} || true
       done
-      for x in 37000 4101 6990; do
+      for x in 3700 4101 6990; do
         ${iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p udp --dport ''${x} -j DNAT --to-destination 10.127.0.3:''${x} || true
         ${iptables}/bin/ip6tables -t nat -A PREROUTING -i eth0 -p udp --dport ''${x} -j DNAT --to-destination fd00:127::3:''${x} || true
       done
@@ -61,7 +62,7 @@ in {
         ${iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport ''${x} -j DNAT --to-destination 10.127.0.3:''${x} || true
         ${iptables}/bin/ip6tables -t nat -D PREROUTING -i eth0 -p tcp --dport ''${x} -j DNAT --to-destination 10.127.0.3:''${x} || true
       done
-      for x in 37000 4101 6990; do
+      for x in 3700 4101 6990; do
         ${iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p udp --dport ''${x} -j DNAT --to-destination 10.127.0.3:''${x} || true
         ${iptables}/bin/ip6tables -t nat -D PREROUTING -i eth0 -p udp --dport ''${x} -j DNAT --to-destination fd00:127::3:''${x} || true
       done

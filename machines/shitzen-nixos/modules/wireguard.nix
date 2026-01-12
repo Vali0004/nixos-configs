@@ -8,6 +8,8 @@ let
   vethNSIP6 = "fd00:100::2";
   vethName = "veth0"; # host side
   hostIF = "eth0";
+  vpsIP = "74.208.44.130";
+  vpsIPv6 = "2607:f1c0:f088:e200::1";
 
   mkForward = port: target: {
     wantedBy = [ "multi-user.target" ];
@@ -37,8 +39,9 @@ in {
       allowPing = true;
       allowedUDPPorts = [ 51820 ];
       checkReversePath = false;
-      interfaces.veth0 = {
+      interfaces.${vethName} = {
         allowedTCPPortRanges = [{ from = 0; to = 65535; }];
+        allowedUDPPortRanges = [{ from = 0; to = 65535; }];
       };
     };
   };
@@ -66,8 +69,8 @@ in {
       ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip -6 route add default via ${vethHostIP6} || true
 
       # Allow the netns to access itself
-      ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip route add 74.208.44.130 via ${vethHostIP4} dev veth1
-      ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip -6 route add 2607:f1c0:f088:e200::1 via ${vethHostIP6} dev veth1
+      ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip route add ${vpsIP} via ${vethHostIP4} dev veth1
+      ${pkgs.iproute2}/bin/ip netns exec ${netnsName} ${pkgs.iproute2}/bin/ip -6 route add ${vpsIPv6} via ${vethHostIP6} dev veth1
 
       # NAT for IPv4
       ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s ${vethNSIP4}/24 -o ${hostIF} -j MASQUERADE
@@ -100,11 +103,11 @@ in {
       "10.127.0.3/24"
     ];
     listenPort = 51820;
-    mtu = 1380;
+    mtu = 1420;
     privateKeyFile = config.age.secrets.wireguard.path;
     peers = [{
       allowedIPs = [ "0.0.0.0/0" "::/0" ];
-      endpoint = "74.208.44.130:51820";
+      endpoint = "[2607:f1c0:f088:e200::1]:51820";
       persistentKeepalive = 25;
       publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";
     }];

@@ -30,9 +30,9 @@ in {
       }
       {
         # WireGuard
-        destination = "${config.router.lanSubnet}.4:51820";
+        destination = "${config.router.lanSubnet}.4:443";
         proto = "udp";
-        sourcePort = 51820;
+        sourcePort = 443;
         loopbackIPs = [ wanIp ];
       }
       {

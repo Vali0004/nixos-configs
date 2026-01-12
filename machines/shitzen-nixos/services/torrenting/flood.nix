@@ -1,5 +1,4 @@
 { config
-, pkgs
 , lib
 , ... }:
 
@@ -25,7 +24,7 @@
 
   systemd.services.flood.serviceConfig = {
     Environment = "HOME=/var/lib/flood";
-    Group = "rtorrent";
+    Group = config.services.rtorrent.group;
     ReadWritePaths = [
       "/var/lib/flood"
       "/data/private/Media"
@@ -34,6 +33,6 @@
     SupplementaryGroups = [
       config.services.rtorrent.group
     ];
-    User = "rtorrent";
+    User = config.services.rtorrent.user;
   };
 }

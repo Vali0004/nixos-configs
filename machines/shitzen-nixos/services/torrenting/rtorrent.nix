@@ -7,7 +7,10 @@ let
   dht-port = 6990;
   peer-port = 3700;
 in {
-  networking.firewall.allowedUDPPorts = [ dht-port ];
+  networking.firewall.allowedUDPPorts = [
+    dht-port
+    peer-port
+  ];
 
   services.rtorrent = {
     configText = lib.mkForce ''

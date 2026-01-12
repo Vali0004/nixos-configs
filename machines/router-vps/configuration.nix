@@ -73,6 +73,7 @@
         995 # SPOP3
         3700 # Peer port
         4100 # MC Server
+        5201 # iperf3
         6667 # IRC
         6697 # IRCS
         8080 # TOR
@@ -82,6 +83,7 @@
       allowedUDPPorts = [
         3700 # Peer port
         4101 # MC Server
+        5201 # iperf3
         6990 # DHT
       ];
     };

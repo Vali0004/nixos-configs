@@ -6,16 +6,26 @@ let
   mountd-port = 4002;
   kdc-port = 88;
   kdc-secondary-port = 750;
+  kdc-passwd = 464;
+  kdc-admin = 749;
 in {
-  networking.firewall.allowedTCPPorts = [
-    111 # NFS Portmapper
-    2049 # NFS Traffic
-    statd-port
-    lockd-port
-    mountd-port
-    kdc-port
-    kdc-secondary-port
-  ];
+  networking.firewall = {
+    allowedTCPPorts = [
+      111 # NFS Portmapper
+      2049 # NFS Traffic
+      statd-port
+      lockd-port
+      mountd-port
+      kdc-port
+      kdc-secondary-port
+      kdc-passwd
+    ];
+    allowedUDPPorts = [
+      2049 # NFS Traffic
+      kdc-port
+      kdc-secondary-port
+    ];
+  };
 
   services.nfs.server = {
     enable = true;
@@ -23,7 +33,7 @@ in {
     lockdPort = lockd-port;
     mountdPort = mountd-port;
     exports = ''
-      /data lenovo(rw,async,no_subtree_check) nixos-amd(rw,async,no_subtree_check) cleverca22(rw,sync,no_subtree_check,sec=krb5p)
+      /data 10.0.0.0/24(rw,async,no_subtree_check,sec=sys) cleverca22(rw,sync,no_subtree_check,sec=krb5p)
     '';
   };
 

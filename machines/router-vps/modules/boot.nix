@@ -18,7 +18,22 @@
     "net.ipv4.tcp_syncookies" = true;
     "net.ipv6.conf.all.forwarding" = true;
     "net.netfilter.nf_conntrack_max" = 25594;
+    "kernel.hung_task_panic" = 1;
+    "kernel.panic" = 30;
   };
+
+  boot.blacklistedKernelModules = [
+    "virtio_gpu"
+    "qxl"
+  ];
+
+  boot.kernelParams = [
+    "modprobe.blacklist=virtio_gpu"
+    "modprobe.blacklist=qxl"
+    "console=ttyS0,115200n8"
+    "console=tty0"
+    "fbcon=map:off"
+  ];
 
   boot.grub = {
     enable = true;

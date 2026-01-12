@@ -22,6 +22,35 @@
         port = 8123;
       };
     };
+    "internal.fuckk.lol" = {
+      enableACME = true;
+      forceSSL = true;
+      locations = {
+        "/private/" = {
+          alias = "/mnt/data/private/Media/";
+          index = "index.htm";
+          extraConfig = ''
+            return 404;
+          '';
+        };
+        "/private/anime/" = {
+          alias = "/mnt/data/private/Media/Anime/";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
+        "/private/movies/" = {
+          alias = "/mnt/data/private/Media/Movies";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
+      };
+    };
     "hass.fuckk.lol" = {
       enableACME = true;
       forceSSL = true;
