@@ -90,16 +90,6 @@
           machines/router-vps/configuration.nix
         ];
       };
-      router-vps-v2 = {
-        deployment = {
-          targetHost = "23.143.108.18";
-          targetUser = "root";
-          targetPort = 22;
-        };
-        imports = coreImports ++ [
-          machines/router-vps-v2/configuration.nix
-        ];
-      };
       nixos-shitclient = {
         deployment = {
           targetHost = "10.0.0.2";

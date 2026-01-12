@@ -7,7 +7,6 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
-    ajax-container/module.nix
 
     boot/boot.nix
 

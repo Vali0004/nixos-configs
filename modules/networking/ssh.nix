@@ -11,32 +11,6 @@
   programs.ssh.extraConfig = ''
     Host 10.0.0.*
       IPQoS none
-      Ciphers aes128-gcm@openssh.com
-      KexAlgorithms curve25519-sha256
-      Compression no
-      TCPKeepAlive yes
-      ControlMaster auto
-      ControlPath ~/.ssh/control-%r@%h:%p
-      ControlPersist 10m
-
-    Host router
-      Hostname router-vps
-      User root
-      IPQoS none
-      Ciphers aes128-gcm@openssh.com
-      KexAlgorithms curve25519-sha256
-      Compression no
-      TCPKeepAlive yes
-      ControlMaster auto
-      ControlPath ~/.ssh/control-%r@%h:%p
-      ControlPersist 10m
-
-    Host shitzen-nixos
-      Hostname shitzen-nixos
-      User root
-      IPQoS none
-      Ciphers aes128-gcm@openssh.com
-      KexAlgorithms curve25519-sha256
       Compression no
       TCPKeepAlive yes
       ControlMaster auto
@@ -47,12 +21,60 @@
       Hostname chromeshit
       User root
 
+    Host nixos-hass
+      Hostname nixos-hass
+      User root
+      IPQoS none
+      Compression no
+      TCPKeepAlive yes
+      ControlMaster auto
+      ControlPath ~/.ssh/control-%r@%h:%p
+      ControlPersist 10m
+
+    Host nixos-router
+      Hostname nixos-router
+      User root
+      IPQoS none
+      Compression no
+      TCPKeepAlive yes
+      ControlMaster auto
+      ControlPath ~/.ssh/control-%r@%h:%p
+      ControlPersist 10m
+
+    Host nixos-shitclient
+      Hostname nixos-shitclient
+      User root
+      IPQoS none
+      Compression no
+      TCPKeepAlive yes
+      ControlMaster auto
+      ControlPath ~/.ssh/control-%r@%h:%p
+      ControlPersist 10m
+
+    Host shitzen-nixos
+      Hostname shitzen-nixos
+      User root
+      IPQoS none
+      Compression no
+      TCPKeepAlive yes
+      ControlMaster auto
+      ControlPath ~/.ssh/control-%r@%h:%p
+      ControlPersist 10m
+
+    Host router-vps
+      Hostname router-vps
+      User root
+      IPQoS none
+      Compression no
+      TCPKeepAlive yes
+      ControlMaster auto
+      ControlPath ~/.ssh/control-%r@%h:%p
+      ControlPersist 10m
+
     Host lenovo
       Hostname lenovo
       User root
       IPQoS none
-      Ciphers aes128-gcm@openssh.com
-      KexAlgorithms curve25519-sha256
       Compression no
       TCPKeepAlive yes
       ControlMaster auto

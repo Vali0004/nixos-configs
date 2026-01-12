@@ -42,20 +42,19 @@ in {
 
       # Peer settings
       throttle.max_uploads.set = 100
-      throttle.max_uploads.global.set = 250
 
       throttle.min_peers.normal.set = 20
-      throttle.max_peers.normal.set = 60
+      throttle.max_peers.normal.set = 150
       throttle.min_peers.seed.set = -1
       throttle.max_peers.seed.set = -1
-      trackers.numwant.set = 60
+      trackers.numwant.set = 150
 
       # Verify hash on completion
       pieces.hash.on_completion.set = yes
 
-      # Ratelimit to 10MiB/s on down, 1MiB/s on up
-      throttle.global_down.max_rate.set_kb = 10240
-      throttle.global_up.max_rate.set_kb = 1024
+      # Ratelimit to 15MiB/s on down, 8MiB/s on up
+      throttle.global_down.max_rate.set_kb = 15360
+      throttle.global_up.max_rate.set_kb = 8192
 
       protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
@@ -68,8 +67,8 @@ in {
 
       # Memory resource usage (increase if you have a large number of items loaded,
       # and/or the available resources to spend)
-      pieces.memory.max.set = 1800M
-      network.xmlrpc.size_limit.set = 4M
+      pieces.memory.max.set = 3600M
+      network.xmlrpc.size_limit.set = 8M
 
       # Basic operational settings (no need to change these)
       session.path.set = (cat, (cfg.basedir), "session/")

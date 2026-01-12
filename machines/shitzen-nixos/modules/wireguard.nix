@@ -46,6 +46,14 @@ in {
     };
   };
 
+  environment.etc."netns-resolv.conf".text = ''
+    nameserver 1.1.1.1
+    nameserver 8.8.8.8
+    nameserver 2001:4860:4860::8888
+    nameserver 2606:4700:4700::1111
+    options edns0
+  '';
+
   systemd.services."veth@${netnsName}" = {
     description = "veth pair for ${netnsName}";
     wantedBy = [ "network.target" ];

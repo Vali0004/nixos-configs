@@ -6,6 +6,7 @@ self: super: {
         "/run/nscd"
         "/run/resolvconf"
       ];
+      BindReadOnlyPaths = [ "/etc/netns-resolv.conf:/etc/resolv.conf" ];
     };
   };
 }

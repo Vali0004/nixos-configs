@@ -98,6 +98,15 @@
     };
   };
 
+  services.nginx.virtualHosts."furryfemboy.ca" = {
+    enableACME = true;
+    forceSSL = true;
+    root = "/data/services/web/furryfemboy/";
+    locations."/" = {
+      index = "index.html";
+    };
+  };
+
   services.nginx.virtualHosts."valis.furryporn.ca" = {
     enableACME = true;
     forceSSL = true;
@@ -115,21 +124,6 @@
       index = "index.html";
     };
   };
-
-  #services.nginx.virtualHosts."monitoring.ajaxvpn.org" = {
-  #  enableACME = true;
-  #  forceSSL = true;
-  #  locations = {
-  #    "/grafana/" = lib.mkProxy {
-  #      ip = "192.168.100.1";
-  #      port = 3200;
-  #    };
-  #    "/prometheus/" = lib.mkProxy {
-  #      ip = "192.168.100.1";
-  #      port = 3201;
-  #    };
-  #  };
-  #};
 
   systemd.services.nginx.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 }
