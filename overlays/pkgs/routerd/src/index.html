@@ -1,0 +1,579 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Router UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Firefox */
+      .thin-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,.55) transparent;
+      }
+
+      /* Chromium/WebKit */
+      .thin-scroll::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      .thin-scroll::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .thin-scroll::-webkit-scrollbar-thumb {
+        background-color: rgba(255,255,255,.55);
+        border-radius: 9999px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+      .thin-scroll::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255,255,255,.75);
+      }
+      .thin-scroll::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+
+      .scroll-hint {
+        position: relative;
+      }
+      .scroll-hint::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0 0;
+        height: 24px;
+        pointer-events: none;
+        background: linear-gradient(to bottom, rgba(9,9,11,0), rgba(9,9,11,0.85));
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+      }
+
+      /* only show hint on coarse pointers (phones/tablets) */
+      @media (pointer: coarse) {
+        .scroll-hint::after { display: block; }
+      }
+      @media (pointer: fine) {
+        .scroll-hint::after { display: none; }
+      }
+    </style>
+  </head>
+  <body class="bg-zinc-950 text-zinc-100">
+    <div class="max-w-6xl mx-auto p-4 space-y-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-semibold">nixos-router</h1>
+        <div class="text-xs text-zinc-400">localhost API • <span id="lastUpdate">…</span></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <div class="text-sm text-zinc-400 mb-2">Summary</div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="rounded-xl bg-zinc-950/40 p-3">
+              <div class="text-xs text-zinc-500">Uptime</div>
+              <div class="font-mono text-lg" id="uptime">…</div>
+            </div>
+            <div class="rounded-xl bg-zinc-950/40 p-3">
+              <div class="text-xs text-zinc-500">Conntrack</div>
+              <div class="font-mono text-lg" id="ct">…</div>
+            </div>
+            <div class="rounded-xl bg-zinc-950/40 p-3">
+              <div class="text-xs text-zinc-500">DHCP Leases</div>
+              <div class="font-mono text-lg" id="leases">…</div>
+            </div>
+            <div class="rounded-xl bg-zinc-950/40 p-3">
+              <div class="text-xs text-zinc-500">dnsmasq</div>
+              <div class="font-mono text-lg" id="dnsmasq">…</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3 mb-2">
+            <div>
+              <div class="text-sm text-zinc-400">Systemd</div>
+              <div class="text-xs text-zinc-500">systemd controls</div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button
+                id="refreshUnits"
+                class="rounded-xl border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm hover:bg-zinc-900"
+              >
+                Refresh
+              </button>
+              <input
+                id="secret"
+                type="password"
+                placeholder="x-status-secret"
+                class="w-56 rounded-xl bg-zinc-950/40 border border-zinc-800 px-3 py-2 text-sm font-mono"
+              />
+            </div>
+          </div>
+          <div id="units" class="space-y-2"></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+          <div>
+            <div class="text-sm text-zinc-400">DHCP Leases</div>
+            <div class="text-xs text-zinc-500">
+              Live lease table from <span class="font-mono">dnsmasq.leases</span>, including DHCPv4 and DHCPv6.
+            </div>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 sm:items-center">
+            <input
+              id="leaseSearch"
+              placeholder="search ip / mac / hostname / state"
+              class="w-full sm:w-96 rounded-xl bg-zinc-950/40 border border-zinc-800 px-3 py-2 text-sm"
+            />
+            <button
+              id="refreshLeases"
+              class="w-full sm:w-auto rounded-xl border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm hover:bg-zinc-900"
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+
+        <div id="leaseCards"
+            class="mt-3 grid grid-cols-1 gap-2 md:hidden max-h-[28rem] overflow-auto rounded-2xl border border-zinc-800 thin-scroll p-2 bg-zinc-950/10">
+          <div class="p-2 text-zinc-400 text-sm">Loading…</div>
+        </div>
+
+        <div class="mt-3 overflow-auto max-h-[28rem] rounded-2xl border border-zinc-800 thin-scroll hidden md:block">
+          <table class="w-full text-sm">
+            <thead class="bg-zinc-950/40 text-zinc-300 sticky top-0">
+              <tr>
+                <th class="text-left p-2">IP</th>
+                <th class="text-left p-2">Host</th>
+                <th class="text-left p-2">ID</th>
+                <th class="text-left p-2">Online</th>
+                <th class="text-left p-2">Expiry</th>
+              </tr>
+            </thead>
+            <tbody id="leaseTbody" class="bg-zinc-900/20">
+              <tr><td class="p-2 text-zinc-400" colspan="5">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-4">
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+          <div>
+            <div class="text-sm text-zinc-400">Important logs (journalctl)</div>
+            <div class="text-xs text-zinc-500">Default priority: warning. Use "err" for pain.</div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <select id="logUnit" class="rounded-xl bg-zinc-950/40 border border-zinc-800 px-3 py-2 text-sm">
+              <option value="">(system)</option>
+            </select>
+            <select id="logPri" class="rounded-xl bg-zinc-950/40 border border-zinc-800 px-3 py-2 text-sm">
+              <option value="warning">warning</option>
+              <option value="err">err</option>
+              <option value="crit">crit</option>
+              <option value="alert">alert</option>
+              <option value="emerg">emerg</option>
+              <option value="info">info</option>
+            </select>
+            <input
+              id="logSince"
+              placeholder="since (e.g. 1 hour ago)"
+              class="w-56 rounded-xl bg-zinc-950/40 border border-zinc-800 px-3 py-2 text-sm"
+            />
+            <input
+              id="logLines"
+              type="number"
+              value="250"
+              min="1"
+              max="2000"
+              class="w-28 rounded-xl bg-zinc-950/40 border border-zinc-800 px-3 py-2 text-sm font-mono"
+            />
+            <button
+              id="refreshLogs"
+              class="rounded-xl border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm hover:bg-zinc-900"
+            >
+              Refresh logs
+            </button>
+          </div>
+        </div>
+
+        <pre
+          id="logBox"
+          class="mt-3 rounded-2xl bg-black/40 border border-zinc-800 p-3 text-xs overflow-auto max-h-[28rem] whitespace-pre-wrap thin-scroll scroll-hint"
+        ></pre>
+      </div>
+
+      <div id="toast" class="fixed bottom-4 right-4 hidden rounded-2xl border border-zinc-800 bg-zinc-950/90 px-4 py-3 text-sm"></div>
+    </div>
+
+    <script>
+      function toast(msg) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.classList.remove("hidden");
+        clearTimeout(el._t);
+        el._t = setTimeout(() => el.classList.add("hidden"), 2500);
+      }
+
+      async function jget(url) {
+        const r = await fetch(url);
+        if (!r.ok)
+          throw new Error(`GET ${url} -> ${r.status}`);
+        return r.json();
+      }
+
+      async function jpost(url, body) {
+        const secret = document.getElementById("secret").value || "";
+        const r = await fetch(url, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "x-status-secret": secret,
+          },
+          body: JSON.stringify(body || {}),
+        });
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok)
+          throw new Error(data.error || `${url} -> ${r.status}`);
+        return data;
+      }
+
+      function fmtPct(x) {
+        return x == null ? "—" : `${x.toFixed(1)}%`;
+      }
+
+      function esc(s) {
+        return String(s ?? "").replace(/[&<>"']/g, c => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;",
+        })[c]);
+      }
+
+      function stripJournalPrefix(text) {
+        // - short-iso: 2026-01-13T07:14:12-05:00 host unit[pid]:
+        // - short:     Jan 13 08:12:59 host unit[pid]:
+        const iso = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})\s+\S+\s+\S+(?:\[\d+\])?:\s?/;
+        const short = /^[A-Z][a-z]{2}\s+\d{1,2}\s+\d{2}:\d{2}:\d{2}\s+\S+\s+\S+(?:\[\d+\])?:\s?/;
+        return text
+          .split("\n")
+          .map(line => line.replace(iso, "").replace(short, ""))
+          .join("\n");
+      }
+
+      async function refreshSummary() {
+        const data = await jget("/api/router");
+        document.getElementById("lastUpdate").textContent = new Date(data.t).toLocaleString();
+
+        const rt = data.router;
+        if (!rt) return;
+
+        document.getElementById("uptime").textContent = rt.uptime?.pretty || "—";
+        const ct = rt.conntrack || {};
+        document.getElementById("ct").textContent = `${ct.count ?? "—"} / ${ct.max ?? "—"} (${fmtPct(ct.pct)})`;
+
+        const dns = rt.dnsmasq || {};
+        document.getElementById("dnsmasq").textContent = dns.active ? "active" : "down";
+        document.getElementById("leases").textContent = dns.leaseCount ?? "—";
+      }
+
+      function unitRow(unit, st) {
+        const active = st?.active;
+        const badge = active
+          ? `<span class="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-800">active</span>`
+          : `<span class="text-xs px-2 py-1 rounded-full bg-red-500/15 text-red-300 border border-red-800">down</span>`;
+
+        return `
+          <div class="rounded-2xl border border-zinc-800 bg-zinc-950/30 p-3 flex items-center justify-between gap-3">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <div class="font-mono text-sm truncate">${esc(unit)}</div>
+                ${badge}
+              </div>
+              ${st?.error ? `<div class="text-xs text-red-300 mt-1">${esc(st.error)}</div>` : ""}
+            </div>
+            <div class="flex gap-2 shrink-0">
+              <button data-unit="${esc(unit)}" data-action="restart"
+                class="rounded-xl border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm hover:bg-zinc-900">restart</button>
+              <button data-unit="${esc(unit)}" data-action="stop"
+                class="rounded-xl border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm hover:bg-zinc-900">stop</button>
+              <button data-unit="${esc(unit)}" data-action="start"
+                class="rounded-xl border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm hover:bg-zinc-900">start</button>
+            </div>
+          </div>`;
+      }
+
+      async function refreshUnits() {
+        const data = await jget("/api/systemd/units");
+        const unitsEl = document.getElementById("units");
+        const units = data.units || {};
+        unitsEl.innerHTML = Object.entries(units)
+          .map(([u, st]) => unitRow(u, st))
+          .join("");
+
+        const sel = document.getElementById("logUnit");
+        const existing = new Set([...sel.options].map(o => o.value));
+        for (const u of Object.keys(units)) {
+          if (existing.has(u)) continue;
+          const opt = document.createElement("option");
+          opt.value = u;
+          opt.textContent = u;
+          sel.appendChild(opt);
+        }
+
+        unitsEl.querySelectorAll("button[data-action]").forEach(btn => {
+          btn.addEventListener("click", async () => {
+            const unit = btn.getAttribute("data-unit");
+            const action = btn.getAttribute("data-action");
+            try {
+              toast(`${action} ${unit}…`);
+              await jpost(`/api/systemd/${action}`, { unit });
+              toast(`ok: ${action} ${unit}`);
+              await refreshUnits();
+            } catch (e) {
+              toast(`fail: ${e.message}`);
+            }
+          });
+        });
+      }
+
+      let allLeases = [];
+
+      function onlineBadge(l) {
+        const st = l.neighbor?.state || null;
+        if (l.online === true) {
+          return `<span class="text-xs px-2 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-800">yes${st ? ` (${esc(st)})` : ""}</span>`;
+        }
+        if (l.online === false) {
+          return `<span class="text-xs px-2 py-1 rounded-full bg-red-500/15 text-red-300 border border-red-800">no${st ? ` (${esc(st)})` : ""}</span>`;
+        }
+        return `<span class="text-xs px-2 py-1 rounded-full bg-zinc-500/10 text-zinc-300 border border-zinc-700">unknown</span>`;
+      }
+
+      function famBadge(f) {
+        return f === 6
+          ? `<span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-500/15 text-indigo-200 border border-indigo-800">v6</span>`
+          : `<span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-200 border border-emerald-800">v4</span>`;
+      }
+
+      function leaseIdCell(l) {
+        if (l.family === 6) {
+          const iaid = (l.iaid != null) ? `IAID ${l.iaid}` : "IAID —";
+          const duid = l.duid ? `DUID ${l.duid}` : "DUID —";
+          const mac = l.mac ? `MAC ${l.mac}` : null;
+          const small = [iaid, mac, duid].filter(Boolean).join(" • ");
+          return `<div class="font-mono text-xs break-all">${esc(small)}</div>`;
+        }
+        // v4
+        const bits = [
+          l.mac ? l.mac : "—",
+          l.clientid ? `CID ${l.clientid}` : null,
+        ].filter(Boolean).join(" • ");
+        return `<div class="font-mono text-xs break-all">${esc(bits)}</div>`;
+      }
+
+      function leaseRowDesktop(l) {
+        const exp = l.infinite ? "infinite" : (l.expiryIso ? new Date(l.expiryIso).toLocaleString() : "—");
+        return `<tr class="border-t border-zinc-800/70 hover:bg-zinc-950/30 align-top">
+          <td class="p-2 font-mono">
+            <div class="flex items-center gap-2">
+              ${famBadge(l.family)}
+              <span>${esc(l.ip)}</span>
+            </div>
+          </td>
+          <td class="p-2">${esc(l.hostname || "—")}</td>
+          <td class="p-2">${leaseIdCell(l)}</td>
+          <td class="p-2">${onlineBadge(l)}</td>
+          <td class="p-2">${esc(exp)}</td>
+        </tr>`;
+      }
+
+      function leaseCardMobile(l) {
+        const exp = l.infinite ? "infinite" : (l.expiryIso ? new Date(l.expiryIso).toLocaleString() : "—");
+        const host = l.hostname || "—";
+
+        return `
+        <div class="rounded-2xl border border-zinc-800 bg-zinc-950/30 p-3">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                ${famBadge(l.family)}
+                <div class="font-mono text-sm truncate">${esc(l.ip)}</div>
+              </div>
+              <div class="text-xs text-zinc-400 mt-1 truncate">${esc(host)}</div>
+            </div>
+            <div class="shrink-0">${onlineBadge(l)}</div>
+          </div>
+
+          <div class="mt-2 grid grid-cols-1 gap-2">
+            <div>
+              <div class="text-[11px] text-zinc-500">ID</div>
+              ${leaseIdCell(l)}
+            </div>
+
+            <div class="flex items-baseline justify-between gap-3">
+              <div>
+                <div class="text-[11px] text-zinc-500">Expiry</div>
+                <div class="text-xs text-zinc-200">${esc(exp)}</div>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }
+
+      function filteredLeases() {
+        const q = (document.getElementById("leaseSearch").value || "").trim().toLowerCase();
+        if (!q)
+          return allLeases;
+
+        return allLeases.filter(l => {
+          const hay = [
+            l.ip,
+            l.mac,
+            l.hostname,
+            l.iaid != null ? String(l.iaid) : null,
+            l.duid,
+            l.neighbor?.state,
+          ].filter(Boolean).join(" ").toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      function renderLeases() {
+        const filtered = filteredLeases();
+
+        // Desktop table
+        const tbody = document.getElementById("leaseTbody");
+        if (tbody) {
+          if (!filtered.length) {
+            tbody.innerHTML = `<tr><td class="p-2 text-zinc-400" colspan="5">No leases match.</td></tr>`;
+          } else {
+            tbody.innerHTML = filtered.map(leaseRowDesktop).join("");
+          }
+        }
+
+        // Mobile cards
+        const cards = document.getElementById("leaseCards");
+        if (cards) {
+          if (!filtered.length) {
+            cards.innerHTML = `<div class="p-2 text-zinc-400 text-sm">No leases match.</div>`;
+          } else {
+            cards.innerHTML = filtered.map(leaseCardMobile).join("");
+          }
+        }
+      }
+
+      async function refreshLeases() {
+        // Prefer /full, fall back to /leases.
+        let data;
+        try {
+          data = await jget("/api/dhcp/leases/full");
+        } catch {
+          data = await jget("/api/dhcp/leases");
+        }
+
+        const leases = Array.isArray(data.leases) ? data.leases : [];
+        allLeases = leases.map(l => ({
+          family: l.family ?? (String(l.ip || "").includes(":") ? 6 : 4),
+          ip: l.ip,
+          hostname: l.hostname,
+          mac: l.mac || null,
+          clientid: l.clientid || null,
+          iaid: (l.iaid != null) ? Number(l.iaid) : null,
+          duid: l.duid || null,
+          infinite: !!l.infinite,
+          online: typeof l.online === "boolean" ? l.online : null,
+          neighbor: l.neighbor || null,
+          expiryIso: l.expiryIso || null,
+        }));
+
+        renderLeases();
+      }
+
+      let lastLogText = "";
+      let lastLogQueryKey = "";
+
+      function shouldAutoScroll(el) {
+        return el.scrollTop + el.clientHeight >= el.scrollHeight - 8;
+      }
+
+      async function refreshLogs({ append = true } = {}) {
+        const unit = document.getElementById("logUnit").value;
+        const priority = document.getElementById("logPri").value;
+        const since = document.getElementById("logSince").value.trim();
+        const lines = Number(document.getElementById("logLines").value || 250);
+
+        const q = new URLSearchParams();
+        if (unit) q.set("unit", unit);
+        if (priority) q.set("priority", priority);
+        if (since) q.set("since", since);
+        q.set("lines", String(lines));
+
+        const key = q.toString();
+        const data = await jget(`/api/logs?${key}`);
+        const stripped = stripJournalPrefix(data.text || "");
+
+        const logBox = document.getElementById("logBox");
+        const stick = shouldAutoScroll(logBox);
+
+        // Query changed => reset state
+        if (key !== lastLogQueryKey) {
+          lastLogQueryKey = key;
+          lastLogText = "";
+          append = false;
+        }
+
+        if (!append) {
+          logBox.textContent = stripped;
+          lastLogText = stripped;
+          if (stick) logBox.scrollTop = logBox.scrollHeight;
+          return;
+        }
+
+        if (!lastLogText) {
+          logBox.textContent = stripped;
+          lastLogText = stripped;
+          if (stick) logBox.scrollTop = logBox.scrollHeight;
+          return;
+        }
+
+        if (stripped.startsWith(lastLogText)) {
+          const delta = stripped.slice(lastLogText.length);
+          if (delta.trim()) logBox.textContent += delta;
+        } else {
+          // rotation or log window changed: replace
+          logBox.textContent = stripped;
+        }
+
+        lastLogText = stripped;
+        if (stick) logBox.scrollTop = logBox.scrollHeight;
+      }
+
+      document.getElementById("refreshUnits").addEventListener("click", refreshUnits);
+      document.getElementById("refreshLeases").addEventListener("click", refreshLeases);
+      document.getElementById("leaseSearch").addEventListener("input", renderLeases);
+
+      document.getElementById("refreshLogs").addEventListener("click", () => refreshLogs({ append: false }));
+      ["logUnit", "logPri", "logSince", "logLines"].forEach(id => {
+        document.getElementById(id).addEventListener("change", () => refreshLogs({ append: false }));
+      });
+
+      (async function boot() {
+        try {
+          await refreshSummary();
+          await refreshUnits();
+          await refreshLeases();
+          await refreshLogs({ append: false });
+        } catch (e) {
+          toast(e.message);
+        }
+
+        setInterval(refreshSummary, 2000);
+        setInterval(refreshLeases, 5000);
+        setInterval(() => refreshLogs({ append: true }), 3000);
+      })();
+    </script>
+  </body>
+</html>

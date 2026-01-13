@@ -26,6 +26,6 @@ self: super: {
     launchArgs = "-devserver gatari.pw";
   };
   patreon-dl-gui = self.callPackage pkgs/patreon-dl-gui {};
-  speedtest = self.callPackage pkgs/speedtest {};
+  routerd = self.callPackage pkgs/routerd {};
   xwinwrap-gif = self.callPackage pkgs/xwinwrap {};
 }

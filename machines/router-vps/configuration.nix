@@ -5,13 +5,13 @@
 {
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
-    modules/status.nix
     modules/agenix.nix
     modules/boot.nix
     modules/wireguard.nix
 
     services/nginx.nix
     services/prometheus.nix
+    services/status.nix
     services/toxvpn.nix
     #services/xdp.nix
   ];

@@ -14,6 +14,7 @@
     networking/sysctl.nix
 
     services/prometheus.nix
+    services/routerd.nix
   ];
 
   router = {
