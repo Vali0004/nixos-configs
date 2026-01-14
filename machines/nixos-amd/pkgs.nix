@@ -189,6 +189,8 @@
     # Wine
     wineWowPackages.stable
     winetricks
+    # X Window System Clipboard
+    xclip
     # ZIP Archive Utility
     zip
     # Zoom - Meeting software
