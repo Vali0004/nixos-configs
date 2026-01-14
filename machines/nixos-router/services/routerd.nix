@@ -3,7 +3,7 @@
 
 {
   networking.firewall.allowedTCPPorts = [
-    3010
+    80
   ];
 
   systemd.services.routerd = {
@@ -25,7 +25,7 @@
       RestartSec = 2;
 
       Environment = [
-        "PORT=3010"
+        "PORT=80"
         "POLL_SECONDS=2"
         "CMD_TIMEOUT_MS=1500"
         "DNSMASQ_LEASES=/var/lib/dnsmasq/dnsmasq.leases"
