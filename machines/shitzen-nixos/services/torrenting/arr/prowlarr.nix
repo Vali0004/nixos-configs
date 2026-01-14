@@ -17,7 +17,7 @@
 
   systemd.services.prowlarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
-  services.nginx.virtualHosts."prowlarr.fuckk.lol" = {
+  services.nginx.virtualHosts."prowlarr.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

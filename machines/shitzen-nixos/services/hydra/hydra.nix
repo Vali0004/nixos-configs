@@ -4,12 +4,12 @@
 , ... }:
 
 {
-  services.nginx.virtualHosts."hydra.fuckk.lol" = {
+  services.nginx.virtualHosts."hydra.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
 
     # Ask robots not to scrape hydra, it has various expensive endpoints
-    locations."=/robots.txt".alias = pkgs.writeText "hydra.fuckk.lol-robots.txt" ''
+    locations."=/robots.txt".alias = pkgs.writeText "hydra.kursu.dev-robots.txt" ''
       User-agent: *
       Disallow: /
       Allow: /$
@@ -71,7 +71,7 @@
         excludeBuildFromContext = 1
       </githubstatus>
     '';
-    hydraURL = "https://hydra.fuckk.lol";
+    hydraURL = "https://hydra.kursu.dev";
     listenHost = "0.0.0.0";
     maxServers = 10;
     maxSpareServers = 2;

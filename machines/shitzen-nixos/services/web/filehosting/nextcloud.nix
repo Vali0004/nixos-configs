@@ -25,7 +25,7 @@
     enable = true;
     extraAppsEnable = false;
     home = "/data/services/nextcloud";
-    hostName = "cloud.fuckk.lol";
+    hostName = "cloud.kursu.dev";
     https = true;
     maxUploadSize = "16G";
     package = pkgs.nextcloud32;
@@ -36,7 +36,7 @@
       default_phone_region = "US";
       log_type = "systemd";
       mail_smtpmode = "smtp";
-      mail_smtphost = "mail.fuckk.lol";
+      mail_smtphost = "mail.kursu.dev";
       mail_smtpauth = true;
     };
   };

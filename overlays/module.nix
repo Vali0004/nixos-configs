@@ -29,7 +29,7 @@
           -H "@/run/agenix/zipline-upload-headers" \
           -H "x-zipline-domain: furryfemboy.ca" \
           -F "file=@$tmp" \
-          "https://holy.fuckk.lol/api/upload")"
+          "https://cdn.kursu.dev/api/upload")"
 
         url="$(printf '%s' "$resp" | ${self.jq}/bin/jq -er '.files[0].url')"
 

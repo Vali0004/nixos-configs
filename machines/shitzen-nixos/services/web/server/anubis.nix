@@ -32,10 +32,10 @@ in {
     appendHttpConfig = ''
       map $host $upstream {
         default "anubis";
-        hydra.fuckk.lol-${config.networking.hostId} "hydra-serer";
-        git.fuckk.lol-${config.networking.hostId} "git-server";
-        hydra.fuckk.lol "anubis-hydra";
-        git.fuckk.lol "anubis-git";
+        hydra.kursu.dev-${config.networking.hostId} "hydra-serer";
+        git.kursu.dev-${config.networking.hostId} "git-server";
+        hydra.kursu.dev "anubis-hydra";
+        git.kursu.dev "anubis-git";
       }
 
       limit_req_zone $binary_remote_addr zone=hydra-server:8m rate=2r/s;

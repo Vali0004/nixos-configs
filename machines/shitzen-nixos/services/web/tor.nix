@@ -9,7 +9,7 @@
     openFirewall = true;
     relay.enable = false;
     settings = {
-      ContactInfo = "vali@fuckk.lol";
+      ContactInfo = "vali@kursu.dev";
       Nickname = "vali";
       ORPort = 9001;
       # Hidden service — map onion:80 -> local 192.168.100.2:1880

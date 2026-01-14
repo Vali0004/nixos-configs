@@ -97,21 +97,21 @@
         enable = true;
         environment.LOG_LEVEL = "warn";
         port = 9708;
-        url = "https://prowlarr.fuckk.lol";
+        url = "https://prowlarr.kursu.dev";
       };
       exportarr-sonarr = {
         apiKeyFile = config.age.secrets.sonarr-api.path;
         enable = true;
         environment.LOG_LEVEL = "warn";
         port = 9709;
-        url = "https://sonarr.fuckk.lol";
+        url = "https://sonarr.kursu.dev";
       };
       exportarr-radarr = {
         apiKeyFile = config.age.secrets.radarr-api.path;
         enable = true;
         environment.LOG_LEVEL = "warn";
         port = 9710;
-        url = "https://radarr.fuckk.lol";
+        url = "https://radarr.kursu.dev";
       };
       node = {
         enable = true;
@@ -144,6 +144,6 @@
     };
     listenAddress = "0.0.0.0";
     port = 3400;
-    webExternalUrl = "https://monitoring.fuckk.lol/prometheus/";
+    webExternalUrl = "https://monitoring.kursu.dev/prometheus/";
   };
 }

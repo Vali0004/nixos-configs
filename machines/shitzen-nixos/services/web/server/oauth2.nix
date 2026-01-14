@@ -10,28 +10,28 @@
       refresh = "1h";
     };
     keyFile = config.age.secrets.oauth2-proxy.path;
-    email.domains = [ "fuckk.lol" ];
+    email.domains = [ "kursu.dev" ];
     enable = true;
     nginx = {
-      domain = "monitoring.fuckk.lol";
+      domain = "monitoring.kursu.dev";
       virtualHosts = {
-        "monitoring.fuckk.lol" = {
+        "monitoring.kursu.dev" = {
           allowed_email_domains = [
-            "fuckk.lol"
+            "kursu.dev"
             "nanitehosting.com"
           ];
         };
       };
     };
     provider = "google";
-    redirectURL = "https://monitoring.fuckk.lol/oauth2/callback";
+    redirectURL = "https://monitoring.kursu.dev/oauth2/callback";
     setXauthrequest = true;
     skipAuthRegexes = [
       "^/prometheus(/.*)?$"
     ];
   };
 
-  services.nginx.virtualHosts."monitoring.fuckk.lol" = {
+  services.nginx.virtualHosts."monitoring.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
     locations = {

@@ -7,6 +7,7 @@
     };
     agenix.url = "github:ryantm/agenix";
     ajax-xdp.url = "github:AjaxVPN/ajax-xdp";
+    ajax-deploy.url = "github:AjaxVPN/ajax-deploy";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,7 +30,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, ajax-deploy, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
   let
     system = "x86_64-linux";
 
@@ -39,6 +40,7 @@
 
         agenix = agenix.outputs.packages.x86_64-linux.agenix;
         ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
+        ajax-deploy = ajax-deploy.packages.x86_64-linux.default;
         forgeServers = {
           forge-1_7_10-10_13_4 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
           forge-1_16_5-36_2_26 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };

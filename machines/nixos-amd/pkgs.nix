@@ -7,6 +7,8 @@
     alacritty-graphics
     # Key system (remote deploy)
     agenix
+    # Deploy system
+    ajax-deploy
     # Android tools (ADB)
     android-tools
     # Arduino IDE
@@ -49,7 +51,7 @@
     fastfetch-simple
     # Screenshot Tool
     flameshot
-    # Screenshot Tool (Upload to fuckk.lol)
+    # Screenshot Tool (Upload)
     flameshot-upload
     # Tool used to check file types
     file

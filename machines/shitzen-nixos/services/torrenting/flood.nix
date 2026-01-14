@@ -13,7 +13,7 @@
     ];
   };
 
-  services.nginx.virtualHosts."flood.fuckk.lol" = {
+  services.nginx.virtualHosts."flood.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

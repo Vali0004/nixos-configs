@@ -39,7 +39,7 @@ stdenv.mkDerivation {
 
   src = fetchurl rec {
     name = "patreon-dl-gui.tar.gz";
-    url = "https://fuckk.lol/cdn/patreon-dl-gui.tar.gz";
+    url = "https://kursu.dev/cdn/patreon-dl-gui.tar.gz";
     sha256 = "sha256-LfB3iCtOVdaFmYxYbEN0MYlhr94gvO+/KtZpyBOGg3I=";
   };
 

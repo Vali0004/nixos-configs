@@ -22,7 +22,7 @@
         port = 8123;
       };
     };
-    "internal.fuckk.lol" = {
+    "internal.kursu.dev" = {
       enableACME = true;
       forceSSL = true;
       locations = {
@@ -51,7 +51,7 @@
         };
       };
     };
-    "hass.fuckk.lol" = {
+    "hass.kursu.dev" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = lib.mkProxy {

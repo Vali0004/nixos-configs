@@ -33,7 +33,7 @@ in {
     writeable = true;
   };
 
-  services.nginx.virtualHosts."monitoring.fuckk.lol" = {
+  services.nginx.virtualHosts."monitoring.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
     locations = {

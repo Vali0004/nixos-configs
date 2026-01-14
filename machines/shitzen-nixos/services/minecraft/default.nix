@@ -83,7 +83,7 @@ in {
         })
       ];
 
-      services.nginx.virtualHosts."mc.fuckk.lol" = {
+      services.nginx.virtualHosts."mc.kursu.dev" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {

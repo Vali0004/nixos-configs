@@ -27,7 +27,7 @@
     };
   };
 
-  services.nginx.virtualHosts."holy.fuckk.lol" = {
+  services.nginx.virtualHosts."holy.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

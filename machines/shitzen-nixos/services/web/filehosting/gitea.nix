@@ -5,7 +5,7 @@
 
 {
   services.gitea = {
-    appName = "fuckk.lol: Git";
+    appName = "kursu.dev: Git";
     captcha.enable = true;
     database = {
       createDatabase = true;
@@ -34,16 +34,16 @@
       mailer = {
         ENABLED = true;
         PROTOCOL = "smtp+starttls";
-        SMTP_ADDR = "mail.fuckk.lol";
+        SMTP_ADDR = "mail.kursu.dev";
         SMTP_PORT = "587";
-        FROM = "Fuckk.lol's Git Service <do-not-reply@fuckk.lol>";
-        USER = "do-not-reply@fuckk.lol";
+        FROM = "Kursu's Git Service <do-not-reply@kursu.dev>";
+        USER = "do-not-reply@kursu.dev";
       };
       server = {
-        DOMAIN = "git.fuckk.lol";
+        DOMAIN = "git.kursu.dev";
         HTTP_PORT = 3900;
         HTTP_ADDR = "0.0.0.0";
-        ROOT_URL = "https://git.fuckk.lol";
+        ROOT_URL = "https://git.kursu.dev";
       };
       session.COOKIE_SECURE = true;
     };
@@ -51,12 +51,12 @@
     user = "git";
   };
 
-  services.nginx.virtualHosts."git.fuckk.lol" = {
+  services.nginx.virtualHosts."git.kursu.dev" = {
     enableACME = true;
     forceSSL = true;
 
     # Ask robots not to scrape Git, it has various expensive endpoints
-    locations."=/robots.txt".alias = pkgs.writeText "git.fuckk.lol-robots.txt" ''
+    locations."=/robots.txt".alias = pkgs.writeText "git.kursu.dev-robots.txt" ''
       User-agent: *
       Disallow: /
       Allow: /$

@@ -51,13 +51,13 @@ in {
       };
       smtp = {
         enabled = true;
-        from_address = "admin@fuckk.lol";
+        from_address = "admin@kursu.dev";
       };
       server = {
         http_addr = "0.0.0.0";
         http_port = 3003;
-        domain = "monitoring.fuckk.lol";
-        root_url = "https://monitoring.fuckk.lol/grafana/";
+        domain = "monitoring.kursu.dev";
+        root_url = "https://monitoring.kursu.dev/grafana/";
         serve_from_sub_path = true;
       };
       security.admin_user = "admin";
@@ -66,7 +66,7 @@ in {
   };
 
   services.nginx = {
-    virtualHosts."monitoring.fuckk.lol" = {
+    virtualHosts."monitoring.kursu.dev" = {
       enableACME = true;
       forceSSL = true;
       locations = {
