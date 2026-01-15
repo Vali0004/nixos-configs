@@ -115,7 +115,7 @@ in {
     privateKeyFile = config.age.secrets.wireguard.path;
     peers = [{
       allowedIPs = [ "0.0.0.0/0" "::/0" ];
-      endpoint = "[2607:f1c0:f088:e200::1]:51820";
+      endpoint = "74.208.44.130:51820";
       persistentKeepalive = 25;
       publicKey = "EjPutSj3y/DuPfz4F0W3PYz09Rk+XObW2Wh4W5cDrwA=";
     }];
