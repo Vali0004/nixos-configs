@@ -19,7 +19,6 @@
       adminuser = "Vali";
       adminpassFile = config.age.secrets.nextcloud-admin-password.path;
       dbtype = "pgsql";
-      overwriteProtocol = "https";
     };
     database.createLocally = true;
     enable = true;
@@ -33,6 +32,7 @@
       "opcache.interned_strings_buffer" = "23";
     };
     settings = {
+      overwriteprotocol = "https";
       default_phone_region = "US";
       log_type = "systemd";
       mail_smtpmode = "smtp";

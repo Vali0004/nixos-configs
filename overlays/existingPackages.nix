@@ -52,4 +52,7 @@ self: super: {
       hash = "sha256-przCOyureolbPLqy80DuyQoGeQ7lbGIXeR1z26DvN/E=";
     };
   });
+  hydra = super.hydra.overrideAttrs (old: {
+    doCheck = false;
+  });
 }

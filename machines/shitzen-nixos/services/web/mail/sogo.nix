@@ -3,7 +3,7 @@
 , ... }:
 
 let
-  dbUrl = "postgresql://sogo:sogo@192.168.100.1:5432/sogo/sogo_users";
+  pgSock = "postgresql://sogo@%2Frun%2Fpostgresql/sogo";
 in {
   services.nginx.virtualHosts.${config.services.sogo.vhostName} = {
     forceSSL = true;
@@ -23,7 +23,7 @@ in {
           id = users;
           type = sql;
           userPasswordAlgorithm = crypt;
-          viewURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_users";
+          viewURL = "${pgSock}/sogo_users";
         }
       );
 
@@ -49,14 +49,14 @@ in {
 
       SOGoMailKeepDraftsAfterSend = YES;
 
-      SOGoProfileURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_user_profile";
-      OCSFolderInfoURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_folder_info";
-      OCSSessionsFolderURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_sessions_folder";
-      OCSEMailAlarmsFolderURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_alarms_folder";
-      OCSStoreURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_store";
-      OCSAclURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_acl";
-      OCSCacheFolderURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_cache_folder";
-      OCSAdminURL = "postgresql://sogo@%2Frun%2Fpostgresql:5432/sogo/sogo_admin";
+      SOGoProfileURL = "${pgSock}/sogo_user_profile";
+      OCSFolderInfoURL = "${pgSock}/sogo_folder_info";
+      OCSSessionsFolderURL = "${pgSock}/sogo_sessions_folder";
+      OCSEMailAlarmsFolderURL = "${pgSock}/sogo_alarms_folder";
+      OCSStoreURL = "${pgSock}/sogo_store";
+      OCSAclURL = "${pgSock}/sogo_acl";
+      OCSCacheFolderURL = "${pgSock}/sogo_cache_folder";
+      OCSAdminURL = "${pgSock}/sogo_admin";
     '';
     timezone = "America/Detroit";
     vhostName = "mail.fuckk.lol";

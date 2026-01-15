@@ -33,6 +33,35 @@
     };
   };
 
+  services.nginx.virtualHosts."hydra.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
+
+    # Ask robots not to scrape hydra, it has various expensive endpoints
+    locations."=/robots.txt".alias = pkgs.writeText "hydra.fuckk.lolhydra.fuckk.lol-robots.txt" ''
+      User-agent: *
+      Disallow: /
+      Allow: /$
+    '';
+
+    locations."/" = lib.mkProxy {
+      ip = "$upstream";
+      hasPort = false;
+      config = ''
+        limit_req zone=hydra-server burst=5;
+      '';
+    };
+
+    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
+      ip = "hydra-server";
+      hasPort = false;
+    };
+
+    locations."/static/" = {
+      alias = "${config.services.hydra.package}/libexec/hydra/root/static/";
+    };
+  };
+
   systemd.services.hydra-init.preStart = lib.mkAfter ''
     originalConf=$(readlink -f /var/lib/hydra/hydra.conf)
 

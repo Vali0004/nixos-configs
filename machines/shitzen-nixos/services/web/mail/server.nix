@@ -3,7 +3,6 @@
 
 {
   mailserver = {
-    certificateScheme = "acme-nginx";
     domains = [
       "fuckk.lol"
       "nanitehosting.com"
@@ -36,5 +35,6 @@
     stateVersion = 3;
     systemDomain = "fuckk.lol";
     systemName = "nixos-mailserver";
+    x509.useACMEHost = config.mailserver.fqdn;
   };
 }

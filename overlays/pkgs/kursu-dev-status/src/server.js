@@ -25,7 +25,7 @@ let services = {
   grafana: { type: "good", url: "https://monitoring.kursu.dev/grafana/login", responding: false },
   hydra: { type: "good", url: "https://hydra.kursu.dev/", responding: false },
   jellyfin: { type: "good", url: "https://watch.furryporn.ca/web", responding: false },
-  mail: { type: "good", url: "https://mail.fuckk.lol/", responding: false },
+  mail: { type: "good", url: "https://mail.fuckk.lol/SOGo", responding: false },
   prometheus: { type: "good", url: "https://monitoring.kursu.dev/prometheus/targets", responding: false },
   prowlarr: { type: "good", url: "https://prowlarr.kursu.dev/", responding: false },
   radarr: { type: "good", url: "https://radarr.kursu.dev/", responding: false },

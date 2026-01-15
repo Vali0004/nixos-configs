@@ -32,9 +32,11 @@ in {
     appendHttpConfig = ''
       map $host $upstream {
         default "anubis";
-        hydra.kursu.dev-${config.networking.hostId} "hydra-serer";
+        hydra.kursu.dev-${config.networking.hostId} "hydra-server";
+        hydra.fuckk.lol-${config.networking.hostId} "hydra-server";
         git.kursu.dev-${config.networking.hostId} "git-server";
         hydra.kursu.dev "anubis-hydra";
+        hydra.fuckk.lol "anubis-hydra";
         git.kursu.dev "anubis-git";
       }
 

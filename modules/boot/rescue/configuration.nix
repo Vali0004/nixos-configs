@@ -55,7 +55,7 @@
   };
 
   hardware = {
-    enableRedistributableFirmware = false;
+    enableRedistributableFirmware = true;
     cpu.amd.updateMicrocode = config.hardware.enableRedistributableFirmware;
   };
 
@@ -64,8 +64,8 @@
     hostId = "8425e349";
     hostName = "nixos-rescue-cd";
     wireless = {
-      enable = false;
-      userControlled.enable = false;
+      enable = lib.mkDefault true;
+      userControlled = true;
     };
   };
 
@@ -108,7 +108,7 @@
     udisks2.enable = false;
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 
   users.users = {
     nixos = {

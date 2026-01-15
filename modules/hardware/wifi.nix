@@ -30,7 +30,7 @@
         };
       }) config.wifi.networks);
       secretsFile = config.age.secrets.network-secrets.path;
-      userControlled.enable = true;
+      userControlled = true;
     };
   };
 }

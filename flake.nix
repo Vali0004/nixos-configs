@@ -59,6 +59,7 @@
         txg-watcher = zfs-utils.packages.x86_64-linux.txg-watcher;
       })
     ];
+
     overlays = [
       nix-minecraft.overlay
       (import overlays/existingPackages.nix)
@@ -139,6 +140,8 @@
     };
 
     nixosConfigurations = {
+      # Building a flake system:
+      # nix build .#nixosConfigurations.<name>.config.system.build.toplevel
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs overlays; };

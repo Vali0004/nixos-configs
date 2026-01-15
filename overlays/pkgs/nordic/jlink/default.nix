@@ -16,7 +16,8 @@
 , zlib }:
 
 let
-  version = "V896";
+  version = "V910";
+  hash = "sha256-72vEBo1XDOVhA6F5LRH2c+oXMhhUbLwf5HIsX97JDS0";
 in stdenv.mkDerivation {
   pname = "jlink";
   inherit version;
@@ -24,7 +25,7 @@ in stdenv.mkDerivation {
   src = requireFile {
     name = "JLink_Linux_${version}_x86_64.deb";
     url = "https://www.segger.com/downloads/jlink";
-    hash = "sha256-ijSqVfO64XNM0jS+1xxK92O5Tv7tiUQYm1rDpK+44Tc=";
+    inherit hash;
   };
 
   nativeBuildInputs = [

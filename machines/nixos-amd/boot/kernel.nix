@@ -4,7 +4,7 @@
 
 {
   boot.kernelPackages = let
-    version = "6.17.1";
+    version = "6.18.4";
     suffix = "zen1";
   in pkgs.linuxPackagesFor (pkgs.linux_zen.override {
     inherit version suffix;

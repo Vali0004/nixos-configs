@@ -10,6 +10,8 @@
     description = "Router metrics + net admin daemon";
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" "dnsmasq.service" ];
+    requires = [ "network-online.target" "dnsmasq.service" ];
+
     path = with pkgs; [
       iproute2
       systemd
@@ -19,6 +21,7 @@
       procps
       conntrack-tools
     ];
+
     serviceConfig = {
       ExecStart = "${pkgs.nodejs_24}/bin/node ${pkgs.routerd}/lib/node_modules/routerd/server.js";
       Restart = "always";
