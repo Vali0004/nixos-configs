@@ -27,6 +27,15 @@
     };
   };
 
+  services.nginx.virtualHosts."ohh.fuckk.lol" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = lib.mkProxy {
+      ip = "192.168.100.1";
+      port = 8096;
+    };
+  };
+
   systemd.services.jellyfin.serviceConfig.SupplementaryGroups = [
     config.services.rtorrent.group
     "video"

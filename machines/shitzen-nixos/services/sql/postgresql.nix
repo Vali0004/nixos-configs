@@ -81,7 +81,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO sogo
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON SEQUENCES TO sogo;
 EOF
       # Read passwords from age secrets at runtime
-      GITEA_PW="$(cat ${config.age.secrets.git-fuckk-lol-db.path})"
+      GITEA_PW="$(cat ${config.age.secrets.git-kursu-dev-db.path})"
 
       # Set DB user passwords
       ${config.services.postgresql.package}/bin/psql <<EOF

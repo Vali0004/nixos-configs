@@ -9,7 +9,7 @@
     captcha.enable = true;
     database = {
       createDatabase = true;
-      passwordFile = config.age.secrets.git-fuckk-lol-db.path;
+      passwordFile = config.age.secrets.git-kursu-dev-db.path;
       name = config.services.gitea.user;
       port = 5432;
       type = "postgres";
@@ -34,10 +34,10 @@
       mailer = {
         ENABLED = true;
         PROTOCOL = "smtp+starttls";
-        SMTP_ADDR = "mail.kursu.dev";
+        SMTP_ADDR = "mail.fuckk.lol";
         SMTP_PORT = "587";
-        FROM = "Kursu's Git Service <do-not-reply@kursu.dev>";
-        USER = "do-not-reply@kursu.dev";
+        FROM = "Kursu's Git Service <do-not-reply@fuckk.lol>";
+        USER = "do-not-reply@fuckk.lol";
       };
       server = {
         DOMAIN = "git.kursu.dev";

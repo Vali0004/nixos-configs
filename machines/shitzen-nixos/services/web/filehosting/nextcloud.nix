@@ -36,7 +36,7 @@
       default_phone_region = "US";
       log_type = "systemd";
       mail_smtpmode = "smtp";
-      mail_smtphost = "mail.kursu.dev";
+      mail_smtphost = "mail.fuckk.lol";
       mail_smtpauth = true;
     };
   };

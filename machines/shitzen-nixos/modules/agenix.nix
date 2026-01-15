@@ -13,8 +13,8 @@
       owner = config.services.gitea.user;
       group = config.services.gitea.group;
     };
-    git-fuckk-lol-db = {
-      file = ../../../secrets/git-fuckk-lol-db.age;
+    git-kursu-dev-db = {
+      file = ../../../secrets/git-kursu-dev-db.age;
       owner = "postgres";
       group = config.services.gitea.group;
       mode = "0440";

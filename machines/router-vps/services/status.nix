@@ -2,12 +2,12 @@
 , ... }:
 
 {
-  systemd.services.fuckk-lol-status = {
+  systemd.services.kursu-dev-status = {
     enable = true;
     description = "Status daemon";
     serviceConfig = {
       Environment = [ "PORT=3000" ];
-      ExecStart = "${pkgs.nodejs_20}/bin/node ${pkgs.fuckk-lol-status}/lib/node_modules/fuckk-lol-status/server.js";
+      ExecStart = "${pkgs.nodejs_20}/bin/node ${pkgs.kursu-dev-status}/lib/node_modules/kursu-dev-status/server.js";
     };
     wantedBy = [ "multi-user.target" ];
   };

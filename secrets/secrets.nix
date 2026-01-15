@@ -13,7 +13,7 @@ let
 in {
   "cleclerc-nanitehosting-com.age".publicKeys = keys;
   "do-not-reply-fuckk-lol.age".publicKeys = keys;
-  "git-fuckk-lol-db.age".publicKeys = keys;
+  "git-kursu-dev-db.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
   "hydra-runner-ajax-github-token.age".publicKeys = keys ++ [
     ajaxnetworks-nixos

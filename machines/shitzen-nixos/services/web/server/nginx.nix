@@ -48,6 +48,12 @@
       "/" = {
         index = "index.html";
       };
+      "/.well-known/discord" = {
+        extraConfig = ''
+          default_type text/plain;
+          return 200 "dh=bf1a6bc8c4e60bb02a061066aab4dc9366273a03";
+        '';
+      };
       "/repo/" = {
         alias = "/data/services/web/repo/";
         index = "index.htm";
@@ -106,6 +112,12 @@
       "/" = {
         index = "index.html";
       };
+      "/.well-known/discord" = {
+        extraConfig = ''
+          default_type text/plain;
+          return 200 "dh=a3c0df477f4d412f5affcafe7f0b5afa578acf37";
+        '';
+      };
       "/repo/" = {
         alias = "/data/services/web/repo/";
         index = "index.htm";
@@ -160,8 +172,16 @@
     enableACME = true;
     forceSSL = true;
     root = "/data/services/web/furryfemboy/";
-    locations."/" = {
-      index = "index.html";
+    locations = {
+      "/" = {
+        index = "index.html";
+      };
+      "/.well-known/discord" = {
+        extraConfig = ''
+          default_type text/plain;
+          return 200 "dh=aad0196d7331cca572842dac1711a1ae374bc50f";
+        '';
+      };
     };
   };
 
