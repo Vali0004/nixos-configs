@@ -12,6 +12,7 @@
     networking/dhcp.nix
     networking/nat.nix
     networking/sysctl.nix
+    networking/upnp.nix
 
     services/prometheus.nix
     services/routerd.nix
