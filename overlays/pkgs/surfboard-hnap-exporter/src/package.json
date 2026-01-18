@@ -1,0 +1,14 @@
+{
+  "name": "surfboard-hnap-exporter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "exporter.js",
+  "scripts": {
+    "start": "node exporter.js"
+  },
+  "type": "commonjs",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "tls": "^0.0.1"
+  }
+}

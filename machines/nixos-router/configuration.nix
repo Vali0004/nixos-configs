@@ -15,6 +15,7 @@
 
     services/prometheus.nix
     services/routerd.nix
+    services/surfboard-hnap-exporter.nix
   ];
 
   router = {

@@ -27,5 +27,6 @@ self: super: {
   };
   patreon-dl-gui = self.callPackage pkgs/patreon-dl-gui {};
   routerd = self.callPackage pkgs/routerd {};
+  surfboard-hnap-exporter = self.callPackage pkgs/surfboard-hnap-exporter {};
   xwinwrap-gif = self.callPackage pkgs/xwinwrap {};
 }

@@ -40,6 +40,14 @@
       (lib.mkPrometheusJob {
         targets = [
           "nixos-router"
+        ];
+        name = "docsis";
+        port = 9712;
+        interval = "120s";
+      })
+      (lib.mkPrometheusJob {
+        targets = [
+          "nixos-router"
           "nixos-hass"
           "nixos-shitclient"
           "shitzen-nixos"
