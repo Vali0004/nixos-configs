@@ -14,7 +14,7 @@
     programs/dconf.nix
     programs/gnupg.nix
     programs/ssh.nix
-    programs/wireguard.nix
+    #programs/wireguard.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
     #services/dnsmasq.nix
