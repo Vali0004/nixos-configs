@@ -25,6 +25,9 @@ in {
     nixos-amd
     nixos-hass
   ];
+  "wireguard-private-yutsu.age".publicKeys = ssh_keys ++ [
+    nixos-amd
+  ];
   "nextcloud-admin-password.age".publicKeys = keys;
   "nix-netrc.age".publicKeys = keys ++ [
     ajaxnetworks-nixos

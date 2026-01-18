@@ -66,6 +66,13 @@
         proxyWebsockets = true;
       };
     };
+    "rtorrent.localnet" = {
+      forceSSL = false;
+      locations."/" = {
+        proxyPass = "http://10.0.0.4:6110";
+        proxyWebsockets = true;
+      };
+    };
     "kvm.localnet" = {
       forceSSL = false;
       locations."/" = {

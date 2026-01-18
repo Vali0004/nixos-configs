@@ -33,7 +33,7 @@ in {
       SOGoMailDomain = "fuckk.lol";
       SOGoEnableEMailAlarms = YES;
       SOGoMailCustomFromEnabled = YES;
-      SOGoMailingMechanism = "mail";
+      SOGoMailingMechanism = "smtp";
 
       SOGoIMAPServer = "imaps://mail.fuckk.lol/?tls=YES&tlsVerifyMode=default";
       // When logging in to the SMTP server, the primary email address of the user will be used instead of the username.
@@ -57,6 +57,11 @@ in {
       OCSAclURL = "${pgSock}/sogo_acl";
       OCSCacheFolderURL = "${pgSock}/sogo_cache_folder";
       OCSAdminURL = "${pgSock}/sogo_admin";
+
+      SOGoDebugRequests = YES;
+      SOGoEASDebugEnabled = YES;
+      SOGoImapDebugEnabled = YES;
+      NGImap4DebugEnabled = YES;
     '';
     timezone = "America/Detroit";
     vhostName = "mail.fuckk.lol";

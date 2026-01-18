@@ -4,6 +4,10 @@
 , ... }:
 
 {
+  environment.systemPackages = [
+    config.services.nginx.package
+  ];
+
   services.nginx = {
     enable = true;
     enableReload = true;
@@ -203,5 +207,5 @@
     };
   };
 
-  systemd.services.nginx.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
+  users.users.nginx.extraGroups = [ config.services.rtorrent.group ];
 }

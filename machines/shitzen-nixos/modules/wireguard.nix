@@ -7,7 +7,7 @@ let
   vethHostIP6 = "fd00:100::1";
   vethNSIP6 = "fd00:100::2";
   vethName = "veth0"; # host side
-  hostIF = "eth0";
+  hostIF = "enp3s0";
   vpsIP = "74.208.44.130";
   vpsIPv6 = "2607:f1c0:f088:e200::1";
 
@@ -99,8 +99,7 @@ in {
   };
 
   # Forward services
-  systemd.services.forward80 = mkForward 80 vethNSIP4;
-  systemd.services.forward443 = mkForward 443 vethNSIP4;
+  systemd.services.forward6110 = mkForward 6110 vethNSIP4;
 
   systemd.services."wireguard-wg0".after = [ "veth@${netnsName}.service" ];
 

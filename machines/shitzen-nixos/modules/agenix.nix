@@ -67,12 +67,12 @@
       owner = "root";
       group = "root";
     };
-    sogo-db-password = {
-      file = ../../../secrets/sogo-db-password.age;
-      owner = "postgres";
-      group = "sogo";
-      mode = "0444";
-    };
+    #sogo-db-password = {
+    #  file = ../../../secrets/sogo-db-password.age;
+    #  owner = "postgres";
+    #  group = "sogo";
+    #  mode = "0444";
+    #};
     sonarr-api = {
       file = ../../../secrets/sonarr-api.age;
       owner = "root";

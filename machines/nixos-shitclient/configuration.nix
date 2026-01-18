@@ -25,6 +25,8 @@
     conntrack-tools
     # cURL
     curl
+    # Useful for DNS debugging
+    dig
     # Display Mode Info Decode
     dmidecode
     # Ethernet tool
@@ -67,7 +69,7 @@
     tcpdump
     # USB Utilies
     usbutils
-    # Web Get
+    # We'b Get
     wget
   ];
 
@@ -117,6 +119,7 @@
       10.0.0.2 jellyfin.localnet ${config.networking.hostName}
       10.0.0.2 kvm.localnet ${config.networking.hostName}
       10.0.0.2 monitoring.localnet ${config.networking.hostName}
+      10.0.0.2 rtorrent.localnet ${config.networking.hostName}
       10.0.0.2 pihole.localnet ${config.networking.hostName}
       10.0.0.2 zigbee2mqtt.localnet ${config.networking.hostName}
     '';

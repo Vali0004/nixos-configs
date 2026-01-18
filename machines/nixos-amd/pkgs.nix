@@ -153,6 +153,8 @@
     r2modman
     # Single-frame graphics debugger
     renderdoc
+    # Better grep
+    ripgrep
     # SlimeVR Trackers (VRC)
     slimevr
     slimevr-server

@@ -35,7 +35,7 @@
     services/torrenting/arr/sonarr.nix
 
     services/torrenting/flood.nix
-    services/torrenting/rtorrent-exporter.nix
+    #services/torrenting/rtorrent-exporter.nix
     services/torrenting/rtorrent.nix
 
     services/virtualisation/dockge.nix
@@ -53,14 +53,14 @@
     services/web/server/nginx.nix
     services/web/server/oauth2.nix
 
-    #services/web/mail/roundcube.nix
+    services/web/mail/roundcube.nix
     services/web/mail/server.nix
-    services/web/mail/sogo.nix
+    #services/web/mail/sogo.nix
 
-    services/web/tor.nix
     services/web/ttyd.nix
 
     #services/web/whmcs.nix
+    services/web/cloudpanel.nix
 
     services/wireguard.nix
     services/toxvpn.nix
@@ -78,7 +78,6 @@
     postfix-setup.serviceConfig = lib.mkNamespace {};
     rspamd.serviceConfig = lib.mkNamespace {};
     rtorrent.serviceConfig = lib.mkNamespace {};
-    tor.serviceConfig = lib.mkNamespace {};
   };
 
   environment.systemPackages = with pkgs; [
@@ -87,6 +86,7 @@
     efibootmgr
     ethtool
     fastfetch
+    gdb
     git
     hdparm
     inetutils
@@ -111,6 +111,8 @@
     powerjoular
     powertop
     redis
+    # Better grep
+    ripgrep
     screen
     sg3_utils
     sqlite-interactive
@@ -168,6 +170,12 @@
     interfaces = {
       enp3s0.useDHCP = true;
     };
+    nameservers = [
+      "10.0.0.2"
+      "1.1.1.1"
+      "2601:406:8100:91d8::146c"
+      "2606:4700:4700::1111"
+    ];
     useDHCP = false;
   };
 

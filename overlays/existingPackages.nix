@@ -55,4 +55,22 @@ self: super: {
   hydra = super.hydra.overrideAttrs (old: {
     doCheck = false;
   });
+  rtorrent = super.rtorrent.overrideAttrs (old: {
+    version = "0.15.6";
+    src = self.fetchFromGitHub {
+      owner = "rakshasa";
+      repo = "rtorrent";
+      rev = "v0.15.6";
+      hash = "sha256-B/5m1JXdUpczUMNN4cy5p6YurjmRFxMQHG3cQFSmZSs=";
+    };
+  });
+  libtorrent-rakshasa = super.libtorrent-rakshasa.overrideAttrs (old: {
+    version = "0.15.6";
+    src = self.fetchFromGitHub {
+      owner = "rakshasa";
+      repo = "libtorrent";
+      rev = "v0.15.6";
+      hash = "sha256-udEe9VyUzPXuCTrB3U3+XCbVWvfTT7xNvJJkLSQrRt4=";
+    };
+  });
 }

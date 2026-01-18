@@ -19,6 +19,11 @@
       owner = "vali";
       group = "wheel";
     };
+    wireguard-private-yutsu = {
+      file = ../../../secrets/wireguard-private-yutsu.age;
+      owner = "root";
+      group = "root";
+    };
   };
 
   #
