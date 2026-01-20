@@ -1,6 +1,7 @@
 {
   services.toxvpn = {
     auto_add_peers = [
+      "da6558893901a9fbbc50548b2b11c4e0c4389be5e4121ad7d8fa1f12bd4cd67a70c538675058" # nixos-router (Router)
       "ba32f4e9ea7c270bdd284de0c6872c040ffc1809ebe8798eb544a621ce0f98753c4d3cf739d1" # shitzen-nixos
     ];
     enable = true;

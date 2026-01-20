@@ -1,9 +1,8 @@
 #!/run/current-system/sw/bin/env node
 const tls = require("node:tls");
 const { createHmac } = require("crypto");
-const fs = require("node:fs");
+const fs = require("node:fs/promises");
 const path = require("node:path");
-const os = require("node:os");
 
 function hmacHexUpper(key, msg) {
   return createHmac("sha256", key).update(String(msg)).digest("hex").toUpperCase();
@@ -55,7 +54,7 @@ class SurfboardHNAP {
     host = "192.168.100.1",
     port = 443,
     // Where to store the cached session:
-    cachePath = path.join(os.homedir(), ".cache", "surfboard-hnap-session.json"),
+    cachePath = "/var/lib/surfboard-hnap-exporter",
     // Fallback TTL if the device does NOT provide cookie expiry info.
     defaultSessionTtlMs = 10 * 60 * 1000, // 10 minutes
   } = {}) {
@@ -69,7 +68,8 @@ class SurfboardHNAP {
 
   _purgeExpiredCookies(now = Date.now()) {
     for (const [k, c] of this.cookieJar.entries()) {
-      if (c?.expiresAt != null && c.expiresAt <= now) this.cookieJar.delete(k);
+      if (c?.expiresAt != null && c.expiresAt <= now)
+        this.cookieJar.delete(k);
     }
   }
 
@@ -119,7 +119,7 @@ class SurfboardHNAP {
 
   async loadSessionCache() {
     try {
-      const raw = await fs.readFile(this.cachePath, "utf8");
+      const raw = await fs.readFile(path.join(this.cachePath, "surfboard-hnap-session.json"), "utf8");
       const j = JSON.parse(raw);
 
       if (j?.host !== this.host || j?.port !== this.port)
@@ -168,10 +168,12 @@ class SurfboardHNAP {
       cookies: cookiesObj,
     };
 
-    await fs.mkdir(path.dirname(this.cachePath), { recursive: true });
-    const tmp = `${this.cachePath}.tmp.${process.pid}`;
+    const file = path.join(this.cachePath, "surfboard-hnap-session.json");
+    const tmp = `${file}.json.tmp.${process.pid}`;
+
+    await fs.mkdir(this.cachePath, { recursive: true });
     await fs.writeFile(tmp, JSON.stringify(payload, null, 2), "utf8");
-    await fs.rename(tmp, this.cachePath);
+    await fs.rename(tmp, file);
   }
 
   async ensureLogin({ username = "admin", password, captcha = "" } = {}) {
@@ -220,7 +222,8 @@ class SurfboardHNAP {
     const respHeaders = {};
     for (const line of lines) {
       const m = /^([!#$%&'*+\-.^_`|~0-9A-Za-z]+)\s*:\s*(.*)$/.exec(line);
-      if (!m) continue;
+      if (!m)
+        continue;
       const k = m[1].toLowerCase();
       const v = m[2];
       if (k === "set-cookie") {
@@ -232,7 +235,8 @@ class SurfboardHNAP {
     }
 
     if (respHeaders["set-cookie"]) {
-      for (const sc of respHeaders["set-cookie"]) this.ingestSetCookie(sc);
+      for (const sc of respHeaders["set-cookie"])
+        this.ingestSetCookie(sc);
     }
 
     return { status, statusLine, headers: respHeaders, body: bodyRaw };
@@ -240,7 +244,8 @@ class SurfboardHNAP {
 
   hnapAuthHeader(soapActionQuoted) {
     const pk = this.getCookie("PrivateKey");
-    if (!pk) throw new Error("Missing PrivateKey cookie (not logged in?)");
+    if (!pk)
+      throw new Error("Missing PrivateKey cookie (not logged in?)");
 
     const t = String(Date.now() % 2000000000000);
     const h = hmacHexUpper(pk, t + soapActionQuoted);
@@ -252,6 +257,8 @@ class SurfboardHNAP {
     const hnapAuth = this.hnapAuthHeader(soapActionQuoted);
 
     const body = JSON.stringify({ [action]: payloadObj });
+
+    console.log(String(body));
 
     const r = await this.rawHttp({
       method: "POST",
@@ -265,6 +272,8 @@ class SurfboardHNAP {
       },
       body,
     });
+
+    console.log(r.body);
 
     const json = JSON.parse(r.body);
     return { ...r, json };
@@ -281,7 +290,8 @@ class SurfboardHNAP {
   }
 
   async login({ username = "admin", password, captcha = "" }) {
-    if (!password) throw new Error("password required");
+    if (!password)
+      throw new Error("password required");
 
     this.setCookie("PrivateKey", "withoutloginkey", null);
 

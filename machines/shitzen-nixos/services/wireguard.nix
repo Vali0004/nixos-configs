@@ -13,7 +13,7 @@ in {
   networking.nat = {
     enable = true;
     enableIPv6 = true;
-    externalInterface = "eth0";
+    externalInterface = "enp3s0";
     internalInterfaces = [ "wg1" ];
   };
 
@@ -29,8 +29,8 @@ in {
     ];
     listenPort = 51821;
     postSetup = ''
-      ${iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.10.0/24 -o eth0 -j MASQUERADE
-      ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s fd10:0::/64 -o eth0 -j MASQUERADE
+      ${iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.10.0/24 -o enp3s0 -j MASQUERADE
+      ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s fd10:0::/64 -o enp3s0 -j MASQUERADE
 
       ${iptables}/bin/iptables -A FORWARD -s 10.0.10.0/24 -j ACCEPT || true
       ${iptables}/bin/iptables -A FORWARD -d 10.0.10.0/24 -j ACCEPT || true
@@ -41,8 +41,8 @@ in {
       ${iptables}/bin/ip6tables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
     '';
     postShutdown = ''
-      ${iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.10.0/24 -o eth0 -j MASQUERADE || true
-      ${iptables}/bin/ip6tables -t nat -D POSTROUTING -s 1/64 -o eth0 -j MASQUERADE
+      ${iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.10.0/24 -o enp3s0 -j MASQUERADE || true
+      ${iptables}/bin/ip6tables -t nat -D POSTROUTING -s 1/64 -o enp3s0 -j MASQUERADE
 
       ${iptables}/bin/iptables -D FORWARD -s 10.0.10.0/24 -j ACCEPT || true
       ${iptables}/bin/iptables -D FORWARD -d 10.0.10.0/24 -j ACCEPT || true

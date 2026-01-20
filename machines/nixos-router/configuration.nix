@@ -17,6 +17,7 @@
     services/prometheus.nix
     services/routerd.nix
     services/surfboard-hnap-exporter.nix
+    services/toxvpn.nix
   ];
 
   router = {

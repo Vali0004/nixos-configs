@@ -12,7 +12,7 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  services.nginx.virtualHosts."status.fuckk.lol" = {
+  services.nginx.virtualHosts."status.kursu.lol" = {
     enableACME = true;
     forceSSL = true;
     listen = [

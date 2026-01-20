@@ -18,7 +18,7 @@
     smartctl = {
       enable = true;
       devices = [
-        "/dev/sda"
+        "/dev/mmcblk0"
       ];
       openFirewall = true;
     };

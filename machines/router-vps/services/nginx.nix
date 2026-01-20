@@ -4,11 +4,12 @@
     enableReload = true;
 
     recommendedTlsSettings = true;
+    recommendedProxySettings = true;
 
     appendConfig = ''
       stream {
         map $ssl_preread_server_name $backend {
-          status.kursu.dev 127.0.0.1:443;  # handled by HTTP block
+          status.kursu.dev 127.0.0.1:443; # handled by HTTP block
           default          10.127.0.3:443; # catch-all
         }
 
@@ -19,5 +20,23 @@
         }
       }
     '';
+  };
+
+  services.nginx.virtualHosts."cache.kursu.dev" = {
+    enableACME = false;
+    forceSSL = false;
+    listen = [
+      { addr = "127.0.0.1"; port = 4444; }
+    ];
+    locations = {
+      "/private/" = {
+        alias = "/var/lib/cdn/";
+        index = "index.htm";
+        extraConfig = ''
+          autoindex on;
+          autoindex_exact_size off;
+        '';
+      };
+    };
   };
 }

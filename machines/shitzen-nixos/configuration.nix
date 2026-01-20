@@ -55,7 +55,7 @@
 
     services/web/mail/roundcube.nix
     services/web/mail/server.nix
-    #services/web/mail/sogo.nix
+    services/web/mail/sogo.nix
 
     services/web/ttyd.nix
 

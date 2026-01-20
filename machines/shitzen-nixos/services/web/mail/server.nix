@@ -22,13 +22,17 @@
           "abuse@fuckk.lol"
           "admin@fuckk.lol"
           "postmaster@fuckk.lol"
+        ];
+      };
+      "do-not-reply@fuckk-lol".hashedPasswordFile = config.age.secrets.do-not-reply-fuckk-lol.path;
+      "cleclerc@nanitehosting.com" = {
+        hashedPasswordFile = config.age.secrets.cleclerc-nanitehosting-com.path;
+        aliases = [
           "abuse@nanitehosting.com"
           "admin@nanitehosting.com"
           "postmaster@nanitehosting.com"
         ];
       };
-      "do-not-reply@fuckk-lol".hashedPasswordFile = config.age.secrets.do-not-reply-fuckk-lol.path;
-      "cleclerc@nanitehosting.com".hashedPasswordFile = config.age.secrets.cleclerc-nanitehosting-com.path;
     };
     mailDirectory = "/var/vmail";
     openFirewall = true;

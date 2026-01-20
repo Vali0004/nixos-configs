@@ -1,11 +1,14 @@
 #!/run/current-system/sw/bin/env node
 const crypto = require("node:crypto");
 const http = require("node:http");
+const fs = require("node:fs");
+const path = require("node:path");
 const SurfboardHNAP = require("./modem");
 
 const HOST = process.env.MODEM_HOST || "192.168.100.1";
 const PORT = Number(process.env.PORT || 9712);
-const STATE_PATH = process.env.STATE_PATH || "/var/lib/surfboard-hnap-exporter/state.json";
+const STATE_PATH = process.env.STATE_PATH || "/var/lib/surfboard-hnap-exporter";
+const LOGS_PATH = path.join(STATE_PATH, "log-state.json");
 const MAX_SEEN = Number(process.env.MAX_SEEN || 2000);
 
 const username = process.env.USERNAME || "admin";
@@ -13,7 +16,11 @@ const password = process.env.PASSWORD;
 if (!password)
   throw new Error("Set PASSWORD env var.");
 
-const modem = new SurfboardHNAP({ host: HOST });
+const modem = new SurfboardHNAP({
+  host: HOST,
+  cachePath: STATE_PATH,
+  defaultSessionTtlMs: 10 * 60 * 1000
+});
 
 function escLabelValue(s) {
   // Prometheus label escaping: backslash, quote, newline
@@ -82,7 +89,7 @@ function parseUpstream(str) {
 
 function loadState() {
   try {
-    const s = JSON.parse(fs.readFileSync(STATE_PATH, "utf8"));
+    const s = JSON.parse(fs.readFileSync(LOGS_PATH, "utf8"));
     if (!s || typeof s !== "object")
       return null;
     s.seen ||= {};
@@ -96,8 +103,8 @@ function loadState() {
 
 function saveState(st) {
   try {
-    fs.mkdirSync(path.dirname(STATE_PATH), { recursive: true });
-    fs.writeFileSync(STATE_PATH, JSON.stringify(st, null, 2));
+    fs.mkdirSync(path.dirname(LOGS_PATH), { recursive: true });
+    fs.writeFileSync(LOGS_PATH, JSON.stringify(st, null, 2));
   } catch (e) {
     // don't fail scrape because state can't be saved
   }
@@ -114,14 +121,17 @@ function pruneSeen(seen) {
   const out = {};
   for (const [k, v] of keep)
     out[k] = v;
+
   return out;
 }
 
-// Parse "01/18/2026 01:16:07" into unix seconds (local time)
-function parseModemDateToUnixSeconds(s) {
+// Parse "01/18/2026 01:16:07" into unix milliseconds (local time)
+function parseModemDateToUnixTimestamp(s) {
   // MM/DD/YYYY HH:MM:SS
   const m = /^(\d{2})\/(\d{2})\/(\d{4})\s+(\d{2}):(\d{2}):(\d{2})$/.exec(String(s).trim());
-  if (!m) return 0;
+  if (!m)
+    return 0;
+
   const [, MM, DD, YYYY, hh, mm, ss] = m;
   const dt = new Date(
     Number(YYYY),
@@ -131,7 +141,8 @@ function parseModemDateToUnixSeconds(s) {
     Number(mm),
     Number(ss)
   );
-  return Math.floor(dt.getTime() / 1000);
+
+  return dt.getTime();
 }
 
 function parseCustomerStatusLog(raw) {
@@ -158,7 +169,7 @@ function parseCustomerStatusLog(raw) {
 
     out.push({
       dateStr,
-      ts: parseModemDateToUnixSeconds(dateStr),
+      ts: parseModemDateToUnixTimestamp(dateStr),
       level,
       msg,
       // stable ID for dedupe
@@ -172,25 +183,25 @@ function classifyEvent(e) {
   const m = e.msg;
 
   // Sync loss
-  if (/Loss of Sync/i.test(m) || /SYNC Timing Synchronization failure/i.test(m)) return "sync";
+  if (/Loss of Sync/i.test(m) || /SYNC Timing Synchronization failure/i.test(m))
+    return "sync";
 
   // T4
-  if (/\bT4\b/i.test(m) || /T4 time[- ]?out/i.test(m)) return "t4";
+  if (/\bT4\b/i.test(m) || /T4 time[- ]?out/i.test(m))
+    return "t4";
 
   // T3
-  if (/\bT3\b/i.test(m) || /T3 time[- ]?out/i.test(m) || /No Ranging Response received/i.test(m)) return "t3";
+  if (/\bT3\b/i.test(m) || /T3 time[- ]?out/i.test(m) || /No Ranging Response received/i.test(m))
+    return "t3";
 
   return null;
 }
 
 async function scrapeOnce() {
-  await modem.login({ username, password });
-
-  const r = await modem.hnap("GetMultipleHNAPs", {
+  const r = await modem.hnapWithAutoRelog("GetMultipleHNAPs", {
     GetCustomerStatusDownstreamChannelInfo: "",
     GetCustomerStatusUpstreamChannelInfo: "",
-    GetCustomerStatusLog: "",
-  });
+  }, { username, password });
 
   const resp = r.json?.GetMultipleHNAPsResponse;
   if (!resp)
@@ -218,6 +229,7 @@ async function scrapeOnce() {
   for (const c of ds) {
     const labels = {
       channel: String(c.ch),
+      channelId: String(c.channelId),
       modulation: String(c.modulation),
     };
     out.push(metricLine("docsis_downstream_snr_db", labels, c.snrDb));
@@ -237,6 +249,7 @@ async function scrapeOnce() {
   for (const c of us) {
     const labels = {
       channel: String(c.ch),
+      channelId: String(c.channelId),
       modulation: String(c.modulation),
     };
     out.push(metricLine("docsis_upstream_power_dbmv", labels, c.powerdBmV));
@@ -245,7 +258,7 @@ async function scrapeOnce() {
     out.push(metricLine("docsis_upstream_lock", labels, c.lock === "Locked" ? 1 : 0));
   }
 
-  // Simple aggregates (handy for alerts)
+  // Simple aggregates
   if (ds.length) {
     const snrMin = Math.min(...ds.map((c) => c.snrDb));
     out.push(metricLine("docsis_downstream_snr_min_db", null, snrMin));
@@ -258,15 +271,22 @@ async function scrapeOnce() {
 
   //  Event log metrics (T3 / T4 / Loss of Sync)
   helpType(out, "docsis_event_total", "DOCSIS event counts derived from modem status log", "counter");
-  helpType(out, "docsis_event_last_ts_seconds", "Unix timestamp of last seen DOCSIS event in modem log", "gauge");
+  helpType(out, "docsis_event_last_ts_milliseconds", "Unix timestamp of last seen DOCSIS event in modem log (ms)", "gauge");
 
   const st = loadState();
 
+  const logR = await modem.hnapWithAutoRelog("GetMultipleHNAPs", {
+    GetCustomerStatusLog: "",
+  }, { username, password });
+
+  const logResp = logR.json?.GetCustomerStatusLogResponse;
+
   const logStr =
-    resp.GetCustomerStatusLogResponse?.GetCustomerStatusLog ??
-    resp.GetCustomerStatusLogResponse?.CustomerStatusLog ??
-    resp.GetCustomerStatusLog ??
-    "";
+    logResp.CustomerStatusLogList ??
+    logResp.CustomerStatusLog ??
+    "noData";
+
+  console.log(String(logStr));
 
   const entries = parseCustomerStatusLog(String(logStr));
 
@@ -274,7 +294,7 @@ async function scrapeOnce() {
     // already counted
     if (st.seen[e.id])
       continue;
-    st.seen[e.id] = e.ts || Math.floor(Date.now() / 1000);
+    st.seen[e.id] = e.ts || Date.now();
 
     const kind = classifyEvent(e);
     if (!kind)
@@ -301,9 +321,9 @@ async function scrapeOnce() {
   out.push(metricLine("docsis_event_total", { event: "sync_loss" }, st.counters.sync));
 
   // emit "last seen" timestamps
-  out.push(metricLine("docsis_event_last_ts_seconds", { event: "t3_timeout" }, st.lastTs.t3 || 0));
-  out.push(metricLine("docsis_event_last_ts_seconds", { event: "t4_timeout" }, st.lastTs.t4 || 0));
-  out.push(metricLine("docsis_event_last_ts_seconds", { event: "sync_loss" }, st.lastTs.sync || 0));
+  out.push(metricLine("docsis_event_last_ts_milliseconds", { event: "t3_timeout" }, st.lastTs.t3 || 0));
+  out.push(metricLine("docsis_event_last_ts_milliseconds", { event: "t4_timeout" }, st.lastTs.t4 || 0));
+  out.push(metricLine("docsis_event_last_ts_milliseconds", { event: "sync_loss" }, st.lastTs.sync || 0));
 
   return out.join("");
 }
@@ -336,5 +356,5 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, "0.0.0.0", () => {
-  console.log(`docsis exporter on http://0.0.0.0:${PORT}/metrics (modem ${HOST})`);
+  console.log(`docsis exporter on http://127.0.0.1:${PORT}/metrics (modem ${HOST})`);
 });

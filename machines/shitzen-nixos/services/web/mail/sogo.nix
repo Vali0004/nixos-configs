@@ -30,7 +30,7 @@ in {
       SOGoCacheCleanupInterval = 300;
       SOGoMemcachedHost = "192.168.100.1";
 
-      SOGoMailDomain = "fuckk.lol";
+      SOGoMailDomain = "${config.services.sogo.vhostName}";
       SOGoEnableEMailAlarms = YES;
       SOGoMailCustomFromEnabled = YES;
       SOGoMailingMechanism = "smtp";
@@ -64,7 +64,7 @@ in {
       NGImap4DebugEnabled = YES;
     '';
     timezone = "America/Detroit";
-    vhostName = "mail.fuckk.lol";
+    vhostName = "mail.kursu.dev";
   };
 
   systemd.services = {

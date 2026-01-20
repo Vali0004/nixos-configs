@@ -2,10 +2,6 @@
 , ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [
-    9712
-  ];
-
   systemd.services.surfboard-hnap-exporter = {
     description = "S34 DOCSIS 3.1 Prometheus Exporter";
     wantedBy = [ "multi-user.target" ];
