@@ -12,8 +12,9 @@ let
   ];
 in {
   "cleclerc-nanitehosting-com.age".publicKeys = keys;
-  "do-not-reply-fuckk-lol.age".publicKeys = keys;
+  "do-not-reply-kursu-dev.age".publicKeys = keys;
   "git-kursu-dev-db.age".publicKeys = keys;
+  "gitea-runner-token.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
   "hydra-runner-ajax-github-token.age".publicKeys = keys ++ [
     ajaxnetworks-nixos
@@ -40,7 +41,7 @@ in {
   "radarr-api.age".publicKeys = keys;
   "sogo-db-password.age".publicKeys = keys;
   "sonarr-api.age".publicKeys = keys;
-  "vali-fuckk-lol.age".publicKeys = keys;
+  "vali-kursu-dev.age".publicKeys = keys;
   "whcms-db-pass.age".publicKeys = keys;
   "wireguard.age".publicKeys = keys;
   "wireguard-server.age".publicKeys = ssh_keys ++ [

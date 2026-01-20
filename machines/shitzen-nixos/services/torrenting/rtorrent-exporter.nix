@@ -32,9 +32,5 @@ in {
         '';
       };
     };
-
-    # This is needed for nginx to be able to read other processes
-    # directories in `/run`. Else it will fail with (13: Permission denied)
-    systemd.services.nginx.serviceConfig.ProtectHome = false;
   };
 }

@@ -87,7 +87,7 @@
         deployment = {
           targetHost = "74.208.44.130";
           targetUser = "root";
-          targetPort = 22;
+          targetPort = 1594;
         };
         imports = coreImports ++ [
           machines/router-vps/configuration.nix

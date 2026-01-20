@@ -44,6 +44,7 @@
 
     services/web/filehosting/media/jellyfin.nix
     services/web/filehosting/media/kavita.nix
+    services/web/filehosting/gitea-runner.nix
     services/web/filehosting/gitea.nix
     services/web/filehosting/nextcloud.nix
     services/web/filehosting/zipline.nix
@@ -53,7 +54,7 @@
     services/web/server/nginx.nix
     services/web/server/oauth2.nix
 
-    services/web/mail/roundcube.nix
+    #services/web/mail/roundcube.nix
     services/web/mail/server.nix
     services/web/mail/sogo.nix
 
@@ -147,6 +148,9 @@
   hardware.amd.enable = true;
 
   networking = {
+    dhcpcd.extraConfig = ''
+      nohook resolv.conf
+    '';
     firewall = {
       # SMTP is open
       # SMTPS is open
@@ -171,18 +175,20 @@
       enp3s0.useDHCP = true;
     };
     nameservers = [
-      "10.0.0.2"
       "1.1.1.1"
-      "2601:406:8100:91d8::146c"
+      "8.8.8.8"
       "2606:4700:4700::1111"
+      "2001:4860:4860::8888"
     ];
     useDHCP = false;
   };
 
-  nix.settings.keep-derivations = true;
+  services.kresd = {
+    enable = lib.mkForce false;
+    instances = 0;
+  };
 
-  # Setup auto-tune by default
-  powerManagement.powertop.enable = true;
+  nix.settings.keep-derivations = true;
 
   acme.enable = true;
 

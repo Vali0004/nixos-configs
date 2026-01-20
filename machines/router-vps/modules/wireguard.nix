@@ -46,6 +46,10 @@ in {
       ${iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 9101 -j DNAT --to-destination 10.127.0.3:9100 || true
       ${iptables}/bin/ip6tables -t nat -A PREROUTING -i eth0 -p tcp --dport 9101 -j DNAT --to-destination fd00:127::3:9100 || true
 
+      # Forward gitea ssh for shitzen as 22 (comes from 2222)
+      ${iptables}/bin/iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to-destination 10.127.0.3:2222 || true
+      ${iptables}/bin/ip6tables -t nat -A PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to-destination fd00:127::3:2222 || true
+
       ${iptables}/bin/iptables -A FORWARD -s 10.127.0.0/24 -j ACCEPT || true
       ${iptables}/bin/iptables -A FORWARD -d 10.127.0.0/24 -j ACCEPT || true
       ${iptables}/bin/ip6tables -A FORWARD -s fd00:127::/64 -j ACCEPT || true
@@ -68,6 +72,9 @@ in {
       done
       ${iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 9101 -j DNAT --to-destination 10.127.0.3:9100 || true
       ${iptables}/bin/ip6tables -t nat -D PREROUTING -i eth0 -p tcp --dport 9101 -j DNAT --to-destination fd00:127::3:9100 || true
+
+      ${iptables}/bin/iptables -t nat -D PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to-destination 10.127.0.3:2222 || true
+      ${iptables}/bin/ip6tables -t nat -D PREROUTING -i eth0 -p tcp --dport 22 -j DNAT --to-destination fd00:127::3:2222 || true
 
       ${iptables}/bin/iptables -D FORWARD -s 10.127.0.0/24 -j ACCEPT || true
       ${iptables}/bin/iptables -D FORWARD -d 10.127.0.0/24 -j ACCEPT || true

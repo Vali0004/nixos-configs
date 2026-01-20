@@ -8,8 +8,8 @@
       owner = "nginx";
       group = "nginx";
     };
-    do-not-reply-fuckk-lol = {
-      file = ../../../secrets/do-not-reply-fuckk-lol.age;
+    do-not-reply-kursu-dev = {
+      file = ../../../secrets/do-not-reply-kursu-dev.age;
       owner = config.services.gitea.user;
       group = config.services.gitea.group;
     };
@@ -17,6 +17,12 @@
       file = ../../../secrets/git-kursu-dev-db.age;
       owner = "postgres";
       group = config.services.gitea.group;
+      mode = "0440";
+    };
+    gitea-runner-token = {
+      file = ../../../secrets/gitea-runner-token.age;
+      owner = "gitea-runner";
+      group = "gitea-runner";
       mode = "0440";
     };
     hydra-github-token = {
@@ -78,8 +84,8 @@
       owner = "root";
       group = "root";
     };
-    vali-fuckk-lol = {
-      file = ../../../secrets/vali-fuckk-lol.age;
+    vali-kursu-dev = {
+      file = ../../../secrets/vali-kursu-dev.age;
       owner = "nginx";
       group = "nginx";
     };

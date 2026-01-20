@@ -83,6 +83,14 @@
               <div class="text-xs text-zinc-500">dnsmasq</div>
               <div class="font-mono text-lg" id="dnsmasq">…</div>
             </div>
+            <div class="rounded-xl bg-zinc-950/40 p-3">
+              <div class="text-xs text-zinc-500">LAN (br0)</div>
+              <div class="font-mono text-xs break-all" id="lanIps">…</div>
+            </div>
+            <div class="rounded-xl bg-zinc-950/40 p-3">
+              <div class="text-xs text-zinc-500">WAN (enp1s0f0)</div>
+              <div class="font-mono text-xs break-all" id="wanIps">…</div>
+            </div>
           </div>
         </div>
 
@@ -263,12 +271,62 @@
           .join("\n");
       }
 
+      function pickIface(interfaces, ifname) {
+        return (interfaces || []).find(x => x && x.ifname === ifname) || null;
+      }
+
+      function formatIfaceAddrs(iface) {
+        const infos = Array.isArray(iface?.addr_info) ? iface.addr_info : [];
+
+        const v4 = [];
+        const v6 = [];
+
+        for (const a of infos) {
+          const fam = a?.family;
+          const ip = a?.local;
+          const pfx = a?.prefixlen;
+
+          if (!ip || pfx == null)
+            continue;
+
+          // Skip loopback / host-scope
+          if (a.scope === "host")
+            continue;
+
+          if (fam === "inet") {
+            if (ip.startsWith("127."))
+              continue;
+            v4.push(`${ip}/${pfx}`);
+          } else if (fam === "inet6") {
+            // Skip link-local
+            if (ip.toLowerCase().startsWith("fe80:"))
+              continue;
+            v6.push(`${ip}/${pfx}`);
+          }
+        }
+
+        const parts = [];
+        if (v4.length)
+          parts.push(`v4: ${v4.join(" ")}`);
+        if (v6.length)
+          parts.push(`v6: ${v6.join(" ")}`);
+        return parts.length ? parts.join(" • ") : "—";
+      }
+
       async function refreshSummary() {
         const data = await jget("/api/router");
         document.getElementById("lastUpdate").textContent = new Date(data.t).toLocaleString();
 
         const rt = data.router;
-        if (!rt) return;
+        if (!rt)
+          return;
+
+        const ifaces = rt?.net?.interfaces || [];
+        const lan = pickIface(ifaces, "br0");
+        const wan = pickIface(ifaces, "enp1s0f0");
+
+        document.getElementById("lanIps").textContent = formatIfaceAddrs(lan);
+        document.getElementById("wanIps").textContent = formatIfaceAddrs(wan);
 
         document.getElementById("uptime").textContent = rt.uptime?.pretty || "—";
         const ct = rt.conntrack || {};

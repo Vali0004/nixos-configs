@@ -10,13 +10,14 @@
       refresh = "1h";
     };
     keyFile = config.age.secrets.oauth2-proxy.path;
-    email.domains = [ "fuckk.lol" ];
+    email.domains = [ "kursu.dev" ];
     enable = true;
     nginx = {
       domain = "monitoring.kursu.dev";
       virtualHosts = {
         "monitoring.kursu.dev" = {
           allowed_email_domains = [
+            "kursu.dev"
             "fuckk.lol"
             "nanitehosting.com"
           ];

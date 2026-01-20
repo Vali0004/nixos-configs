@@ -13,7 +13,7 @@ in {
   services.sogo = {
     enable = true;
     configReplaces = {
-      DO_NOT_REPLY_FUCKK_LOL = config.age.secrets.do-not-reply-fuckk-lol.path;
+      DO_NOT_REPLY_FUCKK_LOL = config.age.secrets.do-not-reply-kursu-dev.path;
     };
     extraConfig = ''
       WOWorkersCount = 4;
@@ -24,6 +24,8 @@ in {
           type = sql;
           userPasswordAlgorithm = crypt;
           viewURL = "${pgSock}/sogo_users";
+          LoginFieldNames = ("c_name", "mail");
+          MailFieldNames = ("mail");
         }
       );
 
@@ -35,16 +37,16 @@ in {
       SOGoMailCustomFromEnabled = YES;
       SOGoMailingMechanism = "smtp";
 
-      SOGoIMAPServer = "imaps://mail.fuckk.lol/?tls=YES&tlsVerifyMode=default";
+      SOGoIMAPServer = "imaps://mail.kursu.dev/?tls=YES&tlsVerifyMode=default";
       // When logging in to the SMTP server, the primary email address of the user will be used instead of the username.
       SOGoForceExternalLoginWithEmail = YES;
       NGImap4DisableIMAP4Pooling = YES;
       NGImap4AuthMechanism = "plain";
 
-      SOGoSMTPServer = "smtp://mail.fuckk.lol:587/?tls=YES&tlsVerifyMode=default";
+      SOGoSMTPServer = "smtp://mail.kursu.dev:587/?tls=YES&tlsVerifyMode=default";
       SOGoSMTPAuthenticationType = "PLAIN";
       SOGoSMTPMasterUserEnabled = YES;
-      SOGoSMTPMasterUserUsername = "do-not-reply@fuckk.lol";
+      SOGoSMTPMasterUserUsername = "do-not-reply@kursu.dev";
       SOGoSMTPMasterUserPassword = DO_NOT_REPLY_FUCKK_LOL;
 
       SOGoMailKeepDraftsAfterSend = YES;

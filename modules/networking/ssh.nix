@@ -64,6 +64,7 @@
     Host router-vps
       Hostname router-vps
       User root
+      Port 1594
       IPQoS none
       Compression no
       TCPKeepAlive yes

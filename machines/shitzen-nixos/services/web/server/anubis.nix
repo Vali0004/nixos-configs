@@ -19,7 +19,7 @@ in {
     };
     "git-server" = {
       settings = {
-        TARGET = "http://${address}:${toString config.services.gitea.settings.server.HTTP_PORT}";
+        TARGET = "http://192.168.100.2:${toString config.services.gitea.settings.server.HTTP_PORT}";
         BIND = ":${toString (config.services.gitea.settings.server.HTTP_PORT + 1)}";
         BIND_NETWORK = "tcp";
         METRICS_BIND = ":${toString (base-metrics-port + 1)}";

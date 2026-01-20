@@ -63,6 +63,7 @@
     };
     firewall = {
       allowedTCPPorts = [
+        22 # SSH
         25 # SMTP
         80 # HTTP
         143 # IMAP
@@ -110,6 +111,8 @@
   };
 
   acme.enable = true;
+
+  services.openssh.ports = [ 1594 ];
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";
