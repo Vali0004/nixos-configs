@@ -345,7 +345,7 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.url === "/" || req.url === "/healthz") {
+  if (req.url === "/" || req.url === "/health") {
     res.writeHead(200, { "Content-Type": "text/plain; charset=utf-8" });
     res.end("ok\n");
     return;
