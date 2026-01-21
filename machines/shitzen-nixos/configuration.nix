@@ -60,8 +60,7 @@
 
     services/web/ttyd.nix
 
-    #services/web/whmcs.nix
-    services/web/cloudpanel.nix
+    #services/web/cloudpanel.nix
 
     services/wireguard.nix
     services/toxvpn.nix

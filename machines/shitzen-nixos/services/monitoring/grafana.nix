@@ -51,7 +51,7 @@ in {
       };
       smtp = {
         enabled = true;
-        from_address = "admin@kursu.dev";
+        from_address = "do-not-reply@kursu.dev";
       };
       server = {
         http_addr = "0.0.0.0";

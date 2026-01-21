@@ -33,6 +33,14 @@
             return 404;
           '';
         };
+        "/private/downloads/" = {
+          alias = "/mnt/data/private/downloads/";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
         "/private/anime/" = {
           alias = "/mnt/data/private/Media/Anime/";
           index = "index.htm";
@@ -43,6 +51,14 @@
         };
         "/private/movies/" = {
           alias = "/mnt/data/private/Media/Movies";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
+        "/private/cleverca22/" = {
+          alias = "/mnt/data/incoming/";
           index = "index.htm";
           extraConfig = ''
             autoindex on;

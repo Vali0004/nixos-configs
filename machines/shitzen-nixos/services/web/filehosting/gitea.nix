@@ -10,17 +10,19 @@
 
   services.gitea = {
     appName = "kursu.dev: Git";
+    enable = true;
     captcha.enable = true;
     database = {
       createDatabase = true;
+      type = "postgres";
+      port = config.services.postgresql.settings.port;
       passwordFile = config.age.secrets.git-kursu-dev-db.path;
       name = config.services.gitea.user;
-      port = 5432;
-      type = "postgres";
       user = config.services.gitea.user;
     };
-    enable = true;
+    stateDir = "/var/lib/git";
     group = "git";
+    user = "git";
     lfs = {
       contentDir = "/data/services/git/lfs";
       enable = true;
@@ -50,7 +52,7 @@
         DOMAIN = "git.kursu.dev";
         HTTP_PORT = 3900;
         HTTP_ADDR = "0.0.0.0";
-        ROOT_URL = "https://git.kursu.dev";
+        ROOT_URL = "https://${config.services.gitea.settings.server.DOMAIN}";
         SSH_DOMAIN = "git.kursu.dev";
         SSH_PORT = 2222;
         SSH_CREATE_AUTHORIZED_KEYS_FILE = true;
@@ -67,11 +69,9 @@
       "ssh.minimum_key_sizes".RSA = 2048;
       ui.ONLY_SHOW_RELEVANT_REPOS = true;
     };
-    stateDir = "/var/lib/git";
-    user = "git";
   };
 
-  services.nginx.virtualHosts."git.kursu.dev" = {
+  services.nginx.virtualHosts.${config.services.gitea.settings.server.DOMAIN} = {
     enableACME = true;
     forceSSL = true;
 
