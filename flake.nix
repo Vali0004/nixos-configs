@@ -110,8 +110,6 @@
           targetPort = 22;
         };
         imports = coreImports ++ [
-          modules/ajax/hosts.nix
-          modules/ajax/ssh.nix
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
           machines/shitzen-nixos/configuration.nix
@@ -151,8 +149,6 @@
           nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
-          modules/ajax/hosts.nix
-          modules/ajax/ssh.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/imports.nix
@@ -170,8 +166,6 @@
           nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
-          modules/ajax/hosts.nix
-          modules/ajax/ssh.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/services/openssh.nix

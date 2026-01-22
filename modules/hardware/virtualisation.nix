@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   options.hardware = {
@@ -23,8 +26,9 @@
       onBoot = "ignore";
       onShutdown = "shutdown";
       qemu = {
-        package = pkgs.qemu_kvm;
+        package = pkgs.qemu_full;
         runAsRoot = false;
+        swtpm.enable = true;
       };
     };
 

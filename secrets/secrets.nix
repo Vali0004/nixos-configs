@@ -1,6 +1,5 @@
 let
   ssh_keys = import ../ssh_keys_personal.nix;
-  ajaxnetworks-nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKPJ20NST8s2UjWLOgkq7xpw3LXaim1r6KoW20TPa5nh";
   nixos-amd = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7r7kh+QoV9s5ePtVZIIQzFlfECt7MgshAhVWGWiwXG";
   nixos-hass = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgzGChBKyMJx56Qb5Jl+YLs/0p3PzyQsysEDTiDqMQo";
   shitzen-nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1";
@@ -16,9 +15,6 @@ in {
   "git-kursu-dev-db.age".publicKeys = keys;
   "gitea-runner-token.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
-  "hydra-runner-ajax-github-token.age".publicKeys = keys ++ [
-    ajaxnetworks-nixos
-  ];
   "kavita.age".publicKeys = keys;
   "matrix.age".publicKeys = keys;
   "network-secrets.age".publicKeys = ssh_keys ++ [
@@ -31,7 +27,6 @@ in {
   ];
   "nextcloud-admin-password.age".publicKeys = keys;
   "nix-netrc.age".publicKeys = keys ++ [
-    ajaxnetworks-nixos
     lenovo
     nixos-amd
   ];
