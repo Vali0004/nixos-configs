@@ -33,6 +33,7 @@
         "CMD_TIMEOUT_MS=1500"
         "DNSMASQ_LEASES=/var/lib/misc/dnsmasq.leases"
         "DNSMASQ_UNIT=pihole-ftl.service"
+        "ALLOWED_UNITS=pihole-ftl.service"
         "SECRET=dummy"
       ];
 

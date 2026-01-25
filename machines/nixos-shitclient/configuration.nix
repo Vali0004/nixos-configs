@@ -67,7 +67,7 @@
     tcpdump
     # USB Utilies
     usbutils
-    # We'b Get
+    # Web Get
     wget
   ];
 

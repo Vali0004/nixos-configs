@@ -14,19 +14,20 @@ const ENABLE_ROUTE_CHANGES = (process.env.ENABLE_ROUTE_CHANGES || "0") === "1";
 const LAN_DEV = process.env.LAN_DEV || "br0";
 
 const DNSMASQ_LEASES = process.env.DNSMASQ_LEASES || "/var/lib/misc/dnsmasq.leases";
+const DNSMASQ_UNIT = process.env.DNSMASQ_UNIT || "dnsmasq.service";
 
 const POLL_SECONDS = Math.max(1, Number(process.env.POLL_SECONDS || 2));
 const COMMAND_TIMEOUT_MS = Math.max(250, Number(process.env.CMD_TIMEOUT_MS || 1500));
 
 const ALLOWED_UNITS = new Set(
-  (process.env.ALLOWED_UNITS || "dnsmasq.service")
+  (process.env.ALLOWED_UNITS || DNSMASQ_UNIT)
     .split(",")
     .map(s => s.trim())
     .filter(Boolean)
 );
 
 const ALLOWED_LOG_UNITS = new Set(
-  (process.env.ALLOWED_LOG_UNITS || "dnsmasq.service")
+  (process.env.ALLOWED_LOG_UNITS || DNSMASQ_UNIT)
     .split(",")
     .map(s => s.trim())
     .filter(Boolean)
@@ -196,12 +197,11 @@ function parseDnsmasqLeases(raw) {
 }
 
 async function getDnsmasqStatus() {
-  const unit = process.env.DNSMASQ_UNIT || "dnsmasq.service";
   try {
-    const out = await run("systemctl", ["is-active", unit]);
-    return { unit, active: out.trim() === "active" };
+    const out = await run("systemctl", ["is-active", DNSMASQ_UNIT]);
+    return { DNSMASQ_UNIT, active: out.trim() === "active" };
   } catch (e) {
-    return { unit, active: false, error: e.message };
+    return { DNSMASQ_UNIT, active: false, error: e.message };
   }
 }
 

@@ -43,6 +43,8 @@
     conntrack-tools
     # cURL
     curl
+    # Useful for DNS debugging
+    dig
     # CPU Power Management
     linuxKernel.packages.linux_6_12.cpupower
     # Display Mode Info Decode
