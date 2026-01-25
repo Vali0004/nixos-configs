@@ -51,7 +51,7 @@ in {
 
     dnsPrimaryIPv6 = lib.mkOption {
       type = lib.types.str;
-      default = "2601:406:8100:91D8::";
+      default = "2601:406:8100:91D8::1";
       description = "PrimaryDNS server IPv6";
     };
 
@@ -91,7 +91,7 @@ in {
           }];
           ipv6.addresses = [
             {
-              address = "2601:406:8100:91D8::";
+              address = "2601:406:8100:91D8::1";
               prefixLength = 64;
             }
             {
