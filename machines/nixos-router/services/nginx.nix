@@ -14,7 +14,16 @@
     experimentalZstdSettings = true;
   };
 
+  acme.enable = true;
+
   services.nginx.virtualHosts = {
+    "router.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "127.0.0.1";
+        port = 4390;
+      };
+    };
     "hass.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {

@@ -2,6 +2,7 @@
   services.localnetSSL = {
     enable = true;
     hosts = [
+      "router.localnet"
       "hass.localnet"
       "jellyfin.localnet"
       "kvm.localnet"

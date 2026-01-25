@@ -8,8 +8,6 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
-    services/localnet.nix
-    services/nginx.nix
     services/pihole.nix
     services/prometheus.nix
   ];
@@ -96,11 +94,6 @@
         "dmask=0022"
       ];
     };
-    "/mnt/data" = {
-      device = "10.0.0.4:/data";
-      fsType = "nfs";
-      options = [ "x-systemd.automount" "noauto" "soft" ];
-    };
   };
 
   hardware = {
@@ -110,26 +103,9 @@
   };
 
   networking = {
-    extraHosts = ''
-      10.0.0.4 shitzen.localnet shitzen-nixos
-      10.0.0.5 shitzen-kvm.localnet shitzen-nixos-kvm
-      10.0.0.2 shitclient.localnet ${config.networking.hostName}
-      10.0.0.3 nixos-hass.localnet nixos-hass
-      10.0.0.2 hass.localnet ${config.networking.hostName}
-      10.0.0.2 jellyfin.localnet ${config.networking.hostName}
-      10.0.0.2 kvm.localnet ${config.networking.hostName}
-      10.0.0.2 monitoring.localnet ${config.networking.hostName}
-      10.0.0.2 rtorrent.localnet ${config.networking.hostName}
-      10.0.0.2 pihole.localnet ${config.networking.hostName}
-      10.0.0.2 zigbee2mqtt.localnet ${config.networking.hostName}
-    '';
     firewall = {
-      # DNS is open
       # SSH is open
-      # Pihole is open
       allowedTCPPorts = [
-        80 # HTTP
-        443 # HTTPS
         5201 # iperf
       ];
       allowedUDPPorts = [
@@ -143,8 +119,6 @@
     };
     usePredictableInterfaceNames = false;
   };
-
-  programs.zsh.enable = true;
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";

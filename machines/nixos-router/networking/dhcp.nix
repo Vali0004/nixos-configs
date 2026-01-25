@@ -1,21 +1,30 @@
 { config
-, pkgs
 , ... }:
 
 {
-  networking.firewall = {
-    allowedUDPPorts = [
-      53 # Local DNS Server
+  # Techinally, pihole has a option, but I don't trust it fully.
+  networking = {
+    firewall.allowedUDPPorts = [
       67 # DHCP Server
       547 # DHCPv6 Server
     ];
-    # This may be needed at some point, who knows.
-    #trustedInterfaces = [ config.router.wanInterface ];
+    # Use pihole's internal DNS instead.
+    nameservers = [
+      "127.0.0.1"
+      "::1"
+    ];
+    # Tell resolv.conf from upstream to kick rocks
+    dhcpcd = {
+      enable = true;
+      extraConfig = ''
+        nohook resolv.conf
+      '';
+    };
   };
 
   services.dnsmasq = {
-    enable = true;
-    resolveLocalQueries = false;
+    # We use Pi-Hole's internal dnsmasq, so we don't enable it here
+    enable = false;
     settings = {
       bind-interfaces = true;
       interface = [ config.router.bridgeInterface ];
@@ -23,14 +32,6 @@
       # Disable resolv.conf parsing, as we assign our own via DHCP.
       # Otherwise, it'd be what the ISP assigns, which we don't want :)
       no-resolv = true;
-
-      # DNS Servers
-      server = [
-        config.router.dnsPrimaryIPv6
-        config.router.dnsFallbackIPv6
-        config.router.dnsPrimaryIP
-        config.router.dnsFallbackIP
-      ];
 
       dhcp-host = [
         "8C:EC:4B:55:B2:F1,set:nixos-shitclient,${config.router.lanSubnet}.2,nixos-shitclient,infinite"

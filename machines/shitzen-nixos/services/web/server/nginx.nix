@@ -46,7 +46,7 @@
 
   services.nginx.virtualHosts."fuckk.lol" = {
     enableACME = true;
-    forceSSL = true;
+    forceSSL = false;
     root = "/data/services/web/fuckk-lol/";
     locations = {
       "/" = {

@@ -3,6 +3,10 @@
 , ... }:
 
 {
+  networking.firewall.allowedTCPPorts = [
+    9810
+  ];
+
   services.pihole-ftl = {
     enable = true;
     openFirewallDNS = true;
@@ -32,14 +36,6 @@
         paths.webhome = "/";
         tls.cert = "/var/lib/pihole/tls.pem";
       };
-    };
-  };
-
-  services.nginx.virtualHosts."pihole.localnet" = {
-    forceSSL = false;
-    locations."/" = lib.mkProxy {
-      ip = "127.0.0.1";
-      port = 9810;
     };
   };
 

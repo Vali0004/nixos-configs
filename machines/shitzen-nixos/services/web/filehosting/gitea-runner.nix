@@ -5,7 +5,7 @@
 {
   services.gitea-actions-runner.instances = {
     "kursu" = {
-      enable = true;
+      enable = false;
       name = "kursu";
       url = "https://git.kursu.dev";
       tokenFile = config.age.secrets.gitea-runner-token.path;

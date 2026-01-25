@@ -103,6 +103,16 @@
           machines/nixos-shitclient/configuration.nix
         ];
       };
+      nixos-shitclient-kodi = {
+        deployment = {
+          targetHost = "10.0.0.2";
+          targetUser = "root";
+          targetPort = 22;
+        };
+        imports = [
+          machines/nixos-shitclient-kodi/configuration.nix
+        ];
+      };
       shitzen-nixos = {
         deployment = {
           targetHost = "10.0.0.4";

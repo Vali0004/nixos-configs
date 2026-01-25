@@ -29,6 +29,7 @@
     services/sql/postgresql.nix
 
     services/torrenting/arr/flaresolverr.nix
+    services/torrenting/arr/lidarr.nix
     services/torrenting/arr/prowlarr.nix
     services/torrenting/arr/radarr.nix
     services/torrenting/arr/readarr.nix
@@ -96,6 +97,7 @@
     lshw
     lsof
     lsscsi
+    usbutils
     magic-wormhole
     mediainfo
     memtester

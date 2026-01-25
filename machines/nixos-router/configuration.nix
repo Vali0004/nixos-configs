@@ -10,10 +10,14 @@
 
     networking/router/default.nix
     networking/dhcp.nix
+    networking/hosts.nix
+    networking/localnet.nix
     networking/nat.nix
+    networking/pihole.nix
     networking/sysctl.nix
     networking/upnp.nix
 
+    services/nginx.nix
     services/prometheus.nix
     services/routerd.nix
     services/surfboard-hnap-exporter.nix
@@ -96,6 +100,11 @@
         "dmask=0022"
       ];
     };
+    "/mnt/data" = {
+      device = "10.0.0.4:/data";
+      fsType = "nfs";
+      options = [ "x-systemd.automount" "noauto" "soft" ];
+    };
   };
 
   hardware = {
@@ -105,16 +114,25 @@
   };
 
   networking = {
+    firewall = {
+      # DNS is open
+      # DHCP is open
+      # Pihole is open
+      # SSH is open
+      allowedTCPPorts = [
+        80 # HTTP
+        443 # HTTPS
+        5201 # iperf
+      ];
+      allowedUDPPorts = [
+        5201 # iperf
+      ];
+    };
     hostId = "bade5fb2";
     hostName = "nixos-router";
-    # Disable global DHCP, as we do it per-interface instead
-    useDHCP = false;
     # We actually have multiple PHYs, so this is needed.
     usePredictableInterfaceNames = true;
   };
-
-  # Setup auto-tune by default
-  powerManagement.powertop.enable = true;
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";

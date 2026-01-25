@@ -15,6 +15,13 @@
       ];
       openFirewall = true;
     };
+    smartctl = {
+      enable = true;
+      devices = [
+        "/dev/mmcblk0"
+      ];
+      openFirewall = true;
+    };
     zfs = {
       enable = true;
       openFirewall = true;
