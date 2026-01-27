@@ -32,6 +32,8 @@
       lutris
       # Vk and OGL overlay for montioring FPS
       mangohud
+      # Proton Plus
+      protonplus
       # Proton GE GUI Manager
       protonup-qt
       # Steam CMD
