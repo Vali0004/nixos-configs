@@ -62,6 +62,7 @@
 
     overlays = [
       nix-minecraft.overlay
+      (import overlays/customPackages.nix)
       (import overlays/existingPackages.nix)
       (import overlays/server.nix)
     ] ++ flakeOverlays;
@@ -103,14 +104,14 @@
           machines/nixos-shitclient/configuration.nix
         ];
       };
-      nixos-shitclient-kodi = {
+      nixos-jaguar = {
         deployment = {
-          targetHost = "10.0.0.2";
+          targetHost = "10.0.0.193";
           targetUser = "root";
           targetPort = 22;
         };
-        imports = [
-          machines/nixos-shitclient-kodi/configuration.nix
+        imports = coreImports ++ [
+          machines/nixos-jaguar/configuration.nix
         ];
       };
       shitzen-nixos = {

@@ -44,20 +44,6 @@ in {
         sourcePort = 51821;
         loopbackIPs = [ wanIp ];
       }
-      {
-        # HTTP
-        destination = "${config.router.lanSubnet}.2:80";
-        proto = "tcp";
-        sourcePort = 80;
-        loopbackIPs = [ wanIp ];
-      }
-      {
-        # HTTPS
-        destination = "${config.router.lanSubnet}.2:443";
-        proto = "tcp";
-        sourcePort = 443;
-        loopbackIPs = [ wanIp ];
-      }
     ];
   };
 
