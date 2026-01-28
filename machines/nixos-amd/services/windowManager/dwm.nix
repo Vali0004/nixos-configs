@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
-{
+let
+  dmenu_wrapper = pkgs.writeScriptBin "dmenu" ''
+    ${pkgs.rofi}/bin/rofi -dmenu
+  '';
+in {
   imports = [
     ../../../../modules/environment/dwmblocks.nix
   ];
@@ -19,7 +23,7 @@
     # Clipboard Manager (auto-paste)
     clipmenu-paste
     # App launcher
-    dmenu
+    dmenu_wrapper
     # dwm status
     dwmblocks
     # Gifsicle, used to split & optimize GIFS
@@ -37,9 +41,8 @@
     enable = true;
     extraSessionCommands = ''
       ${pkgs.pipewire}/bin/pw-metadata -n settings 0 default.audio.sink alsa_output.usb-Sony_INZONE_H9_II-00.analog-stereo
-      ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.gif &
+      ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.png &
       ${pkgs.dwmblocks}/bin/dwmblocks &
-      ${pkgs.manage-gnome-calculator} &
     '';
   };
 
