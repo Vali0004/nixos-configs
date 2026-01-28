@@ -103,7 +103,7 @@
 
   services = {
     udisks2.enable = true;
-    getty.autologinUser = "vali";
+    #getty.autologinUser = "vali";
     xserver = {
       enable = true;
       # Disable XTerm

@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  networking.firewall = {
+    allowedTCPPorts = [ 8080 ];
+    allowedUDPPorts = [ 8080 ];
+  };
+
   services.xserver = {
     displayManager = {
       autoLogin.user = "kodi";
@@ -16,4 +21,6 @@
       };
     };
   };
+
+  users.extraUsers.kodi.isNormalUser = true;
 }
