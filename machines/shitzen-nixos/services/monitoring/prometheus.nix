@@ -63,7 +63,11 @@
       })
       (lib.mkPrometheusJob {
         name = "rtorrent";
-        port = config.services.prometheus.exporters.smartctl.port;
+        port = 9135;
+      })
+      (lib.mkPrometheusJob {
+        name = "rtorrent-private";
+        port = 9136;
       })
       (lib.mkPrometheusJob {
         targets = [

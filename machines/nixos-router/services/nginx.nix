@@ -59,7 +59,7 @@
           '';
         };
         "/private/movies/" = {
-          alias = "/mnt/data/private/Media/Movies";
+          alias = "/mnt/data/private/Media/Movies/";
           index = "index.htm";
           extraConfig = ''
             autoindex on;
@@ -75,7 +75,7 @@
           '';
         };
         "/people/cleverca22/" = {
-          alias = "/mnt/data/people/cleverca22";
+          alias = "/mnt/data/people/cleverca22/";
           index = "index.htm";
           extraConfig = ''
             autoindex on;
@@ -83,7 +83,7 @@
           '';
         };
         "/people/unison/" = {
-          alias = "/mnt/data/people/unison";
+          alias = "/mnt/data/people/unison/";
           index = "index.htm";
           extraConfig = ''
             autoindex on;

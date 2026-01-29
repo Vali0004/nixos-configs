@@ -55,22 +55,31 @@ self: super: {
   hydra = super.hydra.overrideAttrs (old: {
     doCheck = false;
   });
-  rtorrent = super.rtorrent.overrideAttrs (old: {
+  rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {
       owner = "rakshasa";
       repo = "rtorrent";
-      rev = "v0.15.6";
+      rev = "v${finalAttrs.version}";
       hash = "sha256-B/5m1JXdUpczUMNN4cy5p6YurjmRFxMQHG3cQFSmZSs=";
     };
   });
-  libtorrent-rakshasa = super.libtorrent-rakshasa.overrideAttrs (old: {
+  libtorrent-rakshasa = super.libtorrent-rakshasa.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {
       owner = "rakshasa";
       repo = "libtorrent";
-      rev = "v0.15.6";
+      rev = "v${finalAttrs.version}";
       hash = "sha256-udEe9VyUzPXuCTrB3U3+XCbVWvfTT7xNvJJkLSQrRt4=";
+    };
+  });
+  vencord = super.vencord.overrideAttrs (old: finalAttrs: {
+    version = "1.14.1";
+    src = self.fetchFromGitHub {
+      owner = "Vendicated";
+      repo = "Vencord";
+      rev = "v${finalAttrs.version}";
+      hash = "sha256-g+zyq4KvLhn1aeziTwh3xSYvzzB8FwoxxR13mbivyh4=";
     };
   });
 }

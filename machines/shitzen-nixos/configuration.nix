@@ -36,7 +36,7 @@
     services/torrenting/arr/sonarr.nix
 
     services/torrenting/flood.nix
-    #services/torrenting/rtorrent-exporter.nix
+    services/torrenting/rtorrent-exporter.nix
     services/torrenting/rtorrent.nix
 
     services/virtualisation/dockge.nix

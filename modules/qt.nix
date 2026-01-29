@@ -4,7 +4,7 @@
 
 {
   qt = lib.mkIf config.qt.enable {
-    platformTheme = "qt5ct";
+    platformTheme = "gtk2";
     style = "adwaita-dark";
   };
 }

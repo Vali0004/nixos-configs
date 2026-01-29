@@ -127,7 +127,6 @@ in {
   networking.firewall.allowedTCPPorts = [
     publicPeerPort
     privatePeerPort
-    6110
   ];
 
   networking.firewall.allowedUDPPorts = [
@@ -158,20 +157,6 @@ in {
     "d /var/lib/rtorrent-private/session 0775 ${config.services.rtorrent.user} ${config.services.rtorrent.group} - -"
     "d /var/lib/rtorrent-private/watch 0775 ${config.services.rtorrent.user} ${config.services.rtorrent.group} - -"
   ];
-
-  # Cursed hack to allow for rtorrent-exporter to connect to the socket
-  services.nginx = {
-    enable = true;
-    virtualHosts."rtorrent.localnet" = {
-      enableACME = false;
-      forceSSL = false;
-      listen = [{ addr = "0.0.0.0"; port = 6110; }];
-      locations."/RPC2".extraConfig = ''
-        include ${config.services.nginx.package}/conf/scgi_params;
-        scgi_pass unix:/run/rtorrent-private/rpc.sock;
-      '';
-    };
-  };
 
   systemd.services.rtorrent.serviceConfig = {
     SystemCallFilter = "@system-service fchownat";
