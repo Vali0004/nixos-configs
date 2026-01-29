@@ -162,6 +162,8 @@
     socat
     # Ookla Speedtest
     speedtest
+    # Stripe payment processor CLI
+    stripe-cli
     # Syncplay, allows for syncing video streams with others via mpvr
     syncplay
     # System stats
