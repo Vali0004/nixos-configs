@@ -12,17 +12,18 @@
     enable = true;
     enableReload = true;
     scrapeConfigs = [
-      #(lib.mkPrometheusJob {
-      #  name = "fragmentation";
-      #  targets = [
-      #    "nixos-hass"
-      #    "nixos-shitclient"
-      #    "shitzen-nixos"
-      #    "router-vps"
-      #    "lenovo"
-      #  ];
-      #  port = 9103;
-      #})
+      (lib.mkPrometheusJob {
+        name = "fragmentation";
+        targets = [
+          "lenovo"
+          "nixos-hass"
+          "nixos-router"
+          "nixos-shitclient"
+          "shitzen-nixos"
+          "router-vps"
+        ];
+        port = 9103;
+      })
       (lib.mkPrometheusJob {
         appendNameToMetrics = true;
         name = "grafana";

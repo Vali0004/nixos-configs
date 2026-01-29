@@ -1,4 +1,6 @@
-{ config, pkgs, ... }:
+{ config
+, pkgs
+, ... }:
 
 let
   my_keys = import ./ssh_keys_personal.nix;
@@ -43,7 +45,7 @@ in {
 
   zfs = {
     fragmentation = {
-      enable = false;
+      enable = true;
       openFirewall = true;
     };
     enable = true;

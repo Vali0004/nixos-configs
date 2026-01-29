@@ -69,6 +69,7 @@
 
     coreImports = [
       agenix.nixosModules.age
+      modules/zfs/zfs-patch.nix
       ./core.nix
     ];
 
@@ -111,6 +112,7 @@
           targetPort = 22;
         };
         imports = coreImports ++ [
+          modules/zfs/zfs-patch.nix
           machines/nixos-jaguar/configuration.nix
         ];
       };
