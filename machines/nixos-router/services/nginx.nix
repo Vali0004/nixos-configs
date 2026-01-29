@@ -66,8 +66,24 @@
             autoindex_exact_size off;
           '';
         };
-        "/private/cleverca22/" = {
+        "/private/incoming/" = {
           alias = "/mnt/data/incoming/";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
+        "/people/cleverca22/" = {
+          alias = "/mnt/data/people/cleverca22";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
+        "/people/unison/" = {
+          alias = "/mnt/data/people/unison";
           index = "index.htm";
           extraConfig = ''
             autoindex on;
