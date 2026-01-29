@@ -2,7 +2,7 @@
 
 let
   sddm-theme = pkgs.sddm-astronaut.override {
-    embeddedTheme = "pixel_sakura";
+    embeddedTheme = "hyprland_kath";
   };
 in {
   environment.systemPackages = [ sddm-theme ];

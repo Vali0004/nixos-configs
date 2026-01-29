@@ -31,6 +31,8 @@
     ethtool
     # Version Tracking
     git
+    # Modern neofetch
+    fastfetch
     # Internet Utilities
     inetutils
     # Internet performance monitoring
