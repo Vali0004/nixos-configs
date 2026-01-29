@@ -28,6 +28,7 @@
     ncdu
     ndisc6
     net-tools
+    nmap
     openssl
     screen
     tcpdump

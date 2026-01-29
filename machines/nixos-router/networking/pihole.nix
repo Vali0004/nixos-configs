@@ -6,11 +6,21 @@
 let
   cfg = config.router;
 in {
+  networking.firewall.interfaces.${cfg.bridgeInterface} = {
+    allowedTCPPorts = [
+      53 # DNS
+      9810 # PiHole
+    ];
+    allowedUDPPorts = [
+      53 # DNS
+    ];
+  };
+
   services.pihole-ftl = {
     enable = true;
-    openFirewallDNS = true;
-    openFirewallDHCP = true;
-    openFirewallWebserver = true;
+    openFirewallDNS = false;
+    openFirewallDHCP = false;
+    openFirewallWebserver = false;
     queryLogDeleter.enable = true;
     useDnsmasqConfig = true;
     settings = {

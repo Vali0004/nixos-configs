@@ -117,17 +117,11 @@
 
   networking = {
     firewall = {
-      # DNS is open
-      # DHCP is open
-      # Pihole is open
-      # SSH is open
+      # 22 - SSH
+      # 2222 - SSH Shitzen
       allowedTCPPorts = [
         80 # HTTP
         443 # HTTPS
-        5201 # iperf
-      ];
-      allowedUDPPorts = [
-        5201 # iperf
       ];
     };
     hostId = "bade5fb2";
@@ -135,6 +129,8 @@
     # We actually have multiple PHYs, so this is needed.
     usePredictableInterfaceNames = true;
   };
+
+  services.openssh.ports = [ 22 ];
 
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";
@@ -146,5 +142,9 @@
 
   # modules/zfs/module.nix
   # modules/zfs/fragmentation.nix
-  zfs.autoSnapshot.enable = true;
+  zfs = {
+    autoSnapshot.enable = true;
+    # We isolate this to localnet only
+    fragmentation.openFirewall = false;
+  };
 }

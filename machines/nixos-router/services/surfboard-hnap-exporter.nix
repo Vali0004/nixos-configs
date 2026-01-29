@@ -1,4 +1,5 @@
-{ pkgs
+{ config
+, pkgs
 , ... }:
 
 {
@@ -22,5 +23,14 @@
       User = "root";
       Group = "root";
     };
+  };
+
+  networking.firewall.interfaces = {
+    tox_master0.allowedTCPPorts = [
+      9712
+    ];
+    ${config.router.bridgeInterface}.allowedTCPPorts = [
+      9712
+    ];
   };
 }

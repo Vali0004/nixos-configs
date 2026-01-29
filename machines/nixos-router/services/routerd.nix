@@ -1,8 +1,9 @@
-{ pkgs
+{ config
+, pkgs
 , ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [
+  networking.firewall.interfaces.${config.router.bridgeInterface}.allowedTCPPorts = [
     4390
   ];
 

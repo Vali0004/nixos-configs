@@ -4,7 +4,7 @@
 {
   # Techinally, pihole has a option, but I don't trust it fully.
   networking = {
-    firewall.allowedUDPPorts = [
+    firewall.interfaces.${config.router.bridgeInterface}.allowedUDPPorts = [
       67 # DHCP Server
       547 # DHCPv6 Server
     ];

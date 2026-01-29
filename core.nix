@@ -1,4 +1,5 @@
 { config
+, lib
 , pkgs
 , ... }:
 
@@ -46,7 +47,7 @@ in {
   zfs = {
     fragmentation = {
       enable = true;
-      openFirewall = true;
+      openFirewall = lib.mkDefault true;
     };
     enable = true;
   };

@@ -48,14 +48,7 @@ in {
   };
 
   networking.firewall = {
-    extraCommands = lib.mkMerge [
-    (lib.mkAfter ''
-      # Allow monitoring my DOCSIS modem
-      ${iptables}/bin/iptables -w -t filter -A nixos-fw -s ${lanCidr} -p tcp --dport 9712 -i ${lanIf} -j nixos-fw-accept
-      # Allow people on ToxVPN to allow monitoring my DOCSIS modem (clever)
-      ${iptables}/bin/iptables -w -t filter -A nixos-fw -p tcp --dport 9712 -i ${toxIf} -j nixos-fw-accept
-    '')
-    (''
+    extraCommands = ''
       # Allow LAN -> WAN
       ${iptables}/bin/iptables -C FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT 2>/dev/null || \
       ${iptables}/bin/iptables -A FORWARD -i ${lanIf} -o ${wanIf} -j ACCEPT
@@ -73,8 +66,7 @@ in {
       ${iptables}/bin/iptables -t nat -A POSTROUTING -s ${lanCidr} -o ${wanIf} -j MASQUERADE
       ${iptables}/bin/ip6tables -t nat -C POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || \
       ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE
-    '')
-    ];
+    '';
     extraStopCommands = ''
       ${iptables}/bin/iptables -t nat -D POSTROUTING -s ${lanCidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || true
       ${iptables}/bin/ip6tables -t nat -D POSTROUTING -s ${lanV6Cidr} -o ${wanIf} -j MASQUERADE 2>/dev/null || true
