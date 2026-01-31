@@ -23,11 +23,19 @@
       enable = true;
       networks = lib.listToAttrs (map (network: {
         name = network.name;
-        value = {
-          ssid = network.ssid;
-          bssid = if network.bssid != "" then network.bssid else null;
-          pskRaw = "ext:psk_${network.name}";
-        };
+        value =
+          {
+            ssid = network.ssid;
+            bssid = lib.optionalString (network.bssid != "") network.bssid;
+          }
+          // lib.optionalAttrs (!network.open) {
+            pskRaw = "ext:psk_${network.name}";
+          }
+          // lib.optionalAttrs (network.open) {
+            extraConfig = ''
+              key_mgmt=NONE
+            '';
+          };
       }) config.wifi.networks);
       secretsFile = config.age.secrets.network-secrets.path;
       userControlled = true;

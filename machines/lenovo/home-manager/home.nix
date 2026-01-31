@@ -14,12 +14,13 @@ in {
       programs/vscode.nix
       programs/zsh.nix
       services/dunst.nix
-      windowManager/lxqt-hypr.nix
+      #windowManager/lxqt-hypr.nix
       #windowManager/lxqt-sway.nix
     ];
 
     home = {
       file.".config/xwinwrap/wallpaper.gif".source = ./wallpaper.gif;
+      file.".config/xwinwrap/wallpaper.png".source = ./wallpaper.png;
       file.".config/syncplay.ini".source = ./syncplay.ini;
       # Fixes Zsh plugin for SSH Hostnames
       file.".ssh/config".text = ssh_config;
