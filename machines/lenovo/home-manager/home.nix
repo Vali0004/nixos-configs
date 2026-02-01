@@ -10,7 +10,7 @@ in {
       programs/alacritty.nix
       programs/fastfetch.nix
       programs/git.nix
-      #programs/rofi.nix
+      programs/rofi.nix
       programs/vscode.nix
       programs/zsh.nix
       services/dunst.nix

@@ -7,6 +7,8 @@
     alacritty-graphics
     # Key system (remote deploy)
     agenix
+    # ADB
+    android-tools
     # Better TOP
     btop
     # Remote deploy
