@@ -22,6 +22,10 @@ in {
     nixos-amd
     nixos-hass
   ];
+  "wireguard-home.age".publicKeys = ssh_keys ++ [
+    lenovo
+    nixos-amd
+  ];
   "wireguard-private-yutsu.age".publicKeys = ssh_keys ++ [
     nixos-amd
   ];

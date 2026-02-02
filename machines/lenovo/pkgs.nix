@@ -21,18 +21,22 @@
     dos2unix
     # Discord
     (discord.override { withVencord = true; })
-    # Flexing
-    fastfetch
+    # Simpler Fastfetch Config
+    fastfetch-simple
     # Tool used to check file types
     file
-    # Screenshot tool
+    # Screenshot Tool
     flameshot
+    # Screenshot Tool (Upload)
+    flameshot-upload
     # CLI Fuzzy Finder
     fzf
     # Debugger
     gdb
     # sed
     gnused
+    # Hex-Rays IDA Pro 9.0 Beta
+    ida-pro
     # Internet performance tool
     iperf
     # JSON parser
@@ -51,16 +55,10 @@
     obs-studio
     # Audio Player Control
     playerctl
-    # RetroArch
-    libretro.mame
-    libretro.mgba
-    libretro.pcsx2
-    libretro.picodrive
-    libretro.ppsspp
-    libretro.snes9x
-    retroarch
     # Ookla Speedtest
     speedtest
+    # Payment API - Used for testing
+    stripe-cli
     # Syncplay, allows for syncing video streams with others via mpv
     syncplay
     # System stats

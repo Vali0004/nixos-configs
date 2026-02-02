@@ -15,6 +15,11 @@
       owner = "vali";
       group = "wheel";
     };
+    wireguard-home = {
+      file = ../../../secrets/wireguard-home.age;
+      owner = "root";
+      group = "root";
+    };
   };
 
   #

@@ -1,0 +1,45 @@
+{
+  "logo": {
+    "type": "auto"
+  },
+  "display": {
+    "constants": [
+      "───────────"
+    ],
+    "key": {
+      "type": "icon",
+      "paddingLeft": 2
+    },
+    "separator": " → "
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "┌{$1} \u001b[1mHardware Information\u001b[0m {$1}┐"
+    },
+    "host",
+    "cpu",
+    "gpu",
+    "memory",
+    {
+      "type": "custom",
+      "format": "├{$1} \u001b[1mSoftware Information\u001b[0m {$1}┤"
+    },
+    "os",
+    "kernel",
+    "uptime",
+    "wm",
+    "shell",
+    "terminal",
+    "packages",
+    {
+      "type": "custom",
+      "format": "└{$1}\u001b[1m───────────────────────\u001b[0m{$1}┘"
+    },
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "circle"
+    }
+  ]
+}
