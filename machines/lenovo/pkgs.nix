@@ -51,6 +51,8 @@
     mpv
     # Directory info
     ncdu
+    # Node.JS
+    nodejs_24
     # Video capture tool
     obs-studio
     # Audio Player Control
