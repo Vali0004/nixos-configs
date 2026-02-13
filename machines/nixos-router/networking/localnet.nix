@@ -8,6 +8,7 @@
       "kvm.localnet"
       "monitoring.localnet"
       "pihole.localnet"
+      "pihole-failover.localnet"
       "zigbee2mqtt.localnet"
     ];
   };

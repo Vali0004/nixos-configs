@@ -36,11 +36,11 @@
 
     flakeOverlays = [
       (self: super: {
-        watchman-pairing-assistant = watchman-pairing-assistant.packages.x86_64-linux.default;
+        watchman-pairing-assistant = watchman-pairing-assistant.packages.${system}.default;
 
-        agenix = agenix.outputs.packages.x86_64-linux.agenix;
-        ajax-xdp = ajax-xdp.packages.x86_64-linux.default;
-        ajax-deploy = ajax-deploy.packages.x86_64-linux.default;
+        agenix = agenix.outputs.packages.${system}.agenix;
+        ajax-xdp = ajax-xdp.packages.${system}.default;
+        ajax-deploy = ajax-deploy.packages.${system}.default;
         forgeServers = {
           forge-1_7_10-10_13_4 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
           forge-1_16_5-36_2_26 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };
@@ -51,12 +51,12 @@
           forge-1_20_1-47_3_0  = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.20.1-47.3.0";  };
           forge-1_20_1-47_4_0  = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.20.1-47.4.0";  };
         };
-        mailserver = nixos-mailserver.x86_64-linux.default;
-        nixGaming = nix-gaming.outputs.packages.x86_64-linux;
-        spicetifyThemes = spicetify.outputs.legacyPackages.x86_64-linux.themes;
-        spicetifyExtensions = spicetify.outputs.legacyPackages.x86_64-linux.extensions;
-        zfs-fragmentation = zfs-utils.packages.x86_64-linux.zfs-fragmentation;
-        txg-watcher = zfs-utils.packages.x86_64-linux.txg-watcher;
+        mailserver = nixos-mailserver.${system}.default;
+        nixGaming = nix-gaming.outputs.packages.${system};
+        spicetifyThemes = spicetify.outputs.legacyPackages.${system}.themes;
+        spicetifyExtensions = spicetify.outputs.legacyPackages.${system}.extensions;
+        zfs-fragmentation = zfs-utils.packages.${system}.zfs-fragmentation;
+        txg-watcher = zfs-utils.packages.${system}.txg-watcher;
       })
     ];
 

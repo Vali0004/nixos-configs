@@ -20,8 +20,9 @@ in {
     ssh.authorizedKeys = my_keys;
   };
 
-  environment.systemPackages = [
-    pkgs.speedtest
+  environment.systemPackages = with pkgs; [
+    lshw
+    speedtest
   ];
 
   hardware = {

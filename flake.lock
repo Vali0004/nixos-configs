@@ -27,11 +27,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1768254745,
-        "narHash": "sha256-NcWl7zTee07HDSOLCsMcbNYfgsP2ygH8oHU9XZE/uSQ=",
+        "lastModified": 1769696874,
+        "narHash": "sha256-vwwCLSV+oRxrlNvb9kHlu0Mm79RgEKMKfBsRW+InjRw=",
         "owner": "AjaxVPN",
         "repo": "ajax-deploy",
-        "rev": "17a43b2b8c0665383425ad60c158e7a2775e860a",
+        "rev": "b7292726d2eaa1c54492f51e94bc75271121cd54",
         "type": "github"
       },
       "original": {

@@ -14,6 +14,7 @@
     10.0.0.1 monitoring.localnet ${config.networking.hostName}
     10.0.0.1 rtorrent.localnet ${config.networking.hostName}
     10.0.0.1 pihole.localnet ${config.networking.hostName}
+    10.0.0.1 pihole-failover.localnet ${config.networking.hostName}
     10.0.0.1 zigbee2mqtt.localnet ${config.networking.hostName}
   '';
 }

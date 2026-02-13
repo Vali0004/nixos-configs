@@ -68,6 +68,14 @@ in {
     };
   };
 
+  services.nginx.virtualHosts."pihole-failover.localnet" = {
+    forceSSL = false;
+    locations."/" = lib.mkProxy {
+      ip = "10.0.0.2";
+      port = 9810;
+    };
+  };
+
   services.kresd.enable = lib.mkForce false;
   services.kresd.instances = 0;
 }
