@@ -46,11 +46,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1764490476,
-        "narHash": "sha256-Ce0kGCaQhgX7Hka+YFCGgtXZT3ozlFDT+bLgPx+mGm4=",
+        "lastModified": 1771010913,
+        "narHash": "sha256-+hSXdJo1T10OoTjwdZmOI5H8s4cqJY0hFidBk/tOvh8=",
         "owner": "AjaxVPN",
         "repo": "ajax-xdp",
-        "rev": "b181f6f3d4d36e5b63ddf6918f64826c75804ce1",
+        "rev": "f8b60821f2f09b88b378fc21f519f51dd42cd727",
         "type": "github"
       },
       "original": {

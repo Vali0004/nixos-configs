@@ -26,4 +26,6 @@ in {
       patches = [];
     });
   });
+
+  boot.zfs.package = pkgs.zfs_2_4;
 }

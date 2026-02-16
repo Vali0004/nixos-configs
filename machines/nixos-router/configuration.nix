@@ -117,6 +117,11 @@
 
   networking = {
     firewall = {
+      interfaces.${config.router.bridgeInterface} = {
+        allowedTCPPorts = [
+          9103 # zfs-fragmentation
+        ];
+      };
       # 22 - SSH
       # 2222 - SSH Shitzen
       allowedTCPPorts = [

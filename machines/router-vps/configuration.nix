@@ -27,6 +27,7 @@
     minica
     ncdu
     ndisc6
+    nload
     net-tools
     nmap
     openssl
@@ -64,7 +65,6 @@
     };
     firewall = {
       allowedTCPPorts = [
-        22 # SSH
         25 # SMTP
         80 # HTTP
         143 # IMAP
@@ -76,11 +76,7 @@
         3700 # Peer port
         4100 # MC Server
         5201 # iperf3
-        6667 # IRC
-        6697 # IRCS
-        8080 # TOR
-        9101 # Node Exporter
-        9192 # XDP
+        9101 # Node Exporter (shitzen)
       ];
       allowedUDPPorts = [
         3700 # Peer port
@@ -88,6 +84,22 @@
         5201 # iperf3
         6990 # DHT
       ];
+      extraCommands = ''
+        for x in 9100 9103 9134 9586 9633; do
+          ${pkgs.iptables}/bin/iptables -I INPUT -p tcp --dport $x -s 76.112.236.206 -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --dport $x -j DROP
+          ${pkgs.iptables}/bin/ip6tables -I INPUT -p tcp --dport $x -s 2601:406:8100:91d8::1 -j ACCEPT
+          ${pkgs.iptables}/bin/ip6tables -A INPUT -p tcp --dport $x -j DROP
+        done
+      '';
+      extraStopCommands = ''
+        for x in 9100 9103 9134 9586 9633; do
+          ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -s 76.112.236.206 -j ACCEPT 2>/dev/null || true
+          ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -j DROP 2>/dev/null || true
+          ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -s 2601:406:8100:91d8::1 -j ACCEPT 2>/dev/null || true
+          ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -j DROP 2>/dev/null || true
+        done
+      '';
     };
     hostId = "eca03077";
     hostName = "router-vps";
@@ -118,4 +130,6 @@
   swapDevices = [{
     device = "/dev/disk/by-label/NIXOS_SWAP";
   }];
+
+  zfs.fragmentation.openFirewall = false;
 }

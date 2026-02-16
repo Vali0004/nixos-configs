@@ -13,17 +13,36 @@
     modules/agenix.nix
     modules/nvidia.nix
     modules/wireguard.nix
+    modules/wireguard-internal.nix
+
+    services/chat/matrix.nix
 
     services/hydra/hydra.nix
     services/hydra/nix-options.nix
 
+    services/filehosting/media/jellyfin.nix
+    services/filehosting/media/kavita.nix
+
+    services/filehosting/gitea-runner.nix
+    services/filehosting/gitea.nix
+    services/filehosting/nextcloud.nix
     services/filehosting/nfs.nix
     services/filehosting/samba.nix
+    services/filehosting/zipline.nix
+
+    #services/mail/roundcube.nix
+    services/mail/server.nix
+    services/mail/sogo.nix
 
     services/minecraft/default.nix
 
     services/monitoring/prometheus.nix
     services/monitoring/grafana.nix
+
+    services/server/anubis.nix
+    services/server/memcached.nix
+    services/server/nginx.nix
+    services/server/oauth2.nix
 
     services/sql/mysql.nix
     services/sql/postgresql.nix
@@ -41,29 +60,8 @@
 
     services/virtualisation/dockge.nix
 
-    services/web/chat/matrix.nix
-
-    services/web/filehosting/media/jellyfin.nix
-    services/web/filehosting/media/kavita.nix
-    services/web/filehosting/gitea-runner.nix
-    services/web/filehosting/gitea.nix
-    services/web/filehosting/nextcloud.nix
-    services/web/filehosting/zipline.nix
-
-    services/web/server/anubis.nix
-    services/web/server/memcached.nix
-    services/web/server/nginx.nix
-    services/web/server/oauth2.nix
-
-    #services/web/mail/roundcube.nix
-    services/web/mail/server.nix
-    services/web/mail/sogo.nix
-
-    services/web/ttyd.nix
-
-    #services/web/cloudpanel.nix
-
-    services/wireguard.nix
+    services/ttyd.nix
+    #services/cloudpanel.nix
     services/toxvpn.nix
   ];
 

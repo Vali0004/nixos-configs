@@ -67,15 +67,16 @@
       (import overlays/server.nix)
     ] ++ flakeOverlays;
 
-    coreImports = [
-      agenix.nixosModules.age
-      modules/zfs/zfs-patch.nix
-      ./core.nix
-    ];
-
     pkgs = import nixpkgs { inherit system overlays; };
   in {
     colmena = {
+      defaults = {
+        imports = [
+          agenix.nixosModules.age
+          modules/zfs/zfs-patch.nix
+          ./core.nix
+        ];
+      };
       meta = {
         specialArgs = {
           lib = (import overlays/libOverlay.nix {
@@ -91,7 +92,7 @@
           targetUser = "root";
           targetPort = 1594;
         };
-        imports = coreImports ++ [
+        imports = [
           machines/router-vps/configuration.nix
         ];
       };
@@ -101,7 +102,7 @@
           targetUser = "root";
           targetPort = 22;
         };
-        imports = coreImports ++ [
+        imports = [
           machines/nixos-shitclient/configuration.nix
         ];
       };
@@ -111,8 +112,7 @@
           targetUser = "root";
           targetPort = 22;
         };
-        imports = coreImports ++ [
-          modules/zfs/zfs-patch.nix
+        imports = [
           machines/nixos-jaguar/configuration.nix
         ];
       };
@@ -122,7 +122,7 @@
           targetUser = "root";
           targetPort = 22;
         };
-        imports = coreImports ++ [
+        imports = [
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
           machines/shitzen-nixos/configuration.nix
@@ -134,7 +134,7 @@
           targetUser = "root";
           targetPort = 22;
         };
-        imports = coreImports ++ [
+        imports = [
           machines/nixos-hass/configuration.nix
         ];
       };
@@ -144,7 +144,7 @@
           targetUser = "root";
           targetPort = 22;
         };
-        imports = coreImports ++ [
+        imports = [
           machines/nixos-router/configuration.nix
         ];
       };
@@ -185,6 +185,17 @@
           modules/imports.nix
           machines/lenovo/configuration.nix
           overlays/module.nix
+          ({ nixpkgs.overlays = flakeOverlays; })
+        ];
+      };
+      nixos-hass = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = { inherit inputs overlays; };
+        modules = [
+          agenix.nixosModules.age
+          modules/zfs/zfs-patch.nix
+          ./core.nix
+          machines/nixos-hass/configuration.nix
           ({ nixpkgs.overlays = flakeOverlays; })
         ];
       };

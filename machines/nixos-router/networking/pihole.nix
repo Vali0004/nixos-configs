@@ -25,7 +25,9 @@ in {
     useDnsmasqConfig = true;
     settings = {
       dns = {
+        count = 50000; # 50k
         expandHosts = true;
+        rateLimit = 60;
         upstreams = [
           "8.8.8.8"
           "8.8.4.4"

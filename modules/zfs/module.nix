@@ -38,7 +38,7 @@
 
   config = lib.mkIf config.zfs.enable {
     environment.systemPackages = with pkgs; [
-      zfs
+      zfs_2_4
       txg-watcher
     ];
 
