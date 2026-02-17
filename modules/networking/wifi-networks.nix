@@ -36,11 +36,6 @@
         name = "home";
         ssid = "Fera_Mac";
       }
-      {
-        name = "resort";
-        ssid = "SheratonVistanaResort";
-        open = true;
-      }
     ];
   };
 }

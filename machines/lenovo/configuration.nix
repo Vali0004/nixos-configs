@@ -17,7 +17,7 @@
     #services/windowManager/lxqt-sway.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
-    services/wireguard.nix
+    #services/wireguard.nix
     services/prometheus.nix
     ./pkgs.nix
   ];
