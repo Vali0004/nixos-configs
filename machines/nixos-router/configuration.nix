@@ -9,11 +9,11 @@
     modules/boot.nix
 
     networking/router/default.nix
+    networking/bind.nix
     networking/dhcp.nix
     networking/hosts.nix
     networking/localnet.nix
     networking/nat.nix
-    networking/pihole.nix
     networking/sysctl.nix
     networking/upnp.nix
 

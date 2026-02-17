@@ -19,7 +19,7 @@
     nix/settings.nix
 
     networking/acme.nix
-    networking/hosts.nix
+    #networking/hosts.nix
     networking/localnet-ssl.nix
     networking/ssh.nix
 

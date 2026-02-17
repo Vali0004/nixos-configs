@@ -57,6 +57,8 @@
     obs-studio
     # Audio Player Control
     playerctl
+    # Skylanders NFC Reader
+    skylanders-nfc-reader
     # Ookla Speedtest
     speedtest
     # Payment API - Used for testing

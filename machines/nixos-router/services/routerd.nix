@@ -10,8 +10,8 @@
   systemd.services.routerd = {
     description = "Router metrics + net admin daemon";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" "pihole-ftl.service" ];
-    requires = [ "network-online.target" "pihole-ftl.service" ];
+    after = [ "network-online.target" "dnsmasq.service" ];
+    requires = [ "network-online.target" "dnsmasq.service" ];
 
     path = with pkgs; [
       iproute2
@@ -32,9 +32,9 @@
         "PORT=4390"
         "POLL_SECONDS=2"
         "CMD_TIMEOUT_MS=1500"
-        "DNSMASQ_LEASES=/var/lib/misc/dnsmasq.leases"
-        "DNSMASQ_UNIT=pihole-ftl.service"
-        "ALLOWED_UNITS=pihole-ftl.service"
+        "DNSMASQ_LEASES=/var/lib/dnsmasq/dnsmasq.leases"
+        "DNSMASQ_UNIT=dnsmasq.service"
+        "ALLOWED_UNITS=dnsmasq.service"
         "SECRET=dummy"
       ];
 

@@ -13,6 +13,13 @@
     enableReload = true;
     scrapeConfigs = [
       (lib.mkPrometheusJob {
+        name = "bind";
+        targets = [
+          "nixos-router"
+        ];
+        port = config.services.prometheus.exporters.bind.port;
+      })
+      (lib.mkPrometheusJob {
         name = "fragmentation";
         targets = [
           "lenovo"

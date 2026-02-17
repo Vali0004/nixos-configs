@@ -8,9 +8,14 @@ in {
     cfg.node.port
     cfg.smartctl.port
     cfg.zfs.port
+    cfg.bind.port
   ];
 
   services.prometheus.exporters = {
+    bind = {
+      enable = true;
+      openFirewall = false;
+    };
     node = {
       enable = true;
       enabledCollectors = [

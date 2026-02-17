@@ -23,8 +23,7 @@
   };
 
   services.dnsmasq = {
-    # We use Pi-Hole's internal dnsmasq, so we don't enable it here
-    enable = false;
+    enable = true;
     settings = {
       bind-interfaces = true;
       interface = [ config.router.bridgeInterface ];
@@ -45,6 +44,7 @@
         "E0:D3:62:D1:34:BE,set:deco-XE70Pro,${config.router.lanSubnet}.10,deco-XE70Pro,infinite"
         "C0:35:32:5F:CC:23,set:lenovo,${config.router.lanSubnet}.31,lenovo,infinite"
         "10:FF:E0:35:08:FB,set:nixos-amd,${config.router.lanSubnet}.189,nixos-amd,infinite"
+        "d0:46:0c:7d:bf:c4,set:worklaptop,${config.router.lanSubnet}.50,US-ANH-L-A12597,infinite"
       ];
 
       dhcp-range = [
@@ -58,6 +58,8 @@
         "option:dns-server,${config.router.dnsPrimaryIP},${config.router.dnsFallbackIP}"
         "option6:dns-server,[${config.router.dnsPrimaryIPv6}],[${config.router.dnsFallbackIPv6}]"
       ];
+
+      dhcp-ignore-names = [ "tag:worklaptop" ];
 
       enable-ra = true;
     };

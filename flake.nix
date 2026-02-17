@@ -16,6 +16,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    skylanders-nfc-reader.url = "github:Vali0004/skylanders-nfc-reader";
     spicetify.url = "github:Gerg-L/spicetify-nix";
     watchman-pairing-assistant = {
       url = "github:TayouVR/watchman-pairing-assistant";
@@ -30,7 +31,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, ajax-deploy, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, spicetify, watchman-pairing-assistant, zfs-utils }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, ajax-deploy, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, watchman-pairing-assistant, zfs-utils }:
   let
     system = "x86_64-linux";
 
@@ -53,6 +54,7 @@
         };
         mailserver = nixos-mailserver.${system}.default;
         nixGaming = nix-gaming.outputs.packages.${system};
+        skylanders-nfc-reader = skylanders-nfc-reader.packages.${system}.default;
         spicetifyThemes = spicetify.outputs.legacyPackages.${system}.themes;
         spicetifyExtensions = spicetify.outputs.legacyPackages.${system}.extensions;
         zfs-fragmentation = zfs-utils.packages.${system}.zfs-fragmentation;
@@ -126,6 +128,7 @@
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
           machines/shitzen-nixos/configuration.nix
+          modules/networking/hosts.nix
         ];
       };
       nixos-hass = {
@@ -162,6 +165,7 @@
           nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
+          modules/networking/hosts.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/imports.nix
@@ -179,23 +183,13 @@
           nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
+          modules/networking/hosts.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/services/openssh.nix
           modules/imports.nix
           machines/lenovo/configuration.nix
           overlays/module.nix
-          ({ nixpkgs.overlays = flakeOverlays; })
-        ];
-      };
-      nixos-hass = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs overlays; };
-        modules = [
-          agenix.nixosModules.age
-          modules/zfs/zfs-patch.nix
-          ./core.nix
-          machines/nixos-hass/configuration.nix
           ({ nixpkgs.overlays = flakeOverlays; })
         ];
       };
