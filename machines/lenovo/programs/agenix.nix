@@ -13,6 +13,7 @@
       file = ../../../secrets/network-secrets.age;
       owner = "root";
       group = "wpa_supplicant";
+      mode = 0444;
     };
     zipline-upload-headers = {
       file = ../../../secrets/zipline-upload-headers.age;
