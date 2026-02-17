@@ -12,7 +12,7 @@
       file = ../../../secrets/network-secrets.age;
       owner = "root";
       group = "wpa_supplicant";
-      mode = 0444;
+      mode = "0444";
     };
   };
 }
