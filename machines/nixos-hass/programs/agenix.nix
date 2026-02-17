@@ -8,6 +8,10 @@
     "/home/vali/.ssh/nixos_main"
   ];
   age.secrets = {
-    network-secrets.file = ../../../secrets/network-secrets.age;
+    network-secrets = {
+      file = ../../../secrets/network-secrets.age;
+      owner = "root";
+      group = "wpa_supplicant";
+    };
   };
 }

@@ -9,7 +9,11 @@
   ];
   age.secrets = {
     nix-netrc.file = ../../../secrets/nix-netrc.age;
-    network-secrets.file = ../../../secrets/network-secrets.age;
+    network-secrets = {
+      file = ../../../secrets/network-secrets.age;
+      owner = "root";
+      group = "wpa_supplicant";
+    };
     zipline-upload-headers = {
       file = ../../../secrets/zipline-upload-headers.age;
       owner = "vali";
