@@ -1,4 +1,5 @@
 { config
+, lib
 , pkgs
 , ... }:
 
@@ -12,6 +13,7 @@
   };
 
   services.nextcloud = {
+    enable = true;
     appstoreEnable = true;
     caching.redis = true;
     configureRedis = true;
@@ -21,8 +23,10 @@
       dbtype = "pgsql";
     };
     database.createLocally = true;
-    enable = true;
-    extraAppsEnable = false;
+    extraApps = {
+      inherit (config.services.nextcloud.package.packages.apps) contacts calendar mail tasks;
+    };
+    extraAppsEnable = true;
     home = "/data/services/nextcloud";
     hostName = "cloud.kursu.dev";
     https = true;
@@ -36,7 +40,7 @@
       default_phone_region = "US";
       log_type = "systemd";
       mail_smtpmode = "smtp";
-      mail_smtphost = "mail.fuckk.lol";
+      mail_smtphost = "mail.kursu.dev";
       mail_smtpauth = true;
     };
   };
