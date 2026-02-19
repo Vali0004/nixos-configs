@@ -31,6 +31,12 @@ in {
       description = "Primary LAN IPv4 subnet";
     };
 
+    lanSubnetV6 = lib.mkOption {
+      type = lib.types.str;
+      default = "fd3a:7c2b:9e11:1";
+      description = "Primary LAN IPv6 subnet";
+    };
+
     lanGateway = lib.mkOption {
       type = lib.types.str;
       default = "${cfg.lanSubnet}.1";
@@ -51,13 +57,13 @@ in {
 
     dnsPrimaryIPv6 = lib.mkOption {
       type = lib.types.str;
-      default = "2601:406:8100:91D8::1";
-      description = "PrimaryDNS server IPv6";
+      default = "${cfg.lanSubnetV6}::1";
+      description = "Primary DNS server IPv6";
     };
 
     dnsFallbackIPv6 = lib.mkOption {
       type = lib.types.str;
-      default = "2601:406:8100:91d8:8eec:4bff:fe55:b2f1";
+      default = "${cfg.lanSubnetV6}::146c";
       description = "Secondary DNS server IPv6";
     };
   };
@@ -77,8 +83,14 @@ in {
         extraConfig = ''
           interface ${cfg.wanInterface}
             ia_na 1
-            #ia_pd 2 ${cfg.bridgeInterface}/0
+            ia_pd 2 ${cfg.bridgeInterface}/0
+            rapid_commit
         '';
+      };
+      firewall.interfaces.${cfg.wanInterface} = {
+        allowedUDPPorts = [
+          546
+        ];
       };
       interfaces = {
         # WAN, ISP uses DHCP, and DHCPv6/SLAAC for IP assignment, so enable it.
@@ -91,11 +103,7 @@ in {
           }];
           ipv6.addresses = [
             {
-              address = "2601:406:8100:91D8::1";
-              prefixLength = 64;
-            }
-            {
-              address = "fe80::1";
+              address = "${cfg.lanSubnetV6}::1";
               prefixLength = 64;
             }
           ];

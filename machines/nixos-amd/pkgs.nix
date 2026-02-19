@@ -170,6 +170,8 @@
     sysstat
     # TCP Dump
     tcpdump
+    # Microsoft Teams for Linux
+    teams-for-linux
     # TMate
     tmate
     # ZIP Archive Undo

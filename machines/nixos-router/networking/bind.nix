@@ -4,12 +4,13 @@
 , ... }:
 
 let
-  cfg = config.router;
-  zoneDomain = "localnet";
-  zoneSerial = "2026021701";
+  inherit (lib) mkEnableOption mkOption mkIf types;
+
+  r = config.router;
+  cfg = config.services.bindLocalnet;
 
   parseExtraHosts =
-    text:
+    zoneDomain: text:
     let
       lines =
         builtins.filter (l: l != "" && !(lib.hasPrefix "#" l))
@@ -17,23 +18,24 @@ let
 
       parseLine = line:
         let
-          toks = builtins.filter (t: t != "") (lib.strings.splitString " " (lib.strings.replaceStrings ["\t"] [" "] line));
+          toks =
+            builtins.filter (t: t != "")
+              (lib.strings.splitString " "
+                (lib.strings.replaceStrings ["\t"] [" "] line));
+
           ip = builtins.elemAt toks 0;
           rawNames = lib.lists.drop 1 toks;
-          normName = n:
-            let
-              n0 = lib.strings.removeSuffix "." n;
-            in
-              if lib.hasSuffix ".${zoneDomain}" n0
-              then lib.strings.removeSuffix ".${zoneDomain}" n0
-              else if builtins.match ".*\\..*" n0 == null
-              then n0
-              else null;
-          names =
-            let
-              normalized = builtins.filter (n: n != null) (builtins.map normName rawNames);
-            in
-              if normalized == [] then [] else [ (builtins.elemAt normalized 0) ];
+
+          normName = n: let n0 = lib.strings.removeSuffix "." n; in
+            if lib.hasSuffix ".${zoneDomain}" n0 then
+              lib.strings.removeSuffix ".${zoneDomain}" n0
+            else if builtins.match ".*\\..*" n0 == null then
+              n0
+            else
+              null;
+
+          normalized = builtins.filter (n: n != null) (builtins.map normName rawNames);
+          names = if normalized == [] then [] else [ (builtins.elemAt normalized 0) ];
         in
           if names == [] then null else { inherit ip names; };
 
@@ -41,7 +43,7 @@ let
     in
       entries;
 
-  entries = parseExtraHosts config.networking.extraHosts;
+  entries = parseExtraHosts cfg.zoneDomain (config.networking.extraHosts or "");
 
   aLines =
     lib.concatStringsSep "\n"
@@ -57,167 +59,226 @@ let
             octets = lib.strings.splitString "." e.ip;
             last = builtins.elemAt octets 3;
             canonical = builtins.elemAt e.names 0;
-          in "${last} IN PTR ${canonical}.${zoneDomain}.")
-        (builtins.filter (e: lib.hasPrefix "10.0.0." e.ip) entries)));
+          in "${last} IN PTR ${canonical}.${cfg.zoneDomain}.")
+        (builtins.filter (e: lib.hasPrefix "${r.lanSubnet}." e.ip) entries)));
 
   forwardZoneText = ''
     $TTL 1h
-    @ IN SOA ns1.${zoneDomain}. admin.${zoneDomain}. (
-      ${zoneSerial}  ; serial
+    @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
+      ${cfg.zoneSerial}  ; serial
       1h             ; refresh
       15m            ; retry
       30d            ; expire
       2h             ; negative cache
     )
-    @   IN NS  ns1.${zoneDomain}.
-    ns1 IN A   10.0.0.1
+    @   IN NS  ns1.${cfg.zoneDomain}.
+    ns1 IN A   ${cfg.ns1IPv4}
 
     ${aLines}
   '';
 
   reverseZoneText = ''
     $TTL 1h
-    @ IN SOA ns1.${zoneDomain}. admin.${zoneDomain}. (
-      ${zoneSerial} 1h 15m 30d 2h
+    @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
+      ${cfg.zoneSerial} 1h 15m 30d 2h
     )
-    @ IN NS ns1.${zoneDomain}.
+    @ IN NS ns1.${cfg.zoneDomain}.
 
     ${ptrLines}
   '';
 
+  rpzLines = lib.concatStringsSep "\n" (builtins.map (d: "${d} CNAME .") cfg.rpzCnames);
+
   rpzZoneText = ''
     $TTL 60
-    @ IN SOA ns1.localnet. admin.localnet. (
-      2026021701 1h 15m 30d 2h
+    @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
+      ${cfg.zoneSerial} 1h 15m 30d 2h
     )
-    @ IN NS ns1.localnet.
+    @ IN NS ns1.${cfg.zoneDomain}.
 
-    ads.roku.com                    CNAME .
-    identity.ads.roku.com           CNAME .
-    logs.roku.com                   CNAME .
-    austin.logs.roku.com            CNAME .
-    cooper.logs.roku.com            CNAME .
-    giga.logs.roku.com              CNAME .
-    liberty.logs.roku.com           CNAME .
-    scribe.logs.roku.com            CNAME .
-    tyler.logs.roku.com             CNAME .
-    cloudservices.roku.com          CNAME .
-    customer-feedbacks.web.roku.com CNAME .
-    ravm.tv                         CNAME .
-    display.ravm.tv                 CNAME .
-    p.ravm.tv                       CNAME .
-    adsmeasurement.com              CNAME .
-    roku.adsmeasurement.com         CNAME .
-    securepubads.g.doubleclick.net  CNAME .
-    lat-services.api.data.roku.com  CNAME .
-    tpc.googlesyndication.com       CNAME .
+    ${rpzLines}
   '';
+
+  forwardZoneFile = "/var/lib/named/${cfg.zoneDomain}.zone";
+  reverseZoneFile = "/var/lib/named/${cfg.reverseZoneName}.rev";
+  rpzZoneFile = "/var/lib/named/${cfg.rpzZoneName}.zone";
+
+  publicV6 = "2601:406:8180:35a7";
 in {
-  networking.firewall.interfaces.${cfg.bridgeInterface} = {
-    allowedTCPPorts = [
-      53 # DNS
-    ];
-    allowedUDPPorts = [
-      53 # DNS
-    ];
-  };
+  options.services.bindLocalnet = {
+    enable = mkEnableOption "BIND authoritative local zone + RPZ based on networking.extraHosts";
 
-  environment.systemPackages = [
-    pkgs.bind
-  ];
+    zoneDomain = mkOption {
+      type = types.str;
+      default = "localnet";
+      description = "Authoritative forward zone domain.";
+    };
 
-  services.bind = {
-    enable = true;
+    zoneSerial = mkOption {
+      type = types.str;
+      default = "2026021701";
+      description = "SOA serial for generated zones.";
+    };
 
-    cacheNetworks = [
-      "127.0.0.0/8"
-      "::1/128"
-      "${cfg.lanSubnet}.0/24"
-      "2601:406:8100:91D8::/64"
-    ];
+    ns1IPv4 = mkOption {
+      type = types.str;
+      default = "${r.lanSubnet}.1";
+      description = "IPv4 address for ns1.${cfg.zoneDomain}.";
+    };
 
-    forwarders = [
-      "8.8.8.8"
-      "8.8.4.4"
-      "1.1.1.1"
-      "1.0.0.1"
-      "2001:4860:4860::8888"
-      "2606:4700:4700::1111"
-      "2606:4700:4700::1001"
-    ];
+    reverseZoneName = mkOption {
+      type = types.str;
+      default = "10.0.0";
+      description = "Reverse zone prefix name (used for file naming only).";
+    };
 
-    extraConfig = ''
-      statistics-channels {
-        inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
-      };
-    '';
+    reverseZone = mkOption {
+      type = types.str;
+      default = "0.0.10.in-addr.arpa";
+      description = "Reverse zone domain served by BIND.";
+    };
 
-    extraOptions = ''
-      allow-recursion { 127.0.0.1; ::1; ${cfg.lanSubnet}.0/24; 2601:406:8100:91D8::/64; };
-      dnssec-validation auto;
-      listen-on { any; };
-      listen-on-v6 { any; };
-      minimal-responses yes;
-      response-policy { zone "rpz.local"; };
-    '';
+    rpzZoneName = mkOption {
+      type = types.str;
+      default = "rpz.local";
+      description = "RPZ zone name (also used as the zone key in services.bind.zones).";
+    };
 
-    zones = {
-      "${zoneDomain}" = {
-        master = true;
-        file = "/var/lib/named/${zoneDomain}.zone";
-      };
-      "0.0.10.in-addr.arpa" = {
-        master = true;
-        file = "/var/lib/named/10.0.0.rev";
-      };
-      "rpz.local" = {
-        master = true;
-        file = "/var/lib/named/rpz.local.zone";
-      };
+    rpzCnames = mkOption {
+      type = types.listOf types.str;
+      default = [];
+      example = [
+        "ads.roku.com"
+        "identity.ads.roku.com"
+        "securepubads.g.doubleclick.net"
+      ];
+      description = ''
+        Domains to block via RPZ. Each entry becomes:
+          "<domain> CNAME ."
+      '';
+    };
+
+    cacheNetworks = mkOption {
+      type = types.listOf types.str;
+      default = [
+        "127.0.0.0/8"
+        "::1/128"
+        "${r.lanSubnet}.0/24"
+        "${r.lanSubnetV6}::/64"
+        "${publicV6}::/64"
+      ];
+      description = "BIND cacheNetworks (clients allowed to use cache).";
+    };
+
+    forwarders = mkOption {
+      type = types.listOf types.str;
+      default = [
+        "8.8.8.8"
+        "8.8.4.4"
+        "1.1.1.1"
+        "1.0.0.1"
+        "2001:4860:4860::8888"
+        "2606:4700:4700::1111"
+        "2606:4700:4700::1001"
+      ];
+      description = "Upstream recursive forwarders.";
     };
   };
 
-  systemd.services.bind = {
-    requires = [ "bind-zones.service" ];
-    after = [ "bind-zones.service" ];
-  };
-
-  systemd.services.bind-zones = {
-    description = "Install BIND zone files";
-    wantedBy = [ "multi-user.target" ];
-    before = [ "bind.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      User = "root";
+  config = mkIf cfg.enable {
+    networking.firewall.interfaces.${r.bridgeInterface} = {
+      allowedTCPPorts = [ 53 ];
+      allowedUDPPorts = [ 53 ];
     };
-    script = ''
-      set -euo pipefail
-      install -d -m 0750 -o named -g named /var/lib/named
 
-      cat > /var/lib/named/${zoneDomain}.zone <<'EOF'
+    environment.systemPackages = [
+      pkgs.bind
+    ];
+
+    services.bind = {
+      enable = true;
+
+      cacheNetworks = cfg.cacheNetworks;
+      forwarders = cfg.forwarders;
+
+      extraConfig = ''
+        statistics-channels {
+          inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
+        };
+      '';
+
+      extraOptions = ''
+        allow-recursion {
+          127.0.0.1;
+          ::1;
+          ${r.lanSubnet}.0/24;
+          ${r.lanSubnetV6}::/64;
+          ${publicV6}::/64;
+        };
+        dnssec-validation auto;
+        listen-on { any; };
+        listen-on-v6 { any; };
+        minimal-responses yes;
+        response-policy { zone "${cfg.rpzZoneName}"; };
+      '';
+
+      zones = {
+        ${cfg.zoneDomain} = {
+          master = true;
+          file = forwardZoneFile;
+        };
+
+        ${cfg.reverseZone}  = {
+          master = true;
+          file = reverseZoneFile;
+        };
+
+        ${cfg.rpzZoneName} = {
+          master = true;
+          file = rpzZoneFile;
+        };
+      };
+    };
+
+    systemd.services.bind = {
+      requires = [ "bind-zones.service" ];
+      after = [ "bind-zones.service" ];
+    };
+
+    systemd.services.bind-zones = {
+      description = "Install BIND zone files";
+      wantedBy = [ "multi-user.target" ];
+      before = [ "bind.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        User = "root";
+      };
+      script = ''
+        set -euo pipefail
+        install -d -m 0750 -o named -g named /var/lib/named
+
+        cat > ${forwardZoneFile} <<'EOF'
 ${forwardZoneText}
 EOF
 
-      cat > /var/lib/named/10.0.0.rev <<'EOF'
+        cat > ${reverseZoneFile} <<'EOF'
 ${reverseZoneText}
 EOF
-      cat > /var/lib/named/rpz.local.zone <<'EOF'
+
+        cat > ${rpzZoneFile} <<'EOF'
 ${rpzZoneText}
 EOF
 
-      chown named:named /var/lib/named/rpz.local.zone
-      chmod 0640 /var/lib/named/rpz.local.zone
+        chown named:named ${forwardZoneFile} ${reverseZoneFile} ${rpzZoneFile}
+        chmod 0640 ${forwardZoneFile} ${reverseZoneFile} ${rpzZoneFile}
 
-      chown named:named /var/lib/named/${zoneDomain}.zone /var/lib/named/10.0.0.rev
-      chmod 0640 /var/lib/named/${zoneDomain}.zone /var/lib/named/10.0.0.rev
+        ${pkgs.bind}/bin/named-checkzone ${cfg.zoneDomain} ${forwardZoneFile}
+        ${pkgs.bind}/bin/named-checkzone ${cfg.reverseZone} ${reverseZoneFile}
+        ${pkgs.bind}/bin/named-checkzone ${cfg.rpzZoneName} ${rpzZoneFile}
+      '';
+    };
 
-      ${pkgs.bind}/bin/named-checkzone ${zoneDomain} /var/lib/named/${zoneDomain}.zone
-      ${pkgs.bind}/bin/named-checkzone 0.0.10.in-addr.arpa /var/lib/named/10.0.0.rev
-
-      ${pkgs.bind}/bin/named-checkzone rpz.local /var/lib/named/rpz.local.zone
-    '';
+    services.kresd.enable = lib.mkForce false;
+    services.kresd.instances = 0;
   };
-
-  services.kresd.enable = lib.mkForce false;
-  services.kresd.instances = 0;
 }

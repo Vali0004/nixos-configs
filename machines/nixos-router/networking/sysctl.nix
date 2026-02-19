@@ -12,7 +12,7 @@
 
     # By default, do not automatically configure any IPv6 addresses.
     "net.ipv6.conf.all.accept_ra" = 0;
-    "net.ipv6.conf.all.autoconf" = 0;
+    "net.ipv6.conf.all.autoconf" = 1;
     "net.ipv6.conf.all.use_tempaddr" = 0;
     "net.ipv4.conf.all.rp_filter" = 0;
 

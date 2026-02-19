@@ -32,6 +32,7 @@
       # Otherwise, it'd be what the ISP assigns, which we don't want :)
       no-resolv = true;
 
+      dhcp-authoritative = true;
       dhcp-host = [
         "8C:EC:4B:55:B2:F1,set:nixos-shitclient,${config.router.lanSubnet}.2,nixos-shitclient,infinite"
         "6C:2B:59:75:AA:B7,set:nixos-hass,${config.router.lanSubnet}.3,nixos-hass,infinite"
@@ -46,22 +47,23 @@
         "10:FF:E0:35:08:FB,set:nixos-amd,${config.router.lanSubnet}.189,nixos-amd,infinite"
         "d0:46:0c:7d:bf:c4,set:worklaptop,${config.router.lanSubnet}.50,US-ANH-L-A12597,infinite"
       ];
-
       dhcp-range = [
         # Comcast/Xfinity has always used 10.0.0.0/24 as a LAN subnet, and I'm just used to it now
         "${config.router.lanSubnet}.2,${config.router.lanSubnet}.254,2h"
-        "2601:406:8100:91D8::1,2601:406:8100:91D8::ffff,64,2h"
+        #"${config.router.lanSubnetV6}::1,${config.router.lanSubnetV6}::ffff,64,2h"
+        # Disable DHCPv6
         "::,constructor:${config.router.bridgeInterface},ra-stateless,2h"
       ];
-
       dhcp-option = [
         "option:dns-server,${config.router.dnsPrimaryIP},${config.router.dnsFallbackIP}"
         "option6:dns-server,[${config.router.dnsPrimaryIPv6}],[${config.router.dnsFallbackIPv6}]"
       ];
-
       dhcp-ignore-names = [ "tag:worklaptop" ];
 
       enable-ra = true;
+      ra-param = [ "br0,60,0" ]; # M=60, O=0
+
+      port = 0; # Disable DNS fully
     };
   };
 }

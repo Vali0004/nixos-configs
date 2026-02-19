@@ -18,6 +18,7 @@
           "nixos-router"
         ];
         port = config.services.prometheus.exporters.bind.port;
+        interval = "15s";
       })
       (lib.mkPrometheusJob {
         name = "fragmentation";
@@ -64,6 +65,7 @@
         ];
         name = "node";
         port = config.services.prometheus.exporters.node.port;
+        interval = "30s";
       })
       (lib.mkPrometheusJob {
         name = "radarr";

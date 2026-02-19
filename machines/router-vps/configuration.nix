@@ -88,7 +88,7 @@
         for x in 9100 9103 9134 9586 9633; do
           ${pkgs.iptables}/bin/iptables -I INPUT -p tcp --dport $x -s 76.112.236.206 -j ACCEPT
           ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --dport $x -j DROP
-          ${pkgs.iptables}/bin/ip6tables -I INPUT -p tcp --dport $x -s 2601:406:8100:91d8::1 -j ACCEPT
+          ${pkgs.iptables}/bin/ip6tables -I INPUT -p tcp --dport $x -s ${cfg.lanSubnetV6}::1 -j ACCEPT
           ${pkgs.iptables}/bin/ip6tables -A INPUT -p tcp --dport $x -j DROP
         done
       '';
@@ -96,7 +96,7 @@
         for x in 9100 9103 9134 9586 9633; do
           ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -s 76.112.236.206 -j ACCEPT 2>/dev/null || true
           ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -j DROP 2>/dev/null || true
-          ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -s 2601:406:8100:91d8::1 -j ACCEPT 2>/dev/null || true
+          ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -s ${cfg.lanSubnetV6}::1 -j ACCEPT 2>/dev/null || true
           ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -j DROP 2>/dev/null || true
         done
       '';

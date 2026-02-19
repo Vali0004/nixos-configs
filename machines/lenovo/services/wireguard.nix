@@ -38,8 +38,8 @@
     dns = [
       "10.0.0.1"
       "10.0.0.2"
-      "2601:406:8100:91d8::1"
-      "2601:406:8100:91d8::146c"
+      "${config.router.lanSubnetV6}::1"
+      "${config.router.lanSubnetV6}::146c"
     ];
     peers = [{
       allowedIPs = [
@@ -47,7 +47,7 @@
         #"::/0"
         "10.0.10.1/24"
         "10.0.0.0/24"
-        "2601:406:8100:91D8::/64"
+        "${config.router.lanSubnetV6}::/64"
       ];
       endpoint = "76.112.236.206:51821";
       persistentKeepalive = 25;

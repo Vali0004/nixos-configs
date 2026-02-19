@@ -60,9 +60,10 @@
 
     services/virtualisation/dockge.nix
 
-    services/ttyd.nix
     #services/cloudpanel.nix
+    services/proxmox-nixos.nix
     services/toxvpn.nix
+    services/ttyd.nix
   ];
 
   systemd.services = {
