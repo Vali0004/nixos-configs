@@ -7,22 +7,72 @@ let
   my_keys = import ./ssh_keys_personal.nix;
 in {
   imports = [
-    modules/nix/nixops-deploy.nix
-    modules/services/fail2ban.nix
-    modules/services/openssh.nix
-    modules/imports.nix
+    ./modules/services/fail2ban.nix
+    ./modules/services/openssh.nix
+    ./modules/imports.nix
   ];
 
-  boot.initrd.network = {
-    enable = true;
-    ssh.enable = true;
-    ssh.hostKeys = [ "/etc/ssh/ssh_host_ed25519_key" ];
-    ssh.authorizedKeys = my_keys;
-  };
-
   environment.systemPackages = with pkgs; [
+    # Binary Tools
+    bintools
+    # Better TOP
+    btop
+    # Connection tracking tools
+    conntrack-tools
+    # cURL
+    curl
+    # Useful for DNS debugging
+    dig
+    # Display Mode Info Decode
+    dmidecode
+    # Ethernet tool
+    ethtool
+    # Version Tracking
+    git
+    # Modern neofetch
+    fastfetch
+    # Internet Utilities
+    inetutils
+    # Internet performance monitoring
+    iperf
+    # Mini Certificate Authority
+    minica
+    # Mini COM
+    minicom
+    # Make Certificate
+    mkcert
+    # NCurses Disk usage
+    ncdu
+    # IPv6 Neighbor Discovery
+    ndisc6
+    # Network Tools
+    net-tools
+    # MBIM Tools
+    libmbim
+    # List Hardware
     lshw
+    # Open SSL
+    openssl
+    # PCI Utilies
+    pciutils
+    # Pico COM (sometimes easier than minicom)
+    picocom
+    # Power Joular - Monitor power usage
+    powerjoular
+    # Power Top - Tuning power usage
+    powertop
+    # Python - useful for some scripts
+    python3
+    # Screen
+    screen
+    # Ookla Native Speedtest
     speedtest
+    # TCP Dump
+    tcpdump
+    # USB Utilies
+    usbutils
+    # Web Get
+    wget
   ];
 
   hardware = {

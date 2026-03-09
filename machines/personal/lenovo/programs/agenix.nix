@@ -1,0 +1,39 @@
+{ config
+, ... }:
+
+{
+  age.identityPaths = [
+    "/etc/ssh/ssh_host_rsa_key"
+    "/etc/ssh/ssh_host_ed25519_key"
+    "/home/vali/.ssh/id_rsa"
+  ];
+  age.secrets = {
+    nix-netrc.file = ../../../../secrets/nix-netrc.age;
+    network-secrets = {
+      file = ../../../../secrets/network-secrets.age;
+      owner = "root";
+      group = "wpa_supplicant";
+      mode = "0444";
+    };
+    zipline-upload-headers = {
+      file = ../../../../secrets/zipline-upload-headers.age;
+      owner = "vali";
+      group = "wheel";
+    };
+    wireguard-home = {
+      file = ../../../../secrets/wireguard-home.age;
+      owner = "root";
+      group = "root";
+    };
+  };
+
+  #
+  # Used for Git
+  #
+  # This allows flakes to pull in private repos, otherwise
+  # some hacky stuff is needed.
+  environment.etc."nix/netrc" = {
+    user = "root";
+    source = config.age.secrets.nix-netrc.path;
+  };
+}

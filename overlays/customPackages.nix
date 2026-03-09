@@ -1,6 +1,6 @@
 self: super: {
   beammp-launcher = self.callPackage pkgs/beammp-launcher {};
-  clipmenu-paste = self.callPackage pkgs/clipmenu {};
+  cors-anywhere = self.callPackage pkgs/cors-anywhere {};
   darling = self.callPackage pkgs/darling {};
   dnspy = self.callPackage pkgs/dnspy {};
   dwmblocks-battery = self.callPackage pkgs/dwmblocks/battery {};
@@ -10,7 +10,7 @@ self: super: {
   dwmblocks-playerctl = self.callPackage pkgs/dwmblocks/playerctl {};
   ida-pro = self.callPackage pkgs/ida-pro {};
   jlink = self.callPackage pkgs/nordic/jlink {};
-  manage-gnome-calculator = self.callPackage pkgs/manage-gnome-calculator {};
+  kursu-dev-status = self.callPackage pkgs/kursu-dev-status {};
   nrf-studio = self.callPackage pkgs/nordic {};
   nrf-util = self.callPackage pkgs/nordic/nrfutil {};
   onthespot = self.callPackage pkgs/onthespot {};
@@ -27,7 +27,7 @@ self: super: {
   };
   patreon-dl-gui = self.callPackage pkgs/patreon-dl-gui {};
   routerd = self.callPackage pkgs/routerd {};
+  rtorrent-exporter = self.callPackage pkgs/rtorrent-exporter {};
   surfboard-hnap-exporter = self.callPackage pkgs/surfboard-hnap-exporter {};
-  teams-classic = self.callPackage pkgs/teams-classic {};
   xwinwrap-gif = self.callPackage pkgs/xwinwrap {};
 }

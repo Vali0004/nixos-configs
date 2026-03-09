@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   options.programs.steam = {
@@ -12,7 +15,7 @@
   config = lib.mkIf config.programs.steam.enable {
     programs.steam = {
       extraCompatPackages = with pkgs; [
-        proton-ge-rtsp-bin
+        #proton-ge-rtsp-bin - nixpkgs-xr
         proton-ge-bin
         protonplus
       ];

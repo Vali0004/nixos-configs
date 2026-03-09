@@ -1,10 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-xr = {
-      url = "github:nix-community/nixpkgs-xr";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     agenix.url = "github:ryantm/agenix";
     ajax-xdp.url = "github:AjaxVPN/ajax-xdp";
     ajax-deploy.url = "github:AjaxVPN/ajax-deploy";
@@ -12,47 +8,28 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
-    proxmox-nixos.url = "github:SaumonNet/proxmox-nixos";
     skylanders-nfc-reader.url = "github:Vali0004/skylanders-nfc-reader";
     spicetify.url = "github:Gerg-L/spicetify-nix";
-    watchman-pairing-assistant = {
-      url = "github:TayouVR/watchman-pairing-assistant";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zfs-utils = {
       url = "github:cleverca22/zfs-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mangowc = {
-      url = "github:DreamMaoMao/mangowc";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
-  outputs = inputs@{ self, nixpkgs, nixpkgs-xr, agenix, ajax-xdp, ajax-deploy, home-manager, impermanence, mangowc, nix-gaming, nix-minecraft, nixos-mailserver, proxmox-nixos, skylanders-nfc-reader, spicetify, watchman-pairing-assistant, zfs-utils }:
+
+  outputs = inputs@{ self, nixpkgs, agenix, ajax-xdp, ajax-deploy, home-manager, hytale-launcher, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, zfs-utils }:
   let
     system = "x86_64-linux";
 
     flakeOverlays = [
       (self: super: {
-        watchman-pairing-assistant = watchman-pairing-assistant.packages.${system}.default;
-
         agenix = agenix.outputs.packages.${system}.agenix;
         ajax-xdp = ajax-xdp.packages.${system}.default;
         ajax-deploy = ajax-deploy.packages.${system}.default;
-        forgeServers = {
-          forge-1_7_10-10_13_4 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.7.10-10.13.4.16"; };
-          forge-1_16_5-36_2_26 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.16.5-36.2.26"; };
-          forge-1_16_5-36_2_39 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.16.5-36.2.39"; };
-          forge-1_16_5-36_2_42 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.16.5-36.2.42"; };
-          forge-1_18_2-40_3_0  = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.18.2-40.3.0";  };
-          forge-1_20_1-47_2_17 = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.20.1-47.2.17"; };
-          forge-1_20_1-47_3_0  = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.20.1-47.3.0";  };
-          forge-1_20_1-47_4_0  = self.callPackage overlays/pkgs/nix-minecraft/forge { version = "1.20.1-47.4.0";  };
-        };
+        hytale-launcher = hytale-launcher.outputs.packages.${system}.default;
         mailserver = nixos-mailserver.${system}.default;
         nixGaming = nix-gaming.outputs.packages.${system};
         skylanders-nfc-reader = skylanders-nfc-reader.packages.${system}.default;
@@ -64,94 +41,70 @@
     ];
 
     overlays = [
-      proxmox-nixos.overlays.${system}
       nix-minecraft.overlay
       (import overlays/customPackages.nix)
       (import overlays/existingPackages.nix)
-      (import overlays/server.nix)
     ] ++ flakeOverlays;
 
     pkgs = import nixpkgs { inherit system overlays; };
+
+    specialArgs = {
+      # Cursed trick to get a proper lib override,
+      # used for mkNamespace, mkPrometheusJob, and mkProxy
+      lib = (import overlays/libOverlay.nix {
+        lib = pkgs.lib;
+        inherit pkgs;
+      }).lib;
+      inherit inputs overlays;
+    };
   in {
     colmena = {
       defaults = {
         imports = [
           agenix.nixosModules.age
+          modules/nix/remote-deploy.nix
           modules/zfs/zfs-patch.nix
           ./core.nix
         ];
       };
       meta = {
-        specialArgs = {
-          lib = (import overlays/libOverlay.nix {
-            lib = pkgs.lib;
-            inherit pkgs;
-          }).lib;
-        };
+        inherit specialArgs;
         nixpkgs = pkgs;
       };
-      router-vps = {
+      nas-wg-exitnode = {
         deployment = {
           targetHost = "74.208.44.130";
-          targetUser = "root";
           targetPort = 1594;
         };
         imports = [
-          machines/router-vps/configuration.nix
+          machines/cloud/01-nas-wg-exitnode/configuration.nix
         ];
       };
       nixos-shitclient = {
-        deployment = {
-          targetHost = "10.0.0.2";
-          targetUser = "root";
-          targetPort = 22;
-        };
+        deployment.targetHost = "10.0.0.2";
         imports = [
-          machines/nixos-shitclient/configuration.nix
-        ];
-      };
-      nixos-jaguar = {
-        deployment = {
-          targetHost = "10.0.0.193";
-          targetUser = "root";
-          targetPort = 22;
-        };
-        imports = [
-          machines/nixos-jaguar/configuration.nix
+          machines/house/nixos-shitclient/configuration.nix
         ];
       };
       shitzen-nixos = {
-        deployment = {
-          targetHost = "10.0.0.4";
-          targetUser = "root";
-          targetPort = 22;
-        };
+        deployment.targetHost = "10.0.0.4";
         imports = [
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
-          proxmox-nixos.nixosModules.proxmox-ve
-          machines/shitzen-nixos/configuration.nix
           modules/networking/hosts.nix
+          machines/nas/shitzen-nixos/configuration.nix
         ];
       };
       nixos-hass = {
-        deployment = {
-          targetHost = "10.0.0.3";
-          targetUser = "root";
-          targetPort = 22;
-        };
+        deployment.targetHost = "10.0.0.3";
         imports = [
-          machines/nixos-hass/configuration.nix
+          machines/house/nixos-hass/configuration.nix
         ];
       };
       nixos-router = {
-        deployment = {
-          targetHost = "10.0.0.1";
-          targetUser = "root";
-          targetPort = 22;
-        };
+        deployment.targetHost = "10.0.0.1";
         imports = [
-          machines/nixos-router/configuration.nix
+          machines/house/nixos-router/configuration.nix
         ];
       };
     };
@@ -160,61 +113,49 @@
       # Building a flake system:
       # nix build .#nixosConfigurations.<name>.config.system.build.toplevel
       nixos-amd = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs overlays; };
+        inherit system specialArgs;
         modules = [
+          ({ nixpkgs.overlays = flakeOverlays; })
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
-          nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/networking/hosts.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/imports.nix
-          machines/nixos-amd/configuration.nix
           overlays/module.nix
-          ({ nixpkgs.overlays = flakeOverlays; })
+          machines/personalnixos-amd/configuration.nix
         ];
       };
       lenovo = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = { inherit inputs overlays; };
+        inherit system specialArgs;
         modules = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
-          nixpkgs-xr.nixosModules.nixpkgs-xr
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
+          ({ nixpkgs.overlays = flakeOverlays; })
+          overlays/module.nix
           modules/networking/hosts.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/services/openssh.nix
           modules/imports.nix
           machines/lenovo/configuration.nix
-          overlays/module.nix
-          ({ nixpkgs.overlays = flakeOverlays; })
         ];
       };
       shitzen-nixos = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          lib = (import overlays/libOverlay.nix {
-            lib = pkgs.lib;
-            inherit pkgs;
-          }).lib;
-          inherit inputs overlays;
-        };
+        inherit system specialArgs;
         modules = [
           agenix.nixosModules.age
-          modules/zfs/zfs-patch.nix
-          ./core.nix
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
-          proxmox-nixos.nixosModules.proxmox-ve
-          machines/shitzen-nixos/configuration.nix
-          modules/networking/hosts.nix
           ({ nixpkgs.overlays = overlays; })
+          modules/zfs/zfs-patch.nix
+          ./core.nix
+          modules/networking/hosts.nix
+          machines/shitzen-nixos/configuration.nix
         ];
       };
     };
