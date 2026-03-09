@@ -13,6 +13,7 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
+    config.services.chrony.package
     # Binary Tools
     bintools
     # Better TOP
@@ -80,7 +81,22 @@ in {
     enableRedistributableFirmware = true;
   };
 
-  services.vnstat.enable = true;
+  networking.timeServers = [
+    "0.pool.ntp.org"
+    "1.pool.ntp.org"
+    "2.pool.ntp.org"
+    "3.pool.ntp.org"
+  ];
+
+  services = {
+    chrony = {
+      enable = true;
+      enableRTCTrimming = true;
+    };
+    ntp.enable = false;
+    timesyncd.enable = false;
+    vnstat.enable = true;
+  };
 
   users.users = let
     common_keys = import ./ssh_keys.nix;

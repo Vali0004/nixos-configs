@@ -148,9 +148,6 @@
   hardware.amd.enable = true;
 
   networking = {
-    dhcpcd.extraConfig = ''
-      nohook resolv.conf
-    '';
     firewall = {
       # SMTP is open
       # SMTPS is open
@@ -174,18 +171,7 @@
     interfaces = {
       enp3s0.useDHCP = true;
     };
-    nameservers = [
-      "1.1.1.1"
-      "8.8.8.8"
-      "2606:4700:4700::1111"
-      "2001:4860:4860::8888"
-    ];
     useDHCP = false;
-  };
-
-  services.kresd = {
-    enable = lib.mkForce false;
-    instances = 0;
   };
 
   nix.settings.keep-derivations = true;
