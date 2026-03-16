@@ -52,9 +52,9 @@ self: super: {
       hash = "sha256-przCOyureolbPLqy80DuyQoGeQ7lbGIXeR1z26DvN/E=";
     };
   });
-  hydra = super.hydra.overrideAttrs (old: {
-    doCheck = false;
-  });
+  #hydra = super.hydra.overrideAttrs (old: {
+  #  doCheck = false;
+  #});
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {

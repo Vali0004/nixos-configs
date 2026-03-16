@@ -124,7 +124,7 @@
       };
     };
     hostId = "bade5fb2";
-    hostName = "nixos-hass";
+    hostName = "home-assistant-localnet";
     interfaces = {
       bond0.useDHCP = true;
     };

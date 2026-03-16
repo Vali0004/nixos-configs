@@ -54,6 +54,8 @@ in {
     lshw
     # Open SSL
     openssl
+    # Partition utility
+    parted
     # PCI Utilies
     pciutils
     # Pico COM (sometimes easier than minicom)

@@ -71,19 +71,22 @@
         inherit specialArgs;
         nixpkgs = pkgs;
       };
-      nas-wg-exitnode = {
-        deployment = {
-          targetHost = "74.208.44.130";
-          targetPort = 1594;
-        };
+      nixos-router = {
+        deployment.targetHost = "10.0.0.1";
         imports = [
-          machines/cloud/01-nas-wg-exitnode/configuration.nix
+          machines/house/nixos-router/configuration.nix
         ];
       };
       nixos-shitclient = {
         deployment.targetHost = "10.0.0.2";
         imports = [
           machines/house/nixos-shitclient/configuration.nix
+        ];
+      };
+      home-assistant-localnet = {
+        deployment.targetHost = "10.0.0.3";
+        imports = [
+          machines/house/03-home-assistant-localnet/configuration.nix
         ];
       };
       shitzen-nixos = {
@@ -95,16 +98,13 @@
           machines/nas/shitzen-nixos/configuration.nix
         ];
       };
-      nixos-hass = {
-        deployment.targetHost = "10.0.0.3";
+      nas-wg-exitnode = {
+        deployment = {
+          targetHost = "74.208.44.130";
+          targetPort = 1594;
+        };
         imports = [
-          machines/house/nixos-hass/configuration.nix
-        ];
-      };
-      nixos-router = {
-        deployment.targetHost = "10.0.0.1";
-        imports = [
-          machines/house/nixos-router/configuration.nix
+          machines/cloud/01-nas-wg-exitnode/configuration.nix
         ];
       };
     };
@@ -125,37 +125,48 @@
           modules/programs/steam.nix
           modules/imports.nix
           overlays/module.nix
-          machines/personalnixos-amd/configuration.nix
+          machines/personal/nixos-amd/configuration.nix
         ];
       };
       lenovo = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          ({ nixpkgs.overlays = overlays; })
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
-          ({ nixpkgs.overlays = flakeOverlays; })
           overlays/module.nix
           modules/networking/hosts.nix
           modules/programs/spicetify.nix
           modules/programs/steam.nix
           modules/services/openssh.nix
           modules/imports.nix
-          machines/lenovo/configuration.nix
+          machines/personal/lenovo/configuration.nix
+        ];
+      };
+      home-assistant-localnet = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ({ nixpkgs.overlays = overlays; })
+          agenix.nixosModules.age
+          modules/nix/remote-deploy.nix
+          modules/zfs/zfs-patch.nix
+          ./core.nix
+          machines/house/03-home-assistant-localnet/configuration.nix
         ];
       };
       shitzen-nixos = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
+          ({ nixpkgs.overlays = overlays; })
           agenix.nixosModules.age
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
-          ({ nixpkgs.overlays = overlays; })
           modules/zfs/zfs-patch.nix
           ./core.nix
           modules/networking/hosts.nix
-          machines/shitzen-nixos/configuration.nix
+          machines/nas/shitzen-nixos/configuration.nix
         ];
       };
     };
