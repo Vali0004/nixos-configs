@@ -60,7 +60,10 @@ in {
         root_url = "https://monitoring.kursu.dev/grafana/";
         serve_from_sub_path = true;
       };
-      security.admin_user = "admin";
+      security = {
+        admin_user = "admin";
+        secret_key = config.age.secrets.grafana-secret.path;
+      };
       users.allow_sign_up = false;
     };
   };

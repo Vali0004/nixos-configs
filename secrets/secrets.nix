@@ -14,6 +14,7 @@ in {
   "do-not-reply-kursu-dev.age".publicKeys = keys;
   "git-kursu-dev-db.age".publicKeys = keys;
   "gitea-runner-token.age".publicKeys = keys;
+  "grafana-secret.age".publicKeys = keys;
   "hydra-github-token.age".publicKeys = keys;
   "kavita.age".publicKeys = keys;
   "matrix.age".publicKeys = keys;

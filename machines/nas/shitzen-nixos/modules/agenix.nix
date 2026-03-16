@@ -25,6 +25,12 @@
       group = "gitea-runner";
       mode = "0440";
     };
+    grafana-secret = {
+      file = ../../../../secrets/grafana-secret.age;
+      owner = "grafana";
+      group = "grafana";
+      mode = "0440";
+    };
     hydra-github-token = {
       file = ../../../../secrets/hydra-github-token.age;
       owner = "hydra";
