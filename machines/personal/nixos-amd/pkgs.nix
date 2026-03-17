@@ -67,6 +67,8 @@
     gnome-calculator
     # sed
     gnused
+    # Hytale Launcher
+    hytale-launcher
     # Hex-Rays IDA Pro 9.0 Beta
     ida-pro
     # Internet utilities (ping6, etc.)
@@ -89,6 +91,8 @@
     nss
     # cli unrar
     libarchive
+    # Office Tools
+    libreoffice-qt
     # Reduced blanking profiles
     libxcvt
     # Wormhole, file sender
@@ -124,6 +128,8 @@
     osu-stable
     # PCI Utilities
     pciutils
+    # Printable Document Format Toolkit
+    pdftk
     # Super small communications utility
     picocom
     # GTK Frontend for ratbagd
@@ -190,6 +196,8 @@
     vulkan-extension-layer
     vulkan-tools
     vulkan-validation-layers
+    # X Window System Clipboard
+    xclip
     # WebGet
     wget
     # Packet sniffer
@@ -197,8 +205,9 @@
     # Wine
     wineWowPackages.stable
     winetricks
-    # X Window System Clipboard
-    xclip
+    # PDF Editing Util
+    xournalpp
+    zathura
     # ZIP Archive Utility
     zip
     # Zoom - Meeting software

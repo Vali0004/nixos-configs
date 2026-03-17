@@ -7,6 +7,11 @@
     openssl
   ];
 
+  services.nginx.virtualHosts."mail.kursu.dev" = {
+    forceSSL = true;
+    enableACME = true;
+  };
+
   mailserver = {
     domains = [
       "fuckk.lol"

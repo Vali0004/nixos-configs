@@ -32,7 +32,7 @@
 
     #services/mail/roundcube.nix
     services/mail/server.nix
-    services/mail/sogo.nix
+    #services/mail/sogo.nix
 
     services/minecraft/default.nix
 
