@@ -18,10 +18,6 @@ in {
   ];
 
   environment.systemPackages = with pkgs; [
-    # Clipboard Manager
-    clipmenu
-    # Clipboard Manager (auto-paste)
-    clipmenu-paste
     # App launcher
     dmenu_wrapper
     # dwm status

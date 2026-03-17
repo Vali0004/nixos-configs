@@ -9,10 +9,6 @@
   services.xserver.windowManager.i3 = {
     enable = true;
     extraPackages = with pkgs; [
-      # Clipboard Manager
-      clipmenu
-      # Clipboard Manager (auto-paste)
-      clipmenu-paste
       # Gifsicle, used to split & optimize GIFS
       gifsicle
       # i3 Auto Layout

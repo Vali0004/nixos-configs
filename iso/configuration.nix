@@ -3,7 +3,7 @@
 # Building:
 # nix-build '<nixpkgs/nixos/release.nix>' --arg configuration ./vali.nix -A iso_minimal.x86_64-linux
 # OR
-# nix build .#packages.x86_64-linux.isoVali
+# nix build .#packages.x86_64-linux.deployIso
 {
   imports = [
     "${modulesPath}/installer/cd-dvd/installation-cd-minimal.nix"

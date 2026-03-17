@@ -9,6 +9,7 @@
       "monitoring.localnet"
       "pihole.localnet"
       "pihole-failover.localnet"
+      "proxmox.localnet"
       "zigbee2mqtt.localnet"
     ];
   };

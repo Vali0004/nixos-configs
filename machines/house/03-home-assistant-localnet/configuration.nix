@@ -8,8 +8,7 @@
     "${modulesPath}/installer/scan/not-detected.nix"
 
     modules/boot.nix
-
-    programs/agenix.nix
+    modules/agenix.nix
 
     services/mqtt/mosquitto.nix
     services/mqtt/zigbee2mqtt.nix

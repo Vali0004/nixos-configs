@@ -3,7 +3,7 @@
 
 {
   networking = {
-    bridges.vmbr0.interfaces = [ "enp3s0" ];
+    bridges.vmbr0.interfaces = [ "enp4s0" ];
     interfaces.vmbr0.useDHCP = true;
   };
 

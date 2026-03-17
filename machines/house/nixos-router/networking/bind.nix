@@ -108,6 +108,11 @@ in {
   options.services.bindLocalnet = {
     enable = mkEnableOption "BIND authoritative local zone + RPZ based on networking.extraHosts";
 
+    lanInterface = mkOption {
+      type = types.str;
+      description = "Ethernet interface serving DNS";
+    };
+
     zoneDomain = mkOption {
       type = types.str;
       default = "localnet";
@@ -186,7 +191,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    networking.firewall.interfaces.${r.bridgeInterface} = {
+    networking.firewall.interfaces.${cfg.lanInterface} = {
       allowedTCPPorts = [ 53 ];
       allowedUDPPorts = [ 53 ];
     };

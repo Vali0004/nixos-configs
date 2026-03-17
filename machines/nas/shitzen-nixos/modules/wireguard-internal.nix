@@ -68,6 +68,13 @@ in {
         ];
         publicKey = "y/bR//Gd/goJxWWyeH0N1hOBM4lP/k+FLGeibCUBIhY=";
       }
+      {
+        allowedIPs = [
+          "10.0.10.4/32"
+          "fd10:0::4/128"
+        ];
+        publicKey = "7WiqaOz9ipOhNpHp9mWvEhm2F/Rn7BEtc9U17t2LeAA=";
+      }
     ];
   };
 }

@@ -2,7 +2,10 @@
 , modulesPath
 , ... }:
 
-{
+let
+  homeV4 = "76.112.236.206 ";
+  homeV6 = "2601:406:8180:35a7";
+in {
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"
     modules/agenix.nix
@@ -15,6 +18,8 @@
     services/toxvpn.nix
     #services/xdp.nix
   ];
+
+  acme.enable = true;
 
   environment.systemPackages = with pkgs; [
     conntrack-tools
@@ -86,17 +91,25 @@
       ];
       extraCommands = ''
         for x in 9100 9103 9134 9586 9633; do
-          ${pkgs.iptables}/bin/iptables -I INPUT -p tcp --dport $x -s 76.112.236.206 -j ACCEPT
+          ${pkgs.iptables}/bin/iptables -I INPUT -p tcp --dport $x -s ${homeV4} -j ACCEPT
           ${pkgs.iptables}/bin/iptables -A INPUT -p tcp --dport $x -j DROP
+<<<<<<< Updated upstream
           ${pkgs.iptables}/bin/ip6tables -I INPUT -p tcp --dport $x -s 2601:406:8180:35a7::1 -j ACCEPT
+=======
+          ${pkgs.iptables}/bin/ip6tables -I INPUT -p tcp --dport $x -s ${homeV6}::1 -j ACCEPT
+>>>>>>> Stashed changes
           ${pkgs.iptables}/bin/ip6tables -A INPUT -p tcp --dport $x -j DROP
         done
       '';
       extraStopCommands = ''
         for x in 9100 9103 9134 9586 9633; do
-          ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -s 76.112.236.206 -j ACCEPT 2>/dev/null || true
+          ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -s ${homeV4}-j ACCEPT 2>/dev/null || true
           ${pkgs.iptables}/bin/iptables -D INPUT -p tcp --dport $x -j DROP 2>/dev/null || true
+<<<<<<< Updated upstream
           ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -s 2601:406:8180:35a7::1 -j ACCEPT 2>/dev/null || true
+=======
+          ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -s ${homeV6}::1 -j ACCEPT 2>/dev/null || true
+>>>>>>> Stashed changes
           ${pkgs.iptables}/bin/ip6tables -D INPUT -p tcp --dport $x -j DROP 2>/dev/null || true
         done
       '';
@@ -122,8 +135,6 @@
     useDHCP = false;
     usePredictableInterfaceNames = false;
   };
-
-  acme.enable = true;
 
   services.openssh.ports = [ 1594 ];
 

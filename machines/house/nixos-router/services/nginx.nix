@@ -137,6 +137,14 @@
         };
       };
     };
+    "proxmox.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        https = true;
+        ip = "shitzen-nixos";
+        port = 8006;
+      };
+    };
     "zigbee2mqtt.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {

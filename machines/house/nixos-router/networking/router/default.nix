@@ -7,19 +7,21 @@ let
   cfg = config.router;
 in {
   options.router = {
+    enable = lib.mkEnableOption "Enable routing config with bridging";
+
     bridgeInterface = lib.mkOption {
       default = "br0";
       type = lib.types.str;
       description = "Virtual LAN interface for binding";
     };
 
-    # Ethernet to DOCSIS modem
+    # To Modem
     wanInterface = lib.mkOption {
       type = lib.types.str;
-      description = "Physical WAN interface (to DOCSIS modem)";
+      description = "Physical WAN interface";
     };
 
-    # Two SFP ports
+    # SFP Card
     lanInterfaces = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "Physical LAN interfaces that should be bridged";
@@ -68,12 +70,12 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     networking = {
       bridges.${cfg.bridgeInterface}.interfaces = cfg.lanInterfaces;
       dhcpcd = {
         enable = true;
-        IPv6rs = true;
+        IPv6rs = false;
         allowInterfaces = [
           cfg.wanInterface
         ];
@@ -82,6 +84,7 @@ in {
         ];
         extraConfig = ''
           interface ${cfg.wanInterface}
+            noipv6rs
             ia_na 1
             ia_pd 2 ${cfg.bridgeInterface}/0
             rapid_commit
