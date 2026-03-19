@@ -17,17 +17,7 @@
 
   systemd.services.zipline.serviceConfig.ReadWritePaths = [ "/data/services/zipline/uploads" ];
 
-  services.nginx.virtualHosts."cdn.ajaxnetworks.us" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = lib.mkProxy {
-      ip = "192.168.100.1";
-      port = config.services.zipline.settings.CORE_PORT;
-      webSockets = true;
-    };
-  };
-
-  services.nginx.virtualHosts."holy.kursu.dev" = {
+  services.nginx.virtualHosts."cdn.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

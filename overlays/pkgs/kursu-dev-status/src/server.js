@@ -18,20 +18,19 @@ let statusTypes = {
 };
 
 let services = {
-  main: { type: "good", url: "https://kursu.dev/", responding: false },
+  main: { type: "good", url: "https://lab004.dev/", responding: false },
   main: { type: "good", url: "https://fuckk.lol/", responding: false },
-  flood: { type: "good", url: "https://flood.kursu.dev/", responding: false },
+  flood: { type: "good", url: "https://flood.lab004.dev/", responding: false },
   furryporn: { type: "good", url: "https://valis.furryporn.ca/", responding: false },
-  grafana: { type: "good", url: "https://monitoring.kursu.dev/grafana/login", responding: false },
-  hydra: { type: "good", url: "https://hydra.kursu.dev/", responding: false },
+  grafana: { type: "good", url: "https://monitoring.lab004.dev/grafana/login", responding: false },
+  hydra: { type: "good", url: "https://hydra.lab004.dev/", responding: false },
   jellyfin: { type: "good", url: "https://watch.furryporn.ca/web", responding: false },
   mail: { type: "good", url: "https://mail.fuckk.lol/SOGo", responding: false },
-  prometheus: { type: "good", url: "https://monitoring.kursu.dev/prometheus/targets", responding: false },
-  prowlarr: { type: "good", url: "https://prowlarr.kursu.dev/", responding: false },
-  radarr: { type: "good", url: "https://radarr.kursu.dev/", responding: false },
-  sonarr: { type: "good", url: "https://sonarr.kursu.dev/", responding: false },
-  zipline: { type: "good", url: "https://holy.kursu.dev/dashboard", responding: false },
-  zipline_ajaxnetworks: { type: "good", url: "https://cdn.ajaxnetworks.us/dashboard", responding: false },
+  prometheus: { type: "good", url: "https://monitoring.lab004.dev/prometheus/targets", responding: false },
+  prowlarr: { type: "good", url: "https://prowlarr.lab004.dev/", responding: false },
+  radarr: { type: "good", url: "https://radarr.lab004.dev/", responding: false },
+  sonarr: { type: "good", url: "https://sonarr.lab004.dev/", responding: false },
+  zipline: { type: "good", url: "https://holy.lab004.dev/dashboard", responding: false },
   xenon: { type: "good", url: "https://xenonemu.dev/", responding: false },
 };
 

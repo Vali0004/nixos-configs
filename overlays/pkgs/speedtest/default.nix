@@ -7,7 +7,7 @@ stdenv.mkDerivation {
   name = "speedtest";
 
   src = fetchurl {
-    url = "https://kursu.dev/cdn/speedtest.tar.gz";
+    url = "https://lab004.dev/cdn/speedtest.tar.gz";
     sha256 = "sha256-c21A6R0JEBj7j4NV1kJPtPPaBcKNv22unsRk9RAHRXw=";
   };
 

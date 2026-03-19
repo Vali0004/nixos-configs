@@ -9,7 +9,7 @@
   ];
 
   services.gitea = {
-    appName = "kursu.dev: Git";
+    appName = "lab004.dev: Git";
     enable = true;
     captcha.enable = true;
     database = {
@@ -39,21 +39,21 @@
       mailer = {
         ENABLED = true;
         PROTOCOL = "smtps";
-        SMTP_ADDR = "mail.kursu.dev";
+        SMTP_ADDR = "mail.lab004.dev";
         SMTP_PORT = "465";
-        FROM = "Kursu's Git Service <do-not-reply@kursu.dev>";
-        USER = "do-not-reply@kursu.dev";
+        FROM = "Kursu's Git Service <do-not-reply@lab004.dev>";
+        USER = "do-not-reply@lab004.dev";
       };
       metrics.ENABLED = false;
       other = {
         SHOW_FOOTER_VERSION = false;
       };
       server = {
-        DOMAIN = "git.kursu.dev";
+        DOMAIN = "git.lab004.dev";
         HTTP_PORT = 3900;
         HTTP_ADDR = "0.0.0.0";
         ROOT_URL = "https://${config.services.gitea.settings.server.DOMAIN}";
-        SSH_DOMAIN = "git.kursu.dev";
+        SSH_DOMAIN = "git.lab004.dev";
         SSH_PORT = 2222;
         SSH_CREATE_AUTHORIZED_KEYS_FILE = true;
         START_SSH_SERVER = true;
@@ -76,7 +76,7 @@
     forceSSL = true;
 
     # Ask robots not to scrape Git, it has various expensive endpoints
-    locations."=/robots.txt".alias = pkgs.writeText "git.kursu.dev-robots.txt" ''
+    locations."=/robots.txt".alias = pkgs.writeText "git.lab004.dev-robots.txt" ''
       User-agent: *
       Disallow: /
       Allow: /$
@@ -100,7 +100,7 @@
     };
   };
 
-  systemd.services.gitea.serviceConfig = lib.mkNamespace {};
+  systemd.services.gitea = lib.mkNamespace {};
 
   users = {
     users.git = {

@@ -34,7 +34,7 @@
   '';
   "config/MiniMOTD/icons/image.png" = fetchurl rec {
     hash = "sha256-9QvXb9oxBpEIJGV0S25ofyriKTK5PUIt6b1z9uEvRW4=";
-    url = "https://kursu.dev/minecraft/image.png";
+    url = "https://lab004.dev/minecraft/image.png";
   };
   "mods/TAB.jar" = fetchurl rec {
     hash = "sha256-mBasPD/mFrAMB4OT05waaDReLkU9ufkANJr2AhIZlAs=";

@@ -10,14 +10,14 @@
       refresh = "1h";
     };
     keyFile = config.age.secrets.oauth2-proxy.path;
-    email.domains = [ "kursu.dev" ];
+    email.domains = [ "lab004.dev" ];
     enable = true;
     nginx = {
-      domain = "monitoring.kursu.dev";
+      domain = "monitoring.lab004.dev";
       virtualHosts = {
-        "monitoring.kursu.dev" = {
+        "monitoring.lab004.dev" = {
           allowed_email_domains = [
-            "kursu.dev"
+            "lab004.dev"
             "fuckk.lol"
             "nanitehosting.com"
           ];
@@ -25,14 +25,14 @@
       };
     };
     provider = "google";
-    redirectURL = "https://monitoring.kursu.dev/oauth2/callback";
+    redirectURL = "https://monitoring.lab004.dev/oauth2/callback";
     setXauthrequest = true;
     skipAuthRegexes = [
       "^/prometheus(/.*)?$"
     ];
   };
 
-  services.nginx.virtualHosts."monitoring.kursu.dev" = {
+  services.nginx.virtualHosts."monitoring.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations = {

@@ -44,71 +44,7 @@
     experimentalZstdSettings = true;
   };
 
-  services.nginx.virtualHosts."fuckk.lol" = {
-    enableACME = true;
-    forceSSL = false;
-    root = "/data/services/web/fuckk-lol/";
-    locations = {
-      "/" = {
-        index = "index.html";
-      };
-      "/.well-known/discord" = {
-        extraConfig = ''
-          default_type text/plain;
-          return 200 "dh=bf1a6bc8c4e60bb02a061066aab4dc9366273a03";
-        '';
-      };
-      "/repo/" = {
-        alias = "/data/services/web/repo/";
-        index = "index.htm";
-        extraConfig = ''
-          autoindex on;
-          autoindex_exact_size off;
-        '';
-      };
-      "/private/" = {
-        alias = "/data/private/";
-        index = "index.htm";
-        extraConfig = ''
-          return 404;
-        '';
-      };
-      "/private/anime/" = {
-        alias = "/data/private/anime/";
-        index = "index.htm";
-        extraConfig = ''
-          autoindex on;
-          autoindex_exact_size off;
-        '';
-      };
-      "/private/movies/" = {
-        alias = "/data/private/movies/";
-        index = "index.htm";
-        extraConfig = ''
-          autoindex on;
-          autoindex_exact_size off;
-        '';
-      };
-      "/private/downloads/" = {
-        alias = "/data/private/downloads/";
-        index = "index.htm";
-        extraConfig = ''
-          autoindex on;
-          autoindex_exact_size off;
-        '';
-      };
-      "/private/images/" = {
-        alias = "/data/private/images/";
-        index = "index.htm";
-        extraConfig = ''
-          autoindex on;
-          autoindex_exact_size off;
-        '';
-      };
-    };
-  };
-
-  services.nginx.virtualHosts."kursu.dev" = {
+  services.nginx.virtualHosts."kurisu.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     root = "/data/services/web/fuckk-lol/";

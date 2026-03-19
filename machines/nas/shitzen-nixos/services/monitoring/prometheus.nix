@@ -166,6 +166,6 @@
     };
     listenAddress = "0.0.0.0";
     port = 3400;
-    webExternalUrl = "https://monitoring.kursu.dev/prometheus/";
+    webExternalUrl = "https://monitoring.lab004.dev/prometheus/";
   };
 }

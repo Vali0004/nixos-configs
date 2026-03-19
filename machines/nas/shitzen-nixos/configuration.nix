@@ -25,7 +25,7 @@
 
     services/filehosting/gitea-runner.nix
     services/filehosting/gitea.nix
-    services/filehosting/nextcloud.nix
+    #services/filehosting/nextcloud.nix
     services/filehosting/nfs.nix
     services/filehosting/samba.nix
     services/filehosting/zipline.nix
@@ -66,18 +66,18 @@
     services/ttyd.nix
   ];
 
+  acme.enable = true;
+
   systemd.services = {
-    dovecot.serviceConfig = lib.mkNamespace {};
-    matrix-synapse.serviceConfig = lib.mkNamespace {};
-    minecraft-server-prod = lib.mkIf config.minecraft.prod {
-      serviceConfig = lib.mkNamespace {};
-    };
-    nginx.serviceConfig = lib.mkNamespace {};
-    oauth2-proxy.serviceConfig = lib.mkNamespace {};
-    postfix.serviceConfig = lib.mkNamespace {};
-    postfix-setup.serviceConfig = lib.mkNamespace {};
-    rspamd.serviceConfig = lib.mkNamespace {};
-    rtorrent.serviceConfig = lib.mkNamespace {};
+    dovecot = lib.mkNamespace {};
+    matrix-synapse = lib.mkNamespace {};
+    minecraft-server-prod = lib.mkIf config.minecraft.prod (lib.mkNamespace {});
+    nginx = lib.mkNamespace {};
+    oauth2-proxy = lib.mkNamespace {};
+    postfix = lib.mkNamespace {};
+    postfix-setup = lib.mkNamespace {};
+    rspamd = lib.mkNamespace {};
+    rtorrent = lib.mkNamespace {};
   };
 
   environment.systemPackages = with pkgs; [
@@ -176,7 +176,8 @@
 
   nix.settings.keep-derivations = true;
 
-  acme.enable = true;
+  services.kresd.enable = lib.mkForce false;
+  services.kresd.instances = 0;
 
   swapDevices = [{
     device = "/var/lib/swap";

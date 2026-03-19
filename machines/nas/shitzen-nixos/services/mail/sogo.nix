@@ -37,16 +37,16 @@ in {
       SOGoMailCustomFromEnabled = YES;
       SOGoMailingMechanism = "smtp";
 
-      SOGoIMAPServer = "imaps://mail.kursu.dev/?tls=YES&tlsVerifyMode=default";
+      SOGoIMAPServer = "imaps://mail.lab004.dev/?tls=YES&tlsVerifyMode=default";
       // When logging in to the SMTP server, the primary email address of the user will be used instead of the username.
       SOGoForceExternalLoginWithEmail = YES;
       NGImap4DisableIMAP4Pooling = YES;
       NGImap4AuthMechanism = "plain";
 
-      SOGoSMTPServer = "smtp://mail.kursu.dev:587/?tls=YES&tlsVerifyMode=default";
+      SOGoSMTPServer = "smtp://mail.lab004.dev:587/?tls=YES&tlsVerifyMode=default";
       SOGoSMTPAuthenticationType = "PLAIN";
       SOGoSMTPMasterUserEnabled = YES;
-      SOGoSMTPMasterUserUsername = "do-not-reply@kursu.dev";
+      SOGoSMTPMasterUserUsername = "do-not-reply@lab004.dev";
       SOGoSMTPMasterUserPassword = DO_NOT_REPLY_FUCKK_LOL;
 
       SOGoMailKeepDraftsAfterSend = YES;
@@ -66,12 +66,12 @@ in {
       NGImap4DebugEnabled = YES;
     '';
     timezone = "America/Detroit";
-    vhostName = "mail.kursu.dev";
+    vhostName = "mail.lab004.dev";
   };
 
   systemd.services = {
-    sogo.serviceConfig = lib.mkNamespace {};
-    sogo-tmpwatch.serviceConfig = lib.mkNamespace {};
-    sogo-ealarms.serviceConfig = lib.mkNamespace {};
+    sogo = lib.mkNamespace {};
+    sogo-tmpwatch = lib.mkNamespace {};
+    sogo-ealarms = lib.mkNamespace {};
   };
 }

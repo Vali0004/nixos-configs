@@ -23,7 +23,7 @@ in {
     };
   };
 
-  services.nginx.virtualHosts."dockge.kursu.dev" = {
+  services.nginx.virtualHosts."dockge.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

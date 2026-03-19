@@ -45,7 +45,7 @@
     "d /var/lib/flood-private 0755 ${config.services.rtorrent.user} ${config.services.rtorrent.group} - -"
   ];
 
-  services.nginx.virtualHosts."flood.kursu.dev" = {
+  services.nginx.virtualHosts."flood.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {
@@ -54,7 +54,7 @@
     };
   };
 
-  services.nginx.virtualHosts."flood-private.kursu.dev" = {
+  services.nginx.virtualHosts."flood-private.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {
@@ -73,6 +73,9 @@
     ];
     SupplementaryGroups = [
       config.services.rtorrent.group
+    ];
+    RestrictAddressFamilies = [
+      "AF_NETLINK"
     ];
     User = config.services.rtorrent.user;
   };

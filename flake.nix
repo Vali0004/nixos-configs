@@ -2,8 +2,6 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     agenix.url = "github:ryantm/agenix";
-    ajax-xdp.url = "github:AjaxVPN/ajax-xdp";
-    ajax-deploy.url = "github:AjaxVPN/ajax-deploy";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,15 +18,13 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, agenix, ajax-xdp, ajax-deploy, home-manager, hytale-launcher, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, zfs-utils }:
+  outputs = inputs@{ self, nixpkgs, agenix, home-manager, hytale-launcher, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, zfs-utils }:
   let
     system = "x86_64-linux";
 
     flakeOverlays = [
       (self: super: {
         agenix = agenix.outputs.packages.${system}.agenix;
-        ajax-xdp = ajax-xdp.packages.${system}.default;
-        ajax-deploy = ajax-deploy.packages.${system}.default;
         hytale-launcher = hytale-launcher.outputs.packages.${system}.default;
         mailserver = nixos-mailserver.${system}.default;
         nixGaming = nix-gaming.outputs.packages.${system};

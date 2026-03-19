@@ -12,8 +12,7 @@
       ];
       substituters = [
         "https://nix-community.cachix.org"
-        "https://hydra.kursu.dev"
-        "https://cache.nixos.org"
+        #"https://hydra.lab004.dev"
       ];
       trusted-users = [
         "vali"
@@ -21,8 +20,7 @@
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        "hydra.kursu.dev:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+        #"hydra.lab004.dev:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
       ];
     };
   };

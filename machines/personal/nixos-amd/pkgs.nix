@@ -7,8 +7,6 @@
     alacritty-graphics
     # Key system (remote deploy)
     agenix
-    # Deploy system
-    ajax-deploy
     # Android tools (ADB)
     android-tools
     # Arduino IDE

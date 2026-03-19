@@ -28,7 +28,7 @@
     };
     extraAppsEnable = true;
     home = "/data/services/nextcloud";
-    hostName = "cloud.kursu.dev";
+    hostName = "cloud.lab004.dev";
     https = true;
     maxUploadSize = "16G";
     package = pkgs.nextcloud32;
@@ -40,7 +40,7 @@
       default_phone_region = "US";
       log_type = "systemd";
       mail_smtpmode = "smtp";
-      mail_smtphost = "mail.kursu.dev";
+      mail_smtphost = "mail.lab004.dev";
       mail_smtpauth = true;
     };
   };

@@ -10,6 +10,5 @@
     10.0.0.166 chromeshit
     142.167.45.55 cleverca22
     74.208.44.130 router-vps
-    45.139.50.22 ajaxnetworks.us
   '';
 }

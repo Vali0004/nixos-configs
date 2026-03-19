@@ -164,13 +164,13 @@ in {
     LimitNOFILE = 524288;
   };
 
-  systemd.services.rtorrent-private = {
+  systemd.services.rtorrent-private = lib.mkNamespace {} // {
     description = "rTorrent (private trackers)";
     after = [ "network-online.target" ];
     wants = [ "network-online.target" ];
     wantedBy = [ "multi-user.target" ];
 
-    serviceConfig = lib.mkNamespace {} // {
+    serviceConfig = {
       Type = "simple";
       User = rtUser;
       Group = rtGroup;

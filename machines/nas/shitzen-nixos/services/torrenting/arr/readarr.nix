@@ -19,7 +19,7 @@
 
   systemd.services.readarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
-  services.nginx.virtualHosts."readarr.kursu.dev" = {
+  services.nginx.virtualHosts."readarr.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

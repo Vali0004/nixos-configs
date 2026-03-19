@@ -9,7 +9,7 @@
     appendConfig = ''
       stream {
         map $ssl_preread_server_name $backend {
-          status.kursu.dev 127.0.0.1:443; # handled by HTTP block
+          status.lab004.dev 127.0.0.1:443; # handled by HTTP block
           default          10.127.0.3:443; # catch-all
         }
 
@@ -22,7 +22,7 @@
     '';
   };
 
-  services.nginx.virtualHosts."cache.kursu.dev" = {
+  services.nginx.virtualHosts."cache.lab004.dev" = {
     enableACME = false;
     forceSSL = false;
     listen = [

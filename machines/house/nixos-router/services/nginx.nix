@@ -31,7 +31,7 @@
         port = 8123;
       };
     };
-    "internal.kursu.dev" = {
+    "internal.lab004.dev" = {
       enableACME = true;
       forceSSL = true;
       locations = {
@@ -92,7 +92,7 @@
         };
       };
     };
-    "hass.kursu.dev" = {
+    "hass.lab004.dev" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = lib.mkProxy {

@@ -7,7 +7,7 @@
     openssl
   ];
 
-  services.nginx.virtualHosts."mail.kursu.dev" = {
+  services.nginx.virtualHosts."mail.lab004.dev" = {
     forceSSL = true;
     enableACME = true;
   };
@@ -15,7 +15,7 @@
   mailserver = {
     domains = [
       "fuckk.lol"
-      "kursu.dev"
+      "lab004.dev"
       "nanitehosting.com"
     ];
     enable = true;
@@ -27,22 +27,22 @@
     fqdn = "mail.${config.mailserver.systemDomain}";
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
     loginAccounts = {
-      "vali@kursu.dev" = {
+      "vali@lab004.dev" = {
         hashedPasswordFile = config.age.secrets.vali-kursu-dev.path;
         aliases = [
-          "abuse@kursu.dev"
-          "admin@kursu.dev"
-          "postmaster@kursu.dev"
+          "abuse@lab004.dev"
+          "admin@lab004.dev"
+          "postmaster@lab004.dev"
           "vali@fuckk.lol"
           "abuse@fuckk.lol"
           "admin@fuckk.lol"
           "postmaster@fuckk.lol"
         ];
       };
-      "do-not-reply@kursu.dev" = {
+      "do-not-reply@lab004.dev" = {
         hashedPasswordFile = config.age.secrets.do-not-reply-kursu-dev.path;
         aliases = [
-          "no-reply@kursu.dev"
+          "no-reply@lab004.dev"
           "do-not-reply@fuckk.lol"
           "no-reply@fuckk.lol"
         ];
@@ -59,7 +59,7 @@
     mailDirectory = "/var/vmail";
     openFirewall = true;
     stateVersion = 3;
-    systemDomain = "kursu.dev";
+    systemDomain = "lab004.dev";
     systemName = config.networking.hostName;
     x509.useACMEHost = config.mailserver.fqdn;
   };

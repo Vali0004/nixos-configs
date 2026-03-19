@@ -7,7 +7,7 @@
     "kursu" = {
       enable = false;
       name = "kursu";
-      url = "https://git.kursu.dev";
+      url = "https://git.lab004.dev";
       tokenFile = config.age.secrets.gitea-runner-token.path;
       labels = [
         "ubuntu-latest:docker://gitea/runner-images:ubuntu-24.04"

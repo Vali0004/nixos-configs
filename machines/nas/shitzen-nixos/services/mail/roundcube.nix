@@ -3,7 +3,7 @@
 , ... }:
 
 {
-  services.nginx.virtualHosts."mail.kursu.dev" = {
+  services.nginx.virtualHosts."mail.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     root = pkgs.roundcube;
@@ -68,11 +68,11 @@
   services.roundcube = {
     enable = true;
     configureNginx = false;
-    hostName = "mail.kursu.dev";
+    hostName = "mail.lab004.dev";
     extraConfig = ''
-      $config['default_host'] = 'ssl://mail.kursu.dev';
+      $config['default_host'] = 'ssl://mail.lab004.dev';
       $config['default_port'] = 993;
-      $config['smtp_host'] = 'tls://mail.kursu.dev';
+      $config['smtp_host'] = 'tls://mail.lab004.dev';
       $config['smtp_port'] = 587;
       $config['smtp_secure'] = 'tls';
       $config['smtp_user'] = "%u";

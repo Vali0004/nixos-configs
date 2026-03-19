@@ -51,13 +51,13 @@ in {
       };
       smtp = {
         enabled = true;
-        from_address = "do-not-reply@kursu.dev";
+        from_address = "do-not-reply@lab004.dev";
       };
       server = {
         http_addr = "0.0.0.0";
         http_port = 3003;
-        domain = "monitoring.kursu.dev";
-        root_url = "https://monitoring.kursu.dev/grafana/";
+        domain = "monitoring.lab004.dev";
+        root_url = "https://monitoring.lab004.dev/grafana/";
         serve_from_sub_path = true;
       };
       security = {
@@ -69,7 +69,7 @@ in {
   };
 
   services.nginx = {
-    virtualHosts."monitoring.kursu.dev" = {
+    virtualHosts."monitoring.lab004.dev" = {
       enableACME = true;
       forceSSL = true;
       locations = {

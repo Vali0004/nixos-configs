@@ -21,44 +21,6 @@
         "type": "github"
       }
     },
-    "ajax-deploy": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2",
-        "utils": "utils"
-      },
-      "locked": {
-        "lastModified": 1769696874,
-        "narHash": "sha256-vwwCLSV+oRxrlNvb9kHlu0Mm79RgEKMKfBsRW+InjRw=",
-        "owner": "AjaxVPN",
-        "repo": "ajax-deploy",
-        "rev": "b7292726d2eaa1c54492f51e94bc75271121cd54",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AjaxVPN",
-        "repo": "ajax-deploy",
-        "type": "github"
-      }
-    },
-    "ajax-xdp": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3",
-        "utils": "utils_2"
-      },
-      "locked": {
-        "lastModified": 1771010913,
-        "narHash": "sha256-+hSXdJo1T10OoTjwdZmOI5H8s4cqJY0hFidBk/tOvh8=",
-        "owner": "AjaxVPN",
-        "repo": "ajax-xdp",
-        "rev": "f8b60821f2f09b88b378fc21f519f51dd42cd727",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AjaxVPN",
-        "repo": "ajax-xdp",
-        "type": "github"
-      }
-    },
     "blobs": {
       "flake": false,
       "locked": {
@@ -507,8 +469,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "ajax-deploy": "ajax-deploy",
-        "ajax-xdp": "ajax-xdp",
         "home-manager": "home-manager_2",
         "hytale-launcher": "hytale-launcher",
         "nix-gaming": "nix-gaming",

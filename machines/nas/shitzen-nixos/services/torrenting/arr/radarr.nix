@@ -19,7 +19,7 @@
 
   systemd.services.radarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
-  services.nginx.virtualHosts."radarr.kursu.dev" = {
+  services.nginx.virtualHosts."radarr.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

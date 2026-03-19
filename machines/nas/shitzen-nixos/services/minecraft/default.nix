@@ -83,7 +83,7 @@ in {
         })
       ];
 
-      services.nginx.virtualHosts."mc.kursu.dev" = {
+      services.nginx.virtualHosts."mc.lab004.dev" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {

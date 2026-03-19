@@ -1,7 +1,7 @@
 # NixOS Configs
 * This is my personal NixOS configs for multiple machines
 ## Machines
-* shitzen-nixos - My server, kursu.dev
+* shitzen-nixos - My server, lab004.dev
 * router-vps - Rented VPS, public-facing side of shitzen
 * nixos-amd - My desktop
 ## Deploying
