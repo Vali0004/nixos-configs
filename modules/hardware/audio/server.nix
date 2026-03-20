@@ -55,7 +55,7 @@
       # PulseAudio Volume Control
       pavucontrol
       # PipeWire/ALSA patchbay
-      helvum
+      crosspipe
       # ALSA Utilities
       alsa-utils
       # PulseAudio Mixer - Used in several scripts for audio control

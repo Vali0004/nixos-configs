@@ -87,7 +87,7 @@
     };
     openrazer.enable = true;
     wifi.enable = true;
-    virtualisation.enable = true;
+    virtualisation.enable = false;
   };
 
   networking = {

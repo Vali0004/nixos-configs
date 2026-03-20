@@ -3,18 +3,6 @@
 , ... }:
 
 {
-  boot.kernelPackages = let
-    version = "6.18.5";
-    suffix = "zen1";
-  in pkgs.linuxPackagesFor (pkgs.linux_zen.override {
-    inherit version suffix;
-    modDirVersion = lib.versions.pad 3 "${version}-${suffix}";
-    src = pkgs.fetchFromGitHub {
-      owner = "zen-kernel";
-      repo = "zen-kernel";
-      rev = "v${version}-${suffix}";
-    };
-  });
   boot.kernelPatches = [{
     # VR has a stroke, as it needs this for asynchronous reprojection
     # However, NixOS runs steam in a bubble-wrapped env simply due to how NixOS works. It emulates a Debian install to make Steam happy
