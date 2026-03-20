@@ -24,6 +24,8 @@
   ];
 
   router = {
+    enable = true;
+    bridgeInterface = "br0";
     wanInterface = "enp1s0f0";
     lanInterfaces = [
       "enp2s0"

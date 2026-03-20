@@ -8,7 +8,7 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
-    services/pihole.nix
+    services/bind-localnet.nix
     services/prometheus.nix
   ];
 
@@ -105,17 +105,8 @@
   };
 
   networking = {
-    firewall = {
-      # SSH is open
-      allowedTCPPorts = [
-        5201 # iperf
-      ];
-      allowedUDPPorts = [
-        5201 # iperf
-      ];
-    };
     hostId = "bade5fb2";
-    hostName = "nixos-shitclient";
+    hostName = "dns-fallback-home-localnet";
     interfaces = {
       eth0.useDHCP = true;
     };

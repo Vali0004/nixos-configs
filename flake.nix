@@ -73,10 +73,10 @@
           machines/house/nixos-router/configuration.nix
         ];
       };
-      nixos-shitclient = {
+      dns-fallback-home-localnet = {
         deployment.targetHost = "10.0.0.2";
         imports = [
-          machines/house/nixos-shitclient/configuration.nix
+          machines/house/02-dns-fallback-home-localnet/configuration.nix
         ];
       };
       home-assistant-localnet = {

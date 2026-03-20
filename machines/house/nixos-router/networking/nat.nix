@@ -44,24 +44,14 @@ in {
     ];
   };
 
+  networking.nftables.enable = true;
+
   networking.firewall = {
-    extraCommands = ''
-      # Allow LAN -> WAN
-      ${iptables}/bin/iptables -C FORWARD -i ${cfg.bridgeInterface} -o ${cfg.wanInterface} -j ACCEPT 2>/dev/null || \
-      ${iptables}/bin/iptables -A FORWARD -i ${cfg.bridgeInterface} -o ${cfg.wanInterface} -j ACCEPT
-
-      # Allow established/related back WAN -> LAN
-      ${iptables}/bin/iptables -C FORWARD -i ${cfg.wanInterface} -o ${cfg.bridgeInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || \
-      ${iptables}/bin/iptables -A FORWARD -i ${cfg.wanInterface} -o ${cfg.bridgeInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
-
-      # If for some reason networking.nat doesn't add masquerade, force it:
-      ${iptables}/bin/iptables -t nat -C POSTROUTING -s ${cfg.lanSubnet}.0/24 -o ${cfg.wanInterface} -j MASQUERADE 2>/dev/null || \
-      ${iptables}/bin/iptables -t nat -A POSTROUTING -s ${cfg.lanSubnet}.0/24 -o ${cfg.wanInterface} -j MASQUERADE
-    '';
-    extraStopCommands = ''
-      ${iptables}/bin/iptables -t nat -D POSTROUTING -s ${cfg.lanSubnet}.0/24 -o ${cfg.wanInterface} -j MASQUERADE 2>/dev/null || true
-      ${iptables}/bin/iptables -D FORWARD -i ${cfg.bridgeInterface} -o ${cfg.wanInterface} -j ACCEPT 2>/dev/null || true
-      ${iptables}/bin/iptables -D FORWARD -i ${cfg.wanInterface} -o ${cfg.bridgeInterface} -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 2>/dev/null || true
+    enable = true;
+    trustedInterfaces = [ cfg.bridgeInterface ];
+    extraForwardRules = ''
+      iifname "${cfg.bridgeInterface}" oifname "${cfg.wanInterface}" accept
+      iifname "${cfg.wanInterface}" oifname "${cfg.bridgeInterface}" ct state established,related accept
     '';
   };
 }

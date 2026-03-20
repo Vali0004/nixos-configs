@@ -18,6 +18,8 @@
 
     nix/settings.nix
 
+    networking/router/bind.nix
+    networking/router/module.nix
     networking/acme.nix
     #networking/hosts.nix
     networking/localnet-ssl.nix
