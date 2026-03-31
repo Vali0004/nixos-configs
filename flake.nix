@@ -73,16 +73,16 @@
           machines/house/nixos-router/configuration.nix
         ];
       };
-      dns-fallback-home-localnet = {
+      home-assistant-localnet = {
         deployment.targetHost = "10.0.0.2";
         imports = [
-          machines/house/02-dns-fallback-home-localnet/configuration.nix
+          machines/house/02-home-assistant-localnet/configuration.nix
         ];
       };
-      home-assistant-localnet = {
+      unused-now = {
         deployment.targetHost = "10.0.0.3";
         imports = [
-          machines/house/03-home-assistant-localnet/configuration.nix
+          machines/house/03-unused-now/configuration.nix
         ];
       };
       shitzen-nixos = {

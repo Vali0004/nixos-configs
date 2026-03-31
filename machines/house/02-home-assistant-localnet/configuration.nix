@@ -8,63 +8,32 @@
     "${modulesPath}/installer/scan/not-detected.nix"
     modules/boot.nix
 
-    services/bind-localnet.nix
+    services/mqtt/mosquitto.nix
+    services/mqtt/zigbee2mqtt.nix
+
+    services/home-assistant.nix
+    services/postgresql.nix
     services/prometheus.nix
+    services/udev.nix
   ];
 
-  acme.enable = true;
-
   environment.systemPackages = with pkgs; [
-    # Binary Tools
-    bintools
     # Better TOP
     btop
-    # Connection tracking tools
-    conntrack-tools
     # cURL
     curl
-    # Useful for DNS debugging
-    dig
-    # Display Mode Info Decode
-    dmidecode
     # Ethernet tool
     ethtool
     # Version Tracking
     git
     # Modern neofetch
     fastfetch
-    # Internet Utilities
-    inetutils
-    # Internet performance monitoring
-    iperf
-    # Mini Certificate Authority
-    minica
-    # Mini COM
-    minicom
-    # Make Certificate
-    mkcert
     # NCurses Disk usage
     ncdu
     # IPv6 Neighbor Discovery
     ndisc6
-    # Network Tools
-    net-tools
-    # MBIM Tools
-    libmbim
-    # Open SSL
-    openssl
     # PCI Utilies
     pciutils
-    # Pico COM (sometimes easier than minicom)
-    picocom
-    # Power Joular - Monitor power usage
-    powerjoular
-    # Power Top - Tuning power usage
-    powertop
-    # Python - useful for some scripts
-    python3
-    # Screen
-    screen
     # TCP Dump
     tcpdump
     # USB Utilies
@@ -106,7 +75,7 @@
 
   networking = {
     hostId = "bade5fb2";
-    hostName = "dns-fallback-home-localnet";
+    hostName = "home-assistant-localnet";
     interfaces = {
       eth0.useDHCP = true;
     };
