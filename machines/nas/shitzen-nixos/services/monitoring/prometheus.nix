@@ -26,7 +26,6 @@
           "lenovo"
           "home-assistant"
           "nixos-router"
-          "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
         ];
@@ -58,7 +57,6 @@
         targets = [
           "nixos-router"
           "home-assistant"
-          "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
           "lenovo"
@@ -83,7 +81,6 @@
         targets = [
           "nixos-router"
           "home-assistant"
-          "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
           "lenovo"
@@ -104,7 +101,6 @@
         targets = [
           "nixos-router"
           "home-assistant"
-          "nixos-shitclient"
           "shitzen-nixos"
           "lenovo"
           "router-vps"

@@ -42,16 +42,6 @@
       ControlPath ~/.ssh/control-%r@%h:%p
       ControlPersist 10m
 
-    Host nixos-shitclient
-      Hostname nixos-shitclient
-      User root
-      IPQoS none
-      Compression no
-      TCPKeepAlive yes
-      ControlMaster auto
-      ControlPath ~/.ssh/control-%r@%h:%p
-      ControlPersist 10m
-
     Host shitzen-nixos
       Hostname shitzen-nixos
       User root
