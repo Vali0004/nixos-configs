@@ -81,33 +81,55 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Better TOP
     btop
     dig
+    # EFI Boot Manager
     efibootmgr
+    # Ethernet Tool
     ethtool
+    # Quick fetch hardware - Modern Neofetch
     fastfetch
+    # GNU Debugger
     gdb
+    # Go (back) In Time - Version tracking
     git
+    # Hardrive Paramaters
     hdparm
+    # Internet Utilites
     inetutils
+    # Internet Performance Test
     iperf
+    # Java Development Kit
     jdk
+    # Powershell - Kill all processes
     killall
+    # List Hardware
     lshw
+    # List Processes Of
     lsof
+    # List SCSI
     lsscsi
+    # Universal Serial Bus Utilites
     usbutils
     magic-wormhole
+    # Media Information
     mediainfo
+    # Memory Tester
     memtester
+    # Mini Certificate Authority
     minica
     mkp224o
+    # NCurses Disk Utility
     ncdu
+    # Network Tools
     net-tools
-    # ndisc - used for RAs
+    # Network Discovery IPv6
     ndisc6
+    # Network MAP
     nmap
     openssl
+    # PCI Utilities
     pciutils
     powerjoular
     powertop
@@ -117,12 +139,19 @@
     screen
     sg3_utils
     sqlite-interactive
+    # S.M.A.R.T monitor tools
     smartmontools
+    # Terminal mux
     tmux
+    # Internet Route Tracer
     traceroute
+    # Terminal Wireshark
     tshark
+    # Unarchive ZIP files
     unzip
+    # Web Get
     wget
+    # ZIP Archive Tool
     zip
     mesa
   ];

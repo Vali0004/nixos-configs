@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+{ pkgs
+, ... }:
 
 let
   sddm-theme = pkgs.sddm-astronaut.override {

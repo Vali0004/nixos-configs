@@ -47,7 +47,10 @@
 
   boot.grub = {
     copyKernels = true;
-    efi.enable = true;
+    efi = {
+      enable = true;
+      enableSecureBoot = true;
+    };
     enable = true;
     enableMemtest = true;
     enableRescue = true;

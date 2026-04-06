@@ -24,7 +24,7 @@
         name = "fragmentation";
         targets = [
           "lenovo"
-          "nixos-hass"
+          "home-assistant"
           "nixos-router"
           "nixos-shitclient"
           "shitzen-nixos"
@@ -57,7 +57,7 @@
       (lib.mkPrometheusJob {
         targets = [
           "nixos-router"
-          "nixos-hass"
+          "home-assistant"
           "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
@@ -82,7 +82,7 @@
       (lib.mkPrometheusJob {
         targets = [
           "nixos-router"
-          "nixos-hass"
+          "home-assistant"
           "nixos-shitclient"
           "shitzen-nixos"
           "router-vps"
@@ -103,7 +103,7 @@
       (lib.mkPrometheusJob {
         targets = [
           "nixos-router"
-          "nixos-hass"
+          "home-assistant"
           "nixos-shitclient"
           "shitzen-nixos"
           "lenovo"

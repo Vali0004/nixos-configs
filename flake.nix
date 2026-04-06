@@ -18,8 +18,18 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, agenix, home-manager, hytale-launcher, nix-gaming, nix-minecraft, nixos-mailserver, skylanders-nfc-reader, spicetify, zfs-utils }:
-  let
+  outputs = inputs@{ self
+    , nixpkgs
+    , agenix
+    , home-manager
+    , hytale-launcher
+    , nix-gaming
+    , nix-minecraft
+    , nixos-mailserver
+    , skylanders-nfc-reader
+    , spicetify
+    , zfs-utils
+  }: let
     system = "x86_64-linux";
 
     flakeOverlays = [
@@ -73,7 +83,7 @@
           machines/house/nixos-router/configuration.nix
         ];
       };
-      home-assistant-localnet = {
+      home-assistant = {
         deployment.targetHost = "10.0.0.2";
         imports = [
           machines/house/02-home-assistant-localnet/configuration.nix
@@ -139,17 +149,6 @@
           modules/services/openssh.nix
           modules/imports.nix
           machines/personal/lenovo/configuration.nix
-        ];
-      };
-      home-assistant-localnet = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
-        modules = [
-          ({ nixpkgs.overlays = overlays; })
-          agenix.nixosModules.age
-          modules/nix/remote-deploy.nix
-          modules/zfs/zfs-patch.nix
-          ./core.nix
-          machines/house/03-home-assistant-localnet/configuration.nix
         ];
       };
       shitzen-nixos = nixpkgs.lib.nixosSystem {

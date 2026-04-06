@@ -90,6 +90,8 @@ in {
     "3.pool.ntp.org"
   ];
 
+  nixops-deploy.enable = true;
+
   services = {
     chrony = {
       enable = true;

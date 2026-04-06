@@ -1,4 +1,5 @@
-{ pkgs, ... }:
+{ pkgs
+, ... }:
 
 let
   dmenu_wrapper = pkgs.writeScriptBin "dmenu" ''

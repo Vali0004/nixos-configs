@@ -106,9 +106,7 @@ let
       fi
     fi
   '';
-
-in
-{
+in {
   options.services.localnetSSL = {
     enable = lib.mkEnableOption "local CA + minica certificates for nginx vhosts (localnetSSL)";
 

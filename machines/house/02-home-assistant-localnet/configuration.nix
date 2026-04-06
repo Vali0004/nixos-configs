@@ -18,28 +18,18 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    # Better TOP
-    btop
-    # cURL
+    # Interactive process viewer
+    htop
+    # Client URL
     curl
     # Ethernet tool
     ethtool
-    # Version Tracking
-    git
     # Modern neofetch
     fastfetch
     # NCurses Disk usage
     ncdu
-    # IPv6 Neighbor Discovery
-    ndisc6
-    # PCI Utilies
-    pciutils
-    # TCP Dump
-    tcpdump
     # USB Utilies
     usbutils
-    # Web Get
-    wget
   ];
 
   fileSystems = {
@@ -75,7 +65,7 @@
 
   networking = {
     hostId = "bade5fb2";
-    hostName = "home-assistant-localnet";
+    hostName = "home-assistant";
     interfaces = {
       eth0.useDHCP = true;
     };

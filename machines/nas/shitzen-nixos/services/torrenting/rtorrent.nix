@@ -158,16 +158,20 @@ in {
     "d /var/lib/rtorrent-private/watch 0775 ${config.services.rtorrent.user} ${config.services.rtorrent.group} - -"
   ];
 
-  systemd.services.rtorrent.serviceConfig = {
-    SystemCallFilter = "@system-service fchownat";
-    RuntimeDirectoryMode = lib.mkForce 0775;
-    LimitNOFILE = 524288;
+  systemd.services.rtorrent = {
+    after = [ "wireguard-wg0.service" ];
+    wants = [ "wireguard-wg0.service" ];
+    serviceConfig = {
+      SystemCallFilter = "@system-service fchownat";
+      RuntimeDirectoryMode = lib.mkForce 0775;
+      LimitNOFILE = 524288;
+    };
   };
 
   systemd.services.rtorrent-private = lib.mkNamespace {} // {
     description = "rTorrent (private trackers)";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    after = [ "wireguard-wg0.service" ];
+    wants = [ "wireguard-wg0.service" ];
     wantedBy = [ "multi-user.target" ];
 
     serviceConfig = {

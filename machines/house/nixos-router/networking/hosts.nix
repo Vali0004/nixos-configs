@@ -3,10 +3,9 @@
 
 {
   networking.extraHosts = ''
+    10.0.0.2 home-assistant.localnet home-assistant
     10.0.0.4 shitzen.localnet shitzen-nixos
     10.0.0.5 shitzen-kvm.localnet shitzen-nixos-kvm
-    10.0.0.2 shitclient.localnet nixos-shitclient
-    10.0.0.3 nixos-hass.localnet nixos-hass
     10.0.0.1 router.localnet ${config.networking.hostName}
     10.0.0.1 hass.localnet ${config.networking.hostName}
     10.0.0.1 jellyfin.localnet ${config.networking.hostName}

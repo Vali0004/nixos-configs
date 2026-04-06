@@ -52,7 +52,7 @@
     dmidecode
     # Ethernet Tool
     ethtool
-    # Modern Neofetch
+    # Quick fetch hardware - Modern Neofetch
     fastfetch
     # Version Tracking
     git
@@ -131,7 +131,7 @@
       ];
     };
     hostId = "bade5fb2";
-    hostName = "router-home-localnet";
+    hostName = "router-home";
     # We actually have multiple PHYs, so this is needed.
     usePredictableInterfaceNames = true;
   };

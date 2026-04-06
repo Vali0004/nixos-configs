@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 let
   cfg = pkgs.writeText "configuration.nix" ''
@@ -7,11 +10,7 @@ let
   '';
 in {
   options.nixops-deploy = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Whether to enable NixOps deplpoy-based warnings.";
-    };
+    enable = lib.mkEnableOption "Whether to enable NixOps deploy-based warnings.";
   };
 
   config = lib.mkIf config.nixops-deploy.enable {
@@ -20,7 +19,7 @@ in {
       "nixpkgs=/run/current-system/nixpkgs"
     ];
 
-    system.extraSystemBuilderCmds = ''
+    system.systemBuilderCommands = ''
       ln -sv ${pkgs.path} $out/nixpkgs
     '';
   };

@@ -2,7 +2,10 @@
 # a LiveCD stored in a initramfs used to rescue a NixOS install
 # after it is considered "unrescuable" from its graphical interface
 
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   documentation = {

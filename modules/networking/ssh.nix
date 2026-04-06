@@ -1,4 +1,5 @@
-{ config, ... }:
+{ config
+, ... }:
 
 {
   programs.gnupg.agent = {
@@ -21,8 +22,8 @@
       Hostname chromeshit
       User root
 
-    Host nixos-hass
-      Hostname nixos-hass
+    Host home-assistant
+      Hostname home-assistant
       User root
       IPQoS none
       Compression no

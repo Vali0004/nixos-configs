@@ -31,30 +31,6 @@ self: super: {
       hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
     };
   });
-  monado = super.monado.overrideAttrs (old: {
-    version = "unstable";
-    patches = [];
-    src = self.fetchFromGitLab {
-      domain = "gitlab.freedesktop.org";
-      owner = "monado";
-      repo = "monado";
-      rev = "1d8b80b735c5541b171e498784c1231a7768c25f";
-      hash = "sha256-Uuee7iH+ioH0/vlvhjoqMVJyfMSbgIHAz2cdj9iO1+Y=";
-    };
-  });
-  speedtest = self.callPackage pkgs/speedtest {};
-  xwinwrap = super.xwinwrap.overrideDerivation (old: {
-    version = "v0.9";
-    src = super.fetchFromGitHub {
-      owner = "Vali0004";
-      repo = "xwinwrap";
-      rev = "373426eb95ca62dedad3d77833ccf649f98f489b";
-      hash = "sha256-przCOyureolbPLqy80DuyQoGeQ7lbGIXeR1z26DvN/E=";
-    };
-  });
-  #hydra = super.hydra.overrideAttrs (old: {
-  #  doCheck = false;
-  #});
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {
@@ -71,6 +47,16 @@ self: super: {
       repo = "libtorrent";
       rev = "v${finalAttrs.version}";
       hash = "sha256-udEe9VyUzPXuCTrB3U3+XCbVWvfTT7xNvJJkLSQrRt4=";
+    };
+  });
+  speedtest = self.callPackage pkgs/speedtest {};
+  xwinwrap = super.xwinwrap.overrideDerivation (old: {
+    version = "v0.9";
+    src = super.fetchFromGitHub {
+      owner = "Vali0004";
+      repo = "xwinwrap";
+      rev = "373426eb95ca62dedad3d77833ccf649f98f489b";
+      hash = "sha256-przCOyureolbPLqy80DuyQoGeQ7lbGIXeR1z26DvN/E=";
     };
   });
 }

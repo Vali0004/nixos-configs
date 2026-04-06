@@ -27,7 +27,7 @@
     "hass.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {
-        ip = "nixos-hass";
+        ip = "home-assistant";
         port = 8123;
       };
     };
@@ -96,7 +96,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = lib.mkProxy {
-        ip = "nixos-hass";
+        ip = "home-assistant";
         port = 8123;
       };
     };
@@ -148,7 +148,7 @@
     "zigbee2mqtt.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {
-        ip = "nixos-hass";
+        ip = "home-assistant";
         port = 8099;
       };
     };

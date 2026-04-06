@@ -59,4 +59,11 @@
       hole
     ];
   };
+
+  systemd.services.home-assistant = {
+    serviceConfig = {
+      CapabilityBoundingSet = [ "CAP_NET_ADMIN" "CAP_NET_RAW" ];
+      AmbientCapabilities = [ "CAP_NET_ADMIN" "CAP_NET_RAW" ];
+    };
+  };
 }

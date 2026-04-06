@@ -1,5 +1,3 @@
-{ config, ... }:
-
 {
   security.pki.certificates = [
     (builtins.readFile ./cloudflare-ecc.pem)

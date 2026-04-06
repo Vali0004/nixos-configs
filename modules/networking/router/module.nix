@@ -53,7 +53,7 @@ in {
 
     dnsFallbackIP = lib.mkOption {
       type = lib.types.str;
-      default = "${cfg.lanSubnet}.2";
+      default = "1.1.1.1";
       description = "Secondary DNS server IP";
     };
 
@@ -65,7 +65,7 @@ in {
 
     dnsFallbackIPv6 = lib.mkOption {
       type = lib.types.str;
-      default = "${cfg.lanSubnetV6}::146c";
+      default = "2606:4700:4700::1111";
       description = "Secondary DNS server IPv6";
     };
   };

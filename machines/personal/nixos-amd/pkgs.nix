@@ -198,8 +198,6 @@
     xclip
     # WebGet
     wget
-    # Packet sniffer
-    wireshark
     # Wine
     wineWowPackages.stable
     winetricks

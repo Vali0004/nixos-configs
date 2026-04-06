@@ -1,4 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
   options.hardware.audio = {
@@ -8,11 +11,7 @@
       description = "Whether to enable 32-bit support";
     };
     pipewire = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable Audio.";
-      };
+      enable = lib.mkEnableOption "Whether to enable Audio.";
       enablePulse = lib.mkOption {
         type = lib.types.bool;
         default = true;
@@ -20,11 +19,7 @@
       };
     };
     pulseaudio = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "Whether to enable Audio.";
-      };
+      enable = lib.mkEnableOption "Whether to enable Audio.";
     };
   };
 

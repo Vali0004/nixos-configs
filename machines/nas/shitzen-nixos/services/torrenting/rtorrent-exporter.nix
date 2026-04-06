@@ -18,6 +18,8 @@ in {
       rtorrent-exporter = {
         enable = true;
         description = "RuTorrent Prometheus Exporter";
+        after = [ "wireguard-wg0.service" ];
+        wants = [ "wireguard-wg0.service" ];
         serviceConfig = {
           ExecStart = "${pkgs.rtorrent-exporter}/bin/rtorrent-exporter --logtostderr=true --rtorrent.addr http://${listenAddr}:${toString (listenPort)}/RPC2 --telemetry.addr ${addr}:${toString (port)} --telemetry.timeout ${timeout} --config ${dataDir}/.rtorrent-exporter.yaml";
           Restart = "always";
@@ -28,6 +30,8 @@ in {
       rtorrent-private-exporter = {
         enable = true;
         description = "RuTorrent (Private) Prometheus Exporter";
+        after = [ "wireguard-wg0.service" ];
+        wants = [ "wireguard-wg0.service" ];
         serviceConfig = {
           ExecStart = "${pkgs.rtorrent-exporter}/bin/rtorrent-exporter --logtostderr=true --rtorrent.addr http://${listenAddr}:${toString (listenPort + 1)}/RPC2 --telemetry.addr ${addr}:${toString (port + 1)} --telemetry.timeout ${timeout} --config ${dataDir}-private/.rtorrent-private-exporter.yaml";
           Restart = "always";

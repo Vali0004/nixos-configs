@@ -62,7 +62,7 @@ let
           in "${last} IN PTR ${canonical}.${cfg.zoneDomain}.")
         (builtins.filter (e: lib.hasPrefix "${r.lanSubnet}." e.ip) entries)));
 
-  forwardZoneText = ''
+  forwardZone = pkgs.writeText "${cfg.zoneDomain}.zone" ''
     $TTL 1h
     @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
       ${cfg.zoneSerial}  ; serial
@@ -77,7 +77,7 @@ let
     ${aLines}
   '';
 
-  reverseZoneText = ''
+  reverseZone = pkgs.writeText "${cfg.reverseZoneName}.rev" ''
     $TTL 1h
     @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
       ${cfg.zoneSerial} 1h 15m 30d 2h
@@ -89,7 +89,7 @@ let
 
   rpzLines = lib.concatStringsSep "\n" (builtins.map (d: "${d} CNAME .") cfg.rpzCnames);
 
-  rpzZoneText = ''
+  rpzZone = pkgs.writeText "${cfg.rpzZoneName}.zone" ''
     $TTL 60
     @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
       ${cfg.zoneSerial} 1h 15m 30d 2h
@@ -98,10 +98,6 @@ let
 
     ${rpzLines}
   '';
-
-  forwardZoneFile = "/var/lib/named/${cfg.zoneDomain}.zone";
-  reverseZoneFile = "/var/lib/named/${cfg.reverseZoneName}.rev";
-  rpzZoneFile = "/var/lib/named/${cfg.rpzZoneName}.zone";
 
   publicV6 = "2601:406:8180:35a7";
 in {
@@ -230,57 +226,19 @@ in {
       zones = {
         ${cfg.zoneDomain} = {
           master = true;
-          file = forwardZoneFile;
+          file = forwardZone;
         };
 
         ${cfg.reverseZone}  = {
           master = true;
-          file = reverseZoneFile;
+          file = reverseZone;
         };
 
         ${cfg.rpzZoneName} = {
           master = true;
-          file = rpzZoneFile;
+          file = rpzZone;
         };
       };
-    };
-
-    systemd.services.bind = {
-      requires = [ "bind-zones.service" ];
-      after = [ "bind-zones.service" ];
-    };
-
-    systemd.services.bind-zones = {
-      description = "Install BIND zone files";
-      wantedBy = [ "multi-user.target" ];
-      before = [ "bind.service" ];
-      serviceConfig = {
-        Type = "oneshot";
-        User = "root";
-      };
-      script = ''
-        set -euo pipefail
-        install -d -m 0750 -o named -g named /var/lib/named
-
-        cat > ${forwardZoneFile} <<'EOF'
-${forwardZoneText}
-EOF
-
-        cat > ${reverseZoneFile} <<'EOF'
-${reverseZoneText}
-EOF
-
-        cat > ${rpzZoneFile} <<'EOF'
-${rpzZoneText}
-EOF
-
-        chown named:named ${forwardZoneFile} ${reverseZoneFile} ${rpzZoneFile}
-        chmod 0640 ${forwardZoneFile} ${reverseZoneFile} ${rpzZoneFile}
-
-        ${pkgs.bind}/bin/named-checkzone ${cfg.zoneDomain} ${forwardZoneFile}
-        ${pkgs.bind}/bin/named-checkzone ${cfg.reverseZone} ${reverseZoneFile}
-        ${pkgs.bind}/bin/named-checkzone ${cfg.rpzZoneName} ${rpzZoneFile}
-      '';
     };
 
     services.kresd.enable = lib.mkForce false;
