@@ -60,8 +60,8 @@
 
     services/virtualisation/dockge.nix
 
-    #services/cloudpanel.nix
-    #services/proxmox-nixos.nix
+    services/cors-anywhere.nix
+    services/pterodactyl.nix
     services/toxvpn.nix
     services/ttyd.nix
   ];

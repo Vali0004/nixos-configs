@@ -451,6 +451,22 @@
     },
     "nixpkgs_7": {
       "locked": {
+        "lastModified": 1760103332,
+        "narHash": "sha256-BMsGVfKl4Q80Pr9T1AkCRljO1bpwCmY8rTBVj8XGuhA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "870493f9a8cb0b074ae5b411b2f232015db19a65",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_8": {
+      "locked": {
         "lastModified": 1762214813,
         "narHash": "sha256-zwaT/GO6gUC/6i0w+g8zYRO/uXIj9zw5G9Pv4f2vmJI=",
         "owner": "nixos",
@@ -464,7 +480,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_9": {
       "locked": {
         "lastModified": 1774386573,
         "narHash": "sha256-NZE+83qbc/hauTJs/uyv8Sf+1aFLP/LsHdIN6q6GQAc=",
@@ -477,6 +493,24 @@
         "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       }
     },
+    "pterodactyl-wings-nix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1760205000,
+        "narHash": "sha256-558ekIKqQUnFnD8cixOdCyHi/vBGked2Tjk1v3Bo/Ao=",
+        "owner": "BadCoder-Network",
+        "repo": "pterodactyl-wings-nix",
+        "rev": "edb4016372b0eb5db883f261bfe7d64e4310cd33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BadCoder-Network",
+        "repo": "pterodactyl-wings-nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -486,6 +520,7 @@
         "nix-minecraft": "nix-minecraft",
         "nixos-mailserver": "nixos-mailserver",
         "nixpkgs": "nixpkgs_6",
+        "pterodactyl-wings-nix": "pterodactyl-wings-nix",
         "skylanders-nfc-reader": "skylanders-nfc-reader",
         "spicetify": "spicetify",
         "zfs-utils": "zfs-utils"
@@ -493,7 +528,7 @@
     },
     "skylanders-nfc-reader": {
       "inputs": {
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "utils": "utils"
       },
       "locked": {
@@ -512,7 +547,7 @@
     },
     "spicetify": {
       "inputs": {
-        "nixpkgs": "nixpkgs_8",
+        "nixpkgs": "nixpkgs_9",
         "systems": "systems_4"
       },
       "locked": {

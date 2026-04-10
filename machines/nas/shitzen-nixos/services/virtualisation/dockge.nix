@@ -6,7 +6,18 @@ let
   dockgePath = "/data/services/dockge/data";
 in {
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      daemon.settings = {
+        ipv6 = true;
+        "default-address-pools" = [
+          {
+            base = "10.200.0.0/16";
+            size = 24;
+          }
+        ];
+      };
+    };
     podman.enable = true;
     oci-containers.containers = {
       dockge = {

@@ -121,6 +121,7 @@
     wireshark = {
       dumpcap.enable = true;
       enable = true;
+      package = pkgs.wireshark;
       usbmon.enable = true;
     };
     zsh.enable = true;

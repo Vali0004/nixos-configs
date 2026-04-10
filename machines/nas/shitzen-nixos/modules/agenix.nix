@@ -70,6 +70,18 @@
       owner = "root";
       group = "root";
     };
+    pterodactyl = {
+      file = ../../../../secrets/pterodactyl.age;
+      owner = config.services.pterodactyl.user;
+      group = config.services.pterodactyl.group;
+      mode = "0440";
+    };
+    pterodactyl-db = {
+      file = ../../../../secrets/pterodactyl-db.age;
+      owner = "mysql";
+      group = config.services.pterodactyl.group;
+      mode = "0440";
+    };
     radarr-api = {
       file = ../../../../secrets/radarr-api.age;
       owner = "root";

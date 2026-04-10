@@ -10,6 +10,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     skylanders-nfc-reader.url = "github:Vali0004/skylanders-nfc-reader";
     spicetify.url = "github:Gerg-L/spicetify-nix";
     zfs-utils = {
@@ -26,6 +27,7 @@
     , nix-gaming
     , nix-minecraft
     , nixos-mailserver
+    , pterodactyl-wings-nix
     , skylanders-nfc-reader
     , spicetify
     , zfs-utils
@@ -43,6 +45,7 @@
         spicetifyExtensions = spicetify.outputs.legacyPackages.${system}.extensions;
         zfs-fragmentation = zfs-utils.packages.${system}.zfs-fragmentation;
         txg-watcher = zfs-utils.packages.${system}.txg-watcher;
+        wings = pterodactyl-wings-nix.packages.x86_64-linux.pterodactyl-wings;
       })
     ];
 
@@ -100,8 +103,10 @@
         imports = [
           nix-minecraft.nixosModules.minecraft-servers
           nixos-mailserver.nixosModule
+          pterodactyl-wings-nix.nixosModules.pterodactyl-wings
           modules/networking/hosts.nix
           machines/nas/shitzen-nixos/configuration.nix
+          modules/pterodactyl.nix
         ];
       };
       nas-wg-exitnode = {

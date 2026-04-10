@@ -114,7 +114,7 @@ in {
         };
         useOSProber = config.boot.grub.enableProber;
         memtest86.enable = config.boot.grub.enableMemtest;
-        extraGrubInstallArgs = [
+        extraGrubInstallArgs = lib.optionals config.boot.grub.efi.enableSecureBoot [
           "--modules=tpm"
           "--disable-shim-lock"
         ];

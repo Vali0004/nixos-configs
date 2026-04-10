@@ -37,6 +37,8 @@ in {
   ];
   "oauth2.age".publicKeys = keys;
   "oauth2-proxy.age".publicKeys = keys;
+  "pterodactyl.age".publicKeys = keys;
+  "pterodactyl-db.age".publicKeys = keys;
   "prowlarr-api.age".publicKeys = keys;
   "radarr-api.age".publicKeys = keys;
   "sogo-db-password.age".publicKeys = keys;

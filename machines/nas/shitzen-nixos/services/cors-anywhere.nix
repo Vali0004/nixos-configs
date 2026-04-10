@@ -1,9 +1,12 @@
-{ config, pkgs, ... }:
+{ config
+, lib
+, pkgs
+, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.nodejs_20
-    cors_anywhere
+  environment.systemPackages = with pkgs; [
+    nodejs_20
+    cors-anywhere
   ];
 
   systemd.services.cors-anywhere = {
@@ -14,7 +17,7 @@
         "PORT=8099"
         "CORSANYWHERE_WHITELISTED_TARGETS=static1.e621.net,e621.net"
       ];
-      ExecStart = "${pkgs.nodejs_20}/bin/node ${cors_anywhere}/lib/node_modules/cors-anywhere/server.js";
+      ExecStart = "${pkgs.nodejs_20}/bin/node ${pkgs.cors-anywhere}/lib/node_modules/cors-anywhere/server.js";
     };
     wantedBy = [ "multi-user.target" ];
   };
