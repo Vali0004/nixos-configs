@@ -2,6 +2,7 @@ self: super: {
   beammp-launcher = self.callPackage pkgs/beammp-launcher {};
   cors-anywhere = self.callPackage pkgs/cors-anywhere {};
   darling = self.callPackage pkgs/darling {};
+  dmemcg-booster = self.callPackage pkgs/dmemcg-booster {};
   dnspy = self.callPackage pkgs/dnspy {};
   dwmblocks-battery = self.callPackage pkgs/dwmblocks/battery {};
   dwmblocks-cpu = self.callPackage pkgs/dwmblocks/cpu {};

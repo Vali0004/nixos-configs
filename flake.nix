@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/c06b4ae3d6599a672a6210b7021d699c351eebda";
     agenix.url = "github:ryantm/agenix";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -21,6 +22,7 @@
 
   outputs = inputs@{ self
     , nixpkgs
+    , nixpkgs-stable
     , agenix
     , home-manager
     , hytale-launcher
@@ -57,6 +59,8 @@
 
     pkgs = import nixpkgs { inherit system overlays; };
 
+    pkgsStable = import nixpkgs-stable { inherit system overlays; };
+
     specialArgs = {
       # Cursed trick to get a proper lib override,
       # used for mkNamespace, mkPrometheusJob, and mkProxy
@@ -79,6 +83,9 @@
       meta = {
         inherit specialArgs;
         nixpkgs = pkgs;
+        nodeNixpkgs = {
+          nixos-router = pkgsStable;
+        };
       };
       nixos-router = {
         deployment.targetHost = "10.0.0.1";

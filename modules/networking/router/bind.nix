@@ -206,9 +206,6 @@ in {
         statistics-channels {
           inet 127.0.0.1 port 8053 allow { 127.0.0.1; };
         };
-        server 8.8.8.8 {
-          edns no;
-        };
       '';
 
       extraOptions = ''
@@ -226,7 +223,7 @@ in {
         response-policy { zone "${cfg.rpzZoneName}"; };
         max-recursion-queries 1000;
         recursive-clients 1000;
-        resolver-query-timeout 5;
+        resolver-query-timeout 10;
       '';
 
       zones = {

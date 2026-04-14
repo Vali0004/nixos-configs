@@ -29,6 +29,11 @@ let
     chmod 600 $out/MOK.key
     chmod 644 $out/MOK.crt
   '';
+
+  sbatMetadata = pkgs.writeText "sbat.csv" ''
+    sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+    grub,1,GRUB,2.12,https://www.gnu.org/software/grub/
+  '';
 in {
   options.boot.grub = {
     device = lib.mkOption {
@@ -114,9 +119,10 @@ in {
         };
         useOSProber = config.boot.grub.enableProber;
         memtest86.enable = config.boot.grub.enableMemtest;
-        extraGrubInstallArgs = lib.optionals config.boot.grub.efi.enableSecureBoot [
-          "--modules=tpm"
-          "--disable-shim-lock"
+        extraGrubInstallArgs = [
+          "--sbat=${./sbat.csv}"
+        ] ++ lib.optionals config.boot.grub.efi.enableSecureBoot  [
+          "--modules=boot cat help chain configfile echo ls linux normal test true part_msdos part_gpt fat ext2 ntfs search search_fs_file search_label elf gzio font terminal gfxterm gfxterm_menu gfxterm_background gfxmenu png video videotest video_fb video_bochs video_cirrus video_colors efi_gop efi_uga tpm"
         ];
         extraInstallCommands = lib.strings.optionalString config.boot.grub.efi.enableSecureBoot ''
           export PATH=${lib.makeBinPath (with pkgs; [
@@ -135,6 +141,9 @@ in {
           ln -sf ${mokKey}/MOK.key /etc/secureboot/MOK.key
           ln -sf ${mokKey}/MOK.crt /etc/secureboot/MOK.crt
           ln -sf ${mokKey}/MOK.pem /etc/secureboot/MOK.pem
+
+          mkdir -p /boot/SecureBoot
+          cp ${mokKey}/* /boot/SecureBoot
 
           echo "[SecureBoot] Signing GRUB EFI with MOK key..."
 
@@ -159,12 +168,6 @@ in {
             sign_file "$GRUB_EFI"
           fi
 
-          GRUB_DIR="/boot/grub/x86_64"
-          if [ -d "$GRUB_DIR" ]; then
-            sign_file "$GRUB_DIR/core.efi"
-            sign_file "$GRUB_DIR/grub.efi"
-          fi
-
           echo "[SecureBoot] Signing Linux kernels..."
           for f in /boot/kernels/*-bzImage; do
             sign_file $f
@@ -174,6 +177,9 @@ in {
           mkdir -p /boot/EFI/NixOS-boot
           cp ${pkgs.shim}/efi/shimx64.efi /boot/EFI/NixOS-boot
           cp ${pkgs.shim}/efi/mmx64.efi /boot/EFI/NixOS-boot
+
+          echo "[SecureBoot] Fixing GRUB2 loadfont config..."
+          sed -i 's|if loadfont (\$drive1)//converted-font\.pf2; then|if true; then|g' /boot/grub/grub.cfg
 
           echo "[SecureBoot] Overwriting GRUB boot entry with shim..."
 
@@ -187,28 +193,24 @@ in {
             exit 1
           fi
 
-          #DISK=$(lsblk -no PKNAME "$EFI_MOUNT")
-#
-          # Try PARTNUM first, fallback to PARTN
-          PART_NUM=$(lsblk -no PARTNUM "$EFI_MOUNT" 2>/dev/null | awk '{$1=$1; print}')
-          if [ -z "$PART_NUM" ]; then
-            PART_NUM=$(lsblk -no PARTN "$EFI_MOUNT" 2>/dev/null | awk '{$1=$1; print}')
+          # Just grab the partition directly from Linux, they already did the hard work
+          DISK=$(lsblk -no PKNAME "$EFI_MOUNT")
+          PART_NUM=$(cat /sys/class/block/$(basename "$EFI_MOUNT")/partition)
+          [ -z "$PART_NUM" ] && echo "no partition number, skipping efibootmgr" && exit 0
+          echo "[SecureBoot] Using EFI partition $EFI_MOUNT (disk $DISK, part $PART_NUM)"
+
+          EXISTING=$(efibootmgr -v | grep -F "$BOOT_LABEL" || true)
+          if [ -n "$EXISTING" ]; then
+            BOOT_NUM=$(echo "$EXISTING" | sed -E 's/Boot([0-9A-F]{4}).*/\1/')
+            efibootmgr -b "$BOOT_NUM" -B >/dev/null 2>&1
           fi
-#
-          #echo "[SecureBoot] Using EFI partition $EFI_MOUNT (disk $DISK, part $PART_NUM)"
-#
-          #EXISTING=$(efibootmgr -v | grep -F "$BOOT_LABEL" || true)
-          #if [ -n "$EXISTING" ]; then
-          #  BOOT_NUM=$(echo "$EXISTING" | sed -E 's/Boot([0-9A-F]{4}).*/\1/')
-          #  efibootmgr -b "$BOOT_NUM" -B >/dev/null 2>&1
-          #fi
-          #efibootmgr -c -d "/dev/$DISK" -p "$PART_NUM" -L "$BOOT_LABEL" -l "$EFI_PATH" >/dev/null 2>&1
+          efibootmgr -c -d "/dev/$DISK" -p "$PART_NUM" -L "$BOOT_LABEL" -l "$EFI_PATH" >/dev/null 2>&1
 
           # Set as next boot
-          #BOOT_NUM=$(efibootmgr -v | grep "$BOOT_LABEL" | sed -E 's/Boot([0-9A-F]{4}).*/\1/')
-          #if [ -n "$BOOT_NUM" ]; then
-          #  efibootmgr -n "$BOOT_NUM" >/dev/null 2>&1
-          #fi
+          BOOT_NUM=$(efibootmgr -v | grep "$BOOT_LABEL" | sed -E 's/Boot([0-9A-F]{4}).*/\1/')
+          if [ -n "$BOOT_NUM" ]; then
+            efibootmgr -n "$BOOT_NUM" >/dev/null 2>&1
+          fi
         '';
       };
       timeout = 10;

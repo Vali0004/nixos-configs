@@ -31,6 +31,13 @@ self: super: {
       hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
     };
   });
+  bind = super.bind.overrideDerivation (old: {
+    version = "9.20.21";
+    src = super.fetchurl {
+      url = "https://downloads.isc.org/isc/bind9/9.20.21/bind-9.20.21.tar.xz";
+      hash = "sha256-FeG1oifSiQ98ToI6bqAY3nDuLzoOhZy/89gqrYWQ3gM=";
+    };
+  });
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {

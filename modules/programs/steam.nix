@@ -46,5 +46,23 @@
       # Wine Tricks (proton)
       protontricks
     ];
+
+    systemd.services.dmemcg-booster = {
+      enable = true;
+      after = [ "multi-user.target" ];
+      description = "Service for enabling and controlling dmem cgroup limits for boosting foreground games, system-level";
+      serviceConfig = {
+        ExecStart = "${pkgs.dmemcg-booster}/bin/dmemcg-booster --use-system-bus";
+      };
+    };
+
+    systemd.user.services.dmemcg-booster = {
+      enable = true;
+      after = [ "multi-user.target" ];
+      description = "Service for enabling and controlling dmem cgroup limits for boosting foreground games, user-level";
+      serviceConfig = {
+        ExecStart = "${pkgs.dmemcg-booster}/bin/dmemcg-booster";
+      };
+    };
   };
 }
