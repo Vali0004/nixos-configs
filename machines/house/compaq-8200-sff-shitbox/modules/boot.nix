@@ -2,15 +2,21 @@
   boot = {
     initrd.availableKernelModules = [
       "ahci" # SATA
-      "xhci_pci" # USB
-      "sdhci_pci" # Storage device host controller PCI
+      "ehci_pci" # USB
       "sd_mod" # Storage device module
+      "sr_mod" # Storage ROM device module
+    ];
+    kernelParams = [
+      "iomem=relaxed"
     ];
   };
 
   boot.grub = {
     copyKernels = true;
-    efi.enable = true;
+    efi = {
+      enable = true;
+      removable = true;
+    };
     enable = true;
     enableMemtest = true;
   };

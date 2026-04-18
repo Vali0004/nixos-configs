@@ -93,6 +93,12 @@
           machines/house/nixos-router/configuration.nix
         ];
       };
+      compaq-8200-sff-shitbox = {
+        deployment.targetHost = "192.168.100.205";
+        imports = [
+          machines/house/compaq-8200-sff-shitbox/configuration.nix
+        ];
+      };
       home-assistant = {
         deployment.targetHost = "10.0.0.2";
         imports = [
@@ -114,6 +120,12 @@
           modules/networking/hosts.nix
           machines/nas/shitzen-nixos/configuration.nix
           modules/pterodactyl.nix
+        ];
+      };
+      weezer-nas-mail-exitnode = {
+        deployment.targetHost = "23.143.108.40";
+        imports = [
+          machines/cloud/02-weezer-nas-mail-exitnode/configuration.nix
         ];
       };
       nas-wg-exitnode = {

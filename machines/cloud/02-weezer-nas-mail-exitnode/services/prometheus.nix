@@ -13,18 +13,23 @@
         "systemd.enable-start-time-metrics"
         "zfs"
       ];
-      openFirewall = true;
+      openFirewall = false;
     };
     smartctl = {
       enable = true;
       devices = [
-        "/dev/sda"
+        "/dev/vda"
       ];
-      openFirewall = true;
+      openFirewall = false;
+    };
+    wireguard = {
+      enable = true;
+      interfaces = [ "wg0" ];
+      openFirewall = false;
     };
     zfs = {
       enable = true;
-      openFirewall = true;
+      openFirewall = false;
     };
   };
 }

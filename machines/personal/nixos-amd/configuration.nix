@@ -17,7 +17,7 @@
     #programs/wireguard.nix
     services/windowManager/dwm.nix
     services/displayManager.nix
-    #services/dnsmasq.nix
+    services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
     services/picom.nix
@@ -94,7 +94,7 @@
     hostName = "nixos-amd";
     interfaces = {
       enp10s0.useDHCP = true;
-      #wlp9s0.useDHCP = true;
+      wlp9s0.useDHCP = true;
     };
     useDHCP = false;
     usePredictableInterfaceNames = true;

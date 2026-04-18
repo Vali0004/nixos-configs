@@ -22,10 +22,6 @@ in {
     conntrack-tools
     # cURL
     curl
-    # Useful for DNS debugging
-    dig
-    # Display Mode Info Decode
-    dmidecode
     # Ethernet tool
     ethtool
     # Version Tracking
@@ -36,38 +32,18 @@ in {
     inetutils
     # Internet performance monitoring
     iperf
-    # Mini Certificate Authority
-    minica
-    # Mini COM
-    minicom
-    # Make Certificate
-    mkcert
     # NCurses Disk usage
     ncdu
     # IPv6 Neighbor Discovery
     ndisc6
     # Network Tools
     net-tools
-    # MBIM Tools
-    libmbim
     # List Hardware
     lshw
-    # Open SSL
-    openssl
     # Partition utility
     parted
     # PCI Utilies
     pciutils
-    # Pico COM (sometimes easier than minicom)
-    picocom
-    # Power Joular - Monitor power usage
-    powerjoular
-    # Power Top - Tuning power usage
-    powertop
-    # Python - useful for some scripts
-    python3
-    # Screen
-    screen
     # Ookla Native Speedtest
     speedtest
     # TCP Dump
@@ -116,10 +92,10 @@ in {
   };
 
   zfs = {
-    fragmentation = {
+    fragmentation = lib.mkIf config.zfs.enable {
       enable = true;
       openFirewall = lib.mkDefault true;
     };
-    enable = true;
+    enable = lib.mkDefault true;
   };
 }

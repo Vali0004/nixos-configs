@@ -9,35 +9,55 @@ let
   r = config.router;
   cfg = config.services.bindLocalnet;
 
+  allowedRecursionCidrs = [
+    "127.0.0.0/8"
+    "::1/128"
+    "${r.lanSubnet}.0/24"
+    "${r.lanSubnetV6}::/64"
+  ] ++ lib.optional (cfg.publicV6Prefix != null) "${cfg.publicV6Prefix}::/64";
+
   parseExtraHosts =
     zoneDomain: text:
     let
       lines =
-        builtins.filter (l: l != "" && !(lib.hasPrefix "#" l))
+        builtins.filter
+          (l: l != "" && !(lib.hasPrefix "#" l))
           (builtins.map lib.strings.trim (lib.strings.splitString "\n" text));
 
       parseLine = line:
         let
           toks =
-            builtins.filter (t: t != "")
+            builtins.filter
+              (t: t != "")
               (lib.strings.splitString " "
-                (lib.strings.replaceStrings ["\t"] [" "] line));
+                (lib.strings.replaceStrings [ "\t" ] [ " " ] line));
 
-          ip = builtins.elemAt toks 0;
-          rawNames = lib.lists.drop 1 toks;
-
-          normName = n: let n0 = lib.strings.removeSuffix "." n; in
-            if lib.hasSuffix ".${zoneDomain}" n0 then
-              lib.strings.removeSuffix ".${zoneDomain}" n0
-            else if builtins.match ".*\\..*" n0 == null then
-              n0
-            else
-              null;
-
-          normalized = builtins.filter (n: n != null) (builtins.map normName rawNames);
-          names = if normalized == [] then [] else [ (builtins.elemAt normalized 0) ];
+          tokCount = builtins.length toks;
         in
-          if names == [] then null else { inherit ip names; };
+          if tokCount < 2 then
+            null
+          else
+            let
+              ip = builtins.elemAt toks 0;
+              rawNames = lib.lists.drop 1 toks;
+
+              normName = n:
+                let
+                  n0 = lib.strings.removeSuffix "." n;
+                in
+                  if lib.hasSuffix ".${zoneDomain}" n0 then
+                    lib.strings.removeSuffix ".${zoneDomain}" n0
+                  else if builtins.match ".*\\..*" n0 == null then
+                    n0
+                  else
+                    null;
+
+              normalized =
+                builtins.filter (n: n != null) (builtins.map normName rawNames);
+
+              names = lib.unique normalized;
+            in
+              if names == [] then null else { inherit ip names; };
 
       entries = builtins.filter (e: e != null) (builtins.map parseLine lines);
     in
@@ -46,30 +66,48 @@ let
   entries = parseExtraHosts cfg.zoneDomain (config.networking.extraHosts or "");
 
   aLines =
-    lib.concatStringsSep "\n"
-      (lib.flatten (builtins.map
-        (e: builtins.map (n: "${n} IN A ${e.ip}") e.names)
-        entries));
+    lib.concatStringsSep "\n" (
+      lib.flatten (
+        builtins.map
+          (e: builtins.map (n: "${n} IN A ${e.ip}") e.names)
+          entries
+      )
+    );
+
+  ptrEntries =
+    builtins.filter
+      (e:
+        let
+          octets = lib.strings.splitString "." e.ip;
+        in
+          (builtins.length octets == 4)
+          && lib.hasPrefix "${r.lanSubnet}." e.ip
+      )
+      entries;
 
   ptrLines =
-    lib.concatStringsSep "\n"
-      (lib.unique (builtins.map
-        (e:
-          let
-            octets = lib.strings.splitString "." e.ip;
-            last = builtins.elemAt octets 3;
-            canonical = builtins.elemAt e.names 0;
-          in "${last} IN PTR ${canonical}.${cfg.zoneDomain}.")
-        (builtins.filter (e: lib.hasPrefix "${r.lanSubnet}." e.ip) entries)));
+    lib.concatStringsSep "\n" (
+      lib.unique (
+        builtins.map
+          (e:
+            let
+              octets = lib.strings.splitString "." e.ip;
+              last = builtins.elemAt octets 3;
+              canonical = builtins.elemAt e.names 0;
+            in
+              "${last} IN PTR ${canonical}.${cfg.zoneDomain}.")
+          ptrEntries
+      )
+    );
 
-  forwardZone = pkgs.writeText "${cfg.zoneDomain}.zone" ''
+  forwardZoneFile = pkgs.writeText "${cfg.zoneDomain}.zone" ''
     $TTL 1h
     @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
       ${cfg.zoneSerial}  ; serial
-      1h             ; refresh
-      15m            ; retry
-      30d            ; expire
-      2h             ; negative cache
+      1h                 ; refresh
+      15m                ; retry
+      30d                ; expire
+      2h                 ; negative cache
     )
     @   IN NS  ns1.${cfg.zoneDomain}.
     ns1 IN A   ${cfg.ns1IPv4}
@@ -77,36 +115,45 @@ let
     ${aLines}
   '';
 
-  reverseZone = pkgs.writeText "${cfg.reverseZoneName}.rev" ''
+  reverseZoneFile = pkgs.writeText "${cfg.reverseZone}.zone" ''
     $TTL 1h
     @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
-      ${cfg.zoneSerial} 1h 15m 30d 2h
+      ${cfg.zoneSerial}  ; serial
+      1h                 ; refresh
+      15m                ; retry
+      30d                ; expire
+      2h                 ; negative cache
     )
     @ IN NS ns1.${cfg.zoneDomain}.
 
     ${ptrLines}
   '';
 
-  rpzLines = lib.concatStringsSep "\n" (builtins.map (d: "${d} CNAME .") cfg.rpzCnames);
+  rpzLines =
+    lib.concatStringsSep "\n" (
+      builtins.map (d: "${d} CNAME .") cfg.rpzCnames
+    );
 
-  rpzZone = pkgs.writeText "${cfg.rpzZoneName}.zone" ''
+  rpzZoneFile = pkgs.writeText "${cfg.rpzZoneName}.zone" ''
     $TTL 60
     @ IN SOA ns1.${cfg.zoneDomain}. admin.${cfg.zoneDomain}. (
-      ${cfg.zoneSerial} 1h 15m 30d 2h
+      ${cfg.zoneSerial}  ; serial
+      1h                 ; refresh
+      15m                ; retry
+      30d                ; expire
+      2h                 ; negative cache
     )
     @ IN NS ns1.${cfg.zoneDomain}.
 
     ${rpzLines}
   '';
-
-  publicV6 = "2601:406:8180:35a7";
 in {
   options.services.bindLocalnet = {
     enable = mkEnableOption "BIND authoritative local zone + RPZ based on networking.extraHosts";
 
     lanInterface = mkOption {
       type = types.str;
-      description = "Ethernet interface serving DNS";
+      description = "Interface serving DNS to the LAN.";
     };
 
     zoneDomain = mkOption {
@@ -127,12 +174,6 @@ in {
       description = "IPv4 address for ns1.${cfg.zoneDomain}.";
     };
 
-    reverseZoneName = mkOption {
-      type = types.str;
-      default = "10.0.0";
-      description = "Reverse zone prefix name (used for file naming only).";
-    };
-
     reverseZone = mkOption {
       type = types.str;
       default = "0.0.10.in-addr.arpa";
@@ -142,7 +183,7 @@ in {
     rpzZoneName = mkOption {
       type = types.str;
       default = "rpz.local";
-      description = "RPZ zone name (also used as the zone key in services.bind.zones).";
+      description = "RPZ zone name.";
     };
 
     rpzCnames = mkOption {
@@ -159,16 +200,28 @@ in {
       '';
     };
 
-    cacheNetworks = mkOption {
+    publicV6Prefix = mkOption {
+      type = types.nullOr types.str;
+      default = null;
+      example = "2601:406:8180:35a7";
+      description = ''
+        Optional static public IPv6 /64 prefix allowed to use recursion.
+        Kept explicit for reproducible remote deploys.
+      '';
+    };
+
+    recursionCidrs = mkOption {
       type = types.listOf types.str;
-      default = [
-        "127.0.0.0/8"
-        "::1/128"
-        "${r.lanSubnet}.0/24"
-        "${r.lanSubnetV6}::/64"
-        "${publicV6}::/64"
-      ];
-      description = "BIND cacheNetworks (clients allowed to use cache).";
+      default = allowedRecursionCidrs;
+      defaultText = lib.literalExpression ''
+        [
+          "127.0.0.0/8"
+          "::1/128"
+          "\${config.router.lanSubnet}.0/24"
+          "\${config.router.lanSubnetV6}::/64"
+        ] ++ optional publicV6Prefix
+      '';
+      description = "Networks allowed to use cache and recursion.";
     };
 
     forwarders = mkOption {
@@ -192,14 +245,12 @@ in {
       allowedUDPPorts = [ 53 ];
     };
 
-    environment.systemPackages = [
-      pkgs.bind
-    ];
+    environment.systemPackages = [ pkgs.bind ];
 
     services.bind = {
       enable = true;
 
-      cacheNetworks = cfg.cacheNetworks;
+      cacheNetworks = cfg.recursionCidrs;
       forwarders = cfg.forwarders;
 
       extraConfig = ''
@@ -210,11 +261,7 @@ in {
 
       extraOptions = ''
         allow-recursion {
-          127.0.0.1;
-          ::1;
-          ${r.lanSubnet}.0/24;
-          ${r.lanSubnetV6}::/64;
-          ${publicV6}::/64;
+          ${lib.concatStringsSep ";\n          " cfg.recursionCidrs};
         };
         dnssec-validation auto;
         listen-on { any; };
@@ -229,17 +276,17 @@ in {
       zones = {
         ${cfg.zoneDomain} = {
           master = true;
-          file = forwardZone;
+          file = forwardZoneFile;
         };
 
-        ${cfg.reverseZone}  = {
+        ${cfg.reverseZone} = {
           master = true;
-          file = reverseZone;
+          file = reverseZoneFile;
         };
 
         ${cfg.rpzZoneName} = {
           master = true;
-          file = rpzZone;
+          file = rpzZoneFile;
         };
       };
     };

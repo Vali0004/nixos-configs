@@ -5,6 +5,7 @@
   services.bindLocalnet = {
     enable = true;
     lanInterface = config.router.bridgeInterface;
+    publicV6Prefix = "2601:406:8180:35a7";
     rpzCnames = [
       "ads.roku.com"
       "identity.ads.roku.com"

@@ -1,7 +1,35 @@
 { pkgs
+, inputs
 , ... }:
 
-{
+let
+  sys = inputs.nixpkgs.lib.nixosSystem {
+    system = "x86_64-linux";
+    modules = [
+      ({ config, pkgs, lib, modulesPath, ... }: {
+        imports = [
+          (modulesPath + "/installer/netboot/netboot-minimal.nix")
+        ];
+        config = {
+          services.getty.autologinUser = lib.mkForce "root";
+          users.users.root.openssh.authorizedKeys.keys = (import ../../../../ssh_keys_personal.nix);
+
+          system.stateVersion = config.system.nixos.release;
+        };
+      })
+    ];
+  };
+
+  run-pixiecore = let
+    build = sys.config.system.build;
+  in pkgs.writeScriptBin "run-pixiecore" ''
+    exec ${pkgs.pixiecore}/bin/pixiecore \
+      boot ${build.kernel}/bzImage ${build.netbootRamdisk}/initrd \
+      --cmdline "init=${build.toplevel}/init loglevel=4" \
+      --debug --dhcp-no-bind \
+      --port 64172 --status-port 64172 "$@"
+  '';
+in {
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
@@ -10,11 +38,11 @@
       dhcp-range = [
         "192.168.100.2,192.168.100.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
-        "::,constructor:enp16s0u4,ra-stateless,12h"
+        "::,constructor:enp7s0f1,ra-stateless,12h"
       ];
       enable-ra = true;
       interface = [
-        "enp16s0u4"
+        "enp7s0f1"
       ];
       no-resolv = true;
       server = [
@@ -26,17 +54,25 @@
     };
   };
 
+  environment.systemPackages = [
+    run-pixiecore
+  ];
+
   networking = {
-    interfaces.enp16s0u4 = {
-      ipv4.addresses = [{
-        address = "192.168.100.1";
-        prefixLength = 24;
-      }];
-      ipv6.addresses = [{
-        address = "2001:db8:1::1";
-        prefixLength = 64;
-      }];
-      useDHCP = false;
+    interfaces = {
+      enp7s0f1 = {
+        ipv4 = {
+          addresses = [{
+            address = "192.168.100.1";
+            prefixLength = 24;
+          }];
+        };
+        ipv6.addresses = [{
+          address = "2001:db8:1::1";
+          prefixLength = 64;
+        }];
+        useDHCP = false;
+      };
     };
     firewall = {
       allowedUDPPorts = [
@@ -47,10 +83,10 @@
       checkReversePath = false;
       enable = true;
       extraCommands = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o enp10s0 -j MASQUERADE
-        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o enp10s0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wlp9s0 -j MASQUERADE
+        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o wlp9s0 -j MASQUERADE
       '';
-      trustedInterfaces = [ "enp16s0u4" ];
+      trustedInterfaces = [ "enp7s0f1" ];
     };
   };
 }

@@ -3,9 +3,9 @@ let
   nixos-amd = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO7r7kh+QoV9s5ePtVZIIQzFlfECt7MgshAhVWGWiwXG";
   home-assistant = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPgzGChBKyMJx56Qb5Jl+YLs/0p3PzyQsysEDTiDqMQo";
   shitzen-nixos = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF7yG4ibfAZyxS6IOyXcovlFdLTN3N8dYvQIv5OqgMM1";
-  router-vps = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Fk+n0k2+ZsQMo6VCiVPIW1RErbLcLMcCuHyE+e3Mc";
-  router-vps-v2 = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3adP9Ttlij+oey6tIuWExveeu2+MGJNWv6soaG/JOl";
+  nas-wg-exitnode = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Fk+n0k2+ZsQMo6VCiVPIW1RErbLcLMcCuHyE+e3Mc";
   lenovo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEprfi4ob/fNLFZiYtyXgW0hRGPtrBZIZkNFM74vrJu";
+  nas-mail-exitnode = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwxJtftpB9HvA78rG9u7KxfNRP9Z6TX/7mXf5X1G25b";
   keys = ssh_keys ++ [
     shitzen-nixos
   ];
@@ -47,8 +47,10 @@ in {
   "whcms-db-pass.age".publicKeys = keys;
   "wireguard.age".publicKeys = keys;
   "wireguard-server.age".publicKeys = ssh_keys ++ [
-    router-vps
-    router-vps-v2
+    nas-wg-exitnode
+  ];
+  "wireguard-mail-server.age".publicKeys = ssh_keys ++ [
+    nas-mail-exitnode
   ];
   "zipline-upload-headers.age".publicKeys = ssh_keys ++ [
     lenovo
