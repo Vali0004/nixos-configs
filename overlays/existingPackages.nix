@@ -1,7 +1,7 @@
 self: super: {
   toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de").packages.x86_64-linux.default;
   dmenu = super.dmenu.overrideAttrs (old: {
-    buildInputs = (old.buildInputs or []) ++ [ self.libspng ];
+    buildInputs = (old.buildInputs or []) ++ [ super.libspng ];
     src = super.fetchFromGitHub {
       owner = "Vali0004";
       repo = "dmenu-fork";
@@ -15,12 +15,17 @@ self: super: {
     '';
   });
   dwm = super.dwm.overrideAttrs (old: {
-    buildInputs = old.buildInputs ++ [ super.yajl ];
+    buildInputs = old.buildInputs ++ [
+      super.yajl
+      super.libxcomposite
+      super.libxdamage
+    ];
     src = super.fetchFromGitHub {
       owner = "Vali0004";
       repo = "dwm-fork";
-      rev = "a2dd34468c120e7286c7887215bad70447ce7c13";
-      hash = "sha256-6kVfDKsR9Uzp3SFWyulyJmtIlGOv/dpXGNhCAvgBQTk=";
+      rev = "283883540e3c2a0b59b2c70f94d2514ce5bda4a5";
+      hash = "sha256-HXFVpibDlKZmOVe1sbuYdODMihavuSDrRgKVF5sNnjM=";
+      #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     };
   });
   dwmblocks = super.dwmblocks.overrideAttrs (old: {

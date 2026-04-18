@@ -23,6 +23,7 @@
       corner-radius = 10.0;
       detect-rounded-corners = true;
       rounded-corners-exclude = [
+        "class_g = 'dwm-traymirror'"
         "class_g = 'dwm'"
         "class_g = 'dmenu'"
       ];
