@@ -3,7 +3,7 @@
   makeDesktopItem,
   symlinkJoin,
   writeShellScriptBin,
-  wineWowPackages,
+  wineWow64Packages,
   winetricks,
   wineFlags ? "",
   pname ? "dnspy",
@@ -28,7 +28,7 @@
   script = writeShellScriptBin pname ''
     export WINEPREFIX="${location}"
 
-    PATH=${lib.makeBinPath [wineWowPackages.stable winetricks]}:$PATH
+    PATH=${lib.makeBinPath [wineWow64Packages.stable winetricks]}:$PATH
 
     DNSPY="$WINEPREFIX/drive_c/dnSpy/dnSpy.exe"
 

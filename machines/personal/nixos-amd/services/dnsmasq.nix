@@ -36,13 +36,13 @@ in {
     settings = {
       bind-interfaces = true;
 
-      interface = [ "enp10s0" ];
+      interface = [ "enp11s0" ];
 
       dhcp-authoritative = true;
       dhcp-range = [
         "192.168.100.2,192.168.100.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
-        "::,constructor:enp10s0,ra-stateless,ra-names,64,2h"
+        "::,constructor:enp11s0,ra-stateless,ra-names,64,2h"
       ];
 
       dhcp-option = [
@@ -54,7 +54,7 @@ in {
       no-resolv = true;
 
       enable-ra = true;
-      ra-param = [ "enp10s0,1800" ]; # M=1800, O=0
+      ra-param = [ "enp11s0,1800" ]; # M=1800, O=0
 
       port = 0; # Disable DNS fully
     };
@@ -66,7 +66,7 @@ in {
 
   networking = {
     interfaces = {
-      enp10s0 = {
+      enp11s0 = {
         ipv4 = {
           addresses = [{
             address = "192.168.100.1";

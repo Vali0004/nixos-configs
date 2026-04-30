@@ -199,7 +199,7 @@
     # WebGet
     wget
     # Wine
-    wineWowPackages.stable
+    wineWow64Packages.stable
     winetricks
     # PDF Editing Util
     xournalpp
