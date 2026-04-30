@@ -93,7 +93,7 @@
   networking = {
     hostName = "nixos-amd";
     interfaces = {
-      enp10s0.useDHCP = true;
+      #enp10s0.useDHCP = true;
       wlp9s0.useDHCP = true;
     };
     useDHCP = false;

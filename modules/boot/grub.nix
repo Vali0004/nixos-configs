@@ -108,7 +108,7 @@ in {
         efiSupport = config.boot.grub.efi.enable;
         efiInstallAsRemovable = config.boot.grub.efi.removable;
         extraEntries = lib.strings.optionalString config.boot.grub.enableRescue ''
-          menuentry "NixOS Recuse" {
+          menuentry "NixOS Rescue" {
             linux ($drive1)/rescue-kernel init=${livecd.config.system.build.toplevel}/init ${toString livecd.config.boot.kernelParams}
             initrd ($drive1)/rescue-initrd
           }

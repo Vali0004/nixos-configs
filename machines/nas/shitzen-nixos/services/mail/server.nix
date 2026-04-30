@@ -26,7 +26,7 @@
     enablePop3Ssl = true;
     fqdn = "mail.${config.mailserver.systemDomain}";
     # nix-shell -p mkpasswd --run 'mkpasswd -sm bcrypt'
-    loginAccounts = {
+    accounts = {
       "vali@lab004.dev" = {
         hashedPasswordFile = config.age.secrets.vali-kursu-dev.path;
         aliases = [

@@ -20,29 +20,18 @@ self: super: {
       super.libxcomposite
       super.libxdamage
     ];
+    #src = /home/vali/development/suckless-projects/dwm;
     src = super.fetchFromGitHub {
       owner = "Vali0004";
       repo = "dwm-fork";
-      rev = "283883540e3c2a0b59b2c70f94d2514ce5bda4a5";
-      hash = "sha256-HXFVpibDlKZmOVe1sbuYdODMihavuSDrRgKVF5sNnjM=";
+      #rev = "a0fb2f4d892c8f1df412aaac7b76e823e807c717";
+      #hash = "sha256-Bo1O5rAKW2o58WFHgLoviCU5fUyQCkYcwXHMFsFf2C4=";
+      rev = "fd051edb5caf28ce31dcbc943c53051de9aa12ed";
+      hash = "sha256-GOpLjudEibXQy1/U+rH4wahAjJ+3JrEwyUcQ2ETcWcM=";
       #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     };
   });
-  dwmblocks = super.dwmblocks.overrideAttrs (old: {
-    src = super.fetchFromGitHub {
-      owner = "nimaaskarian";
-      repo = "dwmblocks-statuscmd-multithread";
-      rev = "6700e322431b99ffc9a74b311610ecc0bc5b460a";
-      hash = "sha256-TfPomjT/Z4Ypzl5P5VcVccmPaY8yosJmMLHrGBA6Ycg=";
-    };
-  });
-  bind = super.bind.overrideDerivation (old: {
-    version = "9.20.21";
-    src = super.fetchurl {
-      url = "https://downloads.isc.org/isc/bind9/9.20.21/bind-9.20.21.tar.xz";
-      hash = "sha256-FeG1oifSiQ98ToI6bqAY3nDuLzoOhZy/89gqrYWQ3gM=";
-    };
-  });
+  dwmblocks = super.callPackage pkgs/dwmblocks {};
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {

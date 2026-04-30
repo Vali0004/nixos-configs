@@ -340,6 +340,12 @@ in {
       tokenFile = cfg.wings.tokenFile;
       config = cfg.wings.config;
     };
+
+    systemd.services.wings.serviceConfig = {
+      User = lib.mkForce "root";
+      Group = lib.mkForce "root";
+    };
+
     users = {
       groups.${cfg.group}.members = [ "nginx" ];
       users = {

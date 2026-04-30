@@ -52,6 +52,7 @@
 
   networking.firewall = {
     allowedTCPPorts = [
+      config.services.pterodactyl.wings.config.system.sftp.bind_port
       8900
       8901
       8902

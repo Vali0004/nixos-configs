@@ -10,11 +10,11 @@
     modules/boot.nix
     modules/kernel.nix
 
-    programs/dconf.nix
+    #programs/dconf.nix
 
-    services/windowManager/dwm.nix
-    services/displayManager.nix
-    services/picom.nix
+    #services/windowManager/dwm.nix
+    #services/displayManager.nix
+    #services/picom.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -22,8 +22,17 @@
     alacritty-graphics
     # Better TOP
     btop
+    # Coreboot Utilities
+    coreboot-utils
+    devmem2
+    # SMBIOS
     dmidecode
+    # Fast fetch system information
     fastfetch
+    # Flash programmer
+    flashprog
+    gcc
+    lm_sensors
   ];
 
   fileSystems = {
@@ -88,7 +97,7 @@
 
   services = {
     xserver = {
-      enable = true;
+      enable = false;
       # Disable XTerm
       excludePackages = [ pkgs.xterm ];
       desktopManager.xterm.enable = false;

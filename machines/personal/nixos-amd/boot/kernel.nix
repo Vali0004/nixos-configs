@@ -4,17 +4,7 @@
 , ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_latest.override {
-    argsOverride = rec {
-      src = pkgs.fetchurl {
-        url = "mirror://kernel/linux/kernel/v7.x/linux-${version}.tar.xz";
-        #url = "https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/linux-7.0.tar.gz";
-        hash = "sha256-u39tgLOHx1e30Uu5MCj8uQ95PFwNNnc27oFaEAs4kfA=";
-      };
-      version = "7.0";
-      modDirVersion = "7.0.0";
-    };
-  });
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_0;
 
   boot.kernelPatches = [
     {

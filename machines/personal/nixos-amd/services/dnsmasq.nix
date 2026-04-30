@@ -35,22 +35,28 @@ in {
     resolveLocalQueries = false;
     settings = {
       bind-interfaces = true;
+
+      interface = [ "enp10s0" ];
+
+      dhcp-authoritative = true;
       dhcp-range = [
         "192.168.100.2,192.168.100.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
-        "::,constructor:enp7s0f1,ra-stateless,12h"
+        "::,constructor:enp10s0,ra-stateless,ra-names,64,2h"
       ];
-      enable-ra = true;
-      interface = [
-        "enp7s0f1"
+
+      dhcp-option = [
+        "option:dns-server,1.1.1.1,8.8.8.8"
+        "option6:dns-server,[2606:4700:4700::1111],[2001:4860:4860::8888]"
       ];
+
+      # Disable resolv.conf parsing, as we assign our own via DHCP.
       no-resolv = true;
-      server = [
-        "2001:4860:4860::8888"
-        "2606:4700:4700::1111"
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
+
+      enable-ra = true;
+      ra-param = [ "enp10s0,1800" ]; # M=1800, O=0
+
+      port = 0; # Disable DNS fully
     };
   };
 
@@ -60,7 +66,7 @@ in {
 
   networking = {
     interfaces = {
-      enp7s0f1 = {
+      enp10s0 = {
         ipv4 = {
           addresses = [{
             address = "192.168.100.1";

@@ -60,7 +60,7 @@
       dhcp-ignore-names = [ "tag:worklaptop" ];
 
       enable-ra = true;
-      ra-param = [ "br0,1800" ]; # M=1800, O=0
+      ra-param = [ "${config.router.bridgeInterface},1800" ]; # M=1800, O=0
 
       port = 0; # Disable DNS fully
     };

@@ -40,8 +40,12 @@
       # 0xb013f6500-0xb013fa5b8 has bad bits
       # 0xb013fe500-0xb013fe580 has bad bits
       "memtest=1"
-      "memmap=1M!0xabb400000"
-      "memmap=8M!0xb01380000"
+      # 384 MiB: 0xab8000000 - 0xacfffffff
+      "memmap=384M!0xab8000000"
+      # 192 MiB: 0xb00000000 - 0xb0bffffff
+      "memmap=192M!0xb00000000"
+      # 32 MiB: 0xcaa000000 - 0xcabffffff
+      "memmap=32M!0xca8000000"
     ];
   };
 
