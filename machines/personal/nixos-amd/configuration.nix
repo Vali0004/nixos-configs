@@ -71,6 +71,7 @@
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";
       fsType = "ntfs";
       options = ntfs_options ++ [
+        "noauto"
         "x-systemd.automount"
       ];
     };
