@@ -6,6 +6,7 @@ let
   nas-wg-exitnode = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM3Fk+n0k2+ZsQMo6VCiVPIW1RErbLcLMcCuHyE+e3Mc";
   lenovo = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBEprfi4ob/fNLFZiYtyXgW0hRGPtrBZIZkNFM74vrJu";
   nas-mail-exitnode = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwxJtftpB9HvA78rG9u7KxfNRP9Z6TX/7mXf5X1G25b";
+  compaq-8000-sff-shitbox = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcElKplcBX2PhUSH8Y+Y1AOx6wFuTbRvWYQzOA9OsHq";
   keys = ssh_keys ++ [
     shitzen-nixos
   ];
@@ -34,6 +35,7 @@ in {
   "nix-netrc.age".publicKeys = keys ++ [
     lenovo
     nixos-amd
+    compaq-8000-sff-shitbox
   ];
   "oauth2.age".publicKeys = keys;
   "oauth2-proxy.age".publicKeys = keys;
@@ -55,6 +57,7 @@ in {
   "zipline-upload-headers.age".publicKeys = ssh_keys ++ [
     lenovo
     nixos-amd
+    compaq-8000-sff-shitbox
   ];
   "zipline.age".publicKeys = keys;
 }

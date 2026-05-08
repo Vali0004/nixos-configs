@@ -29,6 +29,9 @@ let
       --debug --dhcp-no-bind \
       --port 64172 --status-port 64172 "$@"
   '';
+
+  sharedInternetDevice = "wlan0";
+  bindingDevice = "eth0";
 in {
   services.dnsmasq = {
     enable = true;
@@ -36,13 +39,13 @@ in {
     settings = {
       bind-interfaces = true;
 
-      interface = [ "enp11s0" ];
+      interface = [ bindingDevice ];
 
       dhcp-authoritative = true;
       dhcp-range = [
         "192.168.100.2,192.168.100.254"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
-        "::,constructor:enp11s0,ra-stateless,ra-names,64,2h"
+        "::,constructor:${bindingDevice},ra-stateless,ra-names,64,2h"
       ];
 
       dhcp-option = [
@@ -54,7 +57,7 @@ in {
       no-resolv = true;
 
       enable-ra = true;
-      ra-param = [ "enp11s0,1800" ]; # M=1800, O=0
+      ra-param = [ "${bindingDevice},1800" ]; # M=1800, O=0
 
       port = 0; # Disable DNS fully
     };
@@ -66,7 +69,7 @@ in {
 
   networking = {
     interfaces = {
-      enp11s0 = {
+      eth0 = {
         ipv4 = {
           addresses = [{
             address = "192.168.100.1";
@@ -89,10 +92,10 @@ in {
       checkReversePath = false;
       enable = true;
       extraCommands = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o wlp9s0 -j MASQUERADE
-        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o wlp9s0 -j MASQUERADE
+        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o ${sharedInternetDevice} -j MASQUERADE
+        ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o ${sharedInternetDevice} -j MASQUERADE
       '';
-      trustedInterfaces = [ "enp7s0f1" ];
+      trustedInterfaces = [ "sfp1" ];
     };
   };
 }

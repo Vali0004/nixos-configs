@@ -3,6 +3,5 @@
     include config.d/*
 
     IdentityFile /home/vali/.ssh/nixos_main
-    IdentityFile /home/vali/.ssh/test_ppk
   '';
 }

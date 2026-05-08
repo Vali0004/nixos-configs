@@ -10,11 +10,17 @@
     modules/boot.nix
     modules/kernel.nix
 
-    #programs/dconf.nix
+    home-manager/home.nix
 
-    #services/windowManager/dwm.nix
-    #services/displayManager.nix
-    #services/picom.nix
+    programs/agenix.nix
+    programs/dconf.nix
+    programs/gnupg.nix
+
+    services/windowManager/dwm.nix
+    services/displayManager.nix
+    services/picom.nix
+
+    ./pkgs.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -93,15 +99,6 @@
   security = {
     rtkit.enable = true;
     sudo.enable = true;
-  };
-
-  services = {
-    xserver = {
-      enable = false;
-      # Disable XTerm
-      excludePackages = [ pkgs.xterm ];
-      desktopManager.xterm.enable = false;
-    };
   };
 
   # 16GiB Swap

@@ -8,15 +8,19 @@
 {
   imports = [
     "${modulesPath}/installer/scan/not-detected.nix"
+
     boot/boot.nix
+
     home-manager/home.nix
+
     programs/agenix.nix
     programs/dconf.nix
     programs/gnupg.nix
     programs/ssh.nix
-    #programs/wireguard.nix
+
     services/windowManager/dwm.nix
     services/displayManager.nix
+
     services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
@@ -24,15 +28,24 @@
     services/ratbagd.nix
     services/syslog.nix
     services/toxvpn.nix
+    services/udev.nix
+
     virtualisation/docker.nix
+
     ./pkgs.nix
   ];
 
-  environment.variables = {
-    CM_LAUNCHER = "dmenu";
-  };
-
-  fileSystems = {
+  fileSystems = let
+    ntfs_options = [
+      "rw"
+      "uid=1000"
+      "gid=100"
+      "umask=0022"
+      "fmask=0133"
+      "dmask=0022"
+      "windows_names"
+    ];
+  in {
     # Mount the Root Partition
     "/" = {
       fsType = "ext4";
@@ -51,18 +64,33 @@
     "/mnt/c" = {
       device = "/dev/disk/by-uuid/BE68F85A68F812BF";
       fsType = "ntfs";
+      options = ntfs_options;
     };
     # Mount D:\
     "/mnt/d" = {
       device = "/dev/disk/by-uuid/06BEE3E0BEE3C671";
       fsType = "ntfs";
-      options = [ "x-systemd.automount" ];
+      options = ntfs_options ++ [
+        "x-systemd.automount"
+      ];
     };
     # Mount the NFS
     "/mnt/data" = {
       device = "10.0.0.4:/data";
       fsType = "nfs";
-      options = [ "x-systemd.automount" "noauto" "soft" ];
+      options = [
+        "_netdev"
+        "noauto"
+        "nofail"
+        "x-systemd.automount"
+        "x-systemd.idle-timeout=600"
+        "x-systemd.mount-timeout=5s"
+        "x-systemd.device-timeout=5s"
+
+        "hard"
+        "timeo=50"
+        "retrans=2"
+      ];
     };
   };
 
@@ -93,8 +121,7 @@
   networking = {
     hostName = "nixos-amd";
     interfaces = {
-      #enp11s0.useDHCP = true;
-      wlp10s0.useDHCP = true;
+      wlan0.useDHCP = true;
     };
     useDHCP = false;
     usePredictableInterfaceNames = true;
@@ -138,52 +165,41 @@
     flatpak.enable = true;
     # Linux GPU Configuration And Monitoring Tool
     lact.enable = true;
-    udev.extraRules = ''
-      # Aula, SayoDevice O3C
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"
-      # Elgato
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", GROUP="wheel", MODE="0677"
-      # HTC
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="0bb4", GROUP="plugdev", MODE="0666"
-      # Oculus
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="2833", GROUP="plugdev", MODE="0666"
-      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2833", GROUP="plugdev", MODE="0666"
-      # SlimeVR
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", GROUP="plugdev", MODE="0666"
-      # Sony - 054c:0fa8
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="054c", GROUP="plugdev", MODE="0666"
-      # Steam
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="28de", GROUP="plugdev", MODE="0666"
-      # Razer
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1532", GROUP="plugdev", MODE="0666"
-      # RedOctane
-      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="1430", TAG+="uaccess", MODE="0666", GROUP="plugdev"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1430", TAG+="uaccess", MODE="0666", GROUP="plugdev"
-      # Espressif
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="303a", GROUP="plugdev", MODE="0666"
-      # RockChip
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="2207", GROUP="plugdev", MODE="0666"
-      # Sigrok (OpenMoto Fx2lafw)
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1d50", GROUP="plugdev", MODE="0666"
-      # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for Nordic Semiconductor devices
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
-      # Set /dev/bus/usb/*/* as read-write for the plugdev group (0666) for WCH-CN devices
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1a86", MODE="0666"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1d6b", MODE="0666"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="1209", MODE="0666"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="0bda", MODE="0666"
-      # USB CDC ACM for Nordic + Espressif
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="usb", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{CDC_ACM}="1"
-      KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", ATTRS{idVendor}=="1915|303a", MODE="0666", ENV{CDC_ACM}="1"
-      ENV{CDC_ACM}=="1", ENV{ID_MM_CANDIDATE}="0", ENV{ID_MM_DEVICE_IGNORE}="1"
-    '';
     udisks2.enable = true;
-    xserver = {
-      enable = true;
-      # Disable XTerm
-      excludePackages = [ pkgs.xterm ];
-      desktopManager.xterm.enable = false;
+  };
+
+  systemd.services.dhcpcd = {
+    after = [
+      "wpa_supplicant.service"
+      "sys-subsystem-net-devices-wlan0.device"
+    ];
+    wants = [
+      "wpa_supplicant.service"
+      "sys-subsystem-net-devices-wlan0.device"
+    ];
+    serviceConfig = {
+      TimeoutStopSec = "5s";
+      KillMode = "mixed";
+      SendSIGKILL = true;
+    };
+  };
+
+  systemd.network.links = {
+    "10-eth0" = {
+      matchConfig.MACAddress = "10:ff:e0:35:08:fb";
+      linkConfig.Name = "eth0";
+    };
+    "10-wlan0" = {
+      matchConfig.MACAddress = "94:bb:43:52:13:b8";
+      linkConfig.Name = "wlan0";
+    };
+    "10-sfp0" = {
+      matchConfig.MACAddress = "14:02:ec:7f:3c:4c";
+      linkConfig.Name = "sfp0";
+    };
+    "10-sfp1" = {
+      matchConfig.MACAddress = "14:02:ec:7f:3c:4d";
+      linkConfig.Name = "sfp1";
     };
   };
 
@@ -192,8 +208,6 @@
     device = "/var/lib/swap1";
     size = 8192;
   }];
-
-  systemd.settings.Manager.RebootWatchdogSec = "0";
 
   users.users.vali = {
     isNormalUser = true;

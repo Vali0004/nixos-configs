@@ -18,7 +18,15 @@ in {
     EndSection
   '';
 
-  services.xserver.displayManager.lightdm.enable = false;
+  services.xserver = {
+    enable = true;
+    # Disable LightDM
+    displayManager.lightdm.enable = false;
+    # Disable XTerm
+    excludePackages = [ pkgs.xterm ];
+    desktopManager.xterm.enable = false;
+  };
+
   services.displayManager.sddm = {
     enable = true;
     extraPackages = with pkgs.kdePackages; [

@@ -6,10 +6,14 @@
     enable = true;
     enabledExtensions = with pkgs.spicetifyExtensions; [
       adblock
-      autoSkipVideo
+      aiBandBlocker
       beautifulLyrics
+      copyToClipboard
+      fullAlbumDate
+      fullAppDisplay
       hidePodcasts
       shuffle
+      volumePercentage
     ];
     theme = pkgs.spicetifyThemes.sleek;
     colorScheme = "Elementary";

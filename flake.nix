@@ -96,6 +96,9 @@
       compaq-8200-sff-shitbox = {
         deployment.targetHost = "192.168.100.205";
         imports = [
+          agenix.nixosModules.age
+          nix-gaming.nixosModules.pipewireLowLatency
+          home-manager.nixosModules.home-manager
           machines/house/compaq-8200-sff-shitbox/configuration.nix
         ];
       };

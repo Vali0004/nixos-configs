@@ -15,8 +15,6 @@ in {
       programs/zsh.nix
       services/dunst.nix
       #services/monado.nix
-      #windowManager/i3.nix
-      #windowManager/hypr.nix
     ];
 
     home = {
@@ -25,7 +23,7 @@ in {
       file.".config/syncplay.ini".source = ./syncplay.ini;
       # Fixes Zsh plugin for SSH Hostnames
       file.".ssh/config".text = ssh_config;
-      stateVersion = "25.11";
+      stateVersion = "26.05";
     };
 
     gtk = {
