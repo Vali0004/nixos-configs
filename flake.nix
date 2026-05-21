@@ -150,7 +150,6 @@
         modules = [
           ({ nixpkgs.overlays = flakeOverlays; })
           agenix.nixosModules.age
-          nix-gaming.nixosModules.pipewireLowLatency
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
           modules/networking/hosts.nix

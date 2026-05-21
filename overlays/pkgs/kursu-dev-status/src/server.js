@@ -18,19 +18,17 @@ let statusTypes = {
 };
 
 let services = {
-  main: { type: "good", url: "https://lab004.dev/", responding: false },
-  main: { type: "good", url: "https://fuckk.lol/", responding: false },
+  main: { type: "good", url: "https://kurisu.lab004.dev/", responding: false },
   flood: { type: "good", url: "https://flood.lab004.dev/", responding: false },
-  furryporn: { type: "good", url: "https://valis.furryporn.ca/", responding: false },
+  flood_private: { type: "good", url: "https://flood-private.lab004.dev/", responding: false },
   grafana: { type: "good", url: "https://monitoring.lab004.dev/grafana/login", responding: false },
   hydra: { type: "good", url: "https://hydra.lab004.dev/", responding: false },
   jellyfin: { type: "good", url: "https://watch.furryporn.ca/web", responding: false },
-  mail: { type: "good", url: "https://mail.fuckk.lol/SOGo", responding: false },
   prometheus: { type: "good", url: "https://monitoring.lab004.dev/prometheus/targets", responding: false },
   prowlarr: { type: "good", url: "https://prowlarr.lab004.dev/", responding: false },
   radarr: { type: "good", url: "https://radarr.lab004.dev/", responding: false },
   sonarr: { type: "good", url: "https://sonarr.lab004.dev/", responding: false },
-  zipline: { type: "good", url: "https://holy.lab004.dev/dashboard", responding: false },
+  zipline: { type: "good", url: "https://cdn.lab004.dev/dashboard", responding: false },
   xenon: { type: "good", url: "https://xenonemu.dev/", responding: false },
 };
 

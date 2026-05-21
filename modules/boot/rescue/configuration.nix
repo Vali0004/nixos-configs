@@ -9,11 +9,11 @@
 
 {
   documentation = {
-    enable = true;
+    enable = false;
     doc.enable = false;
     info.enable = false;
-    man.enable = true;
-    nixos.enable = true;
+    man.enable = false;
+    nixos.enable = false;
   };
 
   environment = {
@@ -28,10 +28,9 @@
     stub-ld.enable = false;
     systemPackages = with pkgs; [
       ddrescue
+      e2fsprogs
       efibootmgr
       efivar
-      fuse
-      fuse3
       gptfdisk
       hdparm
       ms-sys
@@ -40,16 +39,11 @@
       parted
       pciutils
       sdparm
-      screen
       smartmontools
       socat
-      sshfs-fuse
       tcpdump
       testdisk
-      unzip
       usbutils
-      w3m-nographics
-      zip
     ];
     # Tell the Nix evaluator to garbage collect more aggressively.
     # This is desirable in memory-constrained environments that don't
@@ -77,12 +71,12 @@
 
   programs = {
     command-not-found.enable = false;
-    git.enable = true;
+    git.enable = false;
     less.lessopen = null;
   };
 
   security = {
-    polkit.enable = true;
+    polkit.enable = lib.mkForce false;
     sudo = {
       enable = true;
       wheelNeedsPassword = false;
@@ -99,8 +93,7 @@
         with `passwd` (prefix with `sudo` for "root"), or add your public key to
         /home/nixos/.ssh/authorized_keys or /root/.ssh/authorized_keys.
 
-       This Rescue LiveCD does not allow for a wireless connection.
-       If you need such a thing, please use a LiveCD with the minimal-nographics
+        Wireless is available in this rescue image if firmware and hardware support it.
       '';
     };
     logrotate.enable = false;
@@ -115,7 +108,7 @@
 
   users.users = {
     nixos = {
-      extraGroups = [ "render" "tty" "wheel" "video" ];
+      extraGroups = [ "tty" "wheel" ];
       initialHashedPassword = "";
       isNormalUser = true;
     };

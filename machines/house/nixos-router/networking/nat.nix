@@ -22,6 +22,20 @@ in {
         loopbackIPs = [ wanIp ];
       }
       {
+        # Minecraft - Simple Voice Chat
+        destination = "${cfg.lanSubnet}.4:24454";
+        proto = "udp";
+        sourcePort = 24454;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # Minecraft - Simple Voice Chat (2)
+        destination = "${cfg.lanSubnet}.4:24455";
+        proto = "udp";
+        sourcePort = 24455;
+        loopbackIPs = [ wanIp ];
+      }
+      {
         # iperf2
         destination = "${cfg.lanSubnet}.4:5201";
         proto = "tcp";

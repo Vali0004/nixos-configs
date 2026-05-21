@@ -124,6 +124,8 @@
     # nix-gaming
     osu-gatari
     osu-stable
+    # osu!lazer
+    osu-lazer-bin
     # PCI Utilities
     pciutils
     # Printable Document Format Toolkit

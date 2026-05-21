@@ -60,6 +60,8 @@
       8904
     ];
     allowedUDPPorts = [
+      24454 # Minecraft - SVC
+      24455 # Minecraft - SVC (2)
       8901
       8902
       8903

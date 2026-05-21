@@ -12,7 +12,7 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  services.nginx.virtualHosts."status.kursu.lol" = {
+  services.nginx.virtualHosts."status.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     listen = [
