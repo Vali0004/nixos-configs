@@ -13,6 +13,10 @@
     user = "arr";
   };
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.jellyfin.enable [
+    8096
+  ]);
+
   users.users.arr = {
     isSystemUser = true;
     group = "rtorrent";

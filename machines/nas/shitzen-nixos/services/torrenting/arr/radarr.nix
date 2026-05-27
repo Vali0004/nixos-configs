@@ -17,6 +17,10 @@
     };
   };
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.radarr.enable [
+    config.services.radarr.settings.server.port
+  ]);
+
   systemd.services.radarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
   services.nginx.virtualHosts."radarr.lab004.dev" = {

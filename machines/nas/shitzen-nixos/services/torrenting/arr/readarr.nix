@@ -17,6 +17,10 @@
     };
   };
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.readarr.enable [
+    config.services.readarr.settings.server.port
+  ]);
+
   systemd.services.readarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
   services.nginx.virtualHosts."readarr.lab004.dev" = {

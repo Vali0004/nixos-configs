@@ -9,7 +9,11 @@
     tokenKeyFile = config.age.secrets.kavita.path;
   };
 
-  services.nginx.virtualHosts."manga.fuckk.lol" = {
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.kavita.enable [
+    config.services.kavita.settings.Port
+  ]);
+
+  services.nginx.virtualHosts."manga.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

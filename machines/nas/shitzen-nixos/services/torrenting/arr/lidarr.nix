@@ -17,6 +17,10 @@
     };
   };
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.lidarr.enable [
+    config.services.lidarr.settings.server.port
+  ]);
+
   systemd.services.lidarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
   services.nginx.virtualHosts."lidarr.lab004.dev" = {

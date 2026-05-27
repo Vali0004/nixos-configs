@@ -45,11 +45,11 @@
       owner = "matrix-synapse";
       group = "matrix-synapse";
     };
-    #nextcloud-admin-password = {
-    #  file = ../../../../secrets/nextcloud-admin-password.age;
-    #  owner = "nextcloud";
-    #  group = "nextcloud";
-    #};
+    nextcloud-admin-password = {
+      file = ../../../../secrets/nextcloud-admin-password.age;
+      owner = "nextcloud";
+      group = "nextcloud";
+    };
     nix-netrc = {
       file = ../../../../secrets/nix-netrc.age;
       owner = "hydra";
@@ -94,6 +94,11 @@
     };
     vali-kursu-dev = {
       file = ../../../../secrets/vali-kursu-dev.age;
+      owner = "nginx";
+      group = "nginx";
+    };
+    vaultwarden = {
+      file = ../../../../secrets/vaultwarden.age;
       owner = "nginx";
       group = "nginx";
     };

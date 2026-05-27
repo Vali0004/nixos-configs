@@ -24,6 +24,27 @@
         port = 4390;
       };
     };
+    "flood.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 3702;
+      };
+    };
+    "flood-private.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 3703;
+      };
+    };
+    "git.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 3900;
+      };
+    };
     "hass.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {
@@ -121,6 +142,13 @@
         proxyWebsockets = true;
       };
     };
+    "lidarr.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 8686;
+      };
+    };
     "monitoring.localnet" = {
       forceSSL = false;
       locations = {
@@ -131,18 +159,52 @@
           ip = "shitzen-nixos";
           port = 3400;
         };
-        "/grafana/" = {
-          proxyPass = "http://10.0.0.4:3003";
-          proxyWebsockets = true;
+        "/grafana/" = lib.mkProxy {
+          ip = "shitzen-nixos";
+          port = 3003;
         };
       };
     };
-    "proxmox.localnet" = {
+    "manga.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {
-        https = true;
         ip = "shitzen-nixos";
-        port = 8006;
+        port = 8788;
+      };
+    };
+    "prowlarr.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 9696;
+      };
+    };
+    "radarr.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 7878;
+      };
+    };
+    "readarr.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 8787;
+      };
+    };
+    "sonarr.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 8989;
+      };
+    };
+    "vaultwarden.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 8222;
       };
     };
     "zigbee2mqtt.localnet" = {

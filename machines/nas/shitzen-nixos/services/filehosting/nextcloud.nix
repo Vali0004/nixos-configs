@@ -4,6 +4,8 @@
 , ... }:
 
 {
+  environment.systemPackages = [ config.services.nextcloud.package ];
+
   services.nginx.virtualHosts."${config.services.nextcloud.hostName}" = {
     forceSSL = true;
     enableACME = true;
@@ -23,10 +25,6 @@
       dbtype = "pgsql";
     };
     database.createLocally = true;
-    extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) contacts calendar mail tasks;
-    };
-    extraAppsEnable = true;
     home = "/data/services/nextcloud";
     hostName = "cloud.lab004.dev";
     https = true;
@@ -42,6 +40,9 @@
       mail_smtpmode = "smtp";
       mail_smtphost = "mail.lab004.dev";
       mail_smtpauth = true;
+      trusted_domains = [
+        config.services.nextcloud.hostName
+      ];
     };
   };
 }

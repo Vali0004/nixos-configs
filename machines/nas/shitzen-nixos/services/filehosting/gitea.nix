@@ -8,8 +8,12 @@
     2222
   ];
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.gitea.enable [
+    config.services.gitea.settings.server.HTTP_PORT
+  ]);
+
   services.gitea = {
-    appName = "lab004.dev: Git";
+    appName = "Lab004's Git";
     enable = true;
     captcha.enable = true;
     database = {
@@ -41,7 +45,7 @@
         PROTOCOL = "smtps";
         SMTP_ADDR = "mail.lab004.dev";
         SMTP_PORT = "465";
-        FROM = "Kursu's Git Service <do-not-reply@lab004.dev>";
+        FROM = "Kurisu's Git Service <do-not-reply@lab004.dev>";
         USER = "do-not-reply@lab004.dev";
       };
       metrics.ENABLED = false;

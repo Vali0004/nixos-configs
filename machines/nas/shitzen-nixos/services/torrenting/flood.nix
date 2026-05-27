@@ -45,6 +45,11 @@
     "d /var/lib/flood-private 0755 ${config.services.rtorrent.user} ${config.services.rtorrent.group} - -"
   ];
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.flood.enable [
+    config.services.flood.port
+    (config.services.flood.port + 1)
+  ]);
+
   services.nginx.virtualHosts."flood.lab004.dev" = {
     enableACME = true;
     forceSSL = true;

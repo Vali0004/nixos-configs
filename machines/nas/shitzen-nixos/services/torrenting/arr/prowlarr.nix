@@ -15,6 +15,10 @@
     };
   };
 
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = (lib.optionals config.services.prowlarr.enable [
+    config.services.prowlarr.settings.server.port
+  ]);
+
   systemd.services.prowlarr.serviceConfig.SupplementaryGroups = [ config.services.rtorrent.group ];
 
   services.nginx.virtualHosts."prowlarr.lab004.dev" = {

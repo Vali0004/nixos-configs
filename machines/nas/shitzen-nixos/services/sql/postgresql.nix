@@ -15,19 +15,12 @@
     '';
     ensureDatabases = [
       config.services.gitea.database.user
-      "nextcloud"
       "sogo"
     ];
     ensureUsers = [
       {
         name = config.services.gitea.database.user;
         ensureDBOwnership = true;
-        ensureClauses = {
-          createdb = true;
-        };
-      }
-      {
-        name = "nextcloud";
         ensureClauses = {
           createdb = true;
         };

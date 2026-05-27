@@ -30,9 +30,8 @@
     services/filehosting/samba.nix
     services/filehosting/zipline.nix
 
-    #services/mail/roundcube.nix
     services/mail/server.nix
-    #services/mail/sogo.nix
+    services/mail/sogo.nix
 
     services/minecraft/default.nix
 
@@ -64,6 +63,7 @@
     services/pterodactyl.nix
     services/toxvpn.nix
     services/ttyd.nix
+    services/vaultwarden.nix
   ];
 
   acme.enable = true;

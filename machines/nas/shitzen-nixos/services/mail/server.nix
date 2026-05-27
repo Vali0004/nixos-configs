@@ -33,6 +33,10 @@
           "abuse@lab004.dev"
           "admin@lab004.dev"
           "postmaster@lab004.dev"
+          "vali@kursu.dev"
+          "abuse@kursu.dev"
+          "admin@kursu.dev"
+          "postmaster@kursu.dev"
           "vali@fuckk.lol"
           "abuse@fuckk.lol"
           "admin@fuckk.lol"
@@ -45,6 +49,8 @@
           "no-reply@lab004.dev"
           "do-not-reply@fuckk.lol"
           "no-reply@fuckk.lol"
+          "do-not-reply@kursu.lol"
+          "no-reply@kursu.lol"
         ];
       };
       "cleclerc@nanitehosting.com" = {
@@ -56,9 +62,9 @@
         ];
       };
     };
-    mailDirectory = "/var/vmail";
     openFirewall = true;
     stateVersion = 3;
+    storage.path = "/var/vmail";
     systemDomain = "lab004.dev";
     systemName = config.networking.hostName;
     x509.useACMEHost = config.mailserver.fqdn;

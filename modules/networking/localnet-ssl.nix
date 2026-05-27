@@ -163,6 +163,11 @@ in {
       sslCertificateKey = lib.mkDefault "${keysDir}/${name}.key";
     });
 
+    systemd.services.nginx = {
+      after = [ "localnet-ssl-ensure.service" ];
+      requires = [ "localnet-ssl-ensure.service" ];
+    };
+
     systemd.services.localnet-ssl-ensure = {
       description = "Ensure localnet SSL certs exist for nginx localnetSSL vhosts";
       requiredBy = [ "nginx.service" ];
