@@ -42,6 +42,7 @@
     services/server/memcached.nix
     services/server/nginx.nix
     services/server/oauth2.nix
+    services/server/syncplay.nix
 
     services/sql/mysql.nix
     services/sql/postgresql.nix

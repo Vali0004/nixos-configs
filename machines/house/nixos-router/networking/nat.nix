@@ -22,6 +22,13 @@ in {
         loopbackIPs = [ wanIp ];
       }
       {
+        # SyncPlay Server
+        destination = "${cfg.lanSubnet}.4:1337";
+        proto = "tcp";
+        sourcePort = 1337;
+        loopbackIPs = [ wanIp ];
+      }
+      {
         # Minecraft - Simple Voice Chat
         destination = "${cfg.lanSubnet}.4:24454";
         proto = "udp";

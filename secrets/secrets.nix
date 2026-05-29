@@ -46,6 +46,7 @@ in {
   "radarr-api.age".publicKeys = keys;
   "sogo-db-password.age".publicKeys = keys;
   "sonarr-api.age".publicKeys = keys;
+  "syncplay.age".publicKeys = keys;
   "vali-kursu-dev.age".publicKeys = keys;
   "whcms-db-pass.age".publicKeys = keys;
   "wireguard.age".publicKeys = keys;

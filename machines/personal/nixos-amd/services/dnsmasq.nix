@@ -31,7 +31,7 @@ let
   '';
 
   sharedInternetDevice = "wlan0";
-  bindingDevice = "eth0";
+  bindingDevice = "sfp0";
 in {
   services.dnsmasq = {
     enable = true;
@@ -69,7 +69,7 @@ in {
 
   networking = {
     interfaces = {
-      eth0 = {
+      ${bindingDevice} = {
         ipv4 = {
           addresses = [{
             address = "192.168.100.1";
@@ -84,7 +84,7 @@ in {
       };
     };
     firewall = {
-      allowedUDPPorts = [
+      interfaces.${bindingDevice}.allowedUDPPorts = [
         # DHCP
         67
         68
@@ -95,7 +95,7 @@ in {
         ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o ${sharedInternetDevice} -j MASQUERADE
         ${pkgs.iptables}/bin/ip6tables -t nat -A POSTROUTING -o ${sharedInternetDevice} -j MASQUERADE
       '';
-      trustedInterfaces = [ "sfp1" ];
+      trustedInterfaces = [ bindingDevice ];
     };
   };
 }
