@@ -31,6 +31,7 @@ in {
     extraSessionCommands = ''
       ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.gif &
       ${pkgs.dwmblocks}/bin/dwmblocks &
+      ${pkgs.brightnessctl}/bin/brightnessctl s 65535
     '';
   };
 
