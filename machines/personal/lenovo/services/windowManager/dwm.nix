@@ -29,8 +29,7 @@ in {
   services.xserver.windowManager.dwm = {
     enable = true;
     extraSessionCommands = ''
-      ${pkgs.pipewire}/bin/pw-metadata -n settings 0 default.audio.sink alsa_output.usb-Sony_INZONE_H9_II-00.analog-stereo
-      ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.mp4 &
+      ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.gif &
       ${pkgs.dwmblocks}/bin/dwmblocks &
     '';
   };
