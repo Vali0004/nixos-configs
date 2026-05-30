@@ -8,7 +8,7 @@ let
 in {
   environment.systemPackages = [
     sddm-theme
-    pkgs.xorg.xbacklight
+    pkgs.brightnessctl
   ];
 
   services.xserver = {
