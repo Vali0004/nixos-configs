@@ -45,6 +45,8 @@
     killall
     # cli unrar
     libarchive
+    # Reduced blanking profiles
+    libxcvt
     # Wormhole
     magic-wormhole
     # Video Player
