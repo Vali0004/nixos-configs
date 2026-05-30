@@ -143,7 +143,11 @@
     kde-ark.enable = true;
     nemo.enable = true;
     spicetify.enable = true;
-    steam.enable = true;
+    steam = {
+      enable = true;
+      enableGamescope = true;
+      enableVramMgmt = true;
+    };
     unityhub.enable = true;
     vscode.enable = true;
     wireshark = {

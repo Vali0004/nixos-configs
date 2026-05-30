@@ -10,6 +10,11 @@
       default = false;
       description = "Whether to Gamescope or not.";
     };
+    enableVramMgmt = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Whether to dmemcg (VRAM Management) or not.";
+    };
   };
 
   config = lib.mkIf config.programs.steam.enable {
@@ -47,7 +52,7 @@
       protontricks
     ];
 
-    systemd.services.dmemcg-booster = {
+    systemd.services.dmemcg-booster = lib.mkIf config.programs.steam.enableVramMgmt {
       enable = true;
       after = [ "multi-user.target" ];
       description = "Service for enabling and controlling dmem cgroup limits for boosting foreground games, system-level";
@@ -56,7 +61,7 @@
       };
     };
 
-    systemd.user.services.dmemcg-booster = {
+    systemd.user.services.dmemcg-booster = lib.mkIf config.programs.steam.enableVramMgmt {
       enable = true;
       after = [ "multi-user.target" ];
       description = "Service for enabling and controlling dmem cgroup limits for boosting foreground games, user-level";
