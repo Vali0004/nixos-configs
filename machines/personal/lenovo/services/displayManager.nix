@@ -6,7 +6,10 @@ let
     embeddedTheme = "hyprland_kath";
   };
 in {
-  environment.systemPackages = [ sddm-theme ];
+  environment.systemPackages = [
+    sddm-theme
+    pkgs.xorg.xbacklight
+  ];
 
   services.xserver = {
     enable = true;
