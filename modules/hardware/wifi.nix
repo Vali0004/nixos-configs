@@ -16,10 +16,13 @@
     ../networking/wifi-networks.nix
   ];
 
-  config.networking = lib.mkIf config.hardware.wifi.enable {
+  config = lib.mkIf config.hardware.wifi.enable {
+    environment.systemPackages = with pkgs; [
+      iw
+    ];
     # We use wpa_cli, no need for NM
-    networkmanager.enable = lib.mkForce false;
-    wireless = {
+    networking.networkmanager.enable = lib.mkForce false;
+    networking.wireless = {
       enable = true;
       networks = lib.listToAttrs (map (network: {
         name = network.name;

@@ -5,7 +5,10 @@
 
   boot = {
     binfmt.emulatedSystems = [ "powerpc64-linux" "armv7l-linux" ];
-    extraModprobeConfig = "options vfio-pci ids=1002:7340,1002:ab38";
+    extraModprobeConfig = ''
+      options vfio-pci ids=1002:7340,1002:ab38
+      options rtw89_core disable_ps_mode=y
+    '';
     initrd.availableKernelModules = [
       "ahci" # SATA
       "bridge" "br_netfilter" # networkd

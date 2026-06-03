@@ -93,6 +93,8 @@
     libreoffice-qt
     # Reduced blanking profiles
     libxcvt
+    # Set of tools for joysticks and peripherals
+    linuxConsoleTools
     # Wormhole, file sender
     magic-wormhole
     # COM Reader

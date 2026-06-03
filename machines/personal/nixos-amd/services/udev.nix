@@ -1,8 +1,22 @@
-{
+{ pkgs
+, ... }:
+
+let
+  cp5-pedals = pkgs.writeScriptBin "cp5-pedals" ''
+    ${pkgs.linuxConsoleTools}/bin/evdev-joystick --e /dev/input/by-id/usb-CAMMUS006_CAMMUS_CP5_PEDALS_4975237D3448-event-if00 --d 0 --minimum 0 --maximum 4095 --axis 1
+    ${pkgs.linuxConsoleTools}/bin/evdev-joystick --e /dev/input/by-id/usb-CAMMUS006_CAMMUS_CP5_PEDALS_4975237D3448-event-if00 --d 0 --minimum 0 --maximum 2930 --axis 2
+  '';
+in {
   services.udev.extraRules = ''
     # Aula, SayoDevice O3C
     SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"
+    # Cammus C5
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+    SUBSYSTEM=="input", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+    SUBSYSTEM=="event", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+    SUBSYSTEM=="js", ATTRS{idVendor}=="3416", ATTRS{idProduct}=="1018", MODE="0666", ENV{ID_INPUT_JOYSTICK}="1", ENV{ID_CLASS}="joystick", TAG+="uaccess"
+    ACTION=="add", ENV{ID_VENDOR_ID}=="3416", ENV{ID_MODEL_ID}=="1018", RUN+="${cp5-pedals}/bin/cp5-pedals"
     # Elgato
     SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", GROUP="wheel", MODE="0677"
     # HTC

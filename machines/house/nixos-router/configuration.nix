@@ -13,6 +13,7 @@
     networking/hosts.nix
     networking/localnet.nix
     networking/nat.nix
+    networking/shaping.nix
     networking/sysctl.nix
     networking/upnp.nix
 
