@@ -4,9 +4,8 @@
   ];
 
   boot = {
-    binfmt.emulatedSystems = [ "powerpc64-linux" "armv7l-linux" ];
+    binfmt.emulatedSystems = [ "powerpc64-linux" "armv7l-linux" "aarch64-linux" "riscv64-linux" ];
     extraModprobeConfig = ''
-      options vfio-pci ids=1002:7340,1002:ab38
       options rtw89_core disable_ps_mode=y
     '';
     initrd.availableKernelModules = [
@@ -60,7 +59,7 @@
     };
     enable = true;
     enableMemtest = true;
-    enableRescue = true;
+    enableRescue = false;
     enableProber = true;
   };
 }

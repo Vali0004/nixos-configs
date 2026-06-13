@@ -27,7 +27,7 @@
 
         resp="$(${self.curl}/bin/curl -sS --fail-with-body \
           -H "@/run/agenix/zipline-upload-headers" \
-          -H "x-zipline-domain: furryfemboy.ca" \
+          -H "X-Zipline-Domain: cdn.lab004.dev" \
           -F "file=@$tmp" \
           "https://cdn.lab004.dev/api/upload")"
 

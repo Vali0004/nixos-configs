@@ -13,6 +13,7 @@
 
     hardware/amdgpu.nix
     hardware/bluetooth.nix
+    hardware/cpu.nix
     hardware/virtualisation.nix
     hardware/wifi.nix
 

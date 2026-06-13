@@ -21,6 +21,7 @@
     10.0.0.1 radarr.localnet ${config.networking.hostName}
     10.0.0.1 readarr.localnet ${config.networking.hostName}
     10.0.0.1 sonarr.localnet ${config.networking.hostName}
+    10.0.0.1 searxng.localnet ${config.networking.hostName}
     10.0.0.1 vaultwarden.localnet ${config.networking.hostName}
     10.0.0.1 zigbee2mqtt.localnet ${config.networking.hostName}
   '';

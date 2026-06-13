@@ -16,6 +16,7 @@
       "radarr.localnet"
       "readarr.localnet"
       "sonarr.localnet"
+      "searxng.localnet"
       "vaultwarden.localnet"
       "zigbee2mqtt.localnet"
     ];

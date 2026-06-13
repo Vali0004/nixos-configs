@@ -30,6 +30,7 @@ self: super: {
     };
   });
   dwmblocks = super.callPackage pkgs/dwmblocks {};
+  llama-cpp = super.callPackage pkgs/llama-cpp {};
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {

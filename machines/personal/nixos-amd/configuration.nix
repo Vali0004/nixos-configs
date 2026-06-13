@@ -21,7 +21,7 @@
     services/windowManager/dwm.nix
     services/displayManager.nix
 
-    services/dnsmasq.nix
+    #services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
     services/picom.nix
@@ -107,14 +107,17 @@
     amdgpu = {
       enable = true;
       allowOverclocking = true;
+      rocmSupport = true;
     };
     audio.pipewire.enable = true;
     bluetooth.enable = true;
+    opencl.enable = true;
     opentabletdriver = {
       enable = true;
       daemon.enable = true;
     };
     openrazer.enable = true;
+    enableKvm = true;
     wifi.enable = true;
     virtualisation.enable = false;
   };
@@ -122,7 +125,8 @@
   networking = {
     hostName = "nixos-amd";
     interfaces = {
-      wlan0.useDHCP = true;
+      #wlan0.useDHCP = true;
+      eth0.useDHCP = true;
     };
     useDHCP = false;
     usePredictableInterfaceNames = true;
@@ -198,14 +202,14 @@
       matchConfig.MACAddress = "94:bb:43:52:13:b8";
       linkConfig.Name = "wlan0";
     };
-    "10-sfp0" = {
-      matchConfig.MACAddress = "14:02:ec:7f:3c:4c";
-      linkConfig.Name = "sfp0";
-    };
-    "10-sfp1" = {
-      matchConfig.MACAddress = "14:02:ec:7f:3c:4d";
-      linkConfig.Name = "sfp1";
-    };
+    #"10-sfp0" = {
+    #  matchConfig.MACAddress = "14:02:ec:7f:3c:4c";
+    #  linkConfig.Name = "sfp0";
+    #};
+    #"10-sfp1" = {
+    #  matchConfig.MACAddress = "14:02:ec:7f:3c:4d";
+    #  linkConfig.Name = "sfp1";
+    #};
   };
 
   # 8GiB Swap

@@ -62,6 +62,7 @@
 
     services/cors-anywhere.nix
     services/pterodactyl.nix
+    services/searxng.nix
     services/toxvpn.nix
     services/ttyd.nix
     services/vaultwarden.nix

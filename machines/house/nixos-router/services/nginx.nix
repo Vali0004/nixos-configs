@@ -200,6 +200,13 @@
         port = 8989;
       };
     };
+    "searxng.localnet" = {
+      forceSSL = false;
+      locations."/" = lib.mkProxy {
+        ip = "shitzen-nixos";
+        port = 8888;
+      };
+    };
     "vaultwarden.localnet" = {
       forceSSL = false;
       locations."/" = lib.mkProxy {

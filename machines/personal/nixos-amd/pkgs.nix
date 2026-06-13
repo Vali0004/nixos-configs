@@ -65,6 +65,8 @@
     gnome-calculator
     # sed
     gnused
+    # Hashcat
+    hashcat
     # Hytale Launcher
     hytale-launcher
     # Hex-Rays IDA Pro 9.0 Beta
@@ -128,6 +130,8 @@
     osu-stable
     # osu!lazer
     osu-lazer-bin
+    # llama.cpp Vulkan
+    llama-cpp-vulkan
     # PCI Utilities
     pciutils
     # Printable Document Format Toolkit
@@ -141,7 +145,12 @@
     # Razer Daemon Frontend
     polychromatic
     # Python
-    python3
+    (python3.withPackages (ps: with ps; [
+      beautifulsoup4
+      ddgs
+      numpy
+      requests
+    ]))
     # Minecraft launcher
     prismlauncher
     # Qt-based LA/scope/MSO GUI
