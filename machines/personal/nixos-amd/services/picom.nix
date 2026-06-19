@@ -26,6 +26,7 @@
         "class_g = 'dwm-traymirror'"
         "class_g = 'dwm'"
         "class_g = 'dmenu'"
+        "window_type = 'dock'"
       ];
       fading = true;
       fade-in-step = 1;
@@ -48,8 +49,11 @@
     vSync = true;
     wintypes = {
       dnd.shadow = false;
-      dock.clip-shadow-above = true;
-      dock.shadow = false;
+      dock = {
+        clip-shadow-above = true;
+        shadow = false;
+        corner-radius = 0;
+      };
       dropdown_menu.opacity = 0.8;
       menu.shadow = false;
       popup_menu.opacity = 0.8;

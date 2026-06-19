@@ -95,7 +95,7 @@ function createServer() {
   });
 
   server.tool(
-    "search",
+    "web_search",
     "Search via SearXNG (stable gateway)",
     {
       query: z.string().min(1),

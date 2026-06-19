@@ -100,7 +100,7 @@
 
   programs = {
     corectrl.enable = true;
-    command-not-found.enable = true;
+    command-not-found.enable = true && config.programs.nix-index.enable == false;
     dconf.enable = true;
     easyeffects.enable = true;
     git = {

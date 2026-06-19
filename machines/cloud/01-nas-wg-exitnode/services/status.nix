@@ -7,7 +7,7 @@
     description = "Status daemon";
     serviceConfig = {
       Environment = [ "PORT=3000" ];
-      ExecStart = "${pkgs.nodejs_20}/bin/node ${pkgs.kursu-dev-status}/lib/node_modules/kursu-dev-status/server.js";
+      ExecStart = "${pkgs.nodejs_26}/bin/node ${pkgs.kursu-dev-status}/lib/node_modules/kursu-dev-status/server.js";
     };
     wantedBy = [ "multi-user.target" ];
   };

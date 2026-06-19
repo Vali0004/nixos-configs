@@ -1,10 +1,10 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/9ffd29fb9c554e1fa667aa96c07fb3d1b3ac0659";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/c06b4ae3d6599a672a6210b7021d699c351eebda";
     agenix.url = "github:ryantm/agenix";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hytale-launcher.url = "github:JPyke3/hytale-launcher-nix";

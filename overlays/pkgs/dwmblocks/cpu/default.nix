@@ -34,8 +34,8 @@ writeShellScript "cpu" ''
   DIFF_TOTAL=$((TOTAL2 - TOTAL1))
   DIFF_USAGE=$((100 * (DIFF_TOTAL - DIFF_IDLE) / DIFF_TOTAL))
 
-  if [ -f /sys/class/thermal/thermal_zone0/temp ]; then
-    TEMP_RAW=$(cat /sys/class/thermal/thermal_zone0/temp)
+  if [ -f /sys/class/hwmon/hwmon1/temp1_input ]; then
+    TEMP_RAW=$(cat /sys/class/hwmon/hwmon1/temp1_input 2>/dev/null)
     TEMP_C=$((TEMP_RAW / 1000))
   else
     TEMP_C="?"

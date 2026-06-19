@@ -40,6 +40,7 @@
 , xcbutilrenderutil
 , xcbutilwm
 , zlib
+, z3
 }:
 
 let
@@ -147,6 +148,7 @@ in stdenv.mkDerivation rec {
     xcbutilrenderutil
     xcbutilwm
     zlib
+    z3
   ];
   buildInputs = runtimeDependencies;
 
@@ -207,14 +209,17 @@ in stdenv.mkDerivation rec {
 
     # Some libraries come with the installer.
     addAutoPatchelfSearchPath $IDADIR
+    addAutoPatchelfSearchPath $IDADIR/ida
+    addAutoPatchelfSearchPath $IDADIR/plugins
 
     # Link the binaries to the output.
     # Also, hack the PATH so that pythonForIDA is used over the system python.
     for bb in ida idat assistant hv hvui upg32; do
       wrapProgram $IDADIR/$bb \
-        --prefix PYTHONPATH : $IDADIR/idalib/python \
+        --set PYTHONHOME ${pythonForIDA} \
+        --set PYTHONPATH $IDADIR/opt/python:$IDADIR/idalib/python \
         --prefix PATH : ${pythonForIDA}/bin \
-        --prefix LD_LIBRARY_PATH : ${libsForQt5.qtbase}/lib:${libsForQt5.qttools}/lib
+        --prefix LD_LIBRARY_PATH : $IDADIR/plugins:$IDADIR/ida:$IDADIR/opt:${pythonForIDA}/lib:${libsForQt5.qtbase}/lib:${libsForQt5.qttools}/lib
       ln -s $IDADIR/.$bb-wrapped $out/bin/$bb
     done
 

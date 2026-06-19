@@ -23,7 +23,8 @@ in {
       file.".config/syncplay.ini".source = ./syncplay.ini;
       # Fixes Zsh plugin for SSH Hostnames
       file.".ssh/config".text = ssh_config;
-      stateVersion = "26.05";
+      stateVersion = "26.11";
+      enableNixpkgsReleaseCheck = false;
     };
 
     gtk = {

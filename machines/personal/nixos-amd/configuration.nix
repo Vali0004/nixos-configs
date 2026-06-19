@@ -16,6 +16,7 @@
     programs/agenix.nix
     programs/dconf.nix
     programs/gnupg.nix
+    programs/nix-index.nix
     programs/ssh.nix
 
     services/windowManager/dwm.nix
@@ -24,6 +25,7 @@
     #services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
+    services/openssh.nix
     services/picom.nix
     services/ratbagd.nix
     services/syslog.nix
@@ -74,6 +76,12 @@
         "noauto"
         "x-systemd.automount"
       ];
+    };
+    # Mount #:\
+    "/mnt/e" = {
+      label = "WIN_NIX";
+      fsType = "ntfs";
+      options = ntfs_options;
     };
     # Mount the NFS
     "/mnt/data" = {
@@ -134,7 +142,7 @@
 
   programs = {
     corectrl.enable = true;
-    command-not-found.enable = true;
+    command-not-found.enable = true && config.programs.nix-index.enable == false;
     dconf.enable = true;
     element-desktop.enable = true;
     easyeffects.enable = true;
@@ -218,24 +226,33 @@
     size = 8192;
   }];
 
-  users.users.vali = {
-    isNormalUser = true;
-    extraGroups = [
-      "corectrl"
-      "dialout"
-      "input"
-      "openrazer"
-      "plugdev"
-      "qemu-libvirtd"
-      "render"
-      "tty"
-      "video"
-      "wheel"
-      "wireshark"
-      "usbmon"
-    ];
-    useDefaultShell = false;
-    shell = pkgs.zsh;
+  users.users = let
+    my_keys = import ../../../ssh_keys_personal.nix;
+    common_keys = import ../../../ssh_keys.nix;
+  in {
+    root = {
+      openssh.authorizedKeys.keys = my_keys;
+    };
+    vali = {
+      isNormalUser = true;
+      extraGroups = [
+        "corectrl"
+        "dialout"
+        "input"
+        "openrazer"
+        "plugdev"
+        "qemu-libvirtd"
+        "render"
+        "tty"
+        "video"
+        "wheel"
+        "wireshark"
+        "usbmon"
+      ];
+      useDefaultShell = false;
+      shell = pkgs.zsh;
+      openssh.authorizedKeys.keys = my_keys ++ common_keys;
+    };
   };
 
   xdg.enable = true;

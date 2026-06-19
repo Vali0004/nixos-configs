@@ -30,7 +30,7 @@
     hostPlatform = "x86_64-linux";
   };
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.11";
 
   systemd.services.nix-daemon.serviceConfig.OOMScoreAdjust = "350";
 }

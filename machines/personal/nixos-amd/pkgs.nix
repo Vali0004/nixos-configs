@@ -23,6 +23,8 @@
     colmena
     # Cider - Alternative Apple Music Client
     cider-2
+    # Claude - Agentic coding agent
+    claude-code
     # cURL
     curl
     # Binary utility, desined to identify what a binary is (including the compiler)
@@ -147,10 +149,22 @@
     # Python
     (python3.withPackages (ps: with ps; [
       beautifulsoup4
+      datasets
       ddgs
       numpy
+      onnx
+      onnxscript
+      pip
+      py7zr
       requests
+      sentencepiece
+      torchWithRocm
+      torchvision
+      transformers
+      virtualenv
+      xxhash
     ]))
+    sentencepiece
     # Minecraft launcher
     prismlauncher
     # Qt-based LA/scope/MSO GUI
@@ -172,6 +186,8 @@
     renderdoc
     # Better grep
     ripgrep
+    # Session system
+    screen
     # SlimeVR Trackers (VRC)
     slimevr
     slimevr-server
@@ -183,6 +199,7 @@
     stripe-cli
     # Syncplay, allows for syncing video streams with others via mpvr
     syncplay
+    syncplay-clever
     # System stats
     sysstat
     # TCP Dump

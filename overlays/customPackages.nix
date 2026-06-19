@@ -29,7 +29,9 @@ self: super: {
   patreon-dl-gui = self.callPackage pkgs/patreon-dl-gui {};
   routerd = self.callPackage pkgs/routerd {};
   rtorrent-exporter = self.callPackage pkgs/rtorrent-exporter {};
+  searxng-mcp = self.callPackage pkgs/searxng-mcp {};
   shim = self.callPackage pkgs/shim {};
   surfboard-hnap-exporter = self.callPackage pkgs/surfboard-hnap-exporter {};
+  syncplay-clever = self.callPackage pkgs/syncplay-clever {};
   xwinwrap-gif = self.callPackage pkgs/xwinwrap {};
 }

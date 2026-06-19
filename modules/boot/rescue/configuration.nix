@@ -104,7 +104,7 @@
     udisks2.enable = false;
   };
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
 
   users.users = {
     nixos = {

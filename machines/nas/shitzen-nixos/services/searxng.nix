@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ... }:
 
 {
@@ -31,7 +32,27 @@
           "json"
         ];
       };
+      engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
+        "google".disabled = true;
+        "bing".disabled = true;
+
+        "duckduckgo".disabled = true;
+        "startpage".disabled = true;
+        "brave".disabled = true;
+
+        "wikidata".disabled = false;
+        "wikipedia".disabled = false;
+        "mojeek".disabled = false;
+      };
     };
+  };
+
+  systemd.services.searxng-mcp = {
+    enable = true;
+    serviceConfig = {
+      ExecStart = "${pkgs.nodejs_24}/bin/node ${pkgs.searxng-mcp}/lib/node_modules/searxng-mcp/server.js";
+    };
+    wantedBy = [ "multi-user.target" ];
   };
 
   services.nginx.virtualHosts."kms.lab004.dev" = {

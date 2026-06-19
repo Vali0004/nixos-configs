@@ -16,8 +16,8 @@
 , zlib }:
 
 let
-  version = "V910";
-  hash = "sha256-72vEBo1XDOVhA6F5LRH2c+oXMhhUbLwf5HIsX97JDS0";
+  version = "V950";
+  hash = "sha256-DROZxTzHWMxHNbQnnKs92UKmsBYjFG2O2EwPOSv73Bw=";
 in stdenv.mkDerivation {
   pname = "jlink";
   inherit version;

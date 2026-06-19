@@ -133,7 +133,7 @@ in {
         WorkingDirectory = "${cfg.dataDir}/panel";
       };
 
-      path = with pkgs; [ curl gnutar gzip nodejs_20 yarn config.services.mysql.package ];
+      path = with pkgs; [ curl gnutar gzip nodejs_26 yarn config.services.mysql.package ];
 
       script = ''
         if [ ! -f artisan ]; then
