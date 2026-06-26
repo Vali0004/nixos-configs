@@ -119,6 +119,7 @@
     };
     audio.pipewire.enable = true;
     bluetooth.enable = true;
+    enableRedistributableFirmware = true;
     opencl.enable = true;
     opentabletdriver = {
       enable = true;

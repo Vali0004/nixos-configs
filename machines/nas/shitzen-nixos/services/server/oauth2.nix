@@ -13,7 +13,7 @@
     email.domains = [
       "kursu.dev"
       "fuckk.lol"
-      "lab0004.dev"
+      "lab004.dev"
     ];
     enable = true;
     nginx = {

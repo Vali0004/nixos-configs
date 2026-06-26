@@ -35,6 +35,7 @@
       dhcp-authoritative = true;
       dhcp-host = [
         "8C:EC:4B:55:B2:F1,set:home-assistant,${config.router.lanSubnet}.2,home-assistant,infinite"
+        "6C:2B:59:75:AA:B7,set:testing-box,${config.router.lanSubnet}.3,testing-box,infinite"
         "F0:12:04:60:F8:9F,set:nixos-shitzen,${config.router.lanSubnet}.4,nixos-shitzen,infinite"
         "48:DA:35:6F:39:D0,set:kvm-39d0,${config.router.lanSubnet}.5,kvm-39d0,infinite"
         "78:20:51:DA:33:F6,set:decoMeshXE75,${config.router.lanSubnet}.6,decoMeshXE75,infinite"
@@ -44,7 +45,7 @@
         "E0:D3:62:D1:34:BE,set:deco-XE70Pro,${config.router.lanSubnet}.10,deco-XE70Pro,infinite"
         "C0:35:32:5F:CC:23,set:lenovo,${config.router.lanSubnet}.31,lenovo,infinite"
         "10:FF:E0:35:08:FB,set:nixos-amd,${config.router.lanSubnet}.189,nixos-amd,infinite"
-        "d0:46:0c:7d:bf:c4,set:worklaptop,${config.router.lanSubnet}.50,US-ANH-L-A12597,infinite"
+        "D0:46:0C:7D:BF:C4,set:worklaptop,${config.router.lanSubnet}.50,US-ANH-L-A12597,infinite"
       ];
       dhcp-range = [
         # Comcast/Xfinity has always used 10.0.0.0/24 as a LAN subnet, and I'm just used to it now

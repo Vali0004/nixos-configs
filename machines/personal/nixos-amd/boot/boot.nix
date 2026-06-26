@@ -20,6 +20,13 @@
       "binfmt_misc"
       "usbmon"
       "razerkbd"
+      # SMBus
+      "i2c-dev"
+      "i2c-smbus"
+      "i2c-piix4"
+      "sp5100_tco"
+      "at24"
+      "ee1004"
     ];
     kernel.sysctl = {
       "net.ipv4.ip_forward" = true;
@@ -42,12 +49,12 @@
       # 0xb013f6500-0xb013fa5b8 has bad bits
       # 0xb013fe500-0xb013fe580 has bad bits
       "memtest=1"
-      # 384 MiB: 0xab8000000 - 0xacfffffff
-      "memmap=384M!0xab8000000"
-      # 192 MiB: 0xb00000000 - 0xb0bffffff
-      "memmap=192M!0xb00000000"
-      # 32 MiB: 0xcaa000000 - 0xcabffffff
-      "memmap=32M!0xca8000000"
+      ## 384 MiB: 0xab8000000 - 0xacfffffff
+      #"memmap=384M!0xab8000000"
+      ## 192 MiB: 0xb00000000 - 0xb0bffffff
+      #"memmap=192M!0xb00000000"
+      ## 32 MiB: 0xcaa000000 - 0xcabffffff
+      #"memmap=32M!0xca8000000"
     ];
   };
 

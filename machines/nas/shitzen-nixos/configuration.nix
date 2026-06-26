@@ -11,7 +11,7 @@
     boot/boot.nix
 
     modules/agenix.nix
-    modules/nvidia.nix
+    #modules/nvidia.nix
     modules/wireguard.nix
     modules/wireguard-internal.nix
 
@@ -61,6 +61,7 @@
     services/virtualisation/dockge.nix
 
     services/cors-anywhere.nix
+    services/llama-cpp.nix
     services/pterodactyl.nix
     services/searxng.nix
     services/toxvpn.nix
@@ -85,7 +86,10 @@
   environment.systemPackages = with pkgs; [
     # Better TOP
     btop
+    # DNS info
     dig
+    # DMI standard decode
+    dmidecode
     # EFI Boot Manager
     efibootmgr
     # Ethernet Tool
@@ -106,6 +110,9 @@
     jdk
     # Powershell - Kill all processes
     killall
+    # Vulkan AI
+    llama-cpp-vulkan
+    stable-diffusion-cpp-vulkan
     # List Hardware
     lshw
     # List Processes Of
@@ -156,6 +163,8 @@
     # ZIP Archive Tool
     zip
     mesa
+    # Vulkan
+    vulkan-tools
   ];
 
   fileSystems = {
@@ -176,7 +185,14 @@
     };
   };
 
-  hardware.amd.enable = true;
+  hardware = {
+    amd.enable = true;
+    amdgpu = {
+      enable = true;
+      allowOverclocking = true;
+      rocmSupport = true;
+    };
+  };
 
   networking = {
     firewall = {
@@ -192,6 +208,8 @@
         443 # HTTPS
         5000 # OnTheSpot
         5201 # iperf
+        8080 # llama.cpp
+        8090 # stable-diffusion.cpp
       ];
       allowedUDPPorts = [
         5201 # iperf

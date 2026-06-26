@@ -45,6 +45,8 @@
     flashprog
     # Internet utilities (ping6, etc.)
     inetutils
+    # Intel GPU Tooling
+    intel-gpu-tools
     # Internet performance tool
     iperf
     # JSON parser
@@ -81,6 +83,8 @@
     vulkan-extension-layer
     vulkan-tools
     vulkan-validation-layers
+    # llama.cpp Vulkan
+    llama-cpp-vulkan
     # X Window System Clipboard
     xclip
     # WebGet

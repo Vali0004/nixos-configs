@@ -57,9 +57,18 @@
       (import overlays/existingPackages.nix)
     ] ++ flakeOverlays;
 
-    pkgs = import nixpkgs { inherit system overlays; };
+    pkgsOverlays = overlays ++ [
+      (import overlays/zfsPackages.nix)
+    ];
 
-    pkgsStable = import nixpkgs-stable { inherit system overlays; };
+    pkgs = import nixpkgs {
+      inherit system;
+      overlays = pkgsOverlays;
+    };
+
+    pkgsStable = import nixpkgs-stable {
+      inherit system overlays;
+    };
 
     specialArgs = {
       # Cursed trick to get a proper lib override,
@@ -94,7 +103,7 @@
         ];
       };
       compaq-8200-sff-shitbox = {
-        deployment.targetHost = "192.168.100.205";
+        deployment.targetHost = "10.0.0.205";
         imports = [
           agenix.nixosModules.age
           nix-gaming.nixosModules.pipewireLowLatency
@@ -108,10 +117,10 @@
           machines/house/02-home-assistant-localnet/configuration.nix
         ];
       };
-      unused-now = {
+      testing-box = {
         deployment.targetHost = "10.0.0.3";
         imports = [
-          machines/house/03-unused-now/configuration.nix
+          machines/house/03-testing-box/configuration.nix
         ];
       };
       shitzen-nixos = {

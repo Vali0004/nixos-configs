@@ -38,6 +38,7 @@ in {
     compaq-8000-sff-shitbox
   ];
   "vaultwarden.age".publicKeys = keys;
+  "llama-cpp-key.age".publicKeys = keys;
   "oauth2.age".publicKeys = keys;
   "oauth2-proxy.age".publicKeys = keys;
   "pterodactyl.age".publicKeys = keys;

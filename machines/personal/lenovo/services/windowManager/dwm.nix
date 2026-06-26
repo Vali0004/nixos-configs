@@ -14,7 +14,7 @@ in {
     # App launcher
     dmenu_wrapper
     # dwm status
-    dwmblocks
+    dwmblocks-laptop
     # Gifsicle, used to split & optimize GIFS
     gifsicle
     # dwm ipc
@@ -30,7 +30,7 @@ in {
     enable = true;
     extraSessionCommands = ''
       ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.gif &
-      ${pkgs.dwmblocks}/bin/dwmblocks &
+      ${pkgs.dwmblocks-laptop}/bin/dwmblocks &
       ${pkgs.brightnessctl}/bin/brightnessctl s 65535
     '';
   };

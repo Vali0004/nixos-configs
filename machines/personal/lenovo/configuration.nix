@@ -81,9 +81,11 @@
     amdgpu = {
       enable = true;
       allowOverclocking = true;
+      rocmSupport = true;
     };
     audio.pipewire.enable = true;
     bluetooth.enable = true;
+    enableRedistributableFirmware = true;
     enableKvm = true;
     wifi.enable = true;
   };

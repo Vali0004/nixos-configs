@@ -73,6 +73,8 @@
     hytale-launcher
     # Hex-Rays IDA Pro 9.0 Beta
     ida-pro
+    # I2C Tools
+    i2c-tools
     # Internet utilities (ping6, etc.)
     inetutils
     # Internet performance tool
@@ -127,6 +129,8 @@
     obs-studio
     # Razer Software Daemon
     openrazer-daemon
+    # Open-source LLM Coding agent
+    opencode
     # nix-gaming
     osu-gatari
     osu-stable

@@ -33,16 +33,18 @@
         ];
       };
       engines = lib.mapAttrsToList (name: value: { inherit name; } // value) {
+        "ahmia".disabled = true;
+        "torch".disabled = true;
         "google".disabled = true;
         "bing".disabled = true;
 
-        "duckduckgo".disabled = true;
+        "duckduckgo".disabled = false;
         "startpage".disabled = true;
         "brave".disabled = true;
 
         "wikidata".disabled = false;
         "wikipedia".disabled = false;
-        "mojeek".disabled = false;
+        "mojeek".disabled = true;
       };
     };
   };
@@ -61,6 +63,12 @@
     locations."/" = lib.mkProxy {
       ip = "192.168.100.1";
       port = 3200;
+      config = ''
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+      '';
     };
   };
 }

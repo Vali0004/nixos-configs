@@ -32,12 +32,15 @@ function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
 }
 
-async function fetchWithTimeout(url, ms = 4000) {
+async function fetchWithTimeout(url, options = {}, ms = 4000) {
   const controller = new AbortController();
   const t = setTimeout(() => controller.abort(), ms);
 
   try {
-    return await fetch(url, { signal: controller.signal });
+    return await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
   } finally {
     clearTimeout(t);
   }
@@ -88,89 +91,153 @@ function fallback(query, reason) {
   };
 }
 
+const MCP = {
+  initialize: "initialize",
+  toolsList: "tools/list",
+  toolsCall: "tools/call",
+};
+
+function isNotification(body) {
+  return body?.method?.startsWith("notifications/");
+}
+
+function jsonRpc(id, result) {
+  return {
+    jsonrpc: "2.0",
+    id,
+    result,
+  };
+}
+
+function jsonRpcError(id, code, message, data) {
+  return {
+    jsonrpc: "2.0",
+    id,
+    error: { code, message, data },
+  };
+}
+
+function handleInitialize(body) {
+  return jsonRpc(body.id, {
+    protocolVersion: body?.params?.protocolVersion || "2025-11-25",
+    capabilities: {
+      tools: { listChanged: true },
+    },
+    serverInfo: {
+      name: "searxng-plain-mcp",
+      version: "1.0.0",
+    },
+  });
+}
+
+function handleToolsList() {
+  return jsonRpc(null, {
+    tools: [
+      {
+        name: "web_search",
+        description: "Search via SearXNG",
+        inputSchema: {
+          type: "object",
+          properties: {
+            query: { type: "string" },
+          },
+          required: ["query"],
+        },
+      },
+    ],
+  });
+}
+
+async function handleToolCall(body) {
+  const { name, arguments: args } = body.params;
+
+  switch (name) {
+    case "web_search": {
+      const result = await webSearchTool(args);
+
+      return jsonRpc(body.id, {
+        content: [
+          {
+            type: "text",
+            text:
+              typeof result === "string"
+                ? result
+                : JSON.stringify(result, null, 2),
+          },
+        ],
+      });
+    }
+
+    default:
+      return jsonRpcError(body.id, -32601, "unknown_tool", { name });
+  }
+}
+
+async function webSearchTool({ query }) {
+  const key = query.toLowerCase().trim();
+
+  const cached = cache.get(key);
+  if (cached && Date.now() - cached.ts < CACHE_TTL_MS) {
+    return cached.data;
+  }
+
+  let data;
+
+  try {
+    const res = await fetchWithTimeout(
+      `${SEARXNG_URL}?q=${encodeURIComponent(query)}&format=json`,
+      { method: "GET" },
+      4500
+    );
+
+    if (!res.ok) return fallback(query, `http_${res.status}`);
+
+    data = await res.json();
+  } catch {
+    return fallback(query, "timeout_or_fetch_error");
+  }
+
+  const results = normalize(data, query);
+
+  const text = results.length
+    ? results.map(r => `${r.title}\n${r.url}\n${r.content ?? ""}`).join("\n\n")
+    : `No results for: ${query}`;
+
+  const payload = {
+    query,
+    results: results.slice(0, 5),
+  };
+
+  cache.set(key, {
+    ts: Date.now(),
+    data: text,
+  });
+
+  return payload;
+}
+
 function createServer() {
   const server = new McpServer({
     name: "searxng-mcp",
     version: "2.0.0",
   });
 
-  server.tool(
-    "web_search",
-    "Search via SearXNG (stable gateway)",
-    {
-      query: z.string().min(1),
-    },
-    async ({ query }) => {
-      const key = query.toLowerCase().trim();
+  server.tool("web_search", "Search via SearXNG", {
+    query: z.string().min(1),
+  }, async ({ query }) => {
+    const result = await webSearchTool({ query });
 
-      const cached = cache.get(key);
-      if (cached && Date.now() - cached.ts < CACHE_TTL_MS) {
-        return {
-          content: [
-            {
-              type: "text",
-              text: cached.data,
-            },
-          ],
-        };
-      }
-
-      let data;
-
-      try {
-        const res = await fetchWithTimeout(
-          `${SEARXNG_URL}?q=${encodeURIComponent(query)}&format=json`,
-          4500
-        );
-
-        if (!res.ok) {
-          return fallback(query, `http_${res.status}`);
-        }
-
-        data = await res.json();
-      } catch (e) {
-        return fallback(query, "timeout_or_fetch_error");
-      }
-
-      const engineFailCount = data?.unresponsive_engines?.length ?? 0;
-      const empty = !data?.results?.length && !data?.infoboxes?.length;
-
-      if (empty && engineFailCount > 0) {
-        return fallback(query, "all_engines_degraded");
-      }
-
-      if (!data || typeof data !== "object") {
-        return fallback(query, "invalid_payload");
-      }
-
-      const results = normalize(data, query);
-
-      const text = results.length
-        ? results
-            .map(r => `${r.title}\n${r.url}\n${r.content ?? ""}`)
-            .join("\n\n")
-        : `No results for: ${query}`;
-
-      const payload = {
-        query,
-        results: results.slice(0, 5),
-      };
-
-      cache.set(key, {
-        ts: Date.now(),
-        data: text,
-      });
-
-      return {
-        content: [
-          {
-            type: "text",
-            text,
-          },
-        ],
-      };
-    }
-  );
+    return {
+      content: [
+        {
+          type: "text",
+          text: typeof result === "string"
+            ? result
+            : JSON.stringify(result, null, 2),
+        },
+      ],
+    };
+  });
 
   return server;
 }
@@ -182,6 +249,40 @@ function createTransport(sessionId) {
     sessionIdGenerator: () => sessionId,
   });
 }
+
+app.post("/mcp-plain", async (req, res) => {
+  try {
+    const body = req.body;
+
+    if (isNotification(body)) {
+      return res.status(204).end();
+    }
+
+    switch (body?.method) {
+    case MCP.initialize:
+      return res.json(handleInitialize(body));
+
+    case MCP.toolsList:
+      return res.json(handleToolsList());
+
+    case MCP.toolsCall:
+      return res.json(await handleToolCall(body));
+
+    default:
+      return res.status(400).json({
+        error: "unsupported_method",
+        received: body?.method,
+      });
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      error: "internal_error",
+      detail: err?.message ?? String(err),
+    });
+  }
+});
 
 app.post("/mcp", async (req, res) => {
   const sessionId = req.headers["mcp-session-id"] || randomUUID();

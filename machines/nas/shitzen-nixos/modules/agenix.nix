@@ -55,6 +55,12 @@
       owner = "hydra";
       group = "hydra";
     };
+    llama-cpp-key = {
+      file = ../../../../secrets/llama-cpp-key.age;
+      owner = "llm";
+      group = "llm";
+      mode = "0440";
+    };
     oauth2 = {
       file = ../../../../secrets/oauth2.age;
       owner = "nginx";

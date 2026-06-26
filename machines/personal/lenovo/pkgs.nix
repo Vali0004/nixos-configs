@@ -37,6 +37,10 @@
     gnused
     # Hex-Rays IDA Pro 9.0 Beta
     ida-pro
+    # I2C Tools
+    i2c-tools
+    # Internet utilities (ping6, etc.)
+    inetutils
     # Internet performance tool
     iperf
     # JSON parser
@@ -47,6 +51,8 @@
     libarchive
     # Reduced blanking profiles
     libxcvt
+    # llama.cpp Vulkan
+    llama-cpp-vulkan
     # Wormhole
     magic-wormhole
     # Video Player
@@ -57,6 +63,8 @@
     nodejs_24
     # Video capture tool
     obs-studio
+    # Open-source LLM Coding agent
+    opencode
     # Audio Player Control
     playerctl
     # Skylanders NFC Reader
