@@ -67,10 +67,14 @@
     playerctl
     # Python
     python3
+    # Screen
+    screen
     # Ookla Speedtest
     speedtest
     # Syncplay, allows for syncing video streams with others via mpvr
     syncplay
+    # Verus Miner
+    srbminer-multi
     # TCP Dump
     tcpdump
     # ZIP Archive Undo

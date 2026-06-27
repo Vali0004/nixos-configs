@@ -1,4 +1,5 @@
 self: super: {
+  srbminer-multi = self.callPackage pkgs/srbminer-multi {};
   beammp-launcher = self.callPackage pkgs/beammp-launcher {};
   cors-anywhere = self.callPackage pkgs/cors-anywhere {};
   darling = self.callPackage pkgs/darling {};

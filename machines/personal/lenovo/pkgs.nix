@@ -67,6 +67,10 @@
     opencode
     # Audio Player Control
     playerctl
+    # Screen
+    screen
+    # Verus Miner
+    srbminer-multi
     # Skylanders NFC Reader
     skylanders-nfc-reader
     # Ookla Speedtest

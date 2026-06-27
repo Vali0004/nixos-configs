@@ -58,6 +58,8 @@
     psmisc
     # Screen
     screen
+    # Verus Miner
+    srbminer-multi
     # TCP Dump
     tcpdump
     # USB Utilies

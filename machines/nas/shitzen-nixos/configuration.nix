@@ -84,6 +84,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Verus Miner
+    srbminer-multi
     # Better TOP
     btop
     # DNS info

@@ -5,6 +5,8 @@
   environment.systemPackages = with pkgs; [
     # Terminal
     alacritty-graphics
+    # Verus Miner
+    srbminer-multi
     # Key system (remote deploy)
     agenix
     # Android tools (ADB)
@@ -132,6 +134,7 @@
     # Open-source LLM Coding agent
     opencode
     # nix-gaming
+    clonehero
     osu-gatari
     osu-stable
     # osu!lazer
