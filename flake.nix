@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/c06b4ae3d6599a672a6210b7021d699c351eebda";
     agenix.url = "github:ryantm/agenix";
+    comfyui-nix.url = "github:utensils/comfyui-nix";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,6 +25,7 @@
     , nixpkgs
     , nixpkgs-stable
     , agenix
+    , comfyui-nix
     , home-manager
     , hytale-launcher
     , nix-gaming
@@ -47,7 +49,9 @@
         spicetifyExtensions = spicetify.outputs.legacyPackages.${system}.extensions;
         zfs-fragmentation = zfs-utils.packages.${system}.zfs-fragmentation;
         txg-watcher = zfs-utils.packages.${system}.txg-watcher;
-        wings = pterodactyl-wings-nix.packages.x86_64-linux.pterodactyl-wings;
+        wings = pterodactyl-wings-nix.packages.${system}.pterodactyl-wings;
+        comfy-ui = comfyui-nix.packages.${system}.default;
+        comfy-ui-rocm = comfyui-nix.packages.${system}.rocm;
       })
     ];
 

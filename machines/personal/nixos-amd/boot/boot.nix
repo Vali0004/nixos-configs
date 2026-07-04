@@ -1,3 +1,6 @@
+{ config
+, ... }:
+
 {
   imports = [
     ./kernel.nix
@@ -7,7 +10,11 @@
     binfmt.emulatedSystems = [ "powerpc64-linux" "armv7l-linux" "aarch64-linux" "riscv64-linux" ];
     extraModprobeConfig = ''
       options rtw89_core disable_ps_mode=y
+      options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     '';
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback.out
+    ];
     initrd.availableKernelModules = [
       "ahci" # SATA
       "bridge" "br_netfilter" # networkd
@@ -17,8 +24,11 @@
       "sd_mod"
     ];
     kernelModules = [
+      # Binary Format
       "binfmt_misc"
+      # USB Monitor
       "usbmon"
+      # Razer Keyboard
       "razerkbd"
       # SMBus
       "i2c-dev"
@@ -27,6 +37,10 @@
       "sp5100_tco"
       "at24"
       "ee1004"
+      # Virtual Camera
+      "v4l2loopback"
+      # Virtual Microphone, built-in
+      "snd-aloop"
     ];
     kernel.sysctl = {
       "net.ipv4.ip_forward" = true;

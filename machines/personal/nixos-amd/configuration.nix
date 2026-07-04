@@ -94,7 +94,6 @@
         "x-systemd.automount"
         "x-systemd.idle-timeout=600"
         "x-systemd.mount-timeout=5s"
-        "x-systemd.device-timeout=5s"
 
         "hard"
         "timeo=50"
@@ -155,6 +154,22 @@
     java.enable = true;
     kde-ark.enable = true;
     nemo.enable = true;
+    obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+      plugins = with pkgs.obs-studio-plugins; [
+        # Background modifiers
+        obs-backgroundremoval
+        obs-composite-blur
+        # PipeWire Audio Capture
+        obs-pipewire-audio-capture
+        # AMD accel
+        obs-vaapi
+        obs-gstreamer
+        # Vulkan capture
+        obs-vkcapture
+      ];
+    };
     spicetify.enable = true;
     steam = {
       enable = true;
@@ -241,7 +256,6 @@
         "dialout"
         "input"
         "openrazer"
-        "plugdev"
         "qemu-libvirtd"
         "render"
         "tty"

@@ -44,6 +44,7 @@ self: super: {
       hash = "sha256-B/5m1JXdUpczUMNN4cy5p6YurjmRFxMQHG3cQFSmZSs=";
     };
   });
+  stable-diffusion-cpp = self.callPackage pkgs/stable-diffusion-cpp {};
   libtorrent-rakshasa = super.libtorrent-rakshasa.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";
     src = self.fetchFromGitHub {

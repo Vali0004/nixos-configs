@@ -64,6 +64,7 @@
     services/llama-cpp.nix
     services/pterodactyl.nix
     services/searxng.nix
+    services/stable-diffusion-cpp.nix
     services/toxvpn.nix
     services/ttyd.nix
     services/vaultwarden.nix

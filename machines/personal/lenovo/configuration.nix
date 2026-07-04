@@ -61,7 +61,6 @@
         "x-systemd.automount"
         "x-systemd.idle-timeout=600"
         "x-systemd.mount-timeout=5s"
-        "x-systemd.device-timeout=5s"
 
         "hard"
         "timeo=50"
@@ -134,7 +133,6 @@
     my_keys = import ../../../ssh_keys_personal.nix;
   in {
     defaultUserShell = pkgs.zsh;
-    groups.plugdev = {};
     users.root = {
       openssh.authorizedKeys.keys = my_keys;
       useDefaultShell = false;
@@ -147,7 +145,6 @@
         "dialout"
         "input"
         "openrazer"
-        "plugdev"
         "qemu-libvirtd"
         "render"
         "tty"

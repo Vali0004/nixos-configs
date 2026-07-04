@@ -32,7 +32,7 @@ in {
       SOGoCacheCleanupInterval = 300;
       SOGoMemcachedHost = "192.168.100.1";
 
-      SOGoMailDomain = "${config.services.sogo.vhostName}";
+      SOGoMailDomain = "lab004.dev";
       SOGoEnableEMailAlarms = YES;
       SOGoMailCustomFromEnabled = YES;
       SOGoMailingMechanism = "smtp";

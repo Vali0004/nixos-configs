@@ -8,6 +8,8 @@ import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/
 const SEARXNG_URL =
   process.env.SEARXNG_URL || "http://127.0.0.1:8888/search";
 
+const A1111_URL = process.env.A1111_URL || "http://127.0.0.1:8090";
+
 const app = express();
 app.use(express.json({ limit: "1mb" }));
 app.use(cors({ origin: "*" }));
@@ -124,14 +126,14 @@ function handleInitialize(body) {
       tools: { listChanged: true },
     },
     serverInfo: {
-      name: "searxng-plain-mcp",
+      name: "lab004-plain-mcp",
       version: "1.0.0",
     },
   });
 }
 
-function handleToolsList() {
-  return jsonRpc(null, {
+function handleToolsList(body) {
+  return jsonRpc(body.id, {
     tools: [
       {
         name: "web_search",
@@ -142,6 +144,23 @@ function handleToolsList() {
             query: { type: "string" },
           },
           required: ["query"],
+        },
+      },
+      {
+        name: "text2img",
+        description: "Generate image via AUTOMATIC1111",
+        inputSchema: {
+          type: "object",
+          properties: {
+            prompt: { type: "string" },
+            negative_prompt: { type: "string" },
+            steps: { type: "number" },
+            cfg_scale: { type: "number" },
+            seed: { type: "number" },
+            width: { type: "number" },
+            height: { type: "number" }
+          },
+          required: ["prompt"],
         },
       },
     ],
@@ -167,6 +186,19 @@ async function handleToolCall(body) {
         ],
       });
     }
+    case "text2img": {
+      const result = await a1111Generate(args);
+
+      return jsonRpc(body.id, {
+        content: [
+          {
+            type: "image",
+            data: result.image,
+            mimeType: "image/png"
+          }
+        ]
+      });
+    }
 
     default:
       return jsonRpcError(body.id, -32601, "unknown_tool", { name });
@@ -190,7 +222,8 @@ async function webSearchTool({ query }) {
       4500
     );
 
-    if (!res.ok) return fallback(query, `http_${res.status}`);
+    if (!res.ok)
+      return fallback(query, `http_${res.status}`);
 
     data = await res.json();
   } catch {
@@ -216,9 +249,53 @@ async function webSearchTool({ query }) {
   return payload;
 }
 
+async function a1111Generate({ prompt, negative_prompt, steps, cfg_scale, seed, width, height }) {
+  const body = {
+    prompt,
+    negative_prompt: negative_prompt || "",
+
+    steps,
+    cfg_scale,
+
+    width,
+    height,
+
+    seed: seed >= 0 ? seed : -1,
+    sampler_name: "Euler a",
+
+    batch_size: 1,
+    n_iter: 1
+  };
+
+  const res = await fetch(`${A1111_URL}/sdapi/v1/txt2img`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body)
+  });
+
+  if (!res.ok) {
+    throw new Error(await res.text());
+  }
+
+  const json = await res.json();
+
+  const image = json.images?.[0];
+  if (!image) throw new Error("No image returned");
+
+  let info = null;
+  try {
+    info = json.info ? JSON.parse(json.info) : null;
+  } catch {}
+
+  return {
+    image,
+    info
+  };
+}
+
 function createServer() {
   const server = new McpServer({
-    name: "searxng-mcp",
+    name: "lab004-mcp",
     version: "2.0.0",
   });
 
@@ -238,6 +315,33 @@ function createServer() {
       ],
     };
   });
+
+  server.tool(
+    "text2img",
+    "Generate an image using AUTOMATIC1111 Stable Diffusion",
+    {
+      prompt: z.string(),
+      negative_prompt: z.string().optional(),
+      steps: z.number().optional(),
+      cfg_scale: z.number().optional(),
+      seed: z.number().optional(),
+      width: z.number().optional(),
+      height: z.number().optional()
+    },
+    async (args) => {
+      const result = await a1111Generate(args);
+
+      return {
+        content: [
+          {
+            type: "image",
+            data: result.image,
+            mimeType: "image/png"
+          }
+        ]
+      };
+    }
+  );
 
   return server;
 }
@@ -263,7 +367,7 @@ app.post("/mcp-plain", async (req, res) => {
       return res.json(handleInitialize(body));
 
     case MCP.toolsList:
-      return res.json(handleToolsList());
+      return res.json(handleToolsList(body));
 
     case MCP.toolsCall:
       return res.json(await handleToolCall(body));
@@ -340,5 +444,5 @@ setInterval(() => {
 }, 30_000);
 
 app.listen(3200, "0.0.0.0", () => {
-  console.log("SearXNG MCP gateway running on :3200");
+  console.log("Lab004 MCP gateway running on :3200");
 });

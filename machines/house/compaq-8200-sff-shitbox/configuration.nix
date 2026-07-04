@@ -113,7 +113,6 @@
       "corectrl"
       "dialout"
       "input"
-      "plugdev"
       "render"
       "tty"
       "video"

@@ -127,12 +127,11 @@
     ndisc6
     # Network Map
     nmap
-    # Video capture tool
-    obs-studio
     # Razer Software Daemon
     openrazer-daemon
     # Open-source LLM Coding agent
     opencode
+    opencode-claude-auth
     # nix-gaming
     clonehero
     osu-gatari
@@ -171,7 +170,6 @@
       virtualenv
       xxhash
     ]))
-    sentencepiece
     # Minecraft launcher
     prismlauncher
     # Qt-based LA/scope/MSO GUI
@@ -195,6 +193,8 @@
     ripgrep
     # Session system
     screen
+    # Stable Diffusion
+    stable-diffusion-cpp-rocm
     # SlimeVR Trackers (VRC)
     slimevr
     slimevr-server
@@ -233,6 +233,8 @@
     vulkan-validation-layers
     # X Window System Clipboard
     xclip
+    # Binary hex dump
+    xxd
     # WebGet
     wget
     # Wine
