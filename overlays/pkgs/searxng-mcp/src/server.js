@@ -137,7 +137,7 @@ function handleToolsList(body) {
     tools: [
       {
         name: "web_search",
-        description: "Search via SearXNG",
+        description: "Search via SearXNG (Do not specify year in your query unless told)",
         inputSchema: {
           type: "object",
           properties: {
@@ -299,7 +299,7 @@ function createServer() {
     version: "2.0.0",
   });
 
-  server.tool("web_search", "Search via SearXNG", {
+  server.tool("web_search", "Search via SearXNG (Do not specify year in your query unless told)", {
     query: z.string().min(1),
   }, async ({ query }) => {
     const result = await webSearchTool({ query });

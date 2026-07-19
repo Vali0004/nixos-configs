@@ -36,7 +36,7 @@
         "ahmia".disabled = true;
         "torch".disabled = true;
         "google".disabled = true;
-        "bing".disabled = true;
+        "bing".disabled = false;
 
         "duckduckgo".disabled = false;
         "startpage".disabled = true;

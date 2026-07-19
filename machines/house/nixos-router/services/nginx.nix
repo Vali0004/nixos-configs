@@ -71,8 +71,24 @@
             autoindex_exact_size off;
           '';
         };
+        "/private/images/" = {
+          alias = "/mnt/data/private/images/";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
         "/private/anime/" = {
           alias = "/mnt/data/private/Media/Anime/";
+          index = "index.htm";
+          extraConfig = ''
+            autoindex on;
+            autoindex_exact_size off;
+          '';
+        };
+        "/private/shows/" = {
+          alias = "/mnt/data/private/Media/Shows/";
           index = "index.htm";
           extraConfig = ''
             autoindex on;

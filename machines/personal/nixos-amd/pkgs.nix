@@ -27,6 +27,9 @@
     cider-2
     # Claude - Agentic coding agent
     claude-code
+    cli-proxy-api
+    # Codex - Agentic coding agent (ChatGPT)
+    codex
     # cURL
     curl
     # Binary utility, desined to identify what a binary is (including the compiler)

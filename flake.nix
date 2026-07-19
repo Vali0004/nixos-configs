@@ -12,6 +12,7 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     nixos-mailserver.url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+    llm-agents.url = "github:numtide/llm-agents.nix";
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     skylanders-nfc-reader.url = "github:Vali0004/skylanders-nfc-reader";
     spicetify.url = "github:Gerg-L/spicetify-nix";
@@ -31,6 +32,7 @@
     , nix-gaming
     , nix-minecraft
     , nixos-mailserver
+    , llm-agents
     , pterodactyl-wings-nix
     , skylanders-nfc-reader
     , spicetify
@@ -52,6 +54,8 @@
         wings = pterodactyl-wings-nix.packages.${system}.pterodactyl-wings;
         comfy-ui = comfyui-nix.packages.${system}.default;
         comfy-ui-rocm = comfyui-nix.packages.${system}.rocm;
+        cli-proxy-api = llm-agents.packages.${system}.cli-proxy-api;
+        claude-code = llm-agents.packages.${system}.claude-code;
       })
     ];
 
@@ -161,7 +165,7 @@
       nixos-amd = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ({ nixpkgs.overlays = flakeOverlays; })
+          ({ nixpkgs.overlays = flakeOverlays ++ [ llm-agents.overlays.shared-nixpkgs ]; })
           agenix.nixosModules.age
           home-manager.nixosModules.home-manager
           spicetify.nixosModules.default
