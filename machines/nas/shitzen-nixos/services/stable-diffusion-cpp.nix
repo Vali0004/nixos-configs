@@ -5,7 +5,7 @@
 
 {
   systemd.services.stable-diffusion-router = {
-    enable = true;
+    enable = false;
     description = "stable-diffusion.cpp Router Service";
     serviceConfig = {
       Type = "simple";
@@ -16,8 +16,8 @@
           --listen-port 8090 \
           --backend diffusion=rocm0,vae=rocm0,te=cpu \
           --fa \
-          -m /data/models/vision/juggernaut-xl-v9-Q8_0.gguf \
-          --serve-html-path /data/models/web/index.html
+          -m /data/ai/models/vision/juggernaut-xl-v9-Q8_0.gguf \
+          --serve-html-path /data/ai/models/web/index.html
       '';
 
       Restart = "always";

@@ -30,6 +30,8 @@
     cli-proxy-api
     # Codex - Agentic coding agent (ChatGPT)
     codex
+    # Antigravity - Agentic coding agent (Google/Gemini)
+    antigravity-cli
     # cURL
     curl
     # Binary utility, desined to identify what a binary is (including the compiler)
@@ -141,8 +143,9 @@
     osu-stable
     # osu!lazer
     osu-lazer-bin
-    # llama.cpp Vulkan
-    llama-cpp-vulkan
+    # llama.cpp
+    (llama-cpp.override { syclSupport = false; vulkanSupport = true; cudaSupport = true; })
+    xpu-smi
     # PCI Utilities
     pciutils
     # Printable Document Format Toolkit
@@ -167,12 +170,13 @@
       py7zr
       requests
       sentencepiece
-      torchWithRocm
       torchvision
+      torchaudio
       transformers
       virtualenv
       xxhash
     ]))
+    python314Packages.huggingface-hub
     # Minecraft launcher
     prismlauncher
     # Qt-based LA/scope/MSO GUI
@@ -196,8 +200,6 @@
     ripgrep
     # Session system
     screen
-    # Stable Diffusion
-    stable-diffusion-cpp-rocm
     # SlimeVR Trackers (VRC)
     slimevr
     slimevr-server

@@ -1,0 +1,1010 @@
+From c14b9b6a651b35a24df445d09e7f7e8116d1c51e Mon Sep 17 00:00:00 2001
+From: Vali0004 <diorcheats.vali@gmail.com>
+Date: Mon, 10 Aug 2026 21:21:09 -0400
+Subject: [PATCH] Initial support for the Broadcom VCE (video coding engine)
+
+The VCE is the fixed-function video block in BCM283x.  It is a separate
+processor from the VideoCore IV VPU, with its own ISA: one fixed 32-bit
+little-endian instruction word, 64 register fields, and separate code and
+data address spaces.
+
+  31      26 25  24 23    18 17    12 11             0
+ +----------+------+--------+--------+----------------+
+ |  opcode  | cond |   rd   |   rs   |      imm       |
+ +----------+------+--------+--------+----------------+
+
+Microcode for it is embedded in the VPU's .text inside start.elf; twenty
+programs are extractable, totalling 31516 instructions, which is the
+corpus the operation tables here were checked against.  The
+codec-license-hash program was also executed on real silicon and
+reproduces its expected outputs exactly, which validates the semantics.
+
+Operations whose meaning is not established are named unk_0bXXXXXX and
+emit a vce_unknown p-code op rather than a guess: a wrong mnemonic or
+wrong semantics is worse than an honest gap.
+---
+ Ghidra/Processors/VCE/Module.manifest         |   0
+ Ghidra/Processors/VCE/build.gradle            |   7 +
+ Ghidra/Processors/VCE/certification.manifest  |   7 +
+ .../Processors/VCE/data/languages/vce.cspec   |  39 +
+ .../Processors/VCE/data/languages/vce.ldefs   |  17 +
+ .../Processors/VCE/data/languages/vce.pspec   |  18 +
+ .../Processors/VCE/data/languages/vce.slaspec | 698 ++++++++++++++++++
+ 7 files changed, 786 insertions(+)
+ create mode 100644 Ghidra/Processors/VCE/Module.manifest
+ create mode 100644 Ghidra/Processors/VCE/build.gradle
+ create mode 100644 Ghidra/Processors/VCE/certification.manifest
+ create mode 100644 Ghidra/Processors/VCE/data/languages/vce.cspec
+ create mode 100644 Ghidra/Processors/VCE/data/languages/vce.ldefs
+ create mode 100644 Ghidra/Processors/VCE/data/languages/vce.pspec
+ create mode 100644 Ghidra/Processors/VCE/data/languages/vce.slaspec
+
+diff --git a/Ghidra/Processors/VCE/Module.manifest b/Ghidra/Processors/VCE/Module.manifest
+new file mode 100644
+index 0000000..e69de29
+diff --git a/Ghidra/Processors/VCE/build.gradle b/Ghidra/Processors/VCE/build.gradle
+new file mode 100644
+index 0000000..35cb0f6
+--- /dev/null
++++ b/Ghidra/Processors/VCE/build.gradle
+@@ -0,0 +1,7 @@
++apply from: "$rootProject.projectDir/gradle/distributableGhidraModule.gradle"
++apply from: "$rootProject.projectDir/gradle/javaProject.gradle"
++apply from: "$rootProject.projectDir/gradle/jacocoProject.gradle"
++apply from: "$rootProject.projectDir/gradle/javaTestProject.gradle"
++apply from: "$rootProject.projectDir/gradle/processorProject.gradle"
++apply plugin: 'eclipse'
++eclipse.project.name = 'Processors VCE'
+diff --git a/Ghidra/Processors/VCE/certification.manifest b/Ghidra/Processors/VCE/certification.manifest
+new file mode 100644
+index 0000000..31ca121
+--- /dev/null
++++ b/Ghidra/Processors/VCE/certification.manifest
+@@ -0,0 +1,7 @@
++##VERSION: 2.0
++Module.manifest||GHIDRA||||END|
++build.gradle||GHIDRA||||END|
++data/languages/vce.ldefs||GHIDRA||||END|
++data/languages/vce.cspec||GHIDRA||||END|
++data/languages/vce.pspec||GHIDRA||||END|
++data/languages/vce.slaspec||GHIDRA||||END|
+diff --git a/Ghidra/Processors/VCE/data/languages/vce.cspec b/Ghidra/Processors/VCE/data/languages/vce.cspec
+new file mode 100644
+index 0000000..f7fe5ea
+--- /dev/null
++++ b/Ghidra/Processors/VCE/data/languages/vce.cspec
+@@ -0,0 +1,39 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<compiler_spec>
++  <global>
++    <range space="ram"/>
++    <range space="data"/>
++  </global>
++  <!-- The VCE has no stack.  This points at the synthetic `sp` from vce.slaspec,
++       which no instruction can name, so Ghidra's stack analysis has nothing to
++       chew on.  It must not point at `blank`: real microcode assigns to that
++       (`mov blank, last, 0`), and a stack pointer the program writes is not one
++       Ghidra can reason about. -->
++  <stackpointer register="sp" space="ram" growth="negative"/>
++  <default_proto>
++    <!-- The VCE has no call instruction and no calling convention; microcode is
++         launched by the VPU with its inputs already placed in the register
++         file.  This exists only because Ghidra requires a default prototype. -->
++    <prototype name="__asmA" extrapop="0" stackshift="0">
++      <input>
++        <pentry minsize="1" maxsize="4"><register name="r1"/></pentry>
++        <pentry minsize="1" maxsize="4"><register name="r2"/></pentry>
++        <pentry minsize="1" maxsize="4"><register name="r3"/></pentry>
++      </input>
++      <!-- The VPU reads results back out of the register file, which it sees at
++           0x7F120000, so any register can be a program's output and Ghidra has
++           no way to tell which.  r1-r3 are anchored automatically by the
++           vce_run_complete op that vce.slaspec emits at `end`; for a program
++           that leaves its answer elsewhere, point this pentry at that register
++           and lock the function signature (Edit Function Signature - setting
++           the return type alone is overridden by signature recovery). -->
++      <output>
++        <pentry minsize="1" maxsize="4"><register name="r2"/></pentry>
++      </output>
++      <unaffected>
++        <register name="sp"/>
++      </unaffected>
++    </prototype>
++  </default_proto>
++</compiler_spec>
+diff --git a/Ghidra/Processors/VCE/data/languages/vce.ldefs b/Ghidra/Processors/VCE/data/languages/vce.ldefs
+new file mode 100644
+index 0000000..8d628dc
+--- /dev/null
++++ b/Ghidra/Processors/VCE/data/languages/vce.ldefs
+@@ -0,0 +1,23 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<language_definitions>
++
++  <!-- Bump version= whenever the slaspec changes semantics.  Ghidra keys a
++       program's cached disassembly to the language version, so leaving it
++       alone means an existing program keeps its old instructions however much
++       the .sla has changed.  A comment belongs HERE and not among the
++       attributes below - XML has no comments inside a start tag, and putting
++       one there makes the whole language definition unloadable. -->
++  <language processor="VCE"
++	    endian="little"
++	    size="32"
++	    variant="default"
++	    version="1.1"
++	    slafile="vce.sla"
++	    processorspec="vce.pspec"
++	    id="VCE:LE:32:default">
++    <description>Broadcom VideoCore Encoder (BCM283x video coding engine)</description>
++    <compiler name="default" spec="vce.cspec" id="default"/>
++  </language>
++
++</language_definitions>
+diff --git a/Ghidra/Processors/VCE/data/languages/vce.pspec b/Ghidra/Processors/VCE/data/languages/vce.pspec
+new file mode 100644
+index 0000000..4b84b97
+--- /dev/null
++++ b/Ghidra/Processors/VCE/data/languages/vce.pspec
+@@ -0,0 +1,27 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<processor_spec>
++  <programcounter register="pc"/>
++  <register_data>
++    <register name="last" group="SPECIAL"/>
++    <register name="blank" group="SPECIAL"/>
++    <register name="ZF" group="FLAGS"/>
++    <register name="NF" group="FLAGS"/>
++    <register name="CF" group="FLAGS"/>
++  </register_data>
++  <!-- The codec-block registers are VOLATILE.  Without this the decompiler
++       treats writes to them as dead stores and deletes them, so a routine that
++       programs the block shows almost no register traffic at all - decompiling
++       _h264_mbloop surfaced 2 of the 124 codec registers it actually writes.
++       Marking the space volatile keeps every access. -->
++  <volatile outputop="write_volatile" inputop="read_volatile">
++    <range space="creg" first="0x0" last="0xfff"/>
++  </volatile>
++
++  <default_memory_blocks>
++    <!-- The VCE addresses its own code and data RAMs from 0.  As the VPU sees
++         them they are at 0x7F110000 and 0x7F100000; a blob loaded on its own
++         should be based at 0. -->
++    <memory_block name="data" start_address="data:0x0" length="0x10000" mode="rw" initialized="false"/>
++  </default_memory_blocks>
++</processor_spec>
+diff --git a/Ghidra/Processors/VCE/data/languages/vce.slaspec b/Ghidra/Processors/VCE/data/languages/vce.slaspec
+new file mode 100644
+index 0000000..95d49da
+--- /dev/null
++++ b/Ghidra/Processors/VCE/data/languages/vce.slaspec
+@@ -0,0 +1,824 @@
++# SLEIGH specification for the Broadcom VCE (video coding engine).
++#
++# The VCE is the fixed-function video block in BCM283x.  It is NOT the VideoCore
++# IV VPU - that is a separate ISA with its own processor module.  The VCE runs
++# microcode found embedded in the VPU's .text inside start.elf; see
++# resources/vce/ for extracted blobs and an extraction script.
++#
++# Instruction format - one fixed 32-bit little-endian word, no exceptions:
++#
++#    31      26 25  24 23    18 17    12 11             0
++#   +----------+------+--------+--------+----------------+
++#   |  opcode  | cond |   rd   |   rs   |      imm       |
++#   +----------+------+--------+--------+----------------+
++#
++# Provenance: the operation tables come from resources/vcedis.php (originally
++# reverse-engineered by synacktiv) cross-checked against the ISA notes in
++# resources/videocoreiv/videocoreiv.arch, and validated against 31516 real
++# instructions extracted from start.elf.  The codec-license-hash program was
++# executed on real silicon and reproduces its expected outputs exactly, which
++# validates the semantics encoded below.
++#
++# Operations whose meaning is not established are deliberately named unk_0bXXXXXX
++# and given no p-code rather than a guess - a wrong mnemonic or wrong semantics
++# is worse than an honest gap.
++
++define endian=little;
++define alignment=4;
++
++# Code and data are separate address spaces on this machine: `j` targets and the
++# program counter live in "ram", while the ld/st family and the (0xNNN) operand
++# form address "data".
++define space ram      type=ram_space      size=4 default;
++define space data     type=ram_space      size=4;
++# Opcodes 11 and 15 address a space of their own, not data RAM.  The corpus
++# settles it: across 31516 instructions, ordinary loads and stores make 3259
++# accesses in page 0x000 while opcodes 11 and 15 make ZERO there and ~1400 in
++# pages 0x400-0xf00.  Confirmed on hardware - reading index 0 or 0x480 returns
++# 0x68323634, "h264", and pages 0x300-0x500 are writable storage that holds
++# whatever op15 puts there.
++define space creg     type=ram_space      size=4;
++define space register type=register_space size=4;
++
++# 64 register fields.  Two are not general purpose:
++#   last  (0)  - the implicit result of the previous instruction.  Reading it as
++#                a source is how `xor r4, r4, last` chains ALU ops.
++#   blank (63) - the no-operand placeholder; writes to it are discarded.
++define register offset=0 size=4 [
++	last r1 r2 r3 r4 r5 r6 r7
++	r8 r9 r10 r11 r12 r13 r14 r15
++	r16 r17 r18 r19 r20 r21 r22 r23
++	r24 r25 r26 r27 r28 r29 r30 r31
++	r32 r33 r34 r35 r36 r37 r38 r39
++	r40 r41 r42 r43 r44 r45 r46 r47
++	r48 r49 r50 r51 r52 r53 r54 r55
++	r56 r57 r58 r59 r60 r61 r62 blank ];
++
++define register offset=0x200 size=4 [ pc ];
++
++# Not an architectural register.  Ghidra's compiler spec insists on a stack
++# pointer; this exists to give it one that no instruction can name, so stack
++# analysis stays inert.  See the comment in vce.cspec.
++define register offset=0x208 size=4 [ sp ];
++
++# Where writes to `blank` go to die - see the RD subtable below.  Not
++# architectural; nothing ever reads it.
++define register offset=0x20c size=4 [ trash ];
++define register offset=0x300 size=1 [ ZF NF CF ];
++
++define token instr(32)
++	op        = (26,31)
++	cond      = (24,25)
++	rd        = (18,23)
++	rs        = (12,17)
++	imm       = ( 0,11)
++	imm_hi5   = ( 7,11)
++	imm_reg   = ( 3, 6)
++	imm_bit11 = (11,11)
++	imm_addr  = ( 0,10)
++	imm_op1   = ( 5, 6)     # opcode 1's operation selector - see op=1
++
++	# Same bits as rd/rs, with no attached variables.  Constraints have to be
++	# written against these: inside `RD:`/`RS:` the display operand shadows the
++	# like-named field, so `rs != 63` there would resolve to the operand rather
++	# than to the field and fail to compile.
++	rdnum     = (18,23)
++	rsnum     = (12,17)
++;
++
++attach variables [ rd rs ] [
++	last r1 r2 r3 r4 r5 r6 r7
++	r8 r9 r10 r11 r12 r13 r14 r15
++	r16 r17 r18 r19 r20 r21 r22 r23
++	r24 r25 r26 r27 r28 r29 r30 r31
++	r32 r33 r34 r35 r36 r37 r38 r39
++	r40 r41 r42 r43 r44 r45 r46 r47
++	r48 r49 r50 r51 r52 r53 r54 r55
++	r56 r57 r58 r59 r60 r61 r62 blank ];
++
++# Only four bits of register number survive in the register-operand form, so it
++# can only name the first sixteen.
++attach variables [ imm_reg ] [
++	last r1 r2 r3 r4 r5 r6 r7
++	r8 r9 r10 r11 r12 r13 r14 r15 ];
++
++################################################################
++# Register operands
++################################################################
++# Register 63 is not a register.  As a source it reads as zero, and as a
++# destination it discards.  Both halves are load-bearing:
++#
++#   - reads-as-zero is what makes `ldd r48, blank, 0x1dc` an absolute-addressed
++#     load, and what makes `dmarun blank, blank, 1` take no register input.
++#   - discards-writes is what makes `mov blank, last, 0` the nop that microcode
++#     plainly uses it as - it appears as filler after branches.
++#
++# Attaching it as an ordinary varnode instead gets both wrong, and the two
++# compound: in the codec-license-hash program `add r3, r3, 1` sets `last`, the
++# trailing `mov blank, last, 0` copies it into `blank`, and the following
++# `dmarun blank, blank, 1` reads it straight back out - so the DMA appeared to
++# take the loop counter as an argument, printing as vce_dma(0x11, 1).
++#
++# RS  - the rs field read as a source.
++# RD  - the rd field written as a destination.
++# RDS - the rd field read as a source, which is its role in the store family.
++
++RS: rs      is rs             { export rs; }
++RS: "blank" is rsnum=63       { export 0:4; }
++
++RD: rd      is rd             { export rd; }
++RD: "blank" is rdnum=63       { export trash; }
++
++RDS: rd      is rd            { export rd; }
++RDS: "blank" is rdnum=63       { export 0:4; }
++
++################################################################
++# Condition codes
++################################################################
++# Bits 25-24, MEASURED on hardware with vce_condsweep - five compares (three
++# `cmp`, two `tst`) against all four cond values, using a register in `rs` so
++# that the taken and not-taken destinations are distinct observable addresses.
++#
++#     cond 0   always takes the immediate         - unconditional
++#     cond 2   takes it iff NOT equal (ZF clear)  - `ne`
++#     cond 3   takes it iff EQUAL    (ZF set)     - `eq`
++#     cond 1   lands on `rs` alone when ZF clear, and goes somewhere that is
++#              NEITHER destination when ZF is set - see below
++#
++# Both `cmp` and `tst` drive it identically, so this really is ZF and not some
++# compare-specific side effect.
++#
++# THIS CORRECTS TWO EARLIER READINGS, and it is worth knowing why both failed.
++# The original corpus-derived guess had cond 2 = eq and cond 3 = ne, which is
++# exactly backwards.  A later hardware probe concluded "cond 1 discriminates,
++# 0/2/3 always branch" - that probe used rs = blank, so a failed predicate
++# landed on word 0, and "did not branch" could not be told apart from "branched
++# to the start".  Putting a real register in rs separates them.
++#
++# cond 1 is left as an opaque always-true rather than guessed at: it reaches
++# neither destination when ZF is set, which no simple predicate explains.  A
++# link/call form is the obvious suspect and is untested.
++CC: ""      is cond=0 { local t:1 = 1;      export t; }
++CC: ".unk1" is cond=1 { local t:1 = 1;      export t; }
++CC: ".ne"   is cond=2 { local t:1 = !ZF;    export t; }
++CC: ".eq"   is cond=3 { local t:1 = ZF;     export t; }
++
++################################################################
++# The third operand
++################################################################
++# The 12-bit field is overloaded three ways.  Proved by inspecting what the
++# referenced words actually contain: `and` points at 0xfffffffc / 0xffffffc0 /
++# 0xffffc0ff (field masks) and `or` at single bits 0x4000 / 0x8000 / 0x10000.
++
++# For the ld/st family the effective address is `rs | B` - a bitwise OR, not an
++# addition.  Verified on hardware: with rs=0x30 and imm=0x18 the load reads
++# address 0x38 (OR), not 0x48 (ADD); rs=0x20/imm=0x20 reads 0x20, not 0x40.
++# Cheap for a hardware address decoder, since merging bits needs no carry chain.
++# It also explains the two shapes real microcode uses - `ldb r4, r4, 0` (address
++# entirely in rs, as in the S-box lookup) and `ldd r48, blank, 0x1dc` (address
++# entirely in the immediate, since blank reads as 0).
++macro eaddr(out, base, off) {
++	out = base | off;
++}
++
++# NOTE: vcedis.php reads imm_hi5==0x0d (0x680-0x6ff) as naming a register, and
++# that is WRONG - disproved on hardware.  For opcode 1, which is where the range
++# is actually used, the second operand is always `last` and these bits select the
++# operation instead (see op=1 below); 0x680, 0x688 and 0x690 all produce the same
++# result with r0, r1 and r2 holding different values.  Elsewhere the range is a
++# plain literal: `xor rD, rs, 0x6a0` (opcode 53) computes exactly rs ^ 0x6a0.
++# Opcode 28 uses the range for branch targets.  So there is no register form.
++
++# Bit 11 set: a 32-bit word fetched from data memory at that address - the
++# address itself is never the operand.
++B: "("^imm_addr^")" is imm_bit11=1 & imm_addr           { export *[data]:4 imm_addr; }
++
++# Otherwise a plain literal.
++B: imm              is imm                              { export *[const]:4 imm; }
++
++# The codec-register operand.  Deliberately NOT B: bit 11 does not select a
++# memory-operand form for these two opcodes, and using B made `ver` decompile
++# as vce_config_read(_DAT_data_0000075c) - fetching data RAM at 0x75c and
++# passing the contents, when 0x75c is the register being read.  The whole
++# 12-bit field is the address; whether bit 11 means anything here is not
++# established, so nothing is masked off.
++CB: imm             is imm                              { export *[creg]:4 imm; }
++
++################################################################
++# Helpers
++################################################################
++# Every value-producing instruction also updates `last`.  Modelling that keeps
++# the decompiler honest about the operand chaining the microcode relies on.
++macro result(dest, val) {
++	dest = val;
++	last = val;
++}
++
++macro setflags(val) {
++	ZF = (val == 0);
++	NF = (val s< 0);
++}
++
++################################################################
++# Operations whose effect is real but not modelled
++################################################################
++# Ghidra's idiom for "this does something we cannot express": the decompiler
++# shows a call to the named operation instead of silently pretending the
++# instruction is a nop.  Using empty constructor bodies instead would both lie
++# to the decompiler and leave the spec full of NOP constructors.
++
++define pcodeop vce_unknown;      # operation not identified at all
++# vce_op15 and vce_config_read used to live here.  Both are gone: opcodes 15
++# and 11 are a plain write and read of the `creg` space, so neither needs an
++# opaque operation - the decompiler can show creg_0x104 = r16 instead of
++# vce_op15(0,0x104).
++define pcodeop vce_send_complete;# sendc
++define pcodeop vce_dma;          # the dma* family
++
++# Not an unknown operation - this one exists so the decompiler can see that a
++# finished program has results.  Nothing in the p-code otherwise reads a
++# program's output registers, so the whole body is dead by Ghidra's rules and
++# gets deleted: codec-license-hash decompiled to just its loop counter and its
++# dmarun.  Naming r1-r3 at `end` is enough to anchor the chain, and matches the
++# convention vce.cspec already declares (inputs r1-r3, result in r2).
++#
++# Keep this list SHORT.  The register file really is all live-out - the VPU
++# reads it at 0x7F120000 - but listing all 62 kills the decompiler outright
++# ("Decompiler process died"); the ceiling is somewhere between 12 and 16
++# arguments.  If a program leaves its answer somewhere else (h264_mbloop works
++# through r48), add that register here or lock the function signature instead.
++define pcodeop vce_run_complete;
++
++################################################################
++# Instructions
++################################################################
++
++# `end` and `j` are split into unconditional and conditional forms.  Ghidra
++# derives an instruction's fall-through from its p-code, and a `goto inst_next`
++# guarded by a condition leaves a fall-through edge even when the condition is
++# the constant 1 - so an unconditional `end` was followed by a decode of
++# whatever bytes happened to sit after the program, reported as bad instruction
++# data.  The cond=0 forms below simply have no fall-through.
++#
++# Note that `end` observes nothing: the whole register file is memory-mapped for
++# the VPU at 0x7f120000 and read back after a run, so in truth every register is
++# live-out here, but which ones carry the answer is a property of the individual
++# program and not of the instruction.  The decompiler is therefore entitled to
++# delete any computation whose result it cannot see used - the codec-license-hash
++# blob reduces to its loop counter and its dmarun.  Give a function the return
++# type its program actually produces and the chain feeding it comes back; the
++# default prototype in vce.cspec returns r2.
++:end is op=0 & cond=0 & rd & RS & imm {
++	vce_run_complete(r1, r2, r3);
++	return [0:4];
++}
++
++:end^CC is op=0 & CC & cond!=0 & rd & RS & imm {
++	if (!CC) goto inst_next;
++	vce_run_complete(r1, r2, r3);
++	return [0:4];
++}
++
++# Opcode 1 is an ALU family, not a single operation.  The second operand is
++# always `last`, and immediate bits 5-6 pick what is done with it - established
++# on hardware with mutually-distinguishing operand values:
++#
++#     imm & 0x60 == 0x00   rd = rs | last
++#     imm & 0x60 == 0x20   rd = rs ^ last
++#     imm & 0x60 == 0x40   rd = rs
++#     imm & 0x60 == 0x60   unresolved - not a simple bitwise operation
++#
++# This is what makes the codec-license-hash program work: its `xor r4, r4, 0x680`
++# style instructions really are combining with `last`.  1729 uses in the corpus.
++:orl^CC RD, RS is op=1 & CC & RD & RS & imm_op1=0 {
++	if (!CC) goto inst_next;
++	result(RD, RS | last);
++}
++
++:xorl^CC RD, RS is op=1 & CC & RD & RS & imm_op1=1 {
++	if (!CC) goto inst_next;
++	result(RD, RS ^ last);
++}
++
++:movl^CC RD, RS is op=1 & CC & RD & RS & imm_op1=2 {
++	if (!CC) goto inst_next;
++	result(RD, RS);
++}
++
++:unk_op1^CC RD, RS, B is op=1 & CC & RD & RS & B & imm_op1=3 {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:sendc^CC rd, RS, B is op=2 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_send_complete(RS, B);
++}
++
++:dmarun^CC rd, RS, B is op=3 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_dma(RS, B);
++}
++
++:ldb^CC RD, RS, B is op=8 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	result(RD, zext(*[data]:1 ea));
++}
++
++:ldw^CC RD, RS, B is op=9 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	result(RD, zext(*[data]:2 ea));
++}
++
++:ldd^CC RD, RS, B is op=10 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	result(RD, *[data]:4 ea);
++}
++
++# Reads a VCE configuration register.  Index 0 returns 0x68323634 ("h264"),
++# confirmed on hardware - which is where the mnemonic came from.
++:ver^CC RD, RS, CB is op=11 & CC & RD & RS & CB {
++	if (!CC) goto inst_next;
++	result(RD, CB);
++}
++
++# Stores: rd holds the data, and the address is formed the same way as for
++# loads.  h264_mbloop +0020 supports this - a select performed through memory
++# where `std r16, blank, 0x1dc` is read straight back by
++# `ldd r48, blank, 0x1dc`.
++#
++# UNVERIFIED on hardware, unlike the load path: a store executed standalone did
++# not land anywhere in the data RAM window the VPU can see, in any operand
++# arrangement tried.  Stores may target a different space, or need DMA or an
++# enable that a bare two-instruction program does not set up.  Treat the
++# addressing below as inferred, not measured.
++:stb^CC RDS, RS, B is op=12 & CC & RDS & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	*[data]:1 ea = RDS:1;
++}
++
++:stw^CC RDS, RS, B is op=13 & CC & RDS & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	*[data]:2 ea = RDS:2;
++}
++
++:std^CC RDS, RS, B is op=14 & CC & RDS & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	*[data]:4 ea = RDS;
++}
++
++# Opcode 15: 945 uses across the 20 programs in start.elf, meaning unresolved.
++# Established on hardware: it does NOT write rd (an `add` updates its
++# destination, this leaves it untouched), and it perturbs the configuration
++# space that `ver` reads.  Not named, and given no p-code, until that is pinned
++# down.
++# Opcode 15 writes the codec-register space that `ver` reads.  Measured: it
++# does NOT write rd - reading rd back afterwards leaves it untouched, where an
++# `add` updates its destination - so rd is the DATA, by the same convention the
++# stores use.  The corpus agrees: rd=last 686 times, rd=a register 251, and
++# rd=blank never.  Writing 0x5a5 through it and reading the address back with
++# `ver` returns 0x5a5 for pages 0x300-0x500.
++#
++# CAUTION: writing arbitrary values here can take the VPU down with a bus
++# error - some of these registers are addresses the codec block dereferences.
++:stcreg^CC RDS, RS, CB is op=15 & CC & RDS & RS & CB {
++	if (!CC) goto inst_next;
++	CB = RDS;
++}
++
++# The dma* family programs a transfer one field at a time and then kicks it.
++# Across all 20 microcode blobs the four address opcodes always carry imm=0 and
++# `rd` in 0..3, which is a slot selector rather than a destination register -
++# nothing ever reads the register these would name.  The address itself comes
++# from `rs`.
++#
++#   dmafr / dmato    set the remote (external memory) address
++#   dmatdl / dmafdl  set the local (data RAM) address
++#
++# The two directions pair exactly: a read is `dmafr` then `dmatdl` (from
++# remote, to data-local) and a write is `dmato` then `dmafdl`.  The corpus
++# counts confirm it - 56 dmafr against 56 dmatdl, 28 dmato against 28 dmafdl,
++# with no unpaired occurrence.  A small value is latched through
++# `sendc blank, r17, 0` just before each pair, which looks like the transfer
++# length.  `dmarun` then starts it, and is invariant: always
++# `dmarun blank, blank, 0x1`, both register fields blank, in all 48 uses.
++#
++# All of this is corpus inference; none of it has been checked on hardware, so
++# every one of these still lowers to an opaque vce_dma rather than to memory
++# semantics that could be wrong.
++:dmafr^CC rd, RS, B is op=16 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_dma(RS, B);
++}
++
++:dmato^CC rd, RS, B is op=17 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_dma(RS, B);
++}
++
++:dmatdl^CC rd, RS, B is op=18 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_dma(RS, B);
++}
++
++:dmafdl^CC rd, RS, B is op=19 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_dma(RS, B);
++}
++
++:dmacl^CC rd, RS, B is op=27 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_dma(RS, B);
++}
++
++:zero^CC RD, RS, B is op=24 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, 0:4);
++}
++
++:zero^CC RD, RS, B is op=25 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, 0:4);
++}
++
++# EVERY BRANCH HAS ONE DELAY SLOT: the instruction after it executes whether or
++# not the branch is taken.  Measured on hardware with the vce_branchland probe -
++# a `j` followed by per-word markers shows the next word running for every
++# target, forwards and backwards, including a jump backwards over itself.
++#
++# Without `delayslot(1)` Ghidra believes that instruction never runs, so every
++# delay slot in the program - and anything reachable only through one - is
++# reported as an unreachable block.  That is where the hundreds of "Removing
++# unreachable block" warnings came from, and why decompiled routines collapsed
++# to almost nothing.  The corpus puts real work in these slots, `sendc` and
++# `or` and stores, so they are not padding that can be ignored.
++
++# Branch.  The target is `rs | imm`, the same OR-addressing the loads use - NOT
++# the immediate alone.  The immediate is a byte offset within the program, so
++# `j.ne blank, blank, 0x2f0` lands on the instruction at 0x2f0.
++#
++# `rs` is load-bearing and ignoring it was badly wrong.  This machine's return
++# instruction is `j blank, <reg>, 0x0` - fourteen of the twenty microcode blobs
++# end with `j blank, last, 0x0`, jumping back to an address the caller left
++# behind - and measured on hardware with vce_jumpreg, landing is exact through
++# `last` and through an ordinary register alike.  With `rs` dropped, every one
++# of those returns decoded as `goto 0`: control flow folded back to the program
++# entry, everything past a return became unreachable, and whole functions
++# collapsed into `do { } while(true)`.
++#
++# `blank` exports a constant 0, so the common `j blank, blank, imm` still folds
++# to a plain direct branch and only genuinely register-relative jumps become
++# computed ones.
++# THE LOW TWO BITS OF A BRANCH IMMEDIATE ARE NOT PART OF THE ADDRESS.
++#
++# 2606 of the 4578 rs=blank branches in the corpus - 57% - have imm&3 != 0,
++# which cannot be an error.  Taking the immediate literally produces targets
++# like 0x69 that Ghidra will not decode at, because they overlap the aligned
++# instruction below: 71 of h263_decode_mbloop's 1098 words failed to decode for
++# exactly this reason, and that is where the "Instruction at 0x55 overlaps
++# 0x54" warning and most of the unreachable blocks came from.  Masking the low
++# bits takes those 71 failures to 3.
++#
++# It also settles an old hardware result that looked like a contradiction:
++# `j 0x5` was measured as "running nothing but the delay slot".  Masked, its
++# target is 0x4 = word 1, which IS the delay slot - so landing there and not
++# branching at all cannot be told apart from outside.
++#
++# What the low bits MEAN is unknown - an annul flag, a hint, a mode select.
++# Masking them is what the corpus demands; it is not a claim to understand them.
++jt_addr: rel is imm [ rel = imm & 0xffc; ] { export *:4 rel; }
++JTarget: jt_addr is jt_addr { export jt_addr; }
++JOff:    imm is imm { export *[const]:4 imm; }
++
++# Splitting the register-relative forms on whether the offset is zero: an
++# offset of zero is the return idiom, anything else is a computed jump.
++immzero:    is imm=0     { }
++immnonzero: is imm       { }
++
++:j rd, RS, JTarget is op=28 & cond=0 & rsnum=63 & rd & RS & JTarget {
++	delayslot(1);
++	goto JTarget;
++}
++
++# `j blank, <reg>, 0x0` is the RETURN, and modelling it as a plain computed
++# goto is worse than useless: Ghidra cannot recover the target, so flow
++# analysis stops dead there and every block after it is reported unreachable -
++# whole functions decompile as an empty `do { } while(true)`.
++#
++# It really is a return.  Fourteen of the twenty microcode blobs end with
++# `j blank, last, 0x0`, jumping back to an address the caller left behind, and
++# vce_jumpreg confirmed on hardware that landing is exact through `last` and
++# through an ordinary register alike.  Telling Ghidra so lets it close the
++# function instead of giving up on it.
++:j rd, RS, JOff is op=28 & cond=0 & rsnum=0 & immzero & rd & RS & JOff {
++	local t:4; eaddr(t, RS, JOff);
++	delayslot(1);
++	return [t];
++}
++
++# A register-relative jump with a non-zero offset is a genuine computed branch,
++# not a return, so it stays a goto.
++:j rd, RS, JOff is op=28 & cond=0 & rsnum!=63 & rsnum!=0 & rd & RS & JOff {
++	local t:4; eaddr(t, RS, JOff);
++	delayslot(1);
++	goto [t];
++}
++
++# The conditional forms.  NOTE, and this is measured but deliberately not
++# modelled here: on real silicon a `j` ALWAYS transfers, to
++# `rs | (predicate ? imm : 0)` - the predicate gates the immediate into the
++# address rather than gating the branch, so a conditional that fails with
++# rs = blank lands on word 0 rather than falling through.  Modelling that would
++# turn every conditional into a two-way computed goto and make the listing
++# unreadable, and the corpus is plainly written expecting fall-through, so the
++# straightforward reading is kept.  If a decompiled routine seems to fall
++# through where the hardware would not, this is why.
++:j^CC rd, RS, JTarget is op=28 & CC & cond!=0 & rsnum=63 & rd & RS & JTarget {
++	delayslot(1);
++	if (CC) goto JTarget;
++}
++
++:j^CC rd, RS, JOff is op=28 & CC & cond!=0 & rsnum=0 & immzero & rd & RS & JOff {
++	delayslot(1);
++	# SLEIGH has no conditional computed goto - `if (CC) goto [t]` is
++	# "invalid dynamic target used in goto destination" - so branch over it,
++	# which is the idiom the rest of this file uses for predication.
++	if (!CC) goto inst_next;
++	local t:4; eaddr(t, RS, JOff);
++	return [t];
++}
++
++:j^CC rd, RS, JOff is op=28 & CC & cond!=0 & rsnum!=63 & rsnum!=0 & rd & RS & JOff {
++	delayslot(1);
++	if (!CC) goto inst_next;
++	local t:4; eaddr(t, RS, JOff);
++	goto [t];
++}
++
++:ldiw^CC RD, RS, B is op=29 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	result(RD, zext(*[data]:2 ea));
++}
++
++:shl^CC RD, RS, B is op=32 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS << B);
++}
++
++:rshl^CC RD, RS, B is op=33 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, B << RS);
++}
++
++# RECOVERED on hardware: this is the ARITHMETIC shift, despite vcedis.php naming
++# both 34 and 36 "shr".  `0x80000000 asr 4` gives 0xf8000000 here and 0x08000000
++# on opcode 36; they agree on positive inputs, which is why the corpus does not
++# separate them.  The codec-license-hash blob uses opcode 36.
++:asr^CC RD, RS, B is op=34 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS s>> B);
++}
++
++:mov^CC RD, RS, B is op=35 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS);
++}
++
++# The logical shift - confirmed on hardware against opcode 34 above.
++:shr^CC RD, RS, B is op=36 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS >> B);
++}
++
++:movi^CC RD, RS, B is op=37 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, B);
++}
++
++:ror^CC RD, RS, B is op=38 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local n:4 = B & 31;
++	result(RD, (RS >> n) | (RS << (32 - n)));
++}
++
++:movi^CC RD, RS, B is op=39 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, B);
++}
++
++:mulu^CC RD, RS, B is op=40 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS * B);
++}
++
++:muls^CC RD, RS, B is op=42 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS * B);
++}
++
++:add^CC RD, RS, B is op=44 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS + B);
++}
++
++:sub^CC RD, RS, B is op=45 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS - B);
++}
++
++:ldid^CC RD, RS, B is op=46 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local ea:4; eaddr(ea, RS, B);
++	result(RD, *[data]:4 (ea & 0xfffffffc));
++}
++
++:rsub^CC RD, RS, B is op=47 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, B - RS);
++}
++
++:sub1^CC RD, RS, B is op=48 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS - 1 - B);
++}
++
++:and^CC RD, RS, B is op=49 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS & B);
++}
++
++:bic^CC RD, RS, B is op=50 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS & ~B);
++}
++
++# vcedis.php documents this as rd = (rs ^ B) & mask(bnh(B)), and it is named
++# from that rather than left as unk_0b110011 - the same treatment the other ten
++# operations that vcedis.php names but the corpus never exercises get (zero,
++# dmacl, ldiw, ror, mulu, ldid, bic, movi).  No p-code: the documented formula
++# is written in terms of bnh, which is itself unmodelled below.
++:xorlim^CC RD, RS, B is op=51 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:or^CC RD, RS, B is op=52 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS | B);
++}
++
++:xor^CC RD, RS, B is op=53 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS ^ B);
++}
++
++# RECOVERED on hardware: the operand is the INDEX OF THE SIGN BIT.  The
++# instruction keeps bits [B:0] and replicates bit B, so B=7 is an int8_t and
++# B=15 an int16_t - which is exactly what the corpus uses (15 in 1431 of 1459
++# uses, 7 in the other 28).  vcedis.php's `sign_extend(rs & mask(B))` reading is
++# wrong: it predicts signext(0x4000, 15) = 0xffffc000, and hardware gives
++# 0x00004000.  Checked against 18 input/width pairs.
++:signext^CC RD, RS, B is op=56 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	local n:4 = 31 - B;
++	result(RD, (RS << n) s>> n);
++}
++
++:movi^CC RD, RS, B is op=57 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, B);
++}
++
++# RECOVERED on hardware: this is `or`, not `mov`.  vcedis.php calls it mov
++# because its immediate is 0 in 5897 of its 7258 uses and `or rd, rs, 0` is a
++# move - but with a non-zero operand it ORs (rs=0x55555555, B=0xff gives
++# 0x555555ff).  It is the most-used opcode in the corpus, so expect the change to
++# be visible everywhere.
++:or^CC RD, RS, B is op=58 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS | B);
++}
++
++# Index of the highest bit set: bnh(0xffffffff) = 31, bnh(0x7fffffff) = 30.
++#
++# PLACEHOLDER SEMANTICS - modelled as a plain copy, which is wrong, because
++# SLEIGH has no primitive for it and the corpus gives nothing to check an
++# expansion against (2 uses, both `bnh rd, r52, 0`).  The copy keeps the
++# dataflow edge; the value is not what the hardware computes.
++:bnh^CC RD, RS, B is op=59 & CC & RD & RS & B {
++	if (!CC) goto inst_next;
++	result(RD, RS);
++}
++
++:cmp^CC rd, RS, B is op=60 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	local t:4 = RS - B;
++	setflags(t);
++	CF = (RS < B);
++}
++
++# An AND-based test that keeps no result - the counterpart to cmp's subtract.
++# Established from the corpus: 85% of its literal immediates are a single bit
++# (cmp: 14%), its destination is `last` in 285 of 286 uses, and
++# h264_mbloop_old +2e90 tests one register against 1/16/0x100 in a row to repack
++# bits, which is nonsense as an equality compare.
++:tst^CC rd, RS, B is op=61 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	local t:4 = RS & B;
++	setflags(t);
++}
++
++# Operations never observed in real microcode and with no documented meaning -
++# vcedis.php has no entry for any of these.  (Opcode 51 is never observed
++# either, but vcedis.php does document it, so it is named xorlim above.)
++:unk_0b000100^CC rd, RS, B is op=4 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b000101^CC rd, RS, B is op=5 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b000110^CC rd, RS, B is op=6 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b000111^CC rd, RS, B is op=7 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b010100^CC rd, RS, B is op=20 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b010101^CC rd, RS, B is op=21 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b010110^CC rd, RS, B is op=22 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b010111^CC rd, RS, B is op=23 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b011010^CC rd, RS, B is op=26 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b011110^CC rd, RS, B is op=30 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b011111^CC rd, RS, B is op=31 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b101001^CC rd, RS, B is op=41 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b101011^CC rd, RS, B is op=43 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b110110^CC rd, RS, B is op=54 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b110111^CC rd, RS, B is op=55 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b111110^CC rd, RS, B is op=62 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
++
++:unk_0b111111^CC rd, RS, B is op=63 & CC & rd & RS & B {
++	if (!CC) goto inst_next;
++	vce_unknown(RS, B);
++}
+-- 
+2.54.0
+

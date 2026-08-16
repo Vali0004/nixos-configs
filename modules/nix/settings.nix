@@ -11,16 +11,14 @@
         "flakes"
       ];
       substituters = [
-        "https://nix-community.cachix.org"
-        #"https://hydra.lab004.dev"
+        "https://hydra.lab004.dev"
       ];
       trusted-users = [
         "vali"
         "@wheel"
       ];
       trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        #"hydra.lab004.dev:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
+        "hydra.lab004.dev:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
       ];
     };
   };

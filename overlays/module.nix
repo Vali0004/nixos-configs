@@ -13,6 +13,7 @@
   nixpkgs.overlays = [
     (import ./customPackages.nix)
     (import ./existingPackages.nix)
+    (import ./intel-compute-next.nix)
     (self: super: {
       fastfetch-simple = self.writeScriptBin "fastfetch-simple" ''
         ${self.fastfetch}/bin/fastfetch --config /home/vali/.config/fastfetch/simple.jsonc

@@ -56,6 +56,7 @@
         comfy-ui-rocm = comfyui-nix.packages.${system}.rocm;
         cli-proxy-api = llm-agents.packages.${system}.cli-proxy-api;
         claude-code = llm-agents.packages.${system}.claude-code;
+        codex = llm-agents.packages.${system}.codex;
       })
     ];
 
@@ -63,6 +64,7 @@
       nix-minecraft.overlay
       (import overlays/customPackages.nix)
       (import overlays/existingPackages.nix)
+      (import overlays/intel-compute-next.nix)
     ] ++ flakeOverlays;
 
     pkgsOverlays = overlays ++ [

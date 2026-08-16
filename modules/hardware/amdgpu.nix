@@ -16,7 +16,7 @@
       graphics = {
         enable = true;
         enable32Bit = true;
-        extraPackages = lib.optionals config.hardware.amdgpu.rocmSupport (with pkgs.rocmPackages; [
+        extraPackages = lib.optionals config.hardware.amdgpu.enable (with pkgs.rocmPackages; [
           # AMD Common Language Runtime for hipamd, opencl, and rocclr
           clr.icd
           clr

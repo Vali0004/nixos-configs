@@ -10,6 +10,7 @@
     "${modulesPath}/installer/scan/not-detected.nix"
 
     boot/boot.nix
+    boot/nvidia.nix
 
     home-manager/home.nix
 
@@ -114,7 +115,12 @@
     amdgpu = {
       enable = true;
       allowOverclocking = true;
-      rocmSupport = true;
+      rocmSupport = false;
+    };
+    intel-gpu = {
+      enable = false;
+      computeSupport = true;
+      mediaSupport = true;
     };
     audio.pipewire.enable = true;
     bluetooth.enable = true;
@@ -140,6 +146,15 @@
     usePredictableInterfaceNames = true;
   };
 
+  nix = {
+    gc = {
+      automatic = true;
+      dates = "0:00:00";
+      options = ''--max-freed "$((32 * 1024**3 - 1024 * $(df -P -k /nix/store | tail -n 1 | ${pkgs.gawk}/bin/awk '{ print $4 }')))"'';
+    };
+    settings.auto-optimise-store = true;
+  };
+
   programs = {
     corectrl.enable = true;
     command-not-found.enable = true && config.programs.nix-index.enable == false;
@@ -148,6 +163,7 @@
     easyeffects.enable = true;
     git = {
       enable = true;
+      package = pkgs.gitFull;
       lfs.enable = true;
     };
     google-chrome.enable = true;
@@ -254,6 +270,7 @@
       extraGroups = [
         "corectrl"
         "dialout"
+        "docker"
         "input"
         "openrazer"
         "qemu-libvirtd"

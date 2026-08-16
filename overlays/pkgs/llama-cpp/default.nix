@@ -15,16 +15,25 @@
   rocmPackages ? { },
   rocmGpuTargets ? rocmPackages.clr.localGpuTargets or rocmPackages.clr.gpuTargets,
 
-  cpuArchDynamicDispatch ? true,
+  cpuArchDynamicDispatch ? !syclSupport,
 
   openclSupport ? false,
   clblast,
+
+  syclSupport ? false,
+  intel-llvm,
+  level-zero,
+  ocl-icd,
+  mkl,
+  onednn,
+  tbb,
 
   blasSupport ? builtins.all (x: !x) [
     cudaSupport
     metalSupport
     openclSupport
     rocmSupport
+    syclSupport
     vulkanSupport
   ],
   blas,
@@ -50,7 +59,13 @@ let
   # It's necessary to consistently use backendStdenv when building with CUDA support,
   # otherwise we get libstdc++ errors downstream.
   # cuda imposes an upper bound on the gcc version
-  effectiveStdenv = if cudaSupport then cudaPackages.backendStdenv else stdenv;
+  effectiveStdenv =
+    if cudaSupport then
+      cudaPackages.backendStdenv
+    else if syclSupport then
+      intel-llvm.stdenv
+    else
+      stdenv;
   inherit (lib)
     cmakeBool
     cmakeFeature
@@ -73,6 +88,14 @@ let
     rocblas
   ];
 
+  syclBuildInputs = [
+    level-zero
+    ocl-icd
+    mkl
+    onednn
+    tbb
+  ];
+
   vulkanBuildInputs = [
     shaderc
     vulkan-headers
@@ -81,7 +104,7 @@ let
 in
 effectiveStdenv.mkDerivation (finalAttrs: {
   pname = "llama-cpp";
-  version = "10059";
+  version = "10380";
 
   outputs = [
     "out"
@@ -92,7 +115,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     owner = "ggml-org";
     repo = "llama.cpp";
     tag = "b${finalAttrs.version}";
-    hash = "sha256-Rr4yCz/jKDhQ+l2f0oXNKh+K6G+z/WEOKfDdQJ20uxk=";
+    hash = "sha256-iG3soqu8KY5L7CdGZVQTKN8Nd3MK+E7JsuJc8uj8pU4=";
     #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     leaveDotGit = true;
     postFetch = ''
@@ -101,7 +124,15 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     '';
   };
 
-  patches = [ ];
+  patches = lib.optionals syclSupport [
+    # bf16 support is gated on __INTEL_LLVM_COMPILER, which open-source
+    # intel/llvm DPC++ does not define; without this, bf16 tensors (e.g. Qwen3.6
+    # MTP heads) abort at runtime instead of failing at build time.
+    ./0001-sycl-bf16-detect-by-header.patch
+    # Skip oneDNN for small GEMMs on the f16 path, matching the existing f32
+    # heuristic. ~+7% on MoE prompt processing at small batch.
+    ./0002-sycl-f16-small-gemm-guard.patch
+  ];
 
   nativeBuildInputs = [
     cmake
@@ -121,12 +152,13 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     optionals cudaSupport cudaBuildInputs
     ++ optionals openclSupport [ clblast ]
     ++ optionals rocmSupport rocmBuildInputs
+    ++ optionals syclSupport syclBuildInputs
     ++ optionals blasSupport [ blas ]
     ++ optionals vulkanSupport vulkanBuildInputs
     ++ [ openssl ];
 
   npmRoot = "tools/ui";
-  npmDepsHash = "sha256-6s9skw1wzEfm9QKktTqea3J+oudQAsS6O2VnZEMXAdw=";
+  npmDepsHash = "sha256-2Q7XhaLAArmviOLdQsNbYTfdyDE5pW9lR26cRHEVl9k=";
   #npmDepsHash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
   npmDeps = fetchNpmDeps {
     name = "${finalAttrs.pname}-${finalAttrs.version}-npm-deps";
@@ -158,6 +190,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     (cmakeBool "GGML_METAL" metalSupport)
     (cmakeBool "GGML_RPC" rpcSupport)
     (cmakeBool "GGML_VULKAN" vulkanSupport)
+    (cmakeBool "GGML_SYCL" syclSupport)
     (cmakeFeature "LLAMA_BUILD_NUMBER" finalAttrs.version)
   ]
   ++ optionals cpuArchDynamicDispatch [
@@ -179,6 +212,23 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     (cmakeFeature "CMAKE_HIP_COMPILER" "${rocmPackages.clr.hipClangPath}/clang++")
     (cmakeFeature "CMAKE_HIP_ARCHITECTURES" (builtins.concatStringsSep ";" rocmGpuTargets))
   ]
+  ++ optionals syclSupport [
+    (cmakeBool "GGML_SYCL_F16" true)
+    (cmakeFeature "GGML_SYCL_TARGET" "INTEL")
+    # Intel's oneDNN (overlays/pkgs/onednn) is a SYCL GPU build, so ggml-sycl can
+    # use its matmul + flash-attention paths instead of falling back to oneMKL.
+    (cmakeBool "GGML_SYCL_DNN" true)
+    (cmakeFeature "DNNL_DIR" "${onednn}/lib/cmake/dnnl")
+    (cmakeBool "GGML_SYCL_SUPPORT_LEVEL_ZERO_API" true)
+
+    (cmakeBool "DPCPP_COMPILER" true)
+    (cmakeFeature "MKL_ROOT" "${mkl}")
+    (cmakeFeature "MKL_DIR" "${mkl}/lib/cmake/mkl")
+    (cmakeFeature "TBB_DIR" "${tbb}/lib/cmake/TBB")
+
+    (cmakeFeature "LEVEL_ZERO_INCLUDE_DIR" "${level-zero}/include")
+    (cmakeFeature "ZE_LOADER_LIB" "${level-zero}/lib/libze_loader.so")
+  ]
   ++ optionals metalSupport [
     (cmakeFeature "CMAKE_C_FLAGS" "-D__ARM_FEATURE_DOTPROD=1")
     (cmakeBool "LLAMA_METAL_EMBED_LIBRARY" true)
@@ -188,6 +238,48 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     # install rpc-server in their install target.
     (cmakeBool "CMAKE_SKIP_BUILD_RPATH" true)
   ];
+
+  postPatch = lib.optionalString syclSupport ''
+    substituteInPlace ggml/src/ggml-sycl/element_wise.cpp \
+      --replace-fail \
+        '        constexpr int ver = __INTEL_LLVM_COMPILER;' \
+        ""
+
+    substituteInPlace ggml/src/ggml-sycl/CMakeLists.txt \
+      --replace-fail \
+        'target_link_libraries(ggml-sycl PRIVATE MKL::MKL_SYCL::BLAS)' \
+        'target_link_libraries(ggml-sycl PRIVATE
+            ${mkl}/lib/libmkl_sycl.so
+            ${mkl}/lib/libmkl_intel_ilp64.so
+            ${mkl}/lib/libmkl_tbb_thread.so
+            ${mkl}/lib/libmkl_core.so
+            TBB::tbb
+            sycl
+            OpenCL
+        )'
+
+    cat > ggml/src/ggml-sycl/fortify-off.h <<'EOF'
+#pragma once
+
+#ifdef _FORTIFY_SOURCE
+# undef _FORTIFY_SOURCE
+#endif
+
+#define _FORTIFY_SOURCE 0
+EOF
+
+    cat >> ggml/src/ggml-sycl/CMakeLists.txt <<'EOF'
+target_compile_options(ggml-sycl PRIVATE
+  -fno-sycl-rdc
+  -include
+  "''${CMAKE_CURRENT_SOURCE_DIR}/fortify-off.h"
+)
+
+target_link_options(ggml-sycl PRIVATE
+  -fno-sycl-rdc
+)
+EOF
+  '';
 
   # upstream plans on adding targets at the cmakelevel, remove those
   # additional steps after that
@@ -199,10 +291,15 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     cp $src/include/llama.h $out/include/
 
   ''
-  + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform) ''
+  + lib.optionalString (stdenv.buildPlatform.canExecute stdenv.hostPlatform && !syclSupport) ''
     installShellCompletion --cmd llama-server --bash <($out/bin/llama-server --completion-bash)
   ''
   + optionalString rpcSupport "cp bin/rpc-server $out/bin/llama-rpc-server";
+
+  # Intel's libdnnl.so is compiled with icx and references the Intel compiler
+  # runtime (libirc/libsvml/libintlc) without recording DT_NEEDED entries for
+  # them, so they have to be put on the link line explicitly.
+  NIX_LDFLAGS = lib.optionalString syclSupport "-L${onednn}/lib -lsvml -lirc -lintlc -limf";
 
   # the tests are failing as of 2025-08
   doCheck = false;
@@ -232,7 +329,7 @@ effectiveStdenv.mkDerivation (finalAttrs: {
       yuannan
     ];
     platforms = lib.platforms.unix;
-    badPlatforms = optionals (cudaSupport || openclSupport) lib.platforms.darwin;
-    broken = metalSupport && !effectiveStdenv.hostPlatform.isDarwin;
+    badPlatforms = optionals (cudaSupport || openclSupport || syclSupport) lib.platforms.darwin;
+    broken = (metalSupport && !effectiveStdenv.hostPlatform.isDarwin) || (syclSupport && !effectiveStdenv.hostPlatform.isLinux);
   };
 })

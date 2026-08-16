@@ -11,7 +11,7 @@
     boot/boot.nix
 
     modules/agenix.nix
-    #modules/nvidia.nix
+    modules/nvidia.nix
     modules/wireguard.nix
     modules/wireguard-internal.nix
 
@@ -64,7 +64,7 @@
     services/llama-cpp.nix
     services/pterodactyl.nix
     services/searxng.nix
-    services/stable-diffusion-cpp.nix
+    #services/stable-diffusion-cpp.nix
     services/toxvpn.nix
     services/ttyd.nix
     services/vaultwarden.nix
@@ -114,8 +114,8 @@
     # Powershell - Kill all processes
     killall
     # Vulkan AI
-    llama-cpp-vulkan
-    stable-diffusion-cpp-vulkan
+    (llama-cpp.override { syclSupport = false; cudaSupport = true; vulkanSupport = true; })
+    #stable-diffusion-cpp-vulkan
     # List Hardware
     lshw
     # List Processes Of
@@ -191,9 +191,14 @@
   hardware = {
     amd.enable = true;
     amdgpu = {
-      enable = true;
+      enable = false;
       allowOverclocking = true;
       rocmSupport = true;
+    };
+    intel-gpu = {
+      enable = false;
+      computeSupport = true;
+      mediaSupport = true;
     };
   };
 

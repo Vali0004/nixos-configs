@@ -3,7 +3,9 @@
 , pkgs
 , ... }:
 
-{
+let
+  llama-cpp = pkgs.llama-cpp.override { syclSupport = true; vulkanSupport = true; };
+in {
   systemd.services.llama-router = {
     enable = true;
     description = "llama.cpp Router Service";
@@ -19,17 +21,23 @@
       util-linux
       which
     ];
+    environment = {
+      ZE_ENABLE_ALT_DRIVERS = "${pkgs.intel-compute-runtime.drivers}/lib/libze_intel_gpu.so.1";
+      LD_LIBRARY_PATH = lib.makeLibraryPath [
+        pkgs.intel-compute-runtime.drivers
+        pkgs.intel-graphics-compiler
+      ];
+      ONEAPI_DEVICE_SELECTOR = "level_zero:gpu";
+      ZES_ENABLE_SYSMAN = "1";
+      GGML_BACKEND_DEVICE = "SYCL0";
+    };
     serviceConfig = {
       Type = "simple";
 
-      Environment = [
-        "GGML_VK_VISIBLE_DEVICES=0"
-      ];
-
       ExecStart = ''
-        ${pkgs.llama-cpp-vulkan}/bin/llama-server \
+        ${llama-cpp}/bin/llama-server \
           --host 0.0.0.0 \
-          --models-preset /data/models/presets.ini \
+          --models-preset /data/ai/models/presets.ini \
           --ui-mcp-proxy \
           --tools all \
           --api-key-file ${config.age.secrets.llama-cpp-key.path}
@@ -72,18 +80,17 @@
       DevicePolicy = "closed";
       DeviceAllow = [
         "char-drm rw"
-        "char-kfd rw"
       ];
 
       BindReadOnlyPaths = [
         "/run/opengl-driver"
         "/run/opengl-driver-32"
         "/sys/class/drm"
+        "/sys/devices"
       ];
 
-      # Read-only things a model may inspect
       ReadOnlyPaths = [
-        "/data/models"
+        "/data/ai/models"
         "/proc"
         "/sys"
         "/etc/os-release"
@@ -137,7 +144,6 @@
         # Block generic devices
         "/dev/bsg"
         "/dev/bus"
-        "/dev/char"
         "/dev/console"
         "/dev/core"
         "/dev/input"
@@ -163,10 +169,6 @@
         "/dev/ttyS1"
         "/dev/ttyS2"
         "/dev/ttyS3"
-
-        # Block random
-        "/dev/random"
-        "/dev/urandom"
 
         # Block vhost
         "/dev/vhost-net"

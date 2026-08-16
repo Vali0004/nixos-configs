@@ -15,7 +15,10 @@ self: super: {
     '';
   });
   ghidra = super.ghidra.overrideAttrs (old: {
-    patches = old.patches ++ [ ./ghidra-1147.patch ];
+    patches = old.patches ++ [
+      ./ghidra-1147.patch
+      ./ghidra-vce.patch
+    ];
   });
   dwm = super.dwm.overrideAttrs (old: {
     buildInputs = old.buildInputs ++ [
@@ -34,6 +37,11 @@ self: super: {
   });
   dwmblocks = super.callPackage pkgs/dwmblocks {};
   dwmblocks-laptop = super.callPackage pkgs/dwmblocks/laptop.nix {};
+  mkl = super.callPackage pkgs/mkl {};
+  metee = super.callPackage pkgs/metee {};
+  igsc = super.callPackage pkgs/igsc {};
+  xpu-smi = super.callPackage pkgs/xpu-smi {};
+  onednn = super.callPackage pkgs/onednn {};
   llama-cpp = super.callPackage pkgs/llama-cpp {};
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";

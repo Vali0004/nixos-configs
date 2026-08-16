@@ -1,0 +1,21 @@
+From: llama.cpp SYCL backend
+Subject: [PATCH] sycl: apply the small-GEMM oneDNN guard to the f16 path too
+
+diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
+index 8a19f64..1b2eb58 100644
+--- a/ggml/src/ggml-sycl/ggml-sycl.cpp
++++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
+@@ -2668,7 +2668,12 @@ inline void ggml_sycl_op_mul_mat_sycl(
+                                          : src1_as_f16.get();
+ 
+ #if GGML_SYCL_DNNL
+-        if (g_ggml_sycl_enable_dnn) {
++        // Same small-GEMM guard the f32 path below uses: oneDNN's per-primitive
++        // overhead dominates for small matmuls (e.g. MoE per-expert GEMMs at
++        // small batch), where oneMKL's direct path is faster.
++        const int64_t gemm_flops_f16   = (int64_t) row_diff * src1_ncols * ne10;
++        const bool    use_mkl_direct_f16 = gemm_flops_f16 < 256 * 256 * 256;
++        if (g_ggml_sycl_enable_dnn && !use_mkl_direct_f16) {
+                 DnnlGemmWrapper::row_gemm(ctx,row_diff, src1_ncols , ne10, src0_ptr,
+                                      DnnlGemmWrapper::to_dt<sycl::half>(), src1_ptr, DnnlGemmWrapper::to_dt<sycl::half>(),
+                                       dst_dd_i, DnnlGemmWrapper::to_dt<float>(), stream);

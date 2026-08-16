@@ -1,0 +1,43 @@
+From: llama.cpp SYCL backend
+Subject: [PATCH] sycl: detect bfloat16 support by header, not by __INTEL_LLVM_COMPILER
+
+GGML_SYCL_HAS_BF16 and GGML_SYCL_DMMV_HAS_BF16 are both gated on
+__INTEL_LLVM_COMPILER, which is only defined by the proprietary icx/icpx
+compiler drivers. Open-source intel/llvm DPC++ builds support bfloat16
+identically but do not define that macro, so both gates silently evaluate
+false and every bf16 code path is compiled out.
+
+diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
+index 4fa34a5..8214c9f 100644
+--- a/ggml/src/ggml-sycl/common.hpp
++++ b/ggml/src/ggml-sycl/common.hpp
+@@ -29,7 +29,12 @@
+ 
+ namespace syclexp = sycl::ext::oneapi::experimental;
+ 
+-#if defined(__INTEL_LLVM_COMPILER) && __has_include(<sycl/ext/oneapi/bfloat16.hpp>)
++// __INTEL_LLVM_COMPILER is only defined by the proprietary icx/icpx drivers, not
++// by open-source intel/llvm DPC++ builds, which support bfloat16 just the same.
++// Gate on the header (and SYCL being enabled) instead of the vendor macro, or
++// GGML_SYCL_HAS_BF16 stays undefined and bf16 tensors abort at runtime
++// ("unsupport data type=bf16"), e.g. when loading a bf16 MTP head.
++#if defined(SYCL_LANGUAGE_VERSION) && __has_include(<sycl/ext/oneapi/bfloat16.hpp>)
+     #include <sycl/ext/oneapi/bfloat16.hpp>
+     #ifndef GGML_SYCL_HAS_BF16
+         #define GGML_SYCL_HAS_BF16
+diff --git a/ggml/src/ggml-sycl/dmmv.cpp b/ggml/src/ggml-sycl/dmmv.cpp
+index ee7cd2d..5dd40ee 100644
+--- a/ggml/src/ggml-sycl/dmmv.cpp
++++ b/ggml/src/ggml-sycl/dmmv.cpp
+@@ -3,7 +3,10 @@
+ #include "dequantize.hpp"
+ #include "presets.hpp"
+ 
+-#if defined(__INTEL_LLVM_COMPILER)
++// See common.hpp: gate on the header rather than the proprietary-only
++// __INTEL_LLVM_COMPILER macro, so open-source intel/llvm DPC++ builds also get
++// the bf16 dmmv kernel instead of aborting on GGML_TYPE_BF16 at runtime.
++#if defined(SYCL_LANGUAGE_VERSION)
+     #if __has_include(<sycl/ext/oneapi/bfloat16.hpp>)
+         #include <sycl/ext/oneapi/bfloat16.hpp>
+         #define GGML_SYCL_DMMV_HAS_BF16
