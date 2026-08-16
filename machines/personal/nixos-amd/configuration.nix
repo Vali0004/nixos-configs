@@ -10,7 +10,7 @@
     "${modulesPath}/installer/scan/not-detected.nix"
 
     boot/boot.nix
-    boot/nvidia.nix
+    #boot/nvidia.nix
 
     home-manager/home.nix
 

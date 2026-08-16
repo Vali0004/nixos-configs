@@ -5,8 +5,9 @@
   environment.systemPackages = with pkgs; [
     # Terminal
     alacritty-graphics
-    # Verus Miner
-    srbminer-multi
+    # Anker M5 Control - 3D Printing
+    ankerctl
+    prusa-slicer
     # Key system (remote deploy)
     agenix
     # Android tools (ADB)
@@ -144,7 +145,7 @@
     # osu!lazer
     osu-lazer-bin
     # llama.cpp
-    (llama-cpp.override { syclSupport = false; vulkanSupport = true; cudaSupport = true; })
+    (llama-cpp.override { syclSupport = true; vulkanSupport = true; cudaSupport = false; })
     xpu-smi
     # PCI Utilities
     pciutils
