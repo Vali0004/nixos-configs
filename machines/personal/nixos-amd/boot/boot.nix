@@ -46,6 +46,11 @@
       "net.ipv4.ip_forward" = true;
       "net.ipv4.tcp_syncookies" = true;
       "net.ipv6.conf.all.forwarding" = true;
+
+      # NOTE: dev.xe.observation_paranoid cannot be set here. systemd-sysctl
+      # runs before the xe module registers /proc/sys/dev/xe, so the write is
+      # dropped with "No such file or directory". Applied from a udev rule in
+      # services/udev.nix instead.
     };
     kernelParams = [
       #

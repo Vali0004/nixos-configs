@@ -118,9 +118,9 @@
       rocmSupport = false;
     };
     intel-gpu = {
-      enable = false;
+      enable = true;
       computeSupport = true;
-      mediaSupport = true;
+      mediaSupport = false;
     };
     audio.pipewire.enable = true;
     bluetooth.enable = true;
@@ -138,6 +138,11 @@
 
   networking = {
     hostName = "nixos-amd";
+    firewall = {
+      allowedTCPPorts = [
+        8080
+      ];
+    }
     interfaces = {
       #wlan0.useDHCP = true;
       eth0.useDHCP = true;

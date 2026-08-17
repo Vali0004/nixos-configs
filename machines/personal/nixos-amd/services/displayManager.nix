@@ -44,8 +44,8 @@ in {
   services.xserver.displayManager.setupCommands = ''
     sleep 5
     ${pkgs.xrandr}/bin/xrandr --newmode "2560x1440_240.00" 1442.50 2560 2800 3088 3616 1440 1443 1448 1663 -hsync +vsync
-    ${pkgs.xrandr}/bin/xrandr --addmode DP-2 "2560x1440_240.00"
-    ${pkgs.xrandr}/bin/xrandr --output DP-2 --mode "2560x1440_240.00" --primary --right-of DP-3 --rotate normal
-    ${pkgs.xrandr}/bin/xrandr --output DP-3 --left-of DP-2 --rotate normal
+    ${pkgs.xrandr}/bin/xrandr --addmode DP-6 "2560x1440_240.00"
+    ${pkgs.xrandr}/bin/xrandr --output DP-6 --mode "2560x1440_240.00" --primary --right-of DP-7 --rotate normal
+    ${pkgs.xrandr}/bin/xrandr --output DP-7 --left-of DP-6 --rotate normal
   '';
 }

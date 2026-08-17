@@ -51,8 +51,6 @@
     libarchive
     # Reduced blanking profiles
     libxcvt
-    # llama.cpp Vulkan
-    llama-cpp-vulkan
     # Wormhole
     magic-wormhole
     # Video Player

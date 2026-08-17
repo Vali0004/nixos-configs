@@ -42,6 +42,8 @@ self: super: {
   igsc = super.callPackage pkgs/igsc {};
   xpu-smi = super.callPackage pkgs/xpu-smi {};
   onednn = super.callPackage pkgs/onednn {};
+  # self, not super: needs the SYCL mkl/onednn defined above, not nixpkgs'
+  torch-xpu = self.callPackage pkgs/torch-xpu {};
   llama-cpp = super.callPackage pkgs/llama-cpp {};
   rtorrent = super.rtorrent.overrideAttrs (old: finalAttrs: {
     version = "0.15.6";

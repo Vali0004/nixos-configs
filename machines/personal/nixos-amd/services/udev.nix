@@ -8,6 +8,16 @@ let
   '';
 in {
   services.udev.extraRules = ''
+    # Intel GPU (xe): allow unprivileged reads of the observation/OA stream, so
+    # unitrace can collect hardware performance counters without root.
+    #
+    # Cannot be done via boot.kernel.sysctl: systemd-sysctl runs before the xe
+    # module registers /proc/sys/dev/xe, and the write is silently ignored.
+    # Binding it to the device event also re-applies it across module reloads.
+    #
+    # This exposes GPU counters to any local user, which can in principle
+    # reveal other processes' GPU activity - fine here, not for a shared host.
+    ACTION=="add", SUBSYSTEM=="pci", DRIVER=="xe", RUN+="${pkgs.bash}/bin/sh -c 'echo 0 > /proc/sys/dev/xe/observation_paranoid'"
     # Aula, SayoDevice O3C
     SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"

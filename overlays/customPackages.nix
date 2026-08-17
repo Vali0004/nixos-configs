@@ -14,6 +14,9 @@ self: super: {
   ida-pro = self.callPackage pkgs/ida-pro {};
   jlink = self.callPackage pkgs/nordic/jlink {};
   kursu-dev-status = self.callPackage pkgs/kursu-dev-status {};
+  metrics-library = self.callPackage pkgs/metrics-library {};
+  metrics-discovery = self.callPackage pkgs/metrics-discovery {};
+  unitrace = self.callPackage pkgs/unitrace {};
   nrf-studio = self.callPackage pkgs/nordic {};
   nrf-util = self.callPackage pkgs/nordic/nrfutil {};
   onthespot = self.callPackage pkgs/onthespot {};

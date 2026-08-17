@@ -7,7 +7,7 @@
     alacritty-graphics
     # Anker M5 Control - 3D Printing
     ankerctl
-    prusa-slicer
+    orca-slicer
     # Key system (remote deploy)
     agenix
     # Android tools (ADB)
@@ -147,6 +147,8 @@
     # llama.cpp
     (llama-cpp.override { syclSupport = true; vulkanSupport = true; cudaSupport = false; })
     xpu-smi
+    # Intel GPU kernel tracing / hardware counters (pti-gpu)
+    unitrace
     # PCI Utilities
     pciutils
     # Printable Document Format Toolkit
