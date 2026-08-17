@@ -97,5 +97,8 @@
     vulkan-validation-layers
     # wget
     wget
+    # Journal software
+    xournalpp
+    zathura
   ];
 }
