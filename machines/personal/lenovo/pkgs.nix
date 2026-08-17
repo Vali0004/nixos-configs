@@ -15,6 +15,13 @@
     colmena
     # cURL
     curl
+    # Claude - Agentic coding agent
+    claude-code
+    cli-proxy-api
+    # Codex - Agentic coding agent (ChatGPT)
+    codex
+    # Antigravity - Agentic coding agent (Google/Gemini)
+    antigravity-cli
     # DNS & IP Tool
     dig
     # dos2unix tool
