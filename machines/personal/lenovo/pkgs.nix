@@ -70,6 +70,7 @@
     obs-studio
     # Open-source LLM Coding agent
     opencode
+    opencode-claude-auth
     # Audio Player Control
     playerctl
     # Screen
