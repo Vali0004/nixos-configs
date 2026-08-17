@@ -13,6 +13,6 @@
     efi.enable = true;
     enable = true;
     enableMemtest = true;
-    enableRescue = true;
+    #enableRescue = true;
   };
 }

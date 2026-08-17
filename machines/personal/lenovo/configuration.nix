@@ -88,7 +88,19 @@
     enableRedistributableFirmware = true;
     enableKvm = true;
     wifi.enable = true;
+    opentabletdriver = {
+      enable = true;
+      daemon.enable = true;
+    };
   };
+
+  wifi.networks = [
+    {
+      name = "college";
+      ssid = "mGuest";
+      open = true;
+    }
+  ];
 
   networking = {
     dhcpcd = {

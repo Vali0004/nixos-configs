@@ -3,10 +3,9 @@
 }:
 
 stdenv.mkDerivation {
-  pname = "libida-crack";
+  pname = "libida";
   version = "1.0";
 
-  # I uh, cannot provide this for obvious reasons.
   src = ./libida.tar.gz;
 
   unpackPhase = ''

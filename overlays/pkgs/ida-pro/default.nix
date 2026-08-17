@@ -45,7 +45,7 @@
 
 let
   pythonForIDA = pkgs.python313.withPackages (ps: with ps; [ rpyc ]);
-  libida = pkgs.callPackage ./crack.nix {};
+  libida = pkgs.callPackage ./libida.nix {};
 in stdenv.mkDerivation rec {
   pname = "ida-pro";
   version = "9.1.0.250226";

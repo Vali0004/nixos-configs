@@ -19,7 +19,7 @@
     claude-code
     cli-proxy-api
     # Codex - Agentic coding agent (ChatGPT)
-    codex
+    #codex
     # Antigravity - Agentic coding agent (Google/Gemini)
     antigravity-cli
     # DNS & IP Tool
@@ -73,6 +73,20 @@
     opencode-claude-auth
     # Audio Player Control
     playerctl
+    # Python
+    (python3.withPackages (ps: with ps; [
+      beautifulsoup4
+      datasets
+      ddgs
+      numpy
+      pip
+      py7zr
+      requests
+      virtualenv
+      xxhash
+    ]))
+    python314Packages.huggingface-hub
+    uv
     # Screen
     screen
     # Verus Miner
@@ -98,6 +112,8 @@
     # wget
     wget
     # Journal software
+    doxx
+    obsidian
     xournalpp
     zathura
   ];
