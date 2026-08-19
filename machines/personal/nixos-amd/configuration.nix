@@ -142,7 +142,7 @@
       allowedTCPPorts = [
         8080
       ];
-    }
+    };
     interfaces = {
       #wlan0.useDHCP = true;
       eth0.useDHCP = true;

@@ -18,6 +18,8 @@ in {
     # This exposes GPU counters to any local user, which can in principle
     # reveal other processes' GPU activity - fine here, not for a shared host.
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="xe", RUN+="${pkgs.bash}/bin/sh -c 'echo 0 > /proc/sys/dev/xe/observation_paranoid'"
+    # Apple
+    SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", ATTR{power/control}="on", ENV{ID_MM_DEVICE_IGNORE}="1", MODE="0677", GROUP="wheel", TAG+="uaccess"
     # Aula, SayoDevice O3C
     SUBSYSTEM=="usb", ATTRS{idVendor}=="8089", GROUP="wheel", MODE="0677"
     SUBSYSTEM=="usb", ATTRS{idVendor}=="2e3c", GROUP="wheel", MODE="0677"

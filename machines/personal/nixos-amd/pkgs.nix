@@ -180,6 +180,7 @@
       xxhash
     ]))
     python314Packages.huggingface-hub
+    uv
     # Minecraft launcher
     prismlauncher
     # Qt-based LA/scope/MSO GUI

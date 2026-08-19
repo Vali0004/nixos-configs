@@ -132,6 +132,39 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     # Skip oneDNN for small GEMMs on the f16 path, matching the existing f32
     # heuristic. ~+7% on MoE prompt processing at small batch.
     ./0002-sycl-f16-small-gemm-guard.patch
+    # The reorder mmvq kernel re-derives each weight block's quant metadata
+    # once per output column. Hoist the decode out of the column loop.
+    ./0003-sycl-mmvq-reorder-decode-each-weight-block-once-no.patch
+    # Collapse six identical reorder launchers into one, and make the workgroup
+    # subgroup count tunable via GGML_SYCL_MMVQ_SUBGROUPS. No functional change.
+    ./0004-sycl-mmvq-reorder-share-one-launcher-make-subgroup.patch
+    # The mmvq -> oneDNN crossover is a CUDA-inherited constant of 8. Q4_K has
+    # kernels instantiated past that and wins up to 11 on Battlemage (pp9 +25%).
+    ./0005-sycl-mmvq-per-type-batch-crossover-Q4-K-to-11.patch
+    # mmq is hardcoded off upstream ("accuracy issues"). Keep that default, but
+    # allow opting in at runtime to re-measure on Xe2.
+    ./0006-sycl-gate-mmq-re-enable-behind-GGML-SYCL-ENABLE-MM.patch
+    # The q4_K vec-dot sums the q8_1 bytes with dp4a(0x01010101, ...). IGC
+    # folds the multiply-by-ones away and emits 16 byte-extract mov + add3 per
+    # output column instead - 24-35% of the kernel. quantize_q8_1 already
+    # stores that sum in ds.y.
+    ./0007-sycl-q4-K-mmvq-take-q8-1-block-sum-from-ds-y.patch
+    # mmvq is flat at ~100 t/s from 9 to 16 columns while the dequant+oneDNN
+    # fallback only climbs from 27 to 47, so 0005's cap of 11 left 2.1-2.6x on
+    # the table for widths 12-16. Also fixes should_reorder_tensor, which gated
+    # the one-shot weight reorder on a hardcoded ne[1] <= 8: any workload whose
+    # first matmul was wider never reordered at all, and then ran every later
+    # op on the slow layout (106 -> 36 t/s at pp16).
+    ./0008-sycl-q4-K-mmvq-to-16-cols-and-fix-reorder-bootstrap.patch
+    # 0005/0008 only ever moved the crossover for q4_K; every other type was
+    # left on the CUDA-inherited 8 despite having the same fused kernels and
+    # the same cliff-shaped fallback. Extend q3_K/q5_K/q6_K to 16 as well.
+    ./0009-sycl-extend-mmvq-crossover-to-q3-K-q5-K-q6-K.patch
+    # 0005/0008/0009 raised every k-quant but left q4_0/q8_0 on the CUDA
+    # default of 8 - and q4_0 is the format that actually wants this. At 9
+    # columns (MTP n-max 8, or a few parallel slots) it fell off mmvq into the
+    # dequantise+oneDNN fallback: measured 44 -> 4.8 t/s.
+    ./0010-sycl-extend-mmvq-crossover-to-q4-0-q8-0.patch
   ];
 
   nativeBuildInputs = [

@@ -75,6 +75,7 @@
       ## 32 MiB: 0xcaa000000 - 0xcabffffff
       #"memmap=32M!0xca8000000"
     ];
+    blacklistedKernelModules = [ "apple_mfi_fastcharge" ];
   };
 
   boot.grub = {

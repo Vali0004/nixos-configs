@@ -1,0 +1,38 @@
+From: llama.cpp SYCL backend
+Subject: [PATCH] sycl: gate mmq re-enable behind GGML_SYCL_ENABLE_MMQ
+
+diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
+index 9ceef8a..32490ba 100644
+--- a/ggml/src/ggml-sycl/ggml-sycl.cpp
++++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
+@@ -3688,8 +3688,28 @@ enum class mul_mat_algo {
+ 
+ inline bool ggml_sycl_supports_mmq(enum ggml_type type) {
+     // TODO: accuracy issues in MMQ
+-    GGML_UNUSED(type);
+-    return false;
++    // EXPERIMENT: re-enabled to measure whether the accuracy issue still
++    // reproduces on Xe2. Set GGML_SYCL_ENABLE_MMQ=1 to opt in at runtime.
++    static const bool enabled = getenv("GGML_SYCL_ENABLE_MMQ") != nullptr;
++    if (!enabled) {
++        GGML_UNUSED(type);
++        return false;
++    }
++    switch (type) {
++        case GGML_TYPE_Q4_0:
++        case GGML_TYPE_Q4_1:
++        case GGML_TYPE_Q5_0:
++        case GGML_TYPE_Q5_1:
++        case GGML_TYPE_Q8_0:
++        case GGML_TYPE_Q2_K:
++        case GGML_TYPE_Q3_K:
++        case GGML_TYPE_Q4_K:
++        case GGML_TYPE_Q5_K:
++        case GGML_TYPE_Q6_K:
++            return true;
++        default:
++            return false;
++    }
+ }
+ 
+ inline bool ggml_sycl_supports_reorder_mul_mat_sycl(enum ggml_type type) {

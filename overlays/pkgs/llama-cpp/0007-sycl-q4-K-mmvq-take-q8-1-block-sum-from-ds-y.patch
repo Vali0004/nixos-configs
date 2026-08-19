@@ -1,0 +1,195 @@
+From: llama.cpp SYCL backend
+Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
+
+--- a/ggml/src/ggml-sycl/vecdotq.hpp
++++ b/ggml/src/ggml-sycl/vecdotq.hpp
+@@ -254,6 +254,49 @@
+     return dm4f.x() * sumf_d - dm4f.y() * sumf_m;
+ }
+ 
++// Same as above, but takes the q8_1 block sums from block_q8_1.ds.y instead of
++// recomputing them from the quants.
++//
++// dot2 above sums the q8_1 bytes with dp4a(0x01010101, ...). Because one
++// operand is all ones, IGC folds the multiply away and emits a per-byte
++// extract and add chain instead of the dp4a: 16 mov + 6 add3 per output
++// column on Battlemage, 24-35% of the whole kernel. quantize_q8_1 already
++// stores that sum in ds.y, so read it.
++//
++// add_m must be true on exactly one lane per q8_1 block. The lanes sharing a
++// bq8_offset each cover a different quarter of the block, so every one of them
++// would otherwise add the whole-block sum.
++//
++// Note ds.y is the float sum of the inputs, while the old dot2 path summed the
++// rounded quants - so this is very slightly more accurate, not just faster.
++static __dpct_inline__ float vec_dot_q4_K_q8_1_impl_vmmq_s(
++    const int *__restrict__ v, const int *__restrict__ u,
++    const uint8_t *__restrict__ sc, const uint8_t *__restrict__ m,
++    const sycl::half2 &dm4, const float *__restrict__ d8,
++    const float *__restrict__ s8, const bool add_m) {
++
++    float sumf_d = 0.0f;
++    float sumf_m = 0.0f;
++
++#pragma unroll
++    for (int i = 0; i < QR4_K; ++i) {
++        const int v0i = (v[0] >> (4*i)) & 0x0F0F0F0F;
++        const int v1i = (v[1] >> (4*i)) & 0x0F0F0F0F;
++
++        const int dot1 =
++            dpct::dp4a(v1i, u[2 * i + 1],
++                       dpct::dp4a(v0i, u[2 * i + 0], 0)); // SIMD dot product
++
++        sumf_d += d8[i] * (dot1 * sc[i]);
++        sumf_m += add_m ? s8[i] * m[i] : 0.0f;
++    }
++
++    const sycl::float2 dm4f =
++        dm4.convert<float, sycl::rounding_mode::automatic>();
++
++    return dm4f.x() * sumf_d - dm4f.y() * sumf_m;
++}
++
+ 
+ #define VDR_Q5_K_Q8_1_MMVQ 2
+ 
+@@ -296,6 +339,43 @@
+     return dm5f.x() * sumf_d - dm5f.y() * sumf_m;
+ }
+ 
++// q5_K counterpart of vec_dot_q4_K_q8_1_impl_vmmq_s - see the comment there for
++// why the block sum comes from ds.y instead of dp4a(0x01010101, ...).
++static __dpct_inline__ float vec_dot_q5_K_q8_1_impl_vmmq_s(
++    const int *__restrict__ vl, const int *__restrict__ vh,
++    const int *__restrict__ u, const uint8_t *__restrict__ sc,
++    const uint8_t *__restrict__ m, const sycl::half2 &dm5,
++    const float *__restrict__ d8, const float *__restrict__ s8,
++    const bool add_m) {
++
++    float sumf_d = 0.0f;
++    float sumf_m = 0.0f;
++
++#pragma unroll
++    for (int i = 0; i < QR5_K; ++i) {
++        const int vl0i = (vl[0] >> (4*i)) & 0x0F0F0F0F;
++        const int vl1i = (vl[1] >> (4*i)) & 0x0F0F0F0F;
++
++        const int vh0i = ((vh[0] >> i) << 4) & 0x10101010;
++        const int vh1i = ((vh[1] >> i) << 4) & 0x10101010;
++
++        const int v0i = vl0i | vh0i;
++        const int v1i = vl1i | vh1i;
++
++        const int dot1 =
++            dpct::dp4a(v0i, u[2 * i + 0],
++                       dpct::dp4a(v1i, u[2 * i + 1], 0)); // SIMD dot product
++
++        sumf_d += d8[i] * (dot1 * sc[i]);
++        sumf_m += add_m ? s8[i] * m[i] : 0.0f;
++    }
++
++    const sycl::float2 dm5f =
++        dm5.convert<float, sycl::rounding_mode::automatic>();
++
++    return dm5f.x() * sumf_d - dm5f.y() * sumf_m;
++}
++
+ 
+ #define VDR_Q6_K_Q8_1_MMVQ 1
+ 
+@@ -522,6 +602,7 @@
+         int   v[2];
+         int   u[2 * QR4_K];
+         float d8[QR4_K];
++        float s8[QR4_K];
+ 
+         v[0] = q4[0];
+         v[1] = q4[4];
+@@ -544,13 +625,14 @@
+             sycl::half2 ds_values = *(q8_1_ds + bq8_offset + i);
+ 
+             d8[i]                   = ds_values[0];
++            s8[i]                   = ds_values[1];
+ 
+             const int * q8 = (const int *) quant_base_ptr + ((iqs / 2) % 4);
+             u[2 * i + 0]   = q8[0];
+             u[2 * i + 1]   = q8[4];
+         }
+ 
+-        return vec_dot_q4_K_q8_1_impl_vmmq(v, u, sc, m, *dms, d8);
++        return vec_dot_q4_K_q8_1_impl_vmmq_s(v, u, sc, m, *dms, d8, s8, ((iqs / 2) % 4) == 0);
+     }
+ };
+ 
+@@ -578,6 +660,7 @@
+         int   vh[2];
+         int   u[2 * QR5_K];
+         float d8[QR5_K];
++        float s8[QR5_K];
+ 
+         vl[0] = ql_ptr[0];
+         vl[1] = ql_ptr[4];
+@@ -603,13 +686,14 @@
+             sycl::half2 ds_values = *(q8_1_ds + bq8_offset + i);
+ 
+             d8[i]                   = ds_values[0];
++            s8[i]                   = ds_values[1];
+ 
+             const int * q8 = (const int *) quant_base_ptr + ((iqs / 2) % 4);
+             u[2 * i + 0]   = q8[0];
+             u[2 * i + 1]   = q8[4];
+         }
+ 
+-        return vec_dot_q5_K_q8_1_impl_vmmq(vl, vh, u, sc, m, *dms, d8);
++        return vec_dot_q5_K_q8_1_impl_vmmq_s(vl, vh, u, sc, m, *dms, d8, s8, ((iqs / 2) % 4) == 0);
+     }
+ };
+ 
+@@ -715,12 +799,14 @@
+                               const sycl::half2 * __restrict__ q8_1_ds, const int iqs) const {
+         int   u[2 * QR4_K];
+         float d8[QR4_K];
++        float s8[QR4_K];
+ 
+         for (int i = 0; i < QR4_K; ++i) {
+             const int8_t * quant_base_ptr = q8_1_quant_ptr + (bq8_offset + i) * QK8_1;
+             sycl::half2    ds_values      = *(q8_1_ds + bq8_offset + i);
+ 
+             d8[i] = ds_values[0];
++            s8[i] = ds_values[1];
+ 
+             const int * q8 = (const int *) quant_base_ptr + ((iqs / 2) % 4);
+             u[2 * i + 0]   = q8[0];
+@@ -730,7 +816,7 @@
+         const uint8_t * sc = (const uint8_t *) aux;
+         const uint8_t * m  = sc + 2;
+ 
+-        return vec_dot_q4_K_q8_1_impl_vmmq(v, u, sc, m, dm, d8);
++        return vec_dot_q4_K_q8_1_impl_vmmq_s(v, u, sc, m, dm, d8, s8, ((iqs / 2) % 4) == 0);
+     }
+ };
+ 
+@@ -784,12 +870,14 @@
+                               const sycl::half2 * __restrict__ q8_1_ds, const int iqs) const {
+         int   u[2 * QR5_K];
+         float d8[QR5_K];
++        float s8[QR5_K];
+ 
+         for (int i = 0; i < QR5_K; ++i) {
+             const int8_t * quant_base_ptr = q8_1_quant_ptr + (bq8_offset + i) * QK8_1;
+             sycl::half2    ds_values      = *(q8_1_ds + bq8_offset + i);
+ 
+             d8[i] = ds_values[0];
++            s8[i] = ds_values[1];
+ 
+             const int * q8 = (const int *) quant_base_ptr + ((iqs / 2) % 4);
+             u[2 * i + 0]   = q8[0];
+@@ -799,7 +887,7 @@
+         const uint8_t * sc = (const uint8_t *) aux;
+         const uint8_t * m  = sc + 2;
+ 
+-        return vec_dot_q5_K_q8_1_impl_vmmq(vl, vh, u, sc, m, dm, d8);
++        return vec_dot_q5_K_q8_1_impl_vmmq_s(vl, vh, u, sc, m, dm, d8, s8, ((iqs / 2) % 4) == 0);
+     }
+ };
+ 

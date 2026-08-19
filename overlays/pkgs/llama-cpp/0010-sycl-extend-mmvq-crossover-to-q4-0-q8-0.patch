@@ -1,0 +1,116 @@
+From: llama.cpp SYCL backend
+Subject: [PATCH] sycl: extend the mmvq crossover to q4_0/q8_0
+
+--- a/ggml/src/ggml-sycl/mmvq.cpp
++++ b/ggml/src/ggml-sycl/mmvq.cpp
+@@ -736,6 +736,14 @@
+         case 6: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<6>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 7: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<7>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 8: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<8>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 9: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 10: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 11: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 12: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 13: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 14: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 15: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 16: reorder_mul_mat_vec_q4_0_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_0 reorder multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -793,6 +801,14 @@
+         case 6: mul_mat_vec_q4_0_q8_1_sycl_ncols<6>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 7: mul_mat_vec_q4_0_q8_1_sycl_ncols<7>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 8: mul_mat_vec_q4_0_q8_1_sycl_ncols<8>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 9: mul_mat_vec_q4_0_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 10: mul_mat_vec_q4_0_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 11: mul_mat_vec_q4_0_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 12: mul_mat_vec_q4_0_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 13: mul_mat_vec_q4_0_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 14: mul_mat_vec_q4_0_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 15: mul_mat_vec_q4_0_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 16: mul_mat_vec_q4_0_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_0 multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -1144,6 +1160,14 @@
+         case 6: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<6>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 7: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<7>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 8: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<8>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 9: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 10: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 11: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 12: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 13: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 14: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 15: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 16: reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q8_0 reorder multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -1207,6 +1231,14 @@
+         case 6: mul_mat_vec_q8_0_q8_1_sycl_ncols<6>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 7: mul_mat_vec_q8_0_q8_1_sycl_ncols<7>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 8: mul_mat_vec_q8_0_q8_1_sycl_ncols<8>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 9: mul_mat_vec_q8_0_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 10: mul_mat_vec_q8_0_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 11: mul_mat_vec_q8_0_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 12: mul_mat_vec_q8_0_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 13: mul_mat_vec_q8_0_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 14: mul_mat_vec_q8_0_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 15: mul_mat_vec_q8_0_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 16: mul_mat_vec_q8_0_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q8_0 multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -2193,7 +2225,7 @@
+             case GGML_TYPE_Q4_0:
+                 if ((ggml_tensor_extra_gpu *) dst->src[0]->extra &&
+                     ((ggml_tensor_extra_gpu *) dst->src[0]->extra)->optimized_feature.reorder) {
+-                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 8) {
++                    if (i == 0 && src1_ncols > 1 && src1_ncols <= ggml_sycl_mmvq_max_batch(GGML_TYPE_Q4_0)) {
+                         const int stride_col_y_bytes = src1_padded_col_size * q8_1_ts / q8_1_bs;
+                         const int stride_col_dst     = dst->ne[0];
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_0_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+@@ -2205,7 +2237,7 @@
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_0_q8_1_sycl\n");
+                         reorder_mul_mat_vec_q4_0_q8_1_sycl(src0_dd_i, src1_ddq_i_bs, dst_dd_i_bs, ne00, row_diff, stream);
+                     }
+-                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 8) {
++                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= ggml_sycl_mmvq_max_batch(GGML_TYPE_Q4_0)) {
+                     const int stride_col_y   = src1_padded_col_size / QK8_1;
+                     const int stride_col_dst = dst->ne[0];
+                     GGML_SYCL_DEBUG("Calling mul_mat_vec_q4_0_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+@@ -2260,7 +2292,7 @@
+             case GGML_TYPE_Q8_0:
+                 if ((ggml_tensor_extra_gpu *) dst->src[0]->extra &&
+                     ((ggml_tensor_extra_gpu *) dst->src[0]->extra)->optimized_feature.reorder) {
+-                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 8) {
++                    if (i == 0 && src1_ncols > 1 && src1_ncols <= ggml_sycl_mmvq_max_batch(GGML_TYPE_Q8_0)) {
+                         const int stride_col_y_bytes = src1_padded_col_size * q8_1_ts / q8_1_bs;
+                         const int stride_col_dst     = dst->ne[0];
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q8_0_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+@@ -2272,7 +2304,7 @@
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q8_0_q8_1_sycl\n");
+                         reorder_mul_mat_vec_q8_0_q8_1_sycl(src0_dd_i, src1_ddq_i_bs, dst_dd_i_bs, ne00, row_diff, stream);
+                     }
+-                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 8) {
++                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= ggml_sycl_mmvq_max_batch(GGML_TYPE_Q8_0)) {
+                     const int stride_col_y   = src1_padded_col_size / QK8_1;
+                     const int stride_col_dst = dst->ne[0];
+                     GGML_SYCL_DEBUG("Calling mul_mat_vec_q8_0_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+--- a/ggml/src/ggml-sycl/common.hpp
++++ b/ggml/src/ggml-sycl/common.hpp
+@@ -717,6 +717,12 @@
+         case GGML_TYPE_Q3_K:
+         case GGML_TYPE_Q5_K:
+         case GGML_TYPE_Q6_K:
++        // q4_0/q8_0 were left on the CUDA default of 8 while every k-quant was
++        // raised. That is the format most worth having here: at 9 columns
++        // (MTP n=8, or a couple of parallel slots) q4_0 fell off mmvq into the
++        // dequantise+oneDNN fallback and collapsed - measured 44 -> 4.8 t/s.
++        case GGML_TYPE_Q4_0:
++        case GGML_TYPE_Q8_0:
+             return kq;
+         default:
+             return base;

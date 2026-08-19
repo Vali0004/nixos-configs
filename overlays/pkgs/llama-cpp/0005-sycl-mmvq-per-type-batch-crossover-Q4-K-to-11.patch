@@ -1,0 +1,107 @@
+From: llama.cpp SYCL backend
+Subject: [PATCH] sycl: mmvq per-type batch crossover, Q4_K to 11
+
+diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
+index 49639b2..808819d 100644
+--- a/ggml/src/ggml-sycl/common.hpp
++++ b/ggml/src/ggml-sycl/common.hpp
+@@ -175,8 +175,24 @@ typedef float dfloat; // dequantize float
+ typedef sycl::float2 dfloat2;
+ #endif // GGML_SYCL_F16
+ 
++// Batch size at which mmvq hands over to the dequantize + oneDNN GEMM path.
++// 8 is inherited from CUDA and is the cap for every type whose fused
++// multi-column kernels are only instantiated up to ncols_dst == 8. Raising it
++// globally is a correctness bug: types without those instantiations fall into
++// the single-column fallback, which only handles column 0.
+ #define MMVQ_MAX_BATCH_SIZE  8
+ 
++// Q4_K has its fused kernels instantiated past 8. Measured on Battlemage
++// (B70, Qwen3.6-27B Q4_K_M, same-binary A/B): oneDNN's cost is essentially
++// fixed because it dequantizes the whole weight matrix regardless of batch,
++// while mmvq scales with the column count but flattens out around 12. mmvq
++// wins below that and loses above:
++//   pp9  28.65 -> 35.86  (+25%)
++//   pp11 34.88 -> 37.51  (+7.5%)
++//   pp13 40.96 -> 38.93  (-5%)
++// Set to 11, the last size with a clear win.
++#define MMVQ_MAX_BATCH_SIZE_Q4_K  11
++
+ static int g_all_sycl_device_count = -1;
+ static bool g_ggml_backend_sycl_buffer_type_initialized = false;
+ 
+@@ -672,6 +688,19 @@ static inline size_t ggml_sycl_mmvq_subgroups() {
+     return n;
+ }
+ 
++// Batch size at which mmvq hands over to the dequantize + oneDNN GEMM path.
++// The default is inherited from the CUDA backend and has never been tuned for
++// Intel; oneDNN reaches XMX throughput here, so the best crossover is an
++// empirical question. Can only usefully be lowered: the fused multi-column
++// mmvq kernels are instantiated up to ncols_dst == 8.
++static inline int ggml_sycl_mmvq_max_batch(enum ggml_type type) {
++    static const int base =
++        ggml_sycl_get_env("GGML_SYCL_MMVQ_MAX_BATCH", MMVQ_MAX_BATCH_SIZE);
++    static const int q4k =
++        ggml_sycl_get_env("GGML_SYCL_MMVQ_MAX_BATCH_Q4_K", MMVQ_MAX_BATCH_SIZE_Q4_K);
++    return type == GGML_TYPE_Q4_K ? q4k : base;
++}
++
+ template <int N, class T> std::string debug_get_array_str(const std::string & prefix, const T array[N]) {
+     if (LIKELY(!g_ggml_sycl_debug)) {
+         return "";
+diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
+index 8a19f64..9ceef8a 100644
+--- a/ggml/src/ggml-sycl/ggml-sycl.cpp
++++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
+@@ -4401,7 +4401,7 @@ static bool can_use_dequantize_mul_mat_vec(const ggml_tensor * src0, const ggml_
+ 
+ static bool can_use_mul_mat_vec_q(const ggml_tensor * src0, const ggml_tensor * src1, ggml_tensor * dst) {
+     return ggml_is_quantized(src0->type) && src1->type == GGML_TYPE_F32 && dst->type == GGML_TYPE_F32 &&
+-           src1->ne[1] <= MMVQ_MAX_BATCH_SIZE;
++           src1->ne[1] <= ggml_sycl_mmvq_max_batch(src0->type);
+ }
+ 
+ static void ggml_sycl_mul_mat(ggml_backend_sycl_context & ctx, const ggml_tensor * src0, const ggml_tensor * src1, ggml_tensor * dst) {
+diff --git a/ggml/src/ggml-sycl/mmvq.cpp b/ggml/src/ggml-sycl/mmvq.cpp
+index bba1365..ff293a9 100644
+--- a/ggml/src/ggml-sycl/mmvq.cpp
++++ b/ggml/src/ggml-sycl/mmvq.cpp
+@@ -1572,6 +1572,9 @@ static void mul_mat_vec_q4_K_q8_1_sycl_switch_ncols(
+         case 6: mul_mat_vec_q4_K_q8_1_sycl_ncols<6>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 7: mul_mat_vec_q4_K_q8_1_sycl_ncols<7>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 8: mul_mat_vec_q4_K_q8_1_sycl_ncols<8>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 9: mul_mat_vec_q4_K_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 10: mul_mat_vec_q4_K_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 11: mul_mat_vec_q4_K_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_K multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -1622,6 +1625,9 @@ static void reorder_mul_mat_vec_q4_k_q8_1_sycl_switch_ncols(
+         case 6: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<6>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 7: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<7>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 8: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<8>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 9: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 10: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 11: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_K reorder multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -2293,7 +2299,7 @@ void ggml_sycl_op_mul_mat_vec_q(ggml_backend_sycl_context & ctx, const ggml_tens
+             case GGML_TYPE_Q4_K:
+                 if ((ggml_tensor_extra_gpu *) dst->src[0]->extra &&
+                     ((ggml_tensor_extra_gpu *) dst->src[0]->extra)->optimized_feature.reorder) {
+-                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 8) {
++                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 11) {
+                         const int stride_col_y_bytes = src1_padded_col_size * q8_1_ts / q8_1_bs;
+                         const int stride_col_dst     = dst->ne[0];
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_k_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+@@ -2305,7 +2311,7 @@ void ggml_sycl_op_mul_mat_vec_q(ggml_backend_sycl_context & ctx, const ggml_tens
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_k_q8_1_sycl\n");
+                         reorder_mul_mat_vec_q4_k_q8_1_sycl(src0_dd_i, src1_ddq_i_bs, dst_dd_i_bs, ne00, row_diff, stream);
+                     }
+-                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 8) {
++                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 11) {
+                     const int stride_col_y   = src1_padded_col_size / QK8_1;
+                     const int stride_col_dst = dst->ne[0];
+                     GGML_SYCL_DEBUG("Calling mul_mat_vec_q4_K_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
