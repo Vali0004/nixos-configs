@@ -1,9 +1,11 @@
 From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
 
+diff --git a/ggml/src/ggml-sycl/vecdotq.hpp b/ggml/src/ggml-sycl/vecdotq.hpp
+index 3a06a9b8b..5f6084518 100644
 --- a/ggml/src/ggml-sycl/vecdotq.hpp
 +++ b/ggml/src/ggml-sycl/vecdotq.hpp
-@@ -254,6 +254,49 @@
+@@ -254,6 +254,49 @@ static __dpct_inline__ float vec_dot_q4_K_q8_1_impl_vmmq(
      return dm4f.x() * sumf_d - dm4f.y() * sumf_m;
  }
  
@@ -53,7 +55,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
  
  #define VDR_Q5_K_Q8_1_MMVQ 2
  
-@@ -296,6 +339,43 @@
+@@ -296,6 +339,43 @@ static __dpct_inline__ float vec_dot_q5_K_q8_1_impl_vmmq(
      return dm5f.x() * sumf_d - dm5f.y() * sumf_m;
  }
  
@@ -97,7 +99,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
  
  #define VDR_Q6_K_Q8_1_MMVQ 1
  
-@@ -522,6 +602,7 @@
+@@ -555,6 +635,7 @@ template <> struct reorder_vec_dot_q_sycl<GGML_TYPE_Q4_K> {
          int   v[2];
          int   u[2 * QR4_K];
          float d8[QR4_K];
@@ -105,7 +107,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
  
          v[0] = q4[0];
          v[1] = q4[4];
-@@ -544,13 +625,14 @@
+@@ -577,13 +658,14 @@ template <> struct reorder_vec_dot_q_sycl<GGML_TYPE_Q4_K> {
              sycl::half2 ds_values = *(q8_1_ds + bq8_offset + i);
  
              d8[i]                   = ds_values[0];
@@ -121,7 +123,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
      }
  };
  
-@@ -578,6 +660,7 @@
+@@ -611,6 +693,7 @@ template <> struct reorder_vec_dot_q_sycl<GGML_TYPE_Q5_K> {
          int   vh[2];
          int   u[2 * QR5_K];
          float d8[QR5_K];
@@ -129,7 +131,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
  
          vl[0] = ql_ptr[0];
          vl[1] = ql_ptr[4];
-@@ -603,13 +686,14 @@
+@@ -636,13 +719,14 @@ template <> struct reorder_vec_dot_q_sycl<GGML_TYPE_Q5_K> {
              sycl::half2 ds_values = *(q8_1_ds + bq8_offset + i);
  
              d8[i]                   = ds_values[0];
@@ -145,7 +147,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
      }
  };
  
-@@ -715,12 +799,14 @@
+@@ -748,12 +832,14 @@ template <> struct reorder_mmvq_weights<reorder_vec_dot_q_sycl<GGML_TYPE_Q4_K>>
                                const sycl::half2 * __restrict__ q8_1_ds, const int iqs) const {
          int   u[2 * QR4_K];
          float d8[QR4_K];
@@ -160,7 +162,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
  
              const int * q8 = (const int *) quant_base_ptr + ((iqs / 2) % 4);
              u[2 * i + 0]   = q8[0];
-@@ -730,7 +816,7 @@
+@@ -763,7 +849,7 @@ template <> struct reorder_mmvq_weights<reorder_vec_dot_q_sycl<GGML_TYPE_Q4_K>>
          const uint8_t * sc = (const uint8_t *) aux;
          const uint8_t * m  = sc + 2;
  
@@ -169,7 +171,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
      }
  };
  
-@@ -784,12 +870,14 @@
+@@ -817,12 +903,14 @@ template <> struct reorder_mmvq_weights<reorder_vec_dot_q_sycl<GGML_TYPE_Q5_K>>
                                const sycl::half2 * __restrict__ q8_1_ds, const int iqs) const {
          int   u[2 * QR5_K];
          float d8[QR5_K];
@@ -184,7 +186,7 @@ Subject: [PATCH] sycl: q4_K/q5_K mmvq - take the q8_1 block sum from ds.y
  
              const int * q8 = (const int *) quant_base_ptr + ((iqs / 2) % 4);
              u[2 * i + 0]   = q8[0];
-@@ -799,7 +887,7 @@
+@@ -832,7 +920,7 @@ template <> struct reorder_mmvq_weights<reorder_vec_dot_q_sycl<GGML_TYPE_Q5_K>>
          const uint8_t * sc = (const uint8_t *) aux;
          const uint8_t * m  = sc + 2;
  

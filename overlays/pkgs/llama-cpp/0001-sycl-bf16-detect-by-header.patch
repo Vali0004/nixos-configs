@@ -8,7 +8,7 @@ identically but do not define that macro, so both gates silently evaluate
 false and every bf16 code path is compiled out.
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index 4fa34a5..8214c9f 100644
+index 34de284d8..3234aa7e1 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
 @@ -29,7 +29,12 @@
@@ -26,7 +26,7 @@ index 4fa34a5..8214c9f 100644
      #ifndef GGML_SYCL_HAS_BF16
          #define GGML_SYCL_HAS_BF16
 diff --git a/ggml/src/ggml-sycl/dmmv.cpp b/ggml/src/ggml-sycl/dmmv.cpp
-index ee7cd2d..5dd40ee 100644
+index d47d6831a..e7c830e55 100644
 --- a/ggml/src/ggml-sycl/dmmv.cpp
 +++ b/ggml/src/ggml-sycl/dmmv.cpp
 @@ -3,7 +3,10 @@

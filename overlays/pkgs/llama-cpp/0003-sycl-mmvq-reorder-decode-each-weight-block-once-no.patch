@@ -2,46 +2,55 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: mmvq reorder - decode each weight block once, not once per column
 
 diff --git a/ggml/src/ggml-sycl/mmvq.cpp b/ggml/src/ggml-sycl/mmvq.cpp
-index 863d34e..18020e8 100644
+index 220663d5a..e86c61d7c 100644
 --- a/ggml/src/ggml-sycl/mmvq.cpp
 +++ b/ggml/src/ggml-sycl/mmvq.cpp
-@@ -82,7 +82,12 @@ static void mul_mat_vec_q_reorder_ncols(const void * __restrict__ vx, const void
+@@ -87,6 +87,11 @@ static void mul_mat_vec_q_reorder_ncols(const void * __restrict__ vx, const void
      static_assert(blocks_per_subgroup > 0);
      static_assert(block_elements_per_subgroup > 0);
  
--    float partial_sum[ncols_dst] = {0.0f};
 +    // Staging the q8_1 activations in SLM was tried and measured slower: the
 +    // activations are already cache-resident, so the only effect was two
 +    // workgroup barriers per block iteration (112 per pass at k=14336), which
 +    // serialises the subgroups and costs more than the traffic it saves.
 +    // q4_K n=8 went 235.68 -> 275.76 us. Read them directly.
-+    float partial_sum[ncols_dst] = { 0.0f };
-     for (int i = sg.get_local_linear_id() / block_elements_per_subgroup; i < blocks_per_row; i += blocks_per_subgroup) {
-         const int ibx = row * blocks_per_row + i;
- 
-@@ -94,13 +99,16 @@ static void mul_mat_vec_q_reorder_ncols(const void * __restrict__ vx, const void
+     float partial_sum[ncols_dst] = { 0.0f };
+     // sized 1 rather than 0 when unused: zero-length arrays are not standard C++, and the
+     // array is dead and eliminated in that case
+@@ -104,17 +109,25 @@ static void mul_mat_vec_q_reorder_ncols(const void * __restrict__ vx, const void
          for (int elem = 0; elem < block_elements_per_subgroup; elem += WARP_SIZE) {
              const int iqs = elem + block_traits::vdr_mmvq * (sg.get_local_linear_id() % block_elements_per_subgroup);
  
-+            // Decode the weight block once, then reuse it for every column.
++            // Decode the weight block once, then reuse it for every column. The gate matrix
++            // shares vx's offsets, so it decodes the same way off its own base pointer.
 +            const auto w = reorder_mmvq_weights<reorder_vec_dot_q_sycl>::load(vx, bx_offset, d_offset, iqs);
++
++            [[maybe_unused]] reorder_mmvq_weights<reorder_vec_dot_q_sycl> wg;
++            if constexpr (has_fusion) {
++                wg = reorder_mmvq_weights<reorder_vec_dot_q_sycl>::load(vgate, bx_offset, d_offset, iqs);
++            }
 +
  #pragma unroll
              for (int j = 0; j < ncols_dst; ++j) {
-                 const char       * vy_j           = (const char *)vy + j * stride_col_y_bytes;
-                 const int8_t     * q8_1_quant_ptr = (const int8_t *)vy_j + iby * QK8_1;
-                 const sycl::half2* q8_1_ds_ptr    = (const sycl::half2 *)(vy_j + ncols + iby * sizeof(sycl::half2));
+                 const char        * vy_j           = (const char *) vy + j * stride_col_y_bytes;
+                 const int8_t      * q8_1_quant_ptr = (const int8_t *) vy_j + iby * QK8_1;
+                 const sycl::half2 * q8_1_ds_ptr    = (const sycl::half2 *) (vy_j + ncols + iby * sizeof(sycl::half2));
  
 -                partial_sum[j] += reorder_vec_dot_q_sycl()(vx, bx_offset, d_offset, q8_1_quant_ptr, q8_1_ds_ptr, iqs);
 +                partial_sum[j] += w.dot(q8_1_quant_ptr, q8_1_ds_ptr, iqs);
+ 
+                 if constexpr (has_fusion) {
+-                    partial_gate[j] +=
+-                        reorder_vec_dot_q_sycl()(vgate, bx_offset, d_offset, q8_1_quant_ptr, q8_1_ds_ptr, iqs);
++                    partial_gate[j] += wg.dot(q8_1_quant_ptr, q8_1_ds_ptr, iqs);
+                 }
              }
          }
-     }
 diff --git a/ggml/src/ggml-sycl/vecdotq.hpp b/ggml/src/ggml-sycl/vecdotq.hpp
-index c11a6e8..03730d0 100644
+index 3ad4cee93..3a06a9b8b 100644
 --- a/ggml/src/ggml-sycl/vecdotq.hpp
 +++ b/ggml/src/ggml-sycl/vecdotq.hpp
-@@ -655,6 +655,249 @@ template <> struct reorder_vec_dot_q_sycl<GGML_TYPE_Q6_K> {
+@@ -688,6 +688,249 @@ template <> struct reorder_vec_dot_q_sycl<GGML_TYPE_Q6_K> {
              vl, vh, u0, u1, scs[0], scs[4], *d, d80, d81);
      }
  };
@@ -291,7 +300,7 @@ index c11a6e8..03730d0 100644
  #define VDR_Q4_0_Q8_1_MMVQ 2
  #define VDR_Q4_0_Q8_1_MMQ  4
  
-@@ -1594,6 +1837,11 @@ vec_dot_iq4_nl_q8_1(const void *__restrict__ vbq,
+@@ -1627,6 +1870,11 @@ vec_dot_iq4_nl_q8_1(const void *__restrict__ vbq,
      const uint16_t * q4 = (const uint16_t *)bq->qs + 2*iqs;
      const int32_t  * q8 = (const int32_t  *)bq8_1->qs + iqs;
  
@@ -303,7 +312,7 @@ index c11a6e8..03730d0 100644
      const uint8_t * values = (const uint8_t *)kvalues_iq4nl;
  
      int v1, v2;
-@@ -1616,7 +1864,6 @@ vec_dot_iq4_xs_q8_1(const void *__restrict__ vbq,
+@@ -1649,7 +1897,6 @@ vec_dot_iq4_xs_q8_1(const void *__restrict__ vbq,
  
  #if QK_K == 256
      const block_iq4_xs * bq4 = (const block_iq4_xs *) vbq;
@@ -311,7 +320,7 @@ index c11a6e8..03730d0 100644
  
      // iqs is 0...7
      const int ib32 = iqs;
-@@ -1624,6 +1871,8 @@ vec_dot_iq4_xs_q8_1(const void *__restrict__ vbq,
+@@ -1657,6 +1904,8 @@ vec_dot_iq4_xs_q8_1(const void *__restrict__ vbq,
      const uint32_t * q4 = (const uint32_t *)bq4->qs + 4*ib32;
      const int8_t ls = ((bq4->scales_l[ib32/2] >> 4*(ib32%2)) & 0xf) | (((bq4->scales_h >> 2*ib32) & 3) << 4);
      const float d = (float)bq4->d * (ls - 32) * bq8_1[ib32].ds[0];

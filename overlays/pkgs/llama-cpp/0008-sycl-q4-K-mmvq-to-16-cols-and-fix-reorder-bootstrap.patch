@@ -1,53 +1,11 @@
 From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: q4_K mmvq to 16 columns, and track the crossover when bootstrapping reorder
 
---- a/ggml/src/ggml-sycl/mmvq.cpp
-+++ b/ggml/src/ggml-sycl/mmvq.cpp
-@@ -1575,6 +1575,11 @@
-         case 9: mul_mat_vec_q4_K_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-         case 10: mul_mat_vec_q4_K_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-         case 11: mul_mat_vec_q4_K_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-+        case 12: mul_mat_vec_q4_K_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-+        case 13: mul_mat_vec_q4_K_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-+        case 14: mul_mat_vec_q4_K_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-+        case 15: mul_mat_vec_q4_K_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-+        case 16: mul_mat_vec_q4_K_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
-         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_K multi-col MMVQ", ncols_dst);
-     }
- }
-@@ -1628,6 +1633,11 @@
-         case 9: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-         case 10: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-         case 11: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-+        case 12: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-+        case 13: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-+        case 14: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-+        case 15: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-+        case 16: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
-         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_K reorder multi-col MMVQ", ncols_dst);
-     }
- }
-@@ -2299,7 +2309,7 @@
-             case GGML_TYPE_Q4_K:
-                 if ((ggml_tensor_extra_gpu *) dst->src[0]->extra &&
-                     ((ggml_tensor_extra_gpu *) dst->src[0]->extra)->optimized_feature.reorder) {
--                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 11) {
-+                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 16) {
-                         const int stride_col_y_bytes = src1_padded_col_size * q8_1_ts / q8_1_bs;
-                         const int stride_col_dst     = dst->ne[0];
-                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_k_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
-@@ -2311,7 +2321,7 @@
-                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_k_q8_1_sycl\n");
-                         reorder_mul_mat_vec_q4_k_q8_1_sycl(src0_dd_i, src1_ddq_i_bs, dst_dd_i_bs, ne00, row_diff, stream);
-                     }
--                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 11) {
-+                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 16) {
-                     const int stride_col_y   = src1_padded_col_size / QK8_1;
-                     const int stride_col_dst = dst->ne[0];
-                     GGML_SYCL_DEBUG("Calling mul_mat_vec_q4_K_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
+index cafd5d120..bdb33f9b7 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -196,7 +196,7 @@
+@@ -197,7 +197,7 @@ typedef sycl::float2 dfloat2;
  //   pp11 34.88 -> 37.51  (+7.5%)
  //   pp13 40.96 -> 38.93  (-5%)
  // Set to 11, the last size with a clear win.
@@ -56,9 +14,11 @@ Subject: [PATCH] sycl: q4_K mmvq to 16 columns, and track the crossover when boo
  
  static int g_all_sycl_device_count = -1;
  static bool g_ggml_backend_sycl_buffer_type_initialized = false;
+diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
+index 2c790a283..e352b2538 100644
 --- a/ggml/src/ggml-sycl/ggml-sycl.cpp
 +++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
-@@ -4357,9 +4357,14 @@
+@@ -4442,9 +4442,14 @@ static bool should_reorder_tensor(ggml_backend_sycl_context& ctx, const ggml_ten
      return g_ggml_sycl_enable_optimize && //allow optimize, controlled by $GGML_SYCL_ENABLE_OPT
             ctx.opt_feature.reorder &&      //allow this device due to good perf, skip the devices with bad perf.
             dst->op == GGML_OP_MUL_MAT &&   //limit to some supported cases of Q4_0, to do for more cases.
@@ -76,3 +36,49 @@ Subject: [PATCH] sycl: q4_K mmvq to 16 columns, and track the crossover when boo
  }
  
  static void opt_for_reorder(ggml_backend_sycl_context * ctx, const ggml_tensor * src0, const ggml_tensor * /* src1 */,
+diff --git a/ggml/src/ggml-sycl/mmvq.cpp b/ggml/src/ggml-sycl/mmvq.cpp
+index 4862a6831..d39b7324b 100644
+--- a/ggml/src/ggml-sycl/mmvq.cpp
++++ b/ggml/src/ggml-sycl/mmvq.cpp
+@@ -1662,6 +1662,11 @@ static void mul_mat_vec_q4_K_q8_1_sycl_switch_ncols(
+         case 9: mul_mat_vec_q4_K_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 10: mul_mat_vec_q4_K_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         case 11: mul_mat_vec_q4_K_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 12: mul_mat_vec_q4_K_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 13: mul_mat_vec_q4_K_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 14: mul_mat_vec_q4_K_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 15: mul_mat_vec_q4_K_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
++        case 16: mul_mat_vec_q4_K_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_K multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -1715,6 +1720,11 @@ static void reorder_mul_mat_vec_q4_k_q8_1_sycl_switch_ncols(
+         case 9: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<9>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 10: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<10>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         case 11: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<11>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 12: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<12>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 13: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<13>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 14: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<14>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 15: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<15>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
++        case 16: reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols<16>(vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, stream); break;
+         default: GGML_ABORT("unsupported ncols_dst=%d for Q4_K reorder multi-col MMVQ", ncols_dst);
+     }
+ }
+@@ -2401,7 +2411,7 @@ void ggml_sycl_op_mul_mat_vec_q(ggml_backend_sycl_context & ctx, const ggml_tens
+             case GGML_TYPE_Q4_K:
+                 if ((ggml_tensor_extra_gpu *) dst->src[0]->extra &&
+                     ((ggml_tensor_extra_gpu *) dst->src[0]->extra)->optimized_feature.reorder) {
+-                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 11) {
++                    if (i == 0 && src1_ncols > 1 && src1_ncols <= 16) {
+                         const int stride_col_y_bytes = src1_padded_col_size * q8_1_ts / q8_1_bs;
+                         const int stride_col_dst     = dst->ne[0];
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_k_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);
+@@ -2413,7 +2423,7 @@ void ggml_sycl_op_mul_mat_vec_q(ggml_backend_sycl_context & ctx, const ggml_tens
+                         GGML_SYCL_DEBUG("Calling reorder_mul_mat_vec_q4_k_q8_1_sycl\n");
+                         reorder_mul_mat_vec_q4_k_q8_1_sycl(src0_dd_i, src1_ddq_i_bs, dst_dd_i_bs, ne00, row_diff, stream);
+                     }
+-                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 11) {
++                } else if (i == 0 && src1_ncols > 1 && src1_ncols <= 16) {
+                     const int stride_col_y   = src1_padded_col_size / QK8_1;
+                     const int stride_col_dst = dst->ne[0];
+                     GGML_SYCL_DEBUG("Calling mul_mat_vec_q4_K_q8_1_sycl_switch_ncols ncols=%d\n", (int)src1_ncols);

@@ -2,10 +2,10 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: mmvq reorder - share one launcher, make subgroup count tunable
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index 4fa34a5..49639b2 100644
+index 3234aa7e1..e3e24d82e 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -666,6 +666,12 @@ bool gpu_has_xmx(sycl::device &dev);
+@@ -672,6 +672,12 @@ bool gpu_has_xmx(sycl::device &dev);
  
  int ggml_sycl_get_env(const char *env_name, int default_val);
  
@@ -19,10 +19,10 @@ index 4fa34a5..49639b2 100644
      if (LIKELY(!g_ggml_sycl_debug)) {
          return "";
 diff --git a/ggml/src/ggml-sycl/mmvq.cpp b/ggml/src/ggml-sycl/mmvq.cpp
-index 18020e8..bba1365 100644
+index e86c61d7c..fa9d1f080 100644
 --- a/ggml/src/ggml-sycl/mmvq.cpp
 +++ b/ggml/src/ggml-sycl/mmvq.cpp
-@@ -669,7 +669,7 @@ static void reorder_mul_mat_vec_q4_0_q8_1_sycl(const void * vx, const void * vy,
+@@ -696,7 +696,7 @@ static void reorder_mul_mat_vec_q4_0_q8_1_sycl(const void * vx, const void * vy,
                                                      const int nrows, dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK4_0 == 0);
      // Round up to a whole number of subgroup-sized workgroups; out-of-range rows are skipped inside the kernel.
@@ -31,7 +31,7 @@ index 18020e8..bba1365 100644
      const int block_num_y = ceil_div(nrows, GGML_SYCL_MMV_Y * (int) num_subgroups);
      const sycl::range<3> block_nums(1, 1, block_num_y);
      const sycl::range<3> block_dims(1, GGML_SYCL_MMV_Y, num_subgroups * WARP_SIZE);
-@@ -683,27 +683,45 @@ static void reorder_mul_mat_vec_q4_0_q8_1_sycl(const void * vx, const void * vy,
+@@ -710,28 +710,46 @@ static void reorder_mul_mat_vec_q4_0_q8_1_sycl(const void * vx, const void * vy,
      });
  }
  
@@ -67,7 +67,8 @@ index 18020e8..bba1365 100644
                           [=](sycl::nd_item<3> nd_item) [[sycl::reqd_sub_group_size(WARP_SIZE)]] {
 -                             mul_mat_vec_q_reorder_ncols<reorder_vec_dot_q_sycl<GGML_TYPE_Q4_0>, ncols_dst>(
 +                             mul_mat_vec_q_reorder_ncols<vec_dot, ncols_dst>(
-                                  vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, nd_item);
+                                  vx, /*vgate=*/ nullptr, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst,
+                                  /*glu_op=*/ GGML_GLU_OP_SWIGLU, nd_item);
                           });
      });
  }
@@ -87,7 +88,7 @@ index 18020e8..bba1365 100644
  static void reorder_mul_mat_vec_q4_0_q8_1_sycl_switch_ncols(
          const void * vx, const void * vy, float * dst,
          const int ncols, const int nrows, const int ncols_dst,
-@@ -1086,7 +1104,7 @@ static void reorder_mul_mat_vec_q8_0_q8_1_sycl(const void * vx, const void * vy,
+@@ -1114,7 +1132,7 @@ static void reorder_mul_mat_vec_q8_0_q8_1_sycl(const void * vx, const void * vy,
                                                      const int nrows, dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK8_0 == 0);
      // Round up to a whole number of subgroup-sized workgroups; out-of-range rows are skipped inside the kernel.
@@ -96,7 +97,7 @@ index 18020e8..bba1365 100644
      const int block_num_y = ceil_div(nrows, GGML_SYCL_MMV_Y * (int) num_subgroups);
      const sycl::range<3> block_nums(1, 1, block_num_y);
      const sycl::range<3> block_dims(1, GGML_SYCL_MMV_Y, num_subgroups * WARP_SIZE);
-@@ -1107,18 +1125,9 @@ static void reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols(
+@@ -1135,19 +1153,9 @@ static void reorder_mul_mat_vec_q8_0_q8_1_sycl_ncols(
          const int stride_col_y_bytes, const int stride_col_dst,
          dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK8_0 == 0);
@@ -109,7 +110,8 @@ index 18020e8..bba1365 100644
 -        cgh.parallel_for(sycl::nd_range<3>(block_nums * block_dims, block_dims),
 -                         [=](sycl::nd_item<3> nd_item) [[sycl::reqd_sub_group_size(WARP_SIZE)]] {
 -                             mul_mat_vec_q_reorder_ncols<reorder_vec_dot_q_sycl<GGML_TYPE_Q8_0>, ncols_dst>(
--                                 vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, nd_item);
+-                                 vx, /*vgate=*/ nullptr, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst,
+-                                 /*glu_op=*/ GGML_GLU_OP_SWIGLU, nd_item);
 -                         });
 -    });
 +    launch_reorder_mmvq_ncols<GGML_TYPE_Q8_0, ncols_dst>(
@@ -117,7 +119,7 @@ index 18020e8..bba1365 100644
  }
  
  static void reorder_mul_mat_vec_q8_0_q8_1_sycl_switch_ncols(
-@@ -1414,7 +1423,7 @@ static void reorder_mul_mat_vec_q3_k_q8_1_sycl(const void * vx, const void * vy,
+@@ -1502,7 +1510,7 @@ static void reorder_mul_mat_vec_q3_k_q8_1_sycl(const void * vx, const void * vy,
      GGML_ASSERT(ncols % QK_K == 0);
  
      // Round up to a whole number of subgroup-sized workgroups; out-of-range rows are skipped inside the kernel.
@@ -126,7 +128,7 @@ index 18020e8..bba1365 100644
      const int block_num_y = ceil_div(nrows, GGML_SYCL_MMV_Y * (int) num_subgroups);
      const sycl::range<3> block_nums(1, 1, block_num_y);
      const sycl::range<3> block_dims(1, GGML_SYCL_MMV_Y, num_subgroups * WARP_SIZE);
-@@ -1435,18 +1444,9 @@ static void reorder_mul_mat_vec_q3_k_q8_1_sycl_ncols(
+@@ -1523,19 +1531,9 @@ static void reorder_mul_mat_vec_q3_k_q8_1_sycl_ncols(
          const int stride_col_y_bytes, const int stride_col_dst,
          dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK_K == 0);
@@ -139,7 +141,8 @@ index 18020e8..bba1365 100644
 -        cgh.parallel_for(sycl::nd_range<3>(block_nums * block_dims, block_dims),
 -                         [=](sycl::nd_item<3> nd_item) [[sycl::reqd_sub_group_size(WARP_SIZE)]] {
 -                             mul_mat_vec_q_reorder_ncols<reorder_vec_dot_q_sycl<GGML_TYPE_Q3_K>, ncols_dst>(
--                                 vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, nd_item);
+-                                 vx, /*vgate=*/ nullptr, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst,
+-                                 /*glu_op=*/ GGML_GLU_OP_SWIGLU, nd_item);
 -                         });
 -    });
 +    launch_reorder_mmvq_ncols<GGML_TYPE_Q3_K, ncols_dst>(
@@ -147,7 +150,7 @@ index 18020e8..bba1365 100644
  }
  
  static void reorder_mul_mat_vec_q3_k_q8_1_sycl_switch_ncols(
-@@ -1581,7 +1581,7 @@ static void reorder_mul_mat_vec_q4_k_q8_1_sycl(const void * vx, const void * vy,
+@@ -1670,7 +1668,7 @@ static void reorder_mul_mat_vec_q4_k_q8_1_sycl(const void * vx, const void * vy,
      GGML_ASSERT(ncols % QK_K == 0);
  
      // Round up to a whole number of subgroup-sized workgroups; out-of-range rows are skipped inside the kernel.
@@ -156,7 +159,7 @@ index 18020e8..bba1365 100644
      const int block_num_y = ceil_div(nrows, GGML_SYCL_MMV_Y * (int) num_subgroups);
      const sycl::range<3> block_nums(1, 1, block_num_y);
      const sycl::range<3> block_dims(1, GGML_SYCL_MMV_Y, num_subgroups * WARP_SIZE);
-@@ -1603,18 +1603,9 @@ static void reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols(
+@@ -1692,19 +1690,9 @@ static void reorder_mul_mat_vec_q4_k_q8_1_sycl_ncols(
          dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK_K == 0);
  
@@ -169,7 +172,8 @@ index 18020e8..bba1365 100644
 -        cgh.parallel_for(sycl::nd_range<3>(block_nums * block_dims, block_dims),
 -                         [=](sycl::nd_item<3> nd_item) [[sycl::reqd_sub_group_size(WARP_SIZE)]] {
 -                             mul_mat_vec_q_reorder_ncols<reorder_vec_dot_q_sycl<GGML_TYPE_Q4_K>, ncols_dst>(
--                                 vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, nd_item);
+-                                 vx, /*vgate=*/ nullptr, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst,
+-                                 /*glu_op=*/ GGML_GLU_OP_SWIGLU, nd_item);
 -                         });
 -    });
 +    launch_reorder_mmvq_ncols<GGML_TYPE_Q4_K, ncols_dst>(
@@ -177,7 +181,7 @@ index 18020e8..bba1365 100644
  }
  
  static void reorder_mul_mat_vec_q4_k_q8_1_sycl_switch_ncols(
-@@ -1708,7 +1699,7 @@ static void reorder_mul_mat_vec_q5_k_q8_1_sycl(const void * vx, const void * vy,
+@@ -1798,7 +1786,7 @@ static void reorder_mul_mat_vec_q5_k_q8_1_sycl(const void * vx, const void * vy,
                                                 const int nrows, dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK_K == 0);
  
@@ -186,7 +190,7 @@ index 18020e8..bba1365 100644
      const int block_num_y = ceil_div(nrows, GGML_SYCL_MMV_Y * (int) num_subgroups);
      const sycl::range<3> block_nums(1, 1, block_num_y);
      const sycl::range<3> block_dims(1, GGML_SYCL_MMV_Y, num_subgroups * WARP_SIZE);
-@@ -1730,18 +1721,9 @@ static void reorder_mul_mat_vec_q5_k_q8_1_sycl_ncols(
+@@ -1820,19 +1808,9 @@ static void reorder_mul_mat_vec_q5_k_q8_1_sycl_ncols(
          dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK_K == 0);
  
@@ -199,7 +203,8 @@ index 18020e8..bba1365 100644
 -        cgh.parallel_for(sycl::nd_range<3>(block_nums * block_dims, block_dims),
 -                         [=](sycl::nd_item<3> nd_item) [[sycl::reqd_sub_group_size(WARP_SIZE)]] {
 -                             mul_mat_vec_q_reorder_ncols<reorder_vec_dot_q_sycl<GGML_TYPE_Q5_K>, ncols_dst>(
--                                 vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, nd_item);
+-                                 vx, /*vgate=*/ nullptr, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst,
+-                                 /*glu_op=*/ GGML_GLU_OP_SWIGLU, nd_item);
 -                         });
 -    });
 +    launch_reorder_mmvq_ncols<GGML_TYPE_Q5_K, ncols_dst>(
@@ -207,7 +212,7 @@ index 18020e8..bba1365 100644
  }
  
  static void reorder_mul_mat_vec_q5_k_q8_1_sycl_switch_ncols(
-@@ -1766,7 +1748,7 @@ static void reorder_mul_mat_vec_q6_k_q8_1_sycl(const void * vx, const void * vy,
+@@ -1857,7 +1835,7 @@ static void reorder_mul_mat_vec_q6_k_q8_1_sycl(const void * vx, const void * vy,
                                                 const int nrows, dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK_K == 0);
      // Round up to a whole number of subgroup-sized workgroups; out-of-range rows are skipped inside the kernel.
@@ -216,7 +221,7 @@ index 18020e8..bba1365 100644
      const int block_num_y = ceil_div(nrows, GGML_SYCL_MMV_Y * (int) num_subgroups);
      const sycl::range<3> block_nums(1, 1, block_num_y);
      const sycl::range<3> block_dims(1, GGML_SYCL_MMV_Y, num_subgroups * WARP_SIZE);
-@@ -1788,18 +1770,9 @@ static void reorder_mul_mat_vec_q6_k_q8_1_sycl_ncols(
+@@ -1879,19 +1857,9 @@ static void reorder_mul_mat_vec_q6_k_q8_1_sycl_ncols(
          const int stride_col_y_bytes, const int stride_col_dst,
          dpct::queue_ptr stream) {
      GGML_ASSERT(ncols % QK_K == 0);
@@ -229,7 +234,8 @@ index 18020e8..bba1365 100644
 -        cgh.parallel_for(sycl::nd_range<3>(block_nums * block_dims, block_dims),
 -                         [=](sycl::nd_item<3> nd_item) [[sycl::reqd_sub_group_size(WARP_SIZE)]] {
 -                             mul_mat_vec_q_reorder_ncols<reorder_vec_dot_q_sycl<GGML_TYPE_Q6_K>, ncols_dst>(
--                                 vx, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst, nd_item);
+-                                 vx, /*vgate=*/ nullptr, vy, dst, ncols, nrows, stride_col_y_bytes, stride_col_dst,
+-                                 /*glu_op=*/ GGML_GLU_OP_SWIGLU, nd_item);
 -                         });
 -    });
 +    launch_reorder_mmvq_ncols<GGML_TYPE_Q6_K, ncols_dst>(

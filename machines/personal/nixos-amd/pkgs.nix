@@ -145,7 +145,7 @@
     # osu!lazer
     osu-lazer-bin
     # llama.cpp
-    (llama-cpp.override { syclSupport = true; vulkanSupport = true; cudaSupport = false; })
+    (llama-cpp.override { syclSupport = true; vulkanSupport = true; cudaSupport = true; })
     xpu-smi
     # Intel GPU kernel tracing / hardware counters (pti-gpu)
     unitrace
@@ -228,6 +228,7 @@
     unzip
     # USB Utils
     usbutils
+    uhubctl
     # Alternative Discord client
     vesktop
     # VM helper

@@ -31,7 +31,12 @@ let
   '';
 
   sharedInternetDevice = "wlan0";
-  bindingDevice = "sfp0";
+  # USB gigabit NIC facing the Raspberry Pi 3B+. It shares a ganged hub with the
+  # Pi's power, so it disappears and returns on every board power cycle.
+  bindingDevice = "enp19s0u4u3";
+
+  serverAddress = "192.168.66.1";
+  tftpRoot = "/srv/tftp";
 in {
   services.dnsmasq = {
     enable = true;
@@ -40,10 +45,11 @@ in {
       bind-interfaces = true;
 
       interface = [ bindingDevice ];
+      listen-address = [ serverAddress ];
 
       dhcp-authoritative = true;
       dhcp-range = [
-        "192.168.100.2,192.168.100.254"
+        "192.168.66.100,192.168.66.200,12h"
         "2001:db8:1::1000,2001:db8:1::2000,64,12h"
         "::,constructor:${bindingDevice},ra-stateless,ra-names,64,2h"
       ];
@@ -52,6 +58,17 @@ in {
         "option:dns-server,1.1.1.1,8.8.8.8"
         "option6:dns-server,[2606:4700:4700::1111],[2001:4860:4860::8888]"
       ];
+
+      dhcp-boot = "bootcode.bin,,${serverAddress}";
+      dhcp-option-force = [ "66,${serverAddress}" ];
+      pxe-service = [ ''0,"Raspberry Pi Boot"'' ];
+      dhcp-reply-delay = 1;
+
+      enable-tftp = true;
+      tftp-root = tftpRoot;
+      tftp-no-blocksize = true;
+
+      log-dhcp = true;
 
       # Disable resolv.conf parsing, as we assign our own via DHCP.
       no-resolv = true;
@@ -63,16 +80,23 @@ in {
     };
   };
 
+  systemd.tmpfiles.rules = [
+    "d ${tftpRoot} 0755 root root -"
+  ];
+
   environment.systemPackages = [
     run-pixiecore
   ];
 
   networking = {
+    networkmanager.unmanaged = [
+      "interface-name:${bindingDevice}"
+    ];
     interfaces = {
       ${bindingDevice} = {
         ipv4 = {
           addresses = [{
-            address = "192.168.100.1";
+            address = serverAddress;
             prefixLength = 24;
           }];
         };
@@ -88,6 +112,8 @@ in {
         # DHCP
         67
         68
+        # TFTP
+        69
       ];
       checkReversePath = false;
       enable = true;

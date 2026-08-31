@@ -25,7 +25,12 @@ in {
 
   nixpkgs.config = {
     nvidia.acceptLicense = true;
-    cudaCapabilities = [ "6.0" ];
+    # P100 (GP100) is 6.0, V100 (GV100) is 7.0. Both have to be listed
+    # explicitly: nixpkgs' default capability list starts at 7.5, so leaving
+    # this unset builds no kernels either card can run. CUDA 13 dropped Pascal
+    # and Volta outright, so cudaPackages must stay on 12.x - 12.9 is the
+    # current default, which is why nothing pins it here.
+    cudaCapabilities = [ "6.0" "7.0" ];
   };
 
   hardware.nvidia = {
@@ -37,7 +42,10 @@ in {
       enable = false;
       finegrained = false;
     };
-    prime.nvidiaBusId = "PCI:9:0:0";
+    # No prime: that is Optimus laptop display-offload plumbing, and these are
+    # headless compute cards. The old PCI:9:0:0 here is also stale - that slot
+    # now holds the Arc Pro B70 (lspci 09:00.0), so it was pointing the NVIDIA
+    # driver at the Intel GPU.
   };
 
   environment.systemPackages = [ nvidiaPkg.bin ];

@@ -59,11 +59,14 @@ let
   # It's necessary to consistently use backendStdenv when building with CUDA support,
   # otherwise we get libstdc++ errors downstream.
   # cuda imposes an upper bound on the gcc version
+  # NOTE: syclSupport is checked first on purpose - when both are on, the outer
+  # build is the SYCL one and CUDA is delegated to the nested project. See
+  # syclCudaSplit below.
   effectiveStdenv =
-    if cudaSupport then
-      cudaPackages.backendStdenv
-    else if syclSupport then
+    if syclSupport then
       intel-llvm.stdenv
+    else if cudaSupport then
+      cudaPackages.backendStdenv
     else
       stdenv;
   inherit (lib)
@@ -81,6 +84,8 @@ let
     cuda_cudart
     libcublas
   ];
+
+  syclCudaSplit = syclSupport && cudaSupport;
 
   rocmBuildInputs = with rocmPackages; [
     clr
@@ -104,7 +109,8 @@ let
 in
 effectiveStdenv.mkDerivation (finalAttrs: {
   pname = "llama-cpp";
-  version = "10380";
+  # Upstream switched from bNNNNN build tags to semver releases as of v0.1.0.
+  version = "0.3.0";
 
   outputs = [
     "out"
@@ -114,8 +120,8 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "ggml-org";
     repo = "llama.cpp";
-    tag = "b${finalAttrs.version}";
-    hash = "sha256-iG3soqu8KY5L7CdGZVQTKN8Nd3MK+E7JsuJc8uj8pU4=";
+    tag = "v${finalAttrs.version}";
+    hash = "sha256-eUHLOgWFy8N4vmrolnUxJYHPmtxmEmNGR4qL46mQs7A=";
     #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     leaveDotGit = true;
     postFetch = ''
@@ -218,13 +224,22 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     (cmakeBool "BUILD_SHARED_LIBS" true)
     (cmakeBool "GGML_BLAS" blasSupport)
     (cmakeBool "GGML_CLBLAST" openclSupport)
-    (cmakeBool "GGML_CUDA" cudaSupport)
+    # In a split build the outer project must NOT enable CUDA - it would try to
+    # drive nvcc with the DPC++ driver as host compiler. The nested project
+    # below builds it instead.
+    (cmakeBool "GGML_CUDA" (cudaSupport && !syclCudaSplit))
     (cmakeBool "GGML_HIP" rocmSupport)
     (cmakeBool "GGML_METAL" metalSupport)
     (cmakeBool "GGML_RPC" rpcSupport)
     (cmakeBool "GGML_VULKAN" vulkanSupport)
     (cmakeBool "GGML_SYCL" syclSupport)
-    (cmakeFeature "LLAMA_BUILD_NUMBER" finalAttrs.version)
+    # NOT finalAttrs.version any more: build-info.cpp.in expands this into
+    # `int LLAMA_BUILD_NUMBER = @LLAMA_BUILD_NUMBER@;`, so a semver string does
+    # not compile. Upstream derives it from git describe, and postFetch strips
+    # .git, so pin it to 0 and let the version show up via LLAMA_VERSION.
+    (cmakeFeature "LLAMA_BUILD_NUMBER" "0")
+    # We are building a release tag, not a nightly, so drop the "-dev" suffix.
+    (cmakeBool "LLAMA_BUILD_IS_DEV" false)
   ]
   ++ optionals cpuArchDynamicDispatch [
     # Build all CPU backend variants for runtime dynamic dispatch.
@@ -238,8 +253,17 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     (cmakeBool "GGML_CPU_ALL_VARIANTS" true)
     (cmakeBool "GGML_BACKEND_DL" true)
   ]
-  ++ optionals cudaSupport [
+  ++ optionals (cudaSupport && !syclCudaSplit) [
     (cmakeFeature "CMAKE_CUDA_ARCHITECTURES" cudaPackages.flags.cmakeCudaArchitecturesString)
+  ]
+  ++ optionals syclCudaSplit [
+    # Backends are dlopened from the install dir rather than linked in, which is
+    # what lets a separately-compiled libggml-cuda.so join this build.
+    (cmakeBool "GGML_BACKEND_DL" true)
+    (cmakeBool "GGML_CUDA_EXTERNAL" true)
+    (cmakeFeature "GGML_CUDA_EXTERNAL_CC" "${cudaPackages.backendStdenv.cc}/bin/gcc")
+    (cmakeFeature "GGML_CUDA_EXTERNAL_CXX" "${cudaPackages.backendStdenv.cc}/bin/g++")
+    (cmakeFeature "GGML_CUDA_EXTERNAL_ARCHS" cudaPackages.flags.cmakeCudaArchitecturesString)
   ]
   ++ optionals rocmSupport [
     (cmakeFeature "CMAKE_HIP_COMPILER" "${rocmPackages.clr.hipClangPath}/clang++")
@@ -273,11 +297,6 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   ];
 
   postPatch = lib.optionalString syclSupport ''
-    substituteInPlace ggml/src/ggml-sycl/element_wise.cpp \
-      --replace-fail \
-        '        constexpr int ver = __INTEL_LLVM_COMPILER;' \
-        ""
-
     substituteInPlace ggml/src/ggml-sycl/CMakeLists.txt \
       --replace-fail \
         'target_link_libraries(ggml-sycl PRIVATE MKL::MKL_SYCL::BLAS)' \
@@ -311,12 +330,100 @@ target_compile_options(ggml-sycl PRIVATE
 target_link_options(ggml-sycl PRIVATE
   -fno-sycl-rdc
 )
+
+# Intel's libdnnl.so is compiled with icx and references the Intel compiler
+# runtime (libirc/libsvml/libintlc/libimf) without recording DT_NEEDED entries
+# for them, so they have to go on the link line explicitly. Scoped to this
+# target on purpose: as derivation-wide NIX_LDFLAGS they also landed on the
+# nested CUDA build, which then could not be dlopened.
+target_link_libraries(ggml-sycl PRIVATE
+  ${onednn}/lib/libsvml.so
+  ${onednn}/lib/libirc.so
+  ${onednn}/lib/libintlc.so.5
+  ${onednn}/lib/libimf.so
+)
+EOF
+  ''
+  + lib.optionalString syclCudaSplit ''
+    # Configuring ggml/ as its own top-level project sets GGML_STANDALONE, which
+    # configure_file()s ggml.pc.in - a file the standalone ggml repo has but
+    # llama.cpp's vendored copy does not. GGML_STANDALONE is a plain set(), not
+    # a cache entry, so it cannot be turned off with -D; supply the file instead.
+    cat > ggml/ggml.pc.in <<'EOF'
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=''${prefix}
+libdir=''${prefix}/@CMAKE_INSTALL_LIBDIR@
+includedir=''${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+
+Name: ggml
+Description: The GGML Tensor Library for Machine Learning
+Version: @GGML_INSTALL_VERSION@
+Cflags: -I''${includedir}
+Libs: -L''${libdir} -lggml
+EOF
+
+    cat >> ggml/src/CMakeLists.txt <<'EOF'
+if (GGML_CUDA_EXTERNAL)
+    include(ExternalProject)
+
+    ExternalProject_Add(ggml-cuda-external
+        SOURCE_DIR      "''${CMAKE_CURRENT_SOURCE_DIR}/.."
+        PREFIX          "''${CMAKE_BINARY_DIR}/ggml-cuda-external"
+        CMAKE_ARGS
+            -DCMAKE_BUILD_TYPE=Release
+            -DBUILD_SHARED_LIBS=ON
+            -DGGML_BACKEND_DL=ON
+            -DGGML_NATIVE=OFF
+            -DGGML_CUDA=ON
+            -DGGML_SYCL=OFF
+            -DGGML_VULKAN=OFF
+            -DGGML_BLAS=OFF
+            -DGGML_OPENCL=OFF
+            -DGGML_RPC=OFF
+            -DGGML_CPU_ALL_VARIANTS=OFF
+            # GGML_STANDALONE defaults these ON; we only want the CUDA backend.
+            -DGGML_BUILD_TESTS=OFF
+            -DGGML_BUILD_EXAMPLES=OFF
+            -DCMAKE_C_COMPILER=''${GGML_CUDA_EXTERNAL_CC}
+            -DCMAKE_CXX_COMPILER=''${GGML_CUDA_EXTERNAL_CXX}
+            -DCMAKE_CUDA_HOST_COMPILER=''${GGML_CUDA_EXTERNAL_CXX}
+            -DCMAKE_CUDA_ARCHITECTURES=''${GGML_CUDA_EXTERNAL_ARCHS}
+        BUILD_BYPRODUCTS "<BINARY_DIR>/bin/libggml-cuda.so"
+        INSTALL_COMMAND  ""
+        USES_TERMINAL_CONFIGURE ON
+        USES_TERMINAL_BUILD     ON
+    )
+
+    ExternalProject_Get_Property(ggml-cuda-external BINARY_DIR)
+
+    # Force the nested build to finish before the outer one installs.
+    add_dependencies(ggml ggml-cuda-external)
+
+    # BINDIR, not LIBDIR: ggml_backend_load_all() searches the executable's own
+    # directory, and with GGML_BACKEND_DL upstream installs every backend .so
+    # next to the binaries. Putting this in lib/ builds fine and is never found.
+    install(FILES "''${BINARY_DIR}/bin/libggml-cuda.so"
+            DESTINATION ''${CMAKE_INSTALL_BINDIR})
+endif()
 EOF
   '';
 
   # upstream plans on adding targets at the cmakelevel, remove those
   # additional steps after that
-  postInstall = ''
+  postInstall = lib.optionalString syclCudaSplit ''
+    # Note which libstdc++ this points at: the default stdenv's gcc-15 one,
+    # which is byte-for-byte the store path the executables and libggml-sycl.so
+    # already resolve - NOT gcc-14's from cudaPackages.backendStdenv, even
+    # though that is what compiled this file. Two libstdc++ in one process is
+    # the ABI split this whole layout exists to avoid, and gcc-15's is a
+    # superset, so it satisfies gcc-14-compiled code. Naming it explicitly
+    # beats relying on it happening to be mapped before the dlopen.
+    # libcuda.so.1 comes from the driver via autoAddDriverRunpath.
+    patchelf --set-rpath "$out/bin:$out/lib:${stdenv.cc.cc.lib}/lib:${
+      lib.makeLibraryPath cudaBuildInputs
+    }" $out/bin/libggml-cuda.so
+  ''
+  + ''
     # Match previous binary name for this package
     ln -sf $out/bin/llama-cli $out/bin/llama
 
@@ -332,7 +439,14 @@ EOF
   # Intel's libdnnl.so is compiled with icx and references the Intel compiler
   # runtime (libirc/libsvml/libintlc) without recording DT_NEEDED entries for
   # them, so they have to be put on the link line explicitly.
-  NIX_LDFLAGS = lib.optionalString syclSupport "-L${onednn}/lib -lsvml -lirc -lintlc -limf";
+  # Intel's compiler runtime for libdnnl is attached to the ggml-sycl target in
+  # postPatch rather than here. NIX_LDFLAGS is derivation-wide, so in a split
+  # build the nested CUDA project inherited it and linked libggml-cuda.so
+  # against libsvml/libirc/libintlc/libimf - libraries it does not need and
+  # cannot resolve at runtime, making its dlopen fail even with a working
+  # driver. Clearing NIX_LDFLAGS for the nested build is not an option either:
+  # it also carries the -L paths for cudadevrt/cudart_static.
+  NIX_LDFLAGS = "";
 
   # the tests are failing as of 2025-08
   doCheck = false;
