@@ -8,10 +8,10 @@ identically but do not define that macro, so both gates silently evaluate
 false and every bf16 code path is compiled out.
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index 34de284d8..3234aa7e1 100644
+index b5f75ca54..f5b803270 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -29,7 +29,12 @@
+@@ -30,7 +30,12 @@
  
  namespace syclexp = sycl::ext::oneapi::experimental;
  

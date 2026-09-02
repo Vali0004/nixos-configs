@@ -110,7 +110,9 @@ in
 effectiveStdenv.mkDerivation (finalAttrs: {
   pname = "llama-cpp";
   # Upstream switched from bNNNNN build tags to semver releases as of v0.1.0.
-  version = "0.3.0";
+  # We track master rather than a release tag, so this is the version master
+  # currently declares in CMakeLists.txt (LLAMA_VERSION_*) plus the pinned rev.
+  version = "0.3.0-unstable-8e53fce";
 
   outputs = [
     "out"
@@ -120,8 +122,8 @@ effectiveStdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "ggml-org";
     repo = "llama.cpp";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-eUHLOgWFy8N4vmrolnUxJYHPmtxmEmNGR4qL46mQs7A=";
+    rev = "8e53fcefd2c01ff70434ab41866bfc2eca31fe90";
+    hash = "sha256-ZyZdHhmeut8z2Fv3S3UORjyHqM4K0E28icmvqIOCmq8=";
     #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     leaveDotGit = true;
     postFetch = ''
@@ -238,8 +240,8 @@ effectiveStdenv.mkDerivation (finalAttrs: {
     # not compile. Upstream derives it from git describe, and postFetch strips
     # .git, so pin it to 0 and let the version show up via LLAMA_VERSION.
     (cmakeFeature "LLAMA_BUILD_NUMBER" "0")
-    # We are building a release tag, not a nightly, so drop the "-dev" suffix.
-    (cmakeBool "LLAMA_BUILD_IS_DEV" false)
+    # Left at upstream's default (ON): we pin a master commit, not a release
+    # tag, so the "-dev" suffix on the reported version is accurate.
   ]
   ++ optionals cpuArchDynamicDispatch [
     # Build all CPU backend variants for runtime dynamic dispatch.

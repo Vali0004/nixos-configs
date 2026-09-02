@@ -2,10 +2,10 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: apply the small-GEMM oneDNN guard to the f16 path too
 
 diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
-index 0573643d8..c9889266c 100644
+index 290fb4676..c6e6bb493 100644
 --- a/ggml/src/ggml-sycl/ggml-sycl.cpp
 +++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
-@@ -2738,7 +2738,12 @@ inline void ggml_sycl_op_mul_mat_sycl(
+@@ -2909,7 +2909,12 @@ inline void ggml_sycl_op_mul_mat_sycl(
                                           : src1_as_f16.get();
  
  #if GGML_SYCL_DNNL

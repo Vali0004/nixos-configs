@@ -2,10 +2,10 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: q4_K mmvq to 16 columns, and track the crossover when bootstrapping reorder
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index cafd5d120..bdb33f9b7 100644
+index 31daf570c..77e1f619c 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -197,7 +197,7 @@ typedef sycl::float2 dfloat2;
+@@ -183,7 +183,7 @@ typedef sycl::float2 dfloat2;
  //   pp11 34.88 -> 37.51  (+7.5%)
  //   pp13 40.96 -> 38.93  (-5%)
  // Set to 11, the last size with a clear win.
@@ -15,10 +15,10 @@ index cafd5d120..bdb33f9b7 100644
  static int g_all_sycl_device_count = -1;
  static bool g_ggml_backend_sycl_buffer_type_initialized = false;
 diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
-index 2c790a283..e352b2538 100644
+index 2b097436c..eef2ea86d 100644
 --- a/ggml/src/ggml-sycl/ggml-sycl.cpp
 +++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
-@@ -4442,9 +4442,14 @@ static bool should_reorder_tensor(ggml_backend_sycl_context& ctx, const ggml_ten
+@@ -4613,9 +4613,14 @@ static bool should_reorder_tensor(ggml_backend_sycl_context& ctx, const ggml_ten
      return g_ggml_sycl_enable_optimize && //allow optimize, controlled by $GGML_SYCL_ENABLE_OPT
             ctx.opt_feature.reorder &&      //allow this device due to good perf, skip the devices with bad perf.
             dst->op == GGML_OP_MUL_MAT &&   //limit to some supported cases of Q4_0, to do for more cases.

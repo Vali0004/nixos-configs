@@ -2,10 +2,10 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: mmvq per-type batch crossover, Q4_K to 11
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index e3e24d82e..cafd5d120 100644
+index ad1158681..31daf570c 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -181,8 +181,24 @@ typedef float dfloat; // dequantize float
+@@ -167,8 +167,24 @@ typedef float dfloat; // dequantize float
  typedef sycl::float2 dfloat2;
  #endif // GGML_SYCL_F16
  
@@ -30,7 +30,7 @@ index e3e24d82e..cafd5d120 100644
  static int g_all_sycl_device_count = -1;
  static bool g_ggml_backend_sycl_buffer_type_initialized = false;
  
-@@ -678,6 +694,19 @@ static inline size_t ggml_sycl_mmvq_subgroups() {
+@@ -664,6 +680,19 @@ static inline size_t ggml_sycl_mmvq_subgroups() {
      return n;
  }
  
@@ -51,10 +51,10 @@ index e3e24d82e..cafd5d120 100644
      if (LIKELY(!g_ggml_sycl_debug)) {
          return "";
 diff --git a/ggml/src/ggml-sycl/ggml-sycl.cpp b/ggml/src/ggml-sycl/ggml-sycl.cpp
-index c9889266c..b125e463c 100644
+index c6e6bb493..ec075fec7 100644
 --- a/ggml/src/ggml-sycl/ggml-sycl.cpp
 +++ b/ggml/src/ggml-sycl/ggml-sycl.cpp
-@@ -4491,7 +4491,7 @@ static bool can_use_dequantize_mul_mat_vec(const ggml_tensor * src0, const ggml_
+@@ -4662,7 +4662,7 @@ static bool can_use_dequantize_mul_mat_vec(const ggml_tensor * src0, const ggml_
  
  static bool can_use_mul_mat_vec_q(const ggml_tensor * src0, const ggml_tensor * src1, ggml_tensor * dst) {
      return ggml_is_quantized(src0->type) && src1->type == GGML_TYPE_F32 && dst->type == GGML_TYPE_F32 &&

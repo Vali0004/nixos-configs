@@ -2,10 +2,10 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: mmvq reorder - share one launcher, make subgroup count tunable
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index 3234aa7e1..e3e24d82e 100644
+index f5b803270..ad1158681 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -672,6 +672,12 @@ bool gpu_has_xmx(sycl::device &dev);
+@@ -658,6 +658,12 @@ bool gpu_has_xmx(sycl::device &dev);
  
  int ggml_sycl_get_env(const char *env_name, int default_val);
  

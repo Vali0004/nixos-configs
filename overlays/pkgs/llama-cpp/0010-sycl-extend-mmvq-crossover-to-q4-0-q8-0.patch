@@ -2,10 +2,10 @@ From: llama.cpp SYCL backend
 Subject: [PATCH] sycl: extend the mmvq crossover to q4_0/q8_0
 
 diff --git a/ggml/src/ggml-sycl/common.hpp b/ggml/src/ggml-sycl/common.hpp
-index ecc371cf3..1f07af9ad 100644
+index 9d06429c4..d169b364c 100644
 --- a/ggml/src/ggml-sycl/common.hpp
 +++ b/ggml/src/ggml-sycl/common.hpp
-@@ -718,6 +718,12 @@ static inline int ggml_sycl_mmvq_max_batch(enum ggml_type type) {
+@@ -704,6 +704,12 @@ static inline int ggml_sycl_mmvq_max_batch(enum ggml_type type) {
          case GGML_TYPE_Q3_K:
          case GGML_TYPE_Q5_K:
          case GGML_TYPE_Q6_K:
