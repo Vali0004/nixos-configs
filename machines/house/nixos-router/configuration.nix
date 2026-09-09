@@ -10,6 +10,7 @@
 
     networking/bind-localnet.nix
     networking/dhcp.nix
+    networking/failover.nix
     networking/hosts.nix
     networking/localnet.nix
     networking/nat.nix
@@ -28,8 +29,8 @@
     enable = true;
     bridgeInterface = "br0";
     wanInterface = "enp1s0f0";
+    wan2Interface = "enp2s0";
     lanInterfaces = [
-      "enp2s0"
       "enp1s0f1"
     ];
   };

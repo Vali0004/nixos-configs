@@ -203,7 +203,7 @@ in {
     publicV6Prefix = mkOption {
       type = types.nullOr types.str;
       default = null;
-      example = "2601:406:8180:35a7";
+      example = "2601:406:8180:fbb";
       description = ''
         Optional static public IPv6 /64 prefix allowed to use recursion.
         Kept explicit for reproducible remote deploys.

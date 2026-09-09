@@ -3,8 +3,8 @@
 , ... }:
 
 let
-  homeV4 = "76.112.236.206";
-  homeV6 = "2601:406:8180:35a7";
+  homeV4 = "68.34.96.200";
+  homeV6 = "2601:406:8180:fbb";
 in {
   imports = [
     "${modulesPath}/profiles/qemu-guest.nix"

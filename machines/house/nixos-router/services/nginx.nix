@@ -52,6 +52,14 @@
         port = 8123;
       };
     };
+    "shit.lab004.dev" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = lib.mkProxy {
+        ip = "10.0.0.174";
+        port = 5001;
+      };
+    };
     "internal.lab004.dev" = {
       enableACME = true;
       forceSSL = true;

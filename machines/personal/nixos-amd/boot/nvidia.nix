@@ -42,10 +42,6 @@ in {
       enable = false;
       finegrained = false;
     };
-    # No prime: that is Optimus laptop display-offload plumbing, and these are
-    # headless compute cards. The old PCI:9:0:0 here is also stale - that slot
-    # now holds the Arc Pro B70 (lspci 09:00.0), so it was pointing the NVIDIA
-    # driver at the Intel GPU.
   };
 
   environment.systemPackages = [ nvidiaPkg.bin ];

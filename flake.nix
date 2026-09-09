@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/c06b4ae3d6599a672a6210b7021d699c351eebda";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     agenix.url = "github:ryantm/agenix";
     comfyui-nix.url = "github:utensils/comfyui-nix";
     home-manager = {

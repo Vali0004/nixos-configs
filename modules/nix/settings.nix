@@ -11,14 +11,14 @@
         "flakes"
       ];
       substituters = [
-        "https://hydra.lab004.dev"
+        #"https://hydra.lab004.dev"
       ];
       trusted-users = [
         "vali"
         "@wheel"
       ];
       trusted-public-keys = [
-        "hydra.lab004.dev:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
+        #"hydra.lab004.dev:6+mPv9GwAFx/9J+mIL0I41pU8k4HX0KiGi1LUHJf7LY="
       ];
     };
   };

@@ -83,6 +83,8 @@
     ida-pro
     # I2C Tools
     i2c-tools
+    # Image tools
+    imagemagick
     # Internet utilities (ping6, etc.)
     inetutils
     # Internet performance tool
@@ -145,7 +147,7 @@
     # osu!lazer
     osu-lazer-bin
     # llama.cpp
-    (llama-cpp.override { syclSupport = true; vulkanSupport = true; cudaSupport = true; })
+    (llama-cpp.override { syclSupport = false; vulkanSupport = true; cudaSupport = false; rocmSupport = true; })
     xpu-smi
     # Intel GPU kernel tracing / hardware counters (pti-gpu)
     unitrace

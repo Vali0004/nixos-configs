@@ -21,6 +21,31 @@ in {
       description = "Physical WAN interface";
     };
 
+    # To Fallback Modem (Verizon 5G box: CGNAT'd, double-NAT, no inbound, no PD)
+    wan2Interface = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      description = "2nd Physical WAN interface, used as a fallback uplink";
+    };
+
+    wanMetric = lib.mkOption {
+      type = lib.types.int;
+      default = 100;
+      description = "Route metric for the primary WAN's default route while healthy";
+    };
+
+    wanDemotedMetric = lib.mkOption {
+      type = lib.types.int;
+      default = 9000;
+      description = "Route metric the primary WAN is demoted to when it fails health checks";
+    };
+
+    wan2Metric = lib.mkOption {
+      type = lib.types.int;
+      default = 1000;
+      description = "Route metric for the fallback WAN's default route";
+    };
+
     # SFP Card
     lanInterfaces = lib.mkOption {
       type = lib.types.listOf lib.types.str;
@@ -78,7 +103,7 @@ in {
         IPv6rs = false;
         allowInterfaces = [
           cfg.wanInterface
-        ];
+        ] ++ lib.optional (cfg.wan2Interface != null) cfg.wan2Interface;
         denyInterfaces = [
           cfg.bridgeInterface
         ];
@@ -88,6 +113,19 @@ in {
             ia_na 1
             ia_pd 2 ${cfg.bridgeInterface}/0
             rapid_commit
+            metric ${toString cfg.wanMetric}
+        '' + lib.optionalString (cfg.wan2Interface != null) ''
+
+          # Fallback uplink. It is a consumer CGNAT gateway: it hands us a
+          # RFC1918 lease and NATs us again. Take v4 only, at a worse metric,
+          # and never let it touch DNS or v6 - v6 stays exclusive to wan1,
+          # since there is no prefix to delegate behind that box.
+          interface ${cfg.wan2Interface}
+            ipv4only
+            noipv6
+            noipv6rs
+            nohook resolv.conf
+            metric ${toString cfg.wan2Metric}
         '';
       };
       firewall.interfaces.${cfg.wanInterface} = {
@@ -98,6 +136,9 @@ in {
       interfaces = {
         # WAN, ISP uses DHCP, and DHCPv6/SLAAC for IP assignment, so enable it.
         ${cfg.wanInterface}.useDHCP = true;
+      } // lib.optionalAttrs (cfg.wan2Interface != null) {
+        ${cfg.wan2Interface}.useDHCP = true;
+      } // {
         # Set the bridge to be a static IP, as it acts as the gateway
         ${cfg.bridgeInterface} = {
           ipv4.addresses = [{

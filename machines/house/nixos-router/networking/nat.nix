@@ -7,7 +7,7 @@ let
   cfg = config.router;
   iptables = pkgs.iptables;
   toxIf = "tox_master0";
-  wanIp = "76.112.236.206";
+  wanIp = "68.34.96.200";
 in {
   networking.nat = {
     enable = true;
@@ -120,10 +120,10 @@ in {
         loopbackIPs = [ wanIp ];
       }
       {
-        # Wings port 4
-        destination = "${cfg.lanSubnet}.4:8904";
+        # Shitty API
+        destination = "${cfg.lanSubnet}.174:8000";
         proto = "tcp";
-        sourcePort = 8904;
+        sourcePort = 8000;
         loopbackIPs = [ wanIp ];
       }
     ];

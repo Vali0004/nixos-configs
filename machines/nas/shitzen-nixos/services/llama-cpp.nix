@@ -7,7 +7,7 @@ let
   llama-cpp = pkgs.llama-cpp.override { syclSupport = true; vulkanSupport = true; };
 in {
   systemd.services.llama-router = {
-    enable = true;
+    enable = false;
     description = "llama.cpp Router Service";
     path = with pkgs; [
       bashNonInteractive

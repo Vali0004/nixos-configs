@@ -49,7 +49,7 @@
         "10.0.0.0/24"
         "${config.router.lanSubnetV6}::/64"
       ];
-      endpoint = "76.112.236.206:51821";
+      endpoint = "68.34.96.200:51821";
       persistentKeepalive = 25;
       publicKey = "AU8rLt794hWpjsOK+zZjTcNcyzLIS5n6giiWS2rOcxk=";
     }];

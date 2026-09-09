@@ -11,7 +11,7 @@
     boot/boot.nix
 
     modules/agenix.nix
-    modules/nvidia.nix
+    #modules/nvidia.nix
     modules/wireguard.nix
     modules/wireguard-internal.nix
 
