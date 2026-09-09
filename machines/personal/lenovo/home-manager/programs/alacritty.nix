@@ -6,7 +6,7 @@
         normal = {
           family = "DejaVu SansM Nerd Font";
         };
-        size = 11.5;
+        size = 8.5;
       };
       mouse.bindings = [
         {

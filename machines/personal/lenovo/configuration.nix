@@ -96,9 +96,18 @@
 
   wifi.networks = [
     {
+      name = "mco_airport";
+      ssid = "MCO Internet";
+      open = true;
+    }
+    {
       name = "college";
       ssid = "mGuest";
       open = true;
+    }
+    {
+      name = "home";
+      ssid = "Fera_Mac";
     }
   ];
 
@@ -118,6 +127,7 @@
     dconf.enable = true;
     easyeffects.enable = true;
     git = {
+      package = pkgs.gitFull;
       enable = true;
       lfs.enable = true;
     };
@@ -139,6 +149,11 @@
     lact.enable = true;
     # upower daemon
     upower.enable = true;
+  };
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 200;
   };
 
   users = let

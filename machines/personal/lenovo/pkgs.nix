@@ -19,7 +19,7 @@
     claude-code
     cli-proxy-api
     # Codex - Agentic coding agent (ChatGPT)
-    #codex
+    codex
     # Antigravity - Agentic coding agent (Google/Gemini)
     antigravity-cli
     # DNS & IP Tool
@@ -71,6 +71,8 @@
     # Open-source LLM Coding agent
     opencode
     opencode-claude-auth
+    # osu! - Click the circles
+    osu-stable
     # Audio Player Control
     playerctl
     # Python

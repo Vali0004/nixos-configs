@@ -29,8 +29,11 @@ in {
   services.xserver.windowManager.dwm = {
     enable = true;
     extraSessionCommands = ''
-      ${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.gif &
+      # Drains battery - look at cheaper alternatives
+      #${pkgs.xwinwrap-gif}/bin/xwinwrap-gif /home/vali/.config/xwinwrap/wallpaper.gif &
       ${pkgs.dwmblocks-laptop}/bin/dwmblocks &
+      # Possibly look into why brightness defaults to 0 instead of FFFF, look into possibly benefits of a lower brightness in relation to battery life
+      # TTE is 5 hours from 70%
       ${pkgs.brightnessctl}/bin/brightnessctl s 65535
     '';
   };
