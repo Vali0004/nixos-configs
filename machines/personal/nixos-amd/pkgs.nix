@@ -31,6 +31,8 @@
     cli-proxy-api
     # Codex - Agentic coding agent (ChatGPT)
     codex
+    # ChatGPT Desktop App
+    chatgpt
     # Antigravity - Agentic coding agent (Google/Gemini)
     antigravity-cli
     # cURL

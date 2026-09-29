@@ -30,6 +30,7 @@
     services/picom.nix
     services/ratbagd.nix
     services/syslog.nix
+    services/tailscale.nix
     services/toxvpn.nix
     services/udev.nix
 

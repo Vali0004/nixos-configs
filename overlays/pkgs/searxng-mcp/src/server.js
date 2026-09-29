@@ -95,6 +95,7 @@ function fallback(query, reason) {
 
 const MCP = {
   initialize: "initialize",
+  ping: "ping",
   toolsList: "tools/list",
   toolsCall: "tools/call",
 };
@@ -145,24 +146,24 @@ function handleToolsList(body) {
           },
           required: ["query"],
         },
-      },
-      {
-        name: "text2img",
-        description: "Generate image via AUTOMATIC1111",
-        inputSchema: {
-          type: "object",
-          properties: {
-            prompt: { type: "string" },
-            negative_prompt: { type: "string" },
-            steps: { type: "number" },
-            cfg_scale: { type: "number" },
-            seed: { type: "number" },
-            width: { type: "number" },
-            height: { type: "number" }
-          },
-          required: ["prompt"],
-        },
-      },
+      }//,
+      //{
+      //  name: "text2img",
+      //  description: "Generate image via AUTOMATIC1111",
+      //  inputSchema: {
+      //    type: "object",
+      //    properties: {
+      //      prompt: { type: "string" },
+      //      negative_prompt: { type: "string" },
+      //      steps: { type: "number" },
+      //      cfg_scale: { type: "number" },
+      //      seed: { type: "number" },
+      //      width: { type: "number" },
+      //      height: { type: "number" }
+      //    },
+      //    required: ["prompt"],
+      //  },
+      //},
     ],
   });
 }
@@ -186,19 +187,18 @@ async function handleToolCall(body) {
         ],
       });
     }
-    case "text2img": {
-      const result = await a1111Generate(args);
-
-      return jsonRpc(body.id, {
-        content: [
-          {
-            type: "image",
-            data: result.image,
-            mimeType: "image/png"
-          }
-        ]
-      });
-    }
+    //case "text2img": {
+    //  const result = await a1111Generate(args);
+    //  return jsonRpc(body.id, {
+    //    content: [
+    //      {
+    //        type: "image",
+    //        data: result.image,
+    //        mimeType: "image/png"
+    //      }
+    //    ]
+    //  });
+    //}
 
     default:
       return jsonRpcError(body.id, -32601, "unknown_tool", { name });
@@ -316,32 +316,31 @@ function createServer() {
     };
   });
 
-  server.tool(
-    "text2img",
-    "Generate an image using AUTOMATIC1111 Stable Diffusion",
-    {
-      prompt: z.string(),
-      negative_prompt: z.string().optional(),
-      steps: z.number().optional(),
-      cfg_scale: z.number().optional(),
-      seed: z.number().optional(),
-      width: z.number().optional(),
-      height: z.number().optional()
-    },
-    async (args) => {
-      const result = await a1111Generate(args);
-
-      return {
-        content: [
-          {
-            type: "image",
-            data: result.image,
-            mimeType: "image/png"
-          }
-        ]
-      };
-    }
-  );
+  //server.tool(
+  //  "text2img",
+  //  "Generate an image using AUTOMATIC1111 Stable Diffusion",
+  //  {
+  //    prompt: z.string(),
+  //    negative_prompt: z.string().optional(),
+  //    steps: z.number().optional(),
+  //    cfg_scale: z.number().optional(),
+  //    seed: z.number().optional(),
+  //    width: z.number().optional(),
+  //    height: z.number().optional()
+  //  },
+  //  async (args) => {
+  //    const result = await a1111Generate(args);
+  //    return {
+  //      content: [
+  //        {
+  //          type: "image",
+  //          data: result.image,
+  //          mimeType: "image/png"
+  //        }
+  //      ]
+  //    };
+  //  }
+  //);
 
   return server;
 }
@@ -372,11 +371,13 @@ app.post("/mcp-plain", async (req, res) => {
     case MCP.toolsCall:
       return res.json(await handleToolCall(body));
 
+    case MCP.ping:
+      return res.json(jsonRpc(body.id, {}));
+
     default:
-      return res.status(400).json({
-        error: "unsupported_method",
+      return res.json(jsonRpcError(body.id ?? null, -32601, "Method not found", {
         received: body?.method,
-      });
+      }));
     }
 
   } catch (err) {
@@ -385,6 +386,25 @@ app.post("/mcp-plain", async (req, res) => {
       error: "internal_error",
       detail: err?.message ?? String(err),
     });
+  }
+});
+
+app.get("/mcp", async (req, res) => {
+  const sessionId = req.headers["mcp-session-id"];
+  const ctx = sessionId && sessions.get(sessionId);
+
+  if (!ctx) {
+    return res.status(404).json({
+      error: "unknown_session",
+      detail: "No active MCP session for that id",
+    });
+  }
+
+  try {
+    return ctx.transport.handleRequest(req, res);
+  } catch (err) {
+    console.error("[MCP GET ERROR]", err);
+    if (!res.headersSent) res.sendStatus(500);
   }
 });
 
@@ -402,6 +422,9 @@ app.post("/mcp", async (req, res) => {
 
       ctx = { server, transport };
       sessions.set(sessionId, ctx);
+
+      ctx.lastSeen = Date.now();
+      transport.onclose = () => sessions.delete(sessionId);
 
       console.log("[MCP] NEW SESSION", sessionId);
     }
@@ -436,12 +459,17 @@ app.delete("/mcp", async (req, res) => {
   res.sendStatus(204);
 });
 
+const SESSION_TTL_MS = 30 * 60_000;
+
 setInterval(() => {
   const now = Date.now();
-  for (const [k, v] of cache) {
-    if (now - v.ts > CACHE_TTL_MS) cache.delete(k);
+  for (const [id, ctx] of sessions) {
+    if (now - (ctx.lastSeen ?? 0) > SESSION_TTL_MS) {
+      try { ctx.transport?.close?.(); } catch {}
+      sessions.delete(id);
+    }
   }
-}, 30_000);
+}, 60_000);
 
 app.listen(3200, "0.0.0.0", () => {
   console.log("Lab004 MCP gateway running on :3200");

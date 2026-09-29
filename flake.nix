@@ -57,6 +57,7 @@
         cli-proxy-api = llm-agents.packages.${system}.cli-proxy-api;
         claude-code = llm-agents.packages.${system}.claude-code;
         codex = llm-agents.packages.${system}.codex;
+        chatgpt = llm-agents.packages.${system}.chatgpt;
       })
     ];
 

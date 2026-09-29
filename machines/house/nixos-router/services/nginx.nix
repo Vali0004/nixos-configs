@@ -83,6 +83,7 @@
           alias = "/mnt/data/private/images/";
           index = "index.htm";
           extraConfig = ''
+            add_header Access-Control-Allow-Origin * always;
             autoindex on;
             autoindex_exact_size off;
           '';

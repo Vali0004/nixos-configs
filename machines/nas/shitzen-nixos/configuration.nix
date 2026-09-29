@@ -113,8 +113,6 @@
     jdk
     # Powershell - Kill all processes
     killall
-    # Vulkan AI
-    (llama-cpp.override { syclSupport = false; cudaSupport = true; vulkanSupport = true; })
     #stable-diffusion-cpp-vulkan
     # List Hardware
     lshw
