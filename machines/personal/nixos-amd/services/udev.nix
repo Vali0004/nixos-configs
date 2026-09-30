@@ -10,13 +10,6 @@ in {
   services.udev.extraRules = ''
     # Intel GPU (xe): allow unprivileged reads of the observation/OA stream, so
     # unitrace can collect hardware performance counters without root.
-    #
-    # Cannot be done via boot.kernel.sysctl: systemd-sysctl runs before the xe
-    # module registers /proc/sys/dev/xe, and the write is silently ignored.
-    # Binding it to the device event also re-applies it across module reloads.
-    #
-    # This exposes GPU counters to any local user, which can in principle
-    # reveal other processes' GPU activity - fine here, not for a shared host.
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="xe", RUN+="${pkgs.bash}/bin/sh -c 'echo 0 > /proc/sys/dev/xe/observation_paranoid'"
     # Apple
     SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", ATTR{power/control}="on", ENV{ID_MM_DEVICE_IGNORE}="1", MODE="0677", GROUP="wheel", TAG+="uaccess"
@@ -53,6 +46,9 @@ in {
     SUBSYSTEM=="usb", ATTRS{idVendor}=="2207", GROUP="wheel", MODE="0666"
     # Sigrok (OpenMoto Fx2lafw)
     SUBSYSTEM=="usb", ATTRS{idVendor}=="1d50", GROUP="wheel", MODE="0666"
+    # Wacom
+    KERNEL=="hidraw*", ATTRS{idVendor}=="056a", TAG+="uaccess", MODE="0666"
+    SUBSYSTEM=="usb", ATTR{idVendor}=="0ac3", TAG+="uaccess", MODE="0666"
     # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for Nordic Semiconductor devices
     SUBSYSTEM=="usb", ATTRS{idVendor}=="1915", MODE="0666"
     # Set /dev/bus/usb/*/* as read-write for the wheel group (0666) for WCH-CN devices

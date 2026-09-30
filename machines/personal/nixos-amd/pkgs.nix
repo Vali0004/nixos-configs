@@ -59,6 +59,8 @@
     fastfetch
     # Simpler Fastfetch Config
     fastfetch-simple
+    # Fast find
+    fd
     # Screenshot Tool
     flameshot
     # Screenshot Tool (Upload)
@@ -89,8 +91,12 @@
     imagemagick
     # Internet utilities (ping6, etc.)
     inetutils
+    # IO top (tool to find the processes doing the most IO)
+    iotop
     # Internet performance tool
     iperf
+    # iOS/macOS Research Swiss Army Knife
+    ipsw
     # IRC Client
     irssi
     # Media Player
@@ -113,6 +119,8 @@
     libxcvt
     # Set of tools for joysticks and peripherals
     linuxConsoleTools
+    # List open files
+    lsof
     # Wormhole, file sender
     magic-wormhole
     # COM Reader
@@ -185,6 +193,8 @@
     ]))
     python314Packages.huggingface-hub
     uv
+    # Tool for monitoring progress of data
+    pv
     # Minecraft launcher
     prismlauncher
     # Qt-based LA/scope/MSO GUI
