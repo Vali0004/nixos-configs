@@ -50,6 +50,8 @@
     inetutils
     # Internet performance tool
     iperf
+    # IRC Client
+    irssi
     # JSON parser
     jq
     # Killall (psmisc)
