@@ -214,6 +214,14 @@
   security = {
     rtkit.enable = true;
     sudo.enable = true;
+    pam.loginLimits = [
+      {
+        domain = "vali";
+        type = "-";
+        item = "memlock";
+        value = "unlimited";
+      }
+    ];
   };
 
   services = {

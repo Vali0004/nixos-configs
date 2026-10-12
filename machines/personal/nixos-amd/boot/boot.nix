@@ -7,8 +7,18 @@
   ];
 
   boot = {
-    binfmt.emulatedSystems = [ "powerpc64-linux" "armv7l-linux" "aarch64-linux" "riscv64-linux" ];
+    binfmt.emulatedSystems = [
+      "powerpc64-linux"
+      "armv7l-linux"
+      "aarch64-linux"
+      "riscv64-linux"
+    ];
+    # vfio-pci claims the iGPU and its audio before amdgpu and snd_hda_intel can
     extraModprobeConfig = ''
+      options vfio-pci ids=1002:13c0,1002:1640
+      softdep amdgpu pre: vfio-pci
+      softdep snd_hda_intel pre: vfio-pci
+
       options rtw89_core disable_ps_mode=y
       options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
     '';
@@ -22,6 +32,11 @@
       "usbhid" "usb_storage" # USB
       "xhci_pci" # USB
       "sd_mod"
+    ];
+    initrd.kernelModules = [
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
     ];
     kernelModules = [
       # Binary Format
@@ -74,6 +89,8 @@
       #"memmap=192M!0xb00000000"
       ## 32 MiB: 0xcaa000000 - 0xcabffffff
       #"memmap=32M!0xca8000000"
+      "vfio-pci.ids=1002:13c0,1002:1640"
+      "iommu=pt"
     ];
     blacklistedKernelModules = [ "apple_mfi_fastcharge" ];
   };

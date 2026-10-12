@@ -11,6 +11,8 @@ in {
     # Intel GPU (xe): allow unprivileged reads of the observation/OA stream, so
     # unitrace can collect hardware performance counters without root.
     ACTION=="add", SUBSYSTEM=="pci", DRIVER=="xe", RUN+="${pkgs.bash}/bin/sh -c 'echo 0 > /proc/sys/dev/xe/observation_paranoid'"
+    # VFIO
+    SUBSYSTEM=="vfio", OWNER="vali", MODE="0660"
     # Apple
     SUBSYSTEM=="usb", ATTR{idVendor}=="05ac", ATTR{power/control}="on", ENV{ID_MM_DEVICE_IGNORE}="1", MODE="0677", GROUP="wheel", TAG+="uaccess"
     # Aula, SayoDevice O3C
