@@ -91,6 +91,8 @@
       #"memmap=32M!0xca8000000"
       "vfio-pci.ids=1002:13c0,1002:1640"
       "iommu=pt"
+      "pcie_acs_override=downstream,multifunction"
+      "iommu_ignore_require_direct"
     ];
     blacklistedKernelModules = [ "apple_mfi_fastcharge" ];
   };

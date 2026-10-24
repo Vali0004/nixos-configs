@@ -4,7 +4,7 @@
 , ... }:
 
 let
-  llama-cpp = pkgs.llama-cpp.override { syclSupport = true; vulkanSupport = true; };
+  llama-cpp = pkgs.llama-cpp.override { vulkanSupport = true; };
 in {
   systemd.services.llama-router = {
     enable = false;

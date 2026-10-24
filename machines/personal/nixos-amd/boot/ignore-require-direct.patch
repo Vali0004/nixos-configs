@@ -1,0 +1,28 @@
+--- a/drivers/iommu/iommu.c	2026-10-16 01:17:51.067464600 -0400
++++ b/drivers/iommu/iommu.c	2026-10-16 01:17:57.444343705 -0400
+@@ -138,6 +138,16 @@
+ 	IOMMU_SET_DOMAIN_MUST_SUCCEED = 1 << 0,
+ };
+ 
++static bool iommu_ignore_require_direct;
++
++static int __init iommu_ignore_require_direct_setup(char *str)
++{
++	iommu_ignore_require_direct = true;
++	pr_warn("iommu: ignoring firmware 1:1 mapping requirements\n");
++	return 1;
++}
++__setup("iommu_ignore_require_direct", iommu_ignore_require_direct_setup);
++
+ static int __iommu_device_set_domain(struct iommu_group *group,
+ 				     struct device *dev,
+ 				     struct iommu_domain *new_domain,
+@@ -2409,7 +2419,7 @@
+ 	 * being used with iommu_group_claim_dma_owner() which will block
+ 	 * vfio and iommufd as well.
+ 	 */
+-	if (dev->iommu->require_direct &&
++	if (dev->iommu->require_direct && !iommu_ignore_require_direct &&
+ 	    (new_domain->type == IOMMU_DOMAIN_BLOCKED ||
+ 	     new_domain == group->blocking_domain)) {
+ 		dev_warn(dev,

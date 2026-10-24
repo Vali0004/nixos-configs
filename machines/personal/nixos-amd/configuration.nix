@@ -23,7 +23,7 @@
     services/windowManager/dwm.nix
     services/displayManager.nix
 
-    #services/dnsmasq.nix
+    services/dnsmasq.nix
     services/krb5.nix
     #services/monado.nix
     services/openssh.nix
@@ -223,6 +223,10 @@
       }
     ];
   };
+
+  networking.interfaces.enp16s0u4.ipv4.addresses = [
+    { address = "192.168.200.2"; prefixLength = 24; }
+  ];
 
   services = {
     flatpak.enable = true;

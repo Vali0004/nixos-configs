@@ -120,6 +120,10 @@
             autoindex_exact_size off;
           '';
         };
+        "/pd-demo/" = {
+          alias = "/mnt/data/pd-demo/";
+          index = "index.html";
+        };
         "/people/cleverca22/" = {
           alias = "/mnt/data/people/cleverca22/";
           index = "index.htm";

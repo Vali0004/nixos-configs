@@ -34,6 +34,7 @@
     services/mail/sogo.nix
 
     services/minecraft/default.nix
+    services/minecraft/mapper.nix
 
     services/monitoring/prometheus.nix
     services/monitoring/grafana.nix

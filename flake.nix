@@ -16,6 +16,7 @@
     pterodactyl-wings-nix.url = "github:BadCoder-Network/pterodactyl-wings-nix";
     skylanders-nfc-reader.url = "github:Vali0004/skylanders-nfc-reader";
     spicetify.url = "github:Gerg-L/spicetify-nix";
+    minecraft-mapper.url = "github:Vali0004/minecraft-mapper/non-shit";
     zfs-utils = {
       url = "github:cleverca22/zfs-utils";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +30,7 @@
     , comfyui-nix
     , home-manager
     , hytale-launcher
+    , minecraft-mapper
     , nix-gaming
     , nix-minecraft
     , nixos-mailserver
@@ -58,6 +60,7 @@
         claude-code = llm-agents.packages.${system}.claude-code;
         codex = llm-agents.packages.${system}.codex;
         chatgpt = llm-agents.packages.${system}.chatgpt;
+        minecraft-mapper = minecraft-mapper.packages.${system}.default;
       })
     ];
 
@@ -134,6 +137,13 @@
           machines/house/03-testing-box/configuration.nix
         ];
       };
+      e6530 = {
+        deployment.targetHost = "10.0.0.148";
+        imports = [
+          modules/networking/hosts.nix
+          machines/personal/e6530/configuration.nix
+        ];
+      };
       shitzen-nixos = {
         deployment.targetHost = "10.0.0.4";
         imports = [
@@ -195,6 +205,17 @@
           modules/services/openssh.nix
           modules/imports.nix
           machines/personal/lenovo/configuration.nix
+        ];
+      };
+      e6530 = nixpkgs.lib.nixosSystem {
+        inherit system specialArgs;
+        modules = [
+          ({ nixpkgs.overlays = overlays; })
+          agenix.nixosModules.age
+          modules/nix/remote-deploy.nix
+          ./core.nix
+          modules/networking/hosts.nix
+          machines/personal/e6530/configuration.nix
         ];
       };
       shitzen-nixos = nixpkgs.lib.nixosSystem {

@@ -18,6 +18,19 @@
         hash = "sha256-Y3a0+x2xvHsfLax/uwycdJf3xLxvVfkfDVqjkxNaYEo=";
       };
     }
+    {
+      name = "acs-override";
+      patch = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/benbaker76/linux-acs-override/main/6.3/acso.patch";
+        hash = "sha256-bsi4UIasDn3ErP7MH8ooi4+DOY1AvptqHJ4fzt8ejvQ=";
+      };
+    }
+    {
+      # lets vfio take devices whose firmware asks for a 1:1 iommu mapping
+      # only active with the iommu_ignore_require_direct boot param
+      name = "ignore-require-direct";
+      patch = ./ignore-require-direct.patch;
+    }
     # https://pixelcluster.github.io/VRAM-Mgmt-fixed/
     #{
     #  name = "vram-mgmt-fix-0001";

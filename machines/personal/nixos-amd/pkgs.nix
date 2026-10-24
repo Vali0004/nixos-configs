@@ -157,7 +157,7 @@
     # osu!lazer
     osu-lazer-bin
     # llama.cpp
-    (llama-cpp.override { syclSupport = false; vulkanSupport = true; cudaSupport = false; rocmSupport = true; })
+    (llama-cpp.override { vulkanSupport = true; cudaSupport = false; rocmSupport = true; })
     xpu-smi
     # Intel GPU kernel tracing / hardware counters (pti-gpu)
     unitrace

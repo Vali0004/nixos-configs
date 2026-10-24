@@ -66,6 +66,9 @@
     usbutils
     # Web Get
     wget
+    # PD test VMs
+    qemu
+    (writeShellScriptBin "pd-igpu" (builtins.readFile ../../personal/e6530/pd-igpu.sh))
   ];
 
   fileSystems = {
@@ -98,6 +101,20 @@
     intel.enable = true;
     # We have graphics support, might as well enable it; although, we don't need 32-bit support
     graphics.enable = true;
+    virtualisation.enable = true;
+  };
+
+  # the UHD 605 goes to PD test VMs with pd-igpu, the host keeps it otherwise
+  boot = {
+    initrd.kernelModules = [
+      "vfio_pci"
+      "vfio"
+      "vfio_iommu_type1"
+    ];
+    kernelParams = [
+      "intel_iommu=on"
+      "iommu=pt"
+    ];
   };
 
   networking = {

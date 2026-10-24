@@ -30,22 +30,28 @@ let
       --port 64172 --status-port 64172 "$@"
   '';
 
-  sharedInternetDevice = "wlan0";
-  # USB gigabit NIC facing the Raspberry Pi 3B+. It shares a ganged hub with the
-  # Pi's power, so it disappears and returns on every board power cycle.
-  bindingDevice = "enp19s0u4u3";
+  sharedInternetDevice = "eth0";
+  bindingDevice = "enp18s0f4u2u1";
 
   serverAddress = "192.168.66.1";
-  tftpRoot = "/srv/tftp";
+  # the netboot installer and the iPXE binaries that chain into it, served over TFTP
+  netboot = sys.config.system.build;
+  tftpRoot = pkgs.linkFarm "nixos-netboot-tftp" [
+    { name = "bzImage"; path = "${netboot.kernel}/bzImage"; }
+    { name = "initrd"; path = "${netboot.netbootRamdisk}/initrd"; }
+    { name = "netboot.ipxe"; path = "${netboot.netbootIpxeScript}/netboot.ipxe"; }
+    { name = "ipxe.efi"; path = "${pkgs.ipxe}/ipxe.efi"; }
+    { name = "undionly.kpxe"; path = "${pkgs.ipxe}/undionly.kpxe"; }
+  ];
 in {
   services.dnsmasq = {
     enable = true;
     resolveLocalQueries = false;
     settings = {
-      bind-interfaces = true;
+      # the USB NIC and its address can come later than dnsmasq, bind-dynamic waits for them
+      bind-dynamic = true;
 
       interface = [ bindingDevice ];
-      listen-address = [ serverAddress ];
 
       dhcp-authoritative = true;
       dhcp-range = [
@@ -59,14 +65,20 @@ in {
         "option6:dns-server,[2606:4700:4700::1111],[2001:4860:4860::8888]"
       ];
 
-      dhcp-boot = "bootcode.bin,,${serverAddress}";
-      dhcp-option-force = [ "66,${serverAddress}" ];
-      pxe-service = [ ''0,"Raspberry Pi Boot"'' ];
-      dhcp-reply-delay = 1;
+      # firmware PXE gets iPXE (BIOS or UEFI), iPXE then loads the NixOS netboot script
+      dhcp-match = [
+        "set:ipxe,175"
+        "set:efi64,option:client-arch,7"
+        "set:efi64,option:client-arch,9"
+      ];
+      dhcp-boot = [
+        "tag:ipxe,netboot.ipxe,,${serverAddress}"
+        "tag:!ipxe,tag:efi64,ipxe.efi,,${serverAddress}"
+        "tag:!ipxe,tag:!efi64,undionly.kpxe,,${serverAddress}"
+      ];
 
       enable-tftp = true;
-      tftp-root = tftpRoot;
-      tftp-no-blocksize = true;
+      tftp-root = "${tftpRoot}";
 
       log-dhcp = true;
 
@@ -80,9 +92,11 @@ in {
     };
   };
 
-  systemd.tmpfiles.rules = [
-    "d ${tftpRoot} 0755 root root -"
-  ];
+  # give the NIC its address whenever it appears, then (re)start dnsmasq on it
+  systemd.services.dnsmasq = {
+    after = [ "network-addresses-${bindingDevice}.service" ];
+    wants = [ "network-addresses-${bindingDevice}.service" ];
+  };
 
   environment.systemPackages = [
     run-pixiecore
@@ -115,7 +129,8 @@ in {
         # TFTP
         69
       ];
-      checkReversePath = false;
+      # tailscale already sets loose, which also lets the NATed netboot clients through
+      checkReversePath = "loose";
       enable = true;
       extraCommands = ''
         ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -o ${sharedInternetDevice} -j MASQUERADE
