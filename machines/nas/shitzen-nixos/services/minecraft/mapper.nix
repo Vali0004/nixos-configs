@@ -7,6 +7,7 @@ let
   # pterodactyl server volume for the GTNH server
   serverDir = "/data/minecraft/gtnh";
   exporterPort = 9150;
+  jvmPort = 9940;
   mapPort = 9151;
   mapDir = "/var/lib/minecraft-map";
   # texture-dump's atlas.png and blocks.json from a GTNH client (minecraft-mapper's tools/dump-textures.py),
@@ -89,7 +90,7 @@ in {
     after = [ "network.target" ];
     serviceConfig = hardening // {
       # the save is mounted read only at the same path, parent dirs are 0700 so a bind is needed
-      ExecStart = "${pkgs.minecraft-mapper}/bin/pollution-exporter -p ${serverDir}/World -l ${toString exporterPort}";
+      ExecStart = "${pkgs.minecraft-mapper}/bin/pollution-exporter -p ${serverDir}/World -l ${toString exporterPort} -n ${textureDir}/items.json";
       BindReadOnlyPaths = [ serverDir ];
       DynamicUser = true;
       Restart = "always";
@@ -114,6 +115,13 @@ in {
     (lib.mkPrometheusJob {
       name = "minecraft-gtnh";
       port = exporterPort;
+    })
+    # the server's own JVM: the prometheus jmx exporter agent, started from the pterodactyl startup flags
+    # (jmx_prometheus_javaagent.jar and jmx.yaml in the server volume), port 9940 is a pterodactyl allocation
+    (lib.mkPrometheusJob {
+      name = "minecraft-gtnh-jvm";
+      port = jvmPort;
+      interval = "15s";
     })
   ];
 }

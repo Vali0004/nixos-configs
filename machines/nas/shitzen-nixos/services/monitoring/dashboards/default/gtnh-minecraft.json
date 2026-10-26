@@ -1845,6 +1845,2203 @@
         },
         "overrides": []
       }
+    },
+    {
+      "id": 21,
+      "type": "timeseries",
+      "title": "Ingots in Storage",
+      "datasource": "prometheus",
+      "description": "Ingots in chests, drawers and machine slots, summed over every mod's version of the same ingot",
+      "gridPos": {
+        "x": 0,
+        "y": 97,
+        "w": 24,
+        "h": 12
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (item) (container_items{alias=\"$alias\",team=~\"$team\",item=~\".* Ingot\"})",
+          "legendFormat": "{{item}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "axisPlacement": "auto",
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "lineInterpolation": "stepAfter",
+            "lineWidth": 1,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          },
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "calcs": [
+            "lastNotNull"
+          ],
+          "sortBy": "Last *",
+          "sortDesc": true,
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 22,
+      "type": "table",
+      "title": "Top Stored Items",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 109,
+        "w": 12,
+        "h": 12
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(30, sum by (item) (container_items{alias=\"$alias\",team=~\"$team\"}))",
+          "legendFormat": "",
+          "refId": "A",
+          "range": false,
+          "instant": true,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "item": "Item",
+              "Value": "Count"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "Count",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "type": "table",
+      "title": "Containers",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 109,
+        "w": 12,
+        "h": 12
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (type) (container_tiles{alias=\"$alias\",team=~\"$team\"})",
+          "legendFormat": "",
+          "refId": "A",
+          "range": false,
+          "instant": true,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "type": "Tile Entity",
+              "Value": "With Items"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "With Items",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "type": "bargauge",
+      "title": "Leaderboard: Items Stored",
+      "description": "Every item in the containers of a team's claimed chunks",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 121,
+        "w": 8,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sort_desc(sum by (team) (container_items{alias=\"$alias\"}))",
+          "legendFormat": "{{team}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "valueMode": "color",
+        "namePlacement": "left",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sizing": "auto"
+      }
+    },
+    {
+      "id": 25,
+      "type": "bargauge",
+      "title": "Leaderboard: Ingots",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 8,
+        "y": 121,
+        "w": 8,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sort_desc(sum by (team) (container_items{alias=\"$alias\",item=~\".* Ingot\"}))",
+          "legendFormat": "{{team}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "valueMode": "color",
+        "namePlacement": "left",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sizing": "auto"
+      }
+    },
+    {
+      "id": 26,
+      "type": "bargauge",
+      "title": "Leaderboard: Claimed Chunks",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 16,
+        "y": 121,
+        "w": 8,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sort_desc(sum by (team) (claimed_chunks{alias=\"$alias\"}))",
+          "legendFormat": "{{team}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "unit": "short",
+          "min": 0
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "valueMode": "color",
+        "namePlacement": "left",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sizing": "auto"
+      }
+    },
+    {
+      "id": 27,
+      "type": "row",
+      "title": "Server JVM",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 130,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 28,
+      "type": "stat",
+      "title": "Heap Used",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_memory_used_bytes{alias=\"$alias\",area=\"heap\"} / jvm_memory_max_bytes{alias=\"$alias\",area=\"heap\"}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              },
+              {
+                "value": 0.75,
+                "color": "orange"
+              },
+              {
+                "value": 0.9,
+                "color": "red"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 29,
+      "type": "stat",
+      "title": "GC Pause Time",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 6,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(jvm_gc_collection_seconds_sum{alias=\"$alias\"}[5m]))",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              },
+              {
+                "value": 0.02,
+                "color": "orange"
+              },
+              {
+                "value": 0.05,
+                "color": "red"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 30,
+      "type": "stat",
+      "title": "Server Uptime",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "time() - process_start_time_seconds{alias=\"$alias\",job=\"minecraft-gtnh-jvm\"}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 31,
+      "type": "stat",
+      "title": "Threads",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 18,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_threads_current{alias=\"$alias\"}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 32,
+      "type": "timeseries",
+      "title": "Heap",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 135,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_memory_used_bytes{alias=\"$alias\",area=\"heap\"}",
+          "legendFormat": "used",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_memory_committed_bytes{alias=\"$alias\",area=\"heap\"}",
+          "legendFormat": "committed",
+          "refId": "B",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_memory_max_bytes{alias=\"$alias\",area=\"heap\"}",
+          "legendFormat": "max",
+          "refId": "C",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "type": "timeseries",
+      "title": "Heap Pools",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 135,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_memory_pool_used_bytes{alias=\"$alias\",pool=~\"G1 .*\"}",
+          "legendFormat": "{{pool}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 34,
+      "type": "timeseries",
+      "title": "Allocated and Freed",
+      "description": "Freed is allocation minus how fast the heap grows: what the garbage collector reclaimed per second",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 144,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(jvm_memory_pool_allocated_bytes_total{alias=\"$alias\",pool=~\"G1 .*\"}[1m]))",
+          "legendFormat": "allocated",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(jvm_memory_pool_allocated_bytes_total{alias=\"$alias\",pool=~\"G1 .*\"}[1m])) - deriv(jvm_memory_used_bytes{alias=\"$alias\",area=\"heap\"}[5m])",
+          "legendFormat": "freed by GC",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 35,
+      "type": "timeseries",
+      "title": "GC Time per Second",
+      "description": "Share of wall clock time spent in garbage collection, young pauses are stop the world",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 144,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "rate(jvm_gc_collection_seconds_sum{alias=\"$alias\"}[1m])",
+          "legendFormat": "{{gc}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 36,
+      "type": "timeseries",
+      "title": "GC Count per Minute",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 153,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "rate(jvm_gc_collection_seconds_count{alias=\"$alias\"}[5m]) * 60",
+          "legendFormat": "{{gc}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 37,
+      "type": "timeseries",
+      "title": "Non-Heap",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 8,
+        "y": 153,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "jvm_memory_pool_used_bytes{alias=\"$alias\",pool!~\"G1 .*\"}",
+          "legendFormat": "{{pool}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 38,
+      "type": "timeseries",
+      "title": "Process",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 16,
+        "y": 153,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "rate(process_cpu_seconds_total{alias=\"$alias\",job=\"minecraft-gtnh-jvm\"}[1m])",
+          "legendFormat": "CPU cores",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "process_resident_memory_bytes{alias=\"$alias\",job=\"minecraft-gtnh-jvm\"} / 1e9",
+          "legendFormat": "resident GB",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 39,
+      "type": "row",
+      "title": "Server Performance",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 161,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 40,
+      "type": "stat",
+      "title": "TPS",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 162,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_server_tps{alias=\"$alias\"}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "red"
+              },
+              {
+                "value": 15,
+                "color": "orange"
+              },
+              {
+                "value": 19.5,
+                "color": "green"
+              }
+            ]
+          },
+          "decimals": 1
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 41,
+      "type": "stat",
+      "title": "Tick Time",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 4,
+        "y": 162,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_server_tick_ms{alias=\"$alias\"}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              },
+              {
+                "value": 40,
+                "color": "orange"
+              },
+              {
+                "value": 50,
+                "color": "red"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 42,
+      "type": "stat",
+      "title": "Players Online",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 8,
+        "y": 162,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_server_players{alias=\"$alias\"}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 43,
+      "type": "stat",
+      "title": "Loaded Chunks",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 162,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(minecraft_dimension_loaded_chunks{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 44,
+      "type": "stat",
+      "title": "Entities",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 16,
+        "y": 162,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(minecraft_dimension_entities{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 45,
+      "type": "stat",
+      "title": "Tile Entities",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 20,
+        "y": 162,
+        "w": 4,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(minecraft_dimension_tile_entities{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 46,
+      "type": "timeseries",
+      "title": "Tick Time",
+      "description": "50 ms is the budget for 20 TPS",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 166,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_server_tick_ms{alias=\"$alias\"}",
+          "legendFormat": "mean",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_server_max_tick_ms{alias=\"$alias\"}",
+          "legendFormat": "worst of last 100",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 47,
+      "type": "timeseries",
+      "title": "Tick Time per Dimension",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 166,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(10, minecraft_dimension_tick_ms{alias=\"$alias\",dim=~\"$dim\"})",
+          "legendFormat": "DIM {{dim}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "ms",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 48,
+      "type": "timeseries",
+      "title": "Chunk Loads and Unloads per Second",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 175,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_chunk_loads{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "loads",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_chunk_unloads{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "unloads",
+          "refId": "B",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_chunk_saves{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "saves",
+          "refId": "C",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 49,
+      "type": "timeseries",
+      "title": "World Gen per Second",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 175,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_chunks_generated{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "generated",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_chunks_populated{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "populated",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 50,
+      "type": "timeseries",
+      "title": "Population Time",
+      "description": "Share of server time spent populating chunks, exclusive of nested populations. wall minus cpu is waiting (locks, disk, GC). The bars on the right axis should stay at 0: frame mismatches are Pre/Post events that didn't pair up (the unpaired frames' own time is left out, the frame that did pair has the strays' elapsed time removed, but their made up end cuts into its own time, so it counts as approximate: a lower bound), cpu unavailable are populations whose CPU time couldn't be read",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 184,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_populate_seconds{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "wall",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_populate_cpu_seconds{alias=\"$alias\",dim=~\"$dim\"}[1m]))",
+          "legendFormat": "cpu",
+          "refId": "B",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(increase(minecraft_dimension_populate_frame_mismatches{alias=\"$alias\",dim=~\"$dim\"}[5m]))",
+          "legendFormat": "frame mismatches",
+          "refId": "C",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(increase(minecraft_dimension_populate_cpu_unavailable{alias=\"$alias\",dim=~\"$dim\"}[5m]))",
+          "legendFormat": "cpu unavailable",
+          "refId": "D",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(increase(minecraft_dimension_populate_approximate{alias=\"$alias\",dim=~\"$dim\"}[5m]))",
+          "legendFormat": "approximate",
+          "refId": "E",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "frame mismatches"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "per 5m"
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "bars"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 80
+              },
+              {
+                "id": "min",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cpu unavailable"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "per 5m"
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "bars"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 80
+              },
+              {
+                "id": "min",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "approximate"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "per 5m"
+              },
+              {
+                "id": "custom.drawStyle",
+                "value": "bars"
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 80
+              },
+              {
+                "id": "min",
+                "value": 0
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 51,
+      "type": "timeseries",
+      "title": "Population per Chunk",
+      "description": "Wall time per populated chunk, exclusive of nested populations. slowest is the largest single exclusive time, not end-to-end latency",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 8,
+        "y": 184,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_populate_seconds{alias=\"$alias\",dim=~\"$dim\"}[5m])) / sum(rate(minecraft_dimension_chunks_populated{alias=\"$alias\",dim=~\"$dim\"}[5m]))",
+          "legendFormat": "mean",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max(max_over_time(minecraft_dimension_populate_max_seconds{alias=\"$alias\",dim=~\"$dim\"}[5m]))",
+          "legendFormat": "slowest (exclusive)",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "s",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 52,
+      "type": "timeseries",
+      "title": "Loaded and Forced Chunks",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 16,
+        "y": 184,
+        "w": 8,
+        "h": 8
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(minecraft_dimension_loaded_chunks{alias=\"$alias\",dim=~\"$dim\"})",
+          "legendFormat": "loaded",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(minecraft_dimension_forced_chunks{alias=\"$alias\",dim=~\"$dim\"})",
+          "legendFormat": "force loaded",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 53,
+      "type": "timeseries",
+      "title": "Entities per Dimension",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 192,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(10, minecraft_dimension_entities{alias=\"$alias\",dim=~\"$dim\"})",
+          "legendFormat": "DIM {{dim}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 54,
+      "type": "timeseries",
+      "title": "Tile Entities per Dimension",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 192,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(10, minecraft_dimension_tile_entities{alias=\"$alias\",dim=~\"$dim\"})",
+          "legendFormat": "DIM {{dim}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 55,
+      "type": "table",
+      "title": "Top Entities",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 201,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(25, sum by (entity) (minecraft_entities{alias=\"$alias\",dim=~\"$dim\"}))",
+          "legendFormat": "",
+          "refId": "A",
+          "range": false,
+          "instant": true,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "entity": "Entity",
+              "Value": "Count"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "Count",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 56,
+      "type": "table",
+      "title": "Top Tile Entities",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 201,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(25, sum by (tile) (minecraft_tile_entities{alias=\"$alias\",dim=~\"$dim\"}))",
+          "legendFormat": "",
+          "refId": "A",
+          "range": false,
+          "instant": true,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "tile": "Tile Entity",
+              "Value": "Count"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "Count",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 57,
+      "type": "timeseries",
+      "title": "World Activity per Minute",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 211,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_blocks_broken{alias=\"$alias\",dim=~\"$dim\"}[5m])) * 60",
+          "legendFormat": "blocks broken",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_blocks_placed{alias=\"$alias\",dim=~\"$dim\"}[5m])) * 60",
+          "legendFormat": "blocks placed",
+          "refId": "B",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_entity_spawns{alias=\"$alias\",dim=~\"$dim\"}[5m])) * 60",
+          "legendFormat": "entity spawns",
+          "refId": "C",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(rate(minecraft_dimension_deaths{alias=\"$alias\",dim=~\"$dim\"}[5m])) * 60",
+          "legendFormat": "deaths",
+          "refId": "D",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 58,
+      "type": "timeseries",
+      "title": "Players",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 211,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_player_ping_ms{alias=\"$alias\"}",
+          "legendFormat": "{{player}} ping",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_server_players{alias=\"$alias\"}",
+          "legendFormat": "online",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
     }
   ],
   "preload": false,
@@ -1873,6 +4070,50 @@
         "refresh": 1,
         "regex": "",
         "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "definition": "label_values(claimed_chunks{alias=\"$alias\"}, team)",
+        "includeAll": true,
+        "allValue": ".*",
+        "multi": true,
+        "label": "Team",
+        "name": "team",
+        "options": [],
+        "query": {
+          "query": "label_values(claimed_chunks{alias=\"$alias\"}, team)",
+          "refId": "team"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "All",
+          "value": "$__all"
+        },
+        "datasource": "prometheus",
+        "definition": "label_values(minecraft_dimension_tick_ms{alias=\"$alias\"}, dim)",
+        "includeAll": true,
+        "allValue": ".*",
+        "multi": true,
+        "label": "Dimension",
+        "name": "dim",
+        "options": [],
+        "query": {
+          "query": "label_values(minecraft_dimension_tick_ms{alias=\"$alias\"}, dim)",
+          "refId": "dim"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 3,
         "type": "query"
       }
     ]
