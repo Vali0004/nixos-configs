@@ -119,14 +119,14 @@
       rocmSupport = false;
     };
     intel-gpu = {
-      enable = true;
-      computeSupport = true;
+      enable = false;
+      computeSupport = false;
       mediaSupport = false;
     };
     audio.pipewire.enable = true;
     bluetooth.enable = true;
     enableRedistributableFirmware = true;
-    opencl.enable = true;
+    opencl.enable = false;
     opentabletdriver = {
       enable = true;
       daemon.enable = true;
@@ -225,7 +225,7 @@
   };
 
   networking.interfaces.enp16s0u4.ipv4.addresses = [
-    { address = "192.168.200.2"; prefixLength = 24; }
+    { address = "192.168.100.2"; prefixLength = 24; }
   ];
 
   services = {

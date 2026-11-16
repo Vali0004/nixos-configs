@@ -58,6 +58,7 @@
       8902
       8903
       8904
+      8905 # Geyser built-in NetherNet signaling (the Paper server on 8904)
     ];
     allowedUDPPorts = [
       24454 # Minecraft - SVC
@@ -66,6 +67,7 @@
       8902
       8903
       8904
+      8905 # Geyser Bedrock, NetherNet
     ];
   };
 }

@@ -8,6 +8,7 @@ let
 in {
   imports = [
     ../../../../../modules/environment/dwmblocks.nix
+    ../../../../../modules/services/x11-screenshot-portal.nix
   ];
 
   environment.systemPackages = with pkgs; [

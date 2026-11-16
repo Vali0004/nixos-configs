@@ -17,7 +17,7 @@
     # Better TOP
     btop
     # BeamMP Launcher
-    beammp-launcher
+    #beammp-launcher
     # 3D Modeling
     blender
     # Binary Tools
@@ -30,7 +30,7 @@
     claude-code
     cli-proxy-api
     # Codex - Agentic coding agent (ChatGPT)
-    codex
+    #codex
     # ChatGPT Desktop App
     chatgpt
     # Antigravity - Agentic coding agent (Google/Gemini)
@@ -44,7 +44,7 @@
     # dos2unix tool
     dos2unix
     # Discord
-    (discord.override { withVencord = true; })
+    (discord.override { withVencord = false; })
     # SMBIOS
     dmidecode
     # .NET Disassembler
@@ -133,10 +133,6 @@
     net-tools
     # Node.js - JavaScript Engine
     nodejs_24
-    # nRF Studio
-    nrf-studio
-    # SEGGER JLink
-    jlink
     # nRF SDK
     nrf5-sdk
     # Adafurit nRF Util
@@ -157,10 +153,10 @@
     # osu!lazer
     osu-lazer-bin
     # llama.cpp
-    (llama-cpp.override { vulkanSupport = true; cudaSupport = false; rocmSupport = true; })
-    xpu-smi
+    #(llama-cpp.override { vulkanSupport = true; cudaSupport = false; rocmSupport = true; })
+    #xpu-smi
     # Intel GPU kernel tracing / hardware counters (pti-gpu)
-    unitrace
+    #unitrace
     # PCI Utilities
     pciutils
     # Printable Document Format Toolkit
@@ -236,8 +232,6 @@
     tcpdump
     # Microsoft Teams for Linux
     teams-for-linux
-    # TMate
-    tmate
     # ZIP Archive Undo
     unzip
     # USB Utils

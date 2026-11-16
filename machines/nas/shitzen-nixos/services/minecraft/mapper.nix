@@ -90,7 +90,7 @@ in {
     after = [ "network.target" ];
     serviceConfig = hardening // {
       # the save is mounted read only at the same path, parent dirs are 0700 so a bind is needed
-      ExecStart = "${pkgs.minecraft-mapper}/bin/pollution-exporter -p ${serverDir}/World -l ${toString exporterPort} -n ${textureDir}/items.json";
+      ExecStart = "${pkgs.minecraft-mapper}/bin/pollution-exporter -p ${serverDir}/World -l ${toString exporterPort} -d ${textureDir}";
       BindReadOnlyPaths = [ serverDir ];
       DynamicUser = true;
       Restart = "always";

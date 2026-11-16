@@ -68,7 +68,7 @@
       nix-minecraft.overlay
       (import overlays/customPackages.nix)
       (import overlays/existingPackages.nix)
-      (import overlays/intel-compute-next.nix)
+      #(import overlays/intel-compute-next.nix)
     ] ++ flakeOverlays;
 
     pkgsOverlays = overlays ++ [

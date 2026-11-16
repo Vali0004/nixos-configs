@@ -9,7 +9,6 @@
   boot.consoleLogLevel = 0;
 
   boot.initrd = {
-    systemd.enable = true;
     verbose = true;
   };
 

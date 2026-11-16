@@ -115,8 +115,29 @@ in {
       {
         # Wings port 4
         destination = "${cfg.lanSubnet}.4:8904";
+        proto = "tcp";
+        sourcePort = 8904;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # Wings port 4
+        destination = "${cfg.lanSubnet}.4:8904";
         proto = "udp";
         sourcePort = 8904;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # Wings port 5, Geyser built-in NetherNet signaling for the Paper server on port 4
+        destination = "${cfg.lanSubnet}.4:8905";
+        proto = "tcp";
+        sourcePort = 8905;
+        loopbackIPs = [ wanIp ];
+      }
+      {
+        # Wings port 5, Geyser Bedrock (NetherNet)
+        destination = "${cfg.lanSubnet}.4:8905";
+        proto = "udp";
+        sourcePort = 8905;
         loopbackIPs = [ wanIp ];
       }
       {

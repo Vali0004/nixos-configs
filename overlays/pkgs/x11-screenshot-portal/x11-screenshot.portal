@@ -1,0 +1,4 @@
+[portal]
+DBusName=org.freedesktop.impl.portal.desktop.x11_screenshot
+Interfaces=org.freedesktop.impl.portal.Screenshot;
+UseIn=dwm

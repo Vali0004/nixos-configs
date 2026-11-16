@@ -39,4 +39,5 @@ self: super: {
   surfboard-hnap-exporter = self.callPackage pkgs/surfboard-hnap-exporter {};
   syncplay-clever = self.callPackage pkgs/syncplay-clever {};
   xwinwrap-gif = self.callPackage pkgs/xwinwrap {};
+  xdg-desktop-portal-x11-screenshot = self.callPackage pkgs/x11-screenshot-portal {};
 }

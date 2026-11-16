@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=org.freedesktop.impl.portal.desktop.x11_screenshot
+Exec=@out@/libexec/xdg-desktop-portal-x11-screenshot

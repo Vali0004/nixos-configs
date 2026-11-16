@@ -1,5 +1,5 @@
 self: super: {
-  toxvpn = (builtins.getFlake "github:cleverca22/toxvpn/403586be0181a0b20dfc0802580f7f919aaa83de").packages.x86_64-linux.default;
+  toxvpn = ((builtins.getFlake "github:cleverca22/toxvpn/e7e30b57eb4235fe0d0987a0be0ab84b89aea8b3").packages.x86_64-linux.default) // { meta.mainProgram = "toxvpn"; };
   dmenu = super.dmenu.overrideAttrs (old: {
     buildInputs = (old.buildInputs or []) ++ [ super.libspng ];
     src = super.fetchFromGitHub {
@@ -14,6 +14,7 @@ self: super: {
       sed -ri -e 's!\<stest\>!'"$out/bin"'/&!g' dmenu_path_desktop
     '';
   });
+  flameshot = super.callPackage pkgs/flameshot {};
   ghidra = super.ghidra.overrideAttrs (old: {
     patches = old.patches ++ [
       ./ghidra-1147.patch

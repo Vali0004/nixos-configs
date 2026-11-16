@@ -4,7 +4,7 @@
     lfs.enable = true;
     settings = {
       user.email = "diorcheats.vali@gmail.com";
-      user.name = "Vali0004";
+      user.name = "Jonathan McAvin";
       push.autoSetupRemote = true;
     };
   };

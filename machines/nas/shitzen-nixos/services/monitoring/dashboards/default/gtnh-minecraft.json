@@ -82,7 +82,7 @@
       "id": 2,
       "type": "stat",
       "title": "Weather",
-      "description": "",
+      "description": "Rain and thunder from level.dat, the blood moon from Random Things' data/Bloodmoon.dat, as of the last world save",
       "datasource": "prometheus",
       "gridPos": {
         "x": 4,
@@ -93,7 +93,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "world_raining{alias=\"$alias\"} + world_thundering{alias=\"$alias\"}",
+          "expr": "world_raining{alias=\"$alias\"} + world_thundering{alias=\"$alias\"} + (world_blood_moon{alias=\"$alias\"} * 10 or vector(0))",
           "legendFormat": "{{world}}",
           "range": true,
           "refId": "A",
@@ -133,6 +133,10 @@
               {
                 "value": 2,
                 "color": "purple"
+              },
+              {
+                "value": 10,
+                "color": "dark-red"
               }
             ]
           },
@@ -154,6 +158,21 @@
                 "2": {
                   "text": "Thunder",
                   "index": 2
+                },
+                "10": {
+                  "text": "Blood Moon",
+                  "color": "dark-red",
+                  "index": 3
+                },
+                "11": {
+                  "text": "Blood Moon, Rain",
+                  "color": "dark-red",
+                  "index": 4
+                },
+                "12": {
+                  "text": "Blood Moon, Thunder",
+                  "color": "dark-red",
+                  "index": 5
                 }
               }
             }
@@ -2173,7 +2192,7 @@
       "collapsed": false,
       "gridPos": {
         "x": 0,
-        "y": 130,
+        "y": 260,
         "w": 24,
         "h": 1
       },
@@ -2186,7 +2205,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 131,
+        "y": 261,
         "w": 6,
         "h": 4
       },
@@ -2247,7 +2266,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 6,
-        "y": 131,
+        "y": 261,
         "w": 6,
         "h": 4
       },
@@ -2308,7 +2327,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 131,
+        "y": 261,
         "w": 6,
         "h": 4
       },
@@ -2352,7 +2371,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 18,
-        "y": 131,
+        "y": 261,
         "w": 6,
         "h": 4
       },
@@ -2397,7 +2416,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 135,
+        "y": 265,
         "w": 12,
         "h": 9
       },
@@ -2467,7 +2486,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 135,
+        "y": 265,
         "w": 12,
         "h": 9
       },
@@ -2521,7 +2540,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 144,
+        "y": 274,
         "w": 12,
         "h": 9
       },
@@ -2583,7 +2602,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 144,
+        "y": 274,
         "w": 12,
         "h": 9
       },
@@ -2637,7 +2656,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 153,
+        "y": 283,
         "w": 8,
         "h": 8
       },
@@ -2691,7 +2710,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 8,
-        "y": 153,
+        "y": 283,
         "w": 8,
         "h": 8
       },
@@ -2745,7 +2764,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 16,
-        "y": 153,
+        "y": 283,
         "w": 8,
         "h": 8
       },
@@ -2806,7 +2825,7 @@
       "collapsed": false,
       "gridPos": {
         "x": 0,
-        "y": 161,
+        "y": 291,
         "w": 24,
         "h": 1
       },
@@ -2819,7 +2838,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 162,
+        "y": 292,
         "w": 4,
         "h": 4
       },
@@ -2881,7 +2900,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 4,
-        "y": 162,
+        "y": 292,
         "w": 4,
         "h": 4
       },
@@ -2942,7 +2961,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 8,
-        "y": 162,
+        "y": 292,
         "w": 4,
         "h": 4
       },
@@ -2986,7 +3005,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 162,
+        "y": 292,
         "w": 4,
         "h": 4
       },
@@ -3030,7 +3049,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 16,
-        "y": 162,
+        "y": 292,
         "w": 4,
         "h": 4
       },
@@ -3074,7 +3093,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 20,
-        "y": 162,
+        "y": 292,
         "w": 4,
         "h": 4
       },
@@ -3119,7 +3138,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 166,
+        "y": 296,
         "w": 12,
         "h": 9
       },
@@ -3182,7 +3201,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 166,
+        "y": 296,
         "w": 12,
         "h": 9
       },
@@ -3239,7 +3258,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 175,
+        "y": 305,
         "w": 12,
         "h": 9
       },
@@ -3310,7 +3329,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 175,
+        "y": 305,
         "w": 12,
         "h": 9
       },
@@ -3373,7 +3392,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 184,
+        "y": 314,
         "w": 8,
         "h": 8
       },
@@ -3557,7 +3576,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 8,
-        "y": 184,
+        "y": 314,
         "w": 8,
         "h": 8
       },
@@ -3620,7 +3639,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 16,
-        "y": 184,
+        "y": 314,
         "w": 8,
         "h": 8
       },
@@ -3683,7 +3702,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 192,
+        "y": 322,
         "w": 12,
         "h": 9
       },
@@ -3740,7 +3759,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 192,
+        "y": 322,
         "w": 12,
         "h": 9
       },
@@ -3796,7 +3815,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 201,
+        "y": 331,
         "w": 12,
         "h": 10
       },
@@ -3852,7 +3871,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 201,
+        "y": 331,
         "w": 12,
         "h": 10
       },
@@ -3909,7 +3928,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 0,
-        "y": 211,
+        "y": 341,
         "w": 12,
         "h": 9
       },
@@ -3988,7 +4007,7 @@
       "datasource": "prometheus",
       "gridPos": {
         "x": 12,
-        "y": 211,
+        "y": 341,
         "w": 12,
         "h": 9
       },
@@ -4041,6 +4060,2590 @@
           "mode": "multi",
           "sort": "desc"
         }
+      }
+    },
+    {
+      "id": 59,
+      "type": "row",
+      "title": "Fluids and Steam",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 130,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 60,
+      "type": "stat",
+      "title": "Steam Production",
+      "description": "L per second (1 L = 1 mB) from Railcraft and GregTech boilers, as of the last world save. GT solar boilers aren't included, their output depends on sunlight",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "(sum(railcraft_boiler_steam_mb_per_tick{alias=\"$alias\",team=~\"$team\"}) * 20 or vector(0)) + (sum(gt_boiler_steam_l_per_second{alias=\"$alias\",team=~\"$team\"} >= 0) or vector(0))",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 61,
+      "type": "stat",
+      "title": "Boilers Burning",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 6,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "(sum(railcraft_boiler_burning{alias=\"$alias\",team=~\"$team\"}) or vector(0)) + (sum(gt_boiler_active{alias=\"$alias\",team=~\"$team\"}) or vector(0))",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 62,
+      "type": "stat",
+      "title": "Oil Stored",
+      "description": "mB of oil in tanks and machines in claimed chunks",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(container_fluids{alias=\"$alias\",team=~\"$team\",fluid=~\"oil|liquid_.*oil.*\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 63,
+      "type": "stat",
+      "title": "Steam Stored",
+      "description": "mB of steam in boilers, tanks and pipes",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 18,
+        "y": 131,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(container_fluids{alias=\"$alias\",team=~\"$team\",fluid=\"steam\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 64,
+      "type": "timeseries",
+      "title": "Steam Production per Boiler",
+      "description": "L per second. Railcraft: every cycle (8 ticks high pressure, 16 low) a boiling boiler (heat at least 100) turns tanks x heat / 500 water into 160 times as much steam, as far as its water lasts. GregTech: full rate above 100 degrees with water (Small Coal 120, High Pressure Coal 300, Lava 600). Solar boilers are left out",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 135,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "railcraft_boiler_steam_mb_per_tick{alias=\"$alias\",team=~\"$team\"} * 20",
+          "legendFormat": "Railcraft {{pressure}} pressure, {{tanks}} tanks at {{x}} {{y}} {{z}}",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "gt_boiler_steam_l_per_second{alias=\"$alias\",team=~\"$team\"} >= 0",
+          "legendFormat": "GT {{boiler}} at {{x}} {{y}} {{z}}",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 10,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter",
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 65,
+      "type": "timeseries",
+      "title": "Boiler Heat and Temperature",
+      "description": "Railcraft heat boils from 100 (max 500 low pressure, 1000 high), GregTech boilers make steam above 100 degrees",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 135,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "railcraft_boiler_heat{alias=\"$alias\",team=~\"$team\"}",
+          "legendFormat": "Railcraft {{x}} {{y}} {{z}}",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max(railcraft_boiler_max_heat{alias=\"$alias\",team=~\"$team\"})",
+          "legendFormat": "max heat",
+          "refId": "B",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "gt_boiler_temperature{alias=\"$alias\",team=~\"$team\"}",
+          "legendFormat": "GT {{boiler}} {{x}} {{y}} {{z}}",
+          "refId": "C",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter",
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 66,
+      "type": "timeseries",
+      "title": "Fluids Stored",
+      "description": "mB per fluid in tile entities of claimed chunks (tanks, machines, pipes)",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 144,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (fluid) (container_fluids{alias=\"$alias\",team=~\"$team\"})",
+          "legendFormat": "{{fluid}}",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter",
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 67,
+      "type": "table",
+      "title": "Fluids by Container",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 144,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (fluid, type) (container_fluids{alias=\"$alias\",team=~\"$team\"})",
+          "legendFormat": "",
+          "refId": "A",
+          "range": false,
+          "instant": true,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "fluid": "Fluid",
+              "type": "Tile Entity",
+              "Value": "mB"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "mB",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 68,
+      "type": "timeseries",
+      "title": "Boiler Water and Steam",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 153,
+        "w": 12,
+        "h": 7
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "(sum(railcraft_boiler_water_mb{alias=\"$alias\",team=~\"$team\"}) or vector(0)) + (sum(gt_boiler_water_l{alias=\"$alias\",team=~\"$team\"}) or vector(0))",
+          "legendFormat": "water",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "(sum(railcraft_boiler_steam_mb{alias=\"$alias\",team=~\"$team\"}) or vector(0)) + (sum(gt_boiler_steam_l{alias=\"$alias\",team=~\"$team\"}) or vector(0))",
+          "legendFormat": "steam waiting",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter",
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 69,
+      "type": "table",
+      "title": "Boiler Fuel",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 153,
+        "w": 12,
+        "h": 7
+      },
+      "description": "Items in each boiler's inventory (fuel waiting, GregTech ash, a Railcraft liquid firebox's containers) and liquid firebox fuel tanks",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (item, x, y, z) (railcraft_boiler_fuel_items{alias=\"$alias\",team=~\"$team\"}) or sum by (item, x, y, z, boiler) (gt_boiler_fuel_items{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (fluid, x, y, z) (railcraft_boiler_fuel_mb{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "B",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "item": "Item",
+              "fluid": "Fluid (mB)",
+              "boiler": "Boiler",
+              "x": "X",
+              "y": "Y",
+              "z": "Z",
+              "Value #A": "Items",
+              "Value #B": "mB"
+            },
+            "indexByName": {
+              "boiler": 0,
+              "x": 1,
+              "y": 2,
+              "z": 3,
+              "item": 4,
+              "Value #A": 5,
+              "fluid": 6,
+              "Value #B": 7
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
+      }
+    },
+    {
+      "id": 70,
+      "type": "row",
+      "title": "Machines",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 160,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 71,
+      "type": "stat",
+      "title": "GT Machines Running",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 161,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(gt_machine_active{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 72,
+      "type": "stat",
+      "title": "GT Machines",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 6,
+        "y": 161,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "count(gt_machine_active{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 73,
+      "type": "stat",
+      "title": "Coke Ovens Cooking",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 161,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(railcraft_coke_oven_cooking{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 74,
+      "type": "stat",
+      "title": "Creosote from Coke Ovens",
+      "description": "mB per second, from the coke oven recipes for what each oven is cooking",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 18,
+        "y": 161,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(railcraft_coke_oven_creosote_mb_per_second{alias=\"$alias\",team=~\"$team\"} >= 0)",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "decimals": 2,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 75,
+      "type": "table",
+      "title": "GregTech Machines",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 165,
+        "w": 14,
+        "h": 10
+      },
+      "description": "As of the last world save. Progress is ticks into the current recipe over its length",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_machine_active{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_machine_progress_ticks{alias=\"$alias\",team=~\"$team\"} / (gt_machine_max_progress_ticks{alias=\"$alias\",team=~\"$team\"} > 0))",
+          "refId": "B",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_machine_eu_per_tick{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "C",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "machine": "Machine",
+              "x": "X",
+              "y": "Y",
+              "z": "Z",
+              "Value #A": "Running",
+              "Value #B": "Progress",
+              "Value #C": "EU/t"
+            },
+            "indexByName": {
+              "machine": 0,
+              "Value #A": 1,
+              "Value #B": 2,
+              "Value #C": 3,
+              "x": 4,
+              "y": 5,
+              "z": 6
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Progress"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "max",
+                "value": 1
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "basic"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-BlPu"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Running"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "0": {
+                        "text": "idle"
+                      },
+                      "1": {
+                        "text": "running",
+                        "color": "green"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "Running",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 76,
+      "type": "table",
+      "title": "Being Made",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 14,
+        "y": 165,
+        "w": 10,
+        "h": 10
+      },
+      "description": "What each running GregTech machine's current recipe will produce",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (machine, item) (gt_machine_output_items{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "machine": "Machine",
+              "item": "Item",
+              "Value": "Count"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
+      }
+    },
+    {
+      "id": 77,
+      "type": "table",
+      "title": "Coke Ovens",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 175,
+        "w": 24,
+        "h": 6
+      },
+      "description": "Batch length, and coke and creosote per second, come from Railcraft's coke oven recipe for each oven's input",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (input, output, x, y, z) (railcraft_coke_oven_cooking{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (input, output, x, y, z) (railcraft_coke_oven_cook_ticks{alias=\"$alias\",team=~\"$team\"} / railcraft_coke_oven_total_ticks{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "B",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (input, output, x, y, z) (railcraft_coke_oven_output_per_second{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "C",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (input, output, x, y, z) (railcraft_coke_oven_creosote_mb_per_second{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "D",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "input": "Input",
+              "output": "Output",
+              "x": "X",
+              "y": "Y",
+              "z": "Z",
+              "Value #A": "Cooking",
+              "Value #B": "Progress",
+              "Value #C": "Output/s",
+              "Value #D": "Creosote mB/s"
+            },
+            "indexByName": {
+              "input": 0,
+              "output": 1,
+              "Value #A": 2,
+              "Value #B": 3,
+              "Value #C": 4,
+              "Value #D": 5,
+              "x": 6,
+              "y": 7,
+              "z": 8
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Progress"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "max",
+                "value": 1
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "basic"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-BlPu"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Cooking"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "0": {
+                        "text": "idle"
+                      },
+                      "1": {
+                        "text": "cooking",
+                        "color": "green"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
+      }
+    },
+    {
+      "id": 99,
+      "type": "timeseries",
+      "title": "Generator Output and Blast Furnace Use",
+      "description": "As of the last world save. Generator output is its rated EU/t while active; blast furnace use is the current recipe EU/t.",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 181,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "gt_generator_rated_output_eu_per_tick{alias=\"$alias\",team=~\"$team\"}",
+          "legendFormat": "Generator {{machine}} ({{x}},{{y}},{{z}})",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "-gt_machine_eu_per_tick{alias=\"$alias\",team=~\"$team\",mid=\"1000\"}",
+          "legendFormat": "Blast furnace ({{x}},{{y}},{{z}})",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "transformations": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              }
+            ]
+          },
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "unit": "none",
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 38,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 2,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 100,
+      "type": "timeseries",
+      "title": "Generator Fuel",
+      "description": "Fluid in each combustion or diesel generator’s internal tank, as of the last world save. Amounts are in mB.",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 181,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "gt_generator_fuel_mb{alias=\"$alias\",team=~\"$team\"}",
+          "legendFormat": "{{fluid}} ({{x}},{{y}},{{z}})",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "transformations": [],
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              }
+            ]
+          },
+          "color": {
+            "mode": "continuous-BlPu"
+          },
+          "unit": "none",
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 38,
+            "gradientMode": "opacity",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 2,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          }
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 78,
+      "type": "row",
+      "title": "Mining and Ore",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 190,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 79,
+      "type": "stat",
+      "title": "Miners Done or at Bedrock",
+      "description": "Miners whose pipe sits on bedrock, or that pulled their pipe back in over an open shaft",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 191,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "count(gt_miner_state{alias=\"$alias\",team=~\"$team\",state=~\"at_bedrock|retracted\"}) or vector(0)",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "text"
+              },
+              {
+                "value": 1,
+                "color": "orange"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 80,
+      "type": "stat",
+      "title": "Miners Drilling",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 6,
+        "y": 191,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "count(gt_miner_state{alias=\"$alias\",team=~\"$team\",state=\"drilling\"}) or vector(0)",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 81,
+      "type": "stat",
+      "title": "Unprocessed Ore",
+      "description": "Ore, raw ore, crushed, purified, centrifuged ore and impure or purified dust in storage",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 191,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(gt_ore_items{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 82,
+      "type": "stat",
+      "title": "Processing Steps Left",
+      "description": "Machine operations to turn all of it into dust the shortest way: each item times its steps to dust",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 18,
+        "y": 191,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "(sum(gt_ore_items{alias=\"$alias\",team=~\"$team\",steps_to_dust=\"3\"}) * 3 or vector(0)) + (sum(gt_ore_items{alias=\"$alias\",team=~\"$team\",steps_to_dust=\"2\"}) * 2 or vector(0)) + (sum(gt_ore_items{alias=\"$alias\",team=~\"$team\",steps_to_dust=\"1\"}) or vector(0))",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 83,
+      "type": "table",
+      "title": "Miners",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 195,
+        "w": 24,
+        "h": 7
+      },
+      "description": "GregTech miners don't save their depth, it's found like GT does on load: following the mining pipe down from the miner. With the pipe pulled back in, shaft bottom is where the open shaft ends now (sand that fell in can make it read high)",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z, state) (gt_miner_state{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_miner_depth{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "B",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_miner_tip_y{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "C",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_miner_shaft_bottom_y{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "D",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_miner_pipes{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "E",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (machine, x, y, z) (gt_miner_radius{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "F",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value #A": true
+            },
+            "renameByName": {
+              "machine": "Miner",
+              "state": "State",
+              "x": "X",
+              "y": "Y",
+              "z": "Z",
+              "Value #B": "Pipe Depth",
+              "Value #C": "Tip Y",
+              "Value #D": "Shaft Bottom Y",
+              "Value #E": "Pipes Left",
+              "Value #F": "Radius"
+            },
+            "indexByName": {
+              "machine": 0,
+              "state": 1,
+              "Value #B": 2,
+              "Value #C": 3,
+              "Value #D": 4,
+              "Value #E": 5,
+              "Value #F": 6,
+              "x": 7,
+              "y": 8,
+              "z": 9
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "State"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "type": "value",
+                    "options": {
+                      "drilling": {
+                        "text": "drilling",
+                        "color": "blue"
+                      },
+                      "at_bedrock": {
+                        "text": "at bedrock",
+                        "color": "orange"
+                      },
+                      "retracted": {
+                        "text": "done, pipe pulled back",
+                        "color": "green"
+                      },
+                      "idle": {
+                        "text": "idle",
+                        "color": "text"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
+      }
+    },
+    {
+      "id": 84,
+      "type": "bargauge",
+      "title": "Unprocessed Ore by Stage",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 202,
+        "w": 8,
+        "h": 12
+      },
+      "description": "Steps to dust, the shortest way with LV and steam machines: ore 3 (macerate, macerate, wash), crushed and purified 2, centrifuged and impure or purified dust 1. Longer routes give more byproducts",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sort_desc(sum by (stage) (gt_ore_items{alias=\"$alias\",team=~\"$team\"}))",
+          "legendFormat": "{{stage}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "namePlacement": "left",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "id": 85,
+      "type": "table",
+      "title": "Unprocessed Ore",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 8,
+        "y": 202,
+        "w": 16,
+        "h": 12
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (material, stage, steps_to_dust) (gt_ore_items{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "material": "Material",
+              "stage": "Stage",
+              "steps_to_dust": "Steps to Dust",
+              "Value": "Count"
+            },
+            "indexByName": {
+              "material": 0,
+              "stage": 1,
+              "steps_to_dust": 2,
+              "Value": 3
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "Count",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 86,
+      "type": "row",
+      "title": "Players' Items and Casting",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 214,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 87,
+      "type": "bargauge",
+      "title": "Items Carried",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 215,
+        "w": 8,
+        "h": 11
+      },
+      "description": "Everything each player has on them as of their last save: inventory, armor, ender chest and Galacticraft gear slots",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sort_desc(sum by (player) (player_items{alias=\"$alias\"}))",
+          "legendFormat": "{{player}}",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "min": 0,
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "orientation": "horizontal",
+        "displayMode": "gradient",
+        "showUnfilled": true,
+        "namePlacement": "left",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        }
+      }
+    },
+    {
+      "id": 88,
+      "type": "table",
+      "title": "Player Inventories",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 8,
+        "y": 215,
+        "w": 16,
+        "h": 11
+      },
+      "description": "Where: inventory, armor, ender_chest, galacticraft. In is the item it's stored in (a backpack, /dev/null, a lunch box), empty when carried directly. Team is the player's ServerUtilities team, empty when they're in none. Ignores the Team dropdown, since most players are in no team",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum by (player, team, where, container, item) (player_items{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "player": "Player",
+              "team": "Team",
+              "where": "Where",
+              "item": "Item",
+              "Value": "Count",
+              "container": "In"
+            },
+            "indexByName": {
+              "player": 0,
+              "team": 1,
+              "where": 2,
+              "container": 3,
+              "item": 4,
+              "Value": 5
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "filterable": true
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "sortBy": [
+          {
+            "displayName": "Count",
+            "desc": true
+          }
+        ]
+      }
+    },
+    {
+      "id": 89,
+      "type": "table",
+      "title": "Casting Tables and Basins",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 226,
+        "w": 24,
+        "h": 10
+      },
+      "description": "TConstruct castings in claimed chunks. Progress comes from castingDelay counting down from maxCastingDelay once the metal is poured. A finished piece waiting to be taken shows in Result",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (type, fluid, cast, x, y, z) (tconstruct_casting_progress{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (type, fluid, x, y, z) (tconstruct_casting_fluid_mb{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "B",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max by (type, item, x, y, z) (tconstruct_casting_result{alias=\"$alias\",team=~\"$team\"})",
+          "refId": "C",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value #C": true
+            },
+            "renameByName": {
+              "type": "Type",
+              "fluid": "Metal",
+              "cast": "Cast",
+              "item": "Result",
+              "x": "X",
+              "y": "Y",
+              "z": "Z",
+              "Value #A": "Progress",
+              "Value #B": "mB"
+            },
+            "indexByName": {
+              "type": 0,
+              "fluid": 1,
+              "Value #B": 2,
+              "cast": 3,
+              "Value #A": 4,
+              "item": 5,
+              "x": 6,
+              "y": 7,
+              "z": 8
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Progress"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percentunit"
+              },
+              {
+                "id": "min",
+                "value": 0
+              },
+              {
+                "id": "max",
+                "value": 1
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "gauge",
+                  "mode": "basic"
+                }
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "continuous-BlPu"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
+      }
+    },
+    {
+      "id": 90,
+      "type": "row",
+      "title": "Sizes and Limits",
+      "collapsed": false,
+      "gridPos": {
+        "x": 0,
+        "y": 236,
+        "w": 24,
+        "h": 1
+      },
+      "panels": []
+    },
+    {
+      "id": 91,
+      "type": "stat",
+      "title": "Biggest Packet vs Limit",
+      "description": "The largest of: a player's inventory, a backpack's contents, a container's items, against the 2 MiB packet limit. Each is sent in one packet when opened, too big kicks players (orange at 50%, red at 80%)",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 237,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max(label_replace(max(player_inventory_nbt_bytes{alias=\"$alias\"}), \"what\", \"inventory\", \"\", \"\") or label_replace(max(backpack_nbt_bytes{alias=\"$alias\"}), \"what\", \"backpack\", \"\", \"\") or label_replace(max(container_nbt_bytes_max{alias=\"$alias\"}), \"what\", \"container\", \"\", \"\")) / scalar(minecraft_packet_limit_bytes{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "decimals": 1,
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              },
+              {
+                "value": 0.5,
+                "color": "orange"
+              },
+              {
+                "value": 0.8,
+                "color": "red"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 92,
+      "type": "stat",
+      "title": "Biggest Chunk vs Limit",
+      "description": "The largest compressed chunk against what a region file can hold (255 sectors of 4 KiB), past it the chunk can't be saved",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 6,
+        "y": 237,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "max(region_chunk_bytes_max{alias=\"$alias\",size=\"compressed\"}) / scalar(minecraft_chunk_limit_bytes{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "decimals": 1,
+          "color": {
+            "mode": "thresholds",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "green"
+              },
+              {
+                "value": 0.5,
+                "color": "orange"
+              },
+              {
+                "value": 0.8,
+                "color": "red"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 93,
+      "type": "stat",
+      "title": "World Size, Compressed",
+      "description": "All saved chunks in region files",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 237,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(region_chunk_bytes_total{alias=\"$alias\",size=\"compressed\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 1,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 94,
+      "type": "stat",
+      "title": "World Size, Uncompressed",
+      "description": "All saved chunks as NBT",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 18,
+        "y": 237,
+        "w": 6,
+        "h": 4
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "sum(region_chunk_bytes_total{alias=\"$alias\",size=\"uncompressed\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 1,
+          "color": {
+            "mode": "fixed",
+            "fixedColor": "blue"
+          },
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "value": 0,
+                "color": "blue"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "colorMode": "value",
+        "graphMode": "area",
+        "textMode": "auto"
+      }
+    },
+    {
+      "id": 95,
+      "type": "timeseries",
+      "title": "Claimed Chunks, Uncompressed",
+      "description": "Each claimed chunk's NBT size, it grows as a base gets more complicated",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 241,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "chunk_nbt_bytes{alias=\"$alias\",team=~\"$team\"}",
+          "legendFormat": "{{team}} {{x}},{{z}} (DIM {{dim}})",
+          "refId": "A",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 96,
+      "type": "timeseries",
+      "title": "Claimed Chunks, Compressed",
+      "description": "Each claimed chunk's size in its region file, against the 1,044,480 byte limit",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 241,
+        "w": 12,
+        "h": 10
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "chunk_compressed_bytes{alias=\"$alias\",team=~\"$team\"}",
+          "legendFormat": "{{team}} {{x}},{{z}} (DIM {{dim}})",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "minecraft_chunk_limit_bytes{alias=\"$alias\"}",
+          "legendFormat": "region file limit",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "lastNotNull",
+            "max"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 97,
+      "type": "timeseries",
+      "title": "World Size per Dimension",
+      "description": "",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 0,
+        "y": 251,
+        "w": 12,
+        "h": 9
+      },
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "region_chunk_bytes_total{alias=\"$alias\",size=\"compressed\"}",
+          "legendFormat": "DIM {{dim}} compressed",
+          "refId": "A",
+          "range": true
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "region_chunk_bytes_total{alias=\"$alias\",size=\"uncompressed\"}",
+          "legendFormat": "DIM {{dim}} uncompressed",
+          "refId": "B",
+          "range": true
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "drawStyle": "line",
+            "lineWidth": 1,
+            "fillOpacity": 0,
+            "showPoints": "never",
+            "spanNulls": true,
+            "lineInterpolation": "stepAfter"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true,
+          "calcs": []
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "id": 98,
+      "type": "table",
+      "title": "Biggest Inventories and Backpacks",
+      "datasource": "prometheus",
+      "gridPos": {
+        "x": 12,
+        "y": 251,
+        "w": 12,
+        "h": 9
+      },
+      "description": "Serialized NBT of what each opens in one packet. Bytes against the 2 MiB packet limit",
+      "targets": [
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(10, player_inventory_nbt_bytes{alias=\"$alias\"})",
+          "refId": "A",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(10, backpack_nbt_bytes{alias=\"$alias\"})",
+          "refId": "B",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        },
+        {
+          "datasource": "prometheus",
+          "editorMode": "code",
+          "expr": "topk(10, container_nbt_bytes{alias=\"$alias\"})",
+          "refId": "C",
+          "instant": true,
+          "range": false,
+          "format": "table"
+        }
+      ],
+      "transformations": [
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "__name__": true,
+              "alias": true,
+              "instance": true,
+              "job": true
+            },
+            "renameByName": {
+              "player": "Player",
+              "where": "Inventory",
+              "uid": "Backpack",
+              "team": "Team",
+              "dim": "Dim",
+              "type": "Container",
+              "Value #A": "Inventory Bytes",
+              "Value #B": "Backpack Bytes",
+              "Value #C": "Container Bytes"
+            }
+          }
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "custom": {
+            "align": "auto"
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm"
       }
     }
   ],

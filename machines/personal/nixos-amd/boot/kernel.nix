@@ -4,7 +4,7 @@
 , ... }:
 
 {
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_0;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_7_3;
 
   boot.kernelPatches = [
     {

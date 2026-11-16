@@ -7,5 +7,12 @@
     localip = "10.192.0.3";
   };
 
-  systemd.services.toxvpn.serviceConfig.TimeoutStartSec = "infinity";
+  systemd.services.toxvpn.serviceConfig = {
+    TimeoutStartSec = "infinity";
+    User = "toxvpn";
+    Group = "toxvpn";
+    # Creates a tun device, which needs CAP_NET_ADMIN.
+    AmbientCapabilities = [ "CAP_NET_ADMIN" ];
+    CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
+  };
 }

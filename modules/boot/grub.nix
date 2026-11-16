@@ -122,7 +122,7 @@ in {
         extraGrubInstallArgs = lib.optionals config.boot.grub.efi.enable [
           "--sbat=${./sbat.csv}"
         ] ++ lib.optionals config.boot.grub.efi.enableSecureBoot  [
-          "--modules=boot cat help chain configfile echo ls linux normal test true part_msdos part_gpt fat ext2 ntfs search search_fs_file search_label elf gzio font terminal gfxterm gfxterm_menu gfxterm_background gfxmenu png video videotest video_fb video_bochs video_cirrus video_colors efi_gop efi_uga tpm"
+          "--modules=boot cat help chain configfile echo ls linux normal test true part_msdos part_gpt fat ext2 ntfs search search_fs_file search_label elf gzio font terminal gfxterm gfxterm_background gfxmenu png video videotest video_fb video_bochs video_cirrus video_colors efi_gop efi_uga tpm"
         ];
         extraInstallCommands = lib.strings.optionalString config.boot.grub.efi.enableSecureBoot ''
           export PATH=${lib.makeBinPath (with pkgs; [

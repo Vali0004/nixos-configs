@@ -4,14 +4,6 @@
 , ... }:
 
 {
-  options.programs.google-chrome = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Whether to Google Chrome.";
-    };
-  };
-
   config = lib.mkIf config.programs.google-chrome.enable {
     xdg.mime = {
       addedAssociations = {
@@ -25,7 +17,5 @@
         "text/xml" = "com.google.Chrome.desktop";
       };
     };
-    environment.systemPackages = [ pkgs.google-chrome ];
-    nixpkgs.config.allowUnfree = true;
   };
 }

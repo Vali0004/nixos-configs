@@ -26,7 +26,7 @@
         pkgs.intel-media-driver
         pkgs.vpl-gpu-rt
       ] ++ lib.optionals config.hardware.intel-gpu.computeSupport [
-        pkgs.intel-compute-runtime.drivers
+        pkgs.intel-compute-runtime
         pkgs.level-zero
       ];
 
@@ -38,10 +38,10 @@
     environment.sessionVariables = (lib.optionalAttrs config.hardware.intel-gpu.mediaSupport {
       LIBVA_DRIVER_NAME = "iHD";
     }) // (lib.optionalAttrs config.hardware.intel-gpu.computeSupport {
-      ZE_ENABLE_ALT_DRIVERS = "${pkgs.intel-compute-runtime.drivers}/lib/libze_intel_gpu.so.1";
+      ZE_ENABLE_ALT_DRIVERS = "${pkgs.intel-compute-runtime}/lib/libze_intel_gpu.so.1";
 
       LD_LIBRARY_PATH = lib.makeLibraryPath [
-        pkgs.intel-compute-runtime.drivers
+        pkgs.intel-compute-runtime
         pkgs.intel-graphics-compiler
       ];
     });

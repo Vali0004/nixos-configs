@@ -7,7 +7,6 @@
     consoleLogLevel = lib.mkDefault 0;
     initrd = {
       kernelModules = [ ];
-      systemd.enable = true;
     };
     kernelModules = [ ] ++ lib.optionals config.hardware.enableKvm [
       (lib.strings.optionalString config.hardware.amd.enable "kvm-amd")
