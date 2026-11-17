@@ -4,7 +4,18 @@
 , ... }:
 
 let
-  iptables = pkgs.iptables;
+  ip4 = "${pkgs.iptables}/bin/iptables";
+  ip6 = "${pkgs.iptables}/bin/ip6tables";
+
+  # shared by postSetup and postShutdown so the add and delete sides can't drift apart
+  rules = [
+    { bin = ip4; rule = "-t nat"; args = "POSTROUTING -s 10.0.10.0/24 -o enp3s0 -j MASQUERADE"; }
+    { bin = ip6; rule = "-t nat"; args = "POSTROUTING -s fd10:0::/64 -o enp3s0 -j MASQUERADE"; }
+    { bin = ip4; rule = "-t filter"; args = "FORWARD -s 10.0.10.0/24 -j ACCEPT"; }
+    { bin = ip4; rule = "-t filter"; args = "FORWARD -d 10.0.10.0/24 -j ACCEPT"; }
+    { bin = ip6; rule = "-t filter"; args = "FORWARD -s fd10:0::/64 -j ACCEPT"; }
+    { bin = ip6; rule = "-t filter"; args = "FORWARD -d fd10:0::/64 -j ACCEPT"; }
+  ];
 in {
   environment.systemPackages = with pkgs; [
     wireguard-tools
@@ -28,30 +39,9 @@ in {
       "fd10:0::1/64"
     ];
     listenPort = 51821;
-    postSetup = ''
-      ${iptables}/bin/iptables -t nat -A POSTROUTING -s 10.0.10.0/24 -o enp3s0 -j MASQUERADE
-      ${iptables}/bin/ip6tables -t nat -A POSTROUTING -s fd10:0::/64 -o enp3s0 -j MASQUERADE
-
-      ${iptables}/bin/iptables -A FORWARD -s 10.0.10.0/24 -j ACCEPT || true
-      ${iptables}/bin/iptables -A FORWARD -d 10.0.10.0/24 -j ACCEPT || true
-      ${iptables}/bin/ip6tables -A FORWARD -s fd10:0::/64 -j ACCEPT || true
-      ${iptables}/bin/ip6tables -A FORWARD -d fd10:0::/64 -j ACCEPT || true
-
-      ${iptables}/bin/iptables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
-      ${iptables}/bin/ip6tables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
-    '';
-    postShutdown = ''
-      ${iptables}/bin/iptables -t nat -D POSTROUTING -s 10.0.10.0/24 -o enp3s0 -j MASQUERADE || true
-      ${iptables}/bin/ip6tables -t nat -D POSTROUTING -s 1/64 -o enp3s0 -j MASQUERADE
-
-      ${iptables}/bin/iptables -D FORWARD -s 10.0.10.0/24 -j ACCEPT || true
-      ${iptables}/bin/iptables -D FORWARD -d 10.0.10.0/24 -j ACCEPT || true
-      ${iptables}/bin/ip6tables -D FORWARD -s fd10:0::/64 -j ACCEPT || true
-      ${iptables}/bin/ip6tables -D FORWARD -d fd10:0::/64 -j ACCEPT || true
-
-      ${iptables}/bin/iptables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
-      ${iptables}/bin/ip6tables -D FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT || true
-    '';
+    # each rule is checked with -C first so restarts never stack duplicates
+    postSetup = lib.concatMapStringsSep "\n" (r: "${r.bin} ${r.rule} -C ${r.args} || ${r.bin} ${r.rule} -A ${r.args}") rules;
+    postShutdown = lib.concatMapStringsSep "\n" (r: "while ${r.bin} ${r.rule} -D ${r.args} 2>/dev/null; do :; done") rules;
     privateKeyFile = "/root/wireguard-keys/privatekey";
     peers = [
       {

@@ -11,7 +11,6 @@
     curl
     # Coreboot Utilities
     coreboot-utils
-    devmem2
     # Discord
     (discord.override { withVencord = true; })
     # SMBIOS

@@ -53,10 +53,9 @@
         SHOW_FOOTER_VERSION = false;
       };
       server = {
-        DOMAIN = "git.lab004.dev";
         HTTP_PORT = 3900;
         HTTP_ADDR = "0.0.0.0";
-        ROOT_URL = "https://${config.services.gitea.settings.server.DOMAIN}";
+        ROOT_URL = "https://git.lab004.dev/";
         SSH_DOMAIN = "git.lab004.dev";
         SSH_PORT = 2222;
         SSH_CREATE_AUTHORIZED_KEYS_FILE = true;
@@ -75,7 +74,7 @@
     };
   };
 
-  services.nginx.virtualHosts.${config.services.gitea.settings.server.DOMAIN} = {
+  services.nginx.virtualHosts."git.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
 

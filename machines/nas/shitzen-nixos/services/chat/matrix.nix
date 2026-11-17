@@ -5,9 +5,9 @@
   ...
 }:
 let
-  baseUrl = "https://matrix.fuckk.lol";
+  baseUrl = "https://matrix.lab004.dev";
   clientConfig."m.homeserver".base_url = baseUrl;
-  serverConfig."m.server" = "matrix.fuckk.lol:443";
+  serverConfig."m.server" = "matrix.lab004.dev:443";
   mkWellKnown = data: ''
     default_type application/json;
     add_header Access-Control-Allow-Origin *;
@@ -25,7 +25,7 @@ in {
         locations."= /.well-known/matrix/server".extraConfig = mkWellKnown serverConfig;
         locations."= /.well-known/matrix/client".extraConfig = mkWellKnown clientConfig;
       };
-      "matrix.fuckk.lol" = {
+      "matrix.lab004.dev" = {
         enableACME = true;
         forceSSL = true;
         locations."/".extraConfig = ''

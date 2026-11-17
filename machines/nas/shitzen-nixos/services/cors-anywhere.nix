@@ -22,7 +22,7 @@
     wantedBy = [ "multi-user.target" ];
   };
 
-  services.nginx.virtualHosts."r34.fuckk.lol" = {
+  services.nginx.virtualHosts."r34.lab004.dev" = {
     enableACME = true;
     forceSSL = true;
     locations."/" = lib.mkProxy {

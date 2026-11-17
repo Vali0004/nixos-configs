@@ -341,6 +341,16 @@ in {
       config = cfg.wings.config;
     };
 
+    # upstream writes token before the generated yaml, which now starts with a %YAML header
+    # that splits the file into two documents and wings only reads the first, so remote ends up empty
+    # writing the generated file first and appending token keeps everything in one document
+    systemd.services.wings.preStart = lib.mkIf cfg.wings.enable (lib.mkForce ''
+      mkdir -p /etc/pterodactyl
+      install -m 0600 ${(pkgs.formats.yaml { }).generate "config.yml" cfg.wings.config} /etc/pterodactyl/config.yml
+      printf 'token: %s\n' "$(cat ${cfg.wings.tokenFile})" >> /etc/pterodactyl/config.yml
+      chown ${config.services.wings.user}:${config.services.wings.group} /etc/pterodactyl/config.yml
+    '');
+
     systemd.services.wings.serviceConfig = {
       User = lib.mkForce "root";
       Group = lib.mkForce "root";

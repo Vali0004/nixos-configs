@@ -101,7 +101,13 @@ in {
   # Forward services
   systemd.services.forward6110 = mkForward 6110 vethNSIP4;
 
-  systemd.services."wireguard-wg0".after = [ "veth@${netnsName}.service" ];
+  # wg0 lives inside the netns, and stopping veth deletes that netns
+  # bindsTo and partOf make wg0 stop and restart along with it
+  systemd.services."wireguard-wg0" = {
+    after = [ "veth@${netnsName}.service" ];
+    bindsTo = [ "veth@${netnsName}.service" ];
+    partOf = [ "veth@${netnsName}.service" ];
+  };
 
   networking.wireguard.interfaces.wg0 = {
     interfaceNamespace = netnsName;

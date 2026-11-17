@@ -101,7 +101,6 @@
   '';
 
   services.hydra = {
-    buildMachinesFiles = [];
     enable = true;
     # TODO: Make this a proper module
     extraConfig = ''

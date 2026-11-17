@@ -30,7 +30,6 @@
     btop
     # Coreboot Utilities
     coreboot-utils
-    devmem2
     # SMBIOS
     dmidecode
     # Fast fetch system information
@@ -80,7 +79,8 @@
 
   programs = {
     corectrl.enable = true;
-    command-not-found.enable = true && config.programs.nix-index.enable == false;
+    # flake-sourced nixpkgs doesn't ship programs.sqlite
+    command-not-found.enable = false;
     dconf.enable = true;
     git = {
       enable = true;

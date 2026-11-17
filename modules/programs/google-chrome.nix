@@ -4,7 +4,7 @@
 , ... }:
 
 {
-  config = lib.mkIf config.programs.google-chrome.enable {
+  config = lib.mkIf (config.programs.google-chrome.enable or false) {
     xdg.mime = {
       addedAssociations = {
         "x-scheme-handler/ftp" = "com.google.Chrome.desktop";

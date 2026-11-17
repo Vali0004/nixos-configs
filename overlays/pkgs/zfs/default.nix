@@ -231,6 +231,9 @@ let
 
       enableParallelBuilding = true;
 
+      # carries the kmodigest cmd_sign override so the build emits the .ko.cer files modules.cer needs
+      makeFlags = optionals buildKernel kernelModuleMakeFlags;
+
       doInstallCheck = true;
 
       installFlags = [

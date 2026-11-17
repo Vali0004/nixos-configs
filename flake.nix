@@ -3,6 +3,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     agenix.url = "github:ryantm/agenix";
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     comfyui-nix.url = "github:utensils/comfyui-nix";
     home-manager = {
       url = "github:nix-community/home-manager/master";
@@ -27,6 +31,7 @@
     , nixpkgs
     , nixpkgs-stable
     , agenix
+    , colmena
     , comfyui-nix
     , home-manager
     , hytale-launcher
@@ -45,6 +50,7 @@
     flakeOverlays = [
       (self: super: {
         agenix = agenix.outputs.packages.${system}.agenix;
+        colmena = colmena.packages.${system}.colmena;
         hytale-launcher = hytale-launcher.outputs.packages.${system}.default;
         mailserver = nixos-mailserver.${system}.default;
         nixGaming = nix-gaming.outputs.packages.${system};
@@ -94,7 +100,7 @@
       inherit inputs overlays;
     };
   in {
-    colmena = {
+    colmenaHive = colmena.lib.makeHive {
       defaults = {
         imports = [
           agenix.nixosModules.age
@@ -108,6 +114,16 @@
         nixpkgs = pkgs;
         nodeNixpkgs = {
           nixos-router = pkgsStable;
+        };
+        # the router evaluates against nixos-stable, so it needs a lib built
+        # from that same nixpkgs. mixing in the unstable lib recurses forever
+        nodeSpecialArgs = {
+          nixos-router = specialArgs // {
+            lib = (import overlays/libOverlay.nix {
+              lib = pkgsStable.lib;
+              pkgs = pkgsStable;
+            }).lib;
+          };
         };
       };
       nixos-router = {
