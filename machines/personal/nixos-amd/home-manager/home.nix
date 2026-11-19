@@ -11,6 +11,7 @@ in {
       programs/fastfetch.nix
       programs/git.nix
       programs/rofi.nix
+      programs/steam-gamescope.nix
       programs/vscode.nix
       programs/zsh.nix
       services/dunst.nix

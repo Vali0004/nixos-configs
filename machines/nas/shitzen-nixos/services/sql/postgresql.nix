@@ -73,6 +73,12 @@ GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO sogo;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO sogo;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON SEQUENCES TO sogo;
 EOF
+      # Hydra commits a row per build step, from many connections at once. Waiting on the disk for each one
+      # stalled the queue runner long enough to drop its builders' streams. Only this database: losing the
+      # last moment of Hydra's records in a crash just re-queues those steps, unlike the other services here.
+      ${config.services.postgresql.package}/bin/psql <<EOF
+ALTER DATABASE hydra SET synchronous_commit = off;
+EOF
       # Read passwords from age secrets at runtime
       GITEA_PW="$(cat ${config.age.secrets.git-kursu-dev-db.path})"
 

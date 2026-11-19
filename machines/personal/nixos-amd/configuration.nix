@@ -25,6 +25,8 @@
 
     services/dnsmasq.nix
     services/krb5.nix
+    services/nix-builder.nix
+    services/darwin-builder.nix
     #services/monado.nix
     services/openssh.nix
     services/picom.nix

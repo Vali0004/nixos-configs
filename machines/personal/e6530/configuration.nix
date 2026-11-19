@@ -53,6 +53,10 @@
     networkmanager.enable = true;
   };
 
+  users.users.root.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMZH6ugtGUEF6OCsgsNTsmxsvOvTMAU7BxZhHe6ZHfxp"
+  ];
+
   services.openssh.enable = true;
 
   zfs.enable = false;

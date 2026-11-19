@@ -31,8 +31,8 @@ self: super: {
     src = super.fetchFromGitHub {
       owner = "Vali0004";
       repo = "dwm-fork";
-      rev = "49d8df40956dcdf50335afb5be13cabd07c4112c";
-      hash = "sha256-oF1EPEff1nX5h1YVvZrZXu5Su/m94YSb34WBYkK0GAM=";
+      rev = "9b65d842a8995282bda1dc7eec833fd150a0075c";
+      hash = "sha256-oUERkOoBYbp2B2rxPvjUsph1cnTk9KujN4jzudNJHy8=";
       #hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
     };
   });

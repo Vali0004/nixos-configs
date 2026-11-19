@@ -21,7 +21,8 @@
     gc = {
       automatic = true;
       dates = "0:00:00";
-      options = ''--max-freed "$((32 * 1024**3 - 1024 * $(df -P -k /nix/store | tail -n 1 | ${pkgs.gawk}/bin/awk '{ print $4 }')))"'';
+      # each night, free enough to leave 100 GiB on the 468 GB root: a day of PureDarwin release images is tens of GB
+      options = ''--max-freed "$((100 * 1024**3 - 1024 * $(df -P -k /nix/store | tail -n 1 | ${pkgs.gawk}/bin/awk '{ print $4 }')))"'';
     };
     settings.auto-optimise-store = true;
   };

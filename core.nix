@@ -8,6 +8,7 @@ let
 in {
   imports = [
     ./modules/services/fail2ban.nix
+    ./modules/services/nginx-no-http2.nix
     ./modules/services/openssh.nix
     ./modules/imports.nix
   ];

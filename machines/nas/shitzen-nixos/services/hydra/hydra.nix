@@ -23,7 +23,7 @@
       '';
     };
 
-    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
+    locations."~ ^(/nix-cache-info$|/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
       ip = "hydra-server";
       hasPort = false;
     };
@@ -52,7 +52,7 @@
       '';
     };
 
-    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
+    locations."~ ^(/nix-cache-info$|/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
       ip = "hydra-server";
       hasPort = false;
     };
@@ -81,7 +81,7 @@
       '';
     };
 
-    locations."~ ^(/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
+    locations."~ ^(/nix-cache-info$|/build/\\d+/download/|/.*\\.narinfo$|/nar/.*)" = lib.mkProxy {
       ip = "hydra-server";
       hasPort = false;
     };
@@ -104,8 +104,8 @@
     enable = true;
     # TODO: Make this a proper module
     extraConfig = ''
-      binary_cache_secret_key_file = /var/cache-priv-key.pem
-      store-uri = file:///nix/store?secret-key=/var/cache-priv-key.pem
+      binary_cache_secret_key_file = /var/hydra-lab004-cache-priv-key.pem
+      store-uri = file:///nix/store?secret-key=/var/hydra-lab004-cache-priv-key.pem
       max_output_size = ${toString (1024*1024*1024*3)} # 3gig
       max_concurrent_evals = 1
       evaluator_initial_heap_size = ${toString (1024*1024*1024)} # 1gig
@@ -132,4 +132,27 @@
   };
 
   users.users.hydra-www.extraGroups = [ "hydra" ];
+
+  # The queue runner no longer reads build machine files: builders run hydra-builder and connect to it over gRPC,
+  # presenting a token from tokenPaths. It listens on the LAN for the desktop (nixos-amd), and this machine runs
+  # its own agent too.
+  services.hydra.queueRunner = {
+    grpc.address = "0.0.0.0";
+    settings.tokenPaths = [ "/var/lib/hydra/builder-token" ];
+    # PureDarwin's kernel and libSystem builds log far more than the 64 MiB default
+    settings.maxLogSize = 1024 * 1024 * 1024;
+  };
+  networking.firewall.interfaces.enp3s0.allowedTCPPorts = [ 50051 ];
+
+  services.hydra-builder = {
+    enable = true;
+    queueRunnerAddr = "http://127.0.0.1:50051";
+    authorizationFile = "/var/lib/hydra/builder-token";
+    settings = {
+      speedFactor = 1;
+      maxJobs = 4;
+      systems = [ "x86_64-linux" "i686-linux" ];
+      supportedFeatures = [ "kvm" "nixos-test" "big-parallel" "benchmark" ];
+    };
+  };
 }
