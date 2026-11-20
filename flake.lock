@@ -420,11 +420,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1793424581,
-        "narHash": "sha256-MaPmwJ48WMCCrz/qr5k8Tqg18HzphC76dmDqUM1d0rg=",
+        "lastModified": 1795160000,
+        "narHash": "sha256-C9NpRRCI8ghgEF3Mim3Aqh78JFwlOoxMcgOqdVvfd2Q=",
         "owner": "Vali0004",
         "repo": "minecraft-mapper",
-        "rev": "02b71eb8db83c6977e7ac266841ca3782c79a211",
+        "rev": "ef1b03f6c7a031c58e6147731709e243344ec305",
         "type": "github"
       },
       "original": {

@@ -109,6 +109,17 @@ in {
       port = mapPort;
       webSockets = false;
     };
+    # the exporter's food planner and recipe search, only those paths, the metrics stay private
+    locations."/foods/" = lib.mkProxy {
+      ip = "192.168.100.1";
+      port = exporterPort;
+      webSockets = false;
+    };
+    locations."/recipes/" = lib.mkProxy {
+      ip = "192.168.100.1";
+      port = exporterPort;
+      webSockets = false;
+    };
   };
 
   services.prometheus.scrapeConfigs = [

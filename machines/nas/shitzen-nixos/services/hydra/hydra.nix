@@ -141,6 +141,19 @@
     settings.tokenPaths = [ "/var/lib/hydra/builder-token" ];
     # PureDarwin's kernel and libSystem builds log far more than the 64 MiB default
     settings.maxLogSize = 1024 * 1024 * 1024;
+    # build outputs go to a signed binary cache on the ZFS pool instead of filling the root SSD's /nix/store
+    settings.remoteStoreAddr = [ "file:///data/hydra-cache?compression=zstd&secret-key=/var/hydra-lab004-cache-priv-key.pem" ];
+  };
+  # zpool/data/hydra-cache (zstd, atime off), created by hand as the other datasets are
+  fileSystems."/data/hydra-cache" = {
+    device = "zpool/data/hydra-cache";
+    fsType = "zfs";
+  };
+  systemd.tmpfiles.rules = [ "d /data/hydra-cache 0775 hydra-queue-runner hydra -" ];
+  systemd.services.hydra-queue-runner = {
+    requires = [ "data-hydra\\x2dcache.mount" ];
+    after = [ "data-hydra\\x2dcache.mount" ];
+    serviceConfig.ReadWritePaths = [ "/data/hydra-cache" ];
   };
   networking.firewall.interfaces.enp3s0.allowedTCPPorts = [ 50051 ];
 

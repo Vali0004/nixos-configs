@@ -1,5 +1,6 @@
 { config
 , lib
+, pkgs
 , ... }:
 
 let
@@ -71,7 +72,16 @@ in {
 
   systemd.services = {
     sogo = lib.mkNamespace {};
-    sogo-tmpwatch = lib.mkNamespace {};
+    sogo-tmpwatch = lib.mkMerge [
+      (lib.mkNamespace {})
+      {
+        # upstream calls bare find, and systemd on nixos has no findutils on its default path
+        serviceConfig.ExecStart = lib.mkForce [
+          "${pkgs.findutils}/bin/find /var/lib/sogo/spool -type f -user sogo -atime +23 -delete"
+          "${pkgs.findutils}/bin/find /var/lib/sogo/spool -mindepth 1 -type d -user sogo -empty -delete"
+        ];
+      }
+    ];
     sogo-ealarms = lib.mkNamespace {};
   };
 }
